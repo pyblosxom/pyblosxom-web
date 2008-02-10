@@ -1,0 +1,10 @@
+comment-openid
+#infourl http://snarfed.org/space/pyblosxom+openid+comments
+#download http://snarfed.org/space/comments_openid.py
+#email_address pyblosxom@ryanb.org
+#author Josh Hoyt, Kevin Turner, Ryan Barrett
+This plug-in adds support for OpenID (http://openid.net/ ) authentication for
+posting comments to a Pyblosxom blog. In addition to allowing OpenID logins, it
+also lets you grant or deny commenting based on the identity or server of the
+commenter. For instance, you could restrict commenting to a select group of
+friends, or to a list of servers that you trust to check out their users.

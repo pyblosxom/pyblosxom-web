@@ -1,0 +1,5 @@
+pysmiley
+#author David Lindquist
+#infourl http://www.stringify.com/words/pyblosxom/pysmiley.html
+#download http://www.stringify.com/misc/pysmiley.py
+Replaces instances of certain emoticons with a corresponding image.

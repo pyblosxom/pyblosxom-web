@@ -1,0 +1,6 @@
+atom1renderer
+#author Timothy C. Fanelli
+#infourl http://www.timfanelli.com/item/atom_renderer.html
+#download http://www.timfanelli.com/projects/AtomRenderer_py.txt
+AtomRenderer renders a valid ATOM 1.0 feed without the need for
+ATOM flavour templates.

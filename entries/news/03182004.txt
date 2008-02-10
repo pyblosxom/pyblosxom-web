@@ -1,0 +1,32 @@
+Pyblosxom 0.9
+#published 2004-03-18 19:20:00
+<p>
+  After several months of hard work by all the developers and members of 
+  the community, we've released the next version of Pyblosxom.
+</p>
+<p>
+  0.9 has the following changes in it:
+</p>
+<ul>
+  <li>Added a logger and locking code
+  <li>Overhauled the xmlrpc system
+  <li>Added the verify_installation code
+  <li>Added handle callback
+  <li>Added Atom 0.3 flavour
+  <li>Overhaul of code base to fix concurrancy issues
+  <li>Added support for Metaweblog API
+  <li>Bug fixes, security fixes, and optimizations 
+</ul>
+<p>
+  It's highly encouraged that all people upgrade since plugins written for 
+  0.9 will not work in previous versions of Pyblosxom.
+</p>
+<p>
+  If you have any problems, let us know on the pyblosxom-users list.
+</p>
+<p>
+  <a href="http://sourceforge.net/project/showfiles.php?group_id=67445">Download now!</a> (sourceforge.net)
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

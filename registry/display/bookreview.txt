@@ -1,0 +1,16 @@
+book review
+#author Matt Carlson
+#infourl http://www.cavelli.org/blog/news/br_plug.html
+#download http://www.cavelli.org/plugins/bookreview.py
+A book review plugin for pyblosxom.
+
+bookreview.py reads a database of book information and displays it in
+three different ways:
+
+1) On the main page you can list the last 5 books added to the DB
+   by adding the $booklist variable
+2) You can see a list of the books in your DB by going to
+   /datadir/booklist.html
+3) You can see individual reviews by clicking on the title of a book,
+   or going to /datadir/booklist/?isbn=000000 (where 000000 is the isbn#)
+

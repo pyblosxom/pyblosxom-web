@@ -1,0 +1,12 @@
+editfile
+#author Wari Wahab
+#infourl None
+#download None
+#contrib yes
+This utility can be used to update a file entry while keeping 
+the timestamp intact. This is very useful for blog entries that are 
+time critical and you do not wish the time to get updated in any way.
+
+Since this utility works like a wrapper for your favourite editor, 
+replace the EDITOR line below to reflect the command to your 
+favourite editor, be it nano, pico or bbedit, etc. Tested on un*x only.

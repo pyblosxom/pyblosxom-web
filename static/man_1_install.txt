@@ -1,0 +1,128 @@
+Manual Chapter 1: Installation
+<p>
+  [
+  <a href="man_contents.html">Back to table of contents</a> |
+  <a href="man_1_install.print">Printer-friendly</a>
+  ]
+</p>
+<h2>1. A quick note</h2>
+<p>
+  There are many ways to install PyBlosxom. This particular installation
+  guide covers the typical installation for a single user on Apache with
+  PyBlosxom running as a CGI script.
+</p>
+<p>
+  There are other ways to install Pyblosxom depending on how you want it
+  to behave as well as what webserver you're installing Pyblosxom on top of.
+</p>
+<p>
+  This installation assumes you have some understanding of CGI, Apache
+  configuration, and know how to manipulate files and directories. If this
+  doesn't sound like you, maybe you should get a friend to help out or ask
+  for help on the pyblosxom-users mailing list.
+</p>
+<p>
+  If you are upgrading your version of PyBlosxom, follow the instructions
+  here and also read the README for differences between this version and
+  the previous versions.
+</p>
+
+<h2>2. Pre-requisites</h2>
+<p>
+  You will need:
+</p>
+<ul>
+  <li>a web-server<br />
+      preferably Apache, but PyBlosxom can probably be made to run
+      on any web server with CGI abilities.
+  <li>Python version 2.1 or later
+  <li>a text editor (notepad, vi, emacs, nano, ...)
+</ul>
+
+<h2>3. Installation</h2>
+<h3>3.1. Setting up PyBlosxom as a Single-User Local Installation</h3>
+
+<p>
+  These are the steps for setting up PyBlosxom as a single-user local
+  installation:
+</p>
+<ol>
+  <li>untar the PyBlosxom tar ball
+  <li>copy web/pyblosxom.cgi and web/config.py to your cgi-bin directory
+  <li>create a directory to hold your flavour templates and entries--this 
+      is your datadir
+  <li>using any text editor, edit your config.py file--there are comments
+      as to what all the properties affect
+    <ul>
+      <li>make sure to set the datadir property to the full path of the
+          directory you just created to store your data in [1]
+      <li>make sure to set the codebase property to the directory you
+          untarred PyBlosxom into [2]
+    </ul>
+  <li>run ./pyblosxom.cgi--this will verify your configuration and
+      installation and help you with any issues
+  <li>using any text editor, open up a file called firstpost.txt in your
+      datadir and write:
+</ol>
+
+<pre>
+First Post
+&lt;p&gt;
+   This is the first post in my blog.
+&lt;/p&gt;
+</pre>
+
+<ol start=7>
+  <li>test it in a web-browser
+</ol>
+
+<p>
+  <b>[1]</b> - You should always use / as the directory separater character
+  regardless of what OS you're on.  For example, this should work in Linux,
+  Unix, or Windows:
+</p>
+<pre>
+py["datadir"] = "/pyblosxom/datadir/blog/"
+</pre>
+<p>
+  FIXME - If you're using Windows and the pyblosxom.cgi file is on a 
+  different drive than your blog datadir, what should they do?
+</p>
+
+<p>
+  <b>[2]</b> - For the codebase, you should use an explicit path and use
+  appropriate directory separators.  For example, this works on Windows:
+</p>
+<pre>
+py["codebase"] = "c:\\pyblosxom\\"
+</pre>
+<p>
+  And this would work fine on Linux and Unix:
+</p>
+<pre>
+py["codebase"] = "/home/willg/pyblosxom/"
+</pre>
+
+<h3>3.2 Setting up PyBlosxom as a Site-Wide Multi-User Installation</h3>
+<p>
+  For a site-wide simple installation:
+</p>
+<ol>
+  <li>untar the pyblosxom tar file into a temporary directory
+  <li>switch over to a superuser such as root
+  <li>run the command "python setup.py install" to install the Pyblosxom
+      libraries in your python installation
+</ol>
+<p>
+  That installs the PyBlosxom libraries site-wide. Each user needs to copy the
+  config.py and pyblosxom.cgi files into their cgi-bin directory, set up
+  a datadir, set up a plugins dir (though you could have a central one for
+  all users on the server), and edit their config.py file. Follow the steps a
+  bove in the single-user installation for these steps.
+</p>
+
+
+<h3>3.3. Setting up PyBlosxom as an ISP-like Installation</h3>
+<p>
+  This can be done (and has been done).  Need instructions for it.
+</p>

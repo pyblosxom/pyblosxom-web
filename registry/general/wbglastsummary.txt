@@ -1,0 +1,6 @@
+wbglast10summary
+#author Will Guaraldi
+#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
+#download None
+All entries displayed after the first 10 only show
+a summary line.

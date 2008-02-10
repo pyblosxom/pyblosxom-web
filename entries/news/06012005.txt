@@ -1,0 +1,9 @@
+PyBlosxom users
+#published 2005-06-01 16:28:08
+<p>
+  Thanks to work from both Robert Wall and David Geller, I've added
+  a list of PyBlosxom users to the site.  David did some work that
+  makes the output a lot nicer, but I haven't quite gotten to working
+  his script into the system.  So this is a semi-temporary kluge for
+  the time being.
+</p>

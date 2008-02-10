@@ -1,0 +1,98 @@
+Contact us
+#nocomments yes
+<h2>For problems with a specific plugin</h2>
+<p>
+  Contact the author of the plugin using the contact information that author
+  provided in the plugin docstring or in the README that accompanied the
+  plugin.  If that proves unsuccessful, you can try asking the pyblosxom-devel
+  mailing list, but we make no warranties for supporting other peoples' plugins
+  and it is possible that we will be no help at all.
+</p>
+
+<h2>To report a bug in PyBlosxom</h2>
+<p>
+  Please file all bug reports <a href="http://sourceforge.net/tracker/?atid=517918&group_id=67445&func=browse">here</a> (sourceforge.net).
+  When filling out a bug report it helps to provide contact information so
+  we can contact you with questions.  It also helps to be as clear and
+  specific as you can so that we can reproduce your issue which is the
+  first step in being able to debug and fix it.
+</p>
+
+<h2>To request a feature in PyBlosxom</h2>
+<p>
+  Please file all feature requests <a href="http://sourceforge.net/tracker/?atid=517921&group_id=67445&func=browse">here</a> (sourceforge.net).
+  When submitting a feature request, it helps to provide contact information 
+  so we can contact you with questions.  It also helps to be as clear and
+  specific as you can so that we know what you're talking about.
+</p>
+<p>
+  Many features can probably be done in a plugin.  Take the time to
+  investigate whether someone has already implemented a plugin that enables
+  your favorite feature.  If not, try to build one yourself.
+</p>
+  
+<h2>For comments or issues with the website or the PyBlosxom users list</h2>
+<p>
+  Either send an email to willhelm at users dot sourceforge dot net or
+  send an email to the pyblosxom-devel mailing list.
+</p>
+
+<h2>For questions or comments or anything else</h2>
+<p>
+  Read through the documentation on this web-site and please search the
+  archives before asking questions.  If you're still having problems after
+  doing research, send an email to the pyblosxom-users mailing list.  Details
+  are below.
+</p>
+
+<h2>Mailing lists</h2>
+<ul>
+  <li><b>pyblosxom-announce</b> -
+  pyblosxom-announce at lists dot sourceforge dot net
+  (<a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-announce">subscribe/unsubscribe</a>) 
+  <br />
+  This mailing list is for announcements.  Releases, security issues, and
+  such will be mentioned on this mailing list.  All posts must be approved
+  which makes this a very very low-traffic announcement-only mailing list.
+  If you're a package maintainer, you should subscribe to this list.
+  <br />
+  It is not archived.
+  </li>
+
+  <li><b>pyblosxom-users</b> -
+  pyblosxom-users at lists dot sourceforge dot net
+  (<a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-users">subscribe/unsubscribe</a>)
+  (<a href="http://news.gmane.org/gmane.comp.web.pyblosxom.user">archives</a>)
+  <br />
+  This mailing list is for users who are having problems installing or
+  configuring PyBlosxom.  It can also be used for questions, comments, bugs,
+  ideas, and things of that nature as well.
+  <br />
+  The GMANE archives have RSS links if you're interested in following along
+  that way.
+  </li>
+
+  <li><b>pyblosxom-devel</b> - 
+  pyblosxom-devel at lists dot sourceforge dot net
+  (<a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-devel">subscribe/unsubscribe</a>)
+  (<a href="http://news.gmane.org/gmane.comp.web.pyblosxom.devel">archives</a>)
+  <br />
+  This mailing list is for developers who want to add/modify/delete
+  functionality in PyBlosxom.  Since it revolves around PyBlosxom development,
+  it's also a good place to ask questions about how to build plugins and
+  for advice on working around various plugin development issues.
+  <br />
+  The GMANE archives have RSS links if you're interested in following along
+  that way.
+  </li>
+
+  <li><b>pyblosxom-checkins</b> - 
+  pyblosxom-checkins at lists dot sourceforge dot net
+  (<a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-checkins">subscribe/unsubscribe</a>)
+  (<a href="http://sourceforge.net/mailarchive/forum.php?forum_id=21600">archives</a>)
+  <br />
+  This mailing list is for developers who want to be notified of what
+  code changes are checked into the SVN repository.  Discussion is 
+  discouraged on this list--send it to pyblosxom-devel.
+  </li>
+</ul>

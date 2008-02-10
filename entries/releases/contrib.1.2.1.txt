@@ -1,0 +1,27 @@
+Contributed plugins 1.2.1 released
+#published 2005-05-07 19:50:00
+<p>
+  This is the second release of the contributed plugins pack for PyBlosxom 1.2.
+  In terms of functionality, there were a bunch of fixes to the comments and
+  trackbacks components and I overhauled pycategories. Beyond that, there were a
+  lot of license changes (or in most cases license applications) and some
+  documentation changes. In general, this release is a huge milestone for
+  sorting out the big mess that was the contributed plugins.
+</p>
+<p>
+  Bravo to Wari, Ted, Steven, Blake, Bill, and everyone else that was involved
+  in pulling this together.
+</p>
+<p>
+  If you find problems with contributed plugins, 
+  <a href="http://pyblosxom.sourceforge.net/blog/static/contact">visit this page 
+  on how to contact us</a>. "Problems" could be bugs, feature-requests, or setup issues.
+</p>
+<p>
+  Find the contributed plugin pack 
+  <a href="http://sourceforge.net/project/showfiles.php?group_id=67445">here</a>
+  (contrib.1.2.1.tar.gz). 
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

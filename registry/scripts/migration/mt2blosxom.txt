@@ -1,0 +1,6 @@
+mt2blosxom
+#author Abe Fettig
+#infourl None
+#download None
+#contrib yes
+Convert MovableType exports to blosxom blog files.

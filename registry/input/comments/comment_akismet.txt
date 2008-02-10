@@ -1,0 +1,17 @@
+akismet comments
+#infourl http://mako.cc/projects/pyblosxom/
+#download http://mako.cc/projects/pyblosxom/
+#email_address sa+pyblosxom@c-area.ch
+#author Benjamin Mako Hill
+This plugin merges the work of two plugins by myself and Blake 
+Winton. The comment uses the API of akismet.py and provides a 
+simple plugin with callbacks appropriate for use in PyBlosxom. 
+You use it, you must install aksimet.py and put it somewhere in 
+the PYTHONPATH (e.g., in the PyBlosxom plugins directory). 
+Additionally, the package now also contains a small command 
+line utility for reporting any false negative comments as spam 
+to the central akismet database and a short README file including 
+documentation.
+
+For more details, see:
+http://mako.cc/projects/pyblosxom/akismet_comments-README.html

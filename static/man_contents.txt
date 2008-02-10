@@ -1,0 +1,25 @@
+PyBlosxom Manual Contents
+<h2>A quick note:</h2>
+<p>
+  This manual is very much a work in progress.  If you spot inaccuracies
+  or other such things in the manual, post a comment.  Comments will be
+  seen by everyone who reads the manual and thus it's immediately useful
+  to folks.  Additionally, we'll go through and absorb comments into
+  the manual making it more comprehensive and correct as time goes on.
+</p>
+
+
+<h2>Contents</h2>
+<ul>
+  <li><a href="man_1_install.html">Chapter 1: Installation</a>
+  <li><a href="man_2_config.html">Chapter 2: Configuring PyBlosxom</a>
+  <li><a href="man_3_flavours.html">Chapter 3: Flavours and Templates</a>
+  <li><a href="man_4_plugins.html">Chapter 4: Using Plugins</a>
+  <li><a href="man_5_static.html">Chapter 5: Static Rendering</a>
+  <li><a href="man_6_syndication.html">Chapter 6: Syndication (RSS, Atom,
+...)</a>
+  <li>Chapter 7: XMLRPC (Bloggar, MetaWebLog, Ecto, ...)
+  <li>Chapter 8: Blogs in non-English Languages
+  <li><a href="man_9_arch.html">Chapter 9: PyBlosxom Architecture</a>
+  <li>Chapter 10: Writing Plugins
+</ul>

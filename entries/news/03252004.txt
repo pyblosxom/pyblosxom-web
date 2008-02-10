@@ -1,0 +1,19 @@
+PlanetPyBlosxom
+#published 2004-03-25 19:20:00
+<p>
+  This is my quick plug for 
+  <a href="http://www.planetpyblosxom.org/">PlanetPyblosxom</a>.  The site 
+  will focus on Pyblosxom users and using Pyblosxom. I'm slowing moving all 
+  my material from my blog to the PlanetPyblosxom blog. We're also moving 
+  the plugin registry there as well.
+</p>
+<p>
+  Please check out the site and if you have any comments, let me know at 
+  willg at bluesock dot org.
+</p>
+<p>
+  Rock on!
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

@@ -1,0 +1,9 @@
+bloggerapi
+#author Wari Wahab
+#infourl None
+#download None
+#contrib yes
+Provides a bloggerAPI XMLRPC interface to PyBlosxom. Useful 
+for blogging with tools such as w.bloggar and HEP.
+
+This requires the xmlrpc dispatcher plugin.

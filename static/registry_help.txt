@@ -1,0 +1,14 @@
+Where to get help for problems with plugins
+#nocomments yes
+<p>
+  If you use a plugin you found in the registry and have problems, there
+  are a couple of things you can do:
+</p>
+<ul>
+  <li>contact the author--hopefully they have their email address in the
+      docstring of the plugin (i.e. open the plugin .py file, skim through
+      it for the email address of the author)
+  <li>leave a comment here
+  <li>send an email to the
+      <a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-users">PyBlosxom-users mailing list</a>
+</ul>

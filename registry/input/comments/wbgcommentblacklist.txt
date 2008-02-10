@@ -1,0 +1,12 @@
+wbgcomment_blacklist
+#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
+#download http://www.bluesock.org/~willg/dev/pyblosxom/
+#email_address willg@bluesock.org
+#author Will Guaraldi
+This plugin works in conjunction with the comments plugin (i.e. you need 
+the comments plugin for this plugin to do anything).  This plugin allows 
+you to reject comments that have words you have explicitly blacklisted in 
+your config.py file.
+
+Note: This is not a comprehensive solution to comment spam, but it can 
+help in certain situations.  If it doesn't help you, don't use it.

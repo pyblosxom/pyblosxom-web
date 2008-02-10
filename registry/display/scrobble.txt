@@ -1,0 +1,5 @@
+Scrobble
+#author Michael Cornelius
+#infourl http://cornelii.org/~michael/7falls/develop/pyblosxom/scrobble.html
+#download http://cornelii.org/~michael/snippets/python/scrobble.py
+Add your last.fm recently played tracks to your header or footer templates.

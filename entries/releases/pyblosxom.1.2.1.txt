@@ -1,0 +1,23 @@
+PyBlosxom 1.2.1 released
+#published 2005-06-01 23:45:10
+<p>
+  This is a minor bugfix for PyBlosxom 1.2.  If you use the conditionalhttp 
+  plugin, you'll want to upgrade.  Otherwise, it's not crucial.
+</p>
+<p>
+  Changes:
+</p>
+<ul>
+<li>Fixed a problem where the blosxom renderer never c hecked to see if
+  it had already rendered the page.  This affects the conditionalhttp
+  plugin, but not much else.
+<li>Removed an extra filestat.
+<li>Added a setTimeLazy method to the FileEntry class.
+</ul>
+<p>
+  If you have any problems, check out the PyBlosxom Manual and if that
+  doesn't help, send us questions on the pyblosxom-users mailing list.
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

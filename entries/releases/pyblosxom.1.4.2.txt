@@ -1,0 +1,27 @@
+PyBlosxom 1.4.2 released
+#published 2007-08-29 18:51:28
+<p>
+  PyBlosxom 1.4.1 still had issues with WSGI, Paste and running on Python 2.5.  This
+  release fixes those issues, fixes some issues with running on Windows, and has
+  better documentation for installation.
+</p>
+<p>
+  If you're having problems getting 1.4.1 running on Windows or Python 2.5/WSGI/Paste,
+  I highly recommend you upgrade to 1.4.2.
+</p>
+<p>
+  Download here:
+</p>
+<p>
+  <a href="http://sourceforge.net/project/showfiles.php?group_id=67445&package_id=65802&release_id=532722">http://sourceforge.net/project/showfiles.php?group_id=67445&package_id=65802&release_id=532722</a>
+</p>
+<p>
+  If you have any problems, please toss a bug in the bug tracker.
+</p>
+<p>
+/will (willhelm at users dot sourceforge dot net)
+</p>
+<p>
+  p.s. I did the release on 8/16/2007, but forgot to mention it on the front
+  page.  Whoops!
+</p>

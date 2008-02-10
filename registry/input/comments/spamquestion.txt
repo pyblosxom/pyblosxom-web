@@ -1,0 +1,25 @@
+spamquestion
+#infourl http://freshfoo.com/wiki/CodeIndex 
+#download http://freshfoo.com/downloads/spamquestion.py
+#email_address menno@freshfoo.com
+#author Menno Smits
+Description: 
+spamquestion is a simple PyBlosxom plugin that helps to prevent 
+comment spam.
+
+A randomly selected question is shown on the comment form for a 
+blog entry.  The user must answer the question correctly in order 
+to submit a comment.  The approach works because each blog will use 
+it's own set of unique questions that are easy for a human to deal 
+with but are virtually impossible for a computer to answer unaided. 
+This makes automated spambots ineffective.
+
+Unlike CAPTCHA based anti-spam systems, this approach does not 
+disadvantage visually impaired users and works even in text only 
+browsers.
+
+The question is written to the "spam_question" template variable. 
+The user's answer is expected in a "spam_answer" form variable. 
+These two items need to be integrated into the comment form template.
+
+Requires: The "comments" plugin and the "session" plugin.

@@ -1,0 +1,7 @@
+Tag cloud
+#infourl http://www.timfanelli.com/blog/programming/python/tag_cloud_plugin.html
+#download http://www.timfanelli.com/projects/tag_cloud.txt
+#email_address tim.fanelli@gmail.com
+#author Timothy C. Fanelli
+Creates a tag cloud to be used in conjunction with Joe Topjian's
+Tags plugin.

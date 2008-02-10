@@ -1,0 +1,11 @@
+Photogallery
+#author Ryan Barrett
+#infourl http://snarfed.org/space/photogallery
+#download http://snarfed.org/space/photogallery.py
+Photogallery plugin for Pybloxom.
+
+Some work could still be done (that is why it is in version 0.3).
+
+Read in the file for some instructions.
+
+<b>Update (10/16/2006):</b> - Now maintained by Ryan Barrett.  (will guaraldi)

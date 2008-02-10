@@ -1,0 +1,11 @@
+wbgamazon
+#author Will Guaraldi
+#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
+#download None
+Builds Amazon links (with images) from a line in your entry
+that looks like:
+
+AMAZON::B00008KA60::The Confluence
+
+Most things are hard-coded in the plugin code.  It could use some 
+work, but it's useable.

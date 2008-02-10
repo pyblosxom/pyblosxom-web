@@ -1,0 +1,17 @@
+pyguest.py
+#infourl http://www.codeape.org/blog/static/download
+#download http://www.codeape.org/blog/static/download
+#email_address oscar-no@codeape.org
+#author Oscar Norlander
+This is a guestbook.  All documentation is in the python source file
+you download.  It  has the following functionality:
+
+  * protection against bot spam (captcha)
+  * protection from double posts and empty form fields
+  * html stripping
+  * @ char stripping
+  * guestbook give feedback about user faults (only in english for now)
+
+12/8/2007 - Verified by CanadaBear as part of the GHOP that version
+2.09 of this plugin works with PyBlosxom 1.4.2.
+-- will guaraldi

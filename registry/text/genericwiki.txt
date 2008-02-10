@@ -1,0 +1,6 @@
+genericwiki
+#author John Abbe
+#infourl None
+#download None
+#contrib yes
+Generic wiki markup PreFormatter for pyblosxom.

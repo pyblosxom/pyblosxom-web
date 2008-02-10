@@ -1,0 +1,6 @@
+breadcrumbs
+#author Wari Wahab
+#infourl None
+#download http://roughingit.subtlehints.net/code/breadcrumbs.py
+Builds a clickable trail to your current position in the 
+weblog's path.

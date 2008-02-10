@@ -1,0 +1,9 @@
+1024px
+#download http://pyblosxom.sourceforge.net/flavours/1024pxflav.tar.gz
+#image_thumbnail http://pyblosxom.sourceforge.net/flavours/1024pxflav.png
+#email zaylea@gmail.com
+#author Jennifer Ennis
+This is a port of Andreas Viklund's (http://www.andreasviklund.com) 
+1024px xhtml/css template. This template supports comments, pyarchives, 
+tags, and nospam_captchasdotnet. See the README.txt for installation 
+information.

@@ -1,0 +1,21 @@
+PyBlosxom 1.4.3 released
+#published 2008-01-10 19:05:45
+<p>
+  This release fixes some minor issues with WSGI and Paste support.  It also
+  supports template variables in the form of <code>$(foo)</code> which prevents
+  variable name ambiguity.  Additionally there are some bug fixes and more
+  unit tests.
+</p>
+<p>
+  Download here:
+</p>
+<p>
+  <a href="http://sourceforge.net/project/showfiles.php?group_id=67445&package_id=65802&release_id=567698">http://sourceforge.net/project/showfiles.php?group_id=67445&package_id=65802&release_id=567698</a>
+</p>
+<p>
+  If you have any problems, please toss a bug in the bug tracker, say hi on IRC (<code>#pyblosxom</code>
+  on <code>irc.freenode.net</code>), or send an email to the pyblosxom-users mailing list.
+</p>
+<p>
+/will (willhelm at users dot sourceforge dot net)
+</p>

@@ -1,0 +1,91 @@
+<%
+h = request.getHttp()
+
+pinfo = h["PATH_INFO"]
+qstring = h["QUERY_STRING"]
+
+if pinfo in ["", "/"]:
+   print """
+<h1>
+  Welcome!
+</h1>
+<p>
+  PyBlosxom is a lightweight file-based weblog system.  It originally started 
+  out as a Python clone of <a href="http://www.blosxom.com/">Blosxom</a> but 
+  has since evolved into a beast of its own.  PyBlosxom focuses on three
+  things: simplicity, extensibility, and community.
+</p>
+<ul>
+<li>
+  <p>
+    <b>simplicity</b> - PyBlosxom uses the file system for all its data storage.
+    Because of this you can use whatever editor you want to use to create,
+    update, and manipulate entries.
+  </p>
+</li>
+<li>
+  <p>
+    <b>extensibility</b> - PyBlosxom has a plugin framework allowing you to build
+    plugins in Python to augment and change PyBlosxom's default behavior.
+  </p>
+</li>
+<li>
+  <p>
+    <b>community</b> - There are hundreds of PyBlosxom users out there all of
+    whom have different needs.  PyBlosxom is used on a variety of operating
+    systems in a variety of environments.  The pyblosxom users list shares
+    their experiences, plugins, and expertise.
+  </p>
+</li>
+</ul>
+<p>
+  PyBlosxom runs as a CGI script, under <a href="http://pythonpaste.org/">Paste</a>,
+  and as a <a href="http://www.python.org/dev/peps/pep-0333/">WSGI</a> application.
+</p>
+<p>
+  As such, PyBlosxom is a pretty straight-forward system that allows you to do 
+  the things you need to do without building everything from scratch.
+</p>
+<hr>
+<p>
+  Current version: 1.4.2 released on 16, August, 2007
+</p>
+<p>
+  Bugs, feature requests, comments, criticisms and such that are not 
+  answered on this website should be sent to the pyblosxom-users mailing list.
+  Details on this mailing list are on our 
+  <a href="/blog/static/contact">contact page</a>.
+</p>
+"""
+
+elif pinfo.startswith("/registry/flavours") or qstring.find("flavour-form") != -1:
+  print """
+<h1>PyBlosxom Flavour Registry</h1>
+<p>
+  Welcome to the PyBlosxom flavour registry.
+</p>
+<p>
+  [
+  <a href="/blog/registry/flavours?sortby=path">Sorted by category</a> |
+  <a href="/blog/registry/flavours?sortby=date">Sorted by date</a> |
+  <a href="/blog/static/registry_submit.html">Submit new flavour</a>
+  ]
+</p>
+"""
+
+elif pinfo.startswith("/registry"):
+  print """
+<h1>PyBlosxom Plugin Registry</h1>
+<p>
+  Welcome to the PyBlosxom registry.
+</p>
+<p>
+  [
+  <a href="/blog/static/registry_submit.html">Submit new plugin</a> |
+  <a href="/blog/static/registry_help.html">How to get help on plugins</a> |
+  <a href="/blog/registry?sortby=path">Sorted by category</a> |
+  <a href="/blog/registry?sortby=date">Sorted by date</a>
+  ]
+</p>
+"""
+%>

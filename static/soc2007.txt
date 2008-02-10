@@ -1,0 +1,77 @@
+PyBlosxom in Google Summer of Code 2007
+<p>
+  PyBlosxom is a file-based weblog system that is written in Python,
+  extended in Python (through plugins), and has CGI and WSGI interfaces
+  allowing it to run in a variety of environments.  PyBlosxom is used
+  by an interesting group of people many of whom chose PyBlosxom because
+  it was written in Python and they can bend it to meet their needs
+  which are very wide-ranging.
+</p>
+<p>
+  Blake poked me (Will) and suggested I offer to mentor PyBlosxom projects
+  which I think is a really great idea.  I went through the big TODO
+  list (which is less of a TODO list and more of an ideas of things that
+  should be looked into to see if they're interesting to do) and came
+  up with the projects that follow.  (I'm modelling this after the DrProject
+  <a href="https://www.drproject.org/DrProject/wiki/DrProjectSoC2007">SoC2007 
+  page</a>.)  This list isn't in any particular order--certainly not 
+  interestingness or priority.
+</p>
+<p>
+  <b>Project 1:</b>
+</p>
+<p>
+  Examine the current state of storage for PyBlosxom and the methods of
+  access (mainly tools.Walk), evaluate the requirements, and write a
+  better API for storing and accessing entry (and other?) data.
+</p>
+<p>
+  Things to keep in mind about the end result:
+</p>
+<ul>
+  <li>it should work in Python 2.2 through 2.5
+  <li>it should allow for caching on a blog level (we have caching at
+      an entry level right now)
+  <li>it needs to allow for concurrent PyBlosxom requests
+  <li>allowing for different storage mediums (SVN, MySQL, ...) should
+      be kept in mind as well
+</ul>
+<p>
+  <b>Mentors:</b> Blake, Will
+</p>
+
+<p>
+  <b>Project 2:</b>
+</p>
+<p>
+  PyBlosxom is still tied to its single-user roots and while there are
+  a bunch of different ways to hack PyBlosxom to a multi-user blog 
+  system, there's currently no official/easy way to set this up.
+  This project would involve figuring out what the requirements need
+  to be, designing a solution, and implementing it.
+</p>
+<p>
+  <b>Mentors:</b> Blake, Will
+</p>
+
+<p>
+  <b>Project 3:</b>
+</p>
+<p>
+  This project is to build a web-based front end for blogging in PyBlosxom.
+  PyBlosxom is a file-system based weblog so most people log into their
+  servers and edit their entries with their favorite text editor (or
+  some variation on that theme).  Some users are looking to setup PyBlosxom
+  instances for relatives and friends who or they're looking for an easier
+  interface themselves.
+</p>
+<p>
+  There are a bunch of decisions that need to be made regarding this.
+  Should it go through xmlrpc metaweblog/bloggar to access the entries?
+  Should it access entries directly?  Should it support plugins adding
+  functionality to it?  Should it run as a PyBlosxom handler or should
+  it be separate?  ...
+</p>
+<p>
+  <b>Mentors:</b> Will, Blake
+</p>

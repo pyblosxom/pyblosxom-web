@@ -1,0 +1,67 @@
+<div class="registry_item">
+<p>
+   All flavours should be distributed as a series of templates in a
+   .tar.gz or .zip file.  Make sure to include a README that states
+   which plugins are required, any special installation instructions,
+   any things to note, and a list of any and all authors who helped 
+   to make the flavour.
+</p>
+<p>
+   Include the stylesheet and any images that are required in the 
+   .tar.gz/.zip file.
+</p>
+<p>
+   After you submit this form, someone will contact you in regards
+   to your flavour.  If there are problems with the entry, he/she
+   will notify you then.  If everything is fine, then he/she will
+   download the flavour .tar.gz/.zip file from the url you
+   specified and place it in the repository.
+</p>
+<p>
+   <b>Note:</b> the flavour should be your own work or you should have
+   explicit approval from the authors.  If you find a flavour here
+   that violates copyright or trademark stuff, send us an email with
+   specific details to <b>pyblosxom-devel at lists dot sourceforge dot net</b>.
+</p>
+<form action="/blog/registry_submit" method="POST">
+
+<input type="hidden" name="category" value="flavours">
+<table>
+<tr>
+   <td valign="top"><b>flavour name:</b></td>
+   <td valign="top"><input type="text" name="name" size="40"></td>
+</tr>
+<tr>
+   <td valign="top"><b>author:</b></td>
+   <td valign="top"><input type="text" name="author" size="40"><br />
+   <i>(your name as you'd like it to appear on the site)</i></td>
+</tr>
+<tr>
+   <td valign="top"><b>your email address:</b></td>
+   <td valign="top"><input type="text" name="email" size="40"><br />
+   <i>(your email address won't be shared with anyone--it's what we will use 
+      to contact you)</i></td>
+</tr>
+<tr>
+   <td valign="top"><b>description<br />of flavour:</b></td>
+   <td valign="top"><textarea cols=60 rows=8 name="description"></textarea></td>
+</tr>
+
+<tr>
+   <td valign="top"><b>download url:</b></td>
+   <td valign="top"><input type="text" name="download" size="40"><br />
+   <i>(the url where we can download the .tar.gz/.zip file from)</i></td>
+</tr>
+<tr>
+   <td valign="top"><b>screenshot url:</b></td>
+   <td valign="top"><input type="text" name="image_thumbnail" size="40"><br />
+   <i>(the url where we can download a screenshot of the flavour in 
+      action--preferably around 320x240)</i></td>
+</tr>
+<tr>
+   <td>&nbsp;</td>
+   <td><input type="submit" value="Submit entry"><input type="reset"></td>
+</tr>
+</table>
+</form>
+</div>

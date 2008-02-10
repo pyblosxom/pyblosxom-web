@@ -1,0 +1,40 @@
+GHOP and PyBlosxom
+#published 2007-12-07 17:22:52
+<p>
+  PyBlosxom is participating under 
+  <a href="http://code.google.com/p/google-highly-open-participation-psf/">the 
+  PSF in Google Highly Open Participation</a> and it's been a huge help for
+  our project.
+</p>
+<p>
+  In the first week, PyBlosxom had four tasks all focused on testing plugins
+  in the PyBlosxom registry with PyBlosxom 1.4.2, reporting/fixing issues,
+  adding documentation, ...  From that we've updated five plugin entries:
+</p>
+<ul>
+  <li><a href="http://pyblosxom.sourceforge.net/blog/registry/display/graphics/pygallery">pygallery</a></li>
+  <li><a href="http://pyblosxom.sourceforge.net/blog/registry/input/contact">contact</a></li>
+  <li><a href="http://pyblosxom.sourceforge.net/blog/registry/filtering/filter">filter</a></li>
+  <li><a href="http://pyblosxom.sourceforge.net/blog/registry/general/autoping">autoping</a></li>
+  <li><a href="http://pyblosxom.sourceforge.net/blog/registry/general/latest">latest</a></li>
+</ul>
+<p>
+  Many thanks to darkmessenger and CanadaBear for their work!
+</p>
+<p>
+  There are two plugin-status related tasks left in GHOP (both expired today)
+  and four new tasks focusing on performance testing PyBlosxom and writing code
+  in the wake of changes for PyBlosxom 2.0.
+</p>
+<p>
+  Ryan and I are writing up a task for continued work on unit tests in PyBlosxom.
+  I'll be adding that as a task in the next round of adding tasks.
+</p>  
+<p>
+  Additionally, this project has given me some ideas on how to better organize 
+  outstanding tasks so that it's easier for people to figure out how to help out.
+  I'll be working on that going forward as well.
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

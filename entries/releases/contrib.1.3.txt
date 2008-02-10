@@ -1,0 +1,106 @@
+Contributed plugins 1.3 released
+#published 2006-06-03 00:02:54
+<p>
+  This is the first release of the contributed plugins pack for PyBlosxom 1.3.
+</p>
+<p>
+  Here's a list of changes between contributed plugins pack 1.2.2 and 1.3:
+</p>
+<p>
+  <b>General</b>
+</p>
+<ul>
+<li>Added release dates to CHANGELOG.txt file.
+<li>Fixed all logging to use the new functions in PyBlosxom 1.3.
+</ul>
+
+<p>
+  <b>comments</b>
+</p>
+<ul>
+<li>Adjusted the behavior so that comments are shown if "showcomments=yes"
+   is in the querystring or if the pyblosxom request is for a specific
+   blog entry (as opposed to a category with only one blog entry in it).
+   In doing this, I moved the code from cb_pathinfo to cb_prepare.
+   (Thanks to Matt Weber for the idea!)
+<li>Removed the "showcomments=yes" from the comment-form html code.
+<li>Fixes to allow the comments plugin work with Python 2.2.  (Thanks
+   Nathan!)
+<li>Adjusted the documentation text to make it clearer that the bit
+   about what properties each entry needs to have applies only to
+   developers.  Added __description__ and __url__ information.
+<li>Fixed issues with rendering.  Also removed the "if this is rss,
+   then don't do stuff".
+<li>Fixed an issue where if the config.py file doesn't have blog_encoding
+   set, the comments plugin would die.
+<li>Fixed a security problem where the url and author fields were not
+   getting sanitized.  (Thanks Tung Wai Yip!)
+<li>Unfixed the url not getting sanitized--we already remove html from
+   it and sanitize unnecessarily adds an &lt;a href...&gt; &lt;/a&gt; to it.
+<li>Re-added the logging code that the comments plugin uses when things
+   go sour.
+<li>Added SMTP-sanitization to the email field.  (Thanks David!)
+<li>Changed the comment reject callback so that rejection plugins can
+   return 0 (the comment is fine), 1 (the comment is rejected) or
+   a tuple of 1 and the error message as a string.<br /><br />
+
+   For example:<br />
+   <ul>
+      <li>return 0
+      <li>return 1
+      <li>return (1, "This comment contains a blacklisted address.")
+   </ul>
+
+   (Thanks Steven!)
+<li>Changed the format of the body of the email that the comments plugin
+   sends the blog owner to be more informational and readable.
+   (Thanks Alec!)
+</ul>
+
+<p>
+<b>pycategories</b>
+<ul>
+<li>Fixed a cosmetic issue where an extra / was getting added to the
+   root url
+<li>Fixed a problem where the finish template was incorrectly pulling
+   from the category_finish config property.  (Thanks Rob!)
+<li>Fixed a problem where the totals weren't being counted correctly.
+   (Thanks Rob!)
+<li>Added "_urlencoded" versions of the category variables.  (Thanks
+   Petteri!)
+</ul>
+
+<p>
+<b>rst entryparser</b>
+</p>
+<ul>
+<li>Added two configurable options to the rst entryparser.  The first
+   sets the starting level for rendered heading elements.  The second
+   enables and disables the promotion of a lone top-level section title
+   to the document title.  (Thanks Jan-Wijbrand!)
+<li>Fixed the rst entryparser to handle metadata.  (Thanks to spanezz!)
+</ul>
+
+<p>
+<b>xmlrpc_metaweblog</b>
+</p>
+<ul>
+<li>Fixed _getCategories so that it returns a list of dicts rather
+   than a list of strings.  This conforms to the metaWeblogApi
+   (http://www.xmlrpc.com/metaWeblogApi) and fixes the getCategories
+   request.  (Thanks Rob!)
+</ul>
+
+<p>
+  If you find problems with contributed plugins, 
+  <a href="http://pyblosxom.sourceforge.net/blog/static/contact">visit this page 
+  on how to contact us</a>. "Problems" could be bugs, feature-requests, or setup issues.
+</p>
+<p>
+  Find the contributed plugin pack 
+  <a href="http://sourceforge.net/project/showfiles.php?group_id=67445">here</a>
+  (contrib.1.2.2.tar.gz). 
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

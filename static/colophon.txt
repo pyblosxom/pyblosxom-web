@@ -1,0 +1,32 @@
+Colophon
+#nocomments yes
+<p>
+  A colophon is defined as an inscription placed at the end of a book or
+  other work that talks about how the work was created and what things
+  were used in its creation.
+</p>
+<p>
+  This web-site is statically compiled with PyBlosxom and these plugins:
+</p>
+<ul>
+  <li><b><a href="http://pyblosxom.sourceforge.net/blog/registry/archives/wbgarchives">wbgarchives</a></b> -
+      Creates the archive-by-year links in the navigation bar and builds the 
+      pages those links link to.
+  <li><b><a href="http://pyblosxom.sourceforge.net/blog/registry/files/pystaticfile">pystaticfile</a></b> - 
+      Allows for "static content" which isn't entry-related.  The PyBlosxom 
+      manual and the rest of the non-news content are all "static" pages.  
+      Note, this has nothing to do with static rendering.
+  <li><b><a href="http://pyblosxom.sourceforge.net/blog/registry/general/registry">registry</a></b> - 
+      Handles the plugin and flavour registry.
+  <li><b><a href="http://pyblosxom.sourceforge.net/blog/registry/include/pyinclude">pyinclude</a></b> -
+      Allows us to do server-side-include-like things to centralize information
+      between multiple templates.
+  <li><b>wbgrecent</b> -
+      Generates the "recent activity" page.
+  <li><b><a href="http://pyblosxom.sourceforge.net/blog/registry/syndication/rss2renderer">rss2renderer</a></b> -
+      Generates the RSS2 feeds.
+</ul>
+<p>
+  The API documentation was generated using 
+  <a href="http://epydoc.sourceforge.net">epydoc</a>.
+</p>

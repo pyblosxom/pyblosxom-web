@@ -1,0 +1,18 @@
+weblog-add
+#author William McVey
+#infourl None
+#download None
+#contrib yes
+A web UI for submitting blosxom blogs via a web browser.
+
+This is a CGI script that runs separately from PyBlosxom and requires
+webserver authentication.
+
+12/8/2007 - Verified by CanadaBear as part of GHOP that this script
+works with PyBlosxom 1.4.2 with the following notes: The plugin does 
+not work like a regular plugin - it runs as a seperate cgi script and
+expects the web server to authenticate it. It works, but I think in 
+the future it should be replaced. 
+There's a webfront project which runs on top of PyBlosxom that will
+replace weblog-add.  See <a href="https://launchpad.net/pyblosxom-webfront/">https://launchpad.net/pyblosxom-webfront/</a>.
+-- will guaraldi

@@ -1,0 +1,10 @@
+plugininfo
+#author Will Guaraldi
+#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
+#download None
+When users go to blog/plugin_info, they are greeted with
+complete information about all the plugins you're
+running in PyBlosxom. It pulls the information from
+__author__, __version__, <br>__url__, and the doc-string of
+the module. It's helpful to others who are trying to
+figure out how you do some of the snazzy things you do.

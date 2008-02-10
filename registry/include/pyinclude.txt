@@ -1,0 +1,7 @@
+pyinclude
+#author Will Guaraldi
+#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
+#download None
+Allows you to include a file in your web-site verbatim. I use 
+this to add my .project file to the top of my blog by throwing a 
+$util::include("/home/willg/.project") in my head template.

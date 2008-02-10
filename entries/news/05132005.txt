@@ -1,0 +1,25 @@
+Updated PyBlosxom 1.2 manual
+#published 2005-05-13 23:29:34
+<p>
+  I've been continuing to work on the PyBlosxom manual.  I've
+  put the latest version on the site.  You can find the 
+  following information there:
+</p>
+<ul>
+  <li>information installation
+  <li>information on setup and configuration
+  <li>a list of config.py variables and what they do
+  <li>information on plugins
+  <li>information on flavours
+  <li>information on static rendering
+  <li>information on syndication options
+  <li>how to write entries
+  <li>...
+</ul>
+<p>
+  If you're new to PyBlosxom, having problems with PyBlosxom, or
+  are curious about things, check out the latest PyBlosxom 1.2 manual.
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

@@ -1,0 +1,112 @@
+Documentation
+#nocomments yes
+<h2>Project documentation</h2>
+<table>
+<tr>
+  <th>document name</th>
+  <th>description</th>
+</tr>
+<tr>
+<td>
+  <a href="/static/development.html">development howto</a>
+</td>
+<td>
+  Covers how to contribute to the PyBlosxom project, code style guide,
+  list of contributors, SVN policies, and various other things.
+</td>
+</tr>
+</table>
+
+<h2>Documentation for PyBlosxom 2.0 (not released)</h2>
+<table>
+<tr>
+  <th>document name</th>
+  <th>description</th>
+</tr>
+<tr>
+  <td valign="top">
+    <a href="http://pyblosxom.sourceforge.net/wiki/index.php/Category:2.0_Planning">PyBlosxom 2.0 design documents</a> 
+  </td>
+  <td>
+    <p>
+      These are the design documents, specifications and other development
+      artifacts for PyBlosxom 2.0 development.  It's in a wiki--please feel
+      free to add notes, comments and such in the discussion pages.
+    </p>
+  </td>
+</tr>
+</table>
+
+
+<h2>Documentation for PyBlosxom 1.4, 1.4.1, and 1.4.2</h2>
+<table>
+<tr>
+  <th>document name</th>
+  <th>description</th>
+</tr>
+<tr>
+<td valign="top">
+  <a href="/1.4/manual/index.html">PyBlosxom 1.4 documentation</a>
+</td>
+<td>
+  <p>
+  This covers installation, configuration, flavours, plugins, writing
+  entries and a variety of other user and developer oriented topics.
+  If you have a question about how something works in PyBlosxom, this
+  should be the first place you look for information.
+  </p>
+  <p>
+  This is a work in progress--please help us make it better.
+  </p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+  <a href="/1.4/api/index.html">1.4 API</a>
+</td>
+<td>
+  <p>
+  This is the out-of-line documentation of the PyBlosxom codebase.  It
+  has the API information you need for writing plugins as well as 
+  being a good resource for PyBlosxom developers.
+  </p>
+  <p>
+  This is a work in progress--please help us make it better.
+  </p>
+</td>
+</tr>
+</table>
+
+
+<h2>Documentation for PyBlosxom 1.3.1 and 1.3.2</h2>
+<table>
+<tr>
+  <th>document name</th>
+  <th>description</th>
+</tr>
+<tr>
+<td valign="top">
+  <a href="/1.3.1/manual/index.html">PyBlosxom 1.3.1 manual</a>
+</td>
+<td>
+  This covers installation, configuration, flavours, plugins, writing
+  entries and a variety of other user and developer oriented topics.
+  If you have a question about how something works in PyBlosxom, this
+  should be the first place you look for information.  It is a work
+  in progress--but the most comprehensive manual that exists!
+  <br /><br />
+  Note: previously we had separate "callbacks" documentation--this has
+  now been folded into the manual.
+</td>
+</tr>
+<tr>
+<td valign="top">
+  <a href="/1.3.1/api/index.html">1.3.1 API</a>
+</td>
+<td>
+  This is the API documentation for PyBlosxom.  For the most part it
+  should only be of interest to PyBlosxom developers and PyBlosxom
+  plugin developers.
+</td>
+</tr>
+</table>

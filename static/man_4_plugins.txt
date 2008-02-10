@@ -1,0 +1,108 @@
+Manual Chapter 4: Using Plugins
+<p>
+  [
+  <a href="man_contents.html">Back to table of contents</a> |
+  <a href="man_4_plugins.print">Printer-friendly</a>
+  ]
+</p>
+<h2>1. What Are Plugins</h2>
+<p>
+  PyBlosxom allows you to extend its base functionality using drop-in 
+  plugins.  These plugins can extend functionality by providing addition 
+  template variables for things like archive lists, calendars, and such. 
+  PyBlosxom uses CallbackChains to call functions in the plugins so that 
+  they can do their thing.
+</p>
+
+<h2>2. Setting PyBloxsom up to Use Plugins</h2>
+<p>
+  There are two properties in your <code>config.py</code> file that 
+  affect the behavior for loading plugins.
+</p>
+<p>
+  The first one is the <code>plugin_dirs</code> property which is 
+  a list of strings specifying all the directories you might have plugins.
+  For example:
+</p>
+<pre>
+py["plugin_dirs"] = ["/home/will/pybloxsom/plugins"]
+</pre>
+<p>
+  This will cause PyBlosxom to look in this specific directory for
+  plugins.
+</p>
+<p>
+  The other property is the <code>load_plugins</code> property.  If you
+  don't have this set at all, PyBlosxom will load all plugins it finds
+  in the plugin directories you've specified and load them.  It will
+  look in each directory in order as you've specified.  It will load
+  the plugins in each directory in alphabetical order by filename.
+</p>
+<p>
+  The other way to load plugins is by specifying the plugins explicitly
+  by setting the <code>load_plugins</code> property.  PyBlosxom will load 
+  only the plugins you've specified and will load them in the order you've 
+  specified.  The <code>load_plugins</code> property takes a list of strings.
+  For example:
+</p>
+<pre>
+py["load_plugins"] = ["calendar", "category", "booklist"]
+</pre>
+<p>
+  This will load the plugins whose filenames are "calendar.py", "category.py",
+  and "booklist.py".  It will load them in that order and will only load
+  those plugins even if you have other plugins in your plugin directories.
+</p>
+
+<h2>3. Finding Plugins</h2>
+<p>
+  You can find plugins in the plugin registry at 
+  http://pyblosxom.sourceforge.net/ .
+</p>
+<p>
+  Additionally, some people write plugins, but never register with the 
+  plugin registry.  Sometimes this is because the author doesn't feel 
+  the plugin is finished for public consumption.  Even so, it might meet 
+  your needs.  The best way to find these plugins is to ask on the 
+  pyblosxom-users mailing list for a plugin that has the functionality
+  you desire.
+</p>
+
+<h2>4. Installing Plugins</h2>
+<p>
+  When you're installing a plugin, refer to its documentation.  The 
+  documentation could be in a README file, but more likely it's in
+  the plugin code itself at the top of the file.  This documentation should
+  tell you how to install the plugin, what template variables the plugin
+  exposes, how to invoke the plugin, how to get in touch with the author
+  should you find bugs or need help, and any additional things you should
+  know about. 
+</p>
+<p>
+  Most plugins should have a pretty easy installation method.  You should
+  be able to copy the plugin into the directory defined in your
+  <code>config.py</code> file in the <code>plugin_dirs</code> property.
+  Then there might be some additional properties you'll ahve to set in your
+  <code>config.py</code> file to define the plugin's behavior.  That
+  should be about it.  On some occasions, you may have to change the code
+  in the plugin itself to meet your specific needs.
+</p>
+
+<h2>5. Writing Your Own Plugins</h2>
+<p>
+  You may find that you desire functionality and there is no plugin that
+  anyone knows about that performs that functionality.  It's probably
+  best at this point for you to either pay someone to write the plugin you
+  need or write it yourself.
+</p>
+<p>
+  Plugins are pretty easy to write and can cover a lot of really different 
+  functionality.  The best way to learn how to write PyBlosxom plugins 
+  is to read through the plugins in the plugin registry.  Many of them are
+  well written and may provide insight as to how to solve your specific
+  problem.
+</p>
+<p>
+  Additionally, feel free to ask for help on the pyblosxom-users and
+  pyblosxom-devel mailing lists.
+</p>

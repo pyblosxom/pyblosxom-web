@@ -1,0 +1,33 @@
+Status of Pyblosxom
+#published 2004-02-16 19:20:00
+<p>
+  This is the first time I've posted to the pyblosxom site, so bear with me.
+</p>
+<p>
+  PyBlosxom took a small nap after 0.8.1 was released in order to let us 
+  all catch up and figure out where we want to go and what is required 
+  for a 1.0 release. About a month ago, developement started up again 
+  with several focii:
+</p>
+<ul>
+  <li>clean up the code-base
+  <li>add support for locking (which may be taken out)
+  <li>add support for logging
+  <li>fix concurrancy issues
+  <li>fix bugs (architectural and behavioral)
+  <li>add support for unit testing
+  <li>add support for static rendering 
+</ul>
+<p>
+  There isn't a set timeline or a roadmap. For the most part, we're 
+  working diligently and when we're ready for a release, we'll release 
+  then. It's likely the next release will be 0.9.0 and it'll be in the 
+  next few weeks since it's been a long time since the last release and 
+  there have been some major architectural changes made.
+</p>
+<p>
+  So that's the status as I understand it at this stage in the game. 
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

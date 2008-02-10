@@ -1,0 +1,140 @@
+Manual Chapter 5: Static Rendering
+<p>
+  [
+  <a href="man_contents.html">Back to table of contents</a> |
+  <a href="man_5_static.print">Printer-friendly</a>
+  ]
+</p>
+<h2>1. A quick note</h2>
+<p>
+  Static rendering made its first appearance in PyBlosxom 1.0.  It fills the
+  functionality gap for people who want to use PyBlosxom, but don't have a
+  web-server with CGI installed, don't have CGI access, or can't run
+  PyBlosxom for one of a myriad of other reasons.  Static rendering allows
+  these people to run PyBlosxom on their local machine, write blog entries,
+  render their entire site into HTML, and then use ftp or some other
+  file copy method to move the pages up to their static web-site.
+</p>
+<p>
+  PyBlosxom's static rendering allows for incremental building.  It can
+  scan your entries, figure out what's changed, and render only the pages
+  that need re-rendering.
+</p>
+<p>
+  Beyond that, it's not particularly sophisticated.
+</p>
+
+<h2>2. Configuring static rendering</h2>
+<p>
+  These are the instructions for configuring static rendering in PyBlosxom.
+</p>
+<ol>
+  <li><b>Install PyBlosxom.</b>  When you're copying the 
+  <code>pyblosxom.cgi</code> and <code>config.py</code> files, you don't have 
+  to put them in a CGI directory--you can put them in any directory you have 
+  permissions in.  For example, I created a directory 
+  <code>/home/willg/pyblosxom/</code> and put both files in there.
+
+  <li><b>Add <code>static_dir</code> to your <code>config.py</code> file.</b>  
+  This is the directory we will save all the static output.  The value of 
+  static_dir should be a string representing the absolute path of the output 
+  directory for static rendering.
+
+  <li><b>Add <code>static_flavours</code> to your config.py file.</b>  The 
+  value of <code>static_flavours</code> should be a list of strings 
+  representing all the flavours that should be rendered.  This defaults to 
+  <code>[ "html" ]</code>.
+
+  <li><b>Add <code>static_monthnames</code> to your <code>config.py</code> 
+  file.</b>  The value (either 1 or 0) will determine if you want month 
+  names (such as April) in the static pages.  On some versions of Pyblosxom, 
+  month names are not supported, and you will need to use month numbers.
+
+  <li><b>Add <code>static_monthnumbers</code> to your <code>config.py</code> 
+  file.</b>  The value (either 1 or 0) will determine if you want month 
+  numbers (such as 04 for April) in the static pages.
+
+  <li><b>Set <code>base_url</code> in your <code>config.py</code> file to the 
+  base url your blog will have.</b>  For example, if your 
+  <code>static_dir</code> were set to <code>/home/willg/public_html</code> 
+  and the url for that directory were 
+  <code>http://www.bluesock.org/~willg/</code>, then you probably want your 
+  <code>base_url</code> to be <code>http://www.bluesock.org/~willg/</code>. 
+</ol>
+
+<h2>3. Running static rendering</h2>
+
+<h3>3.1. Render everything</h3>
+<p>
+  Now you can run static rendering:
+</p>
+<pre>
+% cd <i>directory-with-pyblosxom.cgi-in-it</i> 
+% ./pyblosxom.cgi --static 
+</pre>
+<p>
+  Lots of output will appear as it figures out all the urls that need to be 
+  rendered and then renders them all one by one.
+</p>
+
+<h3>3.2. Incremental rendering</h3>
+<p>
+  We have incremental rendering which will go find all the entries that 
+  have changed since we rendered them and then re-render them.  It does this 
+  by comparing the mtime on the entry file with the mtime on the rendererd 
+  file.
+</p>
+<p>
+  It works like this:
+</p>
+<pre>
+% cd <i>directory-with-pyblosxom.cgi-in-it</i> 
+% ./pyblosxom.cgi --static --incremental 
+</pre>
+
+<h3>3.3. Rendering other urls</h3>
+<p>
+  Some plugins provide other urls that are part of your site, but not really 
+  part of your blog since they're not related to entries.  Examples of this 
+  include the plugininfo plugin which provides information about the plugins 
+  that you're running.  You can set the <code>static_urls</code> property in 
+  <code>config.py</code> to a list of all the urls that need to be rendered 
+  every time.  This list could include:
+</p>
+<ul>
+  <li>RSS, FOAF, OPML, ATOM or any other kind of feeds
+  <li>urls for plugins that aren't related to entries (plugininfo, 
+      pystaticfile, booklist, ...) 
+</ul>
+<p>
+  <code>static_urls</code> takes a list of strings where each string is a 
+  url to be rendered.  For example if I wanted to render the booklist page 
+  and the RSS feed for my main page, I would set it like this:
+</p>
+<pre>
+py["static_urls"] = ["/booklist/index.html", "/index.xml"]
+</pre>
+
+<h2>4. Additional thoughts</h2>
+<p>
+  Static rendering is pretty simplistic.  We use the tools.render_url 
+  function to render each url.  Plugins that need to re-render the entry 
+  pages because something has changed (e.g. comments, pingbacks, ...), should 
+  call this function.
+</p>
+<p>
+  If you want to statically render your blog every night, you could write 
+  a shell script like this:
+</p>
+<pre>
+#!/bin/bash 
+ 
+cd <i>directory-with-pyblosxom.cgi</i>
+./pyblosxom.cgi --static 
+find <i>static_dir-directory</i> -mmin +30 -exec 'rm' '{}' ';' 
+</pre>
+<p>
+  That'll re-render everything, then delete any files in your static dir 
+  that are older than 30 minutes (in case you moved entries from one 
+  category to another or deleted an entry or whatever).
+</p>

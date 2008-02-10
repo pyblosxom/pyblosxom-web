@@ -1,0 +1,12 @@
+filter
+#author Will Drewry
+#infourl None
+#download http://cs-people.bu.edu/will/pyblosxom/filter.py
+Allows entries to be ignored or allowed based on a simple 
+regular expression against the file path and name. This was inspired 
+by the description of the now missing filterentries.py plugin. See 
+the file for usage.
+
+12/1/2007 - Verified by darkmessenger as part of GHOP that version 
+0.02 of this plugin works with PyBlosxom 1.4.2.  
+--will guaraldi

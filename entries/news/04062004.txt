@@ -1,0 +1,27 @@
+Pyblosxom 0.9.1
+#published 2004-04-06 19:20:00
+<p>
+  This is a maintenance release to fix some minor nits that were discovered 
+  after 0.9 was released. If you have 0.9 installed and it's working fine, 
+  then don't worry about upgrading.
+</p>
+<p>
+  This release has the following changes in it:
+</p>
+<ul>
+  <li>Fixed MANIFEST.in file to include comments flavour files and README
+  <li>Fixed make_logger to work better for Python 2.2 and earlier versions
+  <li>Fixed the entryshelve caching plugin
+  <li>Update pytextile entryparser to 2.0
+  <li>Fixed verify_installation code to work when load_plugins is not set
+  <li>Fixed a bug with pycategories plugin 
+</ul>
+<p>
+  That's it!
+</p>
+<p>
+  If you have any problems, let us know on the pyblosxom-users list.
+</p>
+<p>
+  <a href="http://sourceforge.net/project/showfiles.php?group_id=67445">Download now!</a> (sourceforge.net)
+</p>

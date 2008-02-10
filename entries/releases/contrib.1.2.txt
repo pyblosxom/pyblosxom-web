@@ -1,0 +1,16 @@
+Contributed plugins 1.2 released
+#published 2005-03-27 17:50:17
+<p>
+  This contributed plugins pack contains a bunch of plugins and scripts 
+  that should work with PyBlosxom 1.2.  Use these plugins at your own 
+  risk.
+</p>
+<p>
+  Each plugin should have documentation at the top of the plugin file. 
+  Read that for installation instructions.  If you find any bugs or have 
+  any problems, contact us at pyblosxom-devel@lists.sourceforge.net .
+</p>
+<p>
+  Download it <a
+href="http://sourceforge.net/project/showfiles.php?group_id=67445&package_id=145140">here</a>.
+</p>

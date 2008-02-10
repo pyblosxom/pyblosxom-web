@@ -1,0 +1,40 @@
+New site!
+#published 2004-12-19 22:53:54
+<p>
+  Seems a little silly to have yet-another-pyblosxom site, but here's the
+  thinking: we need a site that supports users, supports developers,
+  has a manual, and centralizes flavours and plugins and stuff.  We're
+  putting it on SourceForge with the rest of the project stuff.  We couldn't
+  put it here until a week ago because their servers didn't have a version
+  of Python installed that could run PyBlosxom.  But it does now, so
+  everything's cool again.
+</p>
+<p>
+  So far I have the following things working on this site:
+</p>
+<ul>
+  <li>news entries
+  <li>plugin registry
+  <li>flavour registry
+  <li>registry submissions
+  <li>comments with secret number comment-spam prevention
+  <li>rss for news and rss for registry
+  <li>the start of a pyblosxom manual
+</ul>
+<p>
+  Still to do:
+</p>
+<ul>
+  <li>need a way to administrate comments (web-form?)
+  <li>need to implement bloggar entry creation
+  <li>continue working on pyblosxom manual
+  <li>need to add comment preview (use Steven's version?)
+  <li>need to add a link for archives
+</ul>
+<p>
+  Overall, though, things are looking good.  Hopefully it shouldn't take too
+  long to put the rest of the critical pieces together.
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

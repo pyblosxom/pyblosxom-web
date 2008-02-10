@@ -1,0 +1,6 @@
+openurl
+#infourl http://curtis.med.yale.edu/dchud/log/project/groupware/openurl
+#download http://curtis.med.yale.edu/dchud/log/project/groupware/openurl
+#email_address daniel.chudnov@yale.edu
+#author Dan Chudnov
+Provides a "discoverable" OpenURL link for library scholarly journal article resolvers.  This allows pyblosxom authors to write about published research articles in their weblogs and also provide metadata about the articles that readers can use to "go get the paper" at their own local libraries.  For this to work you will also need an <a href="http://curtis.med.yale.edu/dchud/resolvable/">OpenURL autodiscovery bookmarklet</a>, which inserts the local resolver button as appropriate.  Ask your friendly librarian if your university's library isn't on the list. :)

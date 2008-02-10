@@ -1,0 +1,11 @@
+googlestats.py
+#infourl http://www.mattweber.org
+#download http://www.mattweber.org/files/googlestats.py
+#email_address matt@mattweber.org
+#author Matt Weber
+This plugin keeps statistics on googlebot visits to you blog entry's. 
+It checks if the visitor is the googlebot, and if it is, updates the 
+number of visits, last visit date, and last visit time template 
+variables.  You can use these template variables in the body of your 
+posts to create custom messages based on visit statistics, or use 
+the built-in $googlestats template variable to display a default message.

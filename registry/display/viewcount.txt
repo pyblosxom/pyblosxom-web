@@ -1,0 +1,10 @@
+viewcount
+#author Will Guaraldi
+#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
+#download_url None
+Keeps track of the number of times a given entry has been
+viewed. It populates the $viewcount variable with this
+number for display. It adds one to the viewcount every time
+the entry is viewed.  It stores the information in a
+pickled dict in your content directory (or wherever you
+want).

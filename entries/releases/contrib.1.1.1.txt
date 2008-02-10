@@ -1,0 +1,24 @@
+Contributed plugins 1.1.1 released
+#published 2005-03-27 17:50:13
+<p>
+  This is a followup for the contrib 1.1 release.  These plugins 
+  should work with PyBlosxom 1.1.
+</p>
+<p>
+  Use these plugins at your own risk.  Each plugin should have 
+  documentation at the top of the plugin file.  Read that for installation 
+  instructions.
+</p>
+<p>
+  If you find any bugs or have any problems, contact us at 
+  pyblosxom-devel@lists.sourceforge.net
+</p>
+<p>
+  The only difference between 1.1 and 1.1.1 is that I removed the
+  bad block of code in the comments plugin.  If you are using PyBlosxom
+  1.1 and either have the comments plugin working fine or you're not
+  using it at all, then don't worry about this release.
+</p>
+<p>
+  Download it <a href="http://sourceforge.net/project/showfiles.php?group_id=67445&package_id=145140">here</a>.
+</p>

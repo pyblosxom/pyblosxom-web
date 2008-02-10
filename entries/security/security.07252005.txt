@@ -1,0 +1,28 @@
+Security issue: config.pyc vulnerability
+#published 2005-07-25 17:31:48
+<p>
+  Zack sends this email:
+</p>
+<pre>
+Hello,
+
+I discovered this vulnerability while playing with pyblosxom,  
+which uses python files to store configuration information. The  
+way it is packaged by Debian, the global config file /etc/ 
+pyblosxom/config.py is created with 640 permissions, owned by the  
+root user and the www-data group, of which apache httpd is a  
+member. When the config file is imported by pyblosxom, a  
+config.pyc is created with 644 permissions. If, for example, an  
+XMLRPC password is specified in that file, it will be readable by  
+any user.
+</pre>
+<p>
+  We're looking into how we can alleviate this issue.  We've contacted
+  the Debian maintainer and will work with him to fix the issue in
+  Debian.  I haven't looked into whether this affects other distributions
+  or not.
+</p>
+<p>
+  In the meantime if you're running PyBlosxom in such a way, make sure 
+  the permissions to your config.pyc file are appropriate.
+</p>

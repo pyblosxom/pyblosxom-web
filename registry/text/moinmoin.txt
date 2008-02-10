@@ -1,0 +1,12 @@
+moinmoin
+#author Wari Wahab
+#infourl None
+#download None
+#contrib yes
+Preformatter and entryparser for the MoinMoin wiki software.
+
+This preformatter/entryparser uses the services of MoinMoin 
+(http://moin.sourceforge.net/)which is an excellent open source 
+WikiWiki system.
+
+PS: This version only works with MoinMoin 1.0.

@@ -1,0 +1,7 @@
+404_handler
+#author Wari Wahab
+#infourl None
+#download None
+#contrib yes
+An error 404 page handler This is a helper for pyblosxom, see:
+http://roughingit.subtlehints.net/py_stuff/weblogs/hacks/Ha lf_Baked_and_a_Mostly_Fried.html for details.

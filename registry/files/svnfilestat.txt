@@ -1,0 +1,6 @@
+svnfilestat
+#infourl http://www.baus.net/svnpyblosxom
+#download http://www.baus.net/svnpyblosxom
+#email_address christopher@baus.net
+#author Christopher Baus
+This plugin uses subversion to determine a blog entry's creation date.

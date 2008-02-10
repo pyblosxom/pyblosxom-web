@@ -1,0 +1,128 @@
+PyBlosxom 1.2 released
+#published 2005-03-25 21:25:36
+<p>
+  <b>Pertinent to users:</b>
+</p>
+<ol>
+<li><p>We added a "blog_email" item to config.py and changed "blog_author"
+    to just the author's name.  Examples:</p>
+<pre>
+   py["blog_email"] = "joe@blah.com"
+   py["blog_author"] = "Joe Man"
+</pre>
+</li>
+<li><p>We no longer adjust blog_title from what you set in config.py.  Now
+   we have a "blog_title_with_path" variable which is in the data dict
+   which is the blog_title with the path information.  People who want
+   the title of their blog to be the title and not include the path
+   should use $blog_title.  Folks who want the old behavior where the
+   path was appended to the title should use $blog_title_with_path .</p>
+</li>
+<li><p>We now support WSGI, mod_python, and Twisted in addition to CGI.</p></li>
+<li><p>Upped our Python requirement to Python 2.2.  If you have an earlier
+   version than that, you won't be able to use PyBlosxom 1.2.</p>
+</li>
+<li><p>Changed "defaultFlavour" to "default_flavour".  This property allows
+   you to specify the flavour to use by default if the URI doesn't
+   specify one.  It default to "html".</p>
+</li>
+<li><p>We moved the main PyBlosxom site to http://pyblosxom.sourceforge.net/ .
+   There's a "powered by pyblosxom" image at:</p>
+<p>
+      http://pyblosxom.sourceforge.net/images/pb_pyblosxom.gif
+</p>
+<p>
+   You should adjust your templates accordingly.
+</p>
+</li>
+</ol>
+
+<p>
+<b>Pertinent to developers and plugin developers:</b>
+</p>
+<ol>
+<li><p>We now have a Request and a Response object.  See API documentation
+   for more details.</p>
+</li>
+<li><p>Don't use os.environ directly--use the http dict.  For example, this
+   is bad:</p>
+<pre>
+   path_info = os.environ["HTTP_PATHINFO"]
+</pre>
+<p>
+   This is what you should be doing:
+</p>
+<pre>
+   http = request.getHttp()
+   path_info = http["HTTP_PATHINFO"]
+</pre>
+<p>
+   If you use os.environ directly, it's likely your plugin won't work
+   with non-CGI installations of PyBlosxom.
+</p>
+</li>
+<li><p>We added __iter__, read, readline, readlines, seek, and tell
+   to the Request object.  All of them access the input stream.
+   You should not use sys.stdin directly.</p>
+<p>
+   Usage:
+</p>
+<pre>
+   data = request.read()
+   data_part = request.read(1024)
+   one_line = request.readline()
+   lines = request.readlines()
+</pre>
+</li>
+<li><p>The output stream should be accessed through the PyBlosxom Response
+   object.  The following methods are implemented in the Response
+   object: __iter__, close, flush, read, readline, readlines,
+   seek, tell, write, writelines, setStatus, and addHeader.
+   You should not use sys.stdout directly. See the API for more details.
+</p>
+<p>
+   Usage:
+</p>
+<pre>
+   response = request.getResponse()
+   response.addHeader('Status', '200 Ok')
+   response.addHeader('Content-type', 'text/html')
+   response.write("Hello World")
+   response.writelines(["list", "of", "data"])
+</pre>
+</li>
+<li><p>Instead of doing:</p>
+<pre>
+   form = request.getHttp()["form"]
+</pre>
+<p>
+   you can now do:
+</p>
+<pre>
+   form = request.getForm()
+</pre>
+</li>
+<li><p>Plugins should not be importing the config module and looking at the
+   py dict directly.  You should instead use the Request
+   getConfiguration() method to get the config py dict.</p>
+</li>
+</ol>
+
+<p>
+  Also, we have a new manual.  I converted the manual I was writing in
+  HTML over to docbook, made a lot of changes, and added a lot more content
+  covering installation, configuration, flavours, and plugins.  We're
+  still missing content on developing plugins and PyBlosxom's architecture.
+  That will come with future versions of the manual.
+</p>
+<p>
+  The new PyBlosxom manual can be found 
+  <a href="/1.2/manual/index.html">here</a>.
+</p>
+<p>
+  If you have problems, check out the new PyBlosxom Manual and if that doesn't
+  help, send us questions on the pyblosxom-users mailing list.
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

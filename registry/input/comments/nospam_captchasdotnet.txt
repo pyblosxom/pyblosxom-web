@@ -1,0 +1,8 @@
+nospam_captchasdotnet
+#infourl http://foobar.us/~zaylea/cgi-bin/pyblosxom.cgi/downloads/captchasdotnet
+#download http://foobar.us/~zaylea/files/nospam_captchasdotnet.py
+#email_address zaylea@gmail.com
+#author Jennifer Ennis
+Description: Human verification for the comments plugin using captchas.net.
+Based on the 'nospam' plugin by Steven Armstrong [sa at c-area.ch].  See
+docstring at top of file for installation information.

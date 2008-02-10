@@ -1,0 +1,6 @@
+wordcount
+#author Will Guaraldi
+#infourl None
+#download http://www.bluesock.org/~willg/dev/pyblosxom/
+Counts up the number of words in a given entry and populates 
+the $wordcount variable.

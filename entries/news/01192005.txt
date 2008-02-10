@@ -1,0 +1,24 @@
+Status
+#published 2005-01-19 11:24:24
+<p>
+  I added API and callback documentation for 1.1.  It's very similar to the
+  1.0 documentation, though, so there's nothing really exciting there.
+</p>
+<p>
+  I also updated the "current release" note at the top of the main page.
+</p>
+<p>
+  Several people have remarked how some of the plugins in the plugin registry
+  state that they come with pyblosxom which is no longer the case.  We're
+  working on putting together a separate contributed plugins pack release.
+  Additionally, we're working on having the plugins available separately.
+  This should be somewhat solved by February.  In the meantime, you can
+  use the plugins you have with your existing PyBlosxom 1.0 installation 
+  or download the PyBlosxom 1.0 tarball and get the plugins from there.
+</p>
+<p>
+  Sorry for the inconvenience.
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

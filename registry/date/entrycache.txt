@@ -1,0 +1,7 @@
+entrycache
+#infourl http://joe.terrarum.net/projects.html
+#download http://joe.terrarum.net/projects.html
+#email_address joe@terrarum.net
+#author Joe Topjian
+Will cache the creation date of your entries just like the original 
+blosxom plugin.

@@ -1,0 +1,8 @@
+pyrss2 plugin
+#author Rune Morling
+#infourl http://u7.dk:8088/blog/index.rss2 
+#download http://u7.dk:8088/files/pyrss2/pyrss2.tgz
+pyrss2 was an attempt at a template based plugin to make a proper RSS2.0 feed.
+
+It worked by adding template variables for use in rss2-flavour templates. A
+default set of templates were supplied.

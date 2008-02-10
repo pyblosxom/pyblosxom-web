@@ -1,0 +1,5 @@
+pyblosxom-svn
+#infourl http://0pointer.de/blog/projects/pyblosxom-svn.html
+#email_address mzcloybfkbz@0pointer.de
+#author Lennart Poettering
+This is a simplified version of Christopher Baus' svnpyblosxom plugin.

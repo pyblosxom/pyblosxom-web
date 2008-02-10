@@ -1,0 +1,11 @@
+Site update
+#published 2005-04-09 13:36:02
+<p>
+  I updated the site to use PyBlosxom 1.2.  I also made some minor changes
+  to the registry plugin that drives the Plugin Registry and the Flavour
+  Registry.  If you notice any problems, let us know on the pyblosxom-devel
+  mailing list.
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

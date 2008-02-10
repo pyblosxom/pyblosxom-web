@@ -1,0 +1,13 @@
+New wiki for 2.0 planning
+#published 2007-11-04 12:41:16
+<p>
+  I installed MediaWiki on SourceForge to manage and coordinate work on
+  PyBlosxom 2.0.  We're slowly building specifications which specify what
+  PyBlosxom does in 1.4, problems with that behavior and how it should
+  be changed for 2.0.
+</p>
+<p>
+  Discussion of the specifications should be kept in the discussion pages
+  of the wiki and on IRC at <code>#pyblosxom</code> on 
+  <code>irc.freenode.net</code>.
+</p>

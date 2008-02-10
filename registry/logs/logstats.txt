@@ -1,0 +1,11 @@
+logstats
+#author Ted Leung
+#infourl None
+#download None
+#contrib yes
+Keep statistics based on HTTP Log information
+
+At the moment it computes a list of referrrers. Generate a string 
+containing the last 15 referrers, marked up with HTML <a> tag. If 
+the string is longer than 40 characters, truncate by displaying ... 
+You can access the list of referrers as the variable $referrers.

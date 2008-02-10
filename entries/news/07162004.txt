@@ -1,0 +1,32 @@
+PyBlosxom todo list posted
+#published 2004-07-16 19:20:00
+<p>
+  I posted my todo list (culled from who-knows-what sources) on the wiki 
+  because I'm no longer doing active development.
+</p>
+<p>
+  Anyone who is interested in doing PyBlosxom development and want something 
+  to work on could work on items on the list.
+</p>
+<p>
+  Anyone who wants things implemented (plugins included), should add things 
+  to the todo list.
+</p>
+<p>
+  Just know that if we have lots of people adding todo items and no one 
+  working on them then nothing will get done. I encourage people who are 
+  adding items to work on completing other items. More details on this page:
+</p>
+<p>
+  <a href="http://wiki.subtlehints.net/moin/PyBlosxomToDo">http://wiki.subtlehints.net/moin/PyBlosxomToDo</a>
+</p>
+<p>
+  That's about it. 1.0.1 coming soon--mostly when I get around to releasing 
+  it.
+</p>
+<p>
+  Rock on!
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

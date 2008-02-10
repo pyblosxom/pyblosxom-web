@@ -1,0 +1,6 @@
+stripes
+#author Mike Lynch
+#infourl http://www-staff.it.uts.edu.au/~spike/blosxom.cgi/comp/pyblosxom/stripes.html
+#download http://www-staff.it.uts.edu.au/~spike/src/stripes.py
+Provides a template variable $stripe which is given alternating 
+values from a list defined in the config file.

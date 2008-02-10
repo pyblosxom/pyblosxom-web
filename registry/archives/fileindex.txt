@@ -1,0 +1,7 @@
+index
+#author Ryan Barrett
+#email_address ryan@barrett.name
+#infourl http://snarfed.org/space/pyblosxom+index
+#download http://snarfed.org/space/index.py
+index.py is a PyBlosxom plugin that displays an index of all
+entries, sorted and displayed alphabetically by filename.

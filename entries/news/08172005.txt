@@ -1,0 +1,21 @@
+Status 08/17/2005
+#published 2005-08-17 17:57:15
+<p>
+  SourceForge switched the mount to read-only so we've taken down comments and
+  other interactive features from this web-site.
+</p>
+<p>
+  I'm working on PyBlosxom 1.3 and project infrastructure.  In the queue:
+</p>
+<ul>
+  <li>pyblosxom 1.3 changes
+  <ul>
+    <li>fix bugs
+    <li>flesh out variables for native RSS 2.0 and ATOM 0.3 flavours
+  </ul>
+  <li>generate a todo list for the web-site
+  <li>add CVS usage blurbs to the development howto
+</ul>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

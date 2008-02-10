@@ -1,0 +1,13 @@
+pystaticfile
+#author Will Guaraldi
+#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
+#download None
+Allows you to include static files in your blog without them actually 
+being entries.  Static files lie in a separate directory from your content 
+directory, but are pulled in using the same mechanisms entries are.  Thus 
+you end up with a series of files that don't show up in archives, calendar,
+categories, that are "static", and are formatted the same way your entries 
+are.  It also allows you to do python script blocks within the static file. 
+I use this for my "about the site" page and things of that nature.
+
+Note, this has nothing to do with "static rendering".

@@ -1,0 +1,13 @@
+linebreaks
+#author Wari Wahab
+#infourl None
+#download None
+#contrib yes
+Preformatter for people who are lazy to type &lt;p&gt;s, &lt;br /&gt;s, 
+and &lt;/p&gt;.
+
+Let's face it, HTML is hard, and us non-html slaves do not need 
+treatment that HTML markups do to us.
+
+This preformat plugin will help you with all the silly linebreaks 
+markup.

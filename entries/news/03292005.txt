@@ -1,0 +1,41 @@
+Site updates and PyBlosxom's future plans
+#published 2005-03-29 11:10:04
+<p>
+  I did a quick update to the links on the menu bar of the web-site (you 
+  can see the menu bar to the left there).  We need to maintain separate 
+  versions of the documentation for prior versions of PyBlosxom and it was
+  getting messy so I moved all documentation links to the new 
+  <a href="/blog/static/documentation.html">documentation page</a>.
+  Hopefully it's clear enough for new users and old users alike.
+</p>
+<p>
+  The list of things we've been thinking about doing for PyBlosxom is 
+  really long and contains items that have been fleshed out as well as 
+  items that haven't been fleshed out at all and are currently just 
+  looking for someone to do some more analysis.  I'm going to take my 
+  notes and dump a bunch of "feature requests" in the feature tracker 
+  on the SourceForge section.  The trackers are mildly crappy, but it's 
+  better than spending the time right now to build something on our own.
+</p>
+<p>
+  The plan right now is to let PyBlosxom 1.2 simmer a bit and shake out 
+  some of the issues it might have.  Additionally, I'm going to try to 
+  spend some more time on fleshing out the manual and fixing up the 
+  contributed plugins that I either wrote or had a hand in writing.
+</p>
+<p>
+  We've got some ideas about what the next version will entail, but
+  nothing is set in stone.  It's likely we'll know more in a month.
+</p>
+<p>
+  And lastly, Planet PyBlosxom is no more.  I had the domain name for
+  a year and ran the site, but then decided I didn't want to run it
+  any more.  At some point, I'll set up something on here, but it's
+  low-ish on my todo list at the moment.
+</p>
+<p>
+  I think that about covers it for this status update.
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

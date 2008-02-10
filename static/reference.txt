@@ -1,0 +1,60 @@
+References/Specifications
+#nocomments yes
+<p>
+  This is a list of urls to references and specifications of things that
+  are used in PyBlosxom or are in other ways related to PyBlosxom.
+</p>
+
+
+<h3>Feed format related urls</h3>
+<ul>
+  <li><a href="http://cyber.law.harvard.edu/rss/rss.html">RSS 2.0 specification</a> (cyber.law.harvard.edu)</li>
+  <li><a href="http://www.atomenabled.org/">Atom specification</a> (atomenabled.org)</li>
+  <li><a href="http://www.atomenabled.org/developers/syndication/atom-format-spec.php">Atom syndication format</a> (atomenabled.org)</li>
+  <li><a href="http://diveintomark.org/archives/2004/02/04/incompatible-rss">The myth of RSS compatability</a> - (diveintomark.org)</li>
+  <li><a href="http://en.wikipedia.org/wiki/RSS_Enclosures">RSS Enclosures Wikipedia entry</a> - (wikipedia.org)</li>
+  <li><a href="http://www.rssboard.org/rss-specification#ltenclosuregtSubelementOfLtitemgt">RSS enclosure specification</a> - (rssboard.org)</li>
+  <li><a href="http://search.yahoo.com/mrss">Yahoo Media RSS Module</a> - (yahoo.com)</li>
+</ul>
+
+
+<h3>Markups</h3>
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a></li>
+  <li><a href="http://daringfireball.net/projects/markdown/">Markdown</a></li>
+  <li><a href="http://mwolson.org/projects/EmacsMuse.html">Emacs Muse</a></li>
+  <li><a href="http://docutils.sourceforge.net/rst.html">reStructured Text</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html40/">HTML 4.01 specification</a></li>
+  <li><a href="http://www.w3.org/TR/xhtml1/">XHTML specification</a></li>
+</ul>
+
+
+<h3>Python and Unicode</h3>
+<ul>
+  <li>Unicode HOWTO  - <a href="http://www.amk.ca/python/howto/unicode">http://www.amk.ca/python/howto/unicode</a>
+</ul>
+
+<h3>Python tools/frameworks</h3>
+<ul>
+  <li><a href="http://peak.telecommunity.com/DevCenter/setuptools">Setuptools</a></li>
+  <li><a href="http://www.wsgi.org/wsgi">WSGI Wiki</a></li>
+  <li><a href="http://www.python.org/dev/peps/pep-0333/">WSGI specification (PEP 333)</a></li>
+  <li><a href="http://epydoc.sourceforge.net/">Epydoc</a></li>
+  <li><a href="http://somethingaboutorange.com/mrl/projects/nose/">Nose</a></li>
+  <li><a href="http://www.logilab.org/857">Pylint</a></li>
+  <li><a href="http://pycheesecake.org/">Cheesecake</a></li>
+  <li><a href="http://pypi.python.org/pypi">Python Package Index (pypi)</a></li>
+</ul>
+
+
+<h3>Systems that Python can run under</h3>
+<ul>
+  <li><a href="http://pythonpaste.org/">Python Paste</a></li>
+  <li>mod_python - <a href="http://www.modpython.org/">http://www.modpython.org/</a>
+  <li>Twisted - <a href="http://twistedmatrix.com/">http://twistedmatrix.com/</a>
+</ul>
+
+
+<p>
+  If you know of other things that should have links here, let us know!
+</p>

@@ -1,0 +1,28 @@
+rdate
+#infourl http://www.zejda.net/pyblosxom-rdate/
+#download http://www.zejda.net/pyblosxom-rdate/rdate.py
+#author David Zejda
+Script for saving and loading the original posting date for an entry
+in the entry metadata.
+
+Filename may be given in commandline argument, if not so, program asks
+for it. If dealing with file first time, program reads the modified-time
+and stores it as a tag: #published %Y-%m-%d %H:%M:%S e.g. #published
+2007-05-15 15:30:28 right after entry title line. The current
+modified-time of file is preserved.
+
+If run on the same file again and if the modified-time has been changed
+since the time of tag storage, script restores the saved time (sets it
+as the current modified-time). That's all.
+
+Program is rather pyblosxom utility than plugin, so there is no reason
+to move it to plugins dir.
+
+There are many ways how to use the script. I personally use CVS as a
+primary storage for blog entries. But there is problem - CVS does not
+honor mtime. So, I run the rdate.py once on files before adding them to
+CVS. Then i update blog from the repository, but, we know, cvs does it
+without correct mtimes. So, after blog update I run the rdate.py on
+files once more to restore saved time from #published tags. Simple bash
+scripts does this automatically for me, so I care for blog entry times
+no more.

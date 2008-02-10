@@ -1,0 +1,20 @@
+Last post for the year!
+#published 2004-12-31 11:20:36
+<p>
+  I've been fleshing out more of the PyBlosxom Manual to give Ted more
+  material for a possible PyCon 2005 talk and also to fill in documentation
+  gaps which will make a PyBlosxom 1.1 release easier for people.
+</p>
+<p>
+  I encourage folks to skim the manual as it is thus far.  I'm still
+  doing some minor organizational changes, but for the most part what's
+  there will form the basis of the continuing manual saga.  If you have
+  comments, complaints, interesting stories, or even additional manual
+  material, toss it in the comments at the bottom of the relevant chapter.
+</p>
+<p>
+  Rock on!
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

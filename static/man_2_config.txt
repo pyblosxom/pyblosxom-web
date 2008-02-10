@@ -1,0 +1,140 @@
+Manual Chapter 2: Configuring PyBlosxom
+<p>
+  [
+  <a href="man_contents.html">Back to table of contents</a> |
+  <a href="man_2_config.print">Printer-friendly</a>
+  ]
+</p>
+<h2>1. A quick note</h2>
+<p>
+  PyBlosxom and PyBlosxom plugins expose many behavioral switches
+  and configuration properties through the <code>config.py</code>
+  file.
+</p>
+
+<h2>2. Configuration Variables</h2>
+<p>
+  PyBlosxom requires you to create a configuration file to set the various
+  variables that will guide PyBlosxom's behavior.  This configuration file
+  is a text file of Python code.  If you can't read Python code, don't
+  worry too much--you should be able to change the values of the file
+  without actually knowing the ins and outs of Python syntax.
+</p>
+<p>
+  Here's a list of configuration variables:
+</p>
+
+<div class="datatable">
+<table>
+<tr>
+  <th>variable</th>
+  <th>required/<br />data type</th>
+  <th>description</th>
+</tr>
+<%
+
+NAME    = 0
+DTYPE   = 1
+REQ     = 2
+DESC    = 3
+EXAMPLE = 4
+
+vars = [
+("blog_title",
+   "string", 
+   1,
+   "The title of your blog.",
+   "py[\"blog_title\"] = \"Will's Blog of Awesome Stuff\""),
+("blog_description",
+   "string", 
+   1,
+   "The description of your blog.",
+   "py[\"blog_description\"] = \"Blog of thoughts, comments, code examples, and such.\""),
+("blog_author",
+   "string", 
+   1,
+   "This is you--your name.",
+   "py[\"blog_author\"] = \"Will &lt;will at blah dot org&gt;\""),
+("blog_language",
+   "string", 
+   1,
+   "This is the primary language code of your blog.",
+   "py[\"blog_language\"] = \"en\""),
+("blog_encoding",
+   "string", 
+   1,
+   "This is the encoding of your blog.  iso-8859-1, utf-8, ...",
+   "py[\"blog_encoding\"] = \"iso-8859-1\""),
+("datadir",
+   "string", 
+   1,
+   "This is the full path to where your PyBlosxom entries are kept.",
+   "py[\"datadir\"] = \"/home/will/blog/datadir/\""),
+("logdir",
+   "string", 
+   1,
+   "This is the full path to the directory for logs.",
+   "py[\"logdir\"] = \"/home/will/blog/logs/\""),
+("num_entries",
+   "int", 
+   0,
+   "How many entries should show up on a given page?  This defaults to 0 which will show all entries.",
+   "py[\"num_entries\"] = 20"),
+("plugin_dirs",
+   "list of strings",
+   0,
+   "The list of directories your plugins are stored in.",
+   "py[\"plugin_dirs\"] = [\"/home/will/pyblosxom/plugins/\"]"),
+("load_plugins",
+   "list of strings",
+   0,
+   "If this is not set, then PyBlosxom will load all the plugins in the " + \
+   "plugin dirs you specified in alphabetical order.  If this is set, " + \
+   "then PyBlosxom will only load the plugins specified.",
+   "py[\"load_plugins\"] = [\"pycalendar\", \"rss2renderer\"]"),
+]
+
+for mem in vars:
+   print "<tr>"
+   print "<td valign=\"top\"><code>%s</code></td>" % mem[NAME]
+   print "<td valign=\"top\">"
+   if mem[REQ] == 0:
+      print "no"
+   else:
+      print "<i>yes</i>"
+   print "<br />%s</td>" % mem[DTYPE]
+   print "<td valign=\"top\">"
+   print "%s<br /><br />" % mem[DESC]
+   print "example:<br /><nobr><code>%s</code></nobr>" % mem[EXAMPLE]
+   print "</td>"
+   print "</tr>"
+%>
+</table>
+</div>
+
+<p>
+  Additionally, any variables you set in your <code>config.py</code>
+  file are available in your flavour templates.
+</p>
+
+<h2>3. Interesting things you can do with <code>config.py</code> files</h2>
+<p>
+  The <code>config.py</code> file is a Python code file.  This allows
+  you to use Python in the file itself to set properties.  For example,
+  say you wanted <code>num_entries</code> not to be set unless the
+  user requests a page with <code>flav=rss</code> in the query string.
+  You could do the following in your <code>config.py</code> file:
+</p>
+<pre>
+import os
+query_string = os.environ.get("QUERY_STRING", "")
+if "flav=rss" in query_string:
+   py['num_entries'] = 20
+</pre>
+<p>
+  This will check to see if "flav=rss" is in the query string and if
+  so, it'll set the <code>num_entries</code> property to 20.
+</p>
+<p>
+  FIXME - talk about how someone could do a site-wide config file
+</p>

@@ -1,0 +1,5 @@
+Features
+#nocomments yes
+<p>
+  PyBlosxom has lots of features!
+</p>

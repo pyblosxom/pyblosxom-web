@@ -1,0 +1,26 @@
+pygallery
+#author Oscar Norlander
+#infourl http://www.codeape.org/blog/static/download
+#download http://www.codeape.org/blog/static/download
+This is a gallery script that has good configuring
+possibilities. All documentation is in the python source file you
+download. It currently has the following functionality:
+
+   * can manage several galleries (three level design: gallery list,
+     thumbs, image)
+
+   * every gallery has a simple configuration file (index.cfg) that
+     contain gallery name, summery text, image text, grouping images 
+     etc.
+
+   * common variables are set in config.py
+
+   * there are special care has been taken for customizing row and
+     items in the gallery list and the thumbs list.
+
+   * the index.cfg file can be generated with apethumbgen.py
+     (downloaded at same place as this plugin)
+
+11/30/2007 - Verified by CanadaBear as part of GHOP that version 
+2.01 of this plugin works with PyBlosxom 1.4.2.  
+--will guaraldi

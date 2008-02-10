@@ -1,0 +1,22 @@
+Manual Chapter 6: Syndication (RSS, Atom, ...)
+<h2>1. RSS</h2>
+<p>
+  PyBlosxom comes with an rss flavour that produces RSS 0.9.1 output.
+</p>
+<p>
+  FIXME - Talk about setting up the RSS 0.9.1 flavour
+</p>
+<p>
+  There is an rss2renderer plugin in the plugin registry that produces
+  RSS 2.0 output.
+</p>
+
+<h2>2. Atom</h2>
+<p>
+  FIXME - talk about setting up the rss2renderer
+</p>
+
+<h2>3. Others</h2>
+<p>
+  FIXME - Atom and other formats?
+</p>

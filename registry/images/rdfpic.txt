@@ -1,0 +1,11 @@
+rdfpic
+#author Roberto De Almeida
+#infourl http://dealmeida.net/en/Programming/Pyblosxom/a_photo_gallery_for_pyblosxom
+#download http://dealmeida.net/code/rdfpic.py.txt
+This plugin parses JPEG images with metadata inserted using
+rdpfic:
+
+http://jigsaw.w3.org/rdfpic/
+
+Just place the image somewhere in your Pyblosxom datadir and
+a post will be created using the metadata from the picture.

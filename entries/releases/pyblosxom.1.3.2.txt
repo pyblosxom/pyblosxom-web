@@ -1,0 +1,16 @@
+PyBlosxom 1.3.2 released
+#published 2006-02-13 12:22:20
+<p>
+  <b>Pertinent to users:</b>
+</p>
+<ol>
+<li><p>
+   Fixes a security issue where PATH_INFO can have multiple / at the
+   beginning.  It happens on some/many web-servers.  I highly encourage
+   you to upgrade to PyBlosxom 1.3.2 if you're using PyBlosxom 1.3 or 1.3.1.
+   (Thanks FX!)
+</p></li>
+</ol>
+<p>
+/will (willhelm at users dot sourceforge dot net)
+</p>

@@ -1,0 +1,6 @@
+wbgpager
+#author Will Guaraldi
+#infourl None
+#download http://www.bluesock.org/~willg/dev/pyblosxom/
+Creates page navigation for pages that are trying to display
+more entries than the configured num_entries variable.

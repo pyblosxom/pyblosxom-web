@@ -1,0 +1,44 @@
+More changes
+#published 2004-12-22 16:16:00
+<p>
+  More changes:
+</p>
+<ul>
+  <li>added some more chapters to the pyblosxom manual covering topics like
+      flavours and templates, plugins, and static rendering
+  <li>added a "printer-friendly" link to the manual pages
+  <li>fixed some bugs in some of the plugins that this site uses
+  <li>went through and made sure the site validates as HTML 4.01 transitional
+      (which caused me to discover some issues here and there with the HTML)
+  <li>added a colophon
+</ul>
+<p>
+  Ben asked on the pyblosxom-users list whether there's anything other
+  folks can do to help with this site.  The answer is yes, but it's nothing
+  that's wildly exciting or glamorous.
+</p>
+<p>
+  It would help if people could review the content in the manual.  There
+  are a couple of ways you could send fixes, adjustments, and your thoughts
+  on the content.  The first is to post a comment at the bottom of the
+  chatper in question.  The second is to send an email to willhelm at
+  users dot sourceforge dot net.  The third is to send an email to
+  the pyblosxom-users mailing list.  Try to be as clear as you can
+  about what you're trying to say.  Feel free to quote the sections
+  you have issues with.  I'll incorproate any comments, thoughts, and
+  additional content into the manual as I get them.  I'll create
+  a contributors section on the content page with a list of contributors.
+</p>
+<p>
+  Additionally, people are looking for flavours so if you have any to
+  register, please do.
+</p>
+<p>
+  I think that's about it.  We're still moving along at a steady clip.
+  Assuming we can maintain this clip, we should have a solid PyBlosxom
+  manual in a month or so--that's a huge step in making PyBlosxom more
+  user-friendly for all of us.
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

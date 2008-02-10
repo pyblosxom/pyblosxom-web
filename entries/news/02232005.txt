@@ -1,0 +1,24 @@
+Contributed plugins
+#published 2005-02-23 13:15:18
+<p>
+  Up until PyBlosxom 1.1, we included a series of contributed plugins
+  in the ./contrib directory.  These plugins were also listed in the
+  registry.  When PyBlosxom 1.1 released without this contrib
+  directory we created the problem where no one was able to get a hold
+  of the contributed plugins without downloading a previous version of
+  PyBlosxom.
+</p>
+<p>
+  We're going to split up the release schedules for PyBlosxom and
+  the contributed plugins pack.  This makes it easier for us to
+  fix problems with plugins without having to do another release
+  of PyBlosxom.
+</p>
+<p>
+  We've released the first contributed plugins pack.  It's versioned
+  along-side PyBlosxom.  So contrib.1.1 goes with PyBlosxom 1.1.
+</p>
+<p>
+  You can find the contributed plugins pack 
+  <a href="https://sourceforge.net/project/showfiles.php?group_id=67445&package_id=145140">here</a>.
+</p>

@@ -1,0 +1,9 @@
+History
+#infourl http://snarfed.org/space/pyblosxom+history
+#download http://snarfed.org/space/history-0.3.tar.gz
+#author Ryan Barrett
+#email_address ryan@barrett.name
+history.py is a PyBlosxom plugin that displays change history for entries.
+The change history must already exist, either in a version control system,
+database, or another form.  This plugin just uses that backend to display
+change history, previous versions of entries, and textual diffs for changes.

@@ -1,0 +1,9 @@
+metaweblog
+#author Ted Leung
+#infourl None
+#download None
+#contrib yes
+Provides a MetaWeblog XMLRPC interface to PyBlosxom. Useful 
+for blogging with MetaWeblog tools.
+
+This requires the xmlrpc dispatcher plugin.

@@ -1,0 +1,7 @@
+pyblosxom-ignore
+#infourl http://0pointer.de/blog/projects/pyblosxom-ignore.html
+#email_address mzcloybfkbz@0pointer.de
+#author Lennart Poettering
+Hides "draft" stories temporarily before you publish them.
+
+This is a (simplified) reimplementation of the "draft" plugin.

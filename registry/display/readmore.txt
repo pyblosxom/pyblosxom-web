@@ -1,0 +1,9 @@
+readmore
+#author IWS (Maintained by Will Guaraldi)
+#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
+#download http://www.bluesock.org/~willg/dev/pyblosxom/readmore.html
+Break a story at a B R E A K (no spaces), display only the upper part and 
+place a link to the whole story page.
+
+Note: This plugin went MIA for 10 months.  After several requests, Will
+Guaraldi took over maintenance and hosting of the plugin.

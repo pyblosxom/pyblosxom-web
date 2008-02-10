@@ -1,0 +1,319 @@
+Manual Chapter 3: Flavours and Templates
+<p>
+  [
+  <a href="man_contents.html">Back to table of contents</a> |
+  <a href="man_3_flavours.print">Printer-friendly</a>
+  ]
+</p>
+<h2>1. Flavours</h2>
+<p>
+  PyBlosxom comes with two renderers.  The first is a debug renderer
+  which makes it easier to figure out what's going on in certain situations.
+  The other is a renderer that is very much like Blosxom's renderer in behavior
+  and functionality.  As such, PyBlosxom can use most Blosxom flavour
+  templates without much modification.
+</p>
+<p>
+  It is possible and not too difficult to build other renderers for PyBlosxom.
+  These other renderers can use other template engines like Cheetah or
+  htmltmpl.  This chapter talks specifically about using the Blosxom renderer.
+</p>
+<p>
+  When you install PyBlosxom, it comes with a default html flavour.  It's
+  built into the renderer itself and doesn't require you to create or
+  copy over any template files.  It's incredibly bland.  Most people will
+  either create a flavour or download one from our flavour registry.
+</p>
+<p>
+  The Blosxom renderer uses the following templates:
+</p>
+<ul>
+  <li><b>content_type</b> - holds the content type of the flavour
+  <li><b>head</b> - holds everything before all the entries
+  <li><b>story</b> - holds a single entry
+  <li><b>foot</b> - holds everything after all the entries
+  <li><b>date_head</b> - shows at the start of a date (this only exists in
+PyBlosxom)
+  <li><b>date_foot</b> - shows at the end of a date (this only exists in
+PyBlosxom)
+</ul>
+<p>
+  FIXME - this is a terrible description
+</p>
+<p>
+  The Blosxom renderer allows you to have different "styles" to your site.
+  We call a style a "flavour".  A flavour consists of one of each kind of
+  template above (though I tend to skip the date_head and date_foot 
+  templates and use the default ones) where all of them have the same look 
+  and feel.  To create the flavour, all of these template files will have
+  the same extension.
+</p>
+<p>
+  For example, if you want to create a "joy" flavour, you would create
+  the following files:
+</p>
+<ul>
+  <li>content_type.joy
+  <li>head.joy
+  <li>story.joy
+  <li>foot.joy
+  <li>date_head.joy (optional)
+  <li>date_foot.joy (optional)
+</ul>
+
+<p>
+  You can have as many flavours as you like.  Most PyBlosxom sites have
+  an html flavour and that's it.  Then RSS rendering is done either with
+  an rss flavour (for RSS 0.9.1) or an rss plugin which has its own
+  renderer (for RSS 2.0, ATOM, and other more complicated feed formats).
+</p>
+
+<h2>2. Template Variables</h2>
+<p>
+  Here's the variables that are available in your templates.  Plugins will add
+  variables.  To get a complete list of what variables are available in 'your'
+  blog, use the debug renderer by changing the <code>renderer</code> 
+  property in your <code>config.py</code> file to <code>debug</code> like 
+  this:
+</p>
+<pre>
+py["renderer"] = "debug"
+</pre>
+<p>
+  That will tell you all kinds of stuff about the data structures involved in
+  the request.
+</p>
+
+<h3>2.1. Variables from config.py</h3>
+<p>
+  These template variables are available to all templates.  They come
+  directly from your <code>config.py</code> file.
+</p>
+
+<%
+NAME    = 0
+DESC    = 1
+EXAMPLE = 2
+
+def tableize(data):
+   global NAME, DESC, EXAMPLE
+   print "<div class=\"datatable\">"
+   print "<table>"
+   print "<tr>"
+   print "<th>variable name</th>"
+   print "<th>description</th>"
+   print "<th>example</th>"
+   print "</tr>"
+
+   for mem in data:
+      print "<tr>"
+      print "<td><code>%s</code></td>" % mem[NAME]
+      print "<td>%s</td>" % mem[DESC]
+      print "<td>%s</td>" % mem[EXAMPLE]
+      print "</tr>"
+   print "</table>"
+   print "</div>"
+
+data_table_1 = [
+("blog_description", "the description of the blog", "blosxom with a touch of python"),
+("blog_title", "the title of the blog", "RoughingIT - pyblosxom : /weblogs/tools/pyblosxom"),
+("blog_language", "the language of the blog", "en"),
+("blog_encoding", "the encoding of the blog", "iso8859-1"),
+("datadir", "your datadir", "/home/subtle/blosxom"),
+("depth", "the depth of your blog directory", "0"),
+("num_entries", "the number of entries you show on a single page", "40")
+]
+
+tableize(data_table_1)
+%>
+<p>
+  Additionally, any other properties you set in <code>config.py</code> are
+  available in your templates.  If you wanted to create an 
+  <code>blog_email</code> variable, you could add:
+</p>
+<pre>
+py["blog_email"] = "joe@example.com"
+</pre>
+<p>
+  to your <code>config.py</code> file and it would be available in all
+  your templates.
+</p>
+<p>
+  Note: because the <code>config.py</code> file is written Python code
+  and properties are available in all your templates, this allows you
+  do some sophisticated things.
+</p>
+<p>
+  FIXME - examples?
+</p>
+
+<h3>2.2. Calculated Template Variables</h3>
+<p>
+  These template variables are available to all templates as well.  They
+  are calculated based on the request.
+</p>
+<%
+data_table_2 = [
+("content_type", "the content type of this page", "text/html"),
+("root_datadir", "the root datadir of this page?", "/home/subtle/blosxom/weblogs/tools/pyblosxom"),
+("url", "the PATH_INFO to this page", "pyblosxom/weblogs/tools/pyblosxom"),
+("flavour", "the flavour for this page", "html"),
+("pi_yr", "the four-digit year the user requested", "2002"),
+("pi_mo", "the month name the user requested", "Sep"),
+("pi_da", "the day number the user requested", "15"),
+("pi_bl", "the entry the user requested to see", "weblogs/tools/pyblosxom"),
+]
+
+tableize(data_table_2)
+%>
+
+<h3>2.3. Template Variables Only Available in the story Template</h3>
+<p>
+  These template variables are only available in your story template.
+</p>
+
+<%
+data_table_3 = [
+("title", "title of the entry", "First Post!"),
+("filename", "complete file name and path of the entry", "/home/subtle/blosxom/weblogs/tools/pyblosxom/index.txt"),
+("file_path", "just the filename and extensions of the entry", "index.txt"),
+("fn", "just the filename (no extension)", "index"),
+("absolute_path", "the category/path of the entry",
+"weblogs/tools/pyblosxom"),
+("body", "the text of the entry", "<p>\nfirst post!\n</p>"),
+("tb_id", "the trackback id of the entry", "_index"),
+("path", "the category/path of the entry", "weblogs/tools/pyblosxom"),
+("yr", "the four digit year of the mtime of this entry", "2004"),
+("mo", "the month abbreviation of the mtime of this entry", "Jan"),
+("mo_num", "the month number of the mtime of this entry", "01"),
+("ti", "the hour and minute of the mtime of this entry", "16:40"),
+("date", "the date string of the mtime of this entry", "Sun, 23 May 2004"),
+("fulltime", "another date string", "20040523164000"),
+("timetuple", "the time tuple", "(2004, 5, 23, 16, 40, 0, 6, 144, 1)"),
+("mtime", "seconds since the epoch", "1085348400.0"),
+("dw", "the day of the week", "Sunday"),
+("da", "the day of the month", "23"),
+("w3cdate", "the w3c date", "2004-05-23T21:40:00Z")
+]
+
+tableize(data_table_3)
+%>
+
+<h3>2.4. Template Variables from Plugins</h3>
+<p>
+  Additionally, many plugins will create additional variables.  Refer to
+  the plugin's documentation for what variables it creates, where the
+  variables are available, and what the variables do.
+</p>
+
+<h2>3. Invoking a Flavour</h2>
+<p>
+  The flavour for a given page is specified in the extension of the file
+  being requested.  For example:
+</p>
+<ul>
+  <li>http://some.blog.org/ - brings up the index in the default flavour which
+      is "html"
+  <li>http://some.blog.org/index.html - brings up the index in the "html" 
+      flavour
+  <li>http://some.blog.org/index.rss - brings up the index in the "rss"
+      flavour (which by default is RSS 0.9.1)
+  <li>http://some.blog.org/2004/05/index.joy - brings up the index for May 
+      of 2004 in the "joy" flavour
+</ul>
+<p>
+  Additionally, you can specify the flavour using the <code>flav</code> 
+  QueryString variable.  Examples:
+</p>
+<ul>
+  <li>http://some.blog.org/ - brings up the index in the default flavour which
+      is "html"
+  <li>http://some.blog.org/?flav=rss - brings up the index in the "rss" 
+      flavour
+  <li>http://some.blog.org/2004/05/index?flav=joy - brings up the index for 
+      May of 2004 in the "joy" flavour
+</ul>
+<p>
+  You can change the default flavour from "html" to some other flavour in
+  your <code>config.py</code> file with the <code>default_flavour</code>
+  property:
+</p>
+<pre>
+py["default_flavour"] = "joy"
+</pre>
+
+<h2>4. Overriding Flavour Templates by Category</h2>
+<p>
+  If you want to override the flavour for a particular category, just 
+  place the override template files within the directory corresponding 
+  with the category.
+</p>
+<p>
+  For example, your directory tree may look something like this:
+</p>
+<pre>
+my_blog/
+   |- content/
+      |- content_type.html         <- 1
+      |- head.html                 <- 1
+      |- story.html                <- 1
+      |- foot.html                 <- 1
+      |- DailyAffairs/
+      |- Travel/
+      |- Coding/
+         |- content_type.html      <- 2
+         |- head.html              <- 2
+         |- story.html             <- 2
+         |- foot.html              <- 2
+         |- Python/
+         |- C/
+</pre>
+<p>
+  The default flavour for all your directories would be "html" and would
+  be taken from the flavour marked "1".  However, if they user is looking
+  at the <code>Coding</code> category or any categories under
+  <code>Coding</code>, they'll see the "html" flavour templates marked by
+  "2".
+</p>
+
+<h2>5. Basic set of templates</h2>
+<p>
+  Here's a really basic set of templates for an html flavour.
+</p>
+<h3>content_type.html</h3>
+<pre>
+text/html
+</pre>
+
+<h3>head.html</h3>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;$blog_title $pi_da $pi_mo $pi_yr&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;$blog_title&lt;/h1&gt;
+&lt;p&gt;$pi_da $pi_mo $pi_yr&lt;/p&gt;
+</pre>
+
+<h3>story.html</h3>
+<pre>
+&lt;h3&gt;&lt;a name="$fn"&gt;$title&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="blosxomStory"&gt;
+$body
+&lt;p&gt;
+  posted at: $ti | 
+  path: &lt;a href="$base_url/$absolute_path" title="path"&gt;/$absolute_path&lt;/a&gt; | 
+  &lt;a href="$base_url/$file_path.$flavour"&gt;permalink&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+
+<h3>foot.html</h3>
+<pre>
+&lt;p&gt;
+  Made with PyBlosxom
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>

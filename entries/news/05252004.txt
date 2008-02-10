@@ -1,0 +1,21 @@
+PyBlosxom 1.0 released!
+#published 2004-05-25 19:20:00
+<p>
+  We've cleaned up a lot code and documentation and fixed a lot of bugs. 
+  We've stabilized the API and added static rendering. In short, this 
+  should be a pretty solid 1.0 milestone for PyBlosxom.
+</p>
+<p>
+  I encourage people to upgrade. When you untar the distribution tarball, 
+  read through INSTALL and README. These files will walk you through 
+  installation and upgrading from 0.9.
+</p>
+<p>
+  <a href="http://sourceforge.net/project/showfiles.php?group_id=67445">Download now!</a> (sourceforge.net)
+</p>
+<p>
+  Rock on!
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

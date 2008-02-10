@@ -1,0 +1,22 @@
+portico
+#author Jan-Wijbrand Kolman <jw at n--tree dot net>
+#infourl http://jw.n--tree.net/blog/tools/portico/
+#download download url: http://jw.n--tree.net/portico/
+Portico is an entry parser plugin for displaying small to medium size photo
+galleries as a single blog entry. Portico blog entries are displayed in
+three different ways, depending on the context:
+
+ 1. Displaying short series of thumbnails, whenever the entry is not
+individually rendered at its permanent URL (e.g. on the front page of your
+blog, amongst other entries).
+
+ 2. Displaying all the thumbnails for the collection, whenever the entry is
+rendered at its permanent URL.
+
+ 3. Slideshow-like, displaying a larger version of the photo, possibly
+including 'next' and 'previous' links to navigate though all the previews of
+the collection.
+
+It parses and renders blog entries that have a .port file extension. The
+Portico blog entry file format is different from most other Pyblosxom entry
+types in that it follows the simple '.ini' style syntax.

@@ -1,0 +1,7 @@
+session
+#infourl http://www.c-area.ch/code/
+#download http://www.c-area.ch/code/pyblosxom/plugins/
+#email_address sa+pyblosxom@c-area.ch
+#author Steven Armstrong
+A simple session management plugin for pyblosxom. 
+Inspired by the mod_python Session module.

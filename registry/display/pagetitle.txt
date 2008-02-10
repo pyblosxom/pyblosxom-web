@@ -1,0 +1,13 @@
+single entry page title hack
+#author Jordan Sissel
+#infourl None
+#download http://www.semicomplete.com/scripts/pagetitle.py
+pagetitle.py adds a new variable which will contain the standard
+'blog_title_with_path' page title, unless there is only one entry in
+view.  If there is only one entry in view, the page title is augmented 
+with the story title as well.  This makes search engine results and browsers 
+happier, as they can recognize what your page is about by the title!
+
+The new variable you want to use is:
+
+   $blog_title_with_path_or_entry_title

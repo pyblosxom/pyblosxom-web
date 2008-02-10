@@ -1,0 +1,9 @@
+pyarchives
+#author Wari Wahab
+#infourl None
+#download None
+#contrib yes
+Walks through your blog root figuring out all the available 
+monthly archives in your blogs. It generates html with this 
+information and stores it in the $archivelinks variable which you 
+can use in your head or foot templates.

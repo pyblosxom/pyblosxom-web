@@ -1,0 +1,11 @@
+Tags
+#infourl http://joe.terrarum.net/projects.html
+#download http://joe.terrarum.net/projects.html
+#email_address joe@terrarum.net
+#author Joe Topjian
+Gives PyBlosxom tagging support like in Wordpress and del.icio.us.
+
+12/8/2007 - Verified by CanadaBear as part of the GHOP that version
+200510242045 TCF works with PyBlosxom 1.4.2.  CanadaBear updated the
+plugin and the patch was sent upstream.
+-- will guaraldi

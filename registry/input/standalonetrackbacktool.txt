@@ -1,0 +1,11 @@
+standalonetrackbacktool
+#author Wari Wahab
+#infourl None
+#download None
+#contrib yes
+This plugin replaces the legacy $tb in older pyblosxoms <= 0.6
+
+Since there is a proper plugin for feedback, this is deprecated as 
+it uses the MovableType's Standalone Trackback Utility. Since I have 
+no idea how python can read perl's Storable data, to know if you've 
+got a trackback or not means $tb is either a '+' or a '-'.

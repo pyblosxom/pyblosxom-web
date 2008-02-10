@@ -1,0 +1,13 @@
+Gray
+#download http://pyblosxom.sourceforge.net/flavours/pyblosxom-gray.tar.gz
+#image_thumbnail http://pyblosxom.sourceforge.net/flavours/pyblosxom-gray.jpg
+#old_download http://www.mwolson.org/static/dist/themes/pyblosxom-gray.tar.gz
+#old_image_thumbnail http://www.mwolson.org/static/pyblosxom-gray.png
+#email mwolson@member.fsf.org
+#author Michael Olson
+This is a simple grayish theme that aims at XHTML 1.0 compliance.  Support 
+for RSS 2.0 and comments are provided.  See the included README file for 
+details.
+
+(10/16/2006 note: This theme works with PyBlosxom 1.3 and the .tar.gz file 
+includes .css files.

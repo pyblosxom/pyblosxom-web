@@ -1,0 +1,7 @@
+RDF
+#download http://pyblosxom.sourceforge.net/flavours/rdf_flavour.tar.gz
+#image_thumbnail http://pyblosxom.sourceforge.net/flavours/no-image.jpg
+#email ryan@barrett.name
+#author Ryan Barrett
+This is a flavour for the RDF format.  For more information, see:
+http://snarfed.org/space/pyblosxom+rdf+flavour

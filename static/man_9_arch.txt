@@ -1,0 +1,198 @@
+Manual Chapter 9: PyBlosxom Architecture
+<p>
+  [
+  <a href="man_contents.html">Back to table of contents</a> |
+  <a href="man_9_arch.print">Printer-friendly</a>
+  ]
+</p>
+<h2>1. A quick note</h2>
+<p>
+  The architecture for PyBlosxom has evolved over time.  The mission is
+  to build an easily augmented blog server that uses the file system
+  for data storage.  Using the file system allows PyBlosxom to fit in
+  with other applications rather than forcing PyBlosxom to solve all 
+  problems all by itself.
+</p>
+<p>
+  <b>Note:</b> This document applies very specifically to PyBlosxom version 
+  1.1.
+</p>
+
+<h2>2. PyBlosxom Architecture</h2>
+<p>
+  PyBlosxom is composed of a few different parts:
+</p>
+<ul>
+  <li><b>pyblosxom.cgi</b><br />
+      This is the CGI script that is executed by your web-server, pulls
+      in configuration variables from <code>config.py</code> and then
+      instantiates PyBlosxom objects to handle the request.
+  <li><b>the Pyblosxom package</b><br />
+      This is the Python package that holds the PyBlosxom objects and
+      utility functions that handle the request.
+  <ul>
+    <li><b>the entries package</b><br />
+        Handles the abstraction allowing PyBlosxom to use entries other
+        than those solely found on the file system.
+    <li><b>the renderers package</b><br />
+        PyBlosxom can handle different renderers.  The renderer gets
+        a list of entries to be rendered and can render them using whatever
+        means it so desires: blosxom templates, htmltmpl templates, Cheetah
+        templates, hard-coded RSS 2.0 markup, ...
+    <li><b>the cache package</b><br />
+        PyBlosxom allows for entry-level caching.  This helps in cases
+        where your entries are stored in a format that requires a lot of
+        processing to convert to HTML.
+  </ul>
+</ul>
+
+<p>
+  PyBlosxom's look'n'feel and behavior is then augmented by:
+</p>
+<ul>
+  <li><b>plugins</b><br />
+      Plugins allow you to augment PyBlosxom's default behavior.  These
+      you can get from the plugin registry or write yourself.
+  <li><b>flavour templates</b><br />
+      Flavour templates allow you to create the look and feel of your blog.
+      These you can get from the flavour registry or write yourself.
+</ul>
+
+<h2>3. Lifecycle of a PyBlosxom request</h2>
+<p>
+  This is the life cycle of a single PyBlosxom request.  It involves
+  the following "entities":
+</p>
+<ul>
+  <li><b>pyblosxom.cgi</b> - A script found in the <code>web/</code>
+      directory.  This is the CGI script that handles PyBlosxom requests.
+  <li><b>config.py</b> - The configuration file that defines the behavior
+      and properties of your blog.
+  <li><b>PyBlosxom.pyblosxom</b> - The <code>pyblosxom</code> module
+      holds the default PyBlosxom behavior functions.  It also defines
+      the <code>Request</code> class and the <code>PyBlosxom</code> class.
+  <li><b>Pyblosxom.pyblosxom.Request</b> - The <code>Request</code> object 
+      holds the state of the PyBlosxom request at any given time throughout 
+      the lifecycle fo the request.  The <code>Request</code> is passed
+      to most callbacks in the args dict as "request".
+  <li><b>Pyblosxom.pyblosxom.PyBlosxom</b> - The <code>PyBlosxom</code>
+      object holds a list of registered plugins, what callbacks they're
+      registered to, and the methods that handle the the actual request.
+</ul>
+
+<p>
+  The PyBlosxom request lifecycle starts with the web-server executing
+  pyblosxom.cgi.
+</p>
+
+<ol>
+  <li><code>pyblosxom.cgi</code>: loads <code>config.py</code>
+  <li><code>pyblosxom.cgi</code>: instantiates a <code>Request</code> object
+  <li><code>pyblosxom.cgi</code>: instantiates a <ocde>PyBlosxom</ocde> object
+      passing it the <code>Request</code> object
+  <li><code>pyblosxom.cgi</code>: calls <code>run()</code> on the 
+      <code>PyBlosxom</code> instance
+  <ol>
+    <li><code>PyBlosxom</code> instance, <code>run</code> method: 
+        calls <code>initialize</code>
+    <ol>
+      <li><code>PyBlosxom</code> instance, <code>initialize</code> method:
+          imports the plugins
+      <li><code>PyBlosxom</code> instance, <code>initialize</code> method:
+          calls the <code>entryparser</code> callback to get a map of all 
+          the entry types we can handle
+    </ol>
+    <li><code>PyBlosxom</code> instance, <code>run</code> method: 
+        calls the <code>start</code> callback to allow plugins to do any 
+        intialization they need to do
+    <li><code>PyBlosxom</code> instance, <code>run</code> method: 
+        calls the <code>handle</code> callback allowing plugins to fully 
+        handle the request.<br />
+        If a plugin handles the request, the plugin should return a 
+        <code>1</code> signifying it has done so.  At that point, PyBlosxom
+        will stop trying to find a plugin to handle the request.<br />
+        If no plugin handles the request, then PyBlosxom will handle the
+        request using the <code>blosxom_handler</code> PyBlosxom will 
+        handle the request using the <code>blosxom_handler</code>.
+    <li><code>PyBlosxom</code> instance, <code>run</code> method: 
+        calls the <code>end</code> callback to allow plugins to do any 
+        cleanup they need to do
+  </ol>
+</ol>
+
+<h2>4. Lifecycle of the blosxom_handler</h2>
+<p>
+  This describes what the blosxom_handler does.  This is the default
+  handler for PyBlosxom.  It's called by the <code>PyBlosxom</code>
+  instance in the <code>run</code> method if none of the plugins have
+  handled the request already.
+</p>
+
+<ol>
+  <li>calls the <code>renderer</code> callback to get a renderer 
+      instance<br />
+      If none of the plugins return a renderer instance, then we go check
+      to see if <code>config.py</code> has the <code>renderer</code>
+      property set and use that.<br />
+      If there is no <code>renderer</code> property set, we use the
+      <code>blosxom</code> renderer which is found in the
+      <code>pyblosxom.PyBlosxom.renderer</code> package.
+  <li>calls the <code>pathinfo</code> callback which allows all the plugins
+      to help figure out what to do with the HTTP URL/QUERYSTRING we've
+      been given
+  <li>calls the <code>filelist</code> callback which returns a list of
+      entries to render based on what the path info is
+  <li>calls the <code>prepare</code> callback which allows plugins to
+      transform the entries and any other data in the <code>Request</code>
+      object prior to rendering
+  <li>renders the entries
+</ol>
+      
+<h2>5. Lifecycle of the blosxom renderer</h2>
+<p>
+  The blosxom renderer renders the entries in a similar fashion to what
+  Blosxom does.  The blosxom renderer uses flavour templates and template
+  variables.  It also has a series of callbacks allowing plugins to modify
+  templates and entry data at the time of rendering that specific piece.
+</p>
+
+<ol>
+  <li>renders the <code>content_type</code> template
+  <li>calls the <code>head</code> callback and renders the <code>head</code> 
+      template
+  <li>calls the <code>date_head</code> callback and renders the 
+      <code>date_head</code> template
+  <li>for each story:
+  <ol>
+     <li>if the mtime on this entry is different than the last entry, it
+         calls the <code>date_foot</code> callback, renders the 
+         <code>date_foot</code> template, calls the <code>date_head</code>
+         callback and renders the <code>date_head</code> template
+     <li>calls the <code>story</code> callback and renders the 
+         <code>story</code> template
+  </ol>
+  <li>calls the <code>date_foot</code> callback and renders the 
+      <code>date_foot</code> template
+  <li>renders the <code>foot</code> template (calls the <code>foot</code>
+      callback
+</ol>
+
+<h2>6. Callbacks</h2>
+<p>
+  FIXME
+</p>
+
+<h2>7. Entry parsers</h2>
+<p>
+  FIXME
+</p>
+
+<h2>8. Pre-formatters and post-formatters</h2>
+<p>
+  FIXME
+</p>
+
+<h2>9. Renderers</h2>
+<p>
+  FIXME
+</p>

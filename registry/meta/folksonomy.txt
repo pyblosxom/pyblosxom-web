@@ -1,0 +1,9 @@
+Folksonomy
+#infourl http://www.timfanelli.com/item/folksonomy_update.html
+#download http://www.timfanelli.com/projects/folksonomy_py.txt
+#email_address tim.fanelli@gmail.com
+#author Timothy C. Fanelli
+Folksonomy infers relationships between stories by finding entries
+that share tags, and relationships between tags by finding tags that
+share entries - and provides naviational links and a tagcloud based on
+them.

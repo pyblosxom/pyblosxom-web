@@ -1,0 +1,42 @@
+PyBlosxom 1.1 released
+#published 2005-01-06 09:48:21
+<p>
+  It's been a long time coming, but it's here now.  Changes since
+  the last release:
+</p>
+<p>
+  <b>Pertinent to users:</b>
+</p>
+<ol>
+<li>We no longer include contributed plugins and flavours with the
+    release.  To find plugins and flavours, use the PyBlosxom registry.
+
+<li>We changed how num_entries is handled internally.  If num_entries
+    is set to 0, the blosxom default file handler will display all
+    the entries.  If num_entries is set to a positive number, then
+    the blosxom default file handler will display at most that many
+    entries.
+</ol>
+<p>
+  <b>Pertinent to developers and plugin developers:</b>
+</p>
+<ol>
+<li>Plugins that implement cb_filelist are now in charge of adjusting
+    the number of entries to be displayed based on the num_entries
+    configuration variable.  This is no longer done in the renderer.
+
+<li>We added HTTP_COOKIE to the list of things that get added to the http
+    dict in the Request object.
+</ol>
+<p>
+  I know there will be some issues with us not packaging contributed
+  plugins with the code.  We're planning to package contributed plugins
+  in a separate release with its own release cycle.
+</p>
+<p>
+  If you have problems, check out the PyBlosxom Manual and if that doesn't
+  help, send us questions on the pyblosxom-users mailing list.
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

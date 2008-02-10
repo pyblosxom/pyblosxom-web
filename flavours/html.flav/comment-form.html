@@ -1,0 +1,42 @@
+<br/>
+<h3>Submit a comment:</h3>
+<p>
+  <b>$comment_message $cmt_nospam_error</b>
+</p>
+<div class="blosxomCommentForm">
+  <p>
+  Please keep comments appropriate.  We reserve the right to remove anonymous
+  comments, flames, spammy, inappropriate, and other comments that we deem 
+  to be worth removing.
+  </p>
+  <p>
+  You must have cookies enabled in order to post comments.  If you don't
+  have cookies enabled right now, enable them, reload this page, and then
+  post your comment.
+  </p>
+  <form method="post" action="$base_url/$file_path.html" id="comments_form">
+  <input type="hidden" name="secretToken" value="pleaseDontSpam" />
+  <input name="parent" type="hidden" value="$file_path" />
+  <input name="title" type="hidden" value="$title" />
+  Your name:<br />
+  <input maxlength="50" name="author" size="50" type="text" value="" /><br />
+  <br />
+  Your e-mail address <i>(this doesn't get displayed to anyone--I use it 
+  to contact you if there are issues...<br />
+  PLEASE leave an email address)</i>:<br />
+  <input maxlength="75" name="email" size="50" type="text" value="" /><br />
+  <br />
+  URL of your website <i>(optional)</i>:<br />
+  <input maxlength="100" name="url" size="50" type="text" value="" /><br />
+  <br />
+  Secret Number: 
+  <img src="$base_url/nospam.png" alt="Secret Number Image" title="Type this number into the field on the right" style="margin-top:1px; margin-right:5px" />
+  <br />
+  <input name="nospam" size="50" type="text" value=""><br />
+  <br />
+  Comment:<br />
+  <textarea cols="50" name="body" rows="12"></textarea><br />
+  <br />
+  <input name="Submit" type="submit" value="Submit" />
+  </form>
+  </div>

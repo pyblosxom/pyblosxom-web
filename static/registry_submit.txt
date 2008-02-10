@@ -1,0 +1,51 @@
+Submitting items to the registry
+<p>
+  SourceForge has our file system as read-only which prevents us from
+  handling registry submissions automatically.  Sorry about that.
+</p>
+<h2>Submitting a new plugin</h2>
+<p>
+  Submit a plugin to the registry by emailing <font color="#0000ff">willhelm
+  at users dot sourceforge dot net</font> the following information:
+</p>
+<ul>
+  <li>your name as it should appear on the site
+  <li>name of your plugin
+  <li>category you think it should go in
+  <li>a description of your plugin and any notes users should know about
+  <li>the url for the page about your plugin
+  <li>the url to download your plugin
+</ul>
+<p>
+  Allow me a few days to turn around the request--usually I (Will) am pretty 
+  quick about it unless my car has a flat tire or I'm somewhere far away.
+  If I have any problems, I'll email you back.
+</p>
+
+<h2>Submitting a new flavour</h2>
+<p>
+  Submit a new flavour to the flavour registry by emailing <font color="#0000ff">willhelm
+  at users dot sourceforge dot net</font> the following information:
+</p>
+<ul>
+  <li>your name as it should appear on the site
+  <li>a description of the flavour including any special instructions
+  <li>the url of a .png screenshot of your flavour in action
+  <li>the url of the .tar.gz file
+</ul>
+<p>
+  Allow me a few days to turn around the request--usually I (Will) am pretty 
+  quick about it unless my car has a flat tire or I'm somewhere far away.
+  If I have any problems, I'll email you back.
+</p>
+
+<h2>Updating a plugin</h2>
+<p>
+  If you want to update the details for a plugin or want to comment on a 
+  plugin, send an email to <font color="#0000ff">willhelm at users dot sourceforge
+  dot net</font> with the details.
+</p>
+<p>
+  Allow me a few days to turn around the request--usually I (Will) am pretty 
+  quick about it unless my car has a flat tire or I'm somewhere far away.
+</p>

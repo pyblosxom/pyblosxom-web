@@ -1,0 +1,13 @@
+Imagekicker
+#author Magnus Nordlander
+#infourl http://magnus.nordlander.tk
+#download http://www.nordlander.tk/pyblosxom/
+Imagekicker kicks up an image inside the pybloxom cgi-file.
+Specify which directory you want to store your images in.
+You can then access the images with the following syntax:
+
+   http://[base_url]/images/[filename]
+
+This is Release Candidate 1.
+
+Much more functionality is not planned.

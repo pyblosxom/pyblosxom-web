@@ -1,0 +1,15 @@
+Moved from CVS to Subversion
+#published 2006-04-01 12:47:10
+<p>
+  As of this point, we've successfully moved all our code from
+  a CVS repository to a Subversion repository.  I went through
+  the web-site and updated it to reflect the move to Subversion.
+  I'm in the process of re-organizing some things in the 
+  repository to make them easier to deal with.
+</p>
+<p>
+  If you see any problems, let me know.  Thanks!
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>

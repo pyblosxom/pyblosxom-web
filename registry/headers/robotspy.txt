@@ -1,0 +1,7 @@
+robots.py
+#infourl http://www.mattweber.org
+#download http://www.mattweber.org/files/robots.py
+#email_address matt@mattweber.org
+#author Matt Weber
+Replaces $robots with a Robots META Tag telling search engine robots 
+to index blog entry's only.

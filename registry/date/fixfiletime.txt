@@ -1,0 +1,12 @@
+fixfiletime
+#author Will Guaraldi
+#infourl None
+#download None
+#contrib yes
+This is a quick script for fixing the atime/mtime for blog 
+files. It's often the case that I misspell something or want to 
+add an update, but because the timestamp for the blog entry comes 
+from the mtime of the file, I screw it up and cause it to cycle 
+to the top of my blog again. Rrrrr....
+
+Anyhow, this allows you to quickly fix that.

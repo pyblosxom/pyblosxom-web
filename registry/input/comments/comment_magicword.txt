@@ -1,0 +1,13 @@
+Magic Word
+#infourl http://www.idyll.org/~n8gray/misc/magicword.py
+#download http://www.idyll.org/~n8gray/misc/magicword.py
+#email_address n8gray@caltech.edu
+#author Nathan Gray
+The Magic Word plugin is a way of preventing comment spam.  It is a bit like 
+the nospam plugin, but much simpler and not as clever.  You pick a question, 
+like "What is the opposite of hot?" and an answer, like "cold".  If the commenter 
+can't answer the question, then their comment gets rejected.
+
+True, this is low-tech, but it's probably good enough to stop comment spammers 
+without hindering legitimate commenters, including those that are vision-impaired.  
+It also has no dependencies other than the comments plugin, so it's an easy install.

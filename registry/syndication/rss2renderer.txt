@@ -1,0 +1,15 @@
+rss2renderer
+#author Will Guaraldi
+#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
+#download http://www.bluesock.org/~willg/dev/pyblosxom/
+Blake originally wrote this.  I overhauled it and simplified it a bit
+and offer to maintain it going forward.
+
+This is an RSS2 renderer.  When you specify (via the url) something like
+"/index.rss2" (this is configurable--see the instructions), then it'll
+act as the renderer and render the RSS2 format of your site.  It doesn't
+require flavour templates and you should be able to just drop it in as
+a plugin and it should just work.
+
+If there are any comments, issues, bugs, feedback, or similar things--leave
+them below or email me (willg at bluesock dot org).

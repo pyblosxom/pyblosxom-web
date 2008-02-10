@@ -1,0 +1,12 @@
+latest
+#author Robert Wall
+#infourl http://backprop.net/devel/pyblosxom/
+#download http://backprop.net/devel/pyblosxom/latest.py
+Redirects the browser to the newest post in the category 
+requested in a pyblosxom URL when /latest has been appended to the 
+URL.
+
+12/01/2007 - As reported by darkmessenger as part of GHOP, this plugin 
+is no longer at the url specified.  It's an interesting plugin, though, 
+so if someone wanted to write a new one, that'd be really cool.  
+-- will guaraldi
