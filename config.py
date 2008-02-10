@@ -126,6 +126,9 @@ for mem in os.listdir(os.path.join(blogdir, "static")):
 
 # add registry files
 for root, dirs, files in os.walk(os.path.join(blogdir, "registry")):
+    if ".svn" in root:
+        continue
+
     root = root[len(blogdir) + 9:]
     static_urls.append("/registry%s/index.html?sortby=path" % root)
     for mem in files:

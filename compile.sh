@@ -8,7 +8,7 @@
 # where "xyz" is the directory to PyBlosxom.
 
 rm -rf ./compiled_site/
-rm -rf ./logs/
+mkdir ./logs/
 
 python ./pyblosxom.cgi --static
 
