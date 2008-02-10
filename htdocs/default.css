@@ -1,0 +1,141 @@
+BODY {
+   color: black; 
+   font-family: Verdana, Arial, Helvetica; 
+   font-size: 10pt;
+}
+
+code {
+   background: #eeeeee;
+}
+
+pre {
+   background: #eeeeee;
+   border: 1pt solid #999;
+}
+
+.comment {
+   background: #eeeeee;
+   border: 1pt solid #999;
+}
+
+H1 { 
+   font-size: 13pt;
+   font-weight: bold;
+   font-family: Verdana, Arial, Helvetica;
+   background: #eeeeee;
+   padding-top: .2em;
+   padding-left: .2em;
+   padding-bottom: .2em;
+   padding-right: .2em;
+   border: 1pt solid #999;
+}
+
+H2 { 
+   border-bottom: 1pt solid #999;
+   font-size: 12pt;
+   font-weight: bold;
+   font-family: Verdana, Arial, Helvetica;
+   color: #000000;
+   padding-top: .2em;
+   padding-left: .2em;
+   padding-bottom: .2em;
+   padding-right: .2em;
+}
+
+H3 { 
+   font-size: 11pt;
+   font-weight: bold;
+   font-family: Verdana, Arial, Helvetica;
+   color: #000000;
+   padding-top: .2em;
+   padding-left: .2em;
+   padding-bottom: .2em;
+   padding-right: .2em;
+}
+
+a.menulink:link { font-size: 9pt; color: #bb7777; text-decoration: none; }
+a.menulink:visited { font-size: 9pt; color: #775555; text-decoration: none; }
+a.menulink:hover { font-size: 9pt; color: #ff0000; text-decoration: underline; }
+a.menulink:active { font-size: 9pt; color: #ff0000; text-decoration: underline; }
+
+.menu {
+   font-size: 0.75em;
+   font-weight: bold;
+   font-family: Verdana, Arial, Helvetica;
+   color: #000000;
+   padding-left: .5em;
+   padding-right: .5em;
+   padding-top: 0.5em;
+   padding-bottom: 0.75em;
+   background: #eeeeee;
+   border: 1pt solid #999;
+}
+
+P, TD {
+   padding-top: 0em;
+   padding-left: 1.0em;
+   padding-right: 1.0em; 
+   font-family: Verdana, Arial, Helvetica;
+   font-size: 10pt;
+}
+
+DIV.datatable TABLE {
+   background: #999;
+   margin: 0em;
+   padding: 0em;
+}
+
+DIV.datatable TR {
+   margin: 0em;
+   padding: 0em;
+}
+
+DIV.datatable TD {
+   background: white;
+}
+
+TH {
+   padding-top: 0em;
+   padding-left: 1.0em;
+   padding-right: 1.0em; 
+   font-family: Verdana, Arial, Helvetica;
+   font-size: 10pt;
+        background: #eeeeee;
+   font-weight: bold;
+}
+
+LI {
+   padding-top: 0em;
+   padding-left: 1.0em;
+   padding-right: 1.0em; 
+   font-family: Verdana, Arial, Helvetica;
+   font-size: 10pt;
+}
+
+LI.spaced {
+   padding-bottom: 1.0em;
+   padding-left: 1.0em;
+   padding-right: 1.0em; 
+   font-family: Verdana, Arial, Helvetica;
+   font-size: 10pt;
+}
+
+.input {
+   color: #eeeeee;
+}
+
+.code {
+   font-family: Lucida Console, Courier;
+   color: #eeeeee;
+   font-size: 0.9em;
+}
+
+.path {
+   font-family: Lucida Console, Courier;
+   font-size: 0.9em;
+}
+
+.news {
+   padding-left: 1.0em;
+   padding-right: 1.0em;
+}

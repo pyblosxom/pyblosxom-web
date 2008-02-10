@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>Archive Access</title>
+<meta name="author" content="Blake Winton &lt;bwinton plus pyblosxom at latte dot ca&gt;" />
+<link rel="stylesheet" href="manual_style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="archive-access">
+<h1 class="title">Archive Access</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>Blake Winton &lt;bwinton plus pyblosxom at latte dot ca&gt;</td></tr>
+<tr class="field"><th class="docinfo-name">Originally published:</th><td class="field-body">September 20, 2007</td>
+</tr>
+<tr class="field"><th class="docinfo-name">URL:</th><td class="field-body"><a class="reference external" href="http://pyblosxom.sourceforge.net/2.0/plans/archiveaccess.html">http://pyblosxom.sourceforge.net/2.0/plans/archiveaccess.html</a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="history">
+<h1>History</h1>
+<p>September 20, 2007 - Blake Winton</p>
+<blockquote>
+<ul class="simple">
+<li>Wrote the initial document, emailed it to pyblosxom-users.</li>
+<li>Incorporated feedback.</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="summary">
+<h1>Summary</h1>
+<p>In previous versions of PyBlosxom, any url which contained a path
+segment of four digits was treated as a request for the archives for
+that path.  This led to people attempting to create directories named,
+say, &quot;1234&quot;, and having them not work, because the archive handler would
+take over, and return no entries for the year 1234.</p>
+<p>There are other plugins which assign different meanings to parts of the
+path, but they all require the path to start with a prefix, thus
+allowing the user to name their directories whatever they want.</p>
+<p>This proposal is intended to sketch out how the archive access for the
+next version of PyBlosxom should work, with the goals of allowing easy
+access to the archives, as well as allowing users to name directories
+whatever they like.</p>
+</div>
+<div class="section" id="proposed-design">
+<h1>Proposed design</h1>
+<p>Currently, PyBlosxom jumps through some hoops to process numeric
+directories as years.  While it does allow you to more easily view
+archives of categories, I believe there is a simpler way to achieve the
+same feature.</p>
+<p>The path /dev/2003/ always contains the stuff in the /dev/2003 folder.</p>
+<p>The items in the dev/2003 folder created in 2002 (Note: I'm using 2002
+here for disambiguation, so that we know which part is the folder name,
+and which part is the path.) could be:</p>
+<ol class="arabic simple">
+<li>/archive/2002/dev/2003</li>
+<li>/archive/2002?dev/2003</li>
+<li>/dev/2003?archive/2002</li>
+<li>/archive/2002/entries/dev/2003</li>
+<li>/dev/2003/2002</li>
+</ol>
+</div>
+<div class="section" id="discussion">
+<h1>Discussion</h1>
+<p>The main failings with options 2 and 3 are the use of the question mark.
+Due to that, I suggest discounting them.</p>
+<p>The next two options to consider are 1 and 4.  The trade-off between
+those, as I see it, is that option 1 restricts what I can name my
+top-level directories, (for instance, if you named your root directory
+&quot;07&quot;, the url &quot;/archive/2002/07&quot;, could be either everything in the &quot;07&quot;
+directory in 2002, or everything in the entire site in July 2002,)
+whereas option 4 is too verbose for my liking.  The verbosity could be
+fixed by choosing a shorter prefix, such as: /old/2002/&#64;/dev/2003, or
+/&#64;/2002/in/dev/2003... For that matter, the prefix should probably come
+out of config.py, like other prefixes, so that if the user decides to
+have an &quot;old&quot;, or &quot;archive&quot; top-level category, they can change the
+archive's prefix to &quot;previous&quot;, or &quot;ancient&quot;.  (Similarly, if the user
+uses a different locale, they can name it &quot;Архив&quot;, or &quot;vieux&quot;, or
+&quot;vorhergehend&quot;.)</p>
+<p>Another proposed option would be to support filtering on any path by
+appending date and path arguments.  I personally dislike this solution,
+because it seems too complicated, and introduces more ways to mess up
+(i.e. having a path with path components and a path argument).  It was
+also noted by its proposer that it doesn't address the issue of wanting
+to allow a path with a four digit number</p>
+<p>The fifth option, which I completely forgot about at the time of
+original writing, is to allow archive-based paths everywhere (if it
+can't otherwise be construed as a directory).  So, /dev/2003 would be
+the directory &quot;/dev/2003&quot; if it existed, and if not, the 2003 archive
+for the directory &quot;/dev&quot;.  If you wanted the 2002 entries for the
+/dev/2003 directory, you would type &quot;/dev/2003/2002&quot;, and if you wanted
+the 2003 archives for the dev directory, you would be out of luck.  (But
+that would have been a specific choice by the blog author, and so I feel
+it's not unreasonable to say that.)</p>
+<p>The thread that got me complaining about this issue is at:
+<a class="reference external" href="http://sourceforge.net/mailarchive/forum.php?thread_name=20070913214155.GB30850%40newred.gradwell.net&amp;forum_name=pyblosxom-users">http://sourceforge.net/mailarchive/forum.php?thread_name=20070913214155.GB30850%40newred.gradwell.net&amp;forum_name=pyblosxom-users</a></p>
+<p>The thread where I promised to write this spec is at:
+<a class="reference external" href="http://sourceforge.net/mailarchive/forum.php?thread_name=185aeadc0709140845t16b98868s96bcaa1ac86533a3%40mail.gmail.com&amp;forum_name=pyblosxom-users">http://sourceforge.net/mailarchive/forum.php?thread_name=185aeadc0709140845t16b98868s96bcaa1ac86533a3%40mail.gmail.com&amp;forum_name=pyblosxom-users</a></p>
+</div>
+<div class="section" id="outstanding-issues">
+<h1>Outstanding issues</h1>
+<p>1. The main outstanding issue is that I don't know if anyone is
+interested enough in changing this to actually do the work.  ;)</p>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<a class="reference external" href="archiveaccess.txt">View document source</a>.
+Generated on: 2007-10-31 18:17 UTC.
+Generated by <a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

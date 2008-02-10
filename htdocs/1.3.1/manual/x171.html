@@ -1,0 +1,386 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Renaming the pyblosxom.cgi Script</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Advanced Installation"
+HREF="c162.html"><LINK
+REL="PREVIOUS"
+TITLE="Advanced Installation"
+HREF="c162.html"><LINK
+REL="NEXT"
+TITLE="Flavours"
+HREF="c224.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c162.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Advanced Installation</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c224.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN171"
+>3.2. Renaming the pyblosxom.cgi Script</A
+></H1
+><P
+>&#13;In the default installation, the PyBlosxom script is named 
+<TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+>.
+</P
+><P
+>&#13;For a typical user on an Apache installation with user folders turned on, PyBlosxom
+URLs could look like this:
+</P
+><PRE
+CLASS="programlisting"
+>http://www.joe.com/~joe/cgi-bin/pyblosxom.cgi
+http://www.joe.com/~joe/cgi-bin/pyblosxom.cgi/an_entry.html
+http://www.joe.com/~joe/cgi-bin/pyblosxom.cgi/programming/another_entry.html 
+</PRE
+><P
+>&#13;That gets pretty long and it's not very good looking.  Telling your mother
+the URL over the phone would be difficult.  It would be nice if we could 
+shorten it.
+</P
+><P
+>&#13;So, we have some options:
+</P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>&#13;Change the name of the <TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+> script. 
+</P
+></LI
+><LI
+><P
+>&#13;And if that's not good enough for you, use the Apache mod_rewrite module to get 
+URLs internally redirected to the <TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+> script.
+</P
+></LI
+></OL
+><P
+>&#13;Both methods are described here in more detail.
+</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN187"
+>3.2.1. Change the Name of the pyblosxom.cgi Script</A
+></H2
+><P
+>&#13;There's no reason that <TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+> has to be named 
+<TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+>.  Let's try changing it from 
+<TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+> to <TT
+CLASS="filename"
+>blog</TT
+>.  Now our example 
+URLs look like this:
+</P
+><PRE
+CLASS="programlisting"
+>http://www.joe.com/~joe/cgi-bin/blog
+http://www.joe.com/~joe/cgi-bin/blog/an_entry.html
+http://www.joe.com/~joe/cgi-bin/blog/category1/another_entry.html 
+</PRE
+><P
+>&#13;That's better looking in the example.  In your specific circumstances, that
+may be all you need.
+</P
+><P
+>&#13;You might have to change the <CODE
+CLASS="varname"
+>base_url</CODE
+> property in your 
+<TT
+CLASS="filename"
+>config.py</TT
+> file to match the new URL.
+</P
+><DIV
+CLASS="warning"
+><P
+></P
+><TABLE
+CLASS="warning"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/warning.gif"
+HSPACE="5"
+ALT="Warning"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+><B
+>warning: base_url value</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>&#13;    The base_url property should NOT have a trailing slash.
+  </P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>&#13;If you're running on Apache, you might have to tell Apache that this is a CGI
+script even if it doesn't have a <TT
+CLASS="filename"
+>.cgi</TT
+> at the end of it.  If 
+you can use <TT
+CLASS="filename"
+>.htaccess</TT
+> files to override Apache settings, you 
+might be able to do something like this:
+</P
+><PRE
+CLASS="programlisting"
+># this allows execution of CGI scripts in this directory
+Options ExecCGI 
+ 
+# if the user doesn't specify a file, then instead of doing the
+# regular directory listing, we look at "blog" (which is our
+# pyblosxom.cgi script renamed)
+DirectoryIndex blog 
+ 
+# this tells Apache that even though "blog" doesn't end in .cgi,
+# it is in fact a CGI script and should be treated as such
+&#60;Files blog&#62; 
+ForceType application/cgi-script  
+SetHandler cgi-script  
+&#60;/Files&#62; 
+</PRE
+><P
+>&#13;You may need to stop and restart Apache for your Apache changes to take effect.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN207"
+>3.2.2. Hiding the .cgi with RewriteRule</A
+></H2
+><P
+>&#13;Apache has a module for URL rewriting which allows you to convert incoming
+URLs to other URLs that can be handled internally.  You can do URL rewriting
+based on all sorts of things.  See the Apache manual for more details.
+</P
+><P
+>&#13;In our case, we want all incoming URLs pointing to <TT
+CLASS="filename"
+>blog</TT
+> to 
+get rewritten to <TT
+CLASS="filename"
+>cgi-bin/pyblosxom.cgi</TT
+> so they can be handled 
+by PyBlosxom.  Then all our URLs will look like this:
+</P
+><PRE
+CLASS="programlisting"
+>http://www.joe.com/~joe/blog
+http://www.joe.com/~joe/blog/an_entry.html
+http://www.joe.com/~joe/blog/category1/another_entry.html 
+</PRE
+><P
+>&#13;To do this, we create an .htaccess file (it has to be named exactly that)
+in our <TT
+CLASS="filename"
+>public_html</TT
+> directory (or wherever it is that /~joe/ 
+points to).  In that file we have the following code:
+</P
+><PRE
+CLASS="programlisting"
+>RewriteEngine on
+RewriteRule    ^blog?(.*)$      /~joe/cgi-bin/pyblosxom.cgi$1      [last]
+</PRE
+><P
+>&#13;The first line turns on the Apache mod_rewrite engine so that it will rewrite
+URLs.
+</P
+><P
+>&#13;The second line has four parts.  The first part denotes the line as a 
+RewriteRule.  The second part states the regular expression that matches 
+the part of the URL that we want to rewrite.  The third part denotes what 
+we're rewriting the URL to.  The fourth part states that after this rule 
+is applied, no future rewrite rules should be applied.
+</P
+><P
+>&#13;If you do URL rewriting, you may have to set the base_url property in your
+<TT
+CLASS="filename"
+>config.py</TT
+> accordingly.  In the above example, the 
+<CODE
+CLASS="varname"
+>base_url</CODE
+> would be <TT
+CLASS="literal"
+>http://www.joe.com/~joe/blog</TT
+> 
+with no trailing slash.
+</P
+><P
+>&#13;For more information on URL re-writing, see the Apache documentation.
+</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c162.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c224.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Advanced Installation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c162.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Flavours</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

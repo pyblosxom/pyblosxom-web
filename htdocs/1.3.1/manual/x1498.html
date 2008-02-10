@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Writing an entryparser</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Writing Plugins"
+HREF="c1455.html"><LINK
+REL="PREVIOUS"
+TITLE="How to implement a callback"
+HREF="x1492.html"><LINK
+REL="NEXT"
+TITLE="Writing a preformatter plugin"
+HREF="x1503.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1492.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 11. Writing Plugins</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1503.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN1498"
+>11.5. Writing an entryparser</A
+></H1
+><P
+>&#13;Entry parsing functions take in a filename and the Request object.
+They then open the file and parse it out.  The can call cb_preformat
+and cb_postformat as they see fit.  They should return a dict
+containing at least "title" and "story" keys.  The "title"
+should be a single string.  The "story" should be a list of 
+strings (with \n at the end).
+</P
+><P
+>&#13;Here's an example code that reads *.plain files which have the
+title as the first line, metadata lines that start with # and then
+after all the metadata the body of the entry:
+</P
+><PRE
+CLASS="programlisting"
+>&#13;import os
+def cb_entryparser(entryparsingdict):
+    """
+    Register self as plain file handler
+    """
+    entryparsingdict['plain'] = parse
+    return entryparsingdict
+
+def parse(filename, request):
+    """
+    We just read everything off the file here, using the filename as
+    title
+    """
+    entrydata = {}
+
+    f = open(filename, "r")
+    lines = f.readlines()
+    f.close()
+
+    # strip off the first line and use that as the title.
+    title = lines.pop(0).strip()
+    entrydata['title'] = title
+
+    # absorb meta data lines which begin with a # and consist
+    # of a name and a value
+    while lines and lines[0].startswith("#"):
+        meta = lines.pop(0)
+        meta = meta[1:].strip()     # remove the hash
+        meta = meta.split(" ", 1)
+        entrydata[meta[0].strip()] = meta[1].strip()
+
+    # join the rest of the lines as the story
+    story = ''.join(lines)
+    entrydata["story"] = "".join(lines)
+
+    return entrydata
+
+</PRE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1492.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1503.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>How to implement a callback</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c1455.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Writing a preformatter plugin</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

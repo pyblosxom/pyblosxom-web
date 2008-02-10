@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>Syndication</title>
+<meta name="author" content="PyBlosxom Development Team" />
+<meta name="copyright" content="This document is distributed under the MIT license." />
+<link rel="stylesheet" href="manual_style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="syndication">
+<h1 class="title">Syndication</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>PyBlosxom Development Team</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>syndication.txt 1029 2007-06-07 02:33:12Z willhelm</td></tr>
+<tr><th class="docinfo-name">Copyright:</th>
+<td>This document is distributed under the MIT license.</td></tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#summary" id="id1">Summary</a></li>
+<li><a class="reference internal" href="#feed-formats-that-come-with-pyblosxom" id="id2">Feed formats that come with PyBlosxom</a><ul>
+<li><a class="reference internal" href="#rss-0-9-1" id="id3">RSS 0.9.1</a></li>
+<li><a class="reference internal" href="#rss-2-0" id="id4">RSS 2.0</a></li>
+<li><a class="reference internal" href="#atom-1-0" id="id5">Atom 1.0</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#debugging-your-feeds" id="id6">Debugging your feeds</a></li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h1><a class="toc-backref" href="#id1">Summary</a></h1>
+<p>Syndicating your blog is very important as it provides a mechanism
+for readers of your blog to keep up to date.  Typically this is done
+with newsreader software.  Additionally, there are web-sites that post
+blog entries from a variety of blogs that have similar content.  Both
+newsreaders and planet-type web-sites need a semantically marked up
+version of your blog.</p>
+<p>Most newsreaders read most of the syndication formats.  So you shouldn't
+feel that you have to implement each one of them in your blog--you can most
+assuredly get away with implementing RSS 2.0 or Atom 1.0 and be just fine.</p>
+<p>The syndication flavours that come with PyBlosxom should be fine for most
+blogs.  When pointing people to your syndication feed, just use one
+of the syndication flavours:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">http://your-server/path-to-blog/index.rss</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">http://your-server/path-to-blog/index.rss20</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">http://your-server/path-to-blog/index.atom</span></tt></li>
+</ul>
+</div>
+<div class="section" id="feed-formats-that-come-with-pyblosxom">
+<h1><a class="toc-backref" href="#id2">Feed formats that come with PyBlosxom</a></h1>
+<p>PyBlosxom comes with a few default flavours, three of which are feed
+formats.</p>
+<div class="section" id="rss-0-9-1">
+<h2><a class="toc-backref" href="#id3">RSS 0.9.1</a></h2>
+<p>PyBlosxom comes with an rss flavour that produces RSS 0.9.1 output.  Here's
+a sample of what it produces:</p>
+<pre class="literal-block">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;!-- name=&quot;generator&quot; content=&quot;pyblosxom/1.2 3/25/2005&quot; --&gt;
+&lt;!DOCTYPE rss PUBLIC &quot;-//Netscape Communications//DTD RSS 0.91//EN&quot;
+&quot;http://my.netscape.com/publish/formats/rss-0.91.dtd&quot;&gt;
+
+&lt;rss version=&quot;0.91&quot;&gt;
+&lt;channel&gt;
+&lt;title&gt;My Blog&lt;/title&gt;
+&lt;link&gt;http://www.joe.com/blog/index.rss&lt;/link&gt;
+&lt;description&gt;This is my blog about trivial things&lt;/description&gt;
+&lt;language&gt;en&lt;/language&gt;
+&lt;item&gt;
+    &lt;title&gt;Example of an entry post&lt;/title&gt;
+
+    &lt;link&gt;http://www.joe.com/blog/entries/example1.html&lt;/link&gt;
+    &lt;description&gt;&amp;lt;p&amp;gt;
+  Here's an example of an entry in my blog.  This is the body of the entry.
+&amp;lt;/p&amp;gt;
+&lt;/description&gt;
+  &lt;/item&gt;
+&lt;/channel&gt;
+&lt;/rss&gt;
+</pre>
+<p>This example only has one entry in it.  The number of entries the rss flavour
+will display is determined by the <tt class="docutils literal"><span class="pre">num_entries`</span> <span class="pre">property</span> <span class="pre">in</span> <span class="pre">your</span>
+<span class="pre">``config.py</span></tt> file.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>Probably better not to use RSS 0.9.1:</p>
+<p>RSS 0.9.1 format lacks dates in the data for the items.  Unless you
+include the date for the entry somewhere in the description block, people
+looking at your RSS 0.9.1 feed won't know what the date the entry was
+created on was.</p>
+<p class="last">Unless you have some reason to use RSS 0.9.1 as your syndication format,
+you should look at using RSS 2.0 or Atom 1.0 both of which also come
+with PyBlosxom.</p>
+</div>
+<p>For more information, look at the <a class="reference external" href="http://my.netscape.com/publish/formats/rss-spec-0.91.html">RSS 0.9.1 spec</a>.</p>
+</div>
+<div class="section" id="rss-2-0">
+<h2><a class="toc-backref" href="#id4">RSS 2.0</a></h2>
+<p>PyBlosxom 1.3 comes with an RSS 2.0 flavour called &quot;rss20&quot;.  If it's missing
+features that you want (for example, some folks are doing podcasting with
+their blog), then override the individual templates you need to adjust.</p>
+<p>For more information on RSS 2.0, see the <a class="reference external" href="http://blogs.law.harvard.edu/tech/rss">RSS 2.0 spec</a>.</p>
+</div>
+<div class="section" id="atom-1-0">
+<h2><a class="toc-backref" href="#id5">Atom 1.0</a></h2>
+<p>PyBlosxom 1.3 comes with an Atom 1.0 flavour called &quot;atom&quot;.  If it's
+missing features that you want, then override the individual templates
+you need to adjust.</p>
+<p>For more information on Atom 1.0, see the <a class="reference external" href="http://atomenabled.org/">Atom 1.0 spec</a>.</p>
+</div>
+</div>
+<div class="section" id="debugging-your-feeds">
+<h1><a class="toc-backref" href="#id6">Debugging your feeds</a></h1>
+<p><a class="reference external" href="http://feedvalidator.org/">FeedValidator</a> is a hugely useful tool for figuring out whether your
+feed is valid and fixing bugs in your feed content.</p>
+<p>Additionally, feel free to ask on the pyblosxom-users mailing list.</p>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<a class="reference external" href="../syndication.txt">View document source</a>.
+Generated on: 2008-01-10 23:43 UTC.
+Generated by <a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

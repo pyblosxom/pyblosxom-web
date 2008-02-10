@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Pyblosxom.renderers.blosxom.BlosxomRenderer</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom (1.4)</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Pyblosxom-module.html">Package&nbsp;Pyblosxom</a> ::
+        <a href="Pyblosxom.renderers-module.html">Package&nbsp;renderers</a> ::
+        <a href="Pyblosxom.renderers.blosxom-module.html">Module&nbsp;blosxom</a> ::
+        Class&nbsp;BlosxomRenderer
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Pyblosxom.renderers.blosxom.BlosxomRenderer-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class BlosxomRenderer</h1><span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer">source&nbsp;code</a></span><br /><br />
+<pre class="base-tree">
+<a href="Pyblosxom.renderers.base.RendererBase-class.html">base.RendererBase</a> --+
+                    |
+                   <strong class="uidshort">BlosxomRenderer</strong>
+</pre>
+
+<dl><dt>Known Subclasses:</dt>
+<dd>
+    <a href="Pyblosxom.renderers.blosxom.Renderer-class.html">Renderer</a>
+</dd></dl>
+
+<hr />
+This is the default blosxom renderer.  It tries to match the behavior 
+  of the blosxom renderer.<br /><br />
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.blosxom.BlosxomRenderer-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>,
+        <span class="summary-sig-arg">stdoutput</span>=<span class="summary-sig-default">sys.stderr</span>)</span><br />
+      Constructor: Initializes the Renderer</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">map</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.blosxom.BlosxomRenderer-class.html#_getflavour" class="summary-sig-name">_getflavour</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">taste</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">html</code><code class="variable-quote">'</code></span>)</span><br />
+      This retrieves all the template files for a given flavour 
+      taste.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer._getflavour">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.blosxom.BlosxomRenderer-class.html#_printTemplate" class="summary-sig-name">_printTemplate</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">entry</span>,
+        <span class="summary-sig-arg">template</span>)</span><br />
+      Returns:
+      the content string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer._printTemplate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">(string, string)</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.blosxom.BlosxomRenderer-class.html#_processEntry" class="summary-sig-name">_processEntry</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">entry</span>,
+        <span class="summary-sig-arg">current_date</span>)</span><br />
+      Main workhorse of pyblosxom stories, comments and other miscelany 
+      goes here</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer._processEntry">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">string</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.blosxom.BlosxomRenderer-class.html#_processContent" class="summary-sig-name">_processContent</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Processes the content for the story portion of a page.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer._processContent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.blosxom.BlosxomRenderer-class.html#render" class="summary-sig-name">render</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">header</span>=<span class="summary-sig-default">1</span>)</span><br />
+      Figures out flavours and such and then renders the content 
+      according to which flavour we're using.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer.render">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.blosxom.BlosxomRenderer-class.html#_outputFlavour" class="summary-sig-name">_outputFlavour</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">entry</span>,
+        <span class="summary-sig-arg">template_name</span>)</span><br />
+      Find the flavour template for template_name, run any blosxom 
+      callbacks, substitute vars into it and write the template to the 
+      output</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer._outputFlavour">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.blosxom.BlosxomRenderer-class.html#outputTemplate" class="summary-sig-name">outputTemplate</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">output</span>,
+        <span class="summary-sig-arg">entry</span>,
+        <span class="summary-sig-arg">template_name</span>,
+        <span class="summary-sig-arg">override</span>=<span class="summary-sig-default">0</span>)</span><br />
+      Find the flavour template for template_name, run any blosxom 
+      callbacks, substitute entry into it and append the template to the 
+      output.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer.outputTemplate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.blosxom.BlosxomRenderer-class.html#_run_callback" class="summary-sig-name">_run_callback</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">chain</span>,
+        <span class="summary-sig-arg">input</span>)</span><br />
+      Makes calling blosxom callbacks a bit easier since they all have 
+      the same mechanics.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer._run_callback">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.blosxom.BlosxomRenderer-class.html#getContent" class="summary-sig-name">getContent</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return the content field</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer.getContent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr bgcolor="#e8f0f8" >
+  <th colspan="2" class="group-header"
+    >&nbsp;&nbsp;&nbsp;&nbsp;Inherited from <a href="Pyblosxom.renderers.base.RendererBase-class.html">base.RendererBase</a></th></tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.base.RendererBase-class.html#addHeader" class="summary-sig-name">addHeader</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      Populates the HTTP header with lines of text</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.base-pysrc.html#RendererBase.addHeader">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.base.RendererBase-class.html#needsContentType" class="summary-sig-name">needsContentType</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">flag</span>)</span><br />
+      Use the renderer to determine 'Content-Type: x/x' default is to 
+      use the renderer for Content-Type, set flag to None to indicate no 
+      Content-Type generation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.base-pysrc.html#RendererBase.needsContentType">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.base.RendererBase-class.html#setContent" class="summary-sig-name">setContent</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">content</span>)</span><br />
+      Sets the content</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.base-pysrc.html#RendererBase.setContent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.base.RendererBase-class.html#showHeaders" class="summary-sig-name">showHeaders</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Updated the headers of the <a 
+      href="Pyblosxom.pyblosxom.Response-class.html" 
+      class="link">Response</a> instance.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.base-pysrc.html#RendererBase.showHeaders">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.renderers.base.RendererBase-class.html#write" class="summary-sig-name">write</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>)</span><br />
+      Convenience method for programs to use instead of accessing 
+      self._out.write()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.renderers.base-pysrc.html#RendererBase.write">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>,
+        <span class="sig-arg">stdoutput</span>=<span class="sig-default">sys.stderr</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Constructor: Initializes the Renderer
+  <dl class="fields">
+    <dt>Overrides:
+      <a href="Pyblosxom.renderers.base.RendererBase-class.html#__init__">base.RendererBase.__init__</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_getflavour"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_getflavour</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">taste</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">html</code><code class="variable-quote">'</code></span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer._getflavour">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>This retrieves all the template files for a given flavour taste. This 
+  will first pull the templates for the default flavour of this taste if 
+  there are any.  Then it looks at EITHER the configured datadir OR the 
+  flavourdir (if configured).  It'll go through directories overriding the 
+  template files it has already picked up descending the category path of 
+  the PyBlosxom request.</p>
+  For example, if the user requested the &quot;html&quot; flavour and is
+  looking at an entry in the category &quot;dev/pyblosxom&quot;, then 
+  _getflavour will:
+  <ol start="1">
+    <li>
+      pick up the flavour files in the default html flavour
+    </li>
+    <li>
+      start in EITHER datadir OR flavourdir (if configured)
+    </li>
+    <li>
+      override the default html flavour files with html flavour files in
+      this directory or in html.flav/ subdirectory
+    </li>
+    <li>
+      override the html flavour files it's picked up so far with html 
+      files in dev/ or dev/html.flav/
+    </li>
+    <li>
+      override the html flavour files it's picked up so far with html 
+      files in dev/pyblosxom/ or dev/pyblosxom/html.flav/
+    </li>
+  </ol>
+  If it doesn't find any flavour files at all, then it returns None 
+  which indicates the flavour doesn't exist in this blog.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>taste</code></strong> (string) - the taste to retrieve flavour files for.</li>
+    </ul></dd>
+    <dt>Returns: map</dt>
+        <dd>mapping of template name to template file data</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_printTemplate"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_printTemplate</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">entry</span>,
+        <span class="sig-arg">template</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer._printTemplate">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>entry</code></strong> (dict or Entry) - either a dict or the Entry object</li>
+        <li><strong class="pname"><code>template</code></strong> (string) - the template string</li>
+    </ul></dd>
+    <dt>Returns: string</dt>
+        <dd>the content string</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_processEntry"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_processEntry</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">entry</span>,
+        <span class="sig-arg">current_date</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer._processEntry">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Main workhorse of pyblosxom stories, comments and other miscelany goes
+  here
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>entry</code></strong> (dict or Entry object) - either a dict or an Entry object</li>
+        <li><strong class="pname"><code>current_date</code></strong> - the date of entries we're looking at @type  string</li>
+    </ul></dd>
+    <dt>Returns: (string, string)</dt>
+        <dd>the output string and the new current date</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_processContent"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_processContent</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer._processContent">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Processes the content for the story portion of a page.
+  <dl class="fields">
+    <dt>Returns: string</dt>
+        <dd>the content string</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="render"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">render</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">header</span>=<span class="sig-default">1</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer.render">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Figures out flavours and such and then renders the content according 
+  to which flavour we're using.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>header</code></strong> (boolean) - whether (1) or not (0) to render the HTTP headers</li>
+    </ul></dd>
+    <dt>Overrides:
+      <a href="Pyblosxom.renderers.base.RendererBase-class.html#render">base.RendererBase.render</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_outputFlavour"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_outputFlavour</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">entry</span>,
+        <span class="sig-arg">template_name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer._outputFlavour">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  Find the flavour template for template_name, run any blosxom 
+  callbacks, substitute vars into it and write the template to the 
+  output
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>entry</code></strong> (<a href="Pyblosxom.entries.base.EntryBase-class.html" 
+          class="link">Pyblosxom.entries.base.EntryBase</a>) - the EntryBase object</li>
+        <li><strong class="pname"><code>template_name</code></strong> (string) - - name of the flavour template</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="outputTemplate"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">outputTemplate</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">output</span>,
+        <span class="sig-arg">entry</span>,
+        <span class="sig-arg">template_name</span>,
+        <span class="sig-arg">override</span>=<span class="sig-default">0</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer.outputTemplate">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Find the flavour template for template_name, run any blosxom 
+  callbacks, substitute entry into it and append the template to the 
+  output.</p>
+  If the entry has a &quot;template_name&quot; property and override is 
+  1 (this happens in the story template), then we'll use that template 
+  instead.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>output</code></strong> (list) - list of strings of the output</li>
+        <li><strong class="pname"><code>entry</code></strong> (<a href="Pyblosxom.entries.base.EntryBase-class.html" 
+          class="link">Pyblosxom.entries.base.EntryBase</a>) - the entry to render with this flavour template</li>
+        <li><strong class="pname"><code>template_name</code></strong> (string) - name of the flavour template to use</li>
+        <li><strong class="pname"><code>override</code></strong> (boolean) - whether (1) or not (0) this template can be overriden with the
+          &quot;template_name&quot; property of the entry</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_run_callback"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_run_callback</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">chain</span>,
+        <span class="sig-arg">input</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer._run_callback">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Makes calling blosxom callbacks a bit easier since they all have the 
+  same mechanics.  This function merely calls run_callback with the 
+  arguments given and a mappingfunc.</p>
+  <p>The mappingfunc copies the &quot;template&quot; value from the output 
+  to the input for the next function.</p>
+  Refer to run_callback for more details.
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getContent"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getContent</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.renderers.blosxom-pysrc.html#BlosxomRenderer.getContent">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Return the content field</p>
+  This is exposed for blosxom callbacks.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>content</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom (1.4)</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0beta1 on Mon Jul  2 15:07:11 2007
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

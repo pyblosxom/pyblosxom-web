@@ -1,0 +1,449 @@
+============================
+Formatters and Entry parsers
+============================
+
+:Author: Will Guaraldi <will dot guaraldi at gmail dot com>
+:Originally published: September 29, 2007
+:URL: http://pyblosxom.sourceforge.net/2.0/plans/entryparsers.html
+
+
+History
+=======
+
+September 29, 2007 - Will Guaraldi
+
+   * Wrote the initial document, posted it, emailed it to pyblosxom-devel
+     for discussion.
+
+
+Summary
+=======
+
+The current transformation chain for converting blog entry files into
+stories has a few warts that need to be ironed out to allow for entries
+from non-file sources, better handling of markup, and better handling
+for preformat and postformat transforms.
+
+This document briefly covers how entry files are transformed into HTML/XHTML
+in pre-2.0 PyBlosxom, the problems incurred, and goes into detail about how
+the transformation chain will work in PyBlosxom 2.0 and later versions.
+
+
+Parsing entries in pre-2.0
+==========================
+
+PyBlosxom prior to 2.0 allows people to write blog entries in a variety of 
+markup formats.  This is possible by the ``entryparser`` style of plugin.  
+Entryparser plugins have the following general structure (using the 
+restructured text entryparser as an example)::
+
+   FILE_EXT = "rst"                                              [1]
+
+   def cb_entryparser(args):
+     args[FILE_EXT] = readfile                                   [1]
+     return args
+
+   def parse(story, request):
+     ...
+
+   def readfile(filename, request):
+     entryData = {}
+     lines = open(filename).readlines()                          [2]
+
+     if len(lines) == 0:
+       return {"title": "", "body": ""}
+
+     title = lines.pop(0)                                        [3]
+
+     # absorb meta data                                          [3]
+     while lines and lines[0].startswith("#"):
+       meta = lines.pop(0)
+       meta = meta[1:].strip()     # remove the hash
+       meta = meta.split(" ", 1)
+       entryData[meta[0]] = meta[1]
+
+     body = parse(''.join(lines), request)
+     entryData["title"] = title
+     entryData["body"] = body
+
+     # Call the postformat callbacks                             [3]
+     tools.run_callback('postformat', 
+                        {'request': request, 
+                         'entry_data': entryData})
+     return entryData
+
+
+In ``[1]``, we see the entryparser plugin binding the file extension
+``rst`` to the ``readfile`` function.  When the ``FileEntry`` class
+is looking at an entry with the file extension ``rst``, it calls
+``readfile`` to open the file, parse the contents, and fill in the
+entry data.
+
+In ``[2]``, the entryparser plugin opens the file for reading and
+reads in the lines.  Because of this, the entryparser plugin requires
+a filename...  It won't work for non-files or file-like items.  Entries
+that come from non-file sources cannot use entryparsers.
+
+In the sections marked ``[3]``, we see a bunch of code that's repeated
+in all the other entryparsers:
+
+* code to handle the structure of entry files
+* parsing of metadata lines
+* calling the ``postformat`` callback
+
+Then we have preformatters and postformatters, the semantics of
+which aren't particularly clear.
+
+The following specification codifies the semantics and behavior for 
+preformatters and postformatters and adds an additional callback for
+formatting the body of an entry in a specified markup into HTML/XHTML.
+
+
+Proposed design for 2.0
+=======================
+
+Proposed design
+---------------
+
+The ``blosxom_entry_parser`` takes a filename (string) or a file-like
+object and a request object and does the following:
+
+1. open the file and read the lines into a ``StringIO`` and closes the file
+
+2. first line is the title -- this gets added to the metadata dict as ``title``
+
+3. parse metadata lines as metadata
+
+   Metadata lines are in the format ``#key value``.  Examples::
+
+      #markup rst
+      #music I Like Puppies, Volume II
+      #mood happy
+      #comments no
+
+4. the remainder of the file is the body of the entry
+
+   1. call the ``preformat`` callback
+      
+      Arguments:
+      
+      * ``request`` - this PyBlosxom request
+      * ``story`` - a file-like object (File, StringIO, ...)
+      * ``metadata`` - a dict of metadata associated with this entry
+        including the title
+
+      Returns:
+
+      * the mutated story as a file-like object (File, StringIO, ...) 
+        in the appropriate markup
+
+      Example 1: a preformatter could expand Python code blocks in
+      a story executing the code blocks and replacing them with text.
+      Note: this could be problematic because the output has to be 
+      in the markup that the story is in.
+
+      Example 2: a preformatter could fix common mispellings of "PyBlosxom".
+
+      Note that the story data must be in a consistent markup.  If the
+      story is written in restructured text, then any changes to it
+      by preformatters must also be in restructured text.
+
+      Output of preformatters can be cached.
+
+      **Note:** this marks a change in semantics and behavior of the preformat 
+      callback.
+
+   2. call the ``format`` callback
+
+      Arguments:
+
+      * ``request`` - the PyBlosxom request object
+      * ``story`` - a file-like object (File, StringIO, ...)
+      * ``metadata`` - a dict of metadata associated with this entry
+        including the title
+
+      Returns:
+
+      * the mutated story as a file-like object (File, StringIO, ...)
+        as HTML/XHTML
+
+      This callback does things that current entryparsers really want
+      to be doing: it converts the markup into the output format.
+
+      Once a formatter has parsed the story, the callback ends.
+
+      Formatters know whether this story is one they should to parse
+      by checking the metadata ``markup``.  For example, the ``rst``
+      formatter could check to see if ``markup`` was ``rst``.
+
+      Example 1: a story is written in a loose wiki markup and the
+      formatter converts that loose wiki markup into HTML/XHTML and
+      expands wiki links::
+
+         My wiki page
+         #markup wiki
+         This is an example of a blog entry written using
+         [WikiMarkup].  It is *really* great!
+
+      Example 2: a story is written in restructured text markup and
+      the formatter converts that into HTML/XHTML using the docutils
+      library::
+
+         My reST page
+         #markup rst
+         *This* is an example of a blog entry written using
+         restructured text.  Restructured text is part of the 
+         Docutils [1]_ project.
+
+         .. [1] http://docutils.sourceforge.net/
+
+      For story data that is already in HTML/XHTML, this is a no-op.
+
+      Output of formatters can be cached.
+
+   3. call the ``postformat`` callback
+
+      Arguments:
+
+      * ``request`` - this PyBlosxom request
+      * ``story`` - a file-like object (File, StringIO, ...) in HTML/XHTML 
+        format
+      * ``metadata`` - a dict of metadata associated with this entry including
+        the title
+
+      Returns:
+
+      * the mutated story as a file-like object (File, StringIO, ...) in
+        HTML/XHTML format
+
+      Example 1: the user got to this page after doing a Google search
+      and a postformatter highlights the search terms in the story text.
+
+      Example 2: a postformatter could add update/revision history
+      to the end of the story.
+
+      Output of postformatters should **NOT** be cached.  The ``postformat``
+      callback should be called on all entries to be displayed even if 
+      they come from a cache.
+
+
+A note about entryparsers
+-------------------------
+
+Entryparsers that are merely formatting story data should be changed to
+implement the ``format`` callback.  This reduces the work they have
+to do and allows them to operate on story data that's not in a file.
+
+Future entryparsers should work on files that are not in the typical
+entry format (title, metadata, body).  For example, writing an entry
+parser is a good idea for handling entries that are in an mbox file.
+
+
+Proposed vocabulary
+-------------------
+
+This gives us the following terms:
+
+entryparser
+
+   An entryparsers is a PyBlosxom plugin that handle file formats that are
+   not PyBlosxom entry files (title, metadata, body).
+
+   Example 1: An entryparser could parse entries that were emails in 
+   a maildir.
+
+
+preformatter
+
+   A preformatter is a PyBlosxom plugin that transforms the body of an
+   entry before the body of the entry has been converted from some markup
+   into HTML/XHTML.
+
+   Example 1: A preformatter could expand Python code blocks in the body
+   executing the code blocks and replacing them with text in the markup
+   the body is currently in.
+
+   Example 2: A preformatter could fix common mispellings of "PyBlosxom".
+
+
+formatter
+
+   A formatter is a PyBlosxom plugin that transforms the body of an
+   entry from some markup into HTML/XHTML.
+
+   Example 1: A formatter could convert a body from Restructured Text
+   into HTML/XHTML.
+
+   Example 2: A formatter could convert a body from markdown
+   into HTML/XHTML.
+
+
+postformatter
+
+   A postformatter is a PyBlosxom plugin that transforms the body of
+   an entry after the body has been converted into HTML/XHTML.
+
+   Example 1: A postformatter could add update/revision history of the
+   entry to the end of the body.
+
+   Example 2: A postformatter could add HTML/XHTML to highlight words
+   from the Google search that brought the user to this page.
+
+
+Note that a single plugin can fill any of these rolls.  For example, there
+can exist plugins that act as preformatters and postformatters.
+
+
+What does this accomplish
+-------------------------
+
+This does the following for us:
+
+1. It retains backwards compatability with pre-existing stuff.  All
+   current entryparsers will continue to work.
+
+2. It allows the new system to handle any file-like object so we can
+   more easily handle data from non-file sources.  Plugins like
+   pystaticfile and wbgwiki will be able to support other markup.  
+   Plugins that pull their entry data from a database will be able to 
+   support other markup.
+
+3. It allows plugins that format story data to focus on formatting
+   story data--they no longer need the boilerplate code they required
+   before for parsing out the title and metadata.  This fixes a 
+   long-standing problem that not all entryparsers actually handled
+   metadata.
+
+4. It allows all entries in a blog to have the same extension.  If you 
+   use ``.txt`` then it's easier to deal with in terms of editors and
+   plain-text detection and such.  Your entry will be formatted based
+   on the ``markup`` metadata item.
+
+5. This specification codifies the semantics and transformations of
+   preformatters, formatters, and postformatters and gives minor 
+   examples of each.  It also codifies expectations of entry caching 
+   plugins.
+
+
+Examples
+========
+
+These examples are pretty trivial and show off usage of the various
+callbacks, but themselves don't really do much.
+
+FIXME THey are all untested.
+
+Example of preformatter
+-----------------------
+
+This is an example of a pre-formatter that expands an image macro
+that looks like ``IMG(some_image.jpg)`` into a full ``<img ...>``
+tag.
+
+Code::
+
+   import re, StringIO
+
+   REGEX = re.compile("IMG\(([^\)])")
+
+   def cb_preformat(args):
+      story = args["story"].read()
+      newstory = re.sub("<img src=\"\\g<1>\">\\g<1></a>", story)
+
+      return StringIO.StringIO(newstory)
+      
+
+Example of a formatter
+----------------------
+
+This is an example of a formatter that takes a story that's mostly
+in HTML, but is missing <p> and <br> tags.  This adds <br /> and <p> 
+tags.
+
+Code::
+
+   # Based on Wari's linebreaks preformatter.
+   import StringIO
+
+   def cb_format(args):
+      metadata = args["metadata"]
+      story = args["story"].read()
+
+      if "markup" in metadata and metadata["markup"] == "linebreaks":
+         newstory = re.sub("\n\n+", "</p><p>", story)
+         newstory = re.sub("\n", "<br />", newstory)
+         story = StringIO.StringIO("<p>%s</p>" % newstory)
+
+      return story
+
+
+Example of a postformatter
+--------------------------
+
+This is an example of a postformatter that takes a story that is
+in HTML and highlights terms if the user browsed to this page
+after doing a Google search.
+
+Code::
+
+   import re, urlparse, urllib, StringIO
+
+   # Based on Abe Fettig's highlightsearch preformatter.
+   def getGoogleSearch(url):
+      # taken from Mark's log parser tool
+      search = ''
+      argstr = urlparse.urlparse(url)[4]
+      if argstr:
+         argv = [arg.find('=') > -1 and arg.split('=', 1) or ('','') 
+                 for arg in argstr.split('&')]
+         search = [value for key, value in argv if key == 'q']
+         if not search:
+            # google.yahoo.com uses p=... instead of q=...
+            search = [value for key, value in argv if key == 'p']
+         if search:
+            search = search[0].lower()
+      return search
+
+   def cb_postformat(args):
+      req = args["request"]
+      # FIXME - this way of getting the http dict might go away
+      http = req.getHttp()
+      
+      referer = http.get("referer", "")
+
+      story = args["story"]
+
+      searchwords = getGoogleSearch(referer)
+      if searchwords:
+         story = story.read()
+         searchwords = urllib.unquote_plus(searchwords.lower())
+         for word in searchwords.split():
+            story = re.sub( word, 
+                            "<span style=\"background-color: #ffcc00\">\\g<1></a>", 
+                            story, 
+                            re.I )
+            
+         story = StringIO.StringIO(story)
+
+      return story
+
+Outstanding issues
+==================
+
+It might be an issue that we're calling ``read()`` and then re-wrapping into
+a ``StringIO``, but I think a file-like interface is the best one to use as
+an intermediary.
+
+There are no outstanding issues at this time.
+
+
+Discussion
+==========
+
+Discussion of this proposal is at:
+
+gmane.org
+   http://article.gmane.org/gmane.comp.web.pyblosxom.devel/1981
+
+sf.net
+   FIXME

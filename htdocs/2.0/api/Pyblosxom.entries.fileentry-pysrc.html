@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Pyblosxom.entries.fileentry</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom (2.0)</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Pyblosxom-module.html">Package&nbsp;Pyblosxom</a> ::
+        <a href="Pyblosxom.entries-module.html">Package&nbsp;entries</a> ::
+        Module&nbsp;fileentry
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Pyblosxom.entries.fileentry-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Pyblosxom.entries.fileentry-module.html">Module Pyblosxom.entries.fileentry</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#######################################################################</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># This file is part of PyBlosxom.</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># Copyright (c) 2003, 2004, 2005, 2006 Wari Wahab</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># </tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># PyBlosxom is distributed under the MIT license.  See the file LICENSE</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># for distribution details.</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># $Id: fileentry.py 1106 2007-09-06 01:31:16Z willhelm $</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#######################################################################</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-docstring">"""</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">This module contains FileEntry class which is used to retrieve entries </tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">from a file system.  Since pulling data from the file system and parsing </tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">it is expensive (especially when you have 100s of entries) we delay</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">fetching data until it's demanded.</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">The FileEntry calls the entries.base.EntryBase.getFromCache to handle </tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">entry-level caching.</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable Pyblosxom.__revision__=Pyblosxom-module.html#__revision__,Variable Pyblosxom._logging.__revision__=Pyblosxom._logging-module.html#__revision__,Variable Pyblosxom.entries.__revision__=Pyblosxom.entries-module.html#__revision__,Variable Pyblosxom.entries.base.__revision__=Pyblosxom.entries.base-module.html#__revision__,Variable Pyblosxom.entries.fileentry.__revision__=Pyblosxom.entries.fileentry-module.html#__revision__,Variable Pyblosxom.plugin_utils.__revision__=Pyblosxom.plugin_utils-module.html#__revision__,Variable Pyblosxom.pyblosxom.__revision__=Pyblosxom.pyblosxom-module.html#__revision__,Variable Pyblosxom.renderers.__revision__=Pyblosxom.renderers-module.html#__revision__,Variable Pyblosxom.renderers.base.__revision__=Pyblosxom.renderers.base-module.html#__revision__,Variable Pyblosxom.renderers.blosxom.__revision__=Pyblosxom.renderers.blosxom-module.html#__revision__,Variable Pyblosxom.renderers.debug.__revision__=Pyblosxom.renderers.debug-module.html#__revision__,Variable Pyblosxom.tools.__revision__=Pyblosxom.tools-module.html#__revision__"><a title="Pyblosxom.__revision__
+Pyblosxom._logging.__revision__
+Pyblosxom.entries.__revision__
+Pyblosxom.entries.base.__revision__
+Pyblosxom.entries.fileentry.__revision__
+Pyblosxom.plugin_utils.__revision__
+Pyblosxom.pyblosxom.__revision__
+Pyblosxom.renderers.__revision__
+Pyblosxom.renderers.base.__revision__
+Pyblosxom.renderers.blosxom.__revision__
+Pyblosxom.renderers.debug.__revision__
+Pyblosxom.tools.__revision__" class="py-name" href="#" onclick="return doclink('link-0', '__revision__', 'link-0');">__revision__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"$Revision: 1106 $"</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">re</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Package Pyblosxom=Pyblosxom-module.html"><a title="Pyblosxom" class="py-name" href="#" onclick="return doclink('link-1', 'Pyblosxom', 'link-1');">Pyblosxom</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Module Pyblosxom.tools=Pyblosxom.tools-module.html"><a title="Pyblosxom.tools" class="py-name" href="#" onclick="return doclink('link-2', 'tools', 'link-2');">tools</a></tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="Pyblosxom" class="py-name" href="#" onclick="return doclink('link-3', 'Pyblosxom', 'link-1');">Pyblosxom</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Package Pyblosxom.entries=Pyblosxom.entries-module.html"><a title="Pyblosxom.entries" class="py-name" href="#" onclick="return doclink('link-4', 'entries', 'link-4');">entries</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Module Pyblosxom.entries.base=Pyblosxom.entries.base-module.html,Module Pyblosxom.renderers.base=Pyblosxom.renderers.base-module.html"><a title="Pyblosxom.entries.base
+Pyblosxom.renderers.base" class="py-name" href="#" onclick="return doclink('link-5', 'base', 'link-5');">base</a></tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
+<a name="FileEntry"></a><div id="FileEntry-def"><a name="L29"></a><tt class="py-lineno"> 29</tt> <a class="py-toggle" href="#" id="FileEntry-toggle" onclick="return toggle('FileEntry');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Pyblosxom.entries.fileentry.FileEntry-class.html">FileEntry</a><tt class="py-op">(</tt><tt class="py-base-class">base</tt><tt class="py-op">.</tt><tt class="py-base-class">EntryBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileEntry-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="FileEntry-expanded"><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">    This class gets it's data and metadata from the file specified</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">    by the filename argument.</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="FileEntry.__init__"></a><div id="FileEntry.__init__-def"><a name="L34"></a><tt class="py-lineno"> 34</tt> <a class="py-toggle" href="#" id="FileEntry.__init__-toggle" onclick="return toggle('FileEntry.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Pyblosxom.entries.fileentry.FileEntry-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">request</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">,</tt> <tt class="py-param">root</tt><tt class="py-op">,</tt> <tt class="py-param">datadir</tt><tt class="py-op">=</tt><tt class="py-string">""</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileEntry.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileEntry.__init__-expanded"><a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">        @param request: the Request object</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">        @type  request: Request</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">        @param filename: the complete filename for the file in question</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">            including path</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">        @type  filename: string</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">        @param root: i have no clue what this is</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">        @type  root: string</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">        @param datadir: the datadir</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">        @type  datadir: string</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt id="link-6" class="py-name"><a title="Pyblosxom.entries.base
+Pyblosxom.renderers.base" class="py-name" href="#" onclick="return doclink('link-6', 'base', 'link-5');">base</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Class Pyblosxom.entries.base.EntryBase=Pyblosxom.entries.base.EntryBase-class.html"><a title="Pyblosxom.entries.base.EntryBase" class="py-name" href="#" onclick="return doclink('link-7', 'EntryBase', 'link-7');">EntryBase</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method Pyblosxom._logging.FileHandler.__init__()=Pyblosxom._logging.FileHandler-class.html#__init__,Method Pyblosxom._logging.Filterer.__init__()=Pyblosxom._logging.Filterer-class.html#__init__,Method Pyblosxom._logging.Formatter.__init__()=Pyblosxom._logging.Formatter-class.html#__init__,Method Pyblosxom._logging.LogRecord.__init__()=Pyblosxom._logging.LogRecord-class.html#__init__,Method Pyblosxom._logging.Logger.__init__()=Pyblosxom._logging.Logger-class.html#__init__,Method Pyblosxom._logging.StreamHandler.__init__()=Pyblosxom._logging.StreamHandler-class.html#__init__,Method Pyblosxom.entries.base.EntryBase.__init__()=Pyblosxom.entries.base.EntryBase-class.html#__init__,Method Pyblosxom.entries.fileentry.FileEntry.__init__()=Pyblosxom.entries.fileentry.FileEntry-class.html#__init__,Method Pyblosxom.pyblosxom.EnvironmentDict.__init__()=Pyblosxom.pyblosxom.EnvironmentDict-class.html#__init__,Method Pyblosxom.pyblosxom.PyBlosxom.__init__()=Pyblosxom.pyblosxom.PyBlosxom-class.html#__init__,Method Pyblosxom.pyblosxom.PyBlosxomWSGIApp.__init__()=Pyblosxom.pyblosxom.PyBlosxomWSGIApp-class.html#__init__,Method Pyblosxom.pyblosxom.Request.__init__()=Pyblosxom.pyblosxom.Request-class.html#__init__,Method Pyblosxom.pyblosxom.Response.__init__()=Pyblosxom.pyblosxom.Response-class.html#__init__,Method Pyblosxom.renderers.base.RendererBase.__init__()=Pyblosxom.renderers.base.RendererBase-class.html#__init__,Method Pyblosxom.renderers.blosxom.BlosxomRenderer.__init__()=Pyblosxom.renderers.blosxom.BlosxomRenderer-class.html#__init__,Method Pyblosxom.renderers.blosxom.NoSuchFlavourException.__init__()=Pyblosxom.renderers.blosxom.NoSuchFlavourException-class.html#__init__,Method Pyblosxom.tools.LogFilter.__init__()=Pyblosxom.tools.LogFilter-class.html#__init__,Method Pyblosxom.tools.Replacer.__init__()=Pyblosxom.tools.Replacer-class.html#__init__,Method Pyblosxom.tools.Stripper.__init__()=Pyblosxom.tools.Stripper-class.html#__init__,Method Pyblosxom.tools.VariableDict.__init__()=Pyblosxom.tools.VariableDict-class.html#__init__"><a title="Pyblosxom._logging.FileHandler.__init__
+Pyblosxom._logging.Filterer.__init__
+Pyblosxom._logging.Formatter.__init__
+Pyblosxom._logging.LogRecord.__init__
+Pyblosxom._logging.Logger.__init__
+Pyblosxom._logging.StreamHandler.__init__
+Pyblosxom.entries.base.EntryBase.__init__
+Pyblosxom.entries.fileentry.FileEntry.__init__
+Pyblosxom.pyblosxom.EnvironmentDict.__init__
+Pyblosxom.pyblosxom.PyBlosxom.__init__
+Pyblosxom.pyblosxom.PyBlosxomWSGIApp.__init__
+Pyblosxom.pyblosxom.Request.__init__
+Pyblosxom.pyblosxom.Response.__init__
+Pyblosxom.renderers.base.RendererBase.__init__
+Pyblosxom.renderers.blosxom.BlosxomRenderer.__init__
+Pyblosxom.renderers.blosxom.NoSuchFlavourException.__init__
+Pyblosxom.tools.LogFilter.__init__
+Pyblosxom.tools.Replacer.__init__
+Pyblosxom.tools.Stripper.__init__
+Pyblosxom.tools.VariableDict.__init__" class="py-name" href="#" onclick="return doclink('link-8', '__init__', 'link-8');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">request</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Variable Pyblosxom.tools._config=Pyblosxom.tools-module.html#_config"><a title="Pyblosxom.tools._config" class="py-name" href="#" onclick="return doclink('link-9', '_config', 'link-9');">_config</a></tt> <tt class="py-op">=</tt> <tt class="py-name">request</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method Pyblosxom.pyblosxom.Request.getConfiguration()=Pyblosxom.pyblosxom.Request-class.html#getConfiguration"><a title="Pyblosxom.pyblosxom.Request.getConfiguration" class="py-name" href="#" onclick="return doclink('link-10', 'getConfiguration', 'link-10');">getConfiguration</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt> <tt class="py-op">=</tt> <tt class="py-name">filename</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method Pyblosxom.tools.Replacer.replace()=Pyblosxom.tools.Replacer-class.html#replace"><a title="Pyblosxom.tools.Replacer.replace" class="py-name" href="#" onclick="return doclink('link-11', 'replace', 'link-11');">replace</a></tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">,</tt> <tt class="py-string">'/'</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_root</tt> <tt class="py-op">=</tt> <tt class="py-name">root</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="Pyblosxom.tools.Replacer.replace" class="py-name" href="#" onclick="return doclink('link-12', 'replace', 'link-11');">replace</a></tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">,</tt> <tt class="py-string">'/'</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_datadir</tt> <tt class="py-op">=</tt> <tt class="py-name">datadir</tt> <tt class="py-keyword">or</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="Pyblosxom.tools._config" class="py-name" href="#" onclick="return doclink('link-13', '_config', 'link-9');">_config</a></tt><tt class="py-op">[</tt><tt class="py-string">"datadir"</tt><tt class="py-op">]</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_datadir</tt><tt class="py-op">.</tt><tt class="py-name">endswith</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_datadir</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_datadir</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_timetuple</tt> <tt class="py-op">=</tt> <tt id="link-14" class="py-name"><a title="Pyblosxom.tools" class="py-name" href="#" onclick="return doclink('link-14', 'tools', 'link-2');">tools</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Function Pyblosxom.tools.filestat()=Pyblosxom.tools-module.html#filestat"><a title="Pyblosxom.tools.filestat" class="py-name" href="#" onclick="return doclink('link-15', 'filestat', 'link-15');">filestat</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_request</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_mtime</tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">mktime</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_timetuple</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_fulltime</tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">strftime</tt><tt class="py-op">(</tt><tt class="py-string">"%Y%m%d%H%M%S"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_timetuple</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_populated_data</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+</div><a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"> </tt>
+<a name="FileEntry.__repr__"></a><div id="FileEntry.__repr__-def"><a name="L64"></a><tt class="py-lineno"> 64</tt> <a class="py-toggle" href="#" id="FileEntry.__repr__-toggle" onclick="return toggle('FileEntry.__repr__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Pyblosxom.entries.fileentry.FileEntry-class.html#__repr__">__repr__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileEntry.__repr__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileEntry.__repr__-expanded"><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">        Returns a representation of this instance with the filename</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">        and root.</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">"&lt;fileentry f'%s' r'%s'&gt;"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_root</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="FileEntry.setTimeLazy"></a><div id="FileEntry.setTimeLazy-def"><a name="L71"></a><tt class="py-lineno"> 71</tt> <a class="py-toggle" href="#" id="FileEntry.setTimeLazy-toggle" onclick="return toggle('FileEntry.setTimeLazy');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Pyblosxom.entries.fileentry.FileEntry-class.html#setTimeLazy">setTimeLazy</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">timetuple</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileEntry.setTimeLazy-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileEntry.setTimeLazy-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring">        Set the time without populating the entry.</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">        @param timetuple: the mtime of the file (same as returned by </tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring">                          time.localtime(...))   </tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring">        @type  timetuple: tuple of 9 ints     </tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_timetuple</tt> <tt class="py-op">=</tt> <tt class="py-name">timetuple</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_mtime</tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">mktime</tt><tt class="py-op">(</tt><tt class="py-name">timetuple</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_fulltime</tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">strftime</tt><tt class="py-op">(</tt><tt class="py-string">"%Y%m%d%H%M%S"</tt><tt class="py-op">,</tt> <tt class="py-name">timetuple</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="FileEntry.getId"></a><div id="FileEntry.getId-def"><a name="L83"></a><tt class="py-lineno"> 83</tt> <a class="py-toggle" href="#" id="FileEntry.getId-toggle" onclick="return toggle('FileEntry.getId');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Pyblosxom.entries.fileentry.FileEntry-class.html#getId">getId</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileEntry.getId-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileEntry.getId-expanded"><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the id for this content item--in this case, it's the</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">        filename.</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">        @returns: the id of the fileentry (the filename)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype: string</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt> </tt>
+</div><a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="FileEntry.getData"></a><div id="FileEntry.getData-def"><a name="L93"></a><tt class="py-lineno"> 93</tt> <a class="py-toggle" href="#" id="FileEntry.getData-toggle" onclick="return toggle('FileEntry.getData');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Pyblosxom.entries.fileentry.FileEntry-class.html#getData">getData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileEntry.getData-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileEntry.getData-expanded"><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the data for this file entry.  The data is the parsed</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">        (via the entryparser) content of the entry.  We do this on-demand</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">        by checking to see if we've gotten it and if we haven't then</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">        we get it at that point.</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">        @returns: the content for this entry</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype: string</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_populated_data</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method Pyblosxom.entries.fileentry.FileEntry.__populatedata()=Pyblosxom.entries.fileentry.FileEntry-class.html#__populatedata"><a title="Pyblosxom.entries.fileentry.FileEntry.__populatedata" class="py-name" href="#" onclick="return doclink('link-16', '__populatedata', 'link-16');">__populatedata</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_data</tt> </tt>
+</div><a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"> </tt>
+<a name="FileEntry.getMetadata"></a><div id="FileEntry.getMetadata-def"><a name="L107"></a><tt class="py-lineno">107</tt> <a class="py-toggle" href="#" id="FileEntry.getMetadata-toggle" onclick="return toggle('FileEntry.getMetadata');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Pyblosxom.entries.fileentry.FileEntry-class.html#getMetadata">getMetadata</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">key</tt><tt class="py-op">,</tt> <tt class="py-param">default</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileEntry.getMetadata-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileEntry.getMetadata-expanded"><a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-docstring">        This overrides the L{base.EntryBase} getMetadata method.</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt class="py-docstring">        Note: We populate our metadata lazily--only when it's requested.</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-docstring">        This delays parsing of the file as long as we can.</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-docstring">        @param key: the key being sought</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring">        @type  key: varies</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">        @param default: the default to return if the key does not</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt class="py-docstring">            exist</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt class="py-docstring">        @type  default: varies</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-docstring">        @return: either the default (if the key did not exist) or the</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-docstring">            value of the key in the metadata dict</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype: varies</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_populated_data</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="Pyblosxom.entries.fileentry.FileEntry.__populatedata" class="py-name" href="#" onclick="return doclink('link-17', '__populatedata', 'link-16');">__populatedata</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_metadata</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method Pyblosxom.entries.base.EntryBase.get()=Pyblosxom.entries.base.EntryBase-class.html#get,Method Pyblosxom.tools.VariableDict.get()=Pyblosxom.tools.VariableDict-class.html#get"><a title="Pyblosxom.entries.base.EntryBase.get
+Pyblosxom.tools.VariableDict.get" class="py-name" href="#" onclick="return doclink('link-18', 'get', 'link-18');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">key</tt><tt class="py-op">,</tt> <tt class="py-name">default</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">         </tt>
+<a name="FileEntry.__populatedata"></a><div id="FileEntry.__populatedata-def"><a name="L130"></a><tt class="py-lineno">130</tt> <a class="py-toggle" href="#" id="FileEntry.__populatedata-toggle" onclick="return toggle('FileEntry.__populatedata');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Pyblosxom.entries.fileentry.FileEntry-class.html#__populatedata">__populatedata</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FileEntry.__populatedata-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FileEntry.__populatedata-expanded"><a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-docstring">        Fills the metadata dict with metadata about the given file.  This</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-docstring">        metadata consists of things we pick up from an os.stat call as</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring">        well as knowledge of the filename and the root directory.</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-docstring">        We then parse the file and fill in the rest of the information</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-docstring">        that we know.</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-name">file_basename</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">basename</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt><tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="Pyblosxom.tools.Replacer.replace" class="py-name" href="#" onclick="return doclink('link-19', 'replace', 'link-11');">replace</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_root</tt><tt class="py-op">,</tt> <tt class="py-string">''</tt><tt class="py-op">)</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">path</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="Pyblosxom.tools.Replacer.replace" class="py-name" href="#" onclick="return doclink('link-20', 'replace', 'link-11');">replace</a></tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">basename</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">''</tt><tt class="py-op">)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">path</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-name">absolute_path</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="Pyblosxom.tools.Replacer.replace" class="py-name" href="#" onclick="return doclink('link-21', 'replace', 'link-11');">replace</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_datadir</tt><tt class="py-op">,</tt> <tt class="py-string">''</tt><tt class="py-op">)</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-name">absolute_path</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="Pyblosxom.tools.Replacer.replace" class="py-name" href="#" onclick="return doclink('link-22', 'replace', 'link-11');">replace</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_datadir</tt><tt class="py-op">,</tt> <tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-name">absolute_path</tt> <tt class="py-op">=</tt> <tt class="py-name">absolute_path</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="Pyblosxom.tools.Replacer.replace" class="py-name" href="#" onclick="return doclink('link-23', 'replace', 'link-11');">replace</a></tt><tt class="py-op">(</tt><tt class="py-name">file_basename</tt><tt class="py-op">,</tt> <tt class="py-string">''</tt><tt class="py-op">)</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-name">absolute_path</tt> <tt class="py-op">=</tt> <tt class="py-name">absolute_path</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">absolute_path</tt> <tt class="py-keyword">and</tt> <tt class="py-name">absolute_path</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">"/"</tt><tt class="py-op">:</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">            <tt class="py-name">absolute_path</tt> <tt class="py-op">=</tt> <tt class="py-name">absolute_path</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">        <tt class="py-name">filenamenoext</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">splitext</tt><tt class="py-op">(</tt><tt class="py-name">file_basename</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">absolute_path</tt> <tt class="py-op">==</tt> <tt class="py-string">''</tt><tt class="py-op">:</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">            <tt class="py-name">file_path</tt> <tt class="py-op">=</tt> <tt class="py-name">filenamenoext</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">            <tt class="py-name">file_path</tt> <tt class="py-op">=</tt> <tt class="py-string">'/'</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">absolute_path</tt><tt class="py-op">,</tt> <tt class="py-name">filenamenoext</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">        <tt class="py-name">tb_id</tt> <tt class="py-op">=</tt> <tt class="py-string">'%s/%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">absolute_path</tt><tt class="py-op">,</tt> <tt class="py-name">filenamenoext</tt><tt class="py-op">)</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">        <tt class="py-name">tb_id</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">r'[^A-Za-z0-9]'</tt><tt class="py-op">,</tt> <tt class="py-string">'_'</tt><tt class="py-op">,</tt> <tt class="py-name">tb_id</tt><tt class="py-op">)</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">[</tt><tt class="py-string">'path'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">path</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">[</tt><tt class="py-string">'tb_id'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">tb_id</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">[</tt><tt class="py-string">'absolute_path'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">absolute_path</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">[</tt><tt class="py-string">'file_path'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">file_path</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">[</tt><tt class="py-string">'fn'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">filenamenoext</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">[</tt><tt class="py-string">'filename'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-comment"># timetuple is set at __init__ time or by setTimeLazy</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Method Pyblosxom.entries.base.EntryBase.setTime()=Pyblosxom.entries.base.EntryBase-class.html#setTime"><a title="Pyblosxom.entries.base.EntryBase.setTime" class="py-name" href="#" onclick="return doclink('link-24', 'setTime', 'link-24');">setTime</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_timetuple</tt><tt class="py-op">)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">        <tt id="link-25" class="py-name" targets="Variable Pyblosxom.pyblosxom.Request.data=Pyblosxom.pyblosxom.Request-class.html#data"><a title="Pyblosxom.pyblosxom.Request.data" class="py-name" href="#" onclick="return doclink('link-25', 'data', 'link-25');">data</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_request</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Method Pyblosxom.entries.base.EntryBase.getData()=Pyblosxom.entries.base.EntryBase-class.html#getData,Method Pyblosxom.entries.fileentry.FileEntry.getData()=Pyblosxom.entries.fileentry.FileEntry-class.html#getData,Method Pyblosxom.pyblosxom.Request.getData()=Pyblosxom.pyblosxom.Request-class.html#getData"><a title="Pyblosxom.entries.base.EntryBase.getData
+Pyblosxom.entries.fileentry.FileEntry.getData
+Pyblosxom.pyblosxom.Request.getData" class="py-name" href="#" onclick="return doclink('link-26', 'getData', 'link-26');">getData</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">        <tt class="py-name">entrydict</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Method Pyblosxom.entries.base.EntryBase.getFromCache()=Pyblosxom.entries.base.EntryBase-class.html#getFromCache"><a title="Pyblosxom.entries.base.EntryBase.getFromCache" class="py-name" href="#" onclick="return doclink('link-27', 'getFromCache', 'link-27');">getFromCache</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_request</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt><tt class="py-op">)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">entrydict</tt><tt class="py-op">:</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">            <tt class="py-name">fileext</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">splitext</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt><tt class="py-op">)</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">fileext</tt><tt class="py-op">:</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">                <tt class="py-name">fileext</tt> <tt class="py-op">=</tt> <tt class="py-name">fileext</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">            <tt class="py-name">eparser</tt> <tt class="py-op">=</tt> <tt id="link-28" class="py-name"><a title="Pyblosxom.pyblosxom.Request.data" class="py-name" href="#" onclick="return doclink('link-28', 'data', 'link-25');">data</a></tt><tt class="py-op">[</tt><tt class="py-string">'extensions'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">fileext</tt><tt class="py-op">]</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">            <tt class="py-name">entrydict</tt> <tt class="py-op">=</tt> <tt class="py-name">eparser</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_filename</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_request</tt><tt class="py-op">)</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Method Pyblosxom.entries.base.EntryBase.update()=Pyblosxom.entries.base.EntryBase-class.html#update,Method Pyblosxom.tools.VariableDict.update()=Pyblosxom.tools.VariableDict-class.html#update"><a title="Pyblosxom.entries.base.EntryBase.update
+Pyblosxom.tools.VariableDict.update" class="py-name" href="#" onclick="return doclink('link-29', 'update', 'link-29');">update</a></tt><tt class="py-op">(</tt><tt class="py-name">entrydict</tt><tt class="py-op">)</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_populated_data</tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+</div></div><a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line"><tt class="py-comment"># vim: tabstop=4 shiftwidth=4</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom (2.0)</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0beta1 on Sat Sep  8 10:48:19 2007
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

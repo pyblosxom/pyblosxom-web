@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>The Format of an Entry</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Writing Entries"
+HREF="c667.html"><LINK
+REL="PREVIOUS"
+TITLE="Writing Entries"
+HREF="c667.html"><LINK
+REL="NEXT"
+TITLE="Posting Date"
+HREF="x704.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c667.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. Writing Entries</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x704.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN678"
+>6.2. The Format of an Entry</A
+></H1
+><P
+>&#13;PyBlosxom entries consist of three parts: the title, the metadata, and
+then the body of the entry.  The first line is title of the entry.  Then
+comes the metadata of the entry (if any).  After the metadata comes the
+body of the entry.
+</P
+><P
+>&#13;The title consists of a single line of plain text.  You can have whatever
+characters you like in the title of your entry.  The title doesn't have
+to be the same as the entry file name.
+</P
+><P
+>&#13;The metadata section is between the title line and the body of the entry.
+It consists of a series of lines that start with the hash mark (#), then
+a metadata variable name, then the metadata variable value.
+</P
+><DIV
+CLASS="warning"
+><P
+></P
+><TABLE
+CLASS="warning"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/warning.gif"
+HSPACE="5"
+ALT="Warning"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+><B
+>don't store the mtime in metadata</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>&#13;    Unfortunately, you cannot store the mtime of your blog entry in the 
+    metadata of the entry itself.  The problem here is that we don't open
+    the file and parse it for every blog entry to figure out what to 
+    display.  By the time we've opened the file and parsed it to see the
+    metadata inside, we already know which blog entries to show and it's
+    too late to re-sort them.
+  </P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>&#13;The body of the entry is written in HTML and comprises the rest of the
+entry file.
+</P
+><P
+>&#13;Here's an example first post entry:
+</P
+><DIV
+CLASS="example"
+><A
+NAME="AEN688"
+></A
+><P
+><B
+>Example 6-1. first post</B
+></P
+><PRE
+CLASS="programlisting"
+>This is my first post!
+&#60;p&#62;
+  This is the body of the first post to my blog.
+&#60;/p&#62;
+</PRE
+></DIV
+><P
+>&#13;Here's a more complex example:
+</P
+><DIV
+CLASS="example"
+><A
+NAME="AEN692"
+></A
+><P
+><B
+>Example 6-2. more complex first post</B
+></P
+><PRE
+CLASS="programlisting"
+>The rain in Spain....
+&#60;p&#62;
+  The rain
+&#60;/p&#62;
+&#60;p align="center"&#62;
+  in Spain
+&#60;/p&#62;
+&#60;p align="right"&#62;
+  is &#60;font color="ff0000"&#62;mainly&#60;/font&#62; on the plain.
+&#60;/p&#62;
+</PRE
+></DIV
+><P
+>&#13;Here's an example of a post with metadata:
+</P
+><DIV
+CLASS="example"
+><A
+NAME="AEN696"
+></A
+><P
+><B
+>Example 6-3. first post with metadata</B
+></P
+><PRE
+CLASS="programlisting"
+>The rain in Spain....
+#mood bored
+#music The Doors - Greatest Hits Vol 1
+&#60;p&#62;
+  The rain
+&#60;/p&#62;
+&#60;p align="center"&#62;
+  in Spain
+&#60;/p&#62;
+&#60;p align="right"&#62;
+  is &#60;font color="ff0000"&#62;mainly&#60;/font&#62; on the plain.
+&#60;/p&#62;
+</PRE
+></DIV
+><P
+>&#13;The metadata variables here would be available in your story template.  
+So for the above example, the template variable <CODE
+CLASS="varname"
+>$mood</CODE
+> 
+would be filled in with <TT
+CLASS="literal"
+>bored</TT
+> and <CODE
+CLASS="varname"
+>$music</CODE
+> 
+would be filled in with <TT
+CLASS="literal"
+>The Doors - Greatest Hits Vol 1</TT
+>.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c667.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x704.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Writing Entries</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c667.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Posting Date</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

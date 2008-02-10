@@ -1,0 +1,1110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Callbacks</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="PyBlosxom Architecture"
+HREF="c1059.html"><LINK
+REL="PREVIOUS"
+TITLE="Lifecycle of the blosxom Renderer"
+HREF="x1160.html"><LINK
+REL="NEXT"
+TITLE="Entry Parsers"
+HREF="x1446.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1160.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 10. PyBlosxom Architecture</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1446.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN1181"
+>10.5. Callbacks</A
+></H1
+><P
+>&#13;Callbacks allow plugins to override behavior in PyBlosxom or provide
+additional behavior.  The callback mechanism actually encompasses a
+series of different functions.  Callbacks can act as handlers, as
+notifiers, and also as modifiers.
+</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1184"
+>10.5.1. Types of callbacks</A
+></H2
+><P
+>&#13;In the case of handler callbacks, PyBlosxom will query each plugin
+implementing the callback until one of the plugins returns that it
+has handled the callback.  At that point, execution of handling code
+stops.  If none of the plugins handle the callback, then PyBlosxom
+will run its default behavior code.
+</P
+><P
+>&#13;In the case of notifier callbacks, PyBlosxom will notify each
+plugin implementing the callback regardless of return values.
+</P
+><P
+>&#13;In the case of modifier callbacks, PyBlosxom will query each plugin
+implementing the callback passing in some input.  It takes the output
+from the callback function and passes that in as input to the next
+callback function.  In this way, each plugin has a chance to modify
+and transform the data.
+</P
+><P
+>&#13;There's no reason you can't implement a handler-type callback and use
+it for notification purposes--that's fine.  You should know that in the
+case of handler callbacks and modifier callbacks, the return value that
+your plugin gives will affect PyBlosxom's execution.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1190"
+>10.5.2. Callbacks that have blosxom equivalents</A
+></H2
+><P
+>&#13;There are a series of callbacks in PyBlosxom that have equivalents
+in blosxom 2.0.  The names are sometimes different and in most cases
+the arguments the PyBlosxom versions take are different than the blosxom
+2.0 versions.  Even so, the PyBlosxom versions serve the same purpose
+as the blosxom 2.0 versions.
+</P
+><P
+>&#13;This isn't very interesting unless you're trying to implement the
+functionality of a blosxom 2.0 plugin in Python for PyBlosxom.
+</P
+><P
+>&#13;The available blosxom renderer callbacks are:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>cb_head - corresponds to blosxom 2.0 head</P
+></LI
+><LI
+><P
+>cb_date_head - corresponds to blosxom 2.0 date</P
+></LI
+><LI
+><P
+>cb_story - corresponds to blosxom 2.0 story</P
+></LI
+><LI
+><P
+>cb_foot - corresponds to blosoxm 2.0 foot</P
+></LI
+></UL
+><P
+>&#13;Additionally, we have these lifecycle callbacks available:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>the blosxom 2.0 entries callback is handled by 
+cb_filelist</P
+></LI
+><LI
+><P
+>the blosxom 2.0 filter callback is handled by 
+cb_prepare</P
+></LI
+><LI
+><P
+>the blosxom 2.0 sort callback can sort of be handled by 
+cb_prepare depending on what you're trying to do</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1212"
+>10.5.3. cb_prepare</A
+></H2
+><P
+>&#13;The prepare callback is called in the default blosxom handler after 
+we've figured out what we're rendering and before we actually go to the
+renderer.
+</P
+><P
+>&#13;Plugins should implement cb_prepare to modify the data dict which 
+is in the Request.  Inside the data dict is entry_list
+(amongst other things) which holds the list of entries to be renderered 
+(in the order they will be rendered).
+</P
+><P
+>&#13;Functions that implement this callback will get an args dict
+containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>request - The Request object at the particular moment</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback can return whatever they want--it
+doesn't affect the callback chain.
+</P
+><P
+>&#13;Example of a cb_prepare function in a plugin:
+</P
+><DIV
+CLASS="example"
+><A
+NAME="AEN1222"
+></A
+><P
+><B
+>Example 10-1. Example of cb_prepare usage</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;def cb_prepare(args):
+    """
+    This plugin shows the number of entries we are going to render and
+    place the result in $countNoOfEntries.
+    """
+    request = args['request']
+    data = request.getData()
+    config = request.getConfiguration()
+
+    # Can anyone say Ternary? :)
+    IF = lambda a,b,c:(a() and [b()] or [c()])[0]
+
+    num_entry = config['num_entries']
+    entries = len(data['entry_list'])
+
+    data['countNoOfEntries'] = IF(num_entry &#62; entries, num_entry, entries)
+
+</PRE
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1225"
+>10.5.4. cb_logrequest</A
+></H2
+><P
+>&#13;The logrequest callback is used to notify plugins of the current 
+PyBlosxom request for the purposes of logging.
+</P
+><P
+>&#13;Functions that implement this callback will get an args dict
+containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>filename - a filename (typically a base filename)</P
+></LI
+><LI
+><P
+>return_code - A HTTP error code (e.g 200, 404, 304)</P
+></LI
+><LI
+><P
+>request - a Request object</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback can return whatever they want--it
+doesn't affect the callback chain.
+</P
+><P
+>&#13;cb_logrequest is called after rendering and will contain all the
+modifications to the Request object made by the plugins.
+</P
+><P
+>&#13;An example input args dict is like this::
+</P
+><DIV
+CLASS="example"
+><A
+NAME="AEN1239"
+></A
+><P
+><B
+>Example 10-2. Example of cb_logrequest argument dict</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;{'filename': filename, 'return_code': '200', 'request': Request()}
+</PRE
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1242"
+>10.5.5. cb_filelist</A
+></H2
+><P
+>&#13;The filelist callback allows plugins to generate the list of entries
+to be rendered.  Entries should be EntryBase derivatives--either
+by instantiating EntryBase, FileEntry, or creating your own
+EntryBase subclass.
+</P
+><P
+>&#13;Functions that implement this callback will get an args dict
+containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>request - the PyBlosxom Request</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback should return None if they
+don't plan on generating the entry list or a list of entries.
+if they do.  When a function returns None, the callback will continue
+to the next function to see if it will return a list of entries.
+When a function returns a list of entries, the callback will stop.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1250"
+>10.5.6. cb_filestat</A
+></H2
+><P
+>&#13;The filestat callback allows plugins to override the mtime of
+the entry.  One of the contributed plugins uses this to set the
+mtime to the time specified in the entry's filename.
+</P
+><P
+>&#13;Functions that implement this callback will get an args dict containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>filename - the filename of the entry</P
+></LI
+><LI
+><P
+>mtime - the result of an os.stat on the filename of the 
+entry</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback must return the input args
+dict whether or not they adjust anything in it.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1260"
+>10.5.7. cb_pathinfo</A
+></H2
+><P
+>&#13;The pathinfo callback allows plugins to parse the HTTP PATH_INFO
+item.  This item is stored in the http dict of the Request object.
+Functions would parse this as they desire, then set the following
+variables in the data dict of the Request object:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>bl_type - (dir|file)</P
+></LI
+><LI
+><P
+>pi_bl - typically the same as PATH_INFO</P
+></LI
+><LI
+><P
+>pi_yr - yyyy</P
+></LI
+><LI
+><P
+>pi_mo - (mm|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)</P
+></LI
+><LI
+><P
+>pi_da - dd</P
+></LI
+><LI
+><P
+>root_datadir - full path to the entry folder or entry file 
+on filesystem</P
+></LI
+><LI
+><P
+>flavour - The flavour gathered from the URL</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback will get an args dict containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>request - a Request object</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback should make the modifications
+to the data dict in place--no need to return anything.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1283"
+>10.5.8. cb_renderer</A
+></H2
+><P
+>&#13;The renderer callback allows plugins to specify a renderer to use by
+returning a renderer instance to use.  If no renderer is specified,
+we use the default blosxom renderer.
+</P
+><P
+>&#13;Functions that implement this callback will get an args dict
+containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>request - the PyBlosxom Request</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback should return None if they
+don't want to specify a renderer or the renderer object instanct
+if they do.  When a function returns a renderer instance, processing
+stops.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1291"
+>10.5.9. cb_entryparser</A
+></H2
+><P
+>&#13;The entryparser callback allows plugins to register the entryparsers
+they have.  Entry parsers are linked with a filename extension.  For
+example, the default blosxom text entry parser will be used for
+any file ending in ".txt".
+</P
+><P
+>&#13;Functions that implement this callback will get the entryparser
+dict consisting of file extension -&#62; entry parsing function pairs.
+</P
+><P
+>&#13;Functions that implement this callback should return the entryparser
+dict after modifying it.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1296"
+>10.5.10. cb_preformat</A
+></H2
+><P
+>&#13;The preformat callback acts in conjunction with the entryparser
+that handled the entry to do a two-pass formatting of the entry.
+</P
+><P
+>&#13;Functions that implement cb_preformat are text transformation tools.
+Once one of them returns a transformed entry, then we stop processing.
+</P
+><P
+>&#13;Functions that implement this callback will get an args dict
+containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>parser - a string that indicates whether a preformatter 
+should run</P
+></LI
+><LI
+><P
+>story - a list containing lines of text (with '\n' 
+included)</P
+></LI
+><LI
+><P
+>request - a Request object</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback should return None if they
+didn't modify the story or a single story string.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1309"
+>10.5.11. cb_postformat</A
+></H2
+><P
+>&#13;The postformat callback allows plugins to make further modifications
+to entry text.  It typically gets called after a preformatter by
+the entryparser.  It can also be used to add additional properties
+to entries.  The changes from postformat functions are saved in the
+cache (if the user has caching enabled).  As such, this shouldn't
+be used for dynamic data like comment counts.
+</P
+><P
+>&#13;Examples of usage:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>adding a word count property to the entry</P
+></LI
+><LI
+><P
+>using a macro replacement plugin (Radio Userland 
+glossary)</P
+></LI
+><LI
+><P
+>acronym expansion</P
+></LI
+><LI
+><P
+>a 'more' text processor</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback will get an args dict containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>entry_data - a dict that minimally contains a "title" and
+a "story"</P
+></LI
+><LI
+><P
+>request - a Request object</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback don't need to return 
+anything--modifications to the entry_data dict are done in place.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1329"
+>10.5.12. cb_start</A
+></H2
+><P
+>&#13;The start callback allows plugins to execute startup/initialization code.
+Use this callback for any setup code that your plugin needs, like:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>reading saved data from a file</P
+></LI
+><LI
+><P
+>checking to make sure configuration variables are set</P
+></LI
+><LI
+><P
+>allocating resources</P
+></LI
+></UL
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+><B
+>cb_start is different in PyBlosxom than in blosxom</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>&#13;    The cb_start callback is slightly different than in blosxom in 
+    that cb_start is called for every PyBlosxom request regardless of 
+    whether it's handled by the default blosxom handler.  In general,
+    it's better to delay allocating resources until you absolutely know 
+    you are going to use them.
+  </P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>&#13;Functions that implement this callback will get an args dict containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>request - a Request object</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback don't need to return 
+anything.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1347"
+>10.5.13. cb_end</A
+></H2
+><P
+>&#13;The start callback allows plugins to execute teardown/cleanup code,
+save any data that hasn't been saved, clean up temporary files,
+and otherwise return the system to a normal state.
+</P
+><P
+>&#13;Examples of usage:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>save data to a file</P
+></LI
+><LI
+><P
+>clean up any temporary files</P
+></LI
+></UL
+><P
+> 
+Functions that implement this callback will get an args dict containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>request - a Request object</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback don't need to return 
+anything.
+</P
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+><B
+>cb_end is different in PyBlosxom than in blosxom</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>&#13;    The cb_end callback is called for every PyBlosxom request regardless
+    of whether it's handled by the default blosxom handler.  This is slightly
+    different than blosxom.
+  </P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1364"
+>10.5.14. cb_head</A
+></H2
+><P
+>&#13;The head callback is called before a head flavour template is rendered.
+</P
+><P
+>    
+cb_head is called before the variables in the entry are substituted
+into the template.  This is the place to modify the head template based
+on the entry content.  You can also set variables on the entry that will
+be used by the cb_story or cb_foot templates.  You have access to 
+all the content variables via entry.
+</P
+><P
+>    
+Blosxom 2.0 calls this callback 'head'.
+</P
+><P
+>&#13;Functions that implement this callback will get an args dict containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>request - the Request object</P
+></LI
+><LI
+><P
+>renderer - the BlosxomRenderer that called the callback</P
+></LI
+><LI
+><P
+>entry - a EntryBase to be rendered</P
+></LI
+><LI
+><P
+>template - a string containing the flavour template to 
+be processed</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback must return the input args
+dict whether or not they adjust anything in it.
+</P
+><P
+>&#13;Example in which we add the number of entries being rendered
+to the $blog_title variable:
+</P
+><DIV
+CLASS="example"
+><A
+NAME="AEN1381"
+></A
+><P
+><B
+>Example 10-3. Example of cb_head usage</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;def cb_head(args):
+    request = args["request"]
+    config = request.getConfiguration()
+    data = request.getData()
+
+    num_entries = len(data.get("entry_list", []))
+    bt = config.get("blog_title", "")
+    config["blog_title"] = bt + ": %d entries" % num_entries
+
+    return args
+</PRE
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1384"
+>10.5.15. cb_date_head</A
+></H2
+><P
+>&#13;The date_head callback is called before a date_head flavour template
+is rendered.
+</P
+><P
+>&#13;cb_date_head is called before the variables in the entry are substituted
+into the template.  This is the place to modify the date_head template 
+based on the entry content.  You have access to all the content variables 
+via entry.
+</P
+><P
+> 
+Blosxom 2.0 calls this callback 'date'.
+</P
+><P
+>&#13;Functions that implement this callback will get an args dict containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>request - the Request object</P
+></LI
+><LI
+><P
+>renderer - the BlosxomRenderer that called the callback</P
+></LI
+><LI
+><P
+>entry - a EntryBase to be rendered</P
+></LI
+><LI
+><P
+>template - a string containing the flavour template to 
+be processed</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback must return the input args
+dict whether or not they adjust anything in it.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1400"
+>10.5.16. cb_story</A
+></H2
+><P
+>&#13;The story callback gets called before the entry is rendered.
+</P
+><P
+>&#13;The template used is typically the story template, but we allow 
+entries to override this if they have a "template" property.  If they 
+have the "template" property, then we'll use that template instead.
+</P
+><P
+>&#13;cb_story is called before the variables in the entry are substituted
+into the template.  This is the place to modify the story template based
+on the entry content.  You have access to all the content variables via 
+entry.
+</P
+><P
+>&#13;Blosxom 2.0 calls this callback 'story'.
+</P
+><P
+>&#13;Functions that implement this callback will get an args dict containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>request - the Request object</P
+></LI
+><LI
+><P
+>renderer - the BlosxomRenderer that called the callback</P
+></LI
+><LI
+><P
+>entry - a EntryBase to be rendered</P
+></LI
+><LI
+><P
+>template - a string containing the flavour template to 
+be processed</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback must return the input args
+dict whether or not they adjust anything in it.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1417"
+>10.5.17. cb_story_end</A
+></H2
+><P
+>&#13;The story_end callback is is called after the variables in the entry 
+are substituted into the template.  You have access to all the 
+content variables via entry.
+</P
+><P
+>    
+Functions that implement this callback will get an args dict containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>request - the Request object</P
+></LI
+><LI
+><P
+>renderer - the BlosxomRenderer that called the callback</P
+></LI
+><LI
+><P
+>entry - a EntryBase to be rendered</P
+></LI
+><LI
+><P
+>template - a string containing the flavour template to 
+be processed</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback must return the input args
+dict whether or not they adjust anything in it.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1431"
+>10.5.18. cb_foot</A
+></H2
+><P
+>&#13;The foot callback is called before the variables in the entry are 
+substituted into the foot template.  This is the place to modify the 
+foot template based on the entry content.  You have access to all the 
+content variables via entry.
+</P
+><P
+>&#13;Blosxom 2.0 calls this callback 'foot'.
+</P
+><P
+>&#13;Functions that implement this callback will get an args dict containing:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>request - the Request object</P
+></LI
+><LI
+><P
+>renderer - the BlosxomRenderer that called the callback</P
+></LI
+><LI
+><P
+>entry - a EntryBase to be rendered</P
+></LI
+><LI
+><P
+>template - a string containing the flavour template to 
+be processed</P
+></LI
+></UL
+><P
+>&#13;Functions that implement this callback must return the input args
+dict whether or not they adjust anything in it.
+</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1160.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1446.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Lifecycle of the blosxom Renderer</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c1059.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Entry Parsers</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

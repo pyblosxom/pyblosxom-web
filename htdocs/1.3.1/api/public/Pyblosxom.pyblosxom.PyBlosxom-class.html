@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Pyblosxom.pyblosxom.PyBlosxom</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          <a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom&nbsp;(1.3.1)</a>
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="Pyblosxom-module.html">Package&nbsp;Pyblosxom</a> ::
+        <a href="Pyblosxom.pyblosxom-module.html">Module&nbsp;pyblosxom</a> ::
+        Class&nbsp;PyBlosxom
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<a href="../private/Pyblosxom.pyblosxom.PyBlosxom-class.html">show&nbsp;private</a>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="Pyblosxom.pyblosxom.PyBlosxom-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class PyBlosxom</h2>
+
+<hr/>
+
+This is the main class for PyBlosxom functionality. It handles 
+initialization, defines default behavior, and also pushes the request 
+through all the steps until the output is rendered and we're 
+complete.
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.PyBlosxom-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>config</span>,
+          <span class=summary-sig-arg>environ</span>,
+          <span class=summary-sig-arg>data</span>)</span></code>
+<br />
+Sets configuration and environment.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.PyBlosxom-class.html#cleanup" class="summary-sig-name"><code>cleanup</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Cleanup everything.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <a href="Pyblosxom.pyblosxom.Request-class.html" 
+        class="link"><code>Request</code></a>
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.PyBlosxom-class.html#getRequest" class="summary-sig-name"><code>getRequest</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the <a href="Pyblosxom.pyblosxom.Request-class.html" 
+class="link"><code>Request</code></a> object.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <a href="Pyblosxom.pyblosxom.Response-class.html" 
+        class="link"><code>Response</code></a>
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.PyBlosxom-class.html#getResponse" class="summary-sig-name"><code>getResponse</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the <a href="Pyblosxom.pyblosxom.Response-class.html" 
+class="link"><code>Response</code></a> object which handles all output 
+related functionality.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.PyBlosxom-class.html#initialize" class="summary-sig-name"><code>initialize</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+The initialize step further initializes the Request by setting 
+additional information in the _data dict, registering plugins, and 
+entryparsers.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.PyBlosxom-class.html#run" class="summary-sig-name"><code>run</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>static</span>)</span></code>
+<br />
+Main loop for pyblosxom.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.PyBlosxom-class.html#runCallback" class="summary-sig-name"><code>runCallback</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>callback</span>)</span></code>
+<br />
+Generic method to run the engine for a specific callback</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.PyBlosxom-class.html#runStaticRenderer" class="summary-sig-name"><code>runStaticRenderer</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>incremental</span>)</span></code>
+<br />
+This will go through all possible things in the blog and statically 
+render everything to the &quot;static_dir&quot; specified in the config 
+file.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.PyBlosxom-class.html#testInstallation" class="summary-sig-name"><code>testInstallation</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Goes through and runs some basic tests of the installation to make 
+sure things are working.</td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="__init__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>config</span>,
+          <span class=sig-arg>environ</span>,
+          <span class=sig-arg>data</span>=<span class=sig-default>None</span>)</span>
+    <br /><i>(Constructor)</i>
+  </h3>
+  Sets configuration and environment. Creates the <a 
+  href="Pyblosxom.pyblosxom.Request-class.html" 
+  class="link"><code>Request</code></a> object.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>config</b></code> -
+         A dict containing the configuration variables.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      <dd><code><b>environ</b></code> -
+         A dict containing the environment variables.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      <dd><code><b>data</b></code> -
+         A dict containing data variables.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="cleanup"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">cleanup</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Cleanup everything. This should be called when Pyblosxom has done 
+  all its work. Right before exiting.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getRequest"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getRequest</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the <a href="Pyblosxom.pyblosxom.Request-class.html" 
+  class="link"><code>Request</code></a> object.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        the request object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="Pyblosxom.pyblosxom.Request-class.html" 
+        class="link"><code>Request</code></a>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getResponse"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getResponse</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the <a href="Pyblosxom.pyblosxom.Response-class.html" 
+  class="link"><code>Response</code></a> object which handles all output 
+  related functionality.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        the reponse object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="Pyblosxom.pyblosxom.Response-class.html" 
+        class="link"><code>Response</code></a>)</i>
+      </dd>
+    </dl>
+<p><b>See Also:</b> <a href="Pyblosxom.pyblosxom.Response-class.html" 
+class="link"><code>Response</code></a>
+</p>
+
+  </dd></dl>
+</td></tr></table>
+
+<a name="initialize"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">initialize</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  The initialize step further initializes the Request by setting 
+  additional information in the _data dict, registering plugins, and 
+  entryparsers.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="run"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">run</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>static</span>=<span class=sig-default>False</span>)</span>
+  </h3>
+  Main loop for pyblosxom. This method will run the handle callback to 
+  allow registered handlers to handle the request. If nothing handles the 
+  request, then we use the default_blosxom_handler.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="runCallback"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">runCallback</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>callback</span>=<span class=sig-default>'help'</span>)</span>
+  </h3>
+  Generic method to run the engine for a specific callback
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="runStaticRenderer"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">runStaticRenderer</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>incremental</span>=<span class=sig-default>0</span>)</span>
+  </h3>
+  <p>This will go through all possible things in the blog and statically 
+  render everything to the &quot;static_dir&quot; specified in the config 
+  file.</p>
+  This figures out all the possible path_info settings and calls 
+  self.run() a bazillion times saving each file.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>incremental</b></code> -
+         whether (1) or not (0) to incrementally render the pages. if 
+        we're incrementally rendering pages, then we render only the ones 
+        that have changed.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=boolean)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="testInstallation"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">testInstallation</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>Goes through and runs some basic tests of the installation to make 
+  sure things are working.</p>
+  FIXME - This could probably use some work. Maybe make this like 
+  MoinMoin's SystemInfo page?
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          <a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom&nbsp;(1.3.1)</a>
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Tue Feb  7 21:43:57 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

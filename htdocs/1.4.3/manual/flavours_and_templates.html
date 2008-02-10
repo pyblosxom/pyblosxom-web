@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>Flavours and Templates</title>
+<meta name="author" content="PyBlosxom Development Team" />
+<meta name="copyright" content="This document is distributed under the MIT license." />
+<link rel="stylesheet" href="manual_style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="flavours-and-templates">
+<h1 class="title">Flavours and Templates</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>PyBlosxom Development Team</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>flavours_and_templates.txt 1168 2007-12-11 16:33:55Z willhelm</td></tr>
+<tr><th class="docinfo-name">Copyright:</th>
+<td>This document is distributed under the MIT license.</td></tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#summary" id="id2">Summary</a></li>
+<li><a class="reference internal" href="#id1" id="id3">Flavours and Templates</a></li>
+<li><a class="reference internal" href="#where-to-put-your-flavour-files" id="id4">Where to Put Your Flavour Files</a></li>
+<li><a class="reference internal" href="#template-variables" id="id5">Template Variables</a><ul>
+<li><a class="reference internal" href="#url-encoding-and-escaping-of-template-variables" id="id6">URL Encoding and Escaping of Template Variables</a></li>
+<li><a class="reference internal" href="#variables-from-config-py" id="id7">Variables from config.py</a></li>
+<li><a class="reference internal" href="#calculated-template-variables" id="id8">Calculated Template Variables</a></li>
+<li><a class="reference internal" href="#template-variables-only-available-in-the-story-template" id="id9">Template Variables Only Available in the story Template</a></li>
+<li><a class="reference internal" href="#template-variables-from-plugins" id="id10">Template Variables from Plugins</a></li>
+<li><a class="reference internal" href="#template-variables-from-entry-metadata" id="id11">Template Variables from Entry Metadata</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#invoking-a-flavour" id="id12">Invoking a Flavour</a></li>
+<li><a class="reference internal" href="#order-of-operations-to-figure-out-which-flavour-to-use" id="id13">Order of Operations to Figure Out Which Flavour to Use</a></li>
+<li><a class="reference internal" href="#examples-of-templates" id="id14">Examples of Templates</a></li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h1><a class="toc-backref" href="#id2">Summary</a></h1>
+<p>PyBlosxom takes the data provided in the entries and by the plugins and
+transforms it into output using renderers.  Output can be in html, xhtml,
+xml, or anything else--anything that you could get back from a CGI
+script or web application.  The default renderer can be set in your
+config file like this:</p>
+<pre class="literal-block">
+py[&quot;renderer&quot;] = &quot;blosxom&quot;
+</pre>
+<p>PyBlosxom comes with two renderers: blosxom and debug.</p>
+<p>The debug renderer displays all the data in the various parts of the
+PyBlosxom Request object.  This is really helpful to see what variables
+are at your disposal and also to debug problems you might be having with
+plugins you've installed.</p>
+<p>The blosxom renderer renders entries just like Blosxom does.</p>
+<p>If you want your blog rendered using a different template system--say
+Cheetah or htmltmpl--implement a renderer that renders the output.  This
+can be done as a PyBlosxom plugin.  See the chapter on writing plugins
+for more information.</p>
+<p>The rest of this chapter talks about the various things you can do with
+the blosxom renderer which comes with PyBlosxom.</p>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id3">Flavours and Templates</a></h1>
+<p>The blosxom renderer uses the same template style that Blosxom uses.  As
+such, you can use most Blosxom flavour templates and only have to make some
+minor modifications.</p>
+<p>A flavour can be thought of as a theme or an output format.  For example,
+you could have an &quot;html&quot; flavour that renders the blog data in html format.
+You could have an &quot;xhtml&quot; flavour that renders the blog in a strict xhtml
+format.  You could have a &quot;happy-sunshine&quot; flavour that renders the blog
+in html format using a happy sunshiney look and feel.  You can have an
+&quot;rss&quot; flavour that renders the output in RSS 2.0 format with enclosures.
+So on and so forth.</p>
+<p>A flavour consists of a series of templates each of which is a part of
+the page that finally gets rendered.  The minimum set of templates are
+these:</p>
+<ul class="simple">
+<li><strong>content_type</strong> - holds the content type of the flavour</li>
+<li><strong>head</strong> - holds everything before all the entries</li>
+<li><strong>story</strong> - holds a single entry</li>
+<li><strong>foot</strong> - holds everything after all the entries</li>
+<li><strong>date_head</strong> - shows at the start of a date</li>
+<li><strong>date_foot</strong> - shows at the end of a date</li>
+</ul>
+<p>You can have other templates as well.  Many plugins require additional
+templates in order to work.</p>
+<p>The template files for a given flavour all have the same file extension which
+is the flavour's name.  For example, if you were using an &quot;html&quot; flavour,
+the flavour itself would be composed of the following files:</p>
+<ul class="simple">
+<li>content_type.html</li>
+<li>head.html</li>
+<li>story.html</li>
+<li>foot.html</li>
+<li>date_head.html</li>
+<li>date_foot.html</li>
+</ul>
+<p>If you want to create a &quot;joy&quot; flavour, you would have the following files:</p>
+<ul class="simple">
+<li>content_type.joy</li>
+<li>head.joy</li>
+<li>story.joy</li>
+<li>foot.joy</li>
+<li>date_head.joy</li>
+<li>date_foot.joy</li>
+</ul>
+<p>You can have as many flavours as you want in your blog.</p>
+<div class="warning">
+<p class="first admonition-title">Warning</p>
+<p>A warning about flavour names:</p>
+<p class="last">The one thing to be aware of is creating a flavour where the name is
+the same extension as file extensions of your blog entries.  For example,
+the default extension for pyblosxom blog entries is
+<tt class="docutils literal"><span class="pre">.txt</span></tt>.  Don't create a <strong>txt</strong> flavour.</p>
+</div>
+<p>PyBlosxom comes with a series of flavours: html, rss (RSS 0.9.1), rss20
+(RSS 2.0), and atom (Atom 1.0).  These flavours come as part of PyBlosxom
+and they will work out of the box with no modifications and no configuration
+changes.  Additionally, you can override all or portions of these flavours.
+We'll talk about this a little later.</p>
+<p>Additionally, there is a flavour registry on the PyBlosxom web-site
+(<a class="reference external" href="http://pyblosxom.sourceforge.net/">http://pyblosxom.sourceforge.net/</a>).  This is where you can submit flavours
+that you have created and see flavours other people have created and
+submitted.</p>
+</div>
+<div class="section" id="where-to-put-your-flavour-files">
+<h1><a class="toc-backref" href="#id4">Where to Put Your Flavour Files</a></h1>
+<p>If you want to override the existing flavours, add new flavours, or
+develop your own flavours, you should set the <tt class="docutils literal"><span class="pre">flavourdir</span></tt> property of
+your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.  I have this directory parallel to my datadir.
+In my flavourdir, I have flavour directories--one for each flavour in my
+blog:</p>
+<pre class="literal-block">
+home
+ |-- willg/
+    |-- myblog/
+       |-- entries/        &lt;-- my datadir
+       |  |-- content/        &lt;-- category
+       |  |-- dev/            &lt;-- category
+       |  |-- links/          &lt;-- category
+       |
+       |-- flavours/       &lt;-- my flavourdir
+          |-- html.flav/      &lt;-- defines the html flavour
+          |-- xml.flav/       &lt;-- defines the xml flavour
+          |-- links/          &lt;-- parallels the links category
+             |-- html.flav/   &lt;-- defines the html flavour for the
+                                  links category
+</pre>
+<p>In my flavourdir, I have two flavour directories <tt class="docutils literal"><span class="pre">html.flav</span></tt>
+and <tt class="docutils literal"><span class="pre">xml.flav</span></tt>.  The <tt class="docutils literal"><span class="pre">xml.flav</span></tt> is a copy of the <tt class="docutils literal"><span class="pre">atom.flav</span></tt> directory
+that comes with PyBlosxom.  I copied it so that I could use &quot;xml&quot; for the
+flavour name.  This isn't necessarily a wonderful idea, but it helped me
+upgrade my blog without disturbing planets and writing lots of <tt class="docutils literal"><span class="pre">.htaccess</span></tt>
+redirects and such.</p>
+<p>You'll notice there's an <tt class="docutils literal"><span class="pre">html.flav</span></tt> directory in the <tt class="docutils literal"><span class="pre">links</span></tt> directory.
+When someone is looking at items in the links directory, then PyBlosxom
+will use this html flavour.</p>
+<p>The order of overiding works like this:</p>
+<ol class="arabic simple">
+<li>PyBlosxom looks for flavour files that came with PyBlosxom</li>
+<li>PyBlosxom starts at the root of the flavourdir and looks for flavour
+files there.  If there are some, then these files override the files
+PyBlosxom has found so far.</li>
+<li>PyBlosxom iterates through category directories in the flavourdir if
+there are any that are parallel to the datadir and looks for flavour
+directories there.  If there are some, then those files override the
+files it has so far.</li>
+</ol>
+<p>This allows you to easily override specific templates in your blog
+(like the header or footer) depending on what category the user is looking
+at.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about the datadir and flavourdir:</p>
+<p class="last">PyBlosxom is backwards compatible with previous versions of
+PyBlosxom.  You can put your flavour files in your datadir.  You
+can also put your flavour files in the categories of your datadir.
+However you cannot have a flavourdir and put flavour files in your
+datadir--PyBlosxom will look at EITHER your datadir OR your
+flavourdir for flavour files.</p>
+</div>
+</div>
+<div class="section" id="template-variables">
+<h1><a class="toc-backref" href="#id5">Template Variables</a></h1>
+<p>This is the list of variables that are available to your templates.
+Additionally, plugins that you are using will add additional variables.</p>
+<p>To use a variable in a template, prefix the variable name with a $.
+For example, this would expand to the blog's title as a h2:</p>
+<pre class="literal-block">
+&lt;h2&gt;$title&lt;/h2&gt;
+</pre>
+<p>Additionally, you can wrap the variable name in parentheses so that PyBlosxom
+correctly identifies it and expands it:</p>
+<pre class="literal-block">
+&lt;h2&gt;$(title)&lt;/h2&gt;
+</pre>
+<p>This helps in situations where a natural delimiter (space, punctuation, ...)
+doesn't follow the variable.  So this won't work:</p>
+<pre class="literal-block">
+$urlindex.atom
+</pre>
+<p>but this will:</p>
+<pre class="literal-block">
+$(url)index.atom
+</pre>
+<p>To get a complete list of what variables are available in your blog, use
+the debug renderer by changing the renderer property in your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file to debug like this:</p>
+<pre class="literal-block">
+py[&quot;renderer&quot;] = &quot;debug&quot;
+</pre>
+<p>That will tell you all kinds of stuff about the data structures involved
+in the request.  Don't forget to change it back when you're done!</p>
+<div class="section" id="url-encoding-and-escaping-of-template-variables">
+<h2><a class="toc-backref" href="#id6">URL Encoding and Escaping of Template Variables</a></h2>
+<p>PyBlosxom versions 1.3 and later allows you to escape and URL encode
+any variables by adding <tt class="docutils literal"><span class="pre">_escaped</span></tt> or <tt class="docutils literal"><span class="pre">_urlencoded</span></tt> to the end of
+the variable name.</p>
+<p>For example, <tt class="docutils literal"><span class="pre">title_escaped</span></tt> is an escaped form of the title with
+' (single-quote) replaced with <tt class="docutils literal"><span class="pre">&amp;apos;</span></tt> and &quot; (double-quote) replaced
+with <tt class="docutils literal"><span class="pre">&amp;quot;</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">title_urlencoded</span></tt> is a URL encoded form of the title which uses
+the Python urllib.</p>
+</div>
+<div class="section" id="variables-from-config-py">
+<h2><a class="toc-backref" href="#id7">Variables from config.py</a></h2>
+<p>These template variables are available to all templates.  They come directly
+from your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">blog_description</span></tt></dt>
+<dd><p class="first">The description of the blog.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">blosxom</span> <span class="pre">with</span> <span class="pre">a</span> <span class="pre">touch</span> <span class="pre">of</span> <span class="pre">python</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">blog_title</span></tt></dt>
+<dd><p class="first">The title of the blog.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">RoughingIT</span> <span class="pre">-</span> <span class="pre">pyblosxom</span> <span class="pre">:</span> <span class="pre">/weblogs/tools/pyblosxom</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">blog_language</span></tt></dt>
+<dd><p class="first">The primary language of the blog.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">en</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">blog_encoding</span></tt></dt>
+<dd><p class="first">The encoding of the blog.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">iso8859-1</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">blog_author</span></tt></dt>
+<dd><p class="first">The author of the blog (probably you).</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">Joe</span> <span class="pre">Dirt</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">blog_email</span></tt></dt>
+<dd><p class="first">The email address of the author of the blog (feel free to obfuscate it).</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">joe</span> <span class="pre">at</span> <span class="pre">joe</span> <span class="pre">dot</span> <span class="pre">com</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">blog_icbm</span></tt></dt>
+<dd><p class="first">The geographical location of your blog as a latitude/longitude pair.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">37.448089,-122.159259</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">base_url</span></tt></dt>
+<dd><p class="first">This is the url up to and including the portion that kicks off PyBlosxom.
+If you do not specify this in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file, then it will be
+generated based on information your web-server passes PyBlosxom in
+the environment.</p>
+<p>Example: <tt class="docutils literal"><span class="pre">http://www.example.com/~joe/cgi-bin/pyblosxom.cgi</span></tt></p>
+<p>Example: <tt class="docutils literal"><span class="pre">http://www.example.com/~joe/blog</span></tt></p>
+<p class="last">You should use <tt class="docutils literal"><span class="pre">$base_url</span></tt> at the beginning of any links that should
+be handled by PyBlosxom.</p>
+</dd>
+</dl>
+<p>Additionally, any other properties you set in <tt class="docutils literal"><span class="pre">config.py</span></tt> are available
+in your templates.  If you wanted to create a <tt class="docutils literal"><span class="pre">blog_images</span></tt> variable
+holding the base url of the directory with all your images:</p>
+<pre class="literal-block">
+py[&quot;blog_images&quot;] = &quot;http://www.joe.com/~joe/images/&quot;
+</pre>
+<p>to your <tt class="docutils literal"><span class="pre">config.py</span></tt> file and it would be available in all your templates.</p>
+</div>
+<div class="section" id="calculated-template-variables">
+<h2><a class="toc-backref" href="#id8">Calculated Template Variables</a></h2>
+<p>These template variables are available to all templates as well.  They are
+calculated based on the request.</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">root_datadir</span></tt></dt>
+<dd><p class="first">The root datadir of this page?</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">/home/subtle/blosxom/weblogs/tools/pyblosxom</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">url</span></tt></dt>
+<dd><p class="first">The PATH_INFO to this page.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">pyblosxom/weblogs/tools/pyblosxom</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">flavour</span></tt></dt>
+<dd><p class="first">The flavour that's being used to render this page.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">html</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">latest_date</span></tt></dt>
+<dd><p class="first">The date of the most recent entry that is going to be rendered.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">Tue,</span> <span class="pre">15</span> <span class="pre">Nov</span> <span class="pre">2005</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">latest_w3cdate</span></tt></dt>
+<dd><p class="first">The date of the most recent entry that is going to be rendered in
+w3cdate format.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">2005-11-13T17:50:02Z</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">latest_rfc822date</span></tt></dt>
+<dd><p class="first">The date of the most recent entry that is going to show in RFC 822
+format.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">Sun,</span> <span class="pre">13</span> <span class="pre">Nov</span> <span class="pre">2005</span> <span class="pre">17:50</span> <span class="pre">GMT</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">pi_yr</span></tt></dt>
+<dd><p class="first">The four-digit year if the request indicated a year.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">2002</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">pi_mo</span></tt></dt>
+<dd><p class="first">The month name if the request indicated a month.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">Sep</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">pi_da</span></tt></dt>
+<dd><p class="first">The day of the month if the request indicated a day of the month.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">15</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">pi_bl</span></tt></dt>
+<dd><p class="first">The entry the user requested to see if the request indicated a specific
+entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">weblogs/tools/pyblosxom</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">pyblosxom_version</span></tt></dt>
+<dd><p class="first">The version number and release date of the pyblosxom version you're
+using.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">1.2</span> <span class="pre">3/25/2005</span></tt></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="template-variables-only-available-in-the-story-template">
+<h2><a class="toc-backref" href="#id9">Template Variables Only Available in the story Template</a></h2>
+<p>These template variables are only available in your story template.</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">title</span></tt></dt>
+<dd><p class="first">The title of the entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">First</span> <span class="pre">Post!</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">filename</span></tt></dt>
+<dd><p class="first">The absolute path of the file that the entry is stored in.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">/home/subtle/blosxom/weblogs/tools/pyblosxom/firstpost.txt</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">file_path</span></tt></dt>
+<dd><p class="first">The filename and extension of the file that the entry is stored in.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">firstpost.txt</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">fn</span></tt></dt>
+<dd><p class="first">The filename with no extension of the file that the entry is stored in.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">firstpost</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">absolute_path</span></tt></dt>
+<dd><p class="first">The category/path of the entry (from the perspective of the url).</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">weblogs/tools/pyblosxom</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">body</span></tt></dt>
+<dd><p class="first">The text of the entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">&lt;p&gt;This</span> <span class="pre">is</span> <span class="pre">my</span> <span class="pre">first</span> <span class="pre">post!&lt;/p&gt;</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">tb_id</span></tt></dt>
+<dd><p class="first">The trackback id of the entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">_firstpost</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">path</span></tt></dt>
+<dd><p class="first">The category/path of the entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">weblogs/tools/pyblosxom</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">yr</span></tt></dt>
+<dd><p class="first">The four-digit year of the mtime of this entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">2004</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">mo</span></tt></dt>
+<dd><p class="first">The month abbreviation of the mtime of this entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">Jan</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">mo_num</span></tt></dt>
+<dd><p class="first">The zero-padded month number of the mtime of this entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">01</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">ti</span></tt></dt>
+<dd><p class="first">The 24-hour hour and minute of the mtime of this entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">16:40</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">date</span></tt></dt>
+<dd><p class="first">The date string of the mtime of this entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">Sun,</span> <span class="pre">23</span> <span class="pre">May</span> <span class="pre">2004</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">w3cdate</span></tt></dt>
+<dd><p class="first">The date in w3cdate format of the mtime of this entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">2005-11-13T17:50:02Z</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">rfc822date</span></tt></dt>
+<dd><p class="first">The date in RFC 822 format of the mtime of this entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">Sun,</span> <span class="pre">13</span> <span class="pre">Nov</span> <span class="pre">2005</span> <span class="pre">17:50</span> <span class="pre">GMT</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">fulltime</span></tt></dt>
+<dd><p class="first">The date in YYYYMMDDHHMMSS format of the mtime of this entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">20040523164000</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">timetuple</span></tt></dt>
+<dd><p class="first">The time tuple (year, month, month-day, hour, minute, second, week-day,
+year-day, isdst) of the mtime of this entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">(2004,</span> <span class="pre">5,</span> <span class="pre">23,</span> <span class="pre">16,</span> <span class="pre">40,</span> <span class="pre">0,</span> <span class="pre">6,</span> <span class="pre">144,</span> <span class="pre">1)</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">mtime</span></tt></dt>
+<dd><p class="first">The mtime of this entry measured in seconds since the epoch.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">1085348400.0</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">dw</span></tt></dt>
+<dd><p class="first">The day of the week of the mtime of this entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">Sunday</span></tt></p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">da</span></tt></dt>
+<dd><p class="first">The day of the month of the mtime of this entry.</p>
+<p class="last">Example: <tt class="docutils literal"><span class="pre">23</span></tt></p>
+</dd>
+</dl>
+<p>Also, any variables created by plugins that are entry-centric and any
+variables that come from metadata in the entry are available.  See
+those sections in this document for more details.</p>
+</div>
+<div class="section" id="template-variables-from-plugins">
+<h2><a class="toc-backref" href="#id10">Template Variables from Plugins</a></h2>
+<p>Many plugins will create additional variables that are available in
+templates.  Refer to the documentation of the plugins that you have
+installed to see what variables are available and what they do.</p>
+</div>
+<div class="section" id="template-variables-from-entry-metadata">
+<h2><a class="toc-backref" href="#id11">Template Variables from Entry Metadata</a></h2>
+<p>You can add metadata to your entries on an individual basis and this
+metadata is available to your story templates.</p>
+<p>For example, if I had a blog entry like this:</p>
+<pre class="literal-block">
+First Post!
+#mood happy
+#music The Doors - Break on Through to the Other Side
+&lt;p&gt;
+  This is the first post to my new PyBlosxom blog.  I've
+  also got two metadata items in it which will be available
+  as variables!
+&lt;/p&gt;
+</pre>
+<p>You'll have two variables <tt class="docutils literal"><span class="pre">$mood</span></tt> and <tt class="docutils literal"><span class="pre">$music</span></tt> that will also
+be available in your story templates.</p>
+</div>
+</div>
+<div class="section" id="invoking-a-flavour">
+<h1><a class="toc-backref" href="#id12">Invoking a Flavour</a></h1>
+<p>The flavour for a given page is specified in the extension of the file
+being requested.  For example:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">http://some.blog.org/</span></tt> -
+brings up the index in the default flavour which is &quot;html&quot;</li>
+<li><tt class="docutils literal"><span class="pre">http://some.blog.org/index.html</span></tt> -
+brings up the index in the &quot;html&quot; flavour</li>
+<li><tt class="docutils literal"><span class="pre">http://some.blog.org/index.rss</span></tt> -
+brings up the index in the &quot;rss&quot; flavour (which by default is RSS 0.9.1)</li>
+<li><tt class="docutils literal"><span class="pre">http://some.blog.org/2004/05/index.joy</span></tt> -
+brings up the index for May of 2004 in the &quot;joy&quot; flavour</li>
+</ul>
+<p>Additionally, you can specify the flavour by adding a <tt class="docutils literal"><span class="pre">flav</span></tt>
+variable in the query-string.  Examples:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">http://some.blog.org/</span></tt> -
+brings up the index in the default flavour which is &quot;html&quot;</li>
+<li><tt class="docutils literal"><span class="pre">http://some.blog.org/?flav=rss</span></tt> -
+brings up the index in the &quot;rss&quot; flavour</li>
+<li><tt class="docutils literal"><span class="pre">http://some.blog.org/2004/05/index?flav=joy</span></tt> -
+brings up the index for May of 2004 in the &quot;joy&quot; flavour</li>
+</ul>
+<p>You can change the default flavour from <tt class="docutils literal"><span class="pre">html</span></tt> to some other flavour
+in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file with the <tt class="docutils literal"><span class="pre">default_flavour</span></tt> property:</p>
+<pre class="literal-block">
+py[&quot;default_flavour&quot;] = &quot;joy&quot;
+</pre>
+<p>Doing this will set the default flavour to use when the URI the user has
+used doesn't specify which flavour to use.  For example, if you do the
+above, then the following URIs will use the default flavour:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">http://www.joe.com/cgi-bin/pyblosxom.cgi/2005/03</span></tt> -
+uses the default flavour which is set to &quot;joy&quot;</li>
+<li><tt class="docutils literal"><span class="pre">http://www.joe.com/cgi-bin/pyblosxom.cgi/2005/03/?flav=html</span></tt> -
+uses the html flavour as specified by <tt class="docutils literal"><span class="pre">flav=</span></tt></li>
+</ul>
+</div>
+<div class="section" id="order-of-operations-to-figure-out-which-flavour-to-use">
+<h1><a class="toc-backref" href="#id13">Order of Operations to Figure Out Which Flavour to Use</a></h1>
+<p>We know that you can specify the default flavour to use in the <tt class="docutils literal"><span class="pre">config.py</span></tt>
+file with the <tt class="docutils literal"><span class="pre">default_flavour</span></tt> property.  We know that the user can
+specify which flavour to use by the file extension of the URI.  We also
+know that the user can specify which flavour to use by using the <tt class="docutils literal"><span class="pre">flav</span></tt>
+variable in the query string.</p>
+<p>The order in which we figure out which flavour to use is this:</p>
+<ol class="arabic simple">
+<li>look at the URI extension: if the URI has one, then we use that.</li>
+<li>look at the <tt class="docutils literal"><span class="pre">flav</span></tt> querystring variable: if there is one,
+then we use that.</li>
+<li>look at the <tt class="docutils literal"><span class="pre">default_flavour</span></tt> property in the <tt class="docutils literal"><span class="pre">config.py</span></tt>
+file: if there is one, then we use that.</li>
+<li>use the <tt class="docutils literal"><span class="pre">html</span></tt> flavour</li>
+</ol>
+</div>
+<div class="section" id="examples-of-templates">
+<h1><a class="toc-backref" href="#id14">Examples of Templates</a></h1>
+<p>For examples of templates and flavours, see the included flavours
+that come with your PyBlosxom installation.</p>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<a class="reference external" href="../flavours_and_templates.txt">View document source</a>.
+Generated on: 2008-01-10 23:43 UTC.
+Generated by <a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

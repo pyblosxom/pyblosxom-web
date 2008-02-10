@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Pyblosxom.entries.base.EntryBase</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          <a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom&nbsp;(1.3.1)</a>
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="Pyblosxom-module.html">Package&nbsp;Pyblosxom</a> ::
+        <a href="Pyblosxom.entries-module.html">Package&nbsp;entries</a> ::
+        <a href="Pyblosxom.entries.base-module.html">Module&nbsp;base</a> ::
+        Class&nbsp;EntryBase
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[show&nbsp;private&nbsp;|&nbsp;<a href="../public/Pyblosxom.entries.base.EntryBase-class.html">hide&nbsp;private</a>]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="Pyblosxom.entries.base.EntryBase-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class EntryBase</h2>
+
+<dl><dt><b>Known Subclasses:</b></dt>
+<dd>
+    <a href="Pyblosxom.entries.fileentry.FileEntry-class.html"><code>FileEntry</code></a></dd></dl>
+
+<hr/>
+
+EntryBase is the base class for all the Entry classes. Each instance 
+of an Entry class represents a single entry in the weblog, whether it 
+came from a file, or a database, or even somewhere off the InterWeeb.
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="__init__"></a><span class="summary-sig"><span class="summary-sig-name">__init__</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>request</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        varies
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#__getitem__" class="summary-sig-name"><code>__getitem__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>default</span>)</span></code>
+<br />
+Retrieves an item from this dict based on the key given.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns a friendly debuggable representation of self.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#__setitem__" class="summary-sig-name"><code>__setitem__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>value</span>)</span></code>
+<br />
+Sets the metadata[key] to the given value.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#addToCache" class="summary-sig-name"><code>addToCache</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>id</span>,
+          <span class=summary-sig-arg>data</span>)</span></code>
+<br />
+Over-writes the cached dict for key id with the data dict.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        varies
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#get" class="summary-sig-name"><code>get</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>default</span>)</span></code>
+<br />
+Retrieves an item from the internal dict based on the key given.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        string
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#getData" class="summary-sig-name"><code>getData</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the data string.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        dict or None
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#getFromCache" class="summary-sig-name"><code>getFromCache</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>id</span>)</span></code>
+<br />
+Retrieves information from the cache that pertains to this specific 
+id.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        string
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#getId" class="summary-sig-name"><code>getId</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+This should return an id that's unique enough for caching 
+purposes.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        varies
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#getMetadata" class="summary-sig-name"><code>getMetadata</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>default</span>)</span></code>
+<br />
+Returns a given piece of metadata.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        list of strings
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#getMetadataKeys" class="summary-sig-name"><code>getMetadataKeys</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the list of keys for which we have values in our stored 
+metadata.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        boolean
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#has_key" class="summary-sig-name"><code>has_key</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>)</span></code>
+<br />
+Returns whether a given key is in the metadata dict.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        list of varies
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#keys" class="summary-sig-name"><code>keys</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns a list of the keys that can be accessed through 
+__getitem__.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#setData" class="summary-sig-name"><code>setData</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>data</span>)</span></code>
+<br />
+Sets the data content for this entry.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#setMetadata" class="summary-sig-name"><code>setMetadata</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>value</span>)</span></code>
+<br />
+Sets a key/value pair in the metadata dict.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#setTime" class="summary-sig-name"><code>setTime</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>timeTuple</span>)</span></code>
+<br />
+This takes in a given time tuple and sets all the magic metadata 
+variables we have according to the items in the time tuple.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#update" class="summary-sig-name"><code>update</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>newdict</span>)</span></code>
+<br />
+Updates the contents in this entry with the contents in the dict.</td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="__getitem__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__getitem__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>key</span>,
+          <span class=sig-arg>default</span>=<span class=sig-default>None</span>)</span>
+    <br /><i>(Indexing operator)</i>
+  </h3>
+  <p>Retrieves an item from this dict based on the key given. If the item 
+  does not exist, then we return the default.</p>
+  <p>If the item is CONTENT_KEY then we return the result from 
+  self.getData().</p>
+  <p>This is just a convenience method for getData(...) and 
+  getMetadata(...).</p>
+  There's no reason to override this--override getData and getMetadata 
+  instead.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>key</b></code> -
+         the key being sought
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      <dd><code><b>default</b></code> -
+         the default to return if the key does not exist
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        the value of self._metadata.get(key, default) or 
+        self.getData()
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__repr__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__repr__</span>(<span class=sig-arg>self</span>)</span>
+    <br /><i>(Representation operator)</i>
+  </h3>
+  <p>Returns a friendly debuggable representation of self. Useful to know 
+  on what entry pyblosxom fails on you (though unlikely)</p>
+  returns: Identifiable representation of object rtype: string
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__setitem__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__setitem__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>key</span>,
+          <span class=sig-arg>value</span>)</span>
+    <br /><i>(Index assignment operator)</i>
+  </h3>
+  <p>Sets the metadata[key] to the given value.</p>
+  <p>This is a convenience method for setData(...) and 
+  setMetadata(...).</p>
+  There's no reason to override this. Override setData and 
+  setMetadata.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>key</b></code> -
+         the given key name
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      <dd><code><b>value</b></code> -
+         the given value
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="addToCache"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">addToCache</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>id</span>,
+          <span class=sig-arg>data</span>)</span>
+  </h3>
+  <p>Over-writes the cached dict for key id with the data dict.</p>
+  This is a helper method--call this to add data to the cache. Do not 
+  override it.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>id</b></code> -
+         a unique key for the information you're storing
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      <dd><code><b>data</b></code> -
+         the data to store--this should probably be a dict
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="get"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">get</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>key</span>,
+          <span class=sig-arg>default</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  <p>Retrieves an item from the internal dict based on the key given.</p>
+  <p>All this does is turn aroun and call __getitem__.</p>
+  There's no reason to override this--override getData and getMetadata 
+  instead.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>key</b></code> -
+         the key being sought
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      <dd><code><b>default</b></code> -
+         the default to return if the key does not exist
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        the value of self._metadata.get(key, default) or 
+        self.getData() (through __getitem__)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getData"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getData</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>Returns the data string. This method should be overridden to provide 
+  from pulling the data from other places.</p>
+  Override this.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        the data as a string
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getFromCache"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getFromCache</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>id</span>)</span>
+  </h3>
+  <p>Retrieves information from the cache that pertains to this specific 
+  id.</p>
+  This is a helper method--call this to get data from the cache. Do 
+  not override it.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>id</b></code> -
+         a unique key for the information you're retrieving
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        dict with the values or None if there's nothing for that 
+        id
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict or None)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getId"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getId</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>This should return an id that's unique enough for caching 
+  purposes.</p>
+  Override this.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        string id
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getMetadata"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getMetadata</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>key</span>,
+          <span class=sig-arg>default</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  <p>Returns a given piece of metadata.</p>
+  Override this.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>key</b></code> -
+         the key being sought
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      <dd><code><b>default</b></code> -
+         the default to return if the key does not exist
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        either the default (if the key did not exist) or the value of 
+        the key in the metadata dict
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getMetadataKeys"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getMetadataKeys</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>Returns the list of keys for which we have values in our stored 
+  metadata.</p>
+  <p>Note: This list gets modified later downstream. If you cache your 
+  list of metadata keys, then this method should return a copy of that 
+  list and not the list itself lest it get adjusted.</p>
+  Override this.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        list of metadata keys
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=list of strings)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="has_key"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">has_key</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>key</span>)</span>
+  </h3>
+  Returns whether a given key is in the metadata dict. If the key is 
+  the CONTENT_KEY, then we automatically return true.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>key</b></code> -
+         the key to check in the metadata dict for
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        whether (1) or not (0) the key exists
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=boolean)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="keys"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">keys</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns a list of the keys that can be accessed through 
+  __getitem__.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        list of key names
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=list of varies)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="setData"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">setData</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>data</span>)</span>
+  </h3>
+  <p>Sets the data content for this entry. If you are not creating the 
+  entry, then you have no right to set the data of the entry. Doing so 
+  could be hazardous depending on what EntryBase subclass you're dealing 
+  with.</p>
+  Override this.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>data</b></code> -
+         the data
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="setMetadata"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">setMetadata</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>key</span>,
+          <span class=sig-arg>value</span>)</span>
+  </h3>
+  <p>Sets a key/value pair in the metadata dict.</p>
+  Override this.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>key</b></code> -
+         the key string
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      <dd><code><b>value</b></code> -
+         the value string
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string (or an object with a __str__ method))</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="setTime"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">setTime</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>timeTuple</span>)</span>
+  </h3>
+  This takes in a given time tuple and sets all the magic metadata 
+  variables we have according to the items in the time tuple.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>timeTuple</b></code> -
+         the timetuple to use to set the data with--this is the same 
+        thing as the mtime/atime portions of an os.stat.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=tuple of ints)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="update"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">update</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>newdict</span>)</span>
+  </h3>
+  Updates the contents in this entry with the contents in the dict. It 
+  does so by calling setData and setMetadata.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>newdict</b></code> -
+         the dict we're updating this one with
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          <a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom&nbsp;(1.3.1)</a>
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Tue Feb  7 21:43:57 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

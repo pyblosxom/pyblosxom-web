@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Static Rendering</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="PREVIOUS"
+TITLE="Beyond Editors"
+HREF="x731.html"><LINK
+REL="NEXT"
+TITLE="Running Static Rendering"
+HREF="x847.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x731.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x847.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="staticrendering"
+></A
+>Chapter 7. Static Rendering</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>7.1. <A
+HREF="c797.html#AEN802"
+>Configuring Static Rendering</A
+></DT
+><DT
+>7.2. <A
+HREF="x847.html"
+>Running Static Rendering</A
+></DT
+><DT
+>7.3. <A
+HREF="x863.html"
+>Rendering Other URIs</A
+></DT
+><DT
+>7.4. <A
+HREF="x876.html"
+>Additional Thoughts</A
+></DT
+></DL
+></DIV
+><P
+>&#13;Static rendering made its first appearance in PyBlosxom 1.0. It fills the 
+functionality gap for people who want to use PyBlosxom, but don't have a 
+web-server with CGI installed, don't have CGI access, or can't run PyBlosxom 
+for one of a myriad of other reasons. Static rendering allows these people 
+to run PyBlosxom on their local machine, write blog entries, render their 
+entire site into HTML, and then use ftp or some other file copy method to 
+move the pages up to their static web-site.
+</P
+><P
+>&#13;PyBlosxom's static rendering allows for incremental building.  It can scan 
+your entries, figure out what's changed, and render only the pages that 
+need re-rendering.
+</P
+><P
+>&#13;Beyond that, it's not particularly sophisticated.
+</P
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN802"
+>7.1. Configuring Static Rendering</A
+></H1
+><P
+>&#13;These are the instructions for configuring static rendering in PyBlosxom.
+</P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>&#13;Install PyBlosxom. When you're copying the <TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+> 
+and <TT
+CLASS="filename"
+>config.py</TT
+> files, you don't have to put them in a 
+CGI directory--you can put them in any directory you have permissions in. 
+For example, I created a directory <TT
+CLASS="filename"
+>/home/joe/pyblosxom/</TT
+> 
+and put both files in there.
+</P
+></LI
+><LI
+><P
+>&#13;Add <CODE
+CLASS="varname"
+>static_dir</CODE
+> to your <TT
+CLASS="filename"
+>config.py</TT
+> file. 
+This is the directory we will save all the static output. The value of 
+<CODE
+CLASS="varname"
+>static_dir</CODE
+> should be a string representing the absolute 
+path of the output directory for static rendering.
+</P
+></LI
+><LI
+><P
+>&#13;Add <CODE
+CLASS="varname"
+>static_flavours</CODE
+> to your <TT
+CLASS="filename"
+>config.py</TT
+> file. 
+The value of <CODE
+CLASS="varname"
+>static_flavours</CODE
+> should be a list of strings 
+representing all the flavours that should be rendered.  This defaults to 
+<TT
+CLASS="literal"
+>[ "html" ]</TT
+>.
+</P
+></LI
+><LI
+><P
+>&#13;Add <CODE
+CLASS="varname"
+>static_monthnames</CODE
+> to your <TT
+CLASS="filename"
+>config.py</TT
+> file. 
+The value (either <TT
+CLASS="literal"
+>1</TT
+> or <TT
+CLASS="literal"
+>0</TT
+>) will determine if 
+you want month names (such as <TT
+CLASS="literal"
+>April</TT
+>) in the static pages. 
+</P
+></LI
+><LI
+><P
+>&#13;Add <CODE
+CLASS="varname"
+>static_monthnumbers</CODE
+> to your <TT
+CLASS="filename"
+>config.py</TT
+> 
+file. The value (either <TT
+CLASS="literal"
+>1</TT
+> or <TT
+CLASS="literal"
+>0</TT
+>) will 
+determine if you want month numbers (such as <TT
+CLASS="literal"
+>04</TT
+> for 
+<TT
+CLASS="literal"
+>April</TT
+>) in the static pages.
+</P
+></LI
+><LI
+><P
+>&#13;Set <CODE
+CLASS="varname"
+>base_url</CODE
+> in your <TT
+CLASS="filename"
+>config.py</TT
+> file 
+to the base url your blog will have.  For example, if your <CODE
+CLASS="varname"
+>static_dir</CODE
+> 
+were set to <TT
+CLASS="literal"
+>/home/joe/public_html</TT
+> and the url for that directory 
+were http://www.joe.com/~joe/ , then you probably want your <CODE
+CLASS="varname"
+>base_url</CODE
+> 
+to be http://www.joe.com/~joe/ . 
+</P
+></LI
+></OL
+><DIV
+CLASS="example"
+><A
+NAME="AEN844"
+></A
+><P
+><B
+>Example 7-1. static rendering configuration</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;py["static_dir"] = "/home/joe/public_html/static/"
+py["static_flavours"] = ["html"]
+py["static_monthnames"] = 0     # i do not want month names
+py["static_monthnumbers"] = 1   # i do want month numbers
+</PRE
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x731.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x847.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Beyond Editors</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Running Static Rendering</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

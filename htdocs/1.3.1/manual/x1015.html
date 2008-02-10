@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Installing the CommentAPI</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Comments"
+HREF="c888.html"><LINK
+REL="PREVIOUS"
+TITLE="Installing pingback"
+HREF="x1003.html"><LINK
+REL="NEXT"
+TITLE="Syndication"
+HREF="c1027.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1003.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Comments</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c1027.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN1015"
+>8.8. Installing the CommentAPI</A
+></H1
+><P
+>&#13;FIXME - this text probably needs fixing.
+</P
+><P
+>&#13;If you want support for the CommentAPI, copy 
+<TT
+CLASS="filename"
+>contrib/plugins/comments/plugins/commentAPI.py</TT
+> to your plugins 
+directory.  If you enable CommentAPI in your RSS feed (see below), some RSS 
+aggregator programs will provide an interface that can post a comment to a blog 
+entry.
+</P
+><P
+>&#13;For more information on CommentAPI, the specification is at
+http://wellformedweb.org/story/9 and a list of implementations is at
+http://wellformedweb.org/news/35 .
+</P
+><P
+>&#13;You need to have comments.py installed in order for this to work.
+</P
+><P
+>&#13;Then you must add the CommentAPI tags to your RSS 2.0 feed.  The best 
+way to do this is to add an XML namespace declaration to the rss
+element:
+</P
+><PRE
+CLASS="programlisting"
+>xmlns:wfw="http://wellformedweb.org/CommentAPI"
+</PRE
+><P
+>&#13;Then inside your RSS items you need to add a wfw:comment element:
+</P
+><PRE
+CLASS="programlisting"
+>&#60;wfw:comment&#62;###commentAPI###/$file_path&#60;/wfw:comment&#62;
+</PRE
+><P
+>    
+where ###commentAPI### is replaced by the URI that you mapped your
+CommentAPI.cgi to  At the moment, you need to map to a URI one level
+below the $base_url of the blog
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1003.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c1027.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Installing pingback</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c888.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Syndication</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,191 @@
+=============================
+Flavour/Template improvements
+=============================
+
+:Author: Will Guaraldi <will dot guaraldi at gmail dot com>
+:Originall published: FIXME
+:URL: http://pyblosxom.sourceforge.net/2.0/plans/templates.html
+
+
+History
+=======
+
+
+Summary
+=======
+
+This document covers new features and refactoring for the flavour/template
+system.
+
+The document also doubles as a specification for how the flavour/template
+system works.
+
+
+Flavours and templates
+======================
+
+The flavour/template system comes from Blosxom [1]_.  Much of the functionality
+is mirrored with some additional bits that are unique to PyBlosxom.
+
+A flavour is a group of templates that when pieced together with content
+produce the output for a response.  For example, the *html* flavour is
+a group of templates which create an HTML document; the *atom* flavour
+is a group of templates which create an Atom document; the *RSS* flavour
+is a group of templates which create an RSS document; ...
+
+A template is a single component of a flavour.
+
+A typical flavour consists of at least the following templates:
+
+* *content_type* - Defines the Content-Type of the document.
+* *head* - The head of the document--comes before all the stories.
+* *story* - This template is repeated for each entry.
+* *foot* - The foot of the document--comes after all the stories.
+
+PyBlosxom also has:
+
+* *date_head* - This comes before a group of entries written on the same day.
+* *date_foot* - This comes after a group of entries written on the same day.
+
+An example page could be laid out as such::
+
+   head            <html>
+                   <head>
+                      <title>My blog</title>
+                   </head>
+                   <body>
+                      <h1>My blog</h1>
+                      <p>
+                         ... a study in examples.
+                      </p>
+                      
+   date_head          <h2>September 8, 2007</h2>
+
+   story 3            <h3>Blunt my pencil is from blogging</h3>
+                      <p>
+                         Lo, it hath been 2 minutes since my last blog
+                         entry and my pencil (a.k.a. fingers) doth itch
+                         to write more!
+                      </p>
+                      <p>
+                         posted at: 15:04 | /mylife
+                      </p>
+
+   story 2            <h3>Lorem ipsum story 2</h3>
+                      <p>
+                         Forsooth I did write this here blog entry
+                         in my <i>mylife</i> category and it filled my 
+                         tummy with joy.
+                      </p>
+                      <p>
+                         posted at: 15:02 | /mylife
+                      </p>
+
+   date_foot          <hr noshade>
+
+   date_head          <h2>September 7, 2007</h2>
+
+   story 3            <h3>Look ma!  My first post!</h3>
+                      <p>
+                         Despite the difficulties in setting such a thing
+                         up, I have succeeded in the face of danger!  My
+                         blog is running and this is my first post!
+                      </p>
+                      <p>
+                         posted at: 18:28 | /myblog
+                      </p>
+
+   date_foot          <hr noshade>
+
+   foot               <p>
+                         This blog is licensed under a ridiculous license
+                         that only allows people who are between 15 and 19
+                         years of age to read it.  Take that old people!
+                      </p>
+                   </body>
+                   </html>
+
+
+Variables
+=========
+
+Inside the template is a bunch of text and a series of variables that
+are expanded when the template is used.  Variables start with a dollar
+sign (``$``) followed by the name of the variable.  For example, the
+variable for title would be::
+
+   $title
+
+Variables can be delimited by parentheses::
+
+   $(title)
+
+Variables can be "scoped"::
+
+   $foo::bar                           $(foo::bar)
+
+Variables can be function calls::
+
+   $foo()                              $(foo())
+   $foo(bar)                           $(foo(bar))
+   $foo(1, 2, 3, "a", "b", "c")        $(foo(1, 2, 3, "a", "b", "c"))
+
+Variables can be escaped::
+
+   $escape(title)                      $(escape(title))
+
+Escaping converts single quotes into ``&apos;`` and double quotes to 
+``&quot;`` .  
+
+Variables can be urlencoded::
+
+   $urlencode(title)                   $(urlencode(title))
+
+Urlencoding calls Python's ``urllib.quote`` function which:
+
+   "replaces special characters in **string** using the ``%xx`` escape.  
+   Letters, digits, and the characters ``_`` and ``-`` are never quoted."
+
+   From http://docs.python.org/lib/module-urllib.html
+
+
+.. Note::
+
+   Prior to 2.0, escaping was done by tacking on ``_escaped`` to the
+   end of the variable name.  For example::
+
+      $title_escaped
+
+   Urlencoding was done by tacking on ``_urlencoded`` to the end of
+   the variable name.  For example::
+
+      $title_urlencoded
+
+   These forms have been deprecated.
+
+
+Flavour discovery
+=================
+
+FIXME - talk about how flavours can be stored on the file system
+
+
+Flavour specification
+=====================
+
+FIXME - talk about how PyBlosxom figures out which flavour to use
+to render with
+
+
+Footnotes
+=========
+
+.. [1] Blosxom - http://www.blosxom.com/
+
+
+Discussion
+==========
+
+Discussion of this proposal is at:
+
+gmane.org (FIXME - fill in URL here)

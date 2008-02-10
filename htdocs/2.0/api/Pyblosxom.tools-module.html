@@ -1,0 +1,1618 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Pyblosxom.tools</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom (2.0)</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Pyblosxom-module.html">Package&nbsp;Pyblosxom</a> ::
+        Module&nbsp;tools
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Pyblosxom.tools-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module tools</h1><span class="codelink"><a href="Pyblosxom.tools-pysrc.html">source&nbsp;code</a></span><br /><br />
+<p>Utility module for functions that are useful to PyBlosxom and
+plugins.</p>
+<p>&#64;var month2num: A dict of literal months to its number format
+&#64;var num2month: A dict of number month format to its literal format
+&#64;var MONTHS: A list of valid literal and numeral months
+&#64;var VAR_REGEXP: Regular expression for detection and substituion of variables</p><br /><br />
+
+<!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Classes"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Pyblosxom.tools.VariableDict-class.html" class="summary-name">VariableDict</a><br />
+      Wraps around a standard dict allowing for escaped and urlencoding
+of internal data by tacking on a _urlencoded or a _escaped
+to the end of the key name.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Pyblosxom.tools.Stripper-class.html" class="summary-name">Stripper</a><br />
+      SGMLParser that removes HTML formatting code.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Pyblosxom.tools.Replacer-class.html" class="summary-name">Replacer</a><br />
+      Class for replacing variables in a template
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Pyblosxom.tools.LogFilter-class.html" class="summary-name">LogFilter</a><br />
+      Filters out messages from log-channels that are not listed in the
+log_filter config variable.
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#initialize" class="summary-sig-name">initialize</a>(<span class="summary-sig-arg">config</span>)</span><br />
+      Initializes the tools module.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#initialize">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#cleanup" class="summary-sig-name">cleanup</a>()</span><br />
+      Cleanup the tools module.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#cleanup">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#parse_args" class="summary-sig-name">parse_args</a>(<span class="summary-sig-arg">args</span>)</span><br />
+      Parses command line arguments into a hashmap of arg -&gt; value items.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#parse_args">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#escape_text" class="summary-sig-name">escape_text</a>(<span class="summary-sig-arg">s</span>)</span><br />
+      Takes in a string and escapes ' to &amp;apos; and &quot; to &amp;quot;.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#escape_text">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#urlencode_text" class="summary-sig-name">urlencode_text</a>(<span class="summary-sig-arg">s</span>)</span><br />
+      Calls urllib.quote on the string.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#urlencode_text">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#commasplit" class="summary-sig-name">commasplit</a>(<span class="summary-sig-arg">s</span>)</span><br />
+      Splits a string that contains strings by comma.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#commasplit">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#parse" class="summary-sig-name">parse</a>(<span class="summary-sig-arg">request</span>,
+        <span class="summary-sig-arg">encoding</span>,
+        <span class="summary-sig-arg">var_dict</span>,
+        <span class="summary-sig-arg">template</span>)</span><br />
+      This method parses the template passed in using L{Replacer} to expand
+template variables using values in the var_dict.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#parse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#walk" class="summary-sig-name">walk</a>(<span class="summary-sig-arg">request</span>,
+        <span class="summary-sig-arg">root</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">.</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">recurse</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">pattern</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">return_folders</span>=<span class="summary-sig-default">0</span>)</span><br />
+      This function walks a directory tree starting at a specified root folder,
+and returns a list of all of the files (and optionally folders) that match
+our pattern(s).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#walk">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#Walk" class="summary-sig-name">Walk</a>(<span class="summary-sig-arg">request</span>,
+        <span class="summary-sig-arg">root</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">.</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">recurse</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">pattern</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">return_folders</span>=<span class="summary-sig-default">0</span>)</span><br />
+      This function walks a directory tree starting at a specified root folder,
+and returns a list of all of the files (and optionally folders) that match
+our pattern(s).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#walk">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__walk_internal"></a><span class="summary-sig-name">__walk_internal</span>(<span class="summary-sig-arg">root</span>,
+        <span class="summary-sig-arg">recurse</span>,
+        <span class="summary-sig-arg">pattern</span>,
+        <span class="summary-sig-arg">ignorere</span>,
+        <span class="summary-sig-arg">return_folders</span>)</span><br />
+      Note: This is an internal function--don't use it and don't expect it to
+stay the same between PyBlosxom releases.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#__walk_internal">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#filestat" class="summary-sig-name">filestat</a>(<span class="summary-sig-arg">request</span>,
+        <span class="summary-sig-arg">filename</span>)</span><br />
+      Returns the filestat on a given file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#filestat">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#what_ext" class="summary-sig-name">what_ext</a>(<span class="summary-sig-arg">extensions</span>,
+        <span class="summary-sig-arg">filepath</span>)</span><br />
+      Takes in a filepath and a list of extensions and tries them all until
+it finds the first extension that works.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#what_ext">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#is_year" class="summary-sig-name">is_year</a>(<span class="summary-sig-arg">checks</span>)</span><br />
+      Checks to see if the string is likely to be a year or not.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#is_year">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#importname" class="summary-sig-name">importname</a>(<span class="summary-sig-arg">modulename</span>,
+        <span class="summary-sig-arg">name</span>)</span><br />
+      Imports modules for modules that can only be determined during
+runtime.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#importname">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#generateRandStr" class="summary-sig-name">generateRandStr</a>(<span class="summary-sig-arg">minlen</span>=<span class="summary-sig-default">5</span>,
+        <span class="summary-sig-arg">maxlen</span>=<span class="summary-sig-default">10</span>)</span><br />
+      Generate a random string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#generateRandStr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#passoriginal" class="summary-sig-name">passoriginal</a>(<span class="summary-sig-arg">x</span>,
+        <span class="summary-sig-arg">y</span>)</span><br />
+      mappingfunc for callbacks.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#passoriginal">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#neverdone" class="summary-sig-name">neverdone</a>(<span class="summary-sig-arg">x</span>)</span><br />
+      donefunc for callbacks.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#neverdone">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#run_callback" class="summary-sig-name">run_callback</a>(<span class="summary-sig-arg">chain</span>,
+        <span class="summary-sig-arg">input</span>,
+        <span class="summary-sig-arg">mappingfunc</span>=<span class="summary-sig-default">&lt;function passoriginal at 0x85048b4&gt;</span>,
+        <span class="summary-sig-arg">donefunc</span>=<span class="summary-sig-default">&lt;function neverdone at 0x85048ec&gt;</span>,
+        <span class="summary-sig-arg">defaultfunc</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Executes a callback chain on a given piece of data.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#run_callback">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#create_entry" class="summary-sig-name">create_entry</a>(<span class="summary-sig-arg">datadir</span>,
+        <span class="summary-sig-arg">category</span>,
+        <span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">mtime</span>,
+        <span class="summary-sig-arg">title</span>,
+        <span class="summary-sig-arg">metadata</span>,
+        <span class="summary-sig-arg">body</span>)</span><br />
+      Creates a new entry in the blog.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#create_entry">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#update_static_entry" class="summary-sig-name">update_static_entry</a>(<span class="summary-sig-arg">cdict</span>,
+        <span class="summary-sig-arg">entry_filename</span>)</span><br />
+      This is a utility function that allows plugins to easily update
+statically rendered entries without going through all the rigamarole.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#update_static_entry">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="render_url_statically"></a><span class="summary-sig-name">render_url_statically</span>(<span class="summary-sig-arg">cdict</span>,
+        <span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">q</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#render_url_statically">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#render_url" class="summary-sig-name">render_url</a>(<span class="summary-sig-arg">cdict</span>,
+        <span class="summary-sig-arg">pathinfo</span>,
+        <span class="summary-sig-arg">querystring</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span><br />
+      Takes a url and a querystring and renders the page that corresponds
+with that by creating a Request and a PyBlosxom object and passing
+it through.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#render_url">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#getLogger" class="summary-sig-name">getLogger</a>(<span class="summary-sig-arg">log_file</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Creates and retuns a log channel.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#getLogger">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#log_exception" class="summary-sig-name">log_exception</a>(<span class="summary-sig-arg">log_file</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Logs an exception to the given file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#log_exception">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Pyblosxom.tools-module.html#log_caller" class="summary-sig-name">log_caller</a>(<span class="summary-sig-arg">frame_num</span>=<span class="summary-sig-default">1</span>,
+        <span class="summary-sig-arg">log_file</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Logs some info about the calling function/method.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#log_caller">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="lock"></a><span class="summary-sig-name">lock</span>(<span class="summary-sig-arg">f</span>,
+        <span class="summary-sig-arg">flags</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#lock">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="unlock"></a><span class="summary-sig-name">unlock</span>(<span class="summary-sig-arg">f</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Pyblosxom.tools-pysrc.html#unlock">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__revision__"></a><span class="summary-name">__revision__</span> = <code title="'$Revision: 1114 $'"><code class="variable-quote">'</code><code class="variable-string">$Revision: 1114 $</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="month2num"></a><span class="summary-name">month2num</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="num2month"></a><span class="summary-name">num2month</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="MONTHS"></a><span class="summary-name">MONTHS</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="Pyblosxom.tools-module.html#VAR_REGEXP" class="summary-name">VAR_REGEXP</a> = <code title="re.compile(r'(?x)(?&lt;!\\)\$((?:\w|-|::\w)+(?:\(.*?(?&lt;!\\)\))?|\((?:\w|-\
+|::\w)+(?:\(.*?(?&lt;!\\)\))?\))')">re.compile(r'<code class="re-flags">(?x)</code><code class="re-group">(?&lt;!</code>\\<code class="re-group">)</code>\$<code class="re-group">(</code><code class="re-group">(?:</code>\w<code class="re-op">|</code>-<code class="re-op">|</code>::\w<code class="re-group">)</code><code class="re-op">+</code><code class="re-group">(?:</code>\(.<code class="re-op">*?</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_config"></a><span class="summary-name">_config</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="QUOTES"></a><span class="summary-name">QUOTES</span> = <code title="{'&quot;': '&amp;quot;', '\'': '&amp;apos;'}"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">&quot;</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">&amp;quot;</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">\'</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">&amp;apos;</code><code class="variable-quote">'</code><code class="variable-group">}</code></code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_use_custom_logger"></a><span class="summary-name">_use_custom_logger</span> = <code title="False">False</code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_loghandler_registry"></a><span class="summary-name">_loghandler_registry</span> = <code title="{}"><code class="variable-group">{</code><code class="variable-group">}</code></code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__overlapped"></a><span class="summary-name">__overlapped</span> = <code title="pywintypes.OVERLAPPED()">pywintypes.OVERLAPPED()</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="LOCK_EX"></a><span class="summary-name">LOCK_EX</span> = <code title="2">2</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="LOCK_SH"></a><span class="summary-name">LOCK_SH</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="LOCK_NB"></a><span class="summary-name">LOCK_NB</span> = <code title="4">4</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="initialize"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">initialize</span>(<span class="sig-arg">config</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#initialize">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Initializes the tools module.</p>
+<p>This gives the module a chance to use configuration from the pyblosxom
+config.py file.</p>
+<p>This should be called from Pyblosxom.pyblosxom.PyBlosxom.initialize.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="cleanup"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cleanup</span>()</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#cleanup">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Cleanup the tools module.</p>
+<p>This should be called from Pyblosxom.pyblosxom.PyBlosxom.cleanup.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="parse_args"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">parse_args</span>(<span class="sig-arg">args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#parse_args">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Parses command line arguments into a hashmap of arg -&gt; value items.</p>
+<p># FIXME - remove this and use optparse instead</p>
+<p>&#64;param args: the list of command-line arguments
+&#64;type  args: list of strings</p>
+<p>&#64;return: list of tuples of (arg, value) pairings
+&#64;rtype: list of tuples of (string, string)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="escape_text"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">escape_text</span>(<span class="sig-arg">s</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#escape_text">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Takes in a string and escapes ' to &amp;apos; and &quot; to &amp;quot;.</p>
+<p>Note: if s is None, then we return None.</p>
+<p>FIXME - add doctests here.</p>
+<p>&#64;param s: the input string to escape
+&#64;type s: string</p>
+<p>&#64;returns: the escaped string
+&#64;rtype: string</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="urlencode_text"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">urlencode_text</span>(<span class="sig-arg">s</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#urlencode_text">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Calls urllib.quote on the string.</p>
+<p>Note: if s is None, then we return None.</p>
+<p>FIXME - add doctests here.</p>
+<p>&#64;param s: the string to be urlencoded.
+&#64;type s:  string</p>
+<p>&#64;returns: the urlencoded string
+&#64;rtype: string</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="commasplit"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">commasplit</span>(<span class="sig-arg">s</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#commasplit">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Splits a string that contains strings by comma.  This is
+more involved than just an s.split(&quot;,&quot;) because this handles
+commas in strings correctly.</p>
+<p>Note: commasplit doesn't remove extranneous spaces.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>tools.commasplit(None)
+<span class="py-output">[]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>tools.commasplit(<span class="py-string">&quot;&quot;</span>)
+<span class="py-output">[&quot;&quot;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>tools.commasplit(<span class="py-string">&quot;a&quot;</span>)
+<span class="py-output">[&quot;a&quot;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>tools.commasplit(<span class="py-string">&quot;a, b, c&quot;</span>)
+<span class="py-output">[&quot;a&quot;, &quot; b&quot;, &quot; c&quot;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>tools.commasplit(<span class="py-string">&quot;'a', 'b, c'&quot;</span>)
+<span class="py-output">[&quot;a&quot;, &quot; 'b, c'&quot;]</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>tools.commasplit(<span class="py-string">&quot;'a', &quot;</span>b, c<span class="py-string">&quot;&quot;</span>)
+<span class="py-output">[&quot;a&quot;, &quot; &quot;b, c&quot;&quot;]</span></pre>
+<p>&#64;param s: the string to split
+&#64;type  s: string</p>
+<p>&#64;returns: list of strings</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="parse"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">parse</span>(<span class="sig-arg">request</span>,
+        <span class="sig-arg">encoding</span>,
+        <span class="sig-arg">var_dict</span>,
+        <span class="sig-arg">template</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#parse">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>This method parses the template passed in using L{Replacer} to expand
+template variables using values in the var_dict.</p>
+<p>Originally based on OPAGCGI, but mostly re-written.</p>
+<p>&#64;param request: the Request object
+&#64;type  request: Request</p>
+<p>&#64;param encoding: the encoding to use
+&#64;type  encoding: string</p>
+<p>&#64;param var_dict: The name value pair list containing variable replacements
+&#64;type  var_dict: dict</p>
+<dl class="rst-docutils">
+<dt>&#64;param template: A template file with placeholders for variable</dt>
+<dd>replacements</dd>
+</dl>
+<p>&#64;type  template: string</p>
+<p>&#64;returns: Substituted template
+&#64;rtype: string</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="walk"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">walk</span>(<span class="sig-arg">request</span>,
+        <span class="sig-arg">root</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">.</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">recurse</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">pattern</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">return_folders</span>=<span class="sig-default">0</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#walk">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>This function walks a directory tree starting at a specified root folder,
+and returns a list of all of the files (and optionally folders) that match
+our pattern(s). Taken from the online Python Cookbook and modified to own
+needs.</p>
+<p>It will look at the config &quot;ignore_directories&quot; for a list of
+directories to ignore.  It uses a regexp that joins all the things
+you list.  So the following:</p>
+<pre class="rst-literal-block">
+config.py[&quot;ignore_directories&quot;] = [&quot;CVS&quot;, &quot;dev/pyblosxom&quot;]
+</pre>
+<p>turns into the regexp:</p>
+<pre class="rst-literal-block">
+.*?(CVS|dev/pyblosxom)$
+</pre>
+<p>It will also skip all directories that start with a period.</p>
+<p>&#64;param request: the Request object
+&#64;type  request: Request</p>
+<p>&#64;param root: Starting point to walk from
+&#64;type root: string</p>
+<dl class="rst-docutils">
+<dt>&#64;param recurse: Depth of recursion,</dt>
+<dd><ul class="rst-first rst-last rst-simple">
+<li>0: All the way</li>
+<li>1: Just this level</li>
+<li>I{n}: I{n} depth of recursion</li>
+</ul>
+</dd>
+</dl>
+<p>&#64;type recurse: integer</p>
+<p>&#64;param pattern: A C{re.compile}'d object
+&#64;type pattern: object</p>
+<p>&#64;param return_folders: If true, just return list of folders
+&#64;type return_folders: boolean</p>
+<p>&#64;returns: A list of file paths
+&#64;rtype: list</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="Walk"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">Walk</span>(<span class="sig-arg">request</span>,
+        <span class="sig-arg">root</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">.</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">recurse</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">pattern</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">return_folders</span>=<span class="sig-default">0</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#walk">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>This function walks a directory tree starting at a specified root folder,
+and returns a list of all of the files (and optionally folders) that match
+our pattern(s). Taken from the online Python Cookbook and modified to own
+needs.</p>
+<p>It will look at the config &quot;ignore_directories&quot; for a list of
+directories to ignore.  It uses a regexp that joins all the things
+you list.  So the following:</p>
+<pre class="rst-rst-literal-block rst-literal-block">
+config.py[&quot;ignore_directories&quot;] = [&quot;CVS&quot;, &quot;dev/pyblosxom&quot;]
+</pre>
+<p>turns into the regexp:</p>
+<pre class="rst-rst-literal-block rst-literal-block">
+.*?(CVS|dev/pyblosxom)$
+</pre>
+<p>It will also skip all directories that start with a period.</p>
+<p>&#64;param request: the Request object
+&#64;type  request: Request</p>
+<p>&#64;param root: Starting point to walk from
+&#64;type root: string</p>
+<dl class="rst-rst-docutils rst-docutils">
+<dt>&#64;param recurse: Depth of recursion,</dt>
+<dd><ul class="rst-rst-first rst-rst-last rst-rst-simple rst-first rst-last rst-simple">
+<li><p class="rst-first rst-first">0: All the way</p>
+</li>
+<li><p class="rst-first rst-first">1: Just this level</p>
+</li>
+<li><p class="rst-first rst-first">I{n}: I{n} depth of recursion</p>
+</li>
+</ul>
+</dd>
+</dl>
+<p>&#64;type recurse: integer</p>
+<p>&#64;param pattern: A C{re.compile}'d object
+&#64;type pattern: object</p>
+<p>&#64;param return_folders: If true, just return list of folders
+&#64;type return_folders: boolean</p>
+<p>&#64;returns: A list of file paths
+&#64;rtype: list</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="filestat"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">filestat</span>(<span class="sig-arg">request</span>,
+        <span class="sig-arg">filename</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#filestat">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Returns the filestat on a given file.  We store the filestat
+in case we've already retrieved it this time.</p>
+<p>&#64;param request: the Pyblosxom Request object
+&#64;type  request: Request</p>
+<p>&#64;param filename: the name of the file to stat
+&#64;type  filename: string</p>
+<p>&#64;returns: the mtime of the file (same as returned by time.localtime(...))
+&#64;rtype: tuple of 9 ints</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="what_ext"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">what_ext</span>(<span class="sig-arg">extensions</span>,
+        <span class="sig-arg">filepath</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#what_ext">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Takes in a filepath and a list of extensions and tries them all until
+it finds the first extension that works.</p>
+<p>&#64;param extensions: the list of extensions to test
+&#64;type  extensions: list of strings</p>
+<p>&#64;param filepath: the complete file path (minus the extension) to test
+&#64;type  filepath: string</p>
+<p>&#64;return: the extension that was successful or None
+&#64;rtype: string</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_year"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_year</span>(<span class="sig-arg">checks</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#is_year">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Checks to see if the string is likely to be a year or not.  In order to
+be considered to be a year, it must pass the following criteria:</p>
+<blockquote>
+<ol class="rst-arabic simple">
+<li>four digits</li>
+<li>first two digits are either 19 or 20.</li>
+</ol>
+</blockquote>
+<p>&#64;param checks: the string to check for &quot;year-hood&quot;
+&#64;type  checks: string</p>
+<p>&#64;return: 1 if checks is likely to be a year or 0 if it is not
+&#64;rtype: boolean</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="importname"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">importname</span>(<span class="sig-arg">modulename</span>,
+        <span class="sig-arg">name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#importname">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Imports modules for modules that can only be determined during
+runtime.</p>
+<p>&#64;param modulename: The base name of the module to import from
+&#64;type modulename: string</p>
+<p>&#64;param name: The name of the module to import from the modulename
+&#64;type name: string</p>
+<dl class="rst-docutils">
+<dt>&#64;returns: If successful, returns an imported object reference, else</dt>
+<dd>C{None}</dd>
+</dl>
+<p>&#64;rtype: object</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="generateRandStr"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">generateRandStr</span>(<span class="sig-arg">minlen</span>=<span class="sig-default">5</span>,
+        <span class="sig-arg">maxlen</span>=<span class="sig-default">10</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#generateRandStr">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Generate a random string</p>
+<p>Tool to generate a random string between C{minlen} to C{maxlen}
+characters.</p>
+<p>&#64;param minlen: The minimum length the string should be
+&#64;type minlen: integer</p>
+<p>&#64;param maxlen: The maximum length the string could be
+&#64;type maxlen: integer</p>
+<p>&#64;returns: A string containing random characters
+&#64;rtype: string</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="passoriginal"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">passoriginal</span>(<span class="sig-arg">x</span>,
+        <span class="sig-arg">y</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#passoriginal">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>mappingfunc for callbacks.</p>
+<p>The mappingfunc takes the original args and the return value
+of the last func and returns the original args.  Thus every
+function sees the original args dict rather than the mutated
+args dict.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="neverdone"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">neverdone</span>(<span class="sig-arg">x</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#neverdone">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>donefunc for callbacks.</p>
+<p>This causes the callback to poll all functions in the list.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="run_callback"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">run_callback</span>(<span class="sig-arg">chain</span>,
+        <span class="sig-arg">input</span>,
+        <span class="sig-arg">mappingfunc</span>=<span class="sig-default">&lt;function passoriginal at 0x85048b4&gt;</span>,
+        <span class="sig-arg">donefunc</span>=<span class="sig-default">&lt;function neverdone at 0x85048ec&gt;</span>,
+        <span class="sig-arg">defaultfunc</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#run_callback">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Executes a callback chain on a given piece of data.
+passed in is a dict of name/value pairs.  Consult the documentation
+for the specific callback chain you're executing.</p>
+<p>Callback chains should conform to their documented behavior.
+This function allows us to do transforms on data, handling data,
+and also callbacks.</p>
+<p>The difference in behavior is affected by the mappingfunc passed
+in which converts the output of a given function in the chain
+to the input for the next function.</p>
+<p>If this is confusing, read through the code for this function.</p>
+<p>&#64;param chain: the callback chain to run
+&#64;type  chain: string</p>
+<dl class="rst-docutils">
+<dt>&#64;param input: data is a dict filled with name/value pairs--refer</dt>
+<dd>to the callback chain documentation for what's in the data
+dict.</dd>
+</dl>
+<p>&#64;type  input: dict</p>
+<dl class="rst-docutils">
+<dt>&#64;param mappingfunc: the function that maps output arguments</dt>
+<dd>to input arguments for the next iteration.  It must take
+two arguments: the original dict and the return from the
+previous function.  It defaults to returning the original
+dict.</dd>
+</dl>
+<p>&#64;type  mappingfunc: function</p>
+<dl class="rst-docutils">
+<dt>&#64;param donefunc: this function tests whether we're done doing</dt>
+<dd>what we're doing.  This function takes as input the output
+of the most recent iteration.  If this function returns
+true (1) then we'll drop out of the loop.  For example,
+if you wanted a callback to stop running when one of the
+registered functions returned a 1, then you would pass in:
+donefunc=lambda x:x .</dd>
+</dl>
+<p>&#64;type  donefunc: function</p>
+<dl class="rst-docutils">
+<dt>&#64;param defaultfunc: if this is set and we finish going through all</dt>
+<dd>the functions in the chain and none of them have returned something
+that satisfies the donefunc, then we'll execute the defaultfunc
+with the latest version of the input dict.</dd>
+</dl>
+<p>&#64;type  defaultfunc: function</p>
+<p>&#64;returns: the transformed dict
+&#64;rtype: dict</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="create_entry"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">create_entry</span>(<span class="sig-arg">datadir</span>,
+        <span class="sig-arg">category</span>,
+        <span class="sig-arg">filename</span>,
+        <span class="sig-arg">mtime</span>,
+        <span class="sig-arg">title</span>,
+        <span class="sig-arg">metadata</span>,
+        <span class="sig-arg">body</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#create_entry">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Creates a new entry in the blog.</p>
+<p>This is primarily used by the testing system, but it could be
+used by scripts and other tools.</p>
+<dl class="rst-docutils">
+<dt>&#64;param datadir: the directory of the datadir where the blog</dt>
+<dd>entries are stored.</dd>
+</dl>
+<p>&#64;type  datadir: string</p>
+<p>&#64;param category: the category of the entry.
+&#64;type  category: string</p>
+<p>&#64;param filename: the name of the blog entry (filename and extension).
+&#64;type  filename: string</p>
+<p>&#64;param mtime: the mtime for the entry (seconds since the epoch).
+&#64;type  mtime: float</p>
+<p>&#64;param title: the title for the entry.
+&#64;type  title: string</p>
+<p>&#64;param metadata: any metadata for this entry.
+&#64;type  metadata: dict</p>
+<p>&#64;param body: the content of the entry.
+&#64;type  body: string</p>
+<dl class="rst-docutils">
+<dt>&#64;raises IOError: if the datadir + category directory exists, but isn't</dt>
+<dd>a directory.</dd>
+</dl>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="update_static_entry"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">update_static_entry</span>(<span class="sig-arg">cdict</span>,
+        <span class="sig-arg">entry_filename</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#update_static_entry">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>This is a utility function that allows plugins to easily update
+statically rendered entries without going through all the rigamarole.</p>
+<p>First we figure out whether this blog is set up for static rendering.
+If not, then we return--no harm done.</p>
+<p>If we are, then we call render_url for each static_flavour of the entry
+and then for each static_flavour of the index page.</p>
+<p>&#64;param cdict: the config.py dict
+&#64;type  cdict: dict</p>
+<p>&#64;param entry_filename: the filename of the entry (ex. /movies/xmen2)
+&#64;type  entry_filename: string</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="render_url"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">render_url</span>(<span class="sig-arg">cdict</span>,
+        <span class="sig-arg">pathinfo</span>,
+        <span class="sig-arg">querystring</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#render_url">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Takes a url and a querystring and renders the page that corresponds
+with that by creating a Request and a PyBlosxom object and passing
+it through.  It then returns the resulting Response.</p>
+<p>&#64;param cdict: the config.py dict
+&#64;type  cdict: dict</p>
+<p>&#64;param pathinfo: the path_info string.  ex: /dev/pyblosxom/firstpost.html
+&#64;type  pathinfo: string</p>
+<p>&#64;param querystring: the querystring (if any).  ex: debug=yes
+&#64;type  querystring: string</p>
+<p>&#64;returns: Response</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getLogger"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getLogger</span>(<span class="sig-arg">log_file</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#getLogger">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <pre class="literalblock">
+
+Creates and retuns a log channel.
+If no log_file is given the system-wide logfile as defined in config.py
+is used. If a log_file is given that's where the created logger logs to.
+
+@param log_file: optional, the file to log to.
+@type log_file: C{str}
+
+@return: a log channel (Logger instance)
+@rtype: L{logging.Logger} for Python &gt;=2.3, 
+        L{Pyblosxom._logging.Logger} for Python &lt;2.3
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="log_exception"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">log_exception</span>(<span class="sig-arg">log_file</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#log_exception">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Logs an exception to the given file.
+Uses the system-wide log_file as defined in config.py if none
+is given here.</p>
+<p>&#64;param log_file: optional, the file to log to
+&#64;type log_file: C{str}</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="log_caller"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">log_caller</span>(<span class="sig-arg">frame_num</span>=<span class="sig-default">1</span>,
+        <span class="sig-arg">log_file</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Pyblosxom.tools-pysrc.html#log_caller">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Logs some info about the calling function/method.
+Useful for debugging.</p>
+<dl class="rst-docutils">
+<dt>Usage::</dt>
+<dd>import tools
+tools.log_caller() # logs frame 1
+tools.log_caller(2)
+tools.log_caller(3, log_file=&quot;/path/to/file&quot;)</dd>
+</dl>
+<p>&#64;param frame_num: optional, index of the frame
+&#64;type frame_num: C{int}</p>
+<p>&#64;param log_file: optional, the file to log to
+&#64;type log_file: C{str}</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="VAR_REGEXP"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">VAR_REGEXP</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+re.compile(r'<code class="re-flags">(?x)</code><code class="re-group">(?&lt;!</code>\\<code class="re-group">)</code>\$<code class="re-group">(</code><code class="re-group">(?:</code>\w<code class="re-op">|</code>-<code class="re-op">|</code>::\w<code class="re-group">)</code><code class="re-op">+</code><code class="re-group">(?:</code>\(.<code class="re-op">*?</code><code class="re-group">(?&lt;!</code>\\<code class="re-group">)</code>\)<code class="re-group">)</code><code class="re-op">?</code><code class="re-op">|</code>\(<code class="re-group">(?:</code>\w<code class="re-op">|</code>-<code class="re-op"></code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="re-op">|</code>::\w<code class="re-group">)</code><code class="re-op">+</code><code class="re-group">(?:</code>\(.<code class="re-op">*?</code><code class="re-group">(?&lt;!</code>\\<code class="re-group">)</code>\)<code class="re-group">)</code><code class="re-op">?</code>\)<code class="re-group">)</code>')
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom (2.0)</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0beta1 on Sat Sep  8 10:48:18 2007
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

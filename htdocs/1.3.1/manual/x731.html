@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Beyond Editors</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Writing Entries"
+HREF="c667.html"><LINK
+REL="PREVIOUS"
+TITLE="Entry Parsers"
+HREF="x721.html"><LINK
+REL="NEXT"
+TITLE="Static Rendering"
+HREF="c797.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x721.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. Writing Entries</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c797.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN731"
+>6.5. Beyond Editors</A
+></H1
+><P
+>&#13;There's no reason that all your entries have to come from editing blog entry
+text files in your datadir.  You could rig up procmail to look for emails
+that meet a certain description and convert those emails into blog entries.
+</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN734"
+>6.5.1. weblog-add</A
+></H2
+><P
+>&#13;You can find the weblog-add CGI script in the Plugin Registry at
+http://pyblosxom.sourceforge.net/ .  This script allows you to create
+entries using a webform.  It doesn't allow you to edit entries after
+the fact and it's pretty basic.  However, it does work and it does allow
+you to create entries when you don't have access to the filesystem.
+</P
+><P
+>&#13;To setup the weblog-add script, do the following:
+</P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>&#13;copy the <TT
+CLASS="filename"
+>weblog-add.py</TT
+> file into your CGI root
+</P
+></LI
+><LI
+><P
+>&#13;open up the <TT
+CLASS="filename"
+>weblog-add.py</TT
+> file in your favorite text 
+editor and change the line for <CODE
+CLASS="varname"
+>blog_root</CODE
+> to your datadir
+</P
+></LI
+><LI
+><P
+>&#13;set up your cgi directory so that the web-server forces the user to
+authenticate
+</P
+><P
+>&#13;FIXME - how do you do that?
+</P
+></LI
+><LI
+><P
+>&#13;make sure the weblog-add.py file has the correct permissions so that it 
+will run as a CGI script
+</P
+></LI
+></OL
+><P
+>&#13;When you're using the <TT
+CLASS="filename"
+>weblog-add.py</TT
+> script, make sure 
+you use unique file names.  That gets a bit hard as your blog gets so big 
+that you don't remember what file names exist and what don't.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN753"
+>6.5.2. Using w.bloggar</A
+></H2
+><P
+>&#13;PyBlosxom works with w.bloggar (http://www.wbloggar.com/).  In order to use 
+w.bloggar you have to do the following:
+</P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>&#13;  install the xmlrpc plugin found at http://pyblosxom.sourceforge.net/ in the
+  plugin registry
+</P
+></LI
+><LI
+><P
+>&#13;  install the xmlrpc_bloggar plugin found at http://pyblosxom.sourceforge.net/ 
+  in the plugin registry
+</P
+></LI
+><LI
+><P
+>&#13;  in the Content Management System section of the w.bloggar account settings 
+  dialog, set:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>"Blog Tool" to "Custom"</P
+></LI
+></UL
+></LI
+><LI
+><P
+>&#13;  in the API Server tab section of the w.bloggar account settings dialog, set:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>"Host" to the name of your server</P
+></LI
+><LI
+><P
+>"Page" to the url of your blog with /RPC at the end--
+    For example, mine might be "/~joe/cgi-bin/pyblosxom.cgi/RPC"</P
+></LI
+></UL
+></LI
+><LI
+><P
+>&#13;  in the Custom tab section of the w.bloggar account settings dialog, set:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>"Posts" to "Blogger API"</P
+></LI
+><LI
+><P
+>"Categories" to "Not supported"</P
+></LI
+><LI
+><P
+>"Templates" to "Not supported"</P
+></LI
+><LI
+><P
+>"Title Tags" should be blank</P
+></LI
+><LI
+><P
+>"Category Tags" should be blank</P
+></LI
+></UL
+></LI
+></OL
+><P
+>&#13;When you go to write a new entry, leave the title field blank and do your 
+entire post in the data section with the first line being the title (just 
+like blosxom entries).
+</P
+><P
+>&#13;One thing you should note is that pyblosxom will take the first line and use 
+that to generate the file name of the entry. So if the title of the entry is 
+<TT
+CLASS="literal"
+>How to use w.bloggar with pyblosxom</TT
+>, the file name ends 
+up being <TT
+CLASS="filename"
+>How_to_use_w_bloggar_with_pyblosxom.txt</TT
+> which 
+may get a little annoying.
+</P
+><P
+>&#13;FIXME - Does this still work?
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN791"
+>6.5.3. Using Ecto</A
+></H2
+><P
+>&#13;FIXME - I need instructions for this
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN794"
+>6.5.4. Other blog tools?</A
+></H2
+><P
+>&#13;Does PyBlosxom work with other blog tools?
+</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x721.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c797.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Entry Parsers</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c667.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Static Rendering</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

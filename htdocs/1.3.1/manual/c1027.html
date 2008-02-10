@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Syndication</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="PREVIOUS"
+TITLE="Installing the CommentAPI"
+HREF="x1015.html"><LINK
+REL="NEXT"
+TITLE="Debugging your feeds"
+HREF="x1055.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1015.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1055.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="syndication"
+></A
+>Chapter 9. Syndication</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>9.1. <A
+HREF="c1027.html#AEN1030"
+>Feed formats that come with PyBlosxom</A
+></DT
+><DT
+>9.2. <A
+HREF="x1055.html"
+>Debugging your feeds</A
+></DT
+></DL
+></DIV
+><P
+>&#13;Most newsreaders read most of the syndication formats.  So you shouldn't
+feel that you have to implement each one of them in your blog--you can most
+assuredly get away with implementing RSS 2.0 or ATOM and be just fine.
+</P
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN1030"
+>9.1. Feed formats that come with PyBlosxom</A
+></H1
+><P
+>&#13;PyBlosxom comes with a few default flavours, three of which are feeds.
+</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1033"
+>9.1.1. RSS 0.9.1</A
+></H2
+><P
+>&#13;PyBlosxom comes with an rss flavour that produces RSS 0.9.1 output.  Here's a
+sample of what it produces:
+</P
+><DIV
+CLASS="example"
+><A
+NAME="AEN1036"
+></A
+><P
+><B
+>Example 9-1. example of RSS 0.9.1 feed</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;&#60;?xml version="1.0" encoding="utf-8"?&#62;
+&#60;!-- name="generator" content="pyblosxom/1.2 3/25/2005" --&#62;
+&#60;!DOCTYPE rss PUBLIC "-//Netscape Communications//DTD RSS 0.91//EN"
+"http://my.netscape.com/publish/formats/rss-0.91.dtd"&#62;
+
+&#60;rss version="0.91"&#62;
+&#60;channel&#62;
+&#60;title&#62;My Blog&#60;/title&#62;
+&#60;link&#62;http://www.joe.com/blog/index.rss&#60;/link&#62;
+&#60;description&#62;This is my blog about trivial things&#60;/description&#62;
+&#60;language&#62;en&#60;/language&#62;
+&#60;item&#62;
+    &#60;title&#62;Example of an entry post&#60;/title&#62;
+
+    &#60;link&#62;http://www.joe.com/blog/entries/example1.html&#60;/link&#62;
+    &#60;description&#62;&#38;lt;p&#38;gt;
+  Here's an example of an entry in my blog.  This is the body of the entry.
+&#38;lt;/p&#38;gt;
+&#60;/description&#62;
+  &#60;/item&#62;
+&#60;/channel&#62;
+&#60;/rss&#62;
+</PRE
+></DIV
+><P
+>&#13;This example only has one entry in it.  The number of entries the rss flavour
+will display is determined by the <CODE
+CLASS="varname"
+>num_entries</CODE
+> property in 
+your <TT
+CLASS="filename"
+>config.py</TT
+> file.
+</P
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+><B
+>probably better not to use RSS 0.9.1</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>&#13;  RSS 0.9.1 format lacks dates in the data for the items.  Unless you 
+  include the date for the entry somewhere in the description block, people 
+  looking at your RSS 0.9.1 feed won't know what the date the entry was 
+  created on was.
+  </P
+><P
+>&#13;  Unless you have some reason to use RSS 0.9.1 as your syndication format,
+  you should look at using RSS 2.0 or Atom 1.0 both of which also come
+  with PyBlosxom.
+  </P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>&#13;The standard for RSS 0.9.1 is at: 
+http://my.netscape.com/publish/formats/rss-spec-0.91.html
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1047"
+>9.1.2. RSS 2.0</A
+></H2
+><P
+>&#13;PyBlosxom 1.3 comes with an RSS 2.0 flavour called "rss20".  If it's missing
+features that you want (for example, some folks are doing podcasting with
+their blog), then override the individual templates you need to adjust.
+</P
+><P
+>&#13;The standard for RSS 2.0 is at:
+http://blogs.law.harvard.edu/tech/rss
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1051"
+>9.1.3. Atom 1.0</A
+></H2
+><P
+>&#13;PyBlosxom 1.3 comes with an Atom 1.0 flavour called "atom".  If it's
+missing features that you want, then override the individual templates
+you need to adjust.
+</P
+><P
+>&#13;The standard for Atom 1.0 is at:
+http://atomenabled.org/
+</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1015.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1055.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Installing the CommentAPI</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Debugging your feeds</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

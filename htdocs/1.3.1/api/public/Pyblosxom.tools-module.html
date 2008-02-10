@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Pyblosxom.tools</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          <a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom&nbsp;(1.3.1)</a>
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="Pyblosxom-module.html">Package&nbsp;Pyblosxom</a> ::
+        Module&nbsp;tools
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<a href="../private/Pyblosxom.tools-module.html">show&nbsp;private</a>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="Pyblosxom.tools-module.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF MODULE DESCRIPTION =========== -->
+<h2 class="module">Module Pyblosxom.tools</h2>
+
+<p>Tools module</p>
+The swiss army knife for all things pyblosxom
+<hr/>
+
+<!-- =========== START OF CLASSES =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Classes</th></tr>
+<tr><td width="15%">
+  <b><a href="Pyblosxom.tools.LogFilter-class.html"><code>LogFilter</code></a></b></td>
+  <td>Filters out messages from log-channels that are not listed in the 
+log_filter config variable.</td></tr>
+<tr><td width="15%">
+  <b><a href="Pyblosxom.tools.Replacer-class.html"><code>Replacer</code></a></b></td>
+  <td>Class for replacing variables in a template</td></tr>
+<tr><td width="15%">
+  <b><a href="Pyblosxom.tools.Stripper-class.html"><code>Stripper</code></a></b></td>
+  <td>Strips HTML</td></tr>
+<tr><td width="15%">
+  <b><a href="Pyblosxom.tools.VariableDict-class.html"><code>VariableDict</code></a></b></td>
+  <td>Wraps around a standard dict allowing for escaped and urlencoding of 
+internal data by tacking on a &quot;_urlencoded&quot; or a 
+&quot;_escaped&quot; to the end of the key name.</td></tr>
+</table><br />
+
+
+<!-- =========== START OF FUNCTION SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Function Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#cleanup" class="summary-sig-name"><code>cleanup</code></a>()</span></code>
+<br />
+Cleanup the tools module.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="escape_text"></a><span class="summary-sig"><span class="summary-sig-name">escape_text</span>(<span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        tuple of 9 ints
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#filestat" class="summary-sig-name"><code>filestat</code></a>(<span class=summary-sig-arg>request</span>,
+          <span class=summary-sig-arg>filename</span>)</span></code>
+<br />
+Returns the filestat on a given file.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        string
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#generateRandStr" class="summary-sig-name"><code>generateRandStr</code></a>(<span class=summary-sig-arg>minlen</span>,
+          <span class=summary-sig-arg>maxlen</span>)</span></code>
+<br />
+Generate a random string</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <a href="Pyblosxom.cache.base.BlosxomCacheBase-class.html" 
+        class="link"><code>Pyblosxom.cache.base.BlosxomCacheBase</code></a> 
+        subclass
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#get_cache" class="summary-sig-name"><code>get_cache</code></a>(<span class=summary-sig-arg>request</span>)</span></code>
+<br />
+Retrieves the cache from the request or fetches a new CacheDriver 
+instance.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        <code>logging.Logger</code> for Python &gt;=2.3, <a 
+        href="../private/Pyblosxom._logging.Logger-class.html" 
+        class="link"><code>Pyblosxom._logging.Logger</code></a> for 
+        Python &lt;2.3
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#getLogger" class="summary-sig-name"><code>getLogger</code></a>(<span class=summary-sig-arg>log_file</span>)</span></code>
+<br />
+Creates and retuns a log channel.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        object
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#importName" class="summary-sig-name"><code>importName</code></a>(<span class=summary-sig-arg>modulename</span>,
+          <span class=summary-sig-arg>name</span>)</span></code>
+<br />
+Module importer</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#initialize" class="summary-sig-name"><code>initialize</code></a>(<span class=summary-sig-arg>config</span>)</span></code>
+<br />
+Initialize the tools module.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        boolean
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#is_year" class="summary-sig-name"><code>is_year</code></a>(<span class=summary-sig-arg>s</span>)</span></code>
+<br />
+Checks s to see if it's likely to be a year or not.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="lock"></a><span class="summary-sig"><span class="summary-sig-name">lock</span>(<span class=summary-sig-arg>f</span>,
+          <span class=summary-sig-arg>flags</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#log_caller" class="summary-sig-name"><code>log_caller</code></a>(<span class=summary-sig-arg>frame_num</span>,
+          <span class=summary-sig-arg>log_file</span>)</span></code>
+<br />
+Logs some info about the calling function/method.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#log_exception" class="summary-sig-name"><code>log_exception</code></a>(<span class=summary-sig-arg>log_file</span>)</span></code>
+<br />
+Logs an exception to the given file.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        string
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#parse" class="summary-sig-name"><code>parse</code></a>(<span class=summary-sig-arg>request</span>,
+          <span class=summary-sig-arg>encoding</span>,
+          <span class=summary-sig-arg>var_dict</span>,
+          <span class=summary-sig-arg>template</span>)</span></code>
+<br />
+This method parses the open file object passed, replacing any keys 
+found using the replacement dictionary passed.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#render_url" class="summary-sig-name"><code>render_url</code></a>(<span class=summary-sig-arg>cdict</span>,
+          <span class=summary-sig-arg>pathinfo</span>,
+          <span class=summary-sig-arg>querystring</span>)</span></code>
+<br />
+Takes a url and a querystring and renders the page that corresponds 
+with that by creating a Request and a PyBlosxom object and passing it 
+through.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        dict
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#run_callback" class="summary-sig-name"><code>run_callback</code></a>(<span class=summary-sig-arg>chain</span>,
+          <span class=summary-sig-arg>input</span>,
+          <span class=summary-sig-arg>mappingfunc</span>,
+          <span class=summary-sig-arg>donefunc</span>,
+          <span class=summary-sig-arg>defaultfunc</span>)</span></code>
+<br />
+Executes a callback chain on a given piece of data.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="unlock"></a><span class="summary-sig"><span class="summary-sig-name">unlock</span>(<span class=summary-sig-arg>f</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#update_static_entry" class="summary-sig-name"><code>update_static_entry</code></a>(<span class=summary-sig-arg>cdict</span>,
+          <span class=summary-sig-arg>entry_filename</span>)</span></code>
+<br />
+This is a utility function that allows plugins to easily update 
+statically rendered entries without going through all the rigamarole.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="urlencode_text"></a><span class="summary-sig"><span class="summary-sig-name">urlencode_text</span>(<span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        list
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#Walk" class="summary-sig-name"><code>Walk</code></a>(<span class=summary-sig-arg>request</span>,
+          <span class=summary-sig-arg>root</span>,
+          <span class=summary-sig-arg>recurse</span>,
+          <span class=summary-sig-arg>pattern</span>,
+          <span class=summary-sig-arg>return_folders</span>)</span></code>
+<br />
+This function walks a directory tree starting at a specified root 
+folder, and returns a list of all of the files (and optionally folders) 
+that match our pattern(s).</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        string
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.tools-module.html#what_ext" class="summary-sig-name"><code>what_ext</code></a>(<span class=summary-sig-arg>extensions</span>,
+          <span class=summary-sig-arg>filepath</span>)</span></code>
+<br />
+Takes in a filepath and a list of extensions and tries them all until 
+it finds the first extension that works.</td></tr>
+</table><br />
+
+
+<!-- =========== START OF VARIABLE SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Variable Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>str</code></font></td>
+<td><b><a href="Pyblosxom.tools-module.html#__revision__"><code>__revision__</code></a></b> = <span title="'$Id: tools.py,v 1.50 2005/12/09 05:09:11 willhelm Exp $'"><code><span class="variable-quote">'</span>$Id:&nbsp;tools.py,v&nbsp;1.50&nbsp;2005/12/09&nbsp;05:09:11<span class="variable-ellipsis">...</span></code>
+</span></td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<td><b><a href="Pyblosxom.tools-module.html#month2num"><code>month2num</code></a></b>: A dict of literal months to its number format</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>list</code></font></td>
+<td><b><a href="Pyblosxom.tools-module.html#MONTHS"><code>MONTHS</code></a></b>: A list of valid literal and numeral months</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>dict</code></font></td>
+<td><b><a href="Pyblosxom.tools-module.html#num2month"><code>num2month</code></a></b>: A dict of number month format to its literal format</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1"><code>SRE_Pattern</code></font></td>
+<td><b><a href="Pyblosxom.tools-module.html#VAR_REGEXP"><code>VAR_REGEXP</code></a></b>: Regular expression for detection and substituion of variables</td></tr>
+</table><br />
+
+
+<!-- =========== START OF FUNCTION DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Function Details</th></tr>
+</table>
+
+<a name="cleanup"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">cleanup</span>()</span>
+  </h3>
+  Cleanup the tools module. This should be called from 
+  Pyblosxom.pyblosxom.PyBlosxom.cleanup.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="filestat"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">filestat</span>(<span class=sig-arg>request</span>,
+          <span class=sig-arg>filename</span>)</span>
+  </h3>
+  Returns the filestat on a given file. We store the filestat in case 
+  we've already retrieved it this time.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>request</b></code> -
+         the Pyblosxom Request object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=Request)</i>
+      <dd><code><b>filename</b></code> -
+         the name of the file to stat
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        the mtime of the file (same as returned by 
+        time.localtime(...))
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=tuple of 9 ints)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="generateRandStr"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">generateRandStr</span>(<span class=sig-arg>minlen</span>=<span class=sig-default>5</span>,
+          <span class=sig-arg>maxlen</span>=<span class=sig-default>10</span>)</span>
+  </h3>
+  <p>Generate a random string</p>
+  Tool to generate a random string between <code>minlen</code> to 
+  <code>maxlen</code> characters
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>minlen</b></code> -
+         The minimum length the string should be
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=integer)</i>
+      <dd><code><b>maxlen</b></code> -
+         The maximum length the string could be
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=integer)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        A string containing random characters
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="get_cache"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">get_cache</span>(<span class=sig-arg>request</span>)</span>
+  </h3>
+  Retrieves the cache from the request or fetches a new CacheDriver 
+  instance.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>request</b></code> -
+         the Request object for this run
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=Request)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        A BlosxomCache object reference
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="Pyblosxom.cache.base.BlosxomCacheBase-class.html" 
+        class="link"><code>Pyblosxom.cache.base.BlosxomCacheBase</code></a> 
+        subclass)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getLogger"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getLogger</span>(<span class=sig-arg>log_file</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  Creates and retuns a log channel. If no log_file is given the 
+  system-wide logfile as defined in config.py is used. If a log_file is 
+  given that's where the created logger logs to.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>log_file</b></code> -
+         optional, the file to log to.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        a log channel (Logger instance)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>logging.Logger</code> for Python &gt;=2.3, <a 
+        href="../private/Pyblosxom._logging.Logger-class.html" 
+        class="link"><code>Pyblosxom._logging.Logger</code></a> for 
+        Python &lt;2.3)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="importName"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">importName</span>(<span class=sig-arg>modulename</span>,
+          <span class=sig-arg>name</span>)</span>
+  </h3>
+  <p>Module importer</p>
+  For modules that can only be determined during runtime
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>modulename</b></code> -
+         The base name of the module to import from
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      <dd><code><b>name</b></code> -
+         The name of the module to import from the modulename
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        If successful, returns an imported object reference, else 
+        <code>None</code>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=object)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="initialize"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">initialize</span>(<span class=sig-arg>config</span>)</span>
+  </h3>
+  Initialize the tools module. This gives the module a chance to use 
+  configuration from the pyblosxom config.py file. This should be called 
+  from Pyblosxom.pyblosxom.PyBlosxom.initialize.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="is_year"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">is_year</span>(<span class=sig-arg>s</span>)</span>
+  </h3>
+  Checks s to see if it's likely to be a year or not. In order to be 
+  considered to be a year, it must pass the following criteria:
+  <ol start="1">
+    <li>
+      four digits
+    </li>
+    <li>
+      first two digits are either 19 or 20.
+    </li>
+  </ol>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>s</b></code> -
+         the string to check for &quot;year-hood&quot;
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        1 if s is likely to be a year or 0 if it is not
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=boolean)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="log_caller"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">log_caller</span>(<span class=sig-arg>frame_num</span>=<span class=sig-default>1</span>,
+          <span class=sig-arg>log_file</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+<pre class="literalblock">
+Logs some info about the calling function/method.
+Usefull for debugging.
+Usage:
+    import tools
+    tools.log_caller() # logs frame 1
+    tools.log_caller(2)
+    tools.log_caller(3, log_file=&quot;/path/to/file&quot;)
+
+&#64;param frame_num: optional, index of the frame
+&#64;type frame_num: C{int}
+&#64;param log_file: optional, the file to log to
+&#64;type log_file: C{str}
+</pre>
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="log_exception"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">log_exception</span>(<span class=sig-arg>log_file</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  Logs an exception to the given file. Uses the system-wide log_file 
+  as defined in config.py if none is given here.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>log_file</b></code> -
+         optional, the file to log to
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<code>str</code>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="parse"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">parse</span>(<span class=sig-arg>request</span>,
+          <span class=sig-arg>encoding</span>,
+          <span class=sig-arg>var_dict</span>,
+          <span class=sig-arg>template</span>)</span>
+  </h3>
+  This method parses the open file object passed, replacing any keys 
+  found using the replacement dictionary passed. Uses the <a 
+  href="Pyblosxom.tools.Replacer-class.html" 
+  class="link"><code>Replacer</code></a> object. From OPAGCGI library
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>request</b></code> -
+         the Request object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=Request)</i>
+      <dd><code><b>encoding</b></code> -
+         the encoding to use
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      <dd><code><b>var_dict</b></code> -
+         The name value pair list containing variable replacements
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      <dd><code><b>template</b></code> -
+         A template file with placeholders for variable 
+        replacements
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        Substituted template
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="render_url"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">render_url</span>(<span class=sig-arg>cdict</span>,
+          <span class=sig-arg>pathinfo</span>,
+          <span class=sig-arg>querystring</span>=<span class=sig-default>''</span>)</span>
+  </h3>
+  Takes a url and a querystring and renders the page that corresponds 
+  with that by creating a Request and a PyBlosxom object and passing it 
+  through.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>cdict</b></code> -
+         the config.py dict
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      <dd><code><b>pathinfo</b></code> -
+         the path_info string. ex: 
+        &quot;/dev/pyblosxom/firstpost.html&quot;
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      <dd><code><b>querystring</b></code> -
+         the querystring (if any). ex: &quot;debug=yes&quot;
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="run_callback"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">run_callback</span>(<span class=sig-arg>chain</span>,
+          <span class=sig-arg>input</span>,
+          <span class=sig-arg>mappingfunc</span>=<span class=sig-default>&lt;function&nbsp;&lt;lambda&gt;&nbsp;at&nbsp;0x40268ed4&gt;</span>,
+          <span class=sig-arg>donefunc</span>=<span class=sig-default>&lt;function&nbsp;&lt;lambda&gt;&nbsp;at&nbsp;0x40268f0c&gt;</span>,
+          <span class=sig-arg>defaultfunc</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  <p>Executes a callback chain on a given piece of data. passed in is a 
+  dict of name/value pairs. Consult the documentation for the specific 
+  callback chain you're executing.</p>
+  <p>Callback chains should conform to their documented behavior. This 
+  function allows us to do transforms on data, handling data, and also 
+  callbacks.</p>
+  <p>The difference in behavior is affected by the mappingfunc passed in 
+  which converts the output of a given function in the chain to the input 
+  for the next function.</p>
+  If this is confusing, read through the code for this function.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>chain</b></code> -
+         the callback chain to run
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      <dd><code><b>input</b></code> -
+         data is a dict filled with name/value pairs--refer to the 
+        callback chain documentation for what's in the data dict.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      <dd><code><b>mappingfunc</b></code> -
+         the function that maps output arguments to input arguments for 
+        the next iteration. It must take two arguments: the original dict 
+        and the return from the previous function. It defaults to 
+        returning the original dict.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=function)</i>
+      <dd><code><b>donefunc</b></code> -
+         this function tests whether we're done doing what we're doing. 
+        This function takes as input the output of the most recent 
+        iteration. If this function returns true (1) then we'll drop out 
+        of the loop. For example, if you wanted a callback to stop 
+        running when one of the registered functions returned a 1, then 
+        you would pass in &quot;donefunc=lambda x:x&quot;.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=function)</i>
+      <dd><code><b>defaultfunc</b></code> -
+         if this is set and we finish going through all the functions 
+        in the chain and none of them have returned something that 
+        satisfies the donefunc, then we'll execute the defaultfunc with 
+        the latest version of the input dict.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=function)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        the transformed dict
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="update_static_entry"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">update_static_entry</span>(<span class=sig-arg>cdict</span>,
+          <span class=sig-arg>entry_filename</span>)</span>
+  </h3>
+  <p>This is a utility function that allows plugins to easily update 
+  statically rendered entries without going through all the 
+  rigamarole.</p>
+  <p>First we figure out whether this blog is set up for static 
+  rendering. If not, then we return--no harm done.</p>
+  If we are, then we call render_url for each static_flavour of the 
+  entry and then for each static_flavour of the index page.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>cdict</b></code> -
+         the config.py dict
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      <dd><code><b>entry_filename</b></code> -
+         the filename of the entry (ex. /movies/xmen2)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="Walk"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">Walk</span>(<span class=sig-arg>request</span>,
+          <span class=sig-arg>root</span>=<span class=sig-default>'.'</span>,
+          <span class=sig-arg>recurse</span>=<span class=sig-default>0</span>,
+          <span class=sig-arg>pattern</span>=<span class=sig-default>''</span>,
+          <span class=sig-arg>return_folders</span>=<span class=sig-default>0</span>)</span>
+  </h3>
+  <p>This function walks a directory tree starting at a specified root 
+  folder, and returns a list of all of the files (and optionally folders) 
+  that match our pattern(s). Taken from the online Python Cookbook and 
+  modified to own needs.</p>
+  It will look at the config &quot;ignore_directories&quot; for a list 
+  of directories to ignore. It uses a regexp that joins all the things 
+  you list. So the following:
+<pre class="literalblock">
+  config.py[&quot;ignore_directories&quot;] = [&quot;CVS&quot;, &quot;dev/pyblosxom&quot;]
+</pre>
+  turns into the regexp:
+<pre class="literalblock">
+  .*?(CVS|dev/pyblosxom)$
+</pre>
+  It will also skip all directories that start with a period.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>request</b></code> -
+         the Request object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=Request)</i>
+      <dd><code><b>root</b></code> -
+         Starting point to walk from
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      <dd><code><b>recurse</b></code> -
+         Depth of recursion,
+        <ul>
+          <li>
+            0: All the way
+          </li>
+          <li>
+            1: Just this level
+          </li>
+          <li>
+            <i>n</i>: <i>n</i> depth of recursion
+          </li>
+        </ul>
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=integer)</i>
+      <dd><code><b>pattern</b></code> -
+         A <code>re.compile</code>'d object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=object)</i>
+      <dd><code><b>return_folders</b></code> -
+         If true, just return list of folders
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=boolean)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        A list of file paths
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=list)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="what_ext"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">what_ext</span>(<span class=sig-arg>extensions</span>,
+          <span class=sig-arg>filepath</span>)</span>
+  </h3>
+  Takes in a filepath and a list of extensions and tries them all 
+  until it finds the first extension that works.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>extensions</b></code> -
+         the list of extensions to test
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=list of strings)</i>
+      <dd><code><b>filepath</b></code> -
+         the complete file path (minus the extension) to test
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        the extension that was successful or None
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF VARIABLE DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Variable Details</th></tr>
+</table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="__revision__"></a>
+<h3>__revision__</h3>
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>str</code>
+
+      </dd>
+<span title="'$Id: tools.py,v 1.50 2005/12/09 05:09:11 willhelm Exp $'">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="variable-quote">'</span>$Id: tools.py,v 1.50 2005/12/09 05:09:11 willhelm Exp $<span class="variable-quote">'</span>              </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="month2num"></a>
+<h3>month2num</h3>
+A dict of literal months to its number format
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>dict</code>
+
+      </dd>
+<span title="{'Mar': '03', 'Feb': '02', 'Aug': '08', 'nil': '00', 'Sep': '09', 'Apr': '04', 'Jun': '06', 'Jul': '07', 'Jan': '01', 'May': '05', 'Nov': '11', 'Dec': '12', 'Oct': '10'}">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+{'Apr': '04',
+ 'Aug': '08',
+ 'Dec': '12',
+ 'Feb': '02',
+ 'Jan': '01',
+ 'Jul': '07',
+ 'Jun': '06',
+ 'Mar': '03',
+<span class="variable-ellipsis">...</span>                                                                    </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="MONTHS"></a>
+<h3>MONTHS</h3>
+A list of valid literal and numeral months
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>list</code>
+
+      </dd>
+<span title="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, '02', '03', '00', '01', '06', '07', '04', '05', '08', '09', '11', '10', '12', 'Mar', 'Feb', 'Aug', 'nil', 'Sep', 'Apr', 'Jun', 'Jul', 'Jan', 'May', 'Nov', 'Dec', 'Oct']">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+[0, 1, 2, 3, 4, 5, 6, 7, 8]                                            </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="num2month"></a>
+<h3>num2month</h3>
+A dict of number month format to its literal format
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>dict</code>
+
+      </dd>
+<span title="{0: 'nil', 1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug', 9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec', '02': 'Feb', '03': 'Mar', '00': 'nil', '01': 'Jan', '06': 'Jun', '07': 'Jul', '04': 'Apr', '05': 'May', '08': 'Aug', '09': 'Sep', '11': 'Nov', '10': 'Oct', '12': 'Dec'}">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+{0: 'nil',
+ 1: 'Jan',
+ 2: 'Feb',
+ 3: 'Mar',
+ 4: 'Apr',
+ 5: 'May',
+ 6: 'Jun',
+ 7: 'Jul',
+<span class="variable-ellipsis">...</span>                                                                    </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<table width="100%" class="var-details" bgcolor="#e0e0e0"><tr><td>
+<a name="VAR_REGEXP"></a>
+<h3>VAR_REGEXP</h3>
+Regular expression for detection and substituion of variables
+<dl>
+  <dt></dt>
+  <dd>
+    <dl>
+      <dt><b>Type:</b></dt>
+      <dd>
+          <code>SRE_Pattern</code>
+
+      </dd>
+<span title="&lt;_sre.SRE_Pattern object at 0x81a3c68&gt;">      <dt><b>Value:</b></dt>
+      <dd><table><tr><td>
+<pre class="variable">
+<span class="re"><span class="re-group">(?!</span><span class="re-char">\\</span><span class="re-group">)</span><span class="re-char">\$</span><span class="re-group">(</span><span class="re-group">(?:</span><span class="re-char">\w</span><span class="re-op">|</span>-<span class="re-op">|</span>::<span class="re-char">\w</span><span class="re-group">)</span><span class="re-op">+</span><span class="re-group">(?:</span><span class="re-char">\(</span><span class="re-char">.</span><span class="re-op">*?</span><span class="re-group">(?!</span><span class="re-char">\\</span><span class="re-group">)</span><span class="re-char">\)</span><span class="re-group">)</span><span class="re-op">?</span><span class="re-group">)</span></span>                             </pre>
+        </td></tr></table></dd>
+</span>    </dl>
+  </dd>
+</dl></td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          <a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom&nbsp;(1.3.1)</a>
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Tue Feb  7 21:43:58 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

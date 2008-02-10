@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>Installing PyBlosxom with Paste</title>
+<meta name="author" content="PyBlosxom Development Team" />
+<meta name="copyright" content="This document is distributed under the MIT license." />
+<link rel="stylesheet" href="manual_style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="installing-pyblosxom-with-paste">
+<h1 class="title">Installing PyBlosxom with Paste</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>PyBlosxom Development Team</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>advanced_installation.txt 1029 2007-06-07 02:33:12Z willhelm</td></tr>
+<tr><th class="docinfo-name">Copyright:</th>
+<td>This document is distributed under the MIT license.</td></tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#summary" id="id1">Summary</a></li>
+<li><a class="reference internal" href="#pre-requisites-for-installing-pyblosxom-with-paste" id="id2">Pre-requisites for installing PyBlosxom with Paste</a></li>
+<li><a class="reference internal" href="#downloading" id="id3">Downloading</a></li>
+<li><a class="reference internal" href="#installation" id="id4">Installation</a></li>
+<li><a class="reference internal" href="#configuration" id="id5">Configuration</a></li>
+<li><a class="reference internal" href="#trouble-shooting" id="id6">Trouble-shooting</a><ul>
+<li><a class="reference internal" href="#import-error-no-module-named-pyblosxom-pyblosxom" id="id7">Import Error: No module named Pyblosxom.pyblosxom</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h1><a class="toc-backref" href="#id1">Summary</a></h1>
+<p>As of PyBlosxom 1.4, we have support for Paste.  This document covers
+installing and using PyBlosxom with Paste.</p>
+<p>This document is in a &quot;works for me&quot; status.  Any help to flesh it out
+to be more generally useful is <strong>greatly</strong> appreciated.</p>
+<p>This installation assumes you have some understanding of Python Paste.
+If this doesn't sound like you, then you can read up on Paste on
+the <a class="reference external" href="http://pythonpaste.org/">Paste web-site</a>.</p>
+<p>Paste support is pretty new, still.  If you have problems, check our
+<a class="reference external" href="http://pyblosxom.sourceforge.net/">web-site</a> and feel free to ask questions on the pyblosxom-users
+mailing list.  Details of the mailing list are on our web-site on the
+<a class="reference external" href="http://pyblosxom.sourceforge.net/blog/static/contact">Contact us</a> page.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about upgrading PyBlosxom:</p>
+<p class="last">If you are upgrading your version of PyBlosxom, follow the
+instructions here and also read the <tt class="docutils literal"><span class="pre">README</span></tt> that comes with
+your PyBlosxom tarball for differences between this version and
+the previous versions.  The <tt class="docutils literal"><span class="pre">README</span></tt> file contains instructions
+on updating your <tt class="docutils literal"><span class="pre">config.py</span></tt> file, templates, and other parts of
+your PyBlosxom installation which you will have to do by hand.</p>
+</div>
+</div>
+<div class="section" id="pre-requisites-for-installing-pyblosxom-with-paste">
+<h1><a class="toc-backref" href="#id2">Pre-requisites for installing PyBlosxom with Paste</a></h1>
+<p>You will need:</p>
+<ul class="simple">
+<li>Pyblosxom 1.4 or a later version</li>
+<li>Python Paste which can be found at <a class="reference external" href="http://pythonpaste.org/">http://pythonpaste.org/</a></li>
+</ul>
+<p>Additionally, if you're using an earlier version of Python than
+Python 2.5, then you'll also need:</p>
+<ul class="simple">
+<li>wsgiref library from <a class="reference external" href="http://svn.eby-sarna.com/wsgiref/">http://svn.eby-sarna.com/wsgiref/</a></li>
+</ul>
+<p>Additionally, if you are running PyBlosxom on Windows, you will
+also need:</p>
+<ul class="simple">
+<li>Python for Windows extensions: <a class="reference external" href="http://sourceforge.net/projects/pywin32/">http://sourceforge.net/projects/pywin32/</a></li>
+</ul>
+</div>
+<div class="section" id="downloading">
+<h1><a class="toc-backref" href="#id3">Downloading</a></h1>
+<p>You can find versions of PyBlosxom by going to the Download link at
+<a class="reference external" href="http://pyblosxom.sourceforge.net/">http://pyblosxom.sourceforge.net/</a> .</p>
+<p>Download the latest PyBlosxom <tt class="docutils literal"><span class="pre">.tar.gz</span></tt> file.</p>
+</div>
+<div class="section" id="installation">
+<h1><a class="toc-backref" href="#id4">Installation</a></h1>
+<p>Installing PyBlosxom with Paste should take 5-10 minutes depending
+on what state your system is currently in.  The installation consists
+of a few steps.  Tweaking, styling, and adding content to your blog
+is covered in other parts of the documentation.</p>
+<ol class="arabic">
+<li><p class="first">Download PyBlosxom from the PyBlosxom site.</p>
+</li>
+<li><p class="first">Untar PyBlosxom:</p>
+<pre class="literal-block">
+tar -xzvf pyblosxom*.tar.gz
+</pre>
+</li>
+<li><p class="first">Either:</p>
+<dl class="docutils">
+<dt>3.1. install PyBlosxom as a Python library by doing</dt>
+<dd><p class="first last"><tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>, OR</p>
+</dd>
+<dt>3.2. add <tt class="docutils literal"><span class="pre">PYTHONPATH=/path/to/Pyblosxom/parent/</span></tt> to your</dt>
+<dd><p class="first last">environment variables</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Create a directory to hold your blog.  This will be a parent directory
+of your <tt class="docutils literal"><span class="pre">datadir</span></tt>.  Also create directories for <tt class="docutils literal"><span class="pre">entries</span></tt>,
+<tt class="docutils literal"><span class="pre">flavours</span></tt>, and <tt class="docutils literal"><span class="pre">plugins</span></tt>.</p>
+<p>Here's an example file-system layout:</p>
+<pre class="literal-block">
+/home/joe/
+   |- blog/
+      |- entries/
+      |- flavours/
+      |- plugins/
+      |- config.py
+      |- blog.ini
+</pre>
+</li>
+<li><p class="first">Copy <tt class="docutils literal"><span class="pre">blog.ini</span></tt> from <tt class="docutils literal"><span class="pre">pyblosxom/web</span></tt> into your blog directory.</p>
+</li>
+<li><p class="first">Copy <tt class="docutils literal"><span class="pre">config.py</span></tt> from <tt class="docutils literal"><span class="pre">pyblosxom/web</span></tt> into your blog directory.</p>
+</li>
+<li><p class="first">Edit <tt class="docutils literal"><span class="pre">blog.ini</span></tt> and <tt class="docutils literal"><span class="pre">config.py</span></tt> -- see instructions in configuration
+section.  Be sure to set the <tt class="docutils literal"><span class="pre">configpydir</span></tt> property.</p>
+</li>
+<li><p class="first">If you left <tt class="docutils literal"><span class="pre">use</span></tt>, <tt class="docutils literal"><span class="pre">host</span></tt>, and <tt class="docutils literal"><span class="pre">port</span></tt> at the defaults, then you
+can run your blog like this:</p>
+<pre class="literal-block">
+paster serve blog.ini
+</pre>
+<p><tt class="docutils literal"><span class="pre">paster</span></tt> will print the URL for your blog on the command line.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the host of your blog is <tt class="docutils literal"><span class="pre">0.0.0.0</span></tt> or <tt class="docutils literal"><span class="pre">127.0.0.1</span></tt>, then
+your blog will be visible ONLY from the same machine it is running
+from.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="configuration">
+<h1><a class="toc-backref" href="#id5">Configuration</a></h1>
+<p>Paste configuration is done in an <tt class="docutils literal"><span class="pre">.ini</span></tt> file.</p>
+<p>Create a <tt class="docutils literal"><span class="pre">blog.ini</span></tt> that holds information that Paste needs to
+run your blog.</p>
+<p>An example <tt class="docutils literal"><span class="pre">blog.ini</span></tt> is here:</p>
+<pre class="literal-block">
+[DEFAULT]
+debug = True
+
+[server:main]
+use = egg:Paste#http
+host = 0.0.0.0
+port = 5000
+
+[app:main]
+paste.app_factory = Pyblosxom.pyblosxom:pyblosxom_app_factory
+configpydir = /path/to/dir
+
+# PyBlosxom config here
+blog_title = Joe's Blog
+blog_description = This is Joe's test blog.
+blog_author = Joe
+blog_email = joe&#64;example.com
+datadir = /home/joe/blog/entries/
+num_entries = 5
+</pre>
+<p>There are several things to note here:</p>
+<ol class="arabic">
+<li><p class="first">In the <tt class="docutils literal"><span class="pre">[server:main]</span></tt> section, define the <tt class="docutils literal"><span class="pre">host</span></tt> and <tt class="docutils literal"><span class="pre">port</span></tt>
+of your blog.  Using <tt class="docutils literal"><span class="pre">0.0.0.0</span></tt> and <tt class="docutils literal"><span class="pre">5000</span></tt> is really useful
+for building a test environment that only someone on the machine
+the blog is running on can see.  When you want to make your blog
+public, you can set the host to your ip address and the port to
+something more reasonable.</p>
+<p>There's more information on configuring Paste on the <a class="reference external" href="http://pythonpaste.org/deploy/">Paste Deployment</a>
+site.</p>
+</li>
+<li><p class="first">The <tt class="docutils literal"><span class="pre">[app:main]</span></tt> section needs to have the <tt class="docutils literal"><span class="pre">paste.app_factory</span></tt>
+defined--this tells Paste where the PyBlosxom WSGI app factory
+function is.</p>
+</li>
+<li><p class="first">Define the <tt class="docutils literal"><span class="pre">configpydir</span></tt> property in the <tt class="docutils literal"><span class="pre">[app:main]</span></tt> section.
+The value of this property is the directory that your <tt class="docutils literal"><span class="pre">config.py</span></tt>
+file is in.</p>
+<p>For example, if you put your <tt class="docutils literal"><span class="pre">config.py</span></tt> file in
+<tt class="docutils literal"><span class="pre">/home/joe/blog/config.py</span></tt>, then set your <tt class="docutils literal"><span class="pre">configpydir</span></tt> like
+this:</p>
+<pre class="literal-block">
+configpydir = /home/joe/blog/
+</pre>
+</li>
+<li><p class="first">You can define PyBlosxom config properties in the <tt class="docutils literal"><span class="pre">[app:main]</span></tt>
+section as well.  Properties declared here will <strong>override</strong>
+properties declared in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.  This is really
+handy for building a testing environment blog on a different port.</p>
+<p>You don't have to define any config properties in the <tt class="docutils literal"><span class="pre">blog.ini</span></tt>
+file--you can define them all in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">Defining PyBlosxom config properties in an .ini file is a bit
+of a trick since .ini files treat all keys and values as
+strings but not all config properties have string values.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="trouble-shooting">
+<h1><a class="toc-backref" href="#id6">Trouble-shooting</a></h1>
+<div class="section" id="import-error-no-module-named-pyblosxom-pyblosxom">
+<h2><a class="toc-backref" href="#id7">Import Error: No module named Pyblosxom.pyblosxom</a></h2>
+<p>If you installed PyBlosxom as a Python library (i.e. you did
+<tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>), then the problem is probably that
+you have multiple versions of Python on your system and paster
+is using a different one than the one you install PyBlosxom into.</p>
+<p>Run:</p>
+<pre class="literal-block">
+paster --version
+</pre>
+<p>and see if that matches the version of Python you installed PyBlosxom
+into.  If it doesn't match, then you need to install PyBlosxom into
+the version of Python that paster is using.</p>
+<p>If you didn't install PyBlosxom as a Python library, then you need
+to add the directory that the PyBlosxom code is in to the Python
+sys.path.  The easiest way to do that is to set the <tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt>
+environment variable to the directory that PyBlosxom is in.</p>
+<p>For example, I untarred PyBlosxom into <tt class="docutils literal"><span class="pre">/home/joe/</span></tt> and I have
+a directory tree like this:</p>
+<pre class="literal-block">
+/home/joe/
+      |- pyblosxom/
+         |- Pyblosxom/
+            |- ...
+</pre>
+<p>I then set <tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt> like this:</p>
+<pre class="literal-block">
+% export PYTHONPATH=${PYTHONPATH}:/home/joe/pyblosxom/
+</pre>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<a class="reference external" href="../install_paste.txt">View document source</a>.
+Generated on: 2007-11-04 17:36 UTC.
+Generated by <a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

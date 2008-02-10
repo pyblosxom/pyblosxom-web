@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Pyblosxom.entries.fileentry.FileEntry</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          <a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom&nbsp;(1.3.1)</a>
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="Pyblosxom-module.html">Package&nbsp;Pyblosxom</a> ::
+        <a href="Pyblosxom.entries-module.html">Package&nbsp;entries</a> ::
+        <a href="Pyblosxom.entries.fileentry-module.html">Module&nbsp;fileentry</a> ::
+        Class&nbsp;FileEntry
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[show&nbsp;private&nbsp;|&nbsp;<a href="../public/Pyblosxom.entries.fileentry.FileEntry-class.html">hide&nbsp;private</a>]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="Pyblosxom.entries.fileentry.FileEntry-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class FileEntry</h2>
+
+<pre class="base-tree">
+<a href="Pyblosxom.entries.base.EntryBase-class.html"><code>EntryBase</code></a> --+
+            |
+           <b>FileEntry</b>
+</pre><br />
+
+<hr/>
+
+This class gets it's data and metadata from the file specified by the 
+filename argument.
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.fileentry.FileEntry-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>request</span>,
+          <span class=summary-sig-arg>filename</span>,
+          <span class=summary-sig-arg>root</span>,
+          <span class=summary-sig-arg>datadir</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.fileentry.FileEntry-class.html#__repr__" class="summary-sig-name"><code>__repr__</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns a friendly debuggable representation of self.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        string
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.fileentry.FileEntry-class.html#getData" class="summary-sig-name"><code>getData</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the data for this file entry.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        string
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.fileentry.FileEntry-class.html#getId" class="summary-sig-name"><code>getId</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the id for this content item--in this case, it's the 
+filename.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        varies
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.fileentry.FileEntry-class.html#getMetadata" class="summary-sig-name"><code>getMetadata</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>default</span>)</span></code>
+<br />
+This overrides the <a 
+href="Pyblosxom.entries.base.EntryBase-class.html" 
+class="link"><code>base.EntryBase</code></a> getMetadata method.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.fileentry.FileEntry-class.html#setTimeLazy" class="summary-sig-name"><code>setTimeLazy</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>timetuple</span>)</span></code>
+<br />
+Set the time without populating the entry.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/Pyblosxom.entries.fileentry.FileEntry-class.html#__populateData" class="summary-sig-name"><code>__populateData</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Fills the metadata dict with metadata about the given file.</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from EntryBase</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        varies
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#__getitem__" class="summary-sig-name"><code>__getitem__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>default</span>)</span></code>
+<br />
+Retrieves an item from this dict based on the key given.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#__setitem__" class="summary-sig-name"><code>__setitem__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>value</span>)</span></code>
+<br />
+Sets the metadata[key] to the given value.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#addToCache" class="summary-sig-name"><code>addToCache</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>id</span>,
+          <span class=summary-sig-arg>data</span>)</span></code>
+<br />
+Over-writes the cached dict for key id with the data dict.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        varies
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#get" class="summary-sig-name"><code>get</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>default</span>)</span></code>
+<br />
+Retrieves an item from the internal dict based on the key given.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        dict or None
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#getFromCache" class="summary-sig-name"><code>getFromCache</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>id</span>)</span></code>
+<br />
+Retrieves information from the cache that pertains to this specific 
+id.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        list of strings
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#getMetadataKeys" class="summary-sig-name"><code>getMetadataKeys</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the list of keys for which we have values in our stored 
+metadata.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        boolean
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#has_key" class="summary-sig-name"><code>has_key</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>)</span></code>
+<br />
+Returns whether a given key is in the metadata dict.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">        list of varies
+</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#keys" class="summary-sig-name"><code>keys</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns a list of the keys that can be accessed through 
+__getitem__.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#setData" class="summary-sig-name"><code>setData</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>data</span>)</span></code>
+<br />
+Sets the data content for this entry.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#setMetadata" class="summary-sig-name"><code>setMetadata</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>value</span>)</span></code>
+<br />
+Sets a key/value pair in the metadata dict.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#setTime" class="summary-sig-name"><code>setTime</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>timeTuple</span>)</span></code>
+<br />
+This takes in a given time tuple and sets all the magic metadata 
+variables we have according to the items in the time tuple.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.entries.base.EntryBase-class.html#update" class="summary-sig-name"><code>update</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>newdict</span>)</span></code>
+<br />
+Updates the contents in this entry with the contents in the dict.</td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="__init__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>request</span>,
+          <span class=sig-arg>filename</span>,
+          <span class=sig-arg>root</span>,
+          <span class=sig-arg>datadir</span>=<span class=sig-default>''</span>)</span>
+    <br /><i>(Constructor)</i>
+  </h3>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>request</b></code> -
+         the Request object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=Request)</i>
+      <dd><code><b>filename</b></code> -
+         the complete filename for the file in question including 
+        path
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      <dd><code><b>root</b></code> -
+         i have no clue what this is
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      <dd><code><b>datadir</b></code> -
+         the datadir
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="Pyblosxom.entries.base.EntryBase-class.html#__init__"><code>Pyblosxom.entries.base.EntryBase.__init__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__repr__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__repr__</span>(<span class=sig-arg>self</span>)</span>
+    <br /><i>(Representation operator)</i>
+  </h3>
+  <p>Returns a friendly debuggable representation of self. Useful to know 
+  on what entry pyblosxom fails on you (though unlikely)</p>
+  returns: Identifiable representation of object rtype: string
+  <dl><dt></dt><dd>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="Pyblosxom.entries.base.EntryBase-class.html#__repr__"><code>Pyblosxom.entries.base.EntryBase.__repr__</code></a> <i>(inherited documentation)</i>
+</dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getData"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getData</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the data for this file entry. The data is the parsed (via 
+  the entryparser) content of the entry. We do this on-demand by checking 
+  to see if we've gotten it and if we haven't then we get it at that 
+  point.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        the content for this entry
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="Pyblosxom.entries.base.EntryBase-class.html#getData"><code>Pyblosxom.entries.base.EntryBase.getData</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getId"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getId</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the id for this content item--in this case, it's the 
+  filename.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        the id of the fileentry (the filename)
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="Pyblosxom.entries.base.EntryBase-class.html#getId"><code>Pyblosxom.entries.base.EntryBase.getId</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getMetadata"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getMetadata</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>key</span>,
+          <span class=sig-arg>default</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  <p>This overrides the <a 
+  href="Pyblosxom.entries.base.EntryBase-class.html" 
+  class="link"><code>base.EntryBase</code></a> getMetadata method.</p>
+  Note: We populate our metadata lazily--only when it's requested. 
+  This delays parsing of the file as long as we can.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>key</b></code> -
+         the key being sought
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      <dd><code><b>default</b></code> -
+         the default to return if the key does not exist
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        either the default (if the key did not exist) or the value of 
+        the key in the metadata dict
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="Pyblosxom.entries.base.EntryBase-class.html#getMetadata"><code>Pyblosxom.entries.base.EntryBase.getMetadata</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="setTimeLazy"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">setTimeLazy</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>timetuple</span>)</span>
+  </h3>
+  Set the time without populating the entry.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>timetuple</b></code> -
+         the mtime of the file (same as returned by 
+        time.localtime(...))
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=tuple of 9 ints)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__populateData"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__populateData</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Fills the metadata dict with metadata about the given file. This 
+  metadata consists of things we pick up from an os.stat call as well as 
+  knowledge of the filename and the root directory. We then parse the 
+  file and fill in the rest of the information that we know.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          <a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom&nbsp;(1.3.1)</a>
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Tue Feb  7 21:43:58 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

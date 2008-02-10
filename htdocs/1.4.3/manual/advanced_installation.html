@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>Advanced Installation</title>
+<meta name="author" content="PyBlosxom Development Team" />
+<meta name="copyright" content="This document is distributed under the MIT license." />
+<link rel="stylesheet" href="manual_style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="advanced-installation">
+<h1 class="title">Advanced Installation</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>PyBlosxom Development Team</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>advanced_installation.txt 1042 2007-06-16 04:22:36Z willhelm</td></tr>
+<tr><th class="docinfo-name">Copyright:</th>
+<td>This document is distributed under the MIT license.</td></tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#renaming-the-pyblosxom-cgi-script" id="id4">Renaming the pyblosxom.cgi Script</a><ul>
+<li><a class="reference internal" href="#change-the-name-of-the-pyblosxom-cgi-script" id="id5">Change the Name of the pyblosxom.cgi Script</a></li>
+<li><a class="reference internal" href="#hiding-the-cgi-with-rewriterule" id="id6">Hiding the .cgi with RewriteRule</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>We encourage you not to try any of this until you've gotten a blog up
+and running.</p>
+<p>This chapter covers additional advanced things you can do to your blog
+that will make it nicer.  However, they're not necessary and they're
+advanced and we consider these things to be very much a &quot;you're on
+your own&quot; kind of issue.</p>
+<p>If you ever have problems with PyBlosxom and you ask us questions on
+the <a class="reference external" href="mailto:pyblosxom-users&#64;lists.sourceforge.net">pyblosxom-users</a> or <a class="reference external" href="mailto:pyblosxom-devel&#64;lists.sourceforge.net">pyblosxom-devel</a> mailing lists, make sure
+you explicitly state what things you've done from this chapter.  It'll
+go a long way in helping us to help you.</p>
+<div class="section" id="renaming-the-pyblosxom-cgi-script">
+<h1><a class="toc-backref" href="#id4">Renaming the pyblosxom.cgi Script</a></h1>
+<p>In the default installation, the PyBlosxom script is named <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>.</p>
+<p>For a typical user on an Apache installation with user folders turned
+on, PyBlosxom URLs could look like this:</p>
+<pre class="literal-block">
+http://www.joe.com/~joe/cgi-bin/pyblosxom.cgi
+http://www.joe.com/~joe/cgi-bin/pyblosxom.cgi/an_entry.html
+http://www.joe.com/~joe/cgi-bin/pyblosxom.cgi/programming/another_entry.html
+</pre>
+<p>That gets pretty long and it's not very good looking.  For example, telling
+the URL to your mother or best friend over the phone would be challenging.
+It would be nice if we could shorten and simplify it.</p>
+<p>So, we have some options:</p>
+<ul class="simple">
+<li>Change the name of the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> script.</li>
+<li>And if that's not good enough for you, use the Apache mod_rewrite
+module to get URLs internally redirected to the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>
+script.</li>
+</ul>
+<p>Both methods are described here in more detail.</p>
+<div class="section" id="change-the-name-of-the-pyblosxom-cgi-script">
+<h2><a class="toc-backref" href="#id5">Change the Name of the pyblosxom.cgi Script</a></h2>
+<p>There's no reason that <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> has to be named
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>.  Let's try changing it from <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> to
+<tt class="docutils literal"><span class="pre">blog</span></tt>.  Now our example URLs look like this:</p>
+<pre class="literal-block">
+http://www.joe.com/~joe/cgi-bin/blog
+http://www.joe.com/~joe/cgi-bin/blog/an_entry.html
+http://www.joe.com/~joe/cgi-bin/blog/category1/another_entry.html
+</pre>
+<p>That's better looking in the example.  In your specific circumstances,
+that may be all you need.</p>
+<p>You might have to change the <tt class="docutils literal"><span class="pre">base_url</span></tt> property in your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file to match the new URL.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about the base_url:</p>
+<p class="last">The base_url property should NOT have a trailing slash.</p>
+</div>
+<p>If you're running on Apache, you might have to tell Apache that this
+is a CGI script even if it doesn't have a <tt class="docutils literal"><span class="pre">.cgi</span></tt> at the end of it.
+If you can use <tt class="docutils literal"><span class="pre">.htaccess</span></tt> files to override Apache settings, you
+might be able to do something like this:</p>
+<pre class="literal-block">
+# this allows execution of CGI scripts in this directory
+Options ExecCGI
+
+# if the user doesn't specify a file, then instead of doing the
+# regular directory listing, we look at &quot;blog&quot; (which is our
+# pyblosxom.cgi script renamed)
+DirectoryIndex blog
+
+# this tells Apache that even though &quot;blog&quot; doesn't end in .cgi,
+# it is in fact a CGI script and should be treated as such
+&lt;Files blog&gt;
+ForceType application/cgi-script
+SetHandler cgi-script
+&lt;/Files&gt;
+</pre>
+<p>You may need to stop and restart Apache for your Apache changes to
+take effect.</p>
+</div>
+<div class="section" id="hiding-the-cgi-with-rewriterule">
+<h2><a class="toc-backref" href="#id6">Hiding the .cgi with RewriteRule</a></h2>
+<p>Apache has a module for URL rewriting which allows you to convert
+incoming URLs to other URLs that can be handled internally.  You can
+do URL rewriting based on all sorts of things.  See the Apache manual
+for more details.</p>
+<p>In our case, we want all incoming URLs pointing to <tt class="docutils literal"><span class="pre">blog</span></tt> to get
+rewritten to <tt class="docutils literal"><span class="pre">cgi-bin/pyblosxom.cgi</span></tt> so they can be handled by
+PyBlosxom.  Then all our URLs will look like this:</p>
+<pre class="literal-block">
+http://www.joe.com/~joe/blog
+http://www.joe.com/~joe/blog/an_entry.html
+http://www.joe.com/~joe/blog/category1/another_entry.html
+</pre>
+<p>To do this, we create an .htaccess file (it has to be named exactly
+that) in our <tt class="docutils literal"><span class="pre">public_html</span></tt> directory (or wherever it is that /~joe/
+points to).  In that file we have the following code:</p>
+<pre class="literal-block">
+RewriteEngine on
+RewriteRule   ^blog?(.*)$   /~joe/cgi-bin/pyblosxom.cgi$1   [last]
+</pre>
+<p>The first line turns on the Apache mod_rewrite engine so that it will
+rewrite URLs.</p>
+<p>The second line has four parts.  The first part denotes the line as a
+RewriteRule.  The second part states the regular expression that
+matches the part of the URL that we want to rewrite.  The third part
+denotes what we're rewriting the URL to.  The fourth part states that
+after this rule is applied, no future rewrite rules should be applied.</p>
+<p>If you do URL rewriting, you may have to set the base_url property in
+your <tt class="docutils literal"><span class="pre">config.py</span></tt> accordingly.  In the above example, the
+<tt class="docutils literal"><span class="pre">base_url</span></tt> would be <tt class="docutils literal"><span class="pre">http://www.joe.com/~joe/blog</span></tt> with no
+trailing slash.</p>
+<p>For more information on URL re-writing, see the Apache documentation (<a class="reference external" href="http://httpd.apache.org/docs/1.3/mod/mod_rewrite.html">1.3</a>,
+<a class="reference external" href="http://httpd.apache.org/docs/2.0/mod/mod_rewrite.html">2.0</a>, <a class="reference external" href="http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html">2.2</a>).</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<a class="reference external" href="../advanced_installation.txt">View document source</a>.
+Generated on: 2008-01-10 23:43 UTC.
+Generated by <a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+==============
+Archive Access
+==============
+
+:Author: Blake Winton <bwinton plus pyblosxom at latte dot ca>
+:Originally published: September 20, 2007
+:URL: http://pyblosxom.sourceforge.net/2.0/plans/archiveaccess.html
+
+
+History
+=======
+
+September 20, 2007 - Blake Winton
+
+  * Wrote the initial document, emailed it to pyblosxom-users.
+  * Incorporated feedback.
+
+
+Summary
+=======
+
+In previous versions of PyBlosxom, any url which contained a path
+segment of four digits was treated as a request for the archives for
+that path.  This led to people attempting to create directories named,
+say, "1234", and having them not work, because the archive handler would
+take over, and return no entries for the year 1234.
+
+There are other plugins which assign different meanings to parts of the
+path, but they all require the path to start with a prefix, thus
+allowing the user to name their directories whatever they want.
+
+This proposal is intended to sketch out how the archive access for the
+next version of PyBlosxom should work, with the goals of allowing easy
+access to the archives, as well as allowing users to name directories
+whatever they like.
+
+
+Proposed design
+===============
+
+Currently, PyBlosxom jumps through some hoops to process numeric
+directories as years.  While it does allow you to more easily view
+archives of categories, I believe there is a simpler way to achieve the
+same feature.
+
+The path /dev/2003/ always contains the stuff in the /dev/2003 folder.
+
+The items in the dev/2003 folder created in 2002 (Note: I'm using 2002
+here for disambiguation, so that we know which part is the folder name,
+and which part is the path.) could be:
+
+1. /archive/2002/dev/2003
+
+2. /archive/2002?dev/2003
+
+3. /dev/2003?archive/2002
+
+4. /archive/2002/entries/dev/2003
+
+5. /dev/2003/2002
+
+
+Discussion
+==========
+
+The main failings with options 2 and 3 are the use of the question mark.
+Due to that, I suggest discounting them.
+
+The next two options to consider are 1 and 4.  The trade-off between
+those, as I see it, is that option 1 restricts what I can name my
+top-level directories, (for instance, if you named your root directory
+"07", the url "/archive/2002/07", could be either everything in the "07"
+directory in 2002, or everything in the entire site in July 2002,)
+whereas option 4 is too verbose for my liking.  The verbosity could be
+fixed by choosing a shorter prefix, such as: /old/2002/\@/dev/2003, or
+/\@/2002/in/dev/2003... For that matter, the prefix should probably come
+out of config.py, like other prefixes, so that if the user decides to
+have an "old", or "archive" top-level category, they can change the
+archive's prefix to "previous", or "ancient".  (Similarly, if the user
+uses a different locale, they can name it "Архив", or "vieux", or
+"vorhergehend".)
+
+Another proposed option would be to support filtering on any path by
+appending date and path arguments.  I personally dislike this solution,
+because it seems too complicated, and introduces more ways to mess up
+(i.e. having a path with path components and a path argument).  It was
+also noted by its proposer that it doesn't address the issue of wanting
+to allow a path with a four digit number
+
+The fifth option, which I completely forgot about at the time of
+original writing, is to allow archive-based paths everywhere (if it
+can't otherwise be construed as a directory).  So, /dev/2003 would be
+the directory "/dev/2003" if it existed, and if not, the 2003 archive
+for the directory "/dev".  If you wanted the 2002 entries for the
+/dev/2003 directory, you would type "/dev/2003/2002", and if you wanted
+the 2003 archives for the dev directory, you would be out of luck.  (But
+that would have been a specific choice by the blog author, and so I feel
+it's not unreasonable to say that.)
+
+The thread that got me complaining about this issue is at:
+http://sourceforge.net/mailarchive/forum.php?thread_name=20070913214155.GB30850%40newred.gradwell.net&forum_name=pyblosxom-users
+
+The thread where I promised to write this spec is at:
+http://sourceforge.net/mailarchive/forum.php?thread_name=185aeadc0709140845t16b98868s96bcaa1ac86533a3%40mail.gmail.com&forum_name=pyblosxom-users
+
+
+Outstanding issues
+==================
+
+1. The main outstanding issue is that I don't know if anyone is
+interested enough in changing this to actually do the work.  ;)

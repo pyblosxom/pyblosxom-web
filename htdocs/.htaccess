@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteRule ^$            /cgi-bin/pyblosxom.cgi    [last]
+RewriteRule ^blog(.*)$    /cgi-bin/pyblosxom.cgi$1  [last]
+

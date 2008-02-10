@@ -1,0 +1,357 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Trouble-shooting</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Installing PyBlosxom"
+HREF="c59.html"><LINK
+REL="PREVIOUS"
+TITLE="Installing PyBlosxom"
+HREF="x78.html"><LINK
+REL="NEXT"
+TITLE="Advanced Installation"
+HREF="c162.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x78.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Installing PyBlosxom</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c162.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN116"
+>2.3. Trouble-shooting</A
+></H1
+><P
+>&#13;We're going to try to break this down a bit into categories.  Bear
+with us and keep trying things.  If you have problems and have gone
+through this section to no avail, then come talk to us on the pyblosxom-users
+list.  Details of the mailing list are located at 
+http://pyblosxom.sourceforge.net/ .
+</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN119"
+>2.3.1. Running ./pyblosxom.cgi doesn't work.</A
+></H2
+><P
+>&#13;First, you should check to see if you have Python installed on your
+system.  If not, then that's probably the problem.  Go install Python.
+</P
+><P
+>&#13;If Python is installed on your system, make sure the first line in
+<TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+> points to your Python interpreter.  If not, 
+fix that and try running <B
+CLASS="command"
+>./pyblosxom.cgi</B
+> again.
+</P
+><P
+>&#13;If Python is installed on your system and the first line of 
+<TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+> is correct, then check to see if it's a 
+permissions issue.  <TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+> is a script--so it 
+needs execute permission in order to function.  If those aren't set, then fix 
+that and try running <B
+CLASS="command"
+>./pyblosxom.cgi</B
+> again.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN129"
+>2.3.2. I see a HTTP 404 error when I try to bring up my blog</A
+></H2
+><P
+>&#13;When you try to look at your blog and you get a HTTP 404 error, then
+you're using the wrong URL.  Are you futzing with <TT
+CLASS="filename"
+>.htaccess</TT
+>?  
+Does your server allow you to run CGI scripts?  Do other CGI scripts work?
+Does the URL you're trying to use to access PyBlosxom look like other
+URLs that work on your system?
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN133"
+>2.3.3. I see a HTTP 500 error when I try to bring up my blog</A
+></H2
+><P
+>&#13;When you try to look at your blog and you get a HTTP 500 error, check your
+server logs.  For Apache, look for the <TT
+CLASS="filename"
+>error.log</TT
+> file in a 
+place like <TT
+CLASS="filename"
+>/var/logs/apache</TT
+> or <TT
+CLASS="filename"
+>/var/logs/httpd</TT
+>.
+</P
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+><B
+>make sure you read the installation chapter</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>&#13;    At this point, running <B
+CLASS="command"
+>./pyblosxom.cgi</B
+> at the command 
+    prompt should work fine.  If you haven't done that and you're busy 
+    trouble-shooting, go back to the installation and make sure you did 
+    all the steps.
+  </P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>&#13;Does the account your web-server runs as have execute access to your 
+<TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+> script?
+</P
+><P
+>&#13;Is it kicking up a Python stack trace?  If so, uncomment the line in
+<TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+> (remove the # at the beginning of the line) that 
+looks like this:
+</P
+><PRE
+CLASS="programlisting"
+>#import cgitb; cgitb.enable()
+</PRE
+><P
+>&#13;Then try looking at your blog again.  That should spit up a huge
+pretty traceback that should help iron out the issue for you.  At a
+bare minimum, it's useful to people who can help you out.
+</P
+><P
+>&#13;Do you have plugins loaded?  If you do, try unloading all your plugins
+and see if the problem persists.  Sometimes there are issues with plugins
+that only show up in certain situations.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN150"
+>2.3.4. I have other issues</A
+></H2
+><P
+>&#13;Try changing the renderer for your blog to the debug renderer.  You can
+do this by setting the <CODE
+CLASS="varname"
+>renderer</CODE
+> property in your 
+<TT
+CLASS="filename"
+>config.py</TT
+> file to <TT
+CLASS="literal"
+>debug</TT
+>.  That will 
+show a lot more detail about what things get set to and may help you figure 
+out your issues.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN156"
+>2.3.5. UGH!  My blog looks UGLY!</A
+></H2
+><P
+>&#13;Read the chapter on flavours and templates to help you out.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN159"
+>2.3.6. I hate writing in HTML!</A
+></H2
+><P
+>&#13;That's ok.  Read the chapter on entry parsers.
+</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x78.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c162.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Installing PyBlosxom</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c59.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Advanced Installation</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

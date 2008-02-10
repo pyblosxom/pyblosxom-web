@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Posting Date</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Writing Entries"
+HREF="c667.html"><LINK
+REL="PREVIOUS"
+TITLE="The Format of an Entry"
+HREF="x678.html"><LINK
+REL="NEXT"
+TITLE="Entry Parsers"
+HREF="x721.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x678.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. Writing Entries</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x721.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN704"
+>6.3. Posting Date</A
+></H1
+><P
+>&#13;The posting date of the entry file is the modification time (also known as
+mtime) on the file itself as stored by your file system.  Every time you 
+go to edit an entry, it changes the modification time.  You can see this
+in the following example of output:
+</P
+><PRE
+CLASS="programlisting"
+>willg ~/blogdata/blosxom/site: vi testpost.txt                            [1]
+willg ~/blogdata/blosxom/site: ls -l
+total 16
+-rw-r--r--  1 willg willg 764 Jul 20  2003 minoradjustments.txt
+-rw-r--r--  1 willg willg 524 Jul 24  2003 moreminoradjustments.txt
+-rw-r--r--  1 willg willg 284 Aug 15  2004 nomorecalendar.txt
+-rw-r--r--  1 willg willg  59 Mar 21 16:30 testpost.txt                   [2]
+willg ~/blogdata/blosxom/site: vi testpost.txt                            [3]
+willg ~/blogdata/blosxom/site: ls -l
+total 16
+-rw-r--r--  1 willg willg 764 Jul 20  2003 minoradjustments.txt
+-rw-r--r--  1 willg willg 524 Jul 24  2003 moreminoradjustments.txt
+-rw-r--r--  1 willg willg 284 Aug 15  2004 nomorecalendar.txt
+-rw-r--r--  1 willg willg  59 Mar 21 16:34 testpost.txt                   [4]
+</PRE
+><P
+>&#13;[1] I create the blog entry <TT
+CLASS="filename"
+>testpost.txt</TT
+> using 
+<B
+CLASS="command"
+>vi</B
+> (a text editor).  The mtime of the file will be the 
+time I last save the file and exit out of vi.
+</P
+><P
+>&#13;[2] See the mtime on the file is <TT
+CLASS="literal"
+>Mar 21 16:30</TT
+>.  That's when 
+I last saved the blog entry and exited out of vi.
+</P
+><P
+>&#13;[3] I discover that I made a spelling mistake in my entry...  So I edit
+it again in vi and fix the mistake.  The mtime of the entry has now changed...
+</P
+><P
+>&#13;[4] Now the mtime of the file is <TT
+CLASS="literal"
+>Mar 21 16:34</TT
+>.  This is 
+the time that will show up in my blog as the posting date.
+</P
+><DIV
+CLASS="warning"
+><P
+></P
+><TABLE
+CLASS="warning"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/warning.gif"
+HSPACE="5"
+ALT="Warning"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+><B
+>be careful with the mtimes</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>&#13;    There are some issues with this method for storing the posting date.  First,
+    if you ever change the blog entry, the mtime will change as well.  That
+    makes updating blog entries very difficult down the line.
+  </P
+><P
+>&#13;    There's a utility that comes with the contributed plugins pack called 
+    <TT
+CLASS="filename"
+>editfile.py</TT
+>.  This will note the mtime of the file, 
+    open up your favorite editor to edit the file, and when you're done, it'll 
+    reset the mtime of the file back to what it was.
+  </P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x678.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x721.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>The Format of an Entry</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c667.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Entry Parsers</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

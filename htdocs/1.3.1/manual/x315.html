@@ -1,0 +1,663 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Template Variables</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Flavours"
+HREF="c224.html"><LINK
+REL="PREVIOUS"
+TITLE="Where To Put Your Flavour Files"
+HREF="x289.html"><LINK
+REL="NEXT"
+TITLE="Invoking a Flavour"
+HREF="x528.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x289.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Flavours</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x528.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN315"
+>4.3. Template Variables</A
+></H1
+><P
+>&#13;This is the list of variables that are available to your templates.
+Additionally, plugins that you are using will add additional variables.
+To get a complete list of what variables are available in your blog, use 
+the debug renderer by changing the renderer property in your 
+<TT
+CLASS="filename"
+>config.py</TT
+> file to debug like this:
+</P
+><PRE
+CLASS="programlisting"
+>py["renderer"] = "debug"
+</PRE
+><P
+>&#13;That will tell you all kinds of stuff about the data structures involved 
+in the request.  Don't forget to change it back when you're done!
+</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN321"
+>4.3.1. URL Encoding and Escaping of Template Variables</A
+></H2
+><P
+>&#13;PyBlosxom 1.3 allows you to escape and URL encode any variables by adding
+"_escaped" or "_urlencoded" to the end of the variable name.
+</P
+><P
+>&#13;For example, <CODE
+CLASS="varname"
+>title_escaped</CODE
+> is an escaped form of
+the title with ' (single-quote) replaced with ' and " (double-quote)
+replaced with ".
+</P
+><P
+>&#13;<CODE
+CLASS="varname"
+>title_urlencoded</CODE
+> is a URL encoded form of the title
+which uses the Python urllib.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN328"
+>4.3.2. Variables From config.py</A
+></H2
+><P
+>&#13;These template variables are available to all templates. They come directly 
+from your <TT
+CLASS="filename"
+>config.py</TT
+> file.
+</P
+><DIV
+CLASS="table"
+><A
+NAME="AEN332"
+></A
+><P
+><B
+>Table 4-1. Template variables from config.py</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>variable name</TH
+><TH
+>description</TH
+><TH
+>example</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>blog_description</TD
+><TD
+>the description of the blog</TD
+><TD
+>blosxom with a touch of python</TD
+></TR
+><TR
+><TD
+>blog_title</TD
+><TD
+>the title of the blog</TD
+><TD
+>RoughingIT - pyblosxom : /weblogs/tools/pyblosxom</TD
+></TR
+><TR
+><TD
+>blog_language</TD
+><TD
+>the language of the blog</TD
+><TD
+>en</TD
+></TR
+><TR
+><TD
+>blog_encoding</TD
+><TD
+>the encoding of the blog</TD
+><TD
+>iso8859-1</TD
+></TR
+><TR
+><TD
+>blog_author</TD
+><TD
+>the author of the blog (hopefully you)</TD
+><TD
+>Joe Dirt</TD
+></TR
+><TR
+><TD
+>blog_email</TD
+><TD
+>the email address of the author of the blog (feel free to obfuscate it)</TD
+><TD
+>joe at joe dot com</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><P
+>&#13;Additionally, any other properties you set in <TT
+CLASS="filename"
+>config.py</TT
+> 
+are available in your templates.  If you wanted to create a 
+<CODE
+CLASS="varname"
+>blog_images</CODE
+> variable holding the base url of the directory 
+with all your images:
+</P
+><DIV
+CLASS="example"
+><A
+NAME="AEN368"
+></A
+><P
+><B
+>Example 4-2. creating your own config.py variables</B
+></P
+><PRE
+CLASS="programlisting"
+>py["blog_images"] = "http://www.joe.com/~joe/images/"
+</PRE
+></DIV
+><P
+>&#13;to your <TT
+CLASS="filename"
+>config.py</TT
+> file and it would be available in 
+all your templates.
+</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN373"
+>4.3.3. Calculated Template Variables</A
+></H2
+><P
+>&#13;These template variables are available to all templates as well.  They are 
+calculated based on the request.
+</P
+><DIV
+CLASS="table"
+><A
+NAME="AEN376"
+></A
+><P
+><B
+>Table 4-2. Calculated template variables</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>variable name</TH
+><TH
+>description</TH
+><TH
+>example</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>content_type</TD
+><TD
+>the content type of this page</TD
+><TD
+>text/html</TD
+></TR
+><TR
+><TD
+>root_datadir</TD
+><TD
+>the root datadir of this page?</TD
+><TD
+>/home/subtle/blosxom/weblogs/tools/pyblosxom</TD
+></TR
+><TR
+><TD
+>url</TD
+><TD
+>the PATH_INFO to this page</TD
+><TD
+>pyblosxom/weblogs/tools/pyblosxom</TD
+></TR
+><TR
+><TD
+>flavour</TD
+><TD
+>the flavour for this page</TD
+><TD
+>html</TD
+></TR
+><TR
+><TD
+>latest_date</TD
+><TD
+>the date of the most recent entry that is going to show</TD
+><TD
+>Tue, 15 Nov 2005</TD
+></TR
+><TR
+><TD
+>latest_w3cdate</TD
+><TD
+>the date of the most recent entry that is going to show in w3cdate format</TD
+><TD
+>2005-11-13T17:50:02Z</TD
+></TR
+><TR
+><TD
+>latest_rfc822date</TD
+><TD
+>the date of the most recent entry that is going to show in RFC 822 format</TD
+><TD
+>Sun, 13 Nov 2005 17:50 GMT</TD
+></TR
+><TR
+><TD
+>pi_yr</TD
+><TD
+>the four-digit year the user requested</TD
+><TD
+>2002</TD
+></TR
+><TR
+><TD
+>pi_mo</TD
+><TD
+>the month name the user requested</TD
+><TD
+>Sep</TD
+></TR
+><TR
+><TD
+>pi_da</TD
+><TD
+>the day number the user requested</TD
+><TD
+>15</TD
+></TR
+><TR
+><TD
+>pi_bl</TD
+><TD
+>the entry the user requested to see</TD
+><TD
+>weblogs/tools/pyblosxom</TD
+></TR
+><TR
+><TD
+>pyblosxom_version</TD
+><TD
+>the version number and release date of the pyblosxom version you're using</TD
+><TD
+>1.2 3/25/2005</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN433"
+>4.3.4. Template Variables Only Available in the story Template</A
+></H2
+><P
+>&#13;These template variables are only available in your story template.
+</P
+><DIV
+CLASS="table"
+><A
+NAME="AEN436"
+></A
+><P
+><B
+>Table 4-3. Variables in the story template</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><COL><THEAD
+><TR
+><TH
+>variable name</TH
+><TH
+>description</TH
+><TH
+>example</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>title</TD
+><TD
+>title of the entry</TD
+><TD
+>First Post!</TD
+></TR
+><TR
+><TD
+>filename</TD
+><TD
+>template file name and path of the entry</TD
+><TD
+>/home/subtle/blosxom/weblogs/tools/pyblosxom/index.txt</TD
+></TR
+><TR
+><TD
+>file_path</TD
+><TD
+>just the filename and extensions of the entry</TD
+><TD
+>index.txt</TD
+></TR
+><TR
+><TD
+>fn</TD
+><TD
+>just the filename (no extension)</TD
+><TD
+>index</TD
+></TR
+><TR
+><TD
+>absolute_path</TD
+><TD
+>the category/path of the entry</TD
+><TD
+>weblogs/tools/pyblosxom</TD
+></TR
+><TR
+><TD
+>body</TD
+><TD
+>the text of the entry</TD
+><TD
+>first post!</TD
+></TR
+><TR
+><TD
+>tb_id</TD
+><TD
+>the trackback id of the entry</TD
+><TD
+>_index</TD
+></TR
+><TR
+><TD
+>path</TD
+><TD
+>the category/path of the entry</TD
+><TD
+>weblogs/tools/pyblosxom</TD
+></TR
+><TR
+><TD
+>yr</TD
+><TD
+>the four digit year of the mtime of this entry</TD
+><TD
+>2004</TD
+></TR
+><TR
+><TD
+>mo</TD
+><TD
+>the month abbreviation of the mtime of this entry</TD
+><TD
+>Jan</TD
+></TR
+><TR
+><TD
+>mo_num</TD
+><TD
+>the month number of the mtime of this entry</TD
+><TD
+>01</TD
+></TR
+><TR
+><TD
+>ti</TD
+><TD
+>the hour and minute of the mtime of this entry</TD
+><TD
+>16:40</TD
+></TR
+><TR
+><TD
+>date</TD
+><TD
+>the date string of the mtime of this entry</TD
+><TD
+>Sun, 23 May 2004</TD
+></TR
+><TR
+><TD
+>w3cdate</TD
+><TD
+>the date in w3cdate format</TD
+><TD
+>2005-11-13T17:50:02Z</TD
+></TR
+><TR
+><TD
+>rfc822date</TD
+><TD
+>the date in RFC 822 format</TD
+><TD
+>Sun, 13 Nov 2005 17:50 GMT</TD
+></TR
+><TR
+><TD
+>fulltime</TD
+><TD
+>the date in YYYYMMDDHHMMSS format</TD
+><TD
+>20040523164000</TD
+></TR
+><TR
+><TD
+>timetuple</TD
+><TD
+>the time tuple (year, month, month-day, hour, minute, second, week-day, year-day, isdst)</TD
+><TD
+>(2004, 5, 23, 16, 40, 0, 6, 144, 1)</TD
+></TR
+><TR
+><TD
+>mtime</TD
+><TD
+>seconds since the epoch</TD
+><TD
+>1085348400.0</TD
+></TR
+><TR
+><TD
+>dw</TD
+><TD
+>the day of the week</TD
+><TD
+>Sunday</TD
+></TR
+><TR
+><TD
+>da</TD
+><TD
+>the day of the month</TD
+><TD
+>23</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN525"
+>4.3.5. Template Variables From Plugins</A
+></H2
+><P
+>&#13;Additionally, many plugins will create additional variables.  Refer to the 
+plugin's documentation for what variables it creates, where the variables 
+are available, and what the variables do.
+</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x289.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x528.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Where To Put Your Flavour Files</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c224.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Invoking a Flavour</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,317 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Invoking a Flavour</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Flavours"
+HREF="c224.html"><LINK
+REL="PREVIOUS"
+TITLE="Template Variables"
+HREF="x315.html"><LINK
+REL="NEXT"
+TITLE="Order of Operations to Figure Out Which Flavour to Use"
+HREF="x592.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x315.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Flavours</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x592.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN528"
+>4.4. Invoking a Flavour</A
+></H1
+><P
+>&#13;The flavour for a given page is specified in the extension of the file 
+being requested.  For example:
+</P
+><DIV
+CLASS="table"
+><A
+NAME="AEN531"
+></A
+><P
+><B
+>Table 4-4. Examples of request URIs</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>url</TH
+><TH
+>what happens</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>http://some.blog.org/</TD
+><TD
+>brings up the index in the default flavour which is "html"</TD
+></TR
+><TR
+><TD
+>http://some.blog.org/index.html</TD
+><TD
+>brings up the index in the "html" flavour</TD
+></TR
+><TR
+><TD
+>http://some.blog.org/index.rss</TD
+><TD
+>brings up the index in the "rss" flavour (which by default is RSS 0.9.1)</TD
+></TR
+><TR
+><TD
+>http://some.blog.org/2004/05/index.joy</TD
+><TD
+>brings up the index for May of 2004 in the "joy" flavour</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><P
+>&#13;Additionally, you can specify the flavour by adding a <CODE
+CLASS="varname"
+>flav</CODE
+> 
+variable in the query-string.  Examples:
+</P
+><DIV
+CLASS="table"
+><A
+NAME="AEN553"
+></A
+><P
+><B
+>Table 4-5. Specifying flavour using the querystring</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>uri</TH
+><TH
+>what happens</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>http://some.blog.org/</TD
+><TD
+>brings up the index in the default flavour which is "html"</TD
+></TR
+><TR
+><TD
+>http://some.blog.org/?flav=rss</TD
+><TD
+>brings up the index in the "rss" flavour</TD
+></TR
+><TR
+><TD
+>http://some.blog.org/2004/05/index?flav=joy</TD
+><TD
+>brings up the index for May of 2004 in the "joy" flavour</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+><P
+>&#13;You can change the default flavour from <TT
+CLASS="literal"
+>html</TT
+> to some other 
+flavour in your <TT
+CLASS="filename"
+>config.py</TT
+> file with the 
+<CODE
+CLASS="varname"
+>default_flavour</CODE
+> property:
+</P
+><DIV
+CLASS="example"
+><A
+NAME="AEN574"
+></A
+><P
+><B
+>Example 4-3. default_flavour variable value</B
+></P
+><PRE
+CLASS="programlisting"
+>py["default_flavour"] = "joy"
+</PRE
+></DIV
+><P
+>&#13;Doing this will set the default flavour to use when the URI the user has
+used doesn't specify which flavour to use.  For example, if you do the
+above, then the following URIs will use the default flavour:
+</P
+><DIV
+CLASS="table"
+><A
+NAME="AEN578"
+></A
+><P
+><B
+>Table 4-6. Default flavour used</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>uri</TH
+><TH
+>what happens</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>http://www.joe.com/cgi-bin/pyblosxom.cgi/2005/03</TD
+><TD
+>uses the default flavour which is set to "joy"</TD
+></TR
+><TR
+><TD
+>http://www.joe.com/cgi-bin/pyblosxom.cgi/2005/03/?flav=html</TD
+><TD
+>uses the html flavour as specified by flav=</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x315.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x592.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Template Variables</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c224.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Order of Operations to Figure Out Which Flavour to Use</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

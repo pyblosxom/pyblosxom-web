@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>Installing PyBlosxom with WSGI</title>
+<meta name="author" content="PyBlosxom Development Team" />
+<meta name="copyright" content="This document is distributed under the MIT license." />
+<link rel="stylesheet" href="manual_style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="installing-pyblosxom-with-wsgi">
+<h1 class="title">Installing PyBlosxom with WSGI</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>PyBlosxom Development Team</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>advanced_installation.txt 1029 2007-06-07 02:33:12Z willhelm</td></tr>
+<tr><th class="docinfo-name">Copyright:</th>
+<td>This document is distributed under the MIT license.</td></tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#summary" id="id1">Summary</a></li>
+<li><a class="reference internal" href="#dependencies" id="id2">Dependencies</a></li>
+<li><a class="reference internal" href="#setup" id="id3">Setup</a><ul>
+<li><a class="reference internal" href="#mod-wsgi" id="id4">mod_wsgi</a></li>
+<li><a class="reference internal" href="#mod-python" id="id5">mod_python</a></li>
+<li><a class="reference internal" href="#other-situations" id="id6">other situations</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h1><a class="toc-backref" href="#id1">Summary</a></h1>
+<p>As of PyBlosxom 1.2, PyBlosxom has support for WSGI.</p>
+<p>As of PyBlosxom 1.4, WSGI support has been folded into the main codebase
+(as opposed to being a separate wsgi_app.py file).  But it's broken
+until 1.4.2.</p>
+<p>There are a bunch of ways to set up PyBlosxom with WSGI.  These instructions
+aren't as mature as other instructions.</p>
+<p>If you find any issues, please let us know.</p>
+<p>If you can help with the documentation efforts, please let us know.</p>
+</div>
+<div class="section" id="dependencies">
+<h1><a class="toc-backref" href="#id2">Dependencies</a></h1>
+<ul class="simple">
+<li>Pyblosxom 1.4.2 or a later version</li>
+<li>Either:<ul>
+<li>Python 2.5, OR</li>
+<li>Python 2.4 with the wsgiref library installed:
+<a class="reference external" href="http://cheeseshop.python.org/pypi/wsgiref">http://cheeseshop.python.org/pypi/wsgiref</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="setup">
+<h1><a class="toc-backref" href="#id3">Setup</a></h1>
+<p>Setup depends on what you're using.</p>
+<div class="section" id="mod-wsgi">
+<h2><a class="toc-backref" href="#id4">mod_wsgi</a></h2>
+<p>If you're using mod_wsgi from <a class="reference external" href="http://code.google.com/p/modwsgi/">http://code.google.com/p/modwsgi/</a> then do the
+following:</p>
+<ol class="arabic">
+<li><p class="first">Make sure mod_wsgi is installed correctly and working.</p>
+</li>
+<li><p class="first">Either:</p>
+<dl class="docutils">
+<dt>2.1. Add a <tt class="docutils literal"><span class="pre">WSGIScriptAlias</span></tt> to your Apache configuration that points to</dt>
+<dd><p class="first last"><tt class="docutils literal"><span class="pre">pyblosxom.wsgi</span></tt>, OR</p>
+</dd>
+<dt>2.2. Verify that your <tt class="docutils literal"><span class="pre">WSGIScriptAlias</span></tt> points to a valid directory on</dt>
+<dd><p class="first last">your file system that stores WSGI scripts.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Create a blog--see the instructions for the blog directories, <tt class="docutils literal"><span class="pre">config.py</span></tt>
+setup and other bits of <strong>Setting up a blog</strong> in <tt class="docutils literal"><span class="pre">install_cgi</span></tt>.</p>
+</li>
+<li><p class="first">Create a <tt class="docutils literal"><span class="pre">pyblosxom.wsgi</span></tt> script that looks something like this:</p>
+<pre class="literal-block">
+# This is the pyblosxom.wsgi script that powers the _______ blog.
+import sys
+
+def add_to_path(d):
+   if d not in sys.path:
+      sys.path.insert(0, d)
+
+# call add_to_path with the directory that your config.py lives in.
+add_to_path(&quot;/home/joe/blog&quot;)
+
+# if you have PyBlosxom installed in a directory and NOT as a Python
+# library, then call add_to_path with the directory that PyBlosxom
+# lives in.  For example, if I untar'd pyblosxom-1.4.1.tar.gz into
+# /home/joe/, then add like this:
+# add_to_path(&quot;/home/joe/pyblosxom-1.4.1/&quot;)
+
+import Pyblosxom.pyblosxom
+application = Pyblosxom.pyblosxom.PyBlosxomWSGIApp()
+</pre>
+</li>
+</ol>
+</div>
+<div class="section" id="mod-python">
+<h2><a class="toc-backref" href="#id5">mod_python</a></h2>
+<p>FIXME - need to add instructions here</p>
+</div>
+<div class="section" id="other-situations">
+<h2><a class="toc-backref" href="#id6">other situations</a></h2>
+<p>FIXME - need to add instructions here</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<a class="reference external" href="../install_wsgi.txt">View document source</a>.
+Generated on: 2008-01-10 23:43 UTC.
+Generated by <a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

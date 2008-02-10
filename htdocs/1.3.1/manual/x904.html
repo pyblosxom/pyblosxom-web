@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Installing the comments plugin</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Comments"
+HREF="c888.html"><LINK
+REL="PREVIOUS"
+TITLE="Comments"
+HREF="c888.html"><LINK
+REL="NEXT"
+TITLE="Additional comments plugin configuration"
+HREF="x941.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c888.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Comments</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x941.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN904"
+>8.2. Installing the comments plugin</A
+></H1
+><P
+>&#13;Requirements:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>PyXML - The comments plugin requires the PyXML module.  To install the
+PyXML module, go here: http://pyxml.sourceforge.net/
+</P
+></LI
+><LI
+><P
+>A directory the web-server has writable permissions to.</P
+></LI
+></UL
+><P
+>&#13;After making sure you have the requirements, do the following:
+</P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>Copy <TT
+CLASS="filename"
+>contrib/plugins/comments/plugins/comments.py</TT
+> to 
+your plugins directory.  Then add <TT
+CLASS="literal"
+>"comments"</TT
+> to the 
+<CODE
+CLASS="varname"
+>load_plugins</CODE
+> property in your <TT
+CLASS="filename"
+>config.py</TT
+> 
+file.</P
+></LI
+><LI
+><P
+>Comments are stored in a directory which will parallel the data
+directory.  The comments themselves are stored as XML files named
+entryname-datetime.suffix.  The comment system allows you to specify
+the directory where the comment directory tree will stored, and the
+suffix used for comment files.  You need to make sure that this
+directory is writable by the pyblosxom CGI scripts.
+</P
+><P
+>&#13;Set <CODE
+CLASS="varname"
+>comment_dir</CODE
+> to the directory (in your data directory)
+where you want the comments to be stored.  The default value is a
+directory named <TT
+CLASS="literal"
+>comments</TT
+> in your data directory.
+</P
+><P
+>&#13;Set <CODE
+CLASS="varname"
+>comment_ext</CODE
+> to the change comment file extension.  The
+default file extension is <TT
+CLASS="literal"
+>cmt</TT
+>.
+</P
+></LI
+><LI
+><P
+>Copy the flavour files from the contrib/plugins/comments/flavours 
+directory.  There are flavours for <TT
+CLASS="filename"
+>html</TT
+> and 
+<TT
+CLASS="filename"
+>rss</TT
+>.  You should copy all the files to your data directory.</P
+><P
+>The "comment-story" template is used to format a single entry that 
+has comments.</P
+><P
+>The "comment" template is used to format a single
+comment/trackback/pingback.</P
+><P
+>The "comment-form" template provides the form used to enter new 
+comments.</P
+></LI
+><LI
+><P
+>Edit the "comment-story", "comment", and "comment-form" templates. 
+Variables that are available are:</P
+><P
+>&#13;Available in the "story" and "comment-story" templates:
+</P
+><PRE
+CLASS="programlisting"
+>$num_comments - Contains an integer count of the number of comments
+                associated with this entry
+</PRE
+><P
+>&#13;Available in the "comment" template:
+</P
+><PRE
+CLASS="programlisting"
+>$cmt_title - the title of the comment
+$cmt_description - the content of the comment or excerpt of the 
+                   trackback/pingback
+$cmt_link - the pingback link referring to this entry
+$cmt_author - the author of the comment or trackback
+$cmt_pubDate - the date and time of the comment/trackback/pingback
+$cmt_source - the source of the trackback
+</PRE
+></LI
+></OL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c888.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x941.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Comments</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c888.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Additional comments plugin configuration</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

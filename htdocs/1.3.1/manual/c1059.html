@@ -1,0 +1,295 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>PyBlosxom Architecture</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="PREVIOUS"
+TITLE="Debugging your feeds"
+HREF="x1055.html"><LINK
+REL="NEXT"
+TITLE="Lifecycle of a PyBlosxom Request"
+HREF="x1091.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1055.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1091.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="AEN1059"
+></A
+>Chapter 10. PyBlosxom Architecture</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>10.1. <A
+HREF="c1059.html#AEN1064"
+>Parts</A
+></DT
+><DT
+>10.2. <A
+HREF="x1091.html"
+>Lifecycle of a PyBlosxom Request</A
+></DT
+><DT
+>10.3. <A
+HREF="x1144.html"
+>Lifecycle of the blosxom_handler</A
+></DT
+><DT
+>10.4. <A
+HREF="x1160.html"
+>Lifecycle of the blosxom Renderer</A
+></DT
+><DT
+>10.5. <A
+HREF="x1181.html"
+>Callbacks</A
+></DT
+><DT
+>10.6. <A
+HREF="x1446.html"
+>Entry Parsers</A
+></DT
+><DT
+>10.7. <A
+HREF="x1449.html"
+>Pre-formatters and Post-formatters</A
+></DT
+><DT
+>10.8. <A
+HREF="x1452.html"
+>Renderers</A
+></DT
+></DL
+></DIV
+><P
+>&#13;The architecture for PyBlosxom has evolved over time. The mission is to 
+build an easily augmented blog server that uses the file system for data 
+storage. Using the file system allows PyBlosxom to fit in with other 
+applications rather than forcing PyBlosxom to solve all problems all by 
+itself.
+</P
+><P
+>&#13;In general, this chapter is lacking pretty severely.  The code itself
+is fairly well documented and you should always consider the code to be
+an authority when the code and this manual are in disagreement.
+</P
+><P
+>&#13;FIXME - rework this whole chapter.
+</P
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN1064"
+>10.1. Parts</A
+></H1
+><P
+>&#13;PyBlosxom is composed of several parts:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>&#13;<TT
+CLASS="filename"
+>pyblosxom.cgi</TT
+> - This is the CGI script that is executed 
+by your web-server, pulls in configuration variables from 
+<TT
+CLASS="filename"
+>config.py</TT
+> and then instantiates PyBlosxom objects to 
+handle the request.
+</P
+></LI
+><LI
+><P
+>&#13;the <TT
+CLASS="filename"
+>Pyblosxom</TT
+> package - This is the Python package that 
+holds the PyBlosxom objects and utility functions that handle the request.
+</P
+><P
+></P
+><UL
+><LI
+><P
+>&#13;   the <TT
+CLASS="filename"
+>entries</TT
+> package - Handles the abstraction allowing 
+   PyBlosxom to use entries other than those solely found on the file system.
+   </P
+></LI
+><LI
+><P
+>&#13;   the <TT
+CLASS="filename"
+>renderers</TT
+> package - PyBlosxom can handle different 
+   renderers. The renderer gets a list of entries to be rendered and can render 
+   them using whatever means it so desires: blosxom templates, htmltmpl templates, 
+   Cheetah templates, hard-coded RSS 2.0 markup, ...
+   </P
+></LI
+><LI
+><P
+>&#13;   the <TT
+CLASS="filename"
+>cache</TT
+> package - PyBlosxom allows for entry-level 
+   caching. This helps in cases where your entries are stored in a format that 
+   requires a lot of processing to convert to HTML. 
+   </P
+></LI
+></UL
+></LI
+></UL
+><P
+>&#13;PyBlosxom's look'n'feel and behavior is then augmented by:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>&#13;plugins - Plugins allow you to augment PyBlosxom's default behavior. These 
+you can get from the plugin registry or write yourself.
+</P
+></LI
+><LI
+><P
+>&#13;flavour templates - Flavour templates allow you to create the look and feel 
+of your blog. These you can get from the flavour registry or write yourself. 
+</P
+></LI
+></UL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1055.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1091.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Debugging your feeds</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Lifecycle of a PyBlosxom Request</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

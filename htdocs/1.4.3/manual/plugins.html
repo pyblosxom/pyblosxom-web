@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>Plugins</title>
+<meta name="author" content="PyBlosxom Development Team" />
+<meta name="copyright" content="This document is distributed under the MIT license." />
+<link rel="stylesheet" href="manual_style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="plugins">
+<h1 class="title">Plugins</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>PyBlosxom Development Team</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>plugins.txt 1029 2007-06-07 02:33:12Z willhelm</td></tr>
+<tr><th class="docinfo-name">Copyright:</th>
+<td>This document is distributed under the MIT license.</td></tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#summary" id="id1">Summary</a></li>
+<li><a class="reference internal" href="#setting-pyblosxom-up-to-use-plugins" id="id2">Setting PyBlosxom up to Use Plugins</a></li>
+<li><a class="reference internal" href="#finding-plugins" id="id3">Finding Plugins</a></li>
+<li><a class="reference internal" href="#installing-plugins" id="id4">Installing Plugins</a></li>
+<li><a class="reference internal" href="#writing-your-own-plugins" id="id5">Writing Your Own Plugins</a></li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h1><a class="toc-backref" href="#id1">Summary</a></h1>
+<p>PyBlosxom allows you to extend and augment its base functionality using
+PyBlosxom plugins.  Plugins allow you to create additional variables; provide
+additional entry parsers, renderers, post-formatters, and pre-formatters;
+create new output data types; pull information from other non-blog sources;
+create images; and a variety of other things.</p>
+</div>
+<div class="section" id="setting-pyblosxom-up-to-use-plugins">
+<h1><a class="toc-backref" href="#id2">Setting PyBlosxom up to Use Plugins</a></h1>
+<p>There are two properties in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file that affect the behavior
+for loading plugins.</p>
+<p>The first one is the <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> property which is a list of
+strings specifying all the directories you might have plugins.  For example:</p>
+<pre class="literal-block">
+py[&quot;plugin_dirs&quot;] = [&quot;/home/will/pybloxsom/plugins&quot;]
+</pre>
+<p>This will cause PyBlosxom to look in this specific directory for plugins.</p>
+<p>The other property is the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property.  If you don't have this
+set at all (i.e. it's either not in the <tt class="docutils literal"><span class="pre">config.py</span></tt> file or the line is
+commented out), PyBlosxom will load all plugins it finds in the plugin
+directories you've specified.  It will look in each directory in order as
+you've specified.  It will load the plugins in each directory in alphabetical
+order by filename.</p>
+<p>The other way to load plugins is by specifying the plugins explicitly by
+setting the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property.  PyBlosxom will load only the plugins
+you've specified and will load them in the order you've specified.  The
+<tt class="docutils literal"><span class="pre">load_plugins</span></tt> property takes a list of strings.  For example:</p>
+<pre class="literal-block">
+py[&quot;load_plugins&quot;] = [&quot;calendar&quot;, &quot;category&quot;, &quot;booklist&quot;]
+</pre>
+<p>This will load the plugins whose filenames are <tt class="docutils literal"><span class="pre">calendar.py</span></tt>,
+<tt class="docutils literal"><span class="pre">category.py</span></tt>, and <tt class="docutils literal"><span class="pre">booklist.py</span></tt>.  It will only load those plugins even
+if other plugins are in the directory and it will load them in that order.</p>
+</div>
+<div class="section" id="finding-plugins">
+<h1><a class="toc-backref" href="#id3">Finding Plugins</a></h1>
+<p>You can find plugins in the <a class="reference external" href="http://pyblosxom.sourceforge.net/blog/registry/">PyBlosxom plugin registry</a>.</p>
+<p>Additionally, some people write plugins, but never register with the plugin
+registry. Sometimes this is because the author doesn't feel the plugin is
+finished for public consumption. Even so, it might meet your needs. The best
+way to find these plugins is to ask on the pyblosxom-users mailing list for
+a plugin that has the functionality you desire.</p>
+</div>
+<div class="section" id="installing-plugins">
+<h1><a class="toc-backref" href="#id4">Installing Plugins</a></h1>
+<p>When you're installing a plugin, refer to its documentation.  The
+documentation could be in a <tt class="docutils literal"><span class="pre">README</span></tt> file, but more commonly it's in the
+plugin code itself at the top of the file.  This documentation should tell
+you how to install the plugin, what template variables the plugin exposes,
+how to invoke the plugin, how to get in touch with the author should you
+find bugs or need help, and any additional things you should know about.</p>
+<p>Most plugins should have a pretty easy installation method. You should be
+able to copy the plugin into the directory defined in your <tt class="docutils literal"><span class="pre">config.py</span></tt>
+file in the <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> property.  Then there might be some additional
+properties you'll have to set in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file to define the
+plugin's behavior.  That should be about it.  On some occasions, you may
+have to change the code in the plugin itself to meet your specific needs.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about Apache, no suexec, .pyc files, and permission problems:</p>
+<p>If you're not running suexec, then Apache may not be able to generate
+the <tt class="docutils literal"><span class="pre">.pyc</span></tt> files for your plugins.  This may result in your plugins
+failing to load.</p>
+<p>If that happens, you should run <tt class="docutils literal"><span class="pre">./pyblosxom.cgi</span></tt> in your shell to
+generate the <tt class="docutils literal"><span class="pre">.pyc</span></tt> files.</p>
+<p class="last">Every time you install a new plugin or change an existing plugin,
+you'll need to remove the existing <tt class="docutils literal"><span class="pre">.pyc</span></tt> files and regenerate
+them.</p>
+</div>
+</div>
+<div class="section" id="writing-your-own-plugins">
+<h1><a class="toc-backref" href="#id5">Writing Your Own Plugins</a></h1>
+<p>You may find that you desire functionality and there is no plugin that anyone
+knows about that performs that functionality.  It's probably best at this
+point for you to ask someone to write the plugin you need or write it
+yourself.</p>
+<p>PyBlosxom plugins are fairly easy to write and can cover a lot of really
+different functionality.  The best way to learn how to write PyBlosxom
+plugins is to read through the plugins in the plugin registry.  Many of them
+are well written and may provide insight as to how to solve your specific
+problem.</p>
+<p>If you plan on writing your own plugin, refer to the manual file on
+writing PyBlosxom plugins.</p>
+<p>Additionally, feel free to ask for help on the pyblosxom-users and
+pyblosxom-devel mailing lists.</p>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<a class="reference external" href="../plugins.txt">View document source</a>.
+Generated on: 2008-01-10 23:43 UTC.
+Generated by <a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

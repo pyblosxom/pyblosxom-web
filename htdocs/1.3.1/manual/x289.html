@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Where To Put Your Flavour Files</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="PyBlosxom Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Flavours"
+HREF="c224.html"><LINK
+REL="PREVIOUS"
+TITLE="Flavours"
+HREF="c224.html"><LINK
+REL="NEXT"
+TITLE="Template Variables"
+HREF="x315.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>PyBlosxom Manual: PyBlosxom Manual for PyBlosxom 1.3.1</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c224.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Flavours</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x315.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN289"
+>4.2. Where To Put Your Flavour Files</A
+></H1
+><P
+>&#13;If you want to override the existing flavours, add new flavours, or
+develop your own flavours, you should set the <CODE
+CLASS="varname"
+>flavourdir</CODE
+>
+property of your <TT
+CLASS="filename"
+>config.py</TT
+> file.  I have this directory
+parallel to my datadir.  In my flavourdir, I have flavour directories--one
+for each flavour in my blog:
+</P
+><PRE
+CLASS="programlisting"
+>/home
+ |-- willg/
+    |-- myblog/
+       |-- entries/        &#60;-- my datadir
+       |  |-- content/        &#60;-- category
+       |  |-- dev/            &#60;-- category
+       |  |-- links/          &#60;-- category
+       |
+       |-- flavours/       &#60;-- my flavourdir
+          |-- html.flav/      &#60;-- defines the html flavour
+          |-- xml.flav/       &#60;-- defines the xml flavour
+          |-- links/          &#60;-- parallels the links category
+             |-- html.flav/   &#60;-- defines the html flavour for the links category
+</PRE
+><P
+>&#13;In my flavourdir, I have two flavour directories <TT
+CLASS="filename"
+>html.flav</TT
+>
+and <TT
+CLASS="filename"
+>xml.flav</TT
+>.  The <TT
+CLASS="filename"
+>xml.flav</TT
+> is
+a copy of the <TT
+CLASS="filename"
+>atom.flav</TT
+> directory that comes with
+PyBlosxom.  I copied it so that I could use "xml" for the flavour name.
+This isn't necessarily a wonderful idea, but it helped me upgrade my blog
+without disturbing planets and writing lots of .htaccess redirects and
+such.
+</P
+><P
+>&#13;You'll notice there's an <TT
+CLASS="filename"
+>html.flav</TT
+> directory in
+the <TT
+CLASS="filename"
+>links</TT
+> directory.  When someone is looking at
+items in the links directory, then PyBlosxom will use this html flavour.
+</P
+><P
+>&#13;The order of overiding works like this:
+</P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>&#13;    PyBlosxom looks for flavour files that came with PyBlosxom
+  </P
+></LI
+><LI
+><P
+>&#13;    PyBlosxom starts at the root of the flavourdir and looks for flavour
+    files there.  If there are some, then these files override the files
+    PyBlosxom has found so far.
+  </P
+></LI
+><LI
+><P
+>&#13;    PyBlosxom iterates through category directories in the flavourdir if
+    there are any that are parallel to the datadir and looks for flavour
+    directories there.  If there are some, then those files override the
+    files it has so far.
+  </P
+></LI
+></OL
+><P
+>&#13;This allows you to easily override specific templates in your blog
+(like the header or footer) depending on what category the user is looking
+at.
+</P
+><DIV
+CLASS="note"
+><P
+></P
+><TABLE
+CLASS="note"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TH
+ALIGN="LEFT"
+VALIGN="MIDDLE"
+><B
+>backwards compatability</B
+></TH
+></TR
+><TR
+><TD
+>&nbsp;</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>&#13;    PyBlosxom is backwards compatible with previous versions of
+    PyBlosxom.  You can put your flavour files in your datadir.  You
+    can also put your flavour files in the categories of your datadir.
+    However you cannot have a flavourdir and put flavour files in your
+    datadir--PyBlosxom will look at EITHER your datadir OR your
+    flavourdir for flavour files.
+  </P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c224.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x315.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Flavours</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c224.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Template Variables</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

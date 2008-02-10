@@ -1,0 +1,932 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>PyBlosxom Manual</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="NEXT"
+TITLE="Introduction"
+HREF="f22.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="manual_style.css"></HEAD
+><BODY
+CLASS="book"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+><A
+NAME="AEN2"
+>PyBlosxom Manual</A
+></H1
+><H2
+CLASS="subtitle"
+>PyBlosxom Manual for PyBlosxom 1.3.1</H2
+><H3
+CLASS="author"
+><A
+NAME="AEN7"
+></A
+>Will Guaraldi</H3
+><P
+CLASS="copyright"
+>Copyright &copy; 2005, 2006 Will Guaraldi</P
+><DIV
+><DIV
+CLASS="abstract"
+><P
+></P
+><A
+NAME="AEN18"
+></A
+><P
+>&#13;This manual will cover all aspects of using and developing for PyBlosxom.  It
+is a work in progress.
+</P
+><P
+>&#13;Version: 1.3.1 
+</P
+><P
+></P
+></DIV
+></DIV
+><DIV
+CLASS="legalnotice"
+><P
+></P
+><A
+NAME="AEN16"
+></A
+><P
+>&#13;Copyright (c) 2005, 2006 Will Guaraldi.  Permission is granted to copy, 
+distribute and/or modify this document under the terms of the GNU Free 
+Documentation License, Version 1.1 or any later version published by the Free 
+Software Foundation; with the Invariant Sections being no Invariant Sections, 
+with the Front-Cover Texts being no Front-Cover Texts, and with the Back-Cover 
+Texts being no Back-Cover Texts.  A copy of the license is included in the 
+appendix entitled "GNU Free Documentation License".
+</P
+><P
+></P
+></DIV
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="f22.html"
+>Introduction</A
+></DT
+><DD
+><DL
+><DT
+>1. <A
+HREF="f22.html#AEN24"
+>Mission, What's Missing, and Helping Out</A
+></DT
+><DT
+>2. <A
+HREF="x31.html"
+>Revision History</A
+></DT
+></DL
+></DD
+><DT
+>1. <A
+HREF="c35.html"
+>PyBlosxom</A
+></DT
+><DD
+><DL
+><DT
+>1.1. <A
+HREF="c35.html#AEN37"
+>About PyBlosxom</A
+></DT
+><DT
+>1.2. <A
+HREF="x48.html"
+>Who shouldn't use PyBlosxom</A
+></DT
+><DT
+>1.3. <A
+HREF="x55.html"
+>Where to go for help</A
+></DT
+></DL
+></DD
+><DT
+>2. <A
+HREF="c59.html"
+>Installing PyBlosxom</A
+></DT
+><DD
+><DL
+><DT
+>2.1. <A
+HREF="c59.html#AEN68"
+>Pre-requisites for installing PyBlosxom</A
+></DT
+><DT
+>2.2. <A
+HREF="x78.html"
+>Installing PyBlosxom</A
+></DT
+><DT
+>2.3. <A
+HREF="x116.html"
+>Trouble-shooting</A
+></DT
+><DD
+><DL
+><DT
+>2.3.1. <A
+HREF="x116.html#AEN119"
+>Running ./pyblosxom.cgi doesn't work.</A
+></DT
+><DT
+>2.3.2. <A
+HREF="x116.html#AEN129"
+>I see a HTTP 404 error when I try to bring up my blog</A
+></DT
+><DT
+>2.3.3. <A
+HREF="x116.html#AEN133"
+>I see a HTTP 500 error when I try to bring up my blog</A
+></DT
+><DT
+>2.3.4. <A
+HREF="x116.html#AEN150"
+>I have other issues</A
+></DT
+><DT
+>2.3.5. <A
+HREF="x116.html#AEN156"
+>UGH!  My blog looks UGLY!</A
+></DT
+><DT
+>2.3.6. <A
+HREF="x116.html#AEN159"
+>I hate writing in HTML!</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>3. <A
+HREF="c162.html"
+>Advanced Installation</A
+></DT
+><DD
+><DL
+><DT
+>3.1. <A
+HREF="c162.html#AEN167"
+>Using mod_python, Twisted or WSGI</A
+></DT
+><DT
+>3.2. <A
+HREF="x171.html"
+>Renaming the pyblosxom.cgi Script</A
+></DT
+><DD
+><DL
+><DT
+>3.2.1. <A
+HREF="x171.html#AEN187"
+>Change the Name of the pyblosxom.cgi Script</A
+></DT
+><DT
+>3.2.2. <A
+HREF="x171.html#AEN207"
+>Hiding the .cgi with RewriteRule</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>4. <A
+HREF="c224.html"
+>Flavours</A
+></DT
+><DD
+><DL
+><DT
+>4.1. <A
+HREF="c224.html#AEN235"
+>Flavours and Templates</A
+></DT
+><DT
+>4.2. <A
+HREF="x289.html"
+>Where To Put Your Flavour Files</A
+></DT
+><DT
+>4.3. <A
+HREF="x315.html"
+>Template Variables</A
+></DT
+><DD
+><DL
+><DT
+>4.3.1. <A
+HREF="x315.html#AEN321"
+>URL Encoding and Escaping of Template Variables</A
+></DT
+><DT
+>4.3.2. <A
+HREF="x315.html#AEN328"
+>Variables From config.py</A
+></DT
+><DT
+>4.3.3. <A
+HREF="x315.html#AEN373"
+>Calculated Template Variables</A
+></DT
+><DT
+>4.3.4. <A
+HREF="x315.html#AEN433"
+>Template Variables Only Available in the story Template</A
+></DT
+><DT
+>4.3.5. <A
+HREF="x315.html#AEN525"
+>Template Variables From Plugins</A
+></DT
+></DL
+></DD
+><DT
+>4.4. <A
+HREF="x528.html"
+>Invoking a Flavour</A
+></DT
+><DT
+>4.5. <A
+HREF="x592.html"
+>Order of Operations to Figure Out Which Flavour to Use</A
+></DT
+><DT
+>4.6. <A
+HREF="x612.html"
+>Examples of Templates</A
+></DT
+></DL
+></DD
+><DT
+>5. <A
+HREF="c615.html"
+>Plugins</A
+></DT
+><DD
+><DL
+><DT
+>5.1. <A
+HREF="c615.html#AEN618"
+>Setting PyBloxsom up to Use Plugins</A
+></DT
+><DT
+>5.2. <A
+HREF="x641.html"
+>Finding Plugins</A
+></DT
+><DT
+>5.3. <A
+HREF="x645.html"
+>Installing Plugins</A
+></DT
+><DT
+>5.4. <A
+HREF="x662.html"
+>Writing Your Own Plugins</A
+></DT
+></DL
+></DD
+><DT
+>6. <A
+HREF="c667.html"
+>Writing Entries</A
+></DT
+><DD
+><DL
+><DT
+>6.1. <A
+HREF="c667.html#AEN669"
+>Categories</A
+></DT
+><DT
+>6.2. <A
+HREF="x678.html"
+>The Format of an Entry</A
+></DT
+><DT
+>6.3. <A
+HREF="x704.html"
+>Posting Date</A
+></DT
+><DT
+>6.4. <A
+HREF="x721.html"
+>Entry Parsers</A
+></DT
+><DT
+>6.5. <A
+HREF="x731.html"
+>Beyond Editors</A
+></DT
+><DD
+><DL
+><DT
+>6.5.1. <A
+HREF="x731.html#AEN734"
+>weblog-add</A
+></DT
+><DT
+>6.5.2. <A
+HREF="x731.html#AEN753"
+>Using w.bloggar</A
+></DT
+><DT
+>6.5.3. <A
+HREF="x731.html#AEN791"
+>Using Ecto</A
+></DT
+><DT
+>6.5.4. <A
+HREF="x731.html#AEN794"
+>Other blog tools?</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>7. <A
+HREF="c797.html"
+>Static Rendering</A
+></DT
+><DD
+><DL
+><DT
+>7.1. <A
+HREF="c797.html#AEN802"
+>Configuring Static Rendering</A
+></DT
+><DT
+>7.2. <A
+HREF="x847.html"
+>Running Static Rendering</A
+></DT
+><DD
+><DL
+><DT
+>7.2.1. <A
+HREF="x847.html#AEN849"
+>Render Everything</A
+></DT
+><DT
+>7.2.2. <A
+HREF="x847.html#AEN856"
+>Incremental Rendering</A
+></DT
+></DL
+></DD
+><DT
+>7.3. <A
+HREF="x863.html"
+>Rendering Other URIs</A
+></DT
+><DT
+>7.4. <A
+HREF="x876.html"
+>Additional Thoughts</A
+></DT
+></DL
+></DD
+><DT
+>8. <A
+HREF="c888.html"
+>Comments</A
+></DT
+><DD
+><DL
+><DT
+>8.1. <A
+HREF="c888.html#AEN892"
+>Summary</A
+></DT
+><DT
+>8.2. <A
+HREF="x904.html"
+>Installing the comments plugin</A
+></DT
+><DT
+>8.3. <A
+HREF="x941.html"
+>Additional comments plugin configuration</A
+></DT
+><DD
+><DL
+><DT
+>8.3.1. <A
+HREF="x941.html#AEN943"
+>Enabling email notification</A
+></DT
+></DL
+></DD
+><DT
+>8.4. <A
+HREF="x950.html"
+>Writing comments plugin templates</A
+></DT
+><DT
+>8.5. <A
+HREF="x954.html"
+>Dealing with comment spam</A
+></DT
+><DD
+><DL
+><DT
+>8.5.1. <A
+HREF="x954.html#AEN959"
+>wbgcomment_blacklist</A
+></DT
+><DT
+>8.5.2. <A
+HREF="x954.html#AEN970"
+>nospam plugin</A
+></DT
+><DT
+>8.5.3. <A
+HREF="x954.html#AEN979"
+>rolling your own</A
+></DT
+></DL
+></DD
+><DT
+>8.6. <A
+HREF="x987.html"
+>Installing trackback</A
+></DT
+><DT
+>8.7. <A
+HREF="x1003.html"
+>Installing pingback</A
+></DT
+><DT
+>8.8. <A
+HREF="x1015.html"
+>Installing the CommentAPI</A
+></DT
+></DL
+></DD
+><DT
+>9. <A
+HREF="c1027.html"
+>Syndication</A
+></DT
+><DD
+><DL
+><DT
+>9.1. <A
+HREF="c1027.html#AEN1030"
+>Feed formats that come with PyBlosxom</A
+></DT
+><DD
+><DL
+><DT
+>9.1.1. <A
+HREF="c1027.html#AEN1033"
+>RSS 0.9.1</A
+></DT
+><DT
+>9.1.2. <A
+HREF="c1027.html#AEN1047"
+>RSS 2.0</A
+></DT
+><DT
+>9.1.3. <A
+HREF="c1027.html#AEN1051"
+>Atom 1.0</A
+></DT
+></DL
+></DD
+><DT
+>9.2. <A
+HREF="x1055.html"
+>Debugging your feeds</A
+></DT
+></DL
+></DD
+><DT
+>10. <A
+HREF="c1059.html"
+>PyBlosxom Architecture</A
+></DT
+><DD
+><DL
+><DT
+>10.1. <A
+HREF="c1059.html#AEN1064"
+>Parts</A
+></DT
+><DT
+>10.2. <A
+HREF="x1091.html"
+>Lifecycle of a PyBlosxom Request</A
+></DT
+><DT
+>10.3. <A
+HREF="x1144.html"
+>Lifecycle of the blosxom_handler</A
+></DT
+><DT
+>10.4. <A
+HREF="x1160.html"
+>Lifecycle of the blosxom Renderer</A
+></DT
+><DT
+>10.5. <A
+HREF="x1181.html"
+>Callbacks</A
+></DT
+><DD
+><DL
+><DT
+>10.5.1. <A
+HREF="x1181.html#AEN1184"
+>Types of callbacks</A
+></DT
+><DT
+>10.5.2. <A
+HREF="x1181.html#AEN1190"
+>Callbacks that have blosxom equivalents</A
+></DT
+><DT
+>10.5.3. <A
+HREF="x1181.html#AEN1212"
+>cb_prepare</A
+></DT
+><DT
+>10.5.4. <A
+HREF="x1181.html#AEN1225"
+>cb_logrequest</A
+></DT
+><DT
+>10.5.5. <A
+HREF="x1181.html#AEN1242"
+>cb_filelist</A
+></DT
+><DT
+>10.5.6. <A
+HREF="x1181.html#AEN1250"
+>cb_filestat</A
+></DT
+><DT
+>10.5.7. <A
+HREF="x1181.html#AEN1260"
+>cb_pathinfo</A
+></DT
+><DT
+>10.5.8. <A
+HREF="x1181.html#AEN1283"
+>cb_renderer</A
+></DT
+><DT
+>10.5.9. <A
+HREF="x1181.html#AEN1291"
+>cb_entryparser</A
+></DT
+><DT
+>10.5.10. <A
+HREF="x1181.html#AEN1296"
+>cb_preformat</A
+></DT
+><DT
+>10.5.11. <A
+HREF="x1181.html#AEN1309"
+>cb_postformat</A
+></DT
+><DT
+>10.5.12. <A
+HREF="x1181.html#AEN1329"
+>cb_start</A
+></DT
+><DT
+>10.5.13. <A
+HREF="x1181.html#AEN1347"
+>cb_end</A
+></DT
+><DT
+>10.5.14. <A
+HREF="x1181.html#AEN1364"
+>cb_head</A
+></DT
+><DT
+>10.5.15. <A
+HREF="x1181.html#AEN1384"
+>cb_date_head</A
+></DT
+><DT
+>10.5.16. <A
+HREF="x1181.html#AEN1400"
+>cb_story</A
+></DT
+><DT
+>10.5.17. <A
+HREF="x1181.html#AEN1417"
+>cb_story_end</A
+></DT
+><DT
+>10.5.18. <A
+HREF="x1181.html#AEN1431"
+>cb_foot</A
+></DT
+></DL
+></DD
+><DT
+>10.6. <A
+HREF="x1446.html"
+>Entry Parsers</A
+></DT
+><DT
+>10.7. <A
+HREF="x1449.html"
+>Pre-formatters and Post-formatters</A
+></DT
+><DT
+>10.8. <A
+HREF="x1452.html"
+>Renderers</A
+></DT
+></DL
+></DD
+><DT
+>11. <A
+HREF="c1455.html"
+>Writing Plugins</A
+></DT
+><DD
+><DL
+><DT
+>11.1. <A
+HREF="c1455.html#AEN1459"
+>Things all plugins should have</A
+></DT
+><DT
+>11.2. <A
+HREF="x1484.html"
+>How to log problems to a log file</A
+></DT
+><DT
+>11.3. <A
+HREF="x1488.html"
+>How to store plugin state between callbacks</A
+></DT
+><DT
+>11.4. <A
+HREF="x1492.html"
+>How to implement a callback</A
+></DT
+><DT
+>11.5. <A
+HREF="x1498.html"
+>Writing an entryparser</A
+></DT
+><DT
+>11.6. <A
+HREF="x1503.html"
+>Writing a preformatter plugin</A
+></DT
+></DL
+></DD
+><DT
+>A. <A
+HREF="a1508.html"
+>Appendix: listing of config.py variables</A
+></DT
+><DT
+>B. <A
+HREF="a1752.html"
+>Appendix: GNU Free Documentation License</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="LOT"
+><DL
+CLASS="LOT"
+><DT
+><B
+>List of Tables</B
+></DT
+><DT
+>4-1. <A
+HREF="x315.html#AEN332"
+>Template variables from config.py</A
+></DT
+><DT
+>4-2. <A
+HREF="x315.html#AEN376"
+>Calculated template variables</A
+></DT
+><DT
+>4-3. <A
+HREF="x315.html#AEN436"
+>Variables in the story template</A
+></DT
+><DT
+>4-4. <A
+HREF="x528.html#AEN531"
+>Examples of request URIs</A
+></DT
+><DT
+>4-5. <A
+HREF="x528.html#AEN553"
+>Specifying flavour using the querystring</A
+></DT
+><DT
+>4-6. <A
+HREF="x528.html#AEN578"
+>Default flavour used</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="LOT"
+><DL
+CLASS="LOT"
+><DT
+><B
+>List of Examples</B
+></DT
+><DT
+>2-1. <A
+HREF="x78.html#AEN110"
+>first post</A
+></DT
+><DT
+>4-1. <A
+HREF="c224.html#AEN227"
+>renderer variable value</A
+></DT
+><DT
+>4-2. <A
+HREF="x315.html#AEN368"
+>creating your own config.py variables</A
+></DT
+><DT
+>4-3. <A
+HREF="x528.html#AEN574"
+>default_flavour variable value</A
+></DT
+><DT
+>5-1. <A
+HREF="c615.html#AEN624"
+>plugin_dirs variable value</A
+></DT
+><DT
+>5-2. <A
+HREF="c615.html#AEN634"
+>load_plugins variable value</A
+></DT
+><DT
+>6-1. <A
+HREF="x678.html#AEN688"
+>first post</A
+></DT
+><DT
+>6-2. <A
+HREF="x678.html#AEN692"
+>more complex first post</A
+></DT
+><DT
+>6-3. <A
+HREF="x678.html#AEN696"
+>first post with metadata</A
+></DT
+><DT
+>7-1. <A
+HREF="c797.html#AEN844"
+>static rendering configuration</A
+></DT
+><DT
+>7-2. <A
+HREF="x847.html#AEN852"
+>running static rendering at the command line</A
+></DT
+><DT
+>7-3. <A
+HREF="x847.html#AEN860"
+>running static rendering incrementally</A
+></DT
+><DT
+>7-4. <A
+HREF="x863.html#AEN873"
+>static_urls variable value</A
+></DT
+><DT
+>7-5. <A
+HREF="x876.html#AEN881"
+>static rendering shell script</A
+></DT
+><DT
+>8-1. <A
+HREF="x954.html#AEN984"
+>Template for plugin for rejecting comments</A
+></DT
+><DT
+>9-1. <A
+HREF="c1027.html#AEN1036"
+>example of RSS 0.9.1 feed</A
+></DT
+><DT
+>10-1. <A
+HREF="x1181.html#AEN1222"
+>Example of cb_prepare usage</A
+></DT
+><DT
+>10-2. <A
+HREF="x1181.html#AEN1239"
+>Example of cb_logrequest argument dict</A
+></DT
+><DT
+>10-3. <A
+HREF="x1181.html#AEN1381"
+>Example of cb_head usage</A
+></DT
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="f22.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Introduction</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

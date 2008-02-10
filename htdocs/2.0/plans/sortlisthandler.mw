@@ -1,0 +1,54 @@
+
+= sortlist Handler =
+
+{| class="docinfo" frame="void" rules="none" frame="void" rules="none"
+! class="docinfo-name" | Author:
+| Will Guaraldi &lt;willg at bluesock dot org&gt;
+|- class="field"
+! class="docinfo-name" | Originall published:
+| class="field-body" | October 14, 2007
+|- class="field"
+! class="docinfo-name" | URL:
+| class="field-body" |
+http://pyblosxom.sourceforge.net/2.0/plans/sortlisthandler.html
+|}
+
+
+= History =
+
+October 14, 2007 - Will
+
+<blockquote>
+
+* Wrote the initial document, emailed it to pyblosxom-devel.
+
+ </blockquote>
+
+= Summary =
+
+In versions of PyBlosxom prior to 2.0, the <tt>blosxom_file_list_handler</tt> would generate a list of entries, then sort them by mtime, and then truncate the list so that further processing by PyBlosxom would only be operating on a small list of entries rather than the whole list.
+
+This causes a couple of problems. First, if you want to augment the list or provide some other mechanism for sorting or truncating the list, the only way to do this was implement the <tt>blosxom_file_list_handler</tt> in full changing the bits you needed changed. This kind of sucks.
+
+This specification lays out the issues and one possible way to fix this so that we can talk about the problem with some context.
+
+
+= Use cases =
+
+In order to build the paging plugin, I do some fiddling with the <tt>num_entries</tt> configuration variable which is kind of hack-ish and aversely affects other things like feeds. I wouldn't have to do this if there was a <tt>sort_list</tt> callback.
+
+
+= Possible Solution =
+
+The possible solution is to break up filelist from sorting and truncating into two separate callbacks.
+
+The <tt>filelist</tt> callback would be responsible for generating a list of entries to be rendered.
+
+The <tt>sortlist</tt> callback would be responsible for sorting the list by mtime and truncating the list to the first <tt>num_entries</tt>.
+
+
+= Discussion =
+
+; Discussion is here:
+: FIXME - gmane link
+

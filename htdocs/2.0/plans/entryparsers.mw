@@ -1,0 +1,358 @@
+<div id="formatters-and-entry-parsers" class="document">
+
+= Formatters and Entry parsers =
+
+{| class="docinfo" frame="void" rules="none" frame="void" rules="none"
+! class="docinfo-name" | Author:
+| Will Guaraldi &lt;will dot guaraldi at gmail dot com&gt;
+|- class="field"
+! class="docinfo-name" | Originally published:
+| class="field-body" | September 29, 2007
+|- class="field"
+! class="docinfo-name" | URL:
+| class="field-body" |
+http://pyblosxom.sourceforge.net/2.0/plans/entryparsers.html
+|}
+
+<div id="history" class="section">
+
+= History =
+
+September 29, 2007 - Will Guaraldi
+
+<blockquote>
+
+* Wrote the initial document, posted it, emailed it to pyblosxom-devel for discussion.
+
+ </blockquote> </div><div id="summary" class="section">
+
+= Summary =
+
+The current transformation chain for converting blog entry files into stories has a few warts that need to be ironed out to allow for entries from non-file sources, better handling of markup, and better handling for preformat and postformat transforms.
+
+This document briefly covers how entry files are transformed into HTML/XHTML in pre-2.0 PyBlosxom, the problems incurred, and goes into detail about how the transformation chain will work in PyBlosxom 2.0 and later versions.
+
+ </div><div id="parsing-entries-in-pre-2-0" class="section">
+
+= Parsing entries in pre-2.0 =
+
+PyBlosxom prior to 2.0 allows people to write blog entries in a variety of markup formats. This is possible by the <tt>entryparser</tt> style of plugin. Entryparser plugins have the following general structure (using the restructured text entryparser as an example):
+
+ <nowiki>
+ FILE_EXT = "rst"                                              [1]
+ 
+ def cb_entryparser(args):
+   args[FILE_EXT] = readfile                                   [1]
+   return args
+ 
+ def parse(story, request):
+   ...
+ 
+ def readfile(filename, request):
+   entryData = {}
+   lines = open(filename).readlines()                          [2]
+ 
+   if len(lines) == 0:
+     return {"title": "", "body": ""}
+ 
+   title = lines.pop(0)                                        [3]
+ 
+   # absorb meta data                                          [3]
+   while lines and lines[0].startswith("#"):
+     meta = lines.pop(0)
+     meta = meta[1:].strip()     # remove the hash
+     meta = meta.split(" ", 1)
+     entryData[meta[0]] = meta[1]
+ 
+   body = parse(''.join(lines), request)
+   entryData["title"] = title
+   entryData["body"] = body
+ 
+   # Call the postformat callbacks                             [3]
+   tools.run_callback('postformat',
+                      {'request': request,
+                       'entry_data': entryData})
+   return entryData
+ </nowiki>
+
+In <tt>[1]</tt>, we see the entryparser plugin binding the file extension <tt>rst</tt> to the <tt>readfile</tt> function. When the <tt>FileEntry</tt> class is looking at an entry with the file extension <tt>rst</tt>, it calls <tt>readfile</tt> to open the file, parse the contents, and fill in the entry data.
+
+In <tt>[2]</tt>, the entryparser plugin opens the file for reading and reads in the lines. Because of this, the entryparser plugin requires a filename... It won't work for non-files or file-like items. Entries that come from non-file sources cannot use entryparsers.
+
+In the sections marked <tt>[3]</tt>, we see a bunch of code that's repeated in all the other entryparsers:
+
+* code to handle the structure of entry files
+* parsing of metadata lines
+* calling the <tt>postformat</tt> callback
+
+Then we have preformatters and postformatters, the semantics of which aren't particularly clear.
+
+The following specification codifies the semantics and behavior for preformatters and postformatters and adds an additional callback for formatting the body of an entry in a specified markup into HTML/XHTML.
+
+ <div id="proposed-design-for-2-0" class="section">
+
+= Proposed design for 2.0 =
+
+<div id="proposed-design" class="section">
+
+== Proposed design ==
+
+The <tt>blosxom_entry_parser</tt> takes a filename (string) or a file-like object and a request object and does the following:
+
+# open the file and read the lines into a <tt>StringIO</tt> and closes the file
+# first line is the title -- this gets added to the metadata dict as <tt>title</tt>
+# parse metadata lines as metadata
+Metadata lines are in the format <tt><nowiki>#key</nowiki> value</tt>. Examples:
+ <nowiki>
+ #markup rst
+ #music I Like Puppies, Volume II
+ #mood happy
+ #comments no
+ </nowiki>
+# the remainder of the file is the body of the entry
+## call the <tt>preformat</tt> callback
+Arguments:
+##* <tt>request</tt> - this PyBlosxom request
+##* <tt>story</tt> - a file-like object (File, StringIO, ...)
+##* <tt>metadata</tt> - a dict of metadata associated with this entry including the title
+Returns:
+##* the mutated story as a file-like object (File, StringIO, ...) in the appropriate markup
+Example 1: a preformatter could expand Python code blocks in a story executing the code blocks and replacing them with text. Note: this could be problematic because the output has to be in the markup that the story is in.
+Example 2: a preformatter could fix common mispellings of "PyBlosxom".
+Note that the story data must be in a consistent markup. If the story is written in restructured text, then any changes to it by preformatters must also be in restructured text.
+Output of preformatters can be cached.
+'''Note:''' this marks a change in semantics and behavior of the preformat callback.
+## call the <tt>format</tt> callback
+Arguments:
+##* <tt>request</tt> - the PyBlosxom request object
+##* <tt>story</tt> - a file-like object (File, StringIO, ...)
+##* <tt>metadata</tt> - a dict of metadata associated with this entry including the title
+Returns:
+##* the mutated story as a file-like object (File, StringIO, ...) as HTML/XHTML
+This callback does things that current entryparsers really want to be doing: it converts the markup into the output format.
+Once a formatter has parsed the story, the callback ends.
+Formatters know whether this story is one they should to parse by checking the metadata <tt>markup</tt>. For example, the <tt>rst</tt> formatter could check to see if <tt>markup</tt> was <tt>rst</tt>.
+Example 1: a story is written in a loose wiki markup and the formatter converts that loose wiki markup into HTML/XHTML and expands wiki links:
+ <nowiki>
+ My wiki page
+ #markup wiki
+ This is an example of a blog entry written using
+ [WikiMarkup].  It is *really* great!
+ </nowiki>
+Example 2: a story is written in restructured text markup and the formatter converts that into HTML/XHTML using the docutils library:
+ <nowiki>
+ My reST page
+ #markup rst
+ *This* is an example of a blog entry written using
+ restructured text.  Restructured text is part of the
+ Docutils [1]_ project.
+ 
+ .. [1] http://docutils.sourceforge.net/
+ </nowiki>
+For story data that is already in HTML/XHTML, this is a no-op.
+Output of formatters can be cached.
+## call the <tt>postformat</tt> callback
+Arguments:
+##* <tt>request</tt> - this PyBlosxom request
+##* <tt>story</tt> - a file-like object (File, StringIO, ...) in HTML/XHTML format
+##* <tt>metadata</tt> - a dict of metadata associated with this entry including the title
+Returns:
+##* the mutated story as a file-like object (File, StringIO, ...) in HTML/XHTML format
+Example 1: the user got to this page after doing a Google search and a postformatter highlights the search terms in the story text.
+Example 2: a postformatter could add update/revision history to the end of the story.
+Output of postformatters should '''NOT''' be cached. The <tt>postformat</tt> callback should be called on all entries to be displayed even if they come from a cache.
+
+ <div id="a-note-about-entryparsers" class="section">
+
+== A note about entryparsers ==
+
+Entryparsers that are merely formatting story data should be changed to implement the <tt>format</tt> callback. This reduces the work they have to do and allows them to operate on story data that's not in a file.
+
+Future entryparsers should work on files that are not in the typical entry format (title, metadata, body). For example, writing an entry parser is a good idea for handling entries that are in an mbox file.
+
+ <div id="proposed-vocabulary" class="section">
+
+== Proposed vocabulary ==
+
+This gives us the following terms:
+
+entryparser
+
+<blockquote>
+
+An entryparsers is a PyBlosxom plugin that handle file formats that are not PyBlosxom entry files (title, metadata, body).
+
+Example 1: An entryparser could parse entries that were emails in a maildir.
+
+ </blockquote>
+
+preformatter
+
+<blockquote>
+
+A preformatter is a PyBlosxom plugin that transforms the body of an entry before the body of the entry has been converted from some markup into HTML/XHTML.
+
+Example 1: A preformatter could expand Python code blocks in the body executing the code blocks and replacing them with text in the markup the body is currently in.
+
+Example 2: A preformatter could fix common mispellings of "PyBlosxom".
+
+ </blockquote>
+
+formatter
+
+<blockquote>
+
+A formatter is a PyBlosxom plugin that transforms the body of an entry from some markup into HTML/XHTML.
+
+Example 1: A formatter could convert a body from Restructured Text into HTML/XHTML.
+
+Example 2: A formatter could convert a body from markdown into HTML/XHTML.
+
+ </blockquote>
+
+postformatter
+
+<blockquote>
+
+A postformatter is a PyBlosxom plugin that transforms the body of an entry after the body has been converted into HTML/XHTML.
+
+Example 1: A postformatter could add update/revision history of the entry to the end of the body.
+
+Example 2: A postformatter could add HTML/XHTML to highlight words from the Google search that brought the user to this page.
+
+ </blockquote>
+
+Note that a single plugin can fill any of these rolls. For example, there can exist plugins that act as preformatters and postformatters.
+
+ </div><div id="what-does-this-accomplish" class="section">
+
+== What does this accomplish ==
+
+This does the following for us:
+
+# It retains backwards compatability with pre-existing stuff. All current entryparsers will continue to work.
+# It allows the new system to handle any file-like object so we can more easily handle data from non-file sources. Plugins like pystaticfile and wbgwiki will be able to support other markup. Plugins that pull their entry data from a database will be able to support other markup.
+# It allows plugins that format story data to focus on formatting story data--they no longer need the boilerplate code they required before for parsing out the title and metadata. This fixes a long-standing problem that not all entryparsers actually handled metadata.
+# It allows all entries in a blog to have the same extension. If you use <tt>.txt</tt> then it's easier to deal with in terms of editors and plain-text detection and such. Your entry will be formatted based on the <tt>markup</tt> metadata item.
+# This specification codifies the semantics and transformations of preformatters, formatters, and postformatters and gives minor examples of each. It also codifies expectations of entry caching plugins.
+
+  <div id="examples" class="section">
+
+= Examples =
+
+These examples are pretty trivial and show off usage of the various callbacks, but themselves don't really do much.
+
+FIXME THey are all untested.
+
+<div id="example-of-preformatter" class="section">
+
+== Example of preformatter ==
+
+This is an example of a pre-formatter that expands an image macro that looks like <tt>IMG(some_image.jpg)</tt> into a full <tt>&lt;img ...&gt;</tt> tag.
+
+Code:
+
+ 
+ import re, StringIO
+ 
+ REGEX = re.compile("IMG\(([^\)])")
+ 
+ def cb_preformat(args):
+    story = args["story"].read()
+    newstory = re.sub("&lt;img src=\"\\g&lt;1&gt;\"&gt;\\g&lt;1&gt;&lt;/a&gt;", story)
+ 
+    return StringIO.StringIO(newstory)
+
+ <div id="example-of-a-formatter" class="section">
+
+== Example of a formatter ==
+
+This is an example of a formatter that takes a story that's mostly in HTML, but is missing &lt;p&gt; and &lt;br&gt; tags. This adds &lt;br /&gt; and &lt;p&gt; tags.
+
+Code:
+
+ <nowiki>
+ # Based on Wari's linebreaks preformatter.
+ import StringIO
+ 
+ def cb_format(args):
+    metadata = args["metadata"]
+    story = args["story"].read()
+ 
+    if "markup" in metadata and metadata["markup"] == "linebreaks":
+       newstory = re.sub("\n\n+", "&lt;/p&gt;&lt;p&gt;", story)
+       newstory = re.sub("\n", "&lt;br /&gt;", newstory)
+       story = StringIO.StringIO("&lt;p&gt;%s&lt;/p&gt;" % newstory)
+ 
+    return story
+ </nowiki>
+
+ </div><div id="example-of-a-postformatter" class="section">
+
+== Example of a postformatter ==
+
+This is an example of a postformatter that takes a story that is in HTML and highlights terms if the user browsed to this page after doing a Google search.
+
+Code:
+
+ <nowiki>
+ import re, urlparse, urllib, StringIO
+ 
+ # Based on Abe Fettig's highlightsearch preformatter.
+ def getGoogleSearch(url):
+    # taken from Mark's log parser tool
+    search = ''
+    argstr = urlparse.urlparse(url)[4]
+    if argstr:
+       argv = [arg.find('=') &gt; -1 and arg.split('=', 1) or ('','')
+               for arg in argstr.split('&amp;')]
+       search = [value for key, value in argv if key == 'q']
+       if not search:
+          # google.yahoo.com uses p=... instead of q=...
+          search = [value for key, value in argv if key == 'p']
+       if search:
+          search = search[0].lower()
+    return search
+ 
+ def cb_postformat(args):
+    req = args["request"]
+    # FIXME - this way of getting the http dict might go away
+    http = req.getHttp()
+ 
+    referer = http.get("referer", "")
+ 
+    story = args["story"]
+ 
+    searchwords = getGoogleSearch(referer)
+    if searchwords:
+       story = story.read()
+       searchwords = urllib.unquote_plus(searchwords.lower())
+       for word in searchwords.split():
+          story = re.sub( word,
+                          "&lt;span style=\"background-color: #ffcc00\"&gt;\\g&lt;1&gt;&lt;/a&gt;",
+                          story,
+                          re.I )
+ 
+       story = StringIO.StringIO(story)
+ 
+    return story
+ </nowiki>
+
+ </div> </div><div id="outstanding-issues" class="section">
+
+= Outstanding issues =
+
+It might be an issue that we're calling <tt>read()</tt> and then re-wrapping into a <tt>StringIO</tt>, but I think a file-like interface is the best one to use as an intermediary.
+
+There are no outstanding issues at this time.
+
+ <div id="discussion" class="section">
+
+= Discussion =
+
+Discussion of this proposal is at:
+
+; gmane.org
+: http://article.gmane.org/gmane.comp.web.pyblosxom.devel/1981
+; sf.net
+: FIXME

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>Static Rendering</title>
+<meta name="author" content="PyBlosxom Development Team" />
+<meta name="copyright" content="This document is distributed under the MIT license." />
+<link rel="stylesheet" href="manual_style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="static-rendering">
+<h1 class="title">Static Rendering</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>PyBlosxom Development Team</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>static_rendering.txt 1047 2007-06-20 18:20:49Z willhelm</td></tr>
+<tr><th class="docinfo-name">Copyright:</th>
+<td>This document is distributed under the MIT license.</td></tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#summary" id="id1">Summary</a></li>
+<li><a class="reference internal" href="#configuring-static-rendering" id="id2">Configuring Static Rendering</a></li>
+<li><a class="reference internal" href="#running-static-rendering" id="id3">Running Static Rendering</a><ul>
+<li><a class="reference internal" href="#render-everything" id="id4">Render Everything</a></li>
+<li><a class="reference internal" href="#incremental-rendering" id="id5">Incremental Rendering</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rendering-other-uris" id="id6">Rendering Other URIs</a></li>
+<li><a class="reference internal" href="#additional-thoughts" id="id7">Additional Thoughts</a></li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h1><a class="toc-backref" href="#id1">Summary</a></h1>
+<p>Static rendering made its first appearance in PyBlosxom 1.0.  It fills the
+functionality gap for people who want to use PyBlosxom, but don't have a
+web-server with CGI installed, don't have CGI access, or can't run PyBlosxom
+for one of a myriad of other reasons.  Static rendering allows these people
+to run PyBlosxom on their local machine, write blog entries, render their
+entire site into HTML, and then use ftp or some other file copy method to
+move the pages up to their static web-site.</p>
+<p>PyBlosxom's static rendering allows for incremental building.  It can scan
+your entries, figure out what's changed, and render only the pages that
+need re-rendering.</p>
+<p>Beyond that, it's not particularly sophisticated.</p>
+</div>
+<div class="section" id="configuring-static-rendering">
+<h1><a class="toc-backref" href="#id2">Configuring Static Rendering</a></h1>
+<p>These are the instructions for configuring static rendering in PyBlosxom.</p>
+<ol class="arabic">
+<li><p class="first"><strong>Install PyBlosxom.</strong></p>
+<p>You can install PyBlosxom as a Python library like this:</p>
+<pre class="literal-block">
+python setup.py install
+</pre>
+<p>and move on to step 2.</p>
+<p>If you can't or don't want to do that, then just untar the pyblosxom
+.tar.gz file into a directory.</p>
+<p>If you're using a version of PyBlosxom prior to 1.4, when you're
+copying the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> and <tt class="docutils literal"><span class="pre">config.py</span></tt> files, you don't have
+to put them in a CGI directory--you can put them in any directory
+you have permissions in.</p>
+<p>For example, I created a directory <tt class="docutils literal"><span class="pre">/home/joe/pyblosxom/</span></tt> and put
+both files in there.</p>
+<p>If you're using PyBlosxom 1.4 or later, copy <tt class="docutils literal"><span class="pre">bin/pyblcmd</span></tt> and
+<tt class="docutils literal"><span class="pre">web/config.py</span></tt>.</p>
+</li>
+<li><p class="first"><strong>Add ``static_dir`` to your ``config.py`` file.</strong></p>
+<p>This is the directory we will save all the static output.  The value of
+<tt class="docutils literal"><span class="pre">static_dir</span></tt> should be a string representing the absolute path of the
+output directory for static rendering.</p>
+</li>
+<li><p class="first"><strong>Add ``static_flavours`` to your ``config.py`` file.</strong></p>
+<p>The value of <tt class="docutils literal"><span class="pre">static_flavours</span></tt> should be a list of strings representing
+all the flavours that should be rendered.  This defaults to
+<tt class="docutils literal"><span class="pre">[</span> <span class="pre">&quot;html&quot;</span> <span class="pre">]</span></tt>.</p>
+</li>
+<li><p class="first"><strong>Add ``static_monthnames`` to your ``config.py`` file.</strong></p>
+<p>The value (either <tt class="docutils literal"><span class="pre">1</span></tt> or <tt class="docutils literal"><span class="pre">0</span></tt>) will determine if you want month
+names (such as <tt class="docutils literal"><span class="pre">April</span></tt>) in the static pages.</p>
+</li>
+<li><p class="first"><strong>Add ``static_monthnumbers`` to your ``config.py`` file.</strong></p>
+<p>The value (either <tt class="docutils literal"><span class="pre">1</span></tt> or <tt class="docutils literal"><span class="pre">0</span></tt>) will determine if you want month
+numbers (such as <tt class="docutils literal"><span class="pre">04</span></tt> for <tt class="docutils literal"><span class="pre">April</span></tt>) in the static pages.</p>
+</li>
+<li><p class="first"><strong>Set ``base_url`` in your ``config.py`` file to the base url your
+blog will have.</strong></p>
+<p>For example, if your <tt class="docutils literal"><span class="pre">static_dir</span></tt> were set to <tt class="docutils literal"><span class="pre">/home/joe/public_html</span></tt>
+and the url for that directory were <tt class="docutils literal"><span class="pre">http://www.joe.com/~joe/</span></tt>, then
+you probably want to set your base_url like this:</p>
+<pre class="literal-block">
+py[&quot;base_url&quot;] = &quot;http://www.joe.com/~joe/&quot;
+</pre>
+</li>
+</ol>
+<p>Here's an example of static rendering configuration:</p>
+<pre class="literal-block">
+py[&quot;static_dir&quot;] = &quot;/home/joe/public_html/static/&quot;
+py[&quot;static_flavours&quot;] = [&quot;html&quot;]
+py[&quot;static_monthnames&quot;] = 0     # i do not want month names
+py[&quot;static_monthnumbers&quot;] = 1   # i do want month numbers
+</pre>
+</div>
+<div class="section" id="running-static-rendering">
+<h1><a class="toc-backref" href="#id3">Running Static Rendering</a></h1>
+<p>There are two ways to run static rendering.  The first is to render
+your entire blog from scratch (see &quot;render everything&quot;) and the second
+is to render only the parts of the blog that will be different because
+of new blog entries or updated blog entries (see &quot;incremental rendering&quot;).</p>
+<div class="section" id="render-everything">
+<h2><a class="toc-backref" href="#id4">Render Everything</a></h2>
+<p>If you're using PyBlosxom 1.4 or later, run the static renderer like
+this to render all pages in your blog:</p>
+<pre class="literal-block">
+% pyblcmd --config &lt;config-file&gt; --static
+</pre>
+<p>where <tt class="docutils literal"><span class="pre">&lt;config-file&gt;</span></tt> is replaced by the absolute full path of your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file.  For example:</p>
+<pre class="literal-block">
+% pyblcmd --config /home/joe/blog/config.py --static
+</pre>
+<p>If you're using a version of PyBlosxom earlier than 1.4, then the
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file must be in the same directory as the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>
+file.  Run the static renderer like this:</p>
+<pre class="literal-block">
+% ./pyblosxom.cgi --static
+</pre>
+<p>Lots of output will appear as PyBlosxom figures out all the urls that need
+to be rendered and then renders them.</p>
+</div>
+<div class="section" id="incremental-rendering">
+<h2><a class="toc-backref" href="#id5">Incremental Rendering</a></h2>
+<p>We have incremental rendering which will find all the entries that have
+changed since we rendered them and then re-render them.  It does this by
+comparing the mtime on the entry file with the mtime on the rendered file.</p>
+<p>If you're using PyBlosxom 1.4 or later, run the static renderer like
+this to render new pages in your blog:</p>
+<pre class="literal-block">
+% pyblcmd --config &lt;config-file&gt; --static incremental
+</pre>
+<p>If you're using a version of PyBlosxom earlier than 1.4, then run the
+static renderer like this:</p>
+<pre class="literal-block">
+% ./pyblosxom.cgi --static --incremental
+</pre>
+</div>
+</div>
+<div class="section" id="rendering-other-uris">
+<h1><a class="toc-backref" href="#id6">Rendering Other URIs</a></h1>
+<p>Some plugins provide other URIs that are part of your site, but not
+really part of your blog since they're not related to entries.  Examples
+of this include the plugininfo plugin which provides information about
+the plugins that you're running.  You can set the static_urls property
+in config.py to a list of all the urls that need to be rendered every time.
+This list could include:</p>
+<ul class="simple">
+<li>RSS, FOAF, OPML, Atom or any other kind of feeds</li>
+<li>urls for plugins that aren't related to entries (plugininfo,
+pystaticfile, booklist, ...)</li>
+<li>urls for plugins that provide other kinds of indexes (index by tag,
+index by popularity, ...)</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">static_urls</span></tt> takes a list of strings where each string is a url to be
+rendered.</p>
+<p>For example if I wanted to render the booklist page and the RSS feed
+for my main page, I would set it like this:</p>
+<pre class="literal-block">
+py[&quot;static_urls&quot;] = [&quot;/booklist/index.html&quot;, &quot;/index.xml&quot;]
+</pre>
+</div>
+<div class="section" id="additional-thoughts">
+<h1><a class="toc-backref" href="#id7">Additional Thoughts</a></h1>
+<p>Static rendering is pretty simplistic. We use the <tt class="docutils literal"><span class="pre">tools.render_url</span></tt>
+function to render each url.  Plugins that need to re-render the entry
+pages because something has changed (e.g. comments, pingbacks, ...),
+should call this function.</p>
+<p>If you want to statically render your blog every night, you could write
+a shell script like this:</p>
+<pre class="literal-block">
+#!/bin/bash
+
+export CONFIG = &lt;path to config.py here&gt;
+export STATIC_DIR = &lt;your static dir here&gt;
+
+pyblcmd --config ${CONFIG} --static
+find ${STATIC_DIR} -mmin +30 -exec 'rm' '{}' ';'
+</pre>
+<p>That'll re-render everything, then delete any files in your static
+dir that are older than 30 minutes (in case you moved entries from
+one category to another or deleted an entry or something along those
+lines).</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about other files:</p>
+<p class="last">If your web-site requires more files than just the ones that are rendered
+by PyBlosxom (images, CSS, ...), then you should copy those over with
+your shell script as well.</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<a class="reference external" href="../static_rendering.txt">View document source</a>.
+Generated on: 2008-01-10 23:43 UTC.
+Generated by <a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

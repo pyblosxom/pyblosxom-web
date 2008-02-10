@@ -1,0 +1,21 @@
+===================
+PyBlosxom 2.0 Plans
+===================
+
+Introduction
+============
+
+This documents the plans for PyBlosxom 2.0.  These pages will consist
+of design documents with comments from the community.
+
+It is a work in progress.
+
+
+Contents
+========
+
+*entry-level caching* - entrycache.txt: `entry-level cache <entrycache.html>`_
+
+*archive access* - archiveaccess.txt: `archive access <archiveaccess.html>`_
+
+*formatters and entry parsers* - entryparsers.txt: `formatters and entryparsers <entryparsers.html>`_

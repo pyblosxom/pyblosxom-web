@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>config.py variables</title>
+<meta name="author" content="PyBlosxom Development Team" />
+<meta name="copyright" content="This document is distributed under the MIT license." />
+<link rel="stylesheet" href="manual_style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="config-py-variables">
+<h1 class="title">config.py variables</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>PyBlosxom Development Team</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>config_variables.txt 1059 2007-06-24 16:41:52Z willhelm</td></tr>
+<tr><th class="docinfo-name">Copyright:</th>
+<td>This document is distributed under the MIT license.</td></tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#summary" id="id1">Summary</a></li>
+<li><a class="reference internal" href="#variables" id="id2">Variables</a><ul>
+<li><a class="reference internal" href="#base-url" id="id3">base_url</a></li>
+<li><a class="reference internal" href="#blog-author" id="id4">blog_author</a></li>
+<li><a class="reference internal" href="#blog-description" id="id5">blog_description</a></li>
+<li><a class="reference internal" href="#blog-email" id="id6">blog_email</a></li>
+<li><a class="reference internal" href="#blog-encoding" id="id7">blog_encoding</a></li>
+<li><a class="reference internal" href="#blog-icbm" id="id8">blog_icbm</a></li>
+<li><a class="reference internal" href="#blog-language" id="id9">blog_language</a></li>
+<li><a class="reference internal" href="#blog-title" id="id10">blog_title</a></li>
+<li><a class="reference internal" href="#codebase" id="id11">codebase</a></li>
+<li><a class="reference internal" href="#datadir" id="id12">datadir</a></li>
+<li><a class="reference internal" href="#depth" id="id13">depth</a></li>
+<li><a class="reference internal" href="#flavourdir" id="id14">flavourdir</a></li>
+<li><a class="reference internal" href="#default-flavour" id="id15">default_flavour</a></li>
+<li><a class="reference internal" href="#ignore-directories" id="id16">ignore_directories</a></li>
+<li><a class="reference internal" href="#load-plugins" id="id17">load_plugins</a></li>
+<li><a class="reference internal" href="#locale" id="id18">locale</a></li>
+<li><a class="reference internal" href="#log-file" id="id19">log_file</a></li>
+<li><a class="reference internal" href="#log-level" id="id20">log_level</a></li>
+<li><a class="reference internal" href="#log-filter" id="id21">log_filter</a></li>
+<li><a class="reference internal" href="#num-entries" id="id22">num_entries</a></li>
+<li><a class="reference internal" href="#plugin-dirs" id="id23">plugin_dirs</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h1><a class="toc-backref" href="#id1">Summary</a></h1>
+<p>This is a non-comprehensive list of configuration variables in <tt class="docutils literal"><span class="pre">config.py</span></tt>.</p>
+<p>If you install any plugins, those plugins may ask you to set additional
+variables in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file--those variables will not be documented
+in this file.</p>
+<p>Additionally, any variables you set in <tt class="docutils literal"><span class="pre">config.py</span></tt> will be available in
+your templates.  This is useful for allowing you to centralize any
+configuration for your blog into your <tt class="docutils literal"><span class="pre">config.py</span></tt> file and use it in
+templates and other places.  For example, you could move all your media
+files (JPEG images, GIF images, CSS, ...) into a directory on your server
+to be served by Apache and then set the variable <tt class="docutils literal"><span class="pre">$media_url</span></tt> to the
+directory with media files and use that in your templates.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="variables">
+<h1><a class="toc-backref" href="#id2">Variables</a></h1>
+<div class="section" id="base-url">
+<h2><a class="toc-backref" href="#id3">base_url</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: calculated based on HTTP server variables</p>
+<p>This is the base url for your blog.  If someone were to type this
+url into their browser, then they would see the main index page
+for your blog.</p>
+<p>For example, if Joe Smith put his <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> script into
+a cgi-bin directory and he was using Apache, his base_url might
+look like this:</p>
+<blockquote>
+py[&quot;base_url&quot;] = &quot;<a class="reference external" href="http://joesmith.net/~joe/cgi-bin/pyblosxom.cgi">http://joesmith.net/~joe/cgi-bin/pyblosxom.cgi</a>&quot;</blockquote>
+<p>However, it's common that this can be determined by PyBlosxom by looking
+at the HTTP environment variables--so if you're not doing any url
+re-writing, it's possible that PyBlosxom can correctly determine the
+url and you won't have to set the base_url variable at all.</p>
+<p>If Joe got tired of that long url, Joe might set up some url re-writing
+on my web-server so that the base_url looked like this:</p>
+<blockquote>
+py[&quot;base_url&quot;] = &quot;<a class="reference external" href="http://joesmith.net/~joe/blog">http://joesmith.net/~joe/blog</a>&quot;</blockquote>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about trailing slashes:</p>
+<p class="last">Your base_url property should NOT have a trailing slash.</p>
+</div>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about url rewriting:</p>
+<p class="last">If you use mod_rewrite rules or some other url rewriting system on
+your web-server, then you'll want to set this property.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="blog-author">
+<h2><a class="toc-backref" href="#id4">blog_author</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: &quot;&quot;</p>
+<p>This is the name of the author that you want to appear on your blog.
+Very often this is your name or your pseudonym.</p>
+<p>If Joe Smith had a blog, he might set his blog_author to &quot;Joe Smith&quot;:</p>
+<pre class="literal-block">
+py[&quot;blog_author&quot;] = &quot;Joe Smith&quot;
+</pre>
+<p>If Joe Smith had a blog, but went by the pseudonym &quot;Magic Rocks&quot;, he
+might set his blog_author to &quot;Magic Rocks&quot;:</p>
+<pre class="literal-block">
+py[&quot;blog_author&quot;] = &quot;Magic Rocks&quot;
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="blog-description">
+<h2><a class="toc-backref" href="#id5">blog_description</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: &quot;&quot;</p>
+<p>This is the description or byline of your blog.  Typically this is
+a phrase or a sentence that summarizes what your blog covers.</p>
+<p>If you were writing a blog about restaurants in the Boston area, you
+might have a blog_description of:</p>
+<pre class="literal-block">
+py[&quot;blog_description&quot;] = &quot;Critiques of restaurants in the Boston area&quot;
+</pre>
+<p>Or if your blog covered development on PyBlosxom, your blog_description
+might go like this:</p>
+<pre class="literal-block">
+py[&quot;blog_description&quot;] = &quot;Ruminations on the development of &quot; + \
+                         &quot;PyBlosxom and related things&quot;
+</pre>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about long lines:</p>
+<p>Remember that the <tt class="docutils literal"><span class="pre">config.py</span></tt> file is a Python code file just like
+any other Python code file.  Splitting long lines into shorter lines
+can be done with string concatenation and the <tt class="docutils literal"><span class="pre">\</span></tt> character which
+indicates that the next line is a continuation of the current one.</p>
+<p class="last">Additionally, you can use &quot;&quot;&quot; ... &quot;&quot;&quot; and ''' ... ''' if you like.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="blog-email">
+<h2><a class="toc-backref" href="#id6">blog_email</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: &quot;&quot;</p>
+<p>This is the email address you want associated with your blog.</p>
+<p>For example, say Joe Smith had an email address <tt class="docutils literal"><span class="pre">joe&#64;joesmith.net</span></tt> and
+wanted that associated with his blog.  Then he would set the email
+address as such:</p>
+<pre class="literal-block">
+py[&quot;blog_email&quot;] = &quot;joe&#64;joesmith.net&quot;
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="blog-encoding">
+<h2><a class="toc-backref" href="#id7">blog_encoding</a></h2>
+<p><strong>REQUIRED</strong>: YES</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value--you must set this</p>
+<p>This is the character encoding of your blog.</p>
+<p>For example, if your blog was encoded in iso-8859-1, then you would
+set the blog_encoding to:</p>
+<pre class="literal-block">
+py[&quot;blog_encoding&quot;] = &quot;iso-8859-1&quot;
+</pre>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about encoding values:</p>
+<p class="last">This value must be a valid encoding value.  In general, if you don't
+know what to set your encoding to and you're planning to use US or
+UK English, then setting it to <tt class="docutils literal"><span class="pre">iso-8859-1</span></tt> is probably fine.</p>
+</div>
+<p>This value should be in the meta section of any HTML- or XHTML-based flavours
+and it's also in the header for any feed-based flavours.  An improper
+encoding will gummy up some/most feed readers and web-browsers.</p>
+<p>FIXME - where can we find more information about what constitutes a
+valid encoding value?</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="blog-icbm">
+<h2><a class="toc-backref" href="#id8">blog_icbm</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string: &quot;float,float&quot;</p>
+<p><strong>DEFAULT_VALUE</strong>: no default value</p>
+<p>This is the geographical location of your blgo as a latitude/longitude
+pair, if appropriate.  This is used by flavours that support the ICBM
+meta tag for HTML- or XHTML-based flavours.  The meta tags are used by
+sites like <a class="reference external" href="http://geourl.org/">http://geourl.org/</a> which track where blogs are located.</p>
+<p>For example, if you lived at 37.448087, -122.159259, then your blog_icbm
+would be set to:</p>
+<pre class="literal-block">
+py[&quot;blog_icbm&quot;] = &quot;37.448089,-122.159259&quot;
+</pre>
+<p>FIXME - how can you figure out where you are?</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="blog-language">
+<h2><a class="toc-backref" href="#id9">blog_language</a></h2>
+<p><strong>REQUIRED</strong>: YES</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value--you must set this</p>
+<p>This is the primary language code for your blog.</p>
+<p>For example, English users should use <tt class="docutils literal"><span class="pre">en</span></tt>:</p>
+<pre class="literal-block">
+py[&quot;blog_language&quot;] = &quot;en&quot;
+</pre>
+<p>FIXME - where's a list of valid language codes?</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="blog-title">
+<h2><a class="toc-backref" href="#id10">blog_title</a></h2>
+<p><strong>REQUIRED</strong>: YES</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value--you must set this</p>
+<p>This is the title of your blog.  Typically this should be short and is
+accompanied by a longer summary of your blog which is set in
+blog_description.</p>
+<p>For example, if Joe were writing a blog about cooking, he might title
+his blog:</p>
+<pre class="literal-block">
+py[&quot;blog_title&quot;] = &quot;Joe's blog about cooking&quot;
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="codebase">
+<h2><a class="toc-backref" href="#id11">codebase</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default set</p>
+<p>This is the full path to where the PyBlosxom directory is on your
+system.</p>
+<p>If you have installed PyBlosxom as a Python library by running
+<tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> then you don't need to set the codebase
+variable.</p>
+<p>If you have NOT installed PyBlosxom as a Python library, then you DO
+need to set the codebase variable.  Otherwise the Python interpreter
+won't be able to find the PyBlosxom codebase and your blog will not work.</p>
+<p>For example, if you untarred PyBlosxom into <tt class="docutils literal"><span class="pre">/home/joe/pyblosxom-1.3.2/</span></tt>,
+then the Pyblosxom (uppercase P and lowercase b) directory should be in
+<tt class="docutils literal"><span class="pre">/home/joe/pyblosxom-1.3.2/</span></tt> and you would set your codebase variable
+like this:</p>
+<pre class="literal-block">
+py[&quot;codebase&quot;] = &quot;/home/joe/pyblosxom-1.3.2/&quot;
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="datadir">
+<h2><a class="toc-backref" href="#id12">datadir</a></h2>
+<p><strong>REQUIRED</strong>: YES</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value--you need to set this</p>
+<p>This is the full path to where your blog entries are kept on the
+file system.</p>
+<p>For example, if you are storing your blog entries in
+<tt class="docutils literal"><span class="pre">/home/joe/blog/entries/</span></tt>, then you would set the datadir like this:</p>
+<pre class="literal-block">
+py[&quot;datadir&quot;] = &quot;/home/joe/blog/entries/&quot;
+</pre>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about datadir on Windows:</p>
+<p>Use <tt class="docutils literal"><span class="pre">/</span></tt> to separate directories in the datadir path even if
+you are using Windows.  Examples of valid datadirs on Windows:</p>
+<pre class="literal-block">
+py[&quot;datadir&quot;] = &quot;/blog/entries/&quot;
+</pre>
+<p>and:</p>
+<pre class="last literal-block">
+py[&quot;datadir&quot;] = &quot;e:/blog/entries/&quot;
+</pre>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="depth">
+<h2><a class="toc-backref" href="#id13">depth</a></h2>
+<p><strong>REQUIRED</strong>: NO</p>
+<p><strong>DATATYPE</strong>: integer</p>
+<p><strong>DEFAULT VALUE</strong>: defaults to 0--infinite depth</p>
+<p>The depth setting determines how many levels deep in the directory
+(category) tree that PyBlosxom will display when doing indexes.</p>
+<ul class="simple">
+<li>0 - infinite depth (aka grab everything) DEFAULT</li>
+<li>1 - datadir only</li>
+<li>n - n levels deep</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="flavourdir">
+<h2><a class="toc-backref" href="#id14">flavourdir</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value set</p>
+<p>This is the full path to where your PyBlosxom flavours are kept.</p>
+<p>If you do not set the flavourdir, then PyBlosxom will look for your
+flavours and templates in the datadir alongside your entries.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about the spelling:</p>
+<p class="last">&quot;flavour&quot; is spelled using the British spelling and not the American
+one.</p>
+</div>
+<p>For example, if you want to put your entries in <tt class="docutils literal"><span class="pre">/home/joe/blog/entries/</span></tt>
+and your flavour templates in <tt class="docutils literal"><span class="pre">/home/joe/blog/flavours/</span></tt> you would
+set flavourdir and datadir like this:</p>
+<pre class="literal-block">
+py[&quot;datadir&quot;] = &quot;/home/joe/blog/entries/&quot;
+py[&quot;flavourdir&quot;] = &quot;/home/joe/blog/flavours/&quot;
+</pre>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about flavourdir on Windows:</p>
+<p>Use <tt class="docutils literal"><span class="pre">/</span></tt> to separate directories in the flavourdir path even if
+you are using Windows.  Examples of valid flavourdir on Windows:</p>
+<pre class="literal-block">
+py[&quot;flavourdir&quot;] = &quot;/blog/flavours/&quot;
+</pre>
+<p>and:</p>
+<pre class="last literal-block">
+py[&quot;flavourdir&quot;] = &quot;e:/blog/flavours/&quot;
+</pre>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="default-flavour">
+<h2><a class="toc-backref" href="#id15">default_flavour</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: &quot;html&quot;</p>
+<p>This specified the flavour that will be used if the user doesn't
+specify a flavour in the URI.</p>
+<p>For example, if you wanted your default flavour to be &quot;joy&quot;, then you
+would set default_flavour like this:</p>
+<pre class="literal-block">
+py[&quot;default_flavour&quot;] = &quot;joy&quot;
+</pre>
+<p>Doing this will cause PyBlosxom to use the &quot;joy&quot; flavour whenever URIs
+are requested that don't specify the flavour.</p>
+<p>For example, the following will all use the &quot;joy&quot; flavour:</p>
+<pre class="literal-block">
+http://joesmith.net/blog/
+http://joesmith.net/blog/index
+http://joesmith.net/blog/movies/
+http://joesmith.net/blog/movies/supermanreturns
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="ignore-directories">
+<h2><a class="toc-backref" href="#id16">ignore_directories</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: list of strings</p>
+<p><strong>DEFAULT VALUE</strong>: [ ]</p>
+<p>The ignore_directories variable allows you to specify which directories
+in your datadir should be ignored by PyBlosxom.</p>
+<p>This defaults to an empty list (i.e. PyBlosxom will not ignore any
+directories).</p>
+<p>For example, if you use CVS to manage the entries in your datadir, then
+you would want to ignore all CVS-related directories like this:</p>
+<pre class="literal-block">
+py[&quot;ignore_directories&quot;] = [ &quot;CVS&quot; ]
+</pre>
+<p>If you were using CVS and you also wanted to store drafts of entries you
+need to think about some more in a drafts directory in your datadir, then
+you could set your ignore_directories like this:</p>
+<pre class="literal-block">
+py[&quot;ignore_directories&quot;] = [ &quot;drafts&quot;, &quot;CVS&quot; ]
+</pre>
+<p>This would ignore all directories named &quot;CVS&quot; and &quot;drafts&quot; in your datadir
+tree.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="load-plugins">
+<h2><a class="toc-backref" href="#id17">load_plugins</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: list of strings</p>
+<p><strong>DEFAULT VALUE</strong>: no default value set</p>
+<p>If the load_plugins variable is set to a list of strings, then PyBlosxom
+will load the plugins specified in the order they were specified in.  If
+the load_plugins variable is set to <tt class="docutils literal"><span class="pre">[</span> <span class="pre">]</span></tt> (i.e. an empty list), then
+PyBlosxom will not load any plugins.</p>
+<p>If the load_plugins variable is not set at all, then PyBlosxom will load
+all plugins that it finds in the plugin directories in alphabetical
+order.</p>
+<p>For example, if you had plugin_dirs set to <tt class="docutils literal"><span class="pre">[</span> <span class="pre">&quot;/home/joe/blog/plugins/&quot;</span> <span class="pre">]</span></tt>
+and there were three plugins in that directory <tt class="docutils literal"><span class="pre">pluginA.py</span></tt>, <tt class="docutils literal"><span class="pre">pluginB.py</span></tt>,
+and <tt class="docutils literal"><span class="pre">pluginC.py</span></tt> and you did NOT set load_plugins, then PyBlosxom will
+load <tt class="docutils literal"><span class="pre">pluginA</span></tt> followed by <tt class="docutils literal"><span class="pre">pluginB</span></tt> followed by <tt class="docutils literal"><span class="pre">pluginC</span></tt>.</p>
+<p>If you wanted PyBlosxom to load <tt class="docutils literal"><span class="pre">pluginA</span></tt> and <tt class="docutils literal"><span class="pre">pluginC</span></tt>, then you
+would set load_plugins to:</p>
+<pre class="literal-block">
+py[&quot;load_plugins&quot;] = [ &quot;pluginA&quot;, &quot;pluginC&quot; ]
+</pre>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about files versus modules:</p>
+<p class="last">load_plugins should contain a list of strings where each string is
+a Python module--not a filename.  So don't add the <tt class="docutils literal"><span class="pre">.py</span></tt> to the
+end of the module name!</p>
+</div>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about load_plugins:</p>
+<p class="last">In general, it's better to explicitly set load_plugins to the
+plugins you want to use.  This reduces the confusion about which
+plugins did what when you have problems.  It also reduces the
+potential for accidentally loading plugins you didn't intend to
+load.</p>
+</div>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about the order of the plugins:</p>
+<p>PyBlosxom loads plugins in the order specified by load_plugins.
+This order also affects the order that callbacks are registered
+and later executed.  For example, if pluginA and pluginB both
+implement the handle callback and you load pluginB first, then
+pluginB will execute before pluginA when the handle callback kicks
+off.</p>
+<p class="last">Usually this isn't a big deal, however it's possible that some plugins
+will want to have a chance to do things before other plugins.  This
+should be specified in the documentation that comes with those
+plugins.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="locale">
+<h2><a class="toc-backref" href="#id18">locale</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: &quot;C&quot;</p>
+<p>FIXME - this needs to be verified</p>
+<p>PyBlosxom uses the locale config variable to adjust the values for
+month names and dates.</p>
+<p>In general, you don't need to set this unless you know you're not
+using en_US or en_UK.</p>
+<p>A listing of language codes is at
+<a class="reference external" href="http://ftp.ics.uci.edu/pub/ietf/http/related/iso639.txt">http://ftp.ics.uci.edu/pub/ietf/http/related/iso639.txt</a></p>
+<p>A listing of country codes is at:
+<a class="reference external" href="http://userpage.chemie.fu-berlin.de/diverse/doc/ISO_3166.html">http://userpage.chemie.fu-berlin.de/diverse/doc/ISO_3166.html</a></p>
+<p>For example, if you wanted to set the locale to the Dutch language
+in the Netherlands you'd set locale to:</p>
+<pre class="literal-block">
+py[&quot;locale&quot;] = &quot;nl_NL.UTF-8&quot;
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="log-file">
+<h2><a class="toc-backref" href="#id19">log_file</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value set</p>
+<p>This specifies the file that PyBlosxom will log messages to.</p>
+<p>If this is set to &quot;NONE&quot;, then log messages will be silently ignored.</p>
+<p>If PyBlosxom cannot open the file for writing, then log messages will
+be sent to sys.stderr.</p>
+<p>For example, if you wanted PyBlosxom to log messages to
+<tt class="docutils literal"><span class="pre">/home/joe/blog/logs/pyblosxom.log</span></tt>, then you would set log_file
+to:</p>
+<pre class="literal-block">
+py[&quot;log_file&quot;] = &quot;/home/joe/blog/logs/pyblosxom.log&quot;
+</pre>
+<p>If you were on Windows, then you might set it to:</p>
+<pre class="literal-block">
+py[&quot;log_file&quot;] = &quot;c:/blog/logs/pyblosxom.log&quot;
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="log-level">
+<h2><a class="toc-backref" href="#id20">log_level</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value set</p>
+<p><strong>POSSIBLE VALUES</strong>:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">critical</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">error</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">warning</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">info</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">debug</span></tt></li>
+</ul>
+<p>This sets the log level for logging messages.</p>
+<p>If you set the log_level to <tt class="docutils literal"><span class="pre">critical</span></tt>, then ONLY critical messages
+are logged.</p>
+<p>If you set the log_level to <tt class="docutils literal"><span class="pre">error</span></tt>, then error and critical messages
+are logged.</p>
+<p>If you set the log_level to <tt class="docutils literal"><span class="pre">warning</span></tt>, then warning, error, and
+critical messages are logged.</p>
+<p>So on and so forth.</p>
+<p>For &quot;production&quot; blogs (i.e. you're not tinkering with configuration,
+new plugins, new flavours, or anything along those lines), then this
+should be set to <tt class="docutils literal"><span class="pre">warning</span></tt> or <tt class="docutils literal"><span class="pre">error</span></tt>.</p>
+<p>For example, if you're done tinkering with your blog, you might
+set the log_level like this:</p>
+<pre class="literal-block">
+py['log_level'] = &quot;warning&quot;
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="log-filter">
+<h2><a class="toc-backref" href="#id21">log_filter</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value specified</p>
+<p>This let's you specify which channels should be logged.</p>
+<p>If log_filter is set, then ONLY messages from the specified channels
+are logged.  Everything else is silently ignored.</p>
+<p>Each plugin can log messages on its own channel.  Therefore channel
+name == plugin name.</p>
+<p>PyBlosxom logs its messages to a channel named &quot;root&quot;.</p>
+<div class="warning">
+<p class="first admonition-title">Warning</p>
+<p>A warning about omitting root:</p>
+<p class="last">If you use log_filter and don't include &quot;root&quot;, then PyBlosxom
+messages will be silently ignored!</p>
+</div>
+<p>For example, if you wanted to filter log messages to &quot;root&quot; and messages
+from the &quot;comments&quot; plugin, then you would set log_filter like this:</p>
+<pre class="literal-block">
+py[&quot;log_filter&quot;] = [ &quot;root&quot;, &quot;comments&quot; ]
+</pre>
+<p>FIXME - is the channel name == plugin name done automatically by
+PyBlosxom or is the channel name specified when logging?</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="num-entries">
+<h2><a class="toc-backref" href="#id22">num_entries</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: int</p>
+<p><strong>DEFAULT VALUE</strong>: 5</p>
+<p>The num_entries variable specifies the number of entries that show up
+on your home page and other category index pages.  It doesn't affect the
+number of entries that show up on date-based archive pages.</p>
+<p>It defaults to 5 which means &quot;show at most 5 entries&quot;.</p>
+<p>If you set it to 0, then it will show all entries that it can.</p>
+<p>For example, if you wanted to set num_entries to 10 so that 10 entries
+show on your category index pages, you sould set it like this:</p>
+<pre class="literal-block">
+py[&quot;num_entries&quot;] = 10
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="plugin-dirs">
+<h2><a class="toc-backref" href="#id23">plugin_dirs</a></h2>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: list of strings</p>
+<p><strong>DEFAULT VALUE</strong>: [ ]</p>
+<p>The plugin_dirs variable lists the directories in which you have PyBlosxom
+plugins.</p>
+<p>When you set this variable, be sure to set the load_plugins variable
+as well.</p>
+<p>This defaults to <tt class="docutils literal"><span class="pre">[</span> <span class="pre">]</span></tt> which is an empty list.</p>
+<p>For example, if you stored your PyBlosxom plugins in
+<tt class="docutils literal"><span class="pre">/home/joe/blog/plugins/</span></tt>, then you would set plugin_dirs like this:</p>
+<pre class="literal-block">
+py[&quot;plugin_dirs&quot;] = [ &quot;/home/joe/blog/plugins/&quot; ]
+</pre>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<a class="reference external" href="../config_variables.txt">View document source</a>.
+Generated on: 2008-01-10 23:43 UTC.
+Generated by <a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

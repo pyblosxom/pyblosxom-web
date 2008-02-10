@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Pyblosxom.pyblosxom.Request</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          <a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom&nbsp;(1.3.1)</a>
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="Pyblosxom-module.html">Package&nbsp;Pyblosxom</a> ::
+        <a href="Pyblosxom.pyblosxom-module.html">Module&nbsp;pyblosxom</a> ::
+        Class&nbsp;Request
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<a href="../private/Pyblosxom.pyblosxom.Request-class.html">show&nbsp;private</a>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="Pyblosxom.pyblosxom.Request-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Type Request</h2>
+
+<pre class="base-tree">
+<a href="__builtin__.object-class.html"><code>object</code></a> --+
+         |
+        <b>Request</b>
+</pre><br />
+
+<hr/>
+
+<p>This class holds the PyBlosxom request. It holds configuration 
+information, HTTP/CGI information, and data that we calculate and 
+transform over the course of execution.</p>
+There should be only one instance of this class floating around and it 
+should get created by pyblosxom.cgi and passed into the PyBlosxom 
+instance which will do further manipulation on the Request instance.
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#__init__" class="summary-sig-name"><code>__init__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>config</span>,
+          <span class=summary-sig-arg>environ</span>,
+          <span class=summary-sig-arg>data</span>)</span></code>
+<br />
+Sets configuration and environment.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#__getattr__" class="summary-sig-name"><code>__getattr__</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>name</span>,
+          <span class=summary-sig-arg>default</span>)</span></code>
+<br />
+Sort of simulates the dict except we only have three valid attributes: 
+config, data, and http.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#__iter__" class="summary-sig-name"><code>__iter__</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Can't copy the __iter__ method over from the StringIO instance cause 
+iter looks for the method in the class instead of the instance.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="__repr__"></a><span class="summary-sig"><span class="summary-sig-name">__repr__</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#addConfiguration" class="summary-sig-name"><code>addConfiguration</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>d</span>)</span></code>
+<br />
+Takes in a dict and adds/overrides values in the existing 
+configuration dict with the new values.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#addData" class="summary-sig-name"><code>addData</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>d</span>)</span></code>
+<br />
+Takes in a dict and adds/overrides values in the existing data dict 
+with the new values.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#addHttp" class="summary-sig-name"><code>addHttp</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>d</span>)</span></code>
+<br />
+Takes in a dict and adds/overrides values in the existing http dict 
+with the new values.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#buffer_input_stream" class="summary-sig-name"><code>buffer_input_stream</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Buffer the input stream in a StringIO instance.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="dumpRequest"></a><span class="summary-sig"><span class="summary-sig-name">dumpRequest</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#getConfiguration" class="summary-sig-name"><code>getConfiguration</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the _actual_ configuration dict.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#getData" class="summary-sig-name"><code>getData</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the _actual_ data dict.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#getForm" class="summary-sig-name"><code>getForm</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the form data submitted by the client.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#getHttp" class="summary-sig-name"><code>getHttp</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the _actual_ http dict.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#getResponse" class="summary-sig-name"><code>getResponse</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+<br />
+Returns the <a href="Pyblosxom.pyblosxom.Response-class.html" 
+class="link"><code>Response</code></a> object which handles all output 
+related functionality.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="Pyblosxom.pyblosxom.Request-class.html#setResponse" class="summary-sig-name"><code>setResponse</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>response</span>)</span></code>
+<br />
+Sets the <a href="Pyblosxom.pyblosxom.Response-class.html" 
+class="link"><code>Response</code></a> object.</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from object</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__delattr__" class="summary-sig-name"><code>__delattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__delattr__('name') &lt;==&gt; del x.name</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__getattribute__" class="summary-sig-name"><code>__getattribute__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__getattribute__('name') &lt;==&gt; x.name</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__hash__" class="summary-sig-name"><code>__hash__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__hash__() &lt;==&gt; hash(x)</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__new__" class="summary-sig-name"><code>__new__</code></a>(<span class=summary-sig-arg>T</span>,
+          <span class=summary-sig-arg>S</span>,
+          <span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+T.__new__(S, ...) -&gt; a new object with type S, a subtype of T</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce__" class="summary-sig-name"><code>__reduce__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__reduce_ex__" class="summary-sig-name"><code>__reduce_ex__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+helper for pickle</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__setattr__" class="summary-sig-name"><code>__setattr__</code></a>(<span class="summary-sig-vararg">...</span>)</span></code>
+<br />
+x.__setattr__('name', value) &lt;==&gt; x.name = value</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="__builtin__.object-class.html#__str__" class="summary-sig-name"><code>__str__</code></a>(<span class=summary-sig-arg>x</span>)</span></code>
+<br />
+x.__str__() &lt;==&gt; str(x)</td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="__init__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__init__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>config</span>,
+          <span class=sig-arg>environ</span>,
+          <span class=sig-arg>data</span>)</span>
+    <br /><i>(Constructor)</i>
+  </h3>
+  Sets configuration and environment. Creates the <a 
+  href="Pyblosxom.pyblosxom.Response-class.html" 
+  class="link"><code>Response</code></a> object which handles all output 
+  related functionality.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>config</b></code> -
+         A dict containing the configuration variables.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      <dd><code><b>environ</b></code> -
+         A dict containing the environment variables.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      <dd><code><b>data</b></code> -
+         A dict containing data variables.
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      </dd>
+    </dl>
+    <dl><dt><b>Overrides:</b></dt>
+      <dd><a href="__builtin__.object-class.html#__init__"><code>__builtin__.object.__init__</code></a></dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__getattr__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__getattr__</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>name</span>,
+          <span class=sig-arg>default</span>=<span class=sig-default>None</span>)</span>
+    <br /><i>(Qualification operator)</i>
+  </h3>
+  Sort of simulates the dict except we only have three valid 
+  attributes: config, data, and http.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>name</b></code> -
+         the name of the attribute to get
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=string)</i>
+      <dd><code><b>default</b></code> -
+         varies
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=varies)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="__iter__"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">__iter__</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Can't copy the __iter__ method over from the StringIO instance cause 
+  iter looks for the method in the class instead of the instance. So 
+  can't do this with __copy_members, have to define it seperatly. See 
+  http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/252151
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="addConfiguration"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">addConfiguration</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>d</span>)</span>
+  </h3>
+  Takes in a dict and adds/overrides values in the existing 
+  configuration dict with the new values.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>d</b></code> -
+         the dict with the new keys/values to add
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="addData"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">addData</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>d</span>)</span>
+  </h3>
+  Takes in a dict and adds/overrides values in the existing data dict 
+  with the new values.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>d</b></code> -
+         the dict with the new keys/values to add
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="addHttp"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">addHttp</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>d</span>)</span>
+  </h3>
+  Takes in a dict and adds/overrides values in the existing http dict 
+  with the new values.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>d</b></code> -
+         the dict with the new keys/values to add
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=dict)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="buffer_input_stream"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">buffer_input_stream</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Buffer the input stream in a StringIO instance. This is done to have 
+  a known/consistent way of accessing incomming data. For example the 
+  input stream passed by mod_python does not offer the same 
+  functionallity as sys.stdin.
+  <dl><dt></dt><dd>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getConfiguration"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getConfiguration</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>Returns the _actual_ configuration dict. The configuration dict 
+  holds values that the user sets in their config.py file.</p>
+  Modifying the contents of the dict will affect all downstream 
+  processing.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        dict
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getData"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getData</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>Returns the _actual_ data dict. Holds run-time data which is created 
+  and transformed by pyblosxom during execution.</p>
+  Modifying the contents of the dict will affect all downstream 
+  processing.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        dict
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getForm"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getForm</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the form data submitted by the client. The <code>form</code> 
+  instance is created only when requested to prevent overhead and 
+  unnecessary consumption of the input stream.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        <code>cgi.FieldStorage</code>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getHttp"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getHttp</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  <p>Returns the _actual_ http dict. Holds HTTP/CGI data derived from the 
+  environment of execution.</p>
+  Modifying the contents of the dict will affect all downstream 
+  processing.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        dict
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="getResponse"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">getResponse</span>(<span class=sig-arg>self</span>)</span>
+  </h3>
+  Returns the <a href="Pyblosxom.pyblosxom.Response-class.html" 
+  class="link"><code>Response</code></a> object which handles all output 
+  related functionality.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        <a href="Pyblosxom.pyblosxom.Response-class.html" 
+        class="link"><code>Response</code></a>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+
+<a name="setResponse"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">setResponse</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>response</span>)</span>
+  </h3>
+  Sets the <a href="Pyblosxom.pyblosxom.Response-class.html" 
+  class="link"><code>Response</code></a> object.
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>response</b></code> -
+         A pyblosxom Response object
+        <br /><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        (type=<a href="Pyblosxom.pyblosxom.Response-class.html" 
+              class="link"><code>Response</code></a>)</i>
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="Pyblosxom-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" align="right" width="100%">
+      <table border="0" cellpadding="0" cellspacing="0">
+      <tr><th class="navbar" align="center">
+        <p class="nomargin">
+          <a class="navbar" target="_top" href="http://pyblosxom.sourceforge.net/">Pyblosxom&nbsp;(1.3.1)</a>
+      </p></th></tr></table>
+    </th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Tue Feb  7 21:43:58 2006</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

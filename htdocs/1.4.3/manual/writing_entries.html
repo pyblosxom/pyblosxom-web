@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>Writing Entries</title>
+<meta name="author" content="PyBlosxom Development Team" />
+<meta name="copyright" content="This document is distributed under the MIT license." />
+<link rel="stylesheet" href="manual_style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="writing-entries">
+<h1 class="title">Writing Entries</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>PyBlosxom Development Team</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>writing_entries.txt 1029 2007-06-07 02:33:12Z willhelm</td></tr>
+<tr><th class="docinfo-name">Copyright:</th>
+<td>This document is distributed under the MIT license.</td></tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#categories" id="id1">Categories</a></li>
+<li><a class="reference internal" href="#the-format-of-an-entry" id="id2">The Format of an Entry</a></li>
+<li><a class="reference internal" href="#posting-date" id="id3">Posting Date</a></li>
+<li><a class="reference internal" href="#entry-parsers" id="id4">Entry Parsers</a></li>
+<li><a class="reference internal" href="#beyond-editors" id="id5">Beyond Editors</a><ul>
+<li><a class="reference internal" href="#weblog-add" id="id6">weblog-add</a></li>
+<li><a class="reference internal" href="#w-bloggar" id="id7">w.bloggar</a></li>
+<li><a class="reference internal" href="#using-ecto" id="id8">Using Ecto</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="categories">
+<h1><a class="toc-backref" href="#id1">Categories</a></h1>
+<p>Writing entries in PyBlosxom is fairly straightforward.  Each entry
+is a single text file located somewhere in the directory tree of your
+datadir.  The directory that the entry is in is the category the entry
+is &quot;filed under&quot;.</p>
+<p>For example, if my datadir was <tt class="docutils literal"><span class="pre">/home/joe/myblog/entries</span></tt> and I stored
+an entry named <tt class="docutils literal"><span class="pre">firstpost.txt</span></tt> in <tt class="docutils literal"><span class="pre">/home/joe/myblog/entries/status</span></tt>
+then the category for my entry would be <tt class="docutils literal"><span class="pre">/status</span></tt>.</p>
+<div class="warning">
+<p class="first admonition-title">Warning</p>
+<p>A warning about category names:</p>
+<p class="last">Be careful when you create your categories--be sure to use characters
+that are appropriate in directory names in the file system.</p>
+</div>
+<p>Don't worry about making sure you have all the categories you need up
+front--you can add them as you need them.</p>
+</div>
+<div class="section" id="the-format-of-an-entry">
+<h1><a class="toc-backref" href="#id2">The Format of an Entry</a></h1>
+<p>PyBlosxom entries consist of three parts: the title, the metadata, and
+then the body of the entry.  The first line is title of the entry.  Then
+comes the metadata of the entry (if any).  After the metadata comes the
+body of the entry.</p>
+<p>The title consists of a single line of plain text.  You can have whatever
+characters you like in the title of your entry.  The title doesn't have
+to be the same as the entry file name.</p>
+<p>The metadata section is between the title line and the body of the entry.
+It consists of a series of lines that start with the hash mark (#), then
+a metadata variable name, then the metadata variable value.</p>
+<p>The body of the entry is written in HTML and comprises the rest of the
+entry file.</p>
+<p>Here's an example first post entry:</p>
+<pre class="literal-block">
+This is my first post!
+&lt;p&gt;
+  This is the body of the first post to my blog.
+&lt;/p&gt;
+</pre>
+<p>Here's a more complex example:</p>
+<pre class="literal-block">
+The rain in Spain....
+&lt;p&gt;
+  The rain
+&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+  in Spain
+&lt;/p&gt;
+&lt;p align=&quot;right&quot;&gt;
+  is &lt;font color=&quot;ff0000&quot;&gt;mainly&lt;/font&gt; on the plain.
+&lt;/p&gt;
+</pre>
+<p>Here's an example of a post with metadata:</p>
+<pre class="literal-block">
+The rain in Spain....
+#mood bored
+#music The Doors - Greatest Hits Vol 1
+&lt;p&gt;
+  The rain
+&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+  in Spain
+&lt;/p&gt;
+&lt;p align=&quot;right&quot;&gt;
+  is &lt;font color=&quot;ff0000&quot;&gt;mainly&lt;/font&gt; on the plain.
+&lt;/p&gt;
+</pre>
+<p>The metadata variables set in the metadata section of the entry are
+available in your story template.  So for the above example, the template
+variable <tt class="docutils literal"><span class="pre">$mood</span></tt> would be filled in with <tt class="docutils literal"><span class="pre">bored</span></tt> and <tt class="docutils literal"><span class="pre">$music</span></tt>
+would be filled in with <tt class="docutils literal"><span class="pre">The</span> <span class="pre">Doors</span> <span class="pre">-</span> <span class="pre">Greatest</span> <span class="pre">Hits</span> <span class="pre">Vol</span> <span class="pre">1</span></tt>.</p>
+</div>
+<div class="section" id="posting-date">
+<h1><a class="toc-backref" href="#id3">Posting Date</a></h1>
+<p>The posting date of the entry file is the modification time (also known as
+mtime) on the file itself as stored by your file system.  Every time you
+go to edit an entry, it changes the modification time.  You can see this
+in the following example of output:</p>
+<pre class="literal-block">
+willg ~/blogdata/blosxom/site: vi testpost.txt                         [1]
+willg ~/blogdata/blosxom/site: ls -l
+total 16
+-rw-r--r--  1 willg willg 764 Jul 20  2003 minoradjustments.txt
+-rw-r--r--  1 willg willg 524 Jul 24  2003 moreminoradjustments.txt
+-rw-r--r--  1 willg willg 284 Aug 15  2004 nomorecalendar.txt
+-rw-r--r--  1 willg willg  59 Mar 21 16:30 testpost.txt                [2]
+willg ~/blogdata/blosxom/site: vi testpost.txt                         [3]
+willg ~/blogdata/blosxom/site: ls -l
+total 16
+-rw-r--r--  1 willg willg 764 Jul 20  2003 minoradjustments.txt
+-rw-r--r--  1 willg willg 524 Jul 24  2003 moreminoradjustments.txt
+-rw-r--r--  1 willg willg 284 Aug 15  2004 nomorecalendar.txt
+-rw-r--r--  1 willg willg  59 Mar 21 16:34 testpost.txt                [4]
+</pre>
+<ol class="arabic simple">
+<li>I create the blog entry <tt class="docutils literal"><span class="pre">testpost.txt</span></tt> using <tt class="docutils literal"><span class="pre">vi</span></tt> (vi is a text
+editor).  The mtime of the file will be the time I last save the file
+and exit out of vi.</li>
+<li>Note that the mtime on the file is <tt class="docutils literal"><span class="pre">Mar</span> <span class="pre">21</span> <span class="pre">16:30</span></tt>.  That's when I
+last saved the blog entry and exited out of vi.</li>
+<li>I discover that I made a spelling mistake in my entry...  So I edit
+it again in vi and fix the mistake.  The mtime of the entry has now
+changed!</li>
+<li>Now the mtime of the file is <tt class="docutils literal"><span class="pre">Mar</span> <span class="pre">21</span> <span class="pre">16:34</span></tt>.  This is the time that
+will show up in my blog as the posting date.</li>
+</ol>
+<div class="warning">
+<p class="first admonition-title">Warning</p>
+<p>A warning about mtimes:</p>
+<p>There are some issues with this method for storing the posting date.
+First, if you ever change the blog entry, the mtime will change as well.
+That makes updating blog entries very difficult down the line.</p>
+<p class="last">There's a utility that comes with the contributed plugins pack called
+<tt class="docutils literal"><span class="pre">editfile.py</span></tt>.  This will note the mtime of the file, open up your
+favorite editor to edit the file, and when you're done, it'll reset
+the mtime of the file back to what it was.</p>
+</div>
+</div>
+<div class="section" id="entry-parsers">
+<h1><a class="toc-backref" href="#id4">Entry Parsers</a></h1>
+<p>PyBlosxom supports only one format for entry files by default.  This format
+is the same format that blosxom uses.  The extension for this format is
+<tt class="docutils literal"><span class="pre">.txt</span></tt>.  The first line of the file is in plain text and forms the title
+of the entry.  The second line through the end of the file is in HTML and
+is the body of the entry.</p>
+<p>A sample blog entry could look like this:</p>
+<pre class="literal-block">
+First post
+&lt;p&gt;
+  Here's the body of my first post.
+&lt;/p&gt;
+</pre>
+<p>Some people really detest writing in HTML which is valid.  Other
+people use their entries in other places, so they need a markup format
+that's less web-oriented.  Some folks write a lot of material in a non-HTML
+markup format and would like to use that same format for blog entries.
+These are all very valid reasons to want to use other markup formats.</p>
+<p>PyBlosxom allows you to install entry parser plugins which are PyBlosxom
+plugins that implement an entry parser.  These entry parser plugins allow
+you to use other markup formats.  Check the Plugin Registry at
+<a class="reference external" href="http://pyblosxom.sourceforge.net/">http://pyblosxom.sourceforge.net/</a> for which entry parsers are available.</p>
+<p>In general, we only have entry parsers written by people who really
+wanted that markup format.  If you don't see your favorite markup format
+represented, try looking at the code for other entry parsers and implement
+it yourself.  If you need help, talk to us on the pyblosxom-users or
+pyblosxom-devel mailing lists.</p>
+<p>Details on the various entry parsers should be at the top of the entry
+parser plugin itself in the Python doc-string.</p>
+</div>
+<div class="section" id="beyond-editors">
+<h1><a class="toc-backref" href="#id5">Beyond Editors</a></h1>
+<p>There's no reason that all your entries have to come from editing blog entry
+text files in your datadir.  You could rig up procmail to look for emails
+that meet a certain description and convert those emails into blog entries.</p>
+<div class="section" id="weblog-add">
+<h2><a class="toc-backref" href="#id6">weblog-add</a></h2>
+<p>You can find the weblog-add CGI script in the Plugin Registry at
+<a class="reference external" href="http://pyblosxom.sourceforge.net/">http://pyblosxom.sourceforge.net/</a> .  This script allows you to create
+entries using a webform.  It doesn't allow you to edit entries after
+the fact and it's pretty basic.  However, it does work and it does allow
+you to create entries when you don't have access to the filesystem.</p>
+<p>To setup the weblog-add script, do the following:</p>
+<ol class="arabic">
+<li><p class="first">copy the <tt class="docutils literal"><span class="pre">weblog-add.py</span></tt> file into your CGI root</p>
+</li>
+<li><p class="first">open up the <tt class="docutils literal"><span class="pre">weblog-add.py</span></tt> file in your favorite text editor
+and change the line for <tt class="docutils literal"><span class="pre">blog_root</span></tt> to your datadir</p>
+</li>
+<li><p class="first">set up your cgi directory so that the web-server forces the user to
+authenticate</p>
+<p>FIXME - how do you do that?</p>
+</li>
+<li><p class="first">make sure the weblog-add.py file has the correct permissions so that
+it will run as a CGI script</p>
+</li>
+</ol>
+<p>When you're using the <tt class="docutils literal"><span class="pre">weblog-add.py</span></tt> script, make sure you use unique
+file names.  That gets a bit hard as your blog gets so big that you
+don't remember what file names exist and what don't.</p>
+</div>
+<div class="section" id="w-bloggar">
+<h2><a class="toc-backref" href="#id7">w.bloggar</a></h2>
+<p>PyBlosxom works with w.bloggar (<a class="reference external" href="http://www.wbloggar.com/">http://www.wbloggar.com/</a>).  In order to
+use w.bloggar you have to do the following:</p>
+<ol class="arabic simple">
+<li>install the xmlrpc plugin found at <a class="reference external" href="http://pyblosxom.sourceforge.net/">http://pyblosxom.sourceforge.net/</a> in
+the plugin registry</li>
+<li>install the xmlrpc_bloggar plugin also in the plugin registry</li>
+<li>in the <strong>Content Management System</strong> section of the w.bloggar account
+settings dialog, set:<ul>
+<li><strong>Blog Tool</strong> to <tt class="docutils literal"><span class="pre">Custom</span></tt></li>
+</ul>
+</li>
+<li>in the <strong>API Server</strong> tab section of the w.bloggar account settings
+dialog, set:<ul>
+<li><strong>Host</strong> to the name of your server</li>
+<li><strong>Page</strong> to the url of your blog with /RPC at the end.  For example,
+mine might be &quot;/~joe/cgi-bin/pyblosxom.cgi/RPC&quot;</li>
+</ul>
+</li>
+<li>in the <strong>Custom</strong> tab section of the w.bloggar account settings dialog,
+set:<ul>
+<li><strong>Posts</strong> to <tt class="docutils literal"><span class="pre">Blogger</span> <span class="pre">API</span></tt></li>
+<li><strong>Categories</strong> to <tt class="docutils literal"><span class="pre">Not</span> <span class="pre">supported</span></tt></li>
+<li><strong>Templates</strong> to <tt class="docutils literal"><span class="pre">Not</span> <span class="pre">supported</span></tt></li>
+<li><strong>Title Tags</strong> should be blank</li>
+<li><strong>Category Tags</strong> should be blank</li>
+</ul>
+</li>
+</ol>
+<p>When you go to write a new entry, leave the title field blank and do your
+entire post in the data section with the first line being the title (just
+like blosxom entries).</p>
+<p>One thing you should note is that pyblosxom will take the first line and use
+that to generate the file name of the entry.  So if the title of the entry is
+<tt class="docutils literal"><span class="pre">How</span> <span class="pre">to</span> <span class="pre">use</span> <span class="pre">w.bloggar</span> <span class="pre">with</span> <span class="pre">pyblosxom</span></tt>, the file name ends up being
+<tt class="docutils literal"><span class="pre">How_to_use_w_bloggar_with_pyblosxom.txt</span></tt> which may get a little annoying.</p>
+<p>FIXME - Does this still work?</p>
+</div>
+<div class="section" id="using-ecto">
+<h2><a class="toc-backref" href="#id8">Using Ecto</a></h2>
+<p>FIXME - I need instructions for this</p>
+<p>Other blog tools?</p>
+<p>Does PyBlosxom work with other blog tools?  If you have such a tool, please
+let us know!</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<a class="reference external" href="../writing_entries.txt">View document source</a>.
+Generated on: 2008-01-10 23:43 UTC.
+Generated by <a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

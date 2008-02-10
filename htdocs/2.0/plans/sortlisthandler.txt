@@ -1,0 +1,62 @@
+================
+sortlist Handler
+================
+
+:Author: Will Guaraldi <willg at bluesock dot org>
+:Originall published: October 14, 2007
+:URL: http://pyblosxom.sourceforge.net/2.0/plans/sortlisthandler.html
+
+
+History
+=======
+
+October 14, 2007 - Will
+
+  * Wrote the initial document, emailed it to pyblosxom-devel.
+
+
+Summary
+=======
+
+In versions of PyBlosxom prior to 2.0, the ``blosxom_file_list_handler``
+would generate a list of entries, then sort them by mtime, and then
+truncate the list so that further processing by PyBlosxom would only
+be operating on a small list of entries rather than the whole list.
+
+This causes a couple of problems.  First, if you want to augment the list
+or provide some other mechanism for sorting or truncating the list,
+the only way to do this was implement the ``blosxom_file_list_handler``
+in full changing the bits you needed changed.  This kind of sucks.
+
+This specification lays out the issues and one possible way to fix this so
+that we can talk about the problem with some context.
+
+
+Use cases
+=========
+
+In order to build the paging plugin, I do some fiddling with the ``num_entries``
+configuration variable which is kind of hack-ish and aversely affects other
+things like feeds.  I wouldn't have to do this if there was a ``sort_list``
+callback.
+
+
+
+Possible Solution
+=================
+
+The possible solution is to break up filelist from sorting and truncating into
+two separate callbacks.
+
+The ``filelist`` callback would be responsible for generating a list of entries 
+to be rendered.
+
+The ``sortlist`` callback would be responsible for sorting the list by mtime
+and truncating the list to the first ``num_entries``.
+
+
+Discussion
+==========
+
+Discussion is here:
+   FIXME - gmane link

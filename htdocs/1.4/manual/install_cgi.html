@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>Installing PyBlosxom with CGI</title>
+<meta name="author" content="PyBlosxom Development Team" />
+<meta name="copyright" content="This document is distributed under the MIT license." />
+<link rel="stylesheet" href="manual_style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="installing-pyblosxom-with-cgi">
+<h1 class="title">Installing PyBlosxom with CGI</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>PyBlosxom Development Team</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>install_cgi.txt 1099 2007-08-11 15:43:22Z willhelm</td></tr>
+<tr><th class="docinfo-name">Copyright:</th>
+<td>This document is distributed under the MIT license.</td></tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#summary" id="id2">Summary</a></li>
+<li><a class="reference internal" href="#pre-requisites-for-installing-pyblosxom" id="id3">Pre-requisites for installing PyBlosxom</a></li>
+<li><a class="reference internal" href="#downloading" id="id4">Downloading</a></li>
+<li><a class="reference internal" href="#installing-pyblosxom" id="id5">Installing PyBlosxom</a><ul>
+<li><a class="reference internal" href="#untar" id="id6">Untar</a></li>
+<li><a class="reference internal" href="#install-as-library-or-not" id="id7">Install as library or not</a></li>
+<li><a class="reference internal" href="#setting-up-a-blog" id="id8">Setting up a blog</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#trouble-shooting" id="id9">Trouble-shooting</a><ul>
+<li><a class="reference internal" href="#running-pyblosxom-cgi-doesn-t-work" id="id10">Running ./pyblosxom.cgi doesn't work</a></li>
+<li><a class="reference internal" href="#i-see-a-http-404-error-when-i-try-to-bring-up-my-blog" id="id11">I see a HTTP 404 error when I try to bring up my blog</a></li>
+<li><a class="reference internal" href="#i-see-a-http-500-error-when-i-try-to-bring-up-my-blog" id="id12">I see a HTTP 500 error when I try to bring up my blog</a></li>
+<li><a class="reference internal" href="#i-have-other-issues" id="id13">I have other issues</a></li>
+<li><a class="reference internal" href="#ugh-my-blog-looks-ugly" id="id14">UGH!  My blog looks UGLY!</a></li>
+<li><a class="reference internal" href="#i-hate-writing-in-html" id="id15">I hate writing in HTML!</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conclusion" id="id16">Conclusion</a></li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h1><a class="toc-backref" href="#id2">Summary</a></h1>
+<p>While there are many ways to install PyBlosxom, the most common one is
+to install PyBlosxom as a CGI script for a single user.  This
+installation guide will cover that.  For other ways to install
+PyBlosxom, refer to the docs directory, mailing lists and the <a class="reference external" href="http://pyblosxom.sourceforge.net/">web-site</a>.</p>
+<p>This installation assumes you have some understanding of CGI, Apache
+configuration, and know how to manipulate files and directories.  If
+this doesn't sound like you, maybe you should get a friend to help out
+or ask for help on the pyblosxom-users mailing list.  Details of the
+mailing list are on our web-site on the <a class="reference external" href="http://pyblosxom.sourceforge.net/blog/static/contact">Contact us</a> page.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>A note about upgrading PyBlosxom:</p>
+<p class="last">If you are upgrading your version of PyBlosxom, follow the
+instructions here and also read the <tt class="docutils literal"><span class="pre">README</span></tt> that comes with
+your PyBlosxom tarball for differences between this version and
+the previous versions.  The <tt class="docutils literal"><span class="pre">README</span></tt> file contains instructions
+on updating your <tt class="docutils literal"><span class="pre">config.py</span></tt> file, templates, and other parts of
+your PyBlosxom installation which you will have to do by hand.</p>
+</div>
+</div>
+<div class="section" id="pre-requisites-for-installing-pyblosxom">
+<h1><a class="toc-backref" href="#id3">Pre-requisites for installing PyBlosxom</a></h1>
+<p>You will need:</p>
+<ul class="simple">
+<li>a web-server that runs CGI</li>
+<li>Python version 2.2 or later</li>
+<li>a text editor (notepad, vi, emacs, nano, ...)</li>
+</ul>
+<p>Additionally, if you are running PyBlosxom on Windows, you will
+also need:</p>
+<ul class="simple">
+<li>Python for Windows extensions: <a class="reference external" href="http://sourceforge.net/projects/pywin32/">http://sourceforge.net/projects/pywin32/</a></li>
+</ul>
+</div>
+<div class="section" id="downloading">
+<h1><a class="toc-backref" href="#id4">Downloading</a></h1>
+<p>You can find versions of PyBlosxom by going to the Download link at
+<a class="reference external" href="http://pyblosxom.sourceforge.net/">http://pyblosxom.sourceforge.net/</a> .</p>
+<p>Download the latest PyBlosxom <tt class="docutils literal"><span class="pre">.tar.gz</span></tt> file.</p>
+</div>
+<div class="section" id="installing-pyblosxom">
+<h1><a class="toc-backref" href="#id5">Installing PyBlosxom</a></h1>
+<p>Installing PyBlosxom should take 5-10 minutes depending on what state
+your system is currently in.  The installation consists of seven
+steps.  Tweaking, styling, and adding content to your blog is covered
+afterwards and in other parts of the documentation.</p>
+<div class="section" id="untar">
+<h2><a class="toc-backref" href="#id6">Untar</a></h2>
+<p>Create a working temporary directory, move the PyBlosxom tar ball
+into it, and then untar the tar ball (something like
+<tt class="docutils literal"><span class="pre">tar</span> <span class="pre">-xzvf</span> <span class="pre">pyblosxom.version.tar.gz</span></tt>).</p>
+</div>
+<div class="section" id="install-as-library-or-not">
+<h2><a class="toc-backref" href="#id7">Install as library or not</a></h2>
+<p>There are two ways to install PyBlosxom on your system:</p>
+<ol class="arabic">
+<li><p class="first">You can install PyBlosxom as a Python library.  To do this, change
+directory into the pyblosxom directory and run:</p>
+<pre class="literal-block">
+python setup.py install
+</pre>
+<p>After you do this, PyBlosxom will be installed as a Python library
+and you can move on to <em>Setting up a blog</em>.</p>
+</li>
+<li><p class="first">If you don't want to or can't install PyBlosxom as a Python library,
+just untar it into your directory and be sure to follow the instructions
+on setting the <tt class="docutils literal"><span class="pre">codebase</span></tt> parameter later.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="setting-up-a-blog">
+<h2><a class="toc-backref" href="#id8">Setting up a blog</a></h2>
+<p>To set up a blog do the following:</p>
+<ol class="arabic">
+<li><p class="first">Copy the <tt class="docutils literal"><span class="pre">config.py</span></tt> and <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> files from the <tt class="docutils literal"><span class="pre">web/</span></tt>
+directory into your <tt class="docutils literal"><span class="pre">cgi-bin/</span></tt> directory or some directory that
+has CGI permissions.</p>
+</li>
+<li><p class="first">First create a directory for holding all your PyBlosxom files.
+Call this directory <tt class="docutils literal"><span class="pre">myblog/</span></tt> and put it in your userdir.</p>
+<p>Then create a sub-directory <tt class="docutils literal"><span class="pre">entries/</span></tt> under <tt class="docutils literal"><span class="pre">myblog/</span></tt>.</p>
+<p>The entries for your blog are text files in your datadir.  The
+datadir can contain directories each of which will be a category
+for PyBlosxom.  In general, it's good to use one-word names that
+don't have spaces or punctuation in them for your directories.</p>
+<p>Then create a sub-directory <tt class="docutils literal"><span class="pre">flavours/</span></tt> under <tt class="docutils literal"><span class="pre">myblog/</span></tt>.</p>
+<p>Flavours are collections of template files for a single look and
+feel for your blog.  You can store these flavours in the flavourdir.</p>
+<p>Then create a sub-directory <tt class="docutils literal"><span class="pre">plugins/</span></tt> under <tt class="docutils literal"><span class="pre">myblog/</span></tt>.</p>
+<p>This directory will hold plugins that augment and extend the
+PyBlosxom's default behavior to meet your specific needs.</p>
+<p>The resulting tree would look like this (if your name was joe):</p>
+<pre class="literal-block">
+/home/joe/
+   |- myblog/
+        |- entries/
+        |- flavours/
+        |- plugins/
+</pre>
+</li>
+<li><p class="first">Open the <tt class="docutils literal"><span class="pre">config.py</span></tt> file up in your favorite editor.  Go through
+and change the values of the configuration settings according to
+the instructions in the <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
+<p>Make sure to set:</p>
+<ul class="simple">
+<li>the <tt class="docutils literal"><span class="pre">datadir</span></tt> property to the datadir directory you created,</li>
+<li>the <tt class="docutils literal"><span class="pre">flavourdir</span></tt> property to the flavourdir directory you created,</li>
+<li>the <tt class="docutils literal"><span class="pre">plugins_dir</span></tt> property to the plugins directory you created,</li>
+<li>and <tt class="docutils literal"><span class="pre">load_plugins</span></tt> to the empty list <tt class="docutils literal"><span class="pre">[</span> <span class="pre">]</span></tt>.</li>
+</ul>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you did NOT install PyBlosxom as a Python library, then you must
+also set the <tt class="docutils literal"><span class="pre">codebase</span></tt> property to the directory you untarred
+PyBlosxom into.  This should be the directory that holds the
+<tt class="docutils literal"><span class="pre">Pyblosxom</span></tt> directory (note the case!).</p>
+</div>
+<p>Plugins will require you to add new variables to your <tt class="docutils literal"><span class="pre">config.py</span></tt>
+file in order to direct the plugin's behavior.  Additionally, you
+can add variables to your <tt class="docutils literal"><span class="pre">config.py</span></tt> and these variables will be
+available to you in your flavour templates.</p>
+</li>
+<li><p class="first">You want to verify that your blog is set up correctly.  Change directory
+into your <tt class="docutils literal"><span class="pre">cgi-bin</span></tt> directory and run from the command line:</p>
+<pre class="literal-block">
+./pyblosxom.cgi
+</pre>
+<p>PyBlosxom will go through a series of checks on your <tt class="docutils literal"><span class="pre">config.py</span></tt>
+file to make sure that things are set up correctly and that required
+properties are set.</p>
+<p>If there are any problems, follow the instructions that it gives you.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">Because you're running this check from the command line, there
+could still be problems with your setup.  However, if you get
+through the verify step, then it's likely any further problems
+are related to your web-server setup and whether it can execute
+pyblosxom.cgi.</p>
+</div>
+</li>
+<li><p class="first">Now it's time to write your first post and test your blog.  Change
+directories to your datadir, launch your favorite editor and create
+a file called <tt class="docutils literal"><span class="pre">firstpost.txt</span></tt>.  Copy the following text into it:</p>
+<pre class="literal-block">
+This is my first post
+&lt;p&gt;
+    This is my first post with PyBlosxom.
+&lt;/p&gt;
+</pre>
+<p>The first line &quot;First Post&quot; becomes the title of the blog entry.
+The date of the blog entry is the mtime on the file.  The body of
+the blog entry starts with the HTML paragraph tag in the second
+line and extends to the end paragraph tag in the last line.  Your
+blog entries can be as long as you want.  The first line is plain
+text--everything after that is HTML.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you want to use a different markup like reST or Textile or
+Moinmoin or something like that, see the documentation on
+<em>Writing Entries</em> for how to set that up.</p>
+</div>
+<p>Open up a web-browser and go to the URL
+<tt class="docutils literal"><span class="pre">http://your_server_here/path/to/cgi-bin/pyblosxom.cgi</span></tt></p>
+<p>If you're running GNU/Linux with Apache and you have user folders
+set up and your username was <tt class="docutils literal"><span class="pre">joe</span></tt>, then the url for your PyBlosxom
+blog might be something like this:</p>
+<pre class="literal-block">
+http://www.joe.com/~joe/cgi-bin/pyblosxom.cgi
+</pre>
+<p>If everything is configured correctly, you should see your first
+post rendered with the default HTML flavour.  If not, you'll either
+see a Python stack trace or a message along the lines of Internal
+Server Error.  See below for help on trouble-shooting.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="trouble-shooting">
+<h1><a class="toc-backref" href="#id9">Trouble-shooting</a></h1>
+<p>We're going to try to break this down a bit into categories.  Bear
+with us and keep trying things.  If you have problems and have gone
+through this section to no avail, then come talk to us on the
+<a class="reference external" href="mailto:pyblosxom-users&#64;lists.sourceforge.net">Pyblosxom users list</a>.  Details of the mailing list are located at
+our <a class="reference external" href="http://pyblosxom.sourceforge.net/blog/static/contact">Contact us</a> page.</p>
+<div class="section" id="running-pyblosxom-cgi-doesn-t-work">
+<h2><a class="toc-backref" href="#id10">Running ./pyblosxom.cgi doesn't work</a></h2>
+<p>First, you should check to see if you have Python installed on your
+system.  If not, then please install Python.</p>
+<p>If Python is installed on your system, make sure the first line in
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> points to your Python interpreter.  If not, fix that
+and try running <tt class="docutils literal"><span class="pre">./pyblosxom.cgi</span></tt> again.</p>
+<p>If Python is installed on your system and the first line of
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> is correct, then check for permissions issues:
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> is a script--so it needs execute permission
+in order to function.  If those aren't set, then fix that and try
+running <tt class="docutils literal"><span class="pre">./pyblosxom.cgi</span></tt> again.</p>
+</div>
+<div class="section" id="i-see-a-http-404-error-when-i-try-to-bring-up-my-blog">
+<h2><a class="toc-backref" href="#id11">I see a HTTP 404 error when I try to bring up my blog</a></h2>
+<p>When you try to look at your blog and you get a HTTP 404 error, then
+you're using the wrong URL.  Are you futzing with <tt class="docutils literal"><span class="pre">.htaccess</span></tt>?  Does
+your server allow you to run CGI scripts?  Do other CGI scripts work?
+Does the URL you're trying to use to access PyBlosxom look like other
+URLs that work on your system?</p>
+</div>
+<div class="section" id="i-see-a-http-500-error-when-i-try-to-bring-up-my-blog">
+<h2><a class="toc-backref" href="#id12">I see a HTTP 500 error when I try to bring up my blog</a></h2>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p>Please read the installation chapter:</p>
+<p class="last">At this point, running <tt class="docutils literal"><span class="pre">./pyblosxom.cgi</span></tt> at the command prompt
+should work fine.  If you haven't done that and you're busy
+trouble-shooting, go back to the <em>installation guide</em> and make
+sure you did all the steps.</p>
+</div>
+<p>When you try to look at your blog in a web-browser and get a HTTP 500 error,
+the first thing you should do is uncomment the line in <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>
+(remove the # at the beginning of the line) that looks like this:</p>
+<pre class="literal-block">
+#import cgitb; cgitb.enable()
+</pre>
+<p>so that it looks like this:</p>
+<pre class="literal-block">
+import cgitb; cgitb.enable()
+</pre>
+<p>Then refresh the page in your browser.  If the problem is with PyBlosxom
+and not your web-server, then you should see a pretty traceback that will
+help you figure out what the specific problem is.</p>
+<p>If it doesn't make any sense to you, you can copy and paste that into
+an email to the pyblosxom-users mailing list and we're in a better position
+to help you out.</p>
+<p>If you don't see a traceback, then you either have a configuration problem
+with your web-server or a configuration problem with Python.  The first
+thing you should do is check your web-server's error logs.  For Apache,
+look for the <tt class="docutils literal"><span class="pre">error.log</span></tt> file in a place like <tt class="docutils literal"><span class="pre">/var/logs/apache</span></tt> or
+<tt class="docutils literal"><span class="pre">/var/logs/httpd</span></tt>.</p>
+<p>Does the account your web-server runs as have execute access to your
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> script?  If your web-server does not have the permissions
+to read and execute your pyblosxom.cgi script, then your blog will not
+work.</p>
+<p>Do you have plugins loaded?  If you do, try unloading all your plugins
+and see if the problem persists.  Sometimes there are issues with plugins
+that only show up in certain situations.</p>
+</div>
+<div class="section" id="i-have-other-issues">
+<h2><a class="toc-backref" href="#id13">I have other issues</a></h2>
+<p>Try changing the renderer for your blog to the debug renderer.  You
+can do this by setting the <tt class="docutils literal"><span class="pre">renderer</span></tt> property in your <tt class="docutils literal"><span class="pre">config.py</span></tt>
+file to <tt class="docutils literal"><span class="pre">debug</span></tt>.  That will show a lot more detail about your configuration,
+what the web-server passes PyBlosxom in environment variables, and other
+data about your blog that might help you figure out what your problem is.</p>
+</div>
+<div class="section" id="ugh-my-blog-looks-ugly">
+<h2><a class="toc-backref" href="#id14">UGH!  My blog looks UGLY!</a></h2>
+<p>Read the chapter on <em>Flavours and Templates</em> to help you out.</p>
+</div>
+<div class="section" id="i-hate-writing-in-html">
+<h2><a class="toc-backref" href="#id15">I hate writing in HTML!</a></h2>
+<p>That's ok.  PyBlosxom supports entry parsers which allow you to format
+your blog entries in any formatting markup that someone has written
+a plugin for.  See the documentation on <em>Writing Entries</em> for more
+information.</p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h1><a class="toc-backref" href="#id16">Conclusion</a></h1>
+<p>That's it!  If you have problems, visit our web-site and read through
+the updated documentation including the Trouble-shooting section of
+the PyBlosxom Manual.</p>
+<p>Happy blogging!</p>
+<p>-- PyBlosxom Development Team</p>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<a class="reference external" href="../install_cgi.txt">View document source</a>.
+Generated on: 2007-11-04 17:36 UTC.
+Generated by <a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>
