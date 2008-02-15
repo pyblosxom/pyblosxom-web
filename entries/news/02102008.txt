@@ -1,0 +1,26 @@
+Site changes
+#published 2008-02-10 16:46:22
+<p>
+  I re-worked the web-site so that it's checked into SVN along with
+  the code and it's generated using the static renderer.  I did this
+  for a couple of reasons:
+</p>
+<ol>
+  <li>the web-site, except the wiki, is already static because we have 
+      read-only permissions to the file system on SourceForge
+  <li>putting it in SVN allows enterprising individuals to pull the whole
+      thing down and work to make it look way better
+  <li>it makes it easier for us to move the PyBlosxom project to some
+      other system
+  <li>it provides me a really solid testing ground for static rendering
+</ol>
+<p>
+  If you bump into any issues, let me know.
+</p>
+<p>
+  If you want to help overhaul the site so that it's way better, let
+  me know.
+</p>
+<p>
+  /will (willhelm at users dot sourceforge dot net)
+</p>
