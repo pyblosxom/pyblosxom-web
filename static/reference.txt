@@ -49,9 +49,10 @@ References/Specifications
 
 <h3>Systems that Python can run under</h3>
 <ul>
-  <li><a href="http://pythonpaste.org/">Python Paste</a></li>
-  <li>mod_python - <a href="http://www.modpython.org/">http://www.modpython.org/</a>
-  <li>Twisted - <a href="http://twistedmatrix.com/">http://twistedmatrix.com/</a>
+  <li>Paste - <a href="http://pythonpaste.org/">http://pythonpaste.org/</a></li>
+  <li>mod_python - <a href="http://www.modpython.org/">http://www.modpython.org/</a></li>
+  <li>mod_wsgi - <a href="http://code.google.com/p/modwsgi/">http://code.google.com/p/modwsgi/</a></li>
+  <li>Twisted - <a href="http://twistedmatrix.com/">http://twistedmatrix.com/</a></li>
 </ul>
 
 
