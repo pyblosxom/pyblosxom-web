@@ -1,5 +1,6 @@
 wbgarchives
-#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
+#infourl http://bluesock.org/~willg/dev/pyblosxom/
+#download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/wbgarchives
 #author Will Guaraldi
 Generates links by year for head and foot templates.  When you click on 
 those year links, it generates a summary page of all the entries for that 

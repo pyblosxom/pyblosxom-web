@@ -1,20 +1,21 @@
 <div class="news">
-<h3>registry: $title</h3>
+<h2>registry: $title</h2>
 <div class="content">
+
 <table>
 <tr><td class="blosxomRegistryHeader">name:</td><td><pre>$title</pre></td></tr>
 <tr><td class="blosxomRegistryHeader">author:</td><td><pre>$author</pre></td></tr>
 <tr>
   <td class="blosxomRegistryHeader">description:</td>
-  <td><pre>$body</pre></td>
+  <td><pre>$(registry::url(body))</pre></td>
 </tr>
 <tr>
   <td class="blosxomRegistryHeader">url:</td>
-  <td><pre>$registry::url($infourl)</pre></td>
+  <td><pre>$(registry::url(infourl))</pre></td>
 </tr>
 <tr>
   <td class="blosxomRegistryHeader">download:</td>
-  <td><pre>$registry::url($download)</pre></td>
+  <td><pre>$(registry::url(download))</pre></td>
 </tr>
 <tr><td class="blosxomRegistryHeader">category:</td><td><pre>$path</pre></td></tr>
 <tr><td class="blosxomRegistryHeader">last edited:</td><td><pre>$mo $da, $yr ($dw)</pre></td></tr>

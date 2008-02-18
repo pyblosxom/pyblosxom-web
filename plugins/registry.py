@@ -5,18 +5,6 @@ is a series of .txt files which provide information about a given series
 of things which are registered.  They are organized into categories by 
 the directory structure.  
 
-The registry plugin uses the entryparser for .txt files which parses
-entries that look like this:
-
-%<-------------------------
-title of plugin
-#name value
-#name value
-#name value
-#name value
-description of plugin
-%<-------------------------
-
 The registry plugin can use entries parsed by other entry parsers so long
 as they support meta information.  It supports preformatters and 
 postformatters and all that stuff because it uses the regular entry parsers.
@@ -69,9 +57,10 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Copyright 2002-2004 Will Guaraldi
+Copyright 2002 - 2008 Will Guaraldi
 
 Revisions:
+2.2 - (18 February, 2008) overhauled by removing a bunch of stuff
 2.1 - (13 December, 2004) fixed date_head template issue
 2.0 - (05 May, 2004) total overhaul--literally
 1.4 - (17 March, 2004) bug fixes
@@ -130,66 +119,15 @@ Between releases, you can get plugins from the SVN repository here:
 http://pyblosxom.svn.sourceforge.net/viewvc/pyblosxom/trunk/contrib/plugins/
 """
 
-def verify_installation(request):
-    # FIXME - this plugin is so complicated no man can possibly
-    # configure it correctly.  ;)
-    # but seriously, i should write this up when i'm done changing
-    # the thing.
-    return 0
-
-def readonly(config):
-    """
-    Checks the config map to see if we're in readonly mode or not.
-    This defaults to "we're in readonly mode".
-
-    @return: whether (1) or not (0) we're in readonly mode
-    """
-    if not config.has_key("registry_edit") or config["registry_edit"] != 1:
-        return 1
-    return 0
-
-def fix(s):
-    """
-    Fixes up a string so that it at least says "None" if it has no value.
-
-    @param s: the string value to fix up
-    @type  s: string
-
-    @returns: the fixed up string converting CR to <br>, removing LFs and
-              returning "None" if s is None or empty
-    """
-    if not s:
-        return "None"
-    return s.replace("\n", "<br>").replace("\r", "")
-
-
-def render(request, entry, template):
-    """
-    Takes a given request and summarizes it given the registry-template
-    template for this flavour.
-    """
-    config = request.getConfiguration()
-    data = request.getData()
-    flavour = data.get("flavour", "html")
-    renderer = data["renderer"]
-
-    entry.update(config)
-
-    output = []
-    renderer.outputTemplate(output, entry, "registry-%s" % template)
-    return u"".join(output)
-
 URLRE = None
 
-def urlme(req, vd, arg1="None"):
+def urlme(req, vd, arg1):
     """
     Takes in the request and the argument and converts everything 
     in the argument that resembles a url into an a href.  Then it 
     returns the converted thing.
     """
     global URLRE
-    if not arg1 or arg1.lower() == "none":
-        return "None"
 
     if not URLRE:
         URLRE = re.compile("(http[s]?://[^\\s\\>\\<]+)", re.I)
@@ -208,6 +146,23 @@ def urlme(req, vd, arg1="None"):
         mo = URLRE.search(sin, s + len(newtext))
 
     return sin
+
+def render(request, entry, template):
+    """
+    Takes a given request and summarizes it given the registry-template
+    template for this flavour.
+    """
+    config = request.getConfiguration()
+    data = request.getData()
+    flavour = data.get("flavour", "html")
+    renderer = data["renderer"]
+
+    vars = renderer.getParseVars()
+    vars.update(entry)
+    vars["registry::url"] = urlme
+
+    return renderer.renderTemplate(vars, "registry-%s" % template)
+
 
 def cb_date_head(args):
     request = args["request"]
