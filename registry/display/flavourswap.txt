@@ -2,6 +2,6 @@ flavourswap
 #email zwhite@darkstar.frop.org
 #author Zach White
 #infourl http://darkstar.frop.org/~zwhite/blog/tech/20060624-flavourswap-plugin.html
-#download Download: http://darkstar.frop.org/~zwhite/pybloxsom-plugins/flavourswap-1.0.py
+#download http://darkstar.frop.org/~zwhite/pybloxsom-plugins/flavourswap-1.0.py
 Swap out the default flavour with an alternate flavour when a user 
 visits your site using a Gecko based browser.

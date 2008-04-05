@@ -4,9 +4,13 @@ rewrite
 #email_address sa+pyblosxom@c-area.ch
 #author Steven Armstrong
 Request rewrite plugin. Similar to Apache mod_rewrite.
-Sends a '301 Moved Permanently' status code allong with the new location of the resource.
 
-Generates a simple html page with a meta-refresh and a link to the new resource as a fallback version for clients that do not understand http header redirects.
+Sends a '301 Moved Permanently' status code allong with the new location 
+of the resource.
+
+Generates a simple html page with a meta-refresh and a link to the new 
+resource as a fallback version for clients that do not understand http 
+header redirects.
 
 Configurable through a variable in config.py:
 py['rewrite_rules'] = {

@@ -1,6 +1,5 @@
 wbglast10summary
 #author Will Guaraldi
-#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
-#download None
-All entries displayed after the first 10 only show
-a summary line.
+#infourl http://bluesock.org/~willg/cgi-bin/devtrac.cgi/browser/trunk/pyblosxom/wbglast10summary.py?rev=latest&format=txt
+#download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/browser/trunk/pyblosxom/wbglast10summary.py?rev=latest&format=txt
+All entries displayed after the first 10 only show a summary line.

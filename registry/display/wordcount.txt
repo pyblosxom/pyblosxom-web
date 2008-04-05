@@ -1,6 +1,6 @@
 wordcount
 #author Will Guaraldi
 #infourl None
-#download http://www.bluesock.org/~willg/dev/pyblosxom/
+#download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/browser/trunk/pyblosxom/wordcount.py?format=txt
 Counts up the number of words in a given entry and populates 
 the $wordcount variable.

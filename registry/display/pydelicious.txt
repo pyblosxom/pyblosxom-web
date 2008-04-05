@@ -1,6 +1,0 @@
-pydelicious
-#author Luke Macken
-#infourl http://lewk.org/log/code/pyblosxom-delicious
-#download http://lewk.org/code/pydelicious.py
-This plugin allows you to display your most recently tagged
-del.icio.us links inside of your pyblosxom weblog.

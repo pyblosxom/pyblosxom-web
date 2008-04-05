@@ -1,7 +1,7 @@
 viewcount
 #author Will Guaraldi
 #infourl http://www.bluesock.org/~willg/dev/pyblosxom/
-#download_url None
+#download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/browser/trunk/pyblosxom/viewcount.py?format=txt
 Keeps track of the number of times a given entry has been
 viewed. It populates the $viewcount variable with this
 number for display. It adds one to the viewcount every time

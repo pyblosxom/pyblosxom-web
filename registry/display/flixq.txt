@@ -1,5 +1,0 @@
-flixq
-#author Michael Cornelius
-#infourl http://cornelii.org/~michael/7falls/develop/pyblosxom/flixq.html
-#download http://cornelii.org/~michael/snippets/python/flixq.py
-Display your netflix queue in your blog header or footer template.

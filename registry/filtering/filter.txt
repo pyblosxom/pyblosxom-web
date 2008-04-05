@@ -7,6 +7,5 @@ regular expression against the file path and name. This was inspired
 by the description of the now missing filterentries.py plugin. See 
 the file for usage.
 
-12/1/2007 - Verified by darkmessenger as part of GHOP that version 
-0.02 of this plugin works with PyBlosxom 1.4.2.  
---will guaraldi
+<b>2007-12-01 note:</b> Verified by darkmessenger as part of GHOP 
+that version 0.02 of this plugin works with PyBlosxom 1.4.2.  

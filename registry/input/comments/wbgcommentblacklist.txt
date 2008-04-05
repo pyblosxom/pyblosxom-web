@@ -1,6 +1,6 @@
 wbgcomment_blacklist
-#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
-#download http://www.bluesock.org/~willg/dev/pyblosxom/
+#infourl http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/wbgcomment_blacklist
+#download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/browser/trunk/pyblosxom/wbgcomment_blacklist.py?rev=latest&format=txt
 #email_address willg@bluesock.org
 #author Will Guaraldi
 This plugin works in conjunction with the comments plugin (i.e. you need 

@@ -1,5 +1,5 @@
 pyentrynavi
 #author Shunuhs
 #infourl http://sh1.2-d.jp/b/static/pyentrynavi.html
-#download http://sh1.2-d.jp/pyblosxom/static/pyentrynavi.py
+#download http://sh1.2-d.jp/b/static/pyentrynavi.html
 Creates navigation to previous and next entries for each entry.

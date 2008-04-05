@@ -1,5 +1,14 @@
 pyblosxom-svn
 #infourl http://0pointer.de/blog/projects/pyblosxom-svn.html
+#download http://0pointer.de/blog/projects/pyblosxom-svn.html
 #email_address mzcloybfkbz@0pointer.de
 #author Lennart Poettering
-This is a simplified version of Christopher Baus' svnpyblosxom plugin.
+If you run a pyblosxom blog with auto-copied stories from SVN you are 
+probably interested in getting stable story dates that don't change every 
+time you update a story.  The date of the initial SVN log entry of a 
+story is something like the "day of birth" of a story, so it's a good 
+value to use.  Christopher Baus implemented a plugin for pyblosxom, 
+which looks overly complicated to me: it depends on memcached and 
+comes in two large python scripts.
+
+To simplify things I wrote this minimal replacement.

@@ -1,6 +1,0 @@
-flav_config
-#author Robert Wall
-#infourl http://backprop.net/devel/pyblosxom/
-#download http://backprop.net/devel/pyblosxom/flav_config.py
-Allows config.py settings to be overridden on a per directory 
-and/or per flavour basis.

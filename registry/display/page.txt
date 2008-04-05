@@ -1,9 +1,0 @@
-page
-#author Mike Lynch
-#infourl http://www-staff.it.uts.edu.au/~spike/blosxom.cgi/comp/pyblosxom/page.html
-#download http://www-staff.it.uts.edu.au/~spike/src/page.py
-Replaces the usual entrylist with one which starts n entries 
-from the top. This can be used to browse back and forth through the 
-blog.
-
-(ed note: 6/29/2006 - This appears to have gone missing.  /willg)

@@ -1,5 +1,0 @@
-google search
-#author gian paolo ciceri
-#infourl http://pyhacks.suddenthinks.com/blog/misc/
-#download http://pyhacks.suddenthinks.com/misc/pygoogle.py.gz
-A (really simple) pyblosxom plugin to do site search via google.

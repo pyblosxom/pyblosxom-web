@@ -1,6 +1,0 @@
-registry
-#author Will Guaraldi
-#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
-#download None
-Allows you to host a registry of plugins or software things or 
-whatever organized by category, author, or submission date.

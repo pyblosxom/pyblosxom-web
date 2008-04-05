@@ -1,7 +1,0 @@
-metadate
-#infourl http://www.binaryuprising.com/blog/technology/internet/blogging/pyblosxom-metadate.html
-#download http://www.binaryuprising.com/code/pyblosxom/metadate.py
-#author Cameron Desautels
-If an entry contains a #postdate metatag, metadate.py makes
-pyblosxom use that as the entry's date instead of the file's mtime.
-Complete documentation is provided in the metadate.py file.

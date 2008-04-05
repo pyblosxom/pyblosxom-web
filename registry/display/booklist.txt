@@ -1,7 +1,7 @@
 book list
 #author Will Guaraldi
-#infourl None
-#download http://www.bluesock.org/~willg/dev/pyblosxom/
+#infourl http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/booklist
+#download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/booklist
 Reads from a :: delimited file a series of books and how far 
 you are through reading them. It displays the 5 least done books 
 in the $booklist variable. If you go to blog/booklist, it shows 

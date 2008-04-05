@@ -1,7 +1,7 @@
 readmore
 #author IWS (Maintained by Will Guaraldi)
-#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
-#download http://www.bluesock.org/~willg/dev/pyblosxom/readmore.html
+#infourl http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/readmore
+#download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/readmore
 Break a story at a B R E A K (no spaces), display only the upper part and 
 place a link to the whole story page.
 

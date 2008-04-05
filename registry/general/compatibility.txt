@@ -3,4 +3,5 @@ compatibility
 #download http://www.c-area.ch/code/pyblosxom/plugins/
 #email_address sa+pyblosxom@c-area.ch
 #author Steven Armstrong
-Compatibility plugin for Pyblosxom versions smaller then 1.2. This let's you use plugins written for Pyblosxom 1.2+ with older versions. (<= 1.1)
+Compatibility plugin for Pyblosxom versions smaller then 1.2.  This 
+let's you use plugins written for Pyblosxom 1.2+ with older versions. (<= 1.1)

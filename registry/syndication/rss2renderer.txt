@@ -1,7 +1,7 @@
 rss2renderer
 #author Will Guaraldi
-#infourl http://www.bluesock.org/~willg/dev/pyblosxom/
-#download http://www.bluesock.org/~willg/dev/pyblosxom/
+#infourl http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/rss2renderer
+#download None
 Blake originally wrote this.  I overhauled it and simplified it a bit
 and offer to maintain it going forward.
 
@@ -13,3 +13,6 @@ a plugin and it should just work.
 
 If there are any comments, issues, bugs, feedback, or similar things--leave
 them below or email me (willg at bluesock dot org).
+
+<b>2008-04-05 note:</b> If you're using PyBlosxom 1.3 or later, you do
+NOT need this plugin.

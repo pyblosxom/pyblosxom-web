@@ -1,15 +1,10 @@
 comments
 #author Ted Leung
-#infourl http://www.sauria.com/~twl/code/python/pyblosxom/comments.py
-#download http://www.sauria.com/~twl/code/python/pyblosxom/comments.py
+#infourl None
+#download None
 #contrib yes
 Comprehensive comments support for pyblosxom, includes files 
 for trackback, pingback (requires xmlrpc plugin), commentAPI and 
 standard form based comments.
 
-It also supports a filtering callback so you can add your own filtering
-plugins.
-
-Note: This version and every version hereafter involves a change in
-how the templates work.  <a href="http://www.sauria.com/blog/2004/12/10#1168">Read 
-this for more details.</a>
+It supports comment rejection plugins.

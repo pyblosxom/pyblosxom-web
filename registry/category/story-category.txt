@@ -1,7 +1,7 @@
 story-category
 #author jens persson
 #infourl http://persson.cx/pyblosxom/code/pyblosxom/category.html
-#download None
+#download http://persson.cx/pyblosxom/code/pyblosxom/category.html
 Change story rendering based on toplevel directory, it basicly 
 gives the name of the top level directory for a story in a variable 
 in the story template. By using this in a class declartion you can 
