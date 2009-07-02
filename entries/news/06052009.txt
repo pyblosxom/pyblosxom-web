@@ -21,6 +21,6 @@ PyBlosxom 1.5 development
 </p>
 <p>
   If you have problems with PyBlosxom or with plugins, let us know 
-  on <code>#miro-hackers</code> on <code>irc.freenode.net</code>
+  on <code>#pyblosxom</code> on <code>irc.freenode.net</code>
   or on the <code>pyblosxom-devel</code> mailing list.
 </p>
