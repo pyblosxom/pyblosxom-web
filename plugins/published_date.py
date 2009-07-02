@@ -24,7 +24,7 @@ def get_date(fn):
         if line.startswith("#published"):
             d = line.split(" ", 1)[1].strip()
             d = time.strptime(d, "%Y-%m-%d %H:%M:%S")
-            return d
+            return tuple(d)
 
     return None
             
@@ -35,7 +35,10 @@ def cb_filestat(args):
 
     d = get_date(filename)
     if d:
-        if len(mtime) == 9:
+        if len(d) == 9:
+            mtime = list(mtime)
             mtime[stat.ST_MTIME] = time.mktime(d)
+            mtime = tuple(mtime)
 
-    return mtime
+    args["mtime"] = mtime
+    return args
