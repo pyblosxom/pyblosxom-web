@@ -1,0 +1,26 @@
+PyBlosxom 1.5 development
+#published 2009-06-05 17:59:22
+<p>
+  I'm finishing up work on PyBlosxom 1.5.  Generally speaking, 
+  development is done.  Things left to do:
+</p>
+<ul>
+  <li>documentation
+  <li>testing
+</ul>
+<p>
+  Lots of cleanup, some new features (exposed commandline for plugins,
+  truncate callback, ...), simplified startup, and some other things.
+</p>
+<p>
+  At this point, I think it's solid enough to use and I switched my
+  blog to use it.  If you're so inclined, grab it from svn, read the 
+  UPGRADE, CHANGELOG, and INSTALL documents and that should get you
+  up and running.  Some plugins might need fixing, but it works on my
+  blog and I used it to statically compile this site.
+</p>
+<p>
+  If you have problems with PyBlosxom or with plugins, let us know 
+  on <code>#miro-hackers</code> on <code>irc.freenode.net</code>
+  or on the <code>pyblosxom-devel</code> mailing list.
+</p>

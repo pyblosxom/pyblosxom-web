@@ -27,7 +27,7 @@ py['blog_email'] = "pyblosxom-users@lists.sourceforge.net"
 py['blog_language'] = "en"
 
 # Encoding for output. Default is iso-8859-1.
-py['blog_encoding'] = "iso-8859-1"
+py['blog_encoding'] = "utf-8"
 
 # Where are this blog's entries kept?
 py['datadir'] = os.path.join(blogdir, "entries")
@@ -88,7 +88,7 @@ py['plugin_dirs'] = [ os.path.join(blogdir, "plugins") ]
 # the end).
 # ex: py['load_plugins'] = ["pycalendar", "pyfortune", "pyarchives"]
 py['load_plugins'] = ["pyinclude", "pystaticfile", "registry", 
-                      "wbgarchives", "pylist" ]
+                      "wbgarchives", "pylist", "published_date"]
 
 # py["staticdir"] = "/home/groups/p/py/pyblosxom/datadir/static"
 py["staticdir"] = os.path.join(blogdir, "static")
