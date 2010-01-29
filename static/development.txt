@@ -114,169 +114,13 @@ Development HOWTO
 
 <a name="coding"><h2>Coding Style Guide</h2></a>
 <p>
-  This document describes PyBlosxom coding conventions and development 
-  processes.
+  Follow <a href="http://www.python.org/dev/peps/pep-0008/">PEP-8</a>.
 </p>
-
-<h3>Tabstops and spacing</h3>
-<p>
-  Indentation is done in multiples of 4.  All spacing shall be done with 
-  spaces--no tabs.  Indent when you need to per Python syntax.
-</p>
-
-<h3>Maximum line length</h3>
-<p>
-  Try not to jam everything into one line.
-</p>
-
-<h3>Naming</h3>
-<p>
-  File, module, and package names are all lowercase with no punctuation 
-  except underscores:
-</p>
-<ul>
-  <li>cache.py</li>
-  <li>pyblosxom.py</li>
-  <li>base.py</li>
-  <li>__init__.py</li>
-</ul>
-<p>
-  Constants are all uppercase with _ between words:
-</p>
-<ul>
-  <li>BIGNUM</li>
-  <li>VAR_REGEXP</li>
-</ul>
-<p>
-  Classnames are mixed case starting with an uppercase letter:
-</p>
-<ul>
-  <li>Entry</li>
-  <li>Request</li>
-  <li>BlosxomRenderer</li>
-</ul>
-<p>
-  Methods are mixed case with the first letter being lowercased:
-</p>
-<ul>
-  <li>runCallback</li>
-  <li>initialize</li>
-</ul>
-<p>
-  Functions and variables are all lowercase with underscores:
-</p>
-<ul>
-  <li>blosxom_handler</li>
-  <li>var2</li>
-</ul>
-<p>
-  Private functions and variables start with one underscores and consist
-  solely of lowercase letters and underscores:
-</p>
-<ul>
-  <li>_internal_cache</li>
-  <li>_internal_wrap</li>
-</ul>
-
-<h3>Comments</h3>
-<p>
-  There are three mortal sins regarding comments:
-</p>
-<ol>
-  <li>code with no comments<br />
-  Punishable by early bedtime--unless your code is so unbelievably good that it 
-  reads like English.  Even then it should be commented.
-
-  <li>comments that are poorly written<br />
-  Comments should be written in English and should be either well-formed 
-  sentences or well-formed phrases.  They should be informative--not 
-  reduntant.  They should be poetic--revel in your commenting.
-
-  <li>comments should not contradict the code<br />
-  This usually happens when you change the code but forget to change the 
-  comment.  Always check comments around code you're editing and 
-  adjust them accordingly.
-</ol>
-
-<h3>Docstrings</h3>
-<p>
-  All modules, classes, functions, and methods should have doc strings.  We 
-  run an out of line documentation generater against these doc strings and 
-  thus they become part of the online html documentation of the code.  They 
-  help us--they make it easier to look things up and to understand what the 
-  code does.  Docstrings should be terse, informative, and beneficial.  They 
-  should answer the questions:
-</p>
-<ol>
-  <li>What is this?
-  <li>How do I use it?
-  <li>What does it take in as input and return as output?
-</ol>
-<p>
-  Docstrings are denoted by the use of """ around the docstring. Anything 
-  else is just a regular comment or string. Docstrings should be 
-  sentences--not phrases.
-</p>
-<p>
-  Docstrings should be written in Epytext 
-  (<a href="http://epydoc.sourceforge.net/">http://epydoc.sourceforge.net</a>) 
-  which is a simple markup that has some characteristics found in Javadoc. We 
-  generate our API documentation from the docstrings and having it in the 
-  right format makes prevents someone from going in and fixing it later.
-</p>
-<p>
-  Docstrings for functions and methods should denote the types and 
-  descriptions of any arguments passed in and any return values.
-</p>
-<p>
-  Examples of docstrings:
-</p>
-<pre>
-   def what_ext(extensions, filepath):
-       """
-       Takes in a filepath and a list of extensions and tries them all until
-       it finds the first extension that works.
-
-       @param extensions: the list of extensions to test
-       @type  extensions: list of strings
-
-       @param filepath: the complete file path (minus the extension) to test
-       @type  filepath: string
-
-       @return: the extension that was successful or None
-       @rtype: string
-       """
-       for ext in extensions:
-           if os.path.isfile(filepath + '.' + ext):
-               return ext
-       return None
-</pre>
-<pre>
-   def is_year(s):
-       """
-       Checks s to see if it's likely to be a year or not.  In order to be
-       considered to be a year, it must pass the following criteria:
-
-        1. four digits
-        2. first two digits are either 19 or 20.
-
-       @param s: the string to check for "year-hood"
-       @type  s: string
-
-       @return: 1 if s is likely to be a year or 0 if it is not
-       @rtype: boolean
-       """
-       if not s: return 0
-
-       if len(s) == 4 and s.isdigit() and (s.startswith("19") or s.startswith("20")):
-           return 1
-       return 0
-</pre>
 
 <h3>Tests</h3>
 <p>
-  Tests go in the <code>tests/</code> directory.  From PyBlosxom 1.4 on,
-  write tests for new functionality.
+  Tests go in the <code>Pyblosxom/tests/</code> directory.  From PyBlosxom 
+  1.4 on, write tests for new functionality.
 </p>
 
 <h3>Documentation</h3>
@@ -297,33 +141,17 @@ Development HOWTO
 <pre>
 python setup.py sdist
 </pre>
-  <ul>
-    <li>run the tar ball through Cheesecake:
-<pre>
-cheesecake_index --verbose -p pyblosxom/pyblosxom-1.4tar.gz -s ./tmp \
-   &gt; pybl_1.4.log
-</pre>
-    <li>run a test install
-  </ul>
+  <li>run a test install
   <li>run tests:
 <pre>
-nosetests --verbose --include unit
-nosetests --verbose --include functional
+python setup.py test
+python plugins/testrunner.py
 </pre>
-  <li>make sure the API docs build correctly:
+  <li>make sure the documentation builds correctly:
 <pre>
-/usr/bin/epydoc \
-   --html \
-   -o "./api/" \
-   --name "Pyblosxom (1.4)" \
-   --url "http://pyblosxom.sourceforge.net/" \
-   --inheritance grouped \
-   --css white \
-   -v \
-   Pyblosxom
+cd docs
+make html
 </pre>
-
-  <li>make sure the manual builds correctly (run <code>buildhtml</code> in the docs directory)
 </ul>
 <p>
   Now the instructions:

@@ -152,16 +152,16 @@ def render(request, entry, template):
     Takes a given request and summarizes it given the registry-template
     template for this flavour.
     """
-    config = request.getConfiguration()
-    data = request.getData()
+    config = request.get_configuration()
+    data = request.get_data()
     flavour = data.get("flavour", "html")
     renderer = data["renderer"]
 
-    vars = renderer.getParseVars()
+    vars = renderer.get_parse_vars()
     vars.update(entry)
     vars["registry::url"] = urlme
 
-    return renderer.renderTemplate(vars, "registry-%s" % template)
+    return renderer.render_template(vars, "registry-%s" % template)
 
 
 def cb_date_head(args):

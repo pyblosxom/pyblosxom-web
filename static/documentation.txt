@@ -17,23 +17,21 @@ Documentation
 </tr>
 </table>
 
-<h2>Documentation for PyBlosxom 2.0 (not released)</h2>
+<h2>Documentation for PyBlosxom 1.5</h2>
 <table>
 <tr>
   <th>document name</th>
   <th>description</th>
 </tr>
 <tr>
-  <td valign="top">
-    <a href="http://pyblosxom.sourceforge.net/wiki/index.php/Category:Planning">PyBlosxom design documents</a> 
-  </td>
-  <td>
-    <p>
-      These are the design documents, specifications and other development
-      artifacts for PyBlosxom 2.0 and future development.  It's in a wiki--please 
-      feel free to add notes, comments and such in the discussion pages.
-    </p>
-  </td>
+<td valign="top">
+  <a href="/1.5/index.html">PyBlosxom 1.5 documentation</a>
+</td>
+<td>
+  <p>
+    User documentation and development documentation.
+  </p>
+</td>
 </tr>
 </table>
 

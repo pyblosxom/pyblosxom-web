@@ -21,12 +21,12 @@ Colophon
   <li><b><a href="http://pyblosxom.sourceforge.net/blog/registry/include/pyinclude">pyinclude</a></b> -
       Allows us to do server-side-include-like things to centralize information
       between multiple templates.
-  <li><b>wbgrecent</b> -
-      Generates the "recent activity" page.
   <li><b><a href="http://pyblosxom.sourceforge.net/blog/registry/syndication/rss2renderer">rss2renderer</a></b> -
       Generates the RSS2 feeds.
 </ul>
 <p>
-  The API documentation was generated using 
-  <a href="http://epydoc.sourceforge.net">epydoc</a>.
+  PyBlosxom 1.5 documentation generated using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+</p>
+<p>
+  Prior to PyBlosxom 1.5, the API documentation was generated using <a href="http://epydoc.sourceforge.net">epydoc</a>.
 </p>

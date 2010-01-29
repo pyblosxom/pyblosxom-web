@@ -17,11 +17,11 @@ fi
 if [[ -d ./compiled_site/ ]]
     then
         echo "compiled_site exists, doing incremental static rendering...."
-        python ./pyblosxom.cgi staticrender --incremental
+        PYTHONPATH=../pyblosxom/ python ./pyblosxom.cgi staticrender --incremental
     else
         echo "compiled_site doesn't exist, doing full static rendering...."
         mkdir ./compiled_site/
-        python ./pyblosxom.cgi staticrender
+        PYTHONPATH=../pyblosxom/ python ./pyblosxom.cgi staticrender
 fi
 
 # copies over all the bits from htdocs to compiled_site if they aren't
