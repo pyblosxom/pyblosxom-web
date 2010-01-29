@@ -1,0 +1,1813 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Code Documentation &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="next" title="Authors" href="notes/AUTHORS.html" />
+    <link rel="prev" title="Writing Plugins" href="dev_writing_plugins.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="notes/AUTHORS.html" title="Authors"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dev_writing_plugins.html" title="Writing Plugins"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="code-documentation">
+<h1>Code Documentation<a class="headerlink" href="#code-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This chapter covers important functions, methods and classes in PyBlosxom.
+When in doubt, read the code.</p>
+</div>
+<div class="section" id="module-Pyblosxom.pyblosxom">
+<h2>Pyblosxom.pyblosxom<a class="headerlink" href="#module-Pyblosxom.pyblosxom" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="VERSION">
+<tt class="descname">VERSION</tt><a class="headerlink" href="#VERSION" title="Permalink to this definition">¶</a></dt>
+<dd>PyBlosxom version.  For example <tt class="docutils literal"><span class="pre">&quot;1.5&quot;</span></tt>.</dd></dl>
+
+<dl class="data">
+<dt id="VERSION_DATA">
+<tt class="descname">VERSION_DATA</tt><a class="headerlink" href="#VERSION_DATA" title="Permalink to this definition">¶</a></dt>
+<dd>PyBlosxom version with date.  For example <tt class="docutils literal"><span class="pre">&quot;1.5</span> <span class="pre">dev&quot;</span></tt>.</dd></dl>
+
+<dl class="data">
+<dt id="VERSION_SPLIT">
+<tt class="descname">VERSION_SPLIT</tt><a class="headerlink" href="#VERSION_SPLIT" title="Permalink to this definition">¶</a></dt>
+<dd>PyBlosxom version as a tuple&#8211;use this for version checking.
+For example <tt class="docutils literal"><span class="pre">(&quot;1&quot;,</span> <span class="pre">&quot;5&quot;)</span></tt>.</dd></dl>
+
+<p>This is the main module for PyBlosxom functionality.  PyBlosxom&#8217;s
+setup and default handlers are defined here.</p>
+<dl class="class">
+<dt id="Pyblosxom.pyblosxom.EnvDict">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">EnvDict</tt><big>(</big><em>request</em>, <em>env</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.EnvDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper arround a dict to provide a backwards compatible way to
+get the <tt class="docutils literal"><span class="pre">form</span></tt> with syntax as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">request</span><span class="o">.</span><span class="n">get_http</span><span class="p">()[</span><span class="s">&#39;form&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>instead of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">request</span><span class="o">.</span><span class="n">get_form</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="Pyblosxom.pyblosxom.PyBlosxom">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">PyBlosxom</tt><big>(</big><em>config</em>, <em>environ</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main class for PyBlosxom functionality.  It handles
+initialization, defines default behavior, and also pushes the
+request through all the steps until the output is rendered and
+we&#8217;re complete.</p>
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.PyBlosxom.cleanup">
+<tt class="descname">cleanup</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.cleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>This cleans up PyBlosxom after a run.</p>
+<p>This should be called when Pyblosxom has done everything it
+needs to do before exiting.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.PyBlosxom.getRequest">
+<tt class="descname">getRequest</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.getRequest" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_request instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.PyBlosxom.getResponse">
+<tt class="descname">getResponse</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.getResponse" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_response instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.PyBlosxom.get_request">
+<tt class="descname">get_request</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.get_request" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the Request object for this PyBlosxom instance.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.PyBlosxom.get_response">
+<tt class="descname">get_response</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.get_response" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the Response object associated with this Request.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.PyBlosxom.initialize">
+<tt class="descname">initialize</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.initialize" title="Permalink to this definition">¶</a></dt>
+<dd>The initialize step further initializes the Request by
+setting additional information in the <tt class="docutils literal"><span class="pre">data</span></tt> dict,
+registering plugins, and entryparsers.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.PyBlosxom.run">
+<tt class="descname">run</tt><big>(</big><em>static=False</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the main loop for PyBlosxom.  This method will run
+the handle callback to allow registered handlers to handle the
+request.  If nothing handles the request, then we use the
+<tt class="docutils literal"><span class="pre">default_blosxom_handler</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>static</em> &#8211; True if PyBlosxom should execute in &#8220;static rendering
+mode&#8221; and False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.PyBlosxom.runCallback">
+<tt class="descname">runCallback</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.runCallback" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use run_callback instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.PyBlosxom.run_callback">
+<tt class="descname">run_callback</tt><big>(</big><em>callback='help'</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.run_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method executes the start callback (initializing
+plugins), executes the requested callback, and then executes
+the end callback.</p>
+<p>This is useful for scripts outside of PyBlosxom that need to
+do things inside of the PyBlosxom framework.</p>
+<p>If you want to run a callback from a plugin, use
+<tt class="docutils literal"><span class="pre">tools.run_callback</span></tt> instead.</p>
+<p>Returns the results of the callback.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>callback</em> &#8211; the name of the callback to execute.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.PyBlosxom.run_render_one">
+<tt class="descname">run_render_one</tt><big>(</big><em>url</em>, <em>headers</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.run_render_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders a single page from the blog.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>url</em> &#8211; the url to render&#8211;this has to be relative to the
+base url for this blog.</li>
+<li><em>headers</em> &#8211; True if you want headers to be rendered and
+False if not.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.PyBlosxom.run_static_renderer">
+<tt class="descname">run_static_renderer</tt><big>(</big><em>incremental=False</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.run_static_renderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will go through all possible things in the blog and
+statically render everything to the <tt class="docutils literal"><span class="pre">static_dir</span></tt> specified
+in the config file.</p>
+<p>This figures out all the possible <tt class="docutils literal"><span class="pre">path_info</span></tt> settings and
+calls <tt class="docutils literal"><span class="pre">self.run()</span></tt> a bazillion times saving each file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>incremental</em> &#8211; Whether (True) or not (False) to
+incrementally render the pages.  If we&#8217;re
+incrementally rendering pages, then we
+render only the ones that have changed.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Pyblosxom.pyblosxom.PyBlosxomWSGIApp">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">PyBlosxomWSGIApp</tt><big>(</big><em>environ=None</em>, <em>start_response=None</em>, <em>configini=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxomWSGIApp" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is the WSGI application for PyBlosxom.</p>
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.PyBlosxomWSGIApp.run_pyblosxom">
+<tt class="descname">run_pyblosxom</tt><big>(</big><em>env</em>, <em>start_response</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxomWSGIApp.run_pyblosxom" title="Permalink to this definition">¶</a></dt>
+<dd>Runs the WSGI app.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Pyblosxom.pyblosxom.Request">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">Request</tt><big>(</big><em>config</em>, <em>environ</em>, <em>data</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class holds the PyBlosxom request.  It holds configuration
+information, HTTP/CGI information, and data that we calculate and
+transform over the course of execution.</p>
+<p>There should be only one instance of this class floating around
+and it should get created by <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> and passed into the
+PyBlosxom instance which will do further manipulation on the
+Request instance.</p>
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.addConfiguration">
+<tt class="descname">addConfiguration</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.addConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use add_configuration instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.addData">
+<tt class="descname">addData</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.addData" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use add_data instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.addHttp">
+<tt class="descname">addHttp</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.addHttp" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use add_http instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.add_configuration">
+<tt class="descname">add_configuration</tt><big>(</big><em>newdict</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.add_configuration" title="Permalink to this definition">¶</a></dt>
+<dd>Takes in a dict and adds/overrides values in the existing
+configuration dict with the new values.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.add_data">
+<tt class="descname">add_data</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.add_data" title="Permalink to this definition">¶</a></dt>
+<dd>Takes in a dict and adds/overrides values in the existing
+data dict with the new values.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.add_http">
+<tt class="descname">add_http</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.add_http" title="Permalink to this definition">¶</a></dt>
+<dd>Takes in a dict and adds/overrides values in the existing
+http dict with the new values.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.buffer_input_stream">
+<tt class="descname">buffer_input_stream</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.buffer_input_stream" title="Permalink to this definition">¶</a></dt>
+<dd>Buffer the input stream in a StringIO instance.  This is done
+to have a known/consistent way of accessing incomming data.
+For example the input stream passed by mod_python does not
+offer the same functionallity as <tt class="docutils literal"><span class="pre">sys.stdin</span></tt>.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.getConfiguration">
+<tt class="descname">getConfiguration</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.getConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_configuration instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.getData">
+<tt class="descname">getData</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.getData" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_data instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.getForm">
+<tt class="descname">getForm</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.getForm" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_form instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.getHttp">
+<tt class="descname">getHttp</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.getHttp" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_http instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.getResponse">
+<tt class="descname">getResponse</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.getResponse" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_response instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.get_configuration">
+<tt class="descname">get_configuration</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.get_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <em>actual</em> configuration dict.  The configuration
+dict holds values that the user sets in their <tt class="docutils literal"><span class="pre">config.py</span></tt>
+file.</p>
+<p>Modifying the contents of the dict will affect all downstream
+processing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.get_data">
+<tt class="descname">get_data</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <em>actual</em> data dict.  Holds run-time data which
+is created and transformed by pyblosxom during execution.</p>
+<p>Modifying the contents of the dict will affect all downstream
+processing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.get_form">
+<tt class="descname">get_form</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.get_form" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the form data submitted by the client.  The
+<tt class="docutils literal"><span class="pre">form</span></tt> instance is created only when requested to prevent
+overhead and unnecessary consumption of the input stream.</p>
+<p>Returns a <tt class="docutils literal"><span class="pre">cgi.FieldStorage</span></tt> instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.get_http">
+<tt class="descname">get_http</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.get_http" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <em>actual</em> http dict.  Holds HTTP/CGI data
+derived from the environment of execution.</p>
+<p>Modifying the contents of the dict will affect all downstream
+processing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.get_response">
+<tt class="descname">get_response</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.get_response" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the Response for this request.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.setResponse">
+<tt class="descname">setResponse</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.setResponse" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use set_response instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Request.set_response">
+<tt class="descname">set_response</tt><big>(</big><em>response</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request.set_response" title="Permalink to this definition">¶</a></dt>
+<dd>Sets the Response object.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Pyblosxom.pyblosxom.Response">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">Response</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Response class to handle all output related tasks in one place.</p>
+<p>This class is basically a wrapper arround a <tt class="docutils literal"><span class="pre">StringIO</span></tt> instance.
+It also provides methods for managing http headers.</p>
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Response.addHeader">
+<tt class="descname">addHeader</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Response.addHeader" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use add_header instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Response.add_header">
+<tt class="descname">add_header</tt><big>(</big><em>key</em>, <em>value</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Response.add_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Populates the HTTP header with lines of text.  Sets the
+status code on this response object if the given argument list
+containes a &#8216;Status&#8217; header.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">resp</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Content-type&quot;</span><span class="p">,</span> <span class="s">&quot;text/plain&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">resp</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Content-Length&quot;</span><span class="p">,</span> <span class="s">&quot;10500&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body">This happens when the parameters are
+not correct.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Response.getHeaders">
+<tt class="descname">getHeaders</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Response.getHeaders" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_headers instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Response.get_headers">
+<tt class="descname">get_headers</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Response.get_headers" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the headers.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Response.get_status">
+<tt class="descname">get_status</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Response.get_status" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the status code and message of this response.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Response.sendBody">
+<tt class="descname">sendBody</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Response.sendBody" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use send_body instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Response.sendHeaders">
+<tt class="descname">sendHeaders</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Response.sendHeaders" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use send_headers instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Response.send_body">
+<tt class="descname">send_body</tt><big>(</big><em>out</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Response.send_body" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the response body to the given output stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>out</em> &#8211; the file-like object to print the body to.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Response.send_headers">
+<tt class="descname">send_headers</tt><big>(</big><em>out</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Response.send_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send HTTP Headers to the given output stream.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This prints the headers and then the <tt class="docutils literal"><span class="pre">\n\n</span></tt> that
+separates headers from the body.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>out</em> &#8211; The file-like object to print headers to.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Response.setStatus">
+<tt class="descname">setStatus</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Response.setStatus" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use set_status instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.pyblosxom.Response.set_status">
+<tt class="descname">set_status</tt><big>(</big><em>status</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Response.set_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the status code for this response.  The status should
+be a valid HTTP response status.</p>
+<p>Examples:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">resp</span><span class="o">.</span><span class="n">set_status</span><span class="p">(</span><span class="s">&quot;200 OK&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">resp</span><span class="o">.</span><span class="n">set_status</span><span class="p">(</span><span class="s">&quot;404 Not Found&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>status</em> &#8211; the status string.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.pyblosxom.blosxom_entry_parser">
+<tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">blosxom_entry_parser</tt><big>(</big><em>filename</em>, <em>request</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.blosxom_entry_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open up a <tt class="docutils literal"><span class="pre">.txt</span></tt> file and read its contents.  The first line
+becomes the title of the entry.  The other lines are the body of
+the entry.</p>
+<p>Returns A dict containing parsed data and meta data with the
+particular file (and plugin).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>filename</em> &#8211; a filename to extract data and metadata from</li>
+<li><em>request</em> &#8211; a standard request object</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.pyblosxom.blosxom_file_list_handler">
+<tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">blosxom_file_list_handler</tt><big>(</big><em>args</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.blosxom_file_list_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the default handler for getting entries.  It takes the
+request object in and figures out which entries based on the
+default behavior that we want to show and generates a list of
+EntryBase subclass objects which it returns.</p>
+<p>Returns the content we want to render.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>args</em> &#8211; dict containing the incoming Request object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.pyblosxom.blosxom_handler">
+<tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">blosxom_handler</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.blosxom_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the default blosxom handler.</p>
+<p>It calls the renderer callback to get a renderer.  If there is no
+renderer, it uses the blosxom renderer.</p>
+<p>It calls the pathinfo callback to process the path_info http
+variable.</p>
+<p>It calls the filelist callback to build a list of entries to
+display.</p>
+<p>It calls the prepare callback to do any additional preparation
+before rendering the entries.</p>
+<p>Then it tells the renderer to render the entries.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>request</em> &#8211; the request object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.pyblosxom.blosxom_process_path_info">
+<tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">blosxom_process_path_info</tt><big>(</big><em>args</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.blosxom_process_path_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process HTTP <tt class="docutils literal"><span class="pre">PATH_INFO</span></tt> for URI according to path
+specifications, fill in data dict accordingly.</p>
+<p>The paths specification looks like this:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">/foo.html</span></tt> and <tt class="docutils literal"><span class="pre">/cat/foo.html</span></tt> - file foo.* in / and /cat</li>
+<li><tt class="docutils literal"><span class="pre">/cat</span></tt> - category</li>
+<li><tt class="docutils literal"><span class="pre">/2002</span></tt> - category</li>
+<li><tt class="docutils literal"><span class="pre">/2002</span></tt> - year</li>
+<li><tt class="docutils literal"><span class="pre">/2002/Feb</span></tt> and <tt class="docutils literal"><span class="pre">/2002/02</span></tt> - Year and Month</li>
+<li><tt class="docutils literal"><span class="pre">/cat/2002/Feb/31</span></tt> and <tt class="docutils literal"><span class="pre">/cat/2002/02/31</span></tt>- year and month day
+in category.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>args</em> &#8211; dict containing the incoming Request object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.pyblosxom.blosxom_truncate_list_handler">
+<tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">blosxom_truncate_list_handler</tt><big>(</big><em>args</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.blosxom_truncate_list_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <tt class="docutils literal"><span class="pre">config[&quot;num_entries&quot;]</span></tt> is not 0 and <tt class="docutils literal"><span class="pre">data[&quot;truncate&quot;]</span></tt>
+is not 0, then this truncates <tt class="docutils literal"><span class="pre">args[&quot;entry_list&quot;]</span></tt> by
+<tt class="docutils literal"><span class="pre">config[&quot;num_entries&quot;]</span></tt>.</p>
+<p>Returns the truncated <tt class="docutils literal"><span class="pre">entry_list</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>args</em> &#8211; args dict with <tt class="docutils literal"><span class="pre">request</span></tt> object and <tt class="docutils literal"><span class="pre">entry_list</span></tt>
+list of entries</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.pyblosxom.pyblosxom_app_factory">
+<tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">pyblosxom_app_factory</tt><big>(</big><em>global_config</em>, <em>**local_config</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.pyblosxom_app_factory" title="Permalink to this definition">¶</a></dt>
+<dd>App factory for paste.</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.pyblosxom.run_pyblosxom">
+<tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">run_pyblosxom</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.run_pyblosxom" title="Permalink to this definition">¶</a></dt>
+<dd>Executes PyBlosxom either as a commandline script or CGI
+script.</dd></dl>
+
+</div>
+<div class="section" id="module-Pyblosxom.tools">
+<h2>Pyblosxom.tools<a class="headerlink" href="#module-Pyblosxom.tools" title="Permalink to this headline">¶</a></h2>
+<p>Utility module for functions that are useful to PyBlosxom and plugins.</p>
+<dl class="exception">
+<dt id="Pyblosxom.tools.ConfigSyntaxErrorException">
+<em class="property">exception </em><tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">ConfigSyntaxErrorException</tt><a class="headerlink" href="#Pyblosxom.tools.ConfigSyntaxErrorException" title="Permalink to this definition">¶</a></dt>
+<dd>Thrown when <tt class="docutils literal"><span class="pre">convert_configini_values</span></tt> encounters a syntax
+error.</dd></dl>
+
+<dl class="class">
+<dt id="Pyblosxom.tools.LogFilter">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">LogFilter</tt><big>(</big><em>names=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.LogFilter" title="Permalink to this definition">¶</a></dt>
+<dd>Filters out messages from log-channels that are not listed in the
+log_filter config variable.</dd></dl>
+
+<dl class="class">
+<dt id="Pyblosxom.tools.Replacer">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">Replacer</tt><big>(</big><em>request</em>, <em>encoding</em>, <em>var_dict</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.Replacer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for replacing variables in a template</p>
+<p>This class is a utility class used to provide a bound method to the
+<tt class="docutils literal"><span class="pre">re.sub()</span></tt> function.  Originally from OPAGCGI.</p>
+<dl class="method">
+<dt id="Pyblosxom.tools.Replacer.replace">
+<tt class="descname">replace</tt><big>(</big><em>matchobj</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.Replacer.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is passed a match object by <tt class="docutils literal"><span class="pre">re.sub()</span></tt> which represents
+a template variable without the <tt class="docutils literal"><span class="pre">$</span></tt>.  parse manipulates the
+variable and returns the expansion of that variable using the
+following rules:</p>
+<ol class="arabic simple">
+<li>if the variable <tt class="docutils literal"><span class="pre">v</span></tt> is an identifier, but not in the
+variable dict, then we return the empty string, or</li>
+<li>if the variable <tt class="docutils literal"><span class="pre">v</span></tt> is an identifier in the variable
+dict, then we return <tt class="docutils literal"><span class="pre">var_dict[v]</span></tt>, or</li>
+<li>if the variable <tt class="docutils literal"><span class="pre">v</span></tt> is a function call where the function
+is an identifier in the variable dict, then<ul>
+<li>if <tt class="docutils literal"><span class="pre">v</span></tt> has no passed arguments and the function takes
+no arguments we return <tt class="docutils literal"><span class="pre">var_dict[v]()</span></tt> (this is the old
+behavior</li>
+<li>if <tt class="docutils literal"><span class="pre">v</span></tt> has no passed arguments and the function takes
+two arguments we return <tt class="docutils literal"><span class="pre">var_dict[v](request,</span> <span class="pre">vd)</span></tt></li>
+<li>if <tt class="docutils literal"><span class="pre">v</span></tt> has passed arguments, we return
+<tt class="docutils literal"><span class="pre">var_dict[v](request,</span> <span class="pre">vd,</span> <span class="pre">*args)</span></tt> after some mild
+processing of the arguments</li>
+</ul>
+</li>
+</ol>
+<p>Also, for backwards compatability reasons, we convert things
+like:</p>
+<div class="highlight-python"><pre>$id_escaped
+$id_urlencoded
+$(id_escaped)
+$(id_urlencoded)</pre>
+</div>
+<p>to:</p>
+<div class="highlight-python"><pre>$escape(id)
+$urlencode(id)</pre>
+</div>
+<p>It returns the substituted string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>matchobj</em> &#8211; the regular expression match object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Pyblosxom.tools.Stripper">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">Stripper</tt><a class="headerlink" href="#Pyblosxom.tools.Stripper" title="Permalink to this definition">¶</a></dt>
+<dd><p>SGMLParser that removes HTML formatting code.</p>
+<dl class="method">
+<dt id="Pyblosxom.tools.Stripper.gettext">
+<tt class="descname">gettext</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.tools.Stripper.gettext" title="Permalink to this definition">¶</a></dt>
+<dd>Returns the buffer.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.tools.Stripper.handle_data">
+<tt class="descname">handle_data</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.Stripper.handle_data" title="Permalink to this definition">¶</a></dt>
+<dd>Implements handle_data.  Appends data to the buffer.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.tools.Stripper.unknown_endtag">
+<tt class="descname">unknown_endtag</tt><big>(</big><em>tag</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.Stripper.unknown_endtag" title="Permalink to this definition">¶</a></dt>
+<dd>Implements unknown_endtag.  Appends a space to the buffer.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.tools.Stripper.unknown_starttag">
+<tt class="descname">unknown_starttag</tt><big>(</big><em>tag</em>, <em>attrs</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.Stripper.unknown_starttag" title="Permalink to this definition">¶</a></dt>
+<dd>Implements unknown_starttag.  Appends a space to the buffer.</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.Walk">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">Walk</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.Walk" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use walk instead.</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.addcr">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">addcr</tt><big>(</big><em>text</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.addcr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a cr if it needs one.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">addrc</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
+<span class="go">foo\n</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">addcr</span><span class="p">(</span><span class="s">&quot;foo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="go">foo\n</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.commasplit">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">commasplit</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.commasplit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits a string that contains strings by comma.  This is
+more involved than just an <tt class="docutils literal"><span class="pre">s.split(&quot;,&quot;)</span></tt> because this handles
+commas in strings correctly.</p>
+<p>Note: commasplit doesn&#8217;t remove extranneous spaces.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">commasplit</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">commasplit</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="go">[&quot;&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">commasplit</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">)</span>
+<span class="go">[&quot;a&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">commasplit</span><span class="p">(</span><span class="s">&quot;a, b, c&quot;</span><span class="p">)</span>
+<span class="go">[&quot;a&quot;, &quot; b&quot;, &quot; c&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">commasplit</span><span class="p">(</span><span class="s">&quot;&#39;a&#39;, &#39;b, c&#39;&quot;</span><span class="p">)</span>
+<span class="go">[&quot;a&quot;, &quot; &#39;b, c&#39;&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">commasplit</span><span class="p">(</span><span class="s">&quot;&#39;a&#39;, &quot;</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="go">[&quot;a&quot;, &quot; &quot;b, c&quot;&quot;]</span>
+</pre></div>
+</div>
+<p>This returns a list of strings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>s</em> &#8211; the string to split</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.convert_configini_values">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">convert_configini_values</tt><big>(</big><em>configini</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.convert_configini_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a dict containing config.ini style keys and values, converts
+the values, and returns a new config dict.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>confini</em> &#8211; dict containing the config.ini style keys and values</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Raises <a title="Pyblosxom.tools.ConfigSyntaxErrorException" class="reference internal" href="#Pyblosxom.tools.ConfigSyntaxErrorException">ConfigSyntaxErrorException</a>:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body">when there&#8217;s a syntax error</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.create_entry">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">create_entry</tt><big>(</big><em>datadir</em>, <em>category</em>, <em>filename</em>, <em>mtime</em>, <em>title</em>, <em>metadata</em>, <em>body</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.create_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new entry in the blog.</p>
+<p>This is primarily used by the testing system, but it could be used
+by scripts and other tools.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>datadir</em> &#8211; the datadir</li>
+<li><em>category</em> &#8211; the category the entry should go in</li>
+<li><em>filename</em> &#8211; the name of the blog entry (filename and
+extension&#8211;no directory)</li>
+<li><em>mtime</em> &#8211; the mtime (float) for the entry in seconds since the
+epoch</li>
+<li><em>title</em> &#8211; the title for the entry</li>
+<li><em>metadata</em> &#8211; dict of key/value metadata pairs</li>
+<li><em>body</em> &#8211; the body of the entry</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Raises IOError:</th><td class="field-body"><p class="first last">if the datadir + category directory exists, but
+isn&#8217;t a directory</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.escape_text">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">escape_text</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.escape_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes in a string and converts:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">&amp;</span></tt> to <tt class="docutils literal"><span class="pre">&amp;amp;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&gt;</span></tt> to <tt class="docutils literal"><span class="pre">&amp;gt;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&lt;</span></tt> to <tt class="docutils literal"><span class="pre">&amp;lt;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">&quot;</span></tt> to <tt class="docutils literal"><span class="pre">&amp;quot;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'</span></tt> to <tt class="docutils literal"><span class="pre">&amp;#x27;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/</span></tt> to <tt class="docutils literal"><span class="pre">&amp;#x2F;</span></tt></li>
+</ul>
+<p>Note: if <tt class="docutils literal"><span class="pre">s</span></tt> is <tt class="xref docutils literal"><span class="pre">None</span></tt>, then we return <tt class="xref docutils literal"><span class="pre">None</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">escape_text</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">escape_text</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="go">&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">escape_text</span><span class="p">(</span><span class="s">&quot;a&#39;b&quot;</span><span class="p">)</span>
+<span class="go">&quot;a&amp;#x27;b&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">escape_text</span><span class="p">(</span><span class="s">&#39;a&quot;b&#39;</span><span class="p">)</span>
+<span class="go">&quot;a&amp;quot;b&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.filestat">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">filestat</tt><big>(</big><em>request</em>, <em>filename</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.filestat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the filestat on a given file.  We store the filestat in
+case we&#8217;ve already retrieved it during this PyBlosxom request.</p>
+<p>This returns the mtime of the file (same as returned by
+<tt class="docutils literal"><span class="pre">time.localtime()</span></tt>) &#8211; tuple of 9 ints.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>request</em> &#8211; the Request object</li>
+<li><em>filename</em> &#8211; the file name of the file to stat</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.generateRandStr">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">generateRandStr</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.generateRandStr" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use generate_rand_str instead.</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.generate_rand_str">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">generate_rand_str</tt><big>(</big><em>minlen=5</em>, <em>maxlen=10</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.generate_rand_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a random string between <tt class="docutils literal"><span class="pre">minlen</span></tt> and <tt class="docutils literal"><span class="pre">maxlen</span></tt>
+characters long.</p>
+<p>The generated string consists of letters and numbers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>minlen</em> &#8211; the minimum length of the generated random string</li>
+<li><em>maxlen</em> &#8211; the maximum length of the generated random string</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.getLogger">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">getLogger</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.getLogger" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_logger instead.</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.get_cache">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">get_cache</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.get_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the cache from the request or fetches a new CacheDriver
+instance.</p>
+<p>Returns a BlosxomCache object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>request</em> &#8211; the Request object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.get_logger">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">get_logger</tt><big>(</big><em>log_file=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.get_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and retuns a log channel.</p>
+<p>If no log_file is given the system-wide logfile as defined in
+config.py is used. If a log_file is given that&#8217;s where the created
+logger logs to.</p>
+<p>Returns a log channel (logger instance) which you can call
+<tt class="docutils literal"><span class="pre">error</span></tt>, <tt class="docutils literal"><span class="pre">warning</span></tt>, <tt class="docutils literal"><span class="pre">debug</span></tt>, <tt class="docutils literal"><span class="pre">info</span></tt>, ... on.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>log_file</em> &#8211; the file to log to.  defaults to None which
+causes PyBlosxom to check for the <tt class="docutils literal"><span class="pre">log_file</span></tt>
+config.py property and if that&#8217;s blank, then the
+log_file is stderr</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.importname">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">importname</tt><big>(</big><em>modulename</em>, <em>name</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.importname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Safely imports modules for runtime importing.</p>
+<p>Returns the module object or <tt class="xref docutils literal"><span class="pre">None</span></tt> if there were problems
+importing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>modulename</em> &#8211; the package name of the module to import from</li>
+<li><em>name</em> &#8211; the name of the module to import</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.initialize">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">initialize</tt><big>(</big><em>config</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the tools module.</p>
+<p>This gives the module a chance to use configuration from the
+pyblosxom config.py file.</p>
+<p>This should be called from <tt class="docutils literal"><span class="pre">Pyblosxom.pyblosxom.PyBlosxom.initialize</span></tt>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.is_year">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">is_year</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.is_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks to see if the string is likely to be a year or not.  In
+order to be considered to be a year, it must pass the following
+criteria:</p>
+<ol class="arabic simple">
+<li>four digits</li>
+<li>first two digits are either 19 or 20.</li>
+</ol>
+<p>Returns <tt class="xref docutils literal"><span class="pre">True</span></tt> if it is a year and <tt class="xref docutils literal"><span class="pre">False</span></tt> otherwise.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>s</em> &#8211; the string to check for &#8220;year-hood&#8221;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.log_caller">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">log_caller</tt><big>(</big><em>frame_num=1</em>, <em>log_file=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.log_caller" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs some info about the calling function/method.  Useful for
+debugging.</p>
+<p>Usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tools</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">log_caller</span><span class="p">()</span>     <span class="c"># logs frame 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">log_caller</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">log_caller</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span> <span class="n">log_file</span><span class="o">=</span><span class="s">&quot;/path/to/file&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>frame_num</em> &#8211; the index of the frame to log; defaults to 1</li>
+<li><em>log_file</em> &#8211; the file to log to.  defaults to None which
+causes PyBlosxom to check for the <tt class="docutils literal"><span class="pre">log_file</span></tt>
+config.py property and if that&#8217;s blank, then the
+log_file is stderr</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.log_exception">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">log_exception</tt><big>(</big><em>log_file=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.log_exception" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs an exception to the given file.  Uses the system-wide
+log_file as defined in config.py if none is given here.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>log_file</em> &#8211; the file to log to.  defaults to None which
+causes PyBlosxom to check for the <tt class="docutils literal"><span class="pre">log_file</span></tt>
+config.py property and if that&#8217;s blank, then the
+log_file is stderr</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.parse">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">parse</tt><big>(</big><em>request</em>, <em>var_dict</em>, <em>template</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method parses the <tt class="docutils literal"><span class="pre">template</span></tt> passed in using <tt class="docutils literal"><span class="pre">Replacer</span></tt>
+to expand template variables using values in the <tt class="docutils literal"><span class="pre">var_dict</span></tt>.</p>
+<p>Originally based on OPAGCGI, but mostly re-written.</p>
+<p>This returns the template string with template variables expanded.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>request</em> &#8211; the Request object</li>
+<li><em>var_dict</em> &#8211; the dict holding name/value pair variable replacements</li>
+<li><em>template</em> &#8211; the string template we&#8217;re expanding variables in.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.render_url">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">render_url</tt><big>(</big><em>cdict</em>, <em>pathinfo</em>, <em>querystring=''</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.render_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a url and a querystring and renders the page that
+corresponds with that by creating a Request and a PyBlosxom object
+and passing it through.  It then returns the resulting Response.</p>
+<p>This returns a PyBlosxom <tt class="docutils literal"><span class="pre">Response</span></tt> object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>cdict</em> &#8211; the config.py dict</li>
+<li><em>pathinfo</em> &#8211; the <tt class="docutils literal"><span class="pre">PATH_INFO</span></tt> string;
+example: <tt class="docutils literal"><span class="pre">/dev/pyblosxom/firstpost.html</span></tt></li>
+<li><em>querystring</em> &#8211; the querystring (if any); example: debug=yes</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.render_url_statically">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">render_url_statically</tt><big>(</big><em>cdict</em>, <em>url</em>, <em>querystring</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.render_url_statically" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders a url and saves the rendered output to the
+filesystem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>cdict</em> &#8211; config dict</li>
+<li><em>url</em> &#8211; url to render</li>
+<li><em>querystring</em> &#8211; querystring of the url to render or &#8220;&#8221;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.run_callback">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0x945ce2c&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0x945ce64&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a callback chain on a given piece of data.  passed in is
+a dict of name/value pairs.  Consult the documentation for the
+specific callback chain you&#8217;re executing.</p>
+<p>Callback chains should conform to their documented behavior.  This
+function allows us to do transforms on data, handling data, and
+also callbacks.</p>
+<p>The difference in behavior is affected by the mappingfunc passed
+in which converts the output of a given function in the chain to
+the input for the next function.</p>
+<p>If this is confusing, read through the code for this function.</p>
+<p>Returns the transformed input dict.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>chain</em> &#8211; the name of the callback chain to run</li>
+<li><em>input</em> &#8211; dict with name/value pairs that gets passed as the
+args dict to all callback functions</li>
+<li><em>mappingfunc</em> &#8211; the function that maps output arguments to
+input arguments for the next iteration.  It
+must take two arguments: the original dict and
+the return from the previous function.  It
+defaults to returning the original dict.</li>
+<li><em>donefunc</em> &#8211; this function tests whether we&#8217;re done doing what
+we&#8217;re doing.  This function takes as input the
+output of the most recent iteration.  If this
+function returns True then we&#8217;ll drop out of the
+loop.  For example, if you wanted a callback to
+stop running when one of the registered functions
+returned a 1, then you would pass in:
+<tt class="docutils literal"><span class="pre">donefunc=lambda</span> <span class="pre">x:</span> <span class="pre">x</span></tt> .</li>
+<li><em>defaultfunc</em> &#8211; if this is set and we finish going through all
+the functions in the chain and none of them
+have returned something that satisfies the
+donefunc, then we&#8217;ll execute the defaultfunc
+with the latest version of the input dict.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.update_static_entry">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">update_static_entry</tt><big>(</big><em>cdict</em>, <em>entry_filename</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.update_static_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a utility function that allows plugins to easily update
+statically rendered entries without going through all the
+rigamarole.</p>
+<p>First we figure out whether this blog is set up for static
+rendering.  If not, then we return&#8211;no harm done.</p>
+<p>If we are, then we call <tt class="docutils literal"><span class="pre">render_url</span></tt> for each <tt class="docutils literal"><span class="pre">static_flavour</span></tt>
+of the entry and then for each <tt class="docutils literal"><span class="pre">static_flavour</span></tt> of the index
+page.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>cdict</em> &#8211; the config.py dict</li>
+<li><em>entry_filename</em> &#8211; the url path of the entry to be updated;
+example: <tt class="docutils literal"><span class="pre">/movies/xmen2</span></tt></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.urlencode_text">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">urlencode_text</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.urlencode_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls <tt class="docutils literal"><span class="pre">urllib.quote</span></tt> on the string <tt class="docutils literal"><span class="pre">s</span></tt>.</p>
+<p>Note: if <tt class="docutils literal"><span class="pre">s</span></tt> is <tt class="xref docutils literal"><span class="pre">None</span></tt>, then we return <tt class="xref docutils literal"><span class="pre">None</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">urlencode_text</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">urlencode_text</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="go">&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">urlencode_text</span><span class="p">(</span><span class="s">&quot;a c&quot;</span><span class="p">)</span>
+<span class="go">&quot;a%20c&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">urlencode_text</span><span class="p">(</span><span class="s">&quot;a&amp;c&quot;</span><span class="p">)</span>
+<span class="go">&quot;a%26c&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">urlencode_text</span><span class="p">(</span><span class="s">&quot;a=c&quot;</span><span class="p">)</span>
+<span class="go">&quot;a%3Dc&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.walk">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">walk</tt><big>(</big><em>request</em>, <em>root='.'</em>, <em>recurse=0</em>, <em>pattern=''</em>, <em>return_folders=0</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function walks a directory tree starting at a specified root
+folder, and returns a list of all of the files (and optionally
+folders) that match our pattern(s). Taken from the online Python
+Cookbook and modified to own needs.</p>
+<p>It will look at the config &#8220;ignore_directories&#8221; for a list of
+directories to ignore.  It uses a regexp that joins all the things
+you list.  So the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">config</span><span class="o">.</span><span class="n">py</span><span class="p">[</span><span class="s">&quot;ignore_directories&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;CVS&quot;</span><span class="p">,</span> <span class="s">&quot;dev/pyblosxom&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>turns into the regexp:</p>
+<div class="highlight-python"><pre>.*?(CVS|dev/pyblosxom)$</pre>
+</div>
+<p>It will also skip all directories that start with a period.</p>
+<p>Returns a list of file paths.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>request</em> &#8211; the Request object</li>
+<li><em>root</em> &#8211; the root directory to walk</li>
+<li><em>recurse</em> &#8211; the depth of recursion; defaults to 0 which goes all
+the way down</li>
+<li><em>pattern</em> &#8211; the regexp object for matching files; defaults to
+&#8216;&#8217; which causes PyBlosxom to return files with
+file extensions that match those the entryparsers
+handle</li>
+<li><em>return_folders</em> &#8211; True if you want only folders, False if you
+want files AND folders</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.what_ext">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">what_ext</tt><big>(</big><em>extensions</em>, <em>filepath</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.what_ext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes in a filepath and a list of extensions and tries them all
+until it finds the first extension that works.</p>
+<p>Returns the extension (string) of the file or <tt class="xref docutils literal"><span class="pre">None</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>extensions</em> &#8211; the list of extensions to test</li>
+<li><em>filepath</em> &#8211; the complete file path (minus the extension) to
+test and find the extension for</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-Pyblosxom.renderers.base">
+<h2>Pyblosxom.renderers.base<a class="headerlink" href="#module-Pyblosxom.renderers.base" title="Permalink to this headline">¶</a></h2>
+<p>The is the base renderer module.  If you were to dislike the blosxom
+renderer and wanted to build a renderer that used a different
+templating system, you would extend the RendererBase class and
+implement the functionality required by the other rendering system.</p>
+<p>For examples, look at the BlosxomRenderer and the Renderer in the
+debug module.</p>
+<dl class="class">
+<dt id="Pyblosxom.renderers.base.Renderer">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">Renderer</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x401fa070&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.Renderer" title="Permalink to this definition">¶</a></dt>
+<dd>This is a null renderer.</dd></dl>
+
+<dl class="class">
+<dt id="Pyblosxom.renderers.base.RendererBase">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">RendererBase</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x401fa070&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pyblosxom core handles the Input and Process of the system and
+passes the result of the process to the Renderers for output. All
+renderers are child classes of RendererBase. RenderBase will
+contain the public interfaces for all Renderer onject.</p>
+<dl class="method">
+<dt id="Pyblosxom.renderers.base.RendererBase.addHeader">
+<tt class="descname">addHeader</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase.addHeader" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use add_header instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.renderers.base.RendererBase.add_header">
+<tt class="descname">add_header</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase.add_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Populates the HTTP header with lines of text</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>args</em> &#8211; Paired list of headers</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body">This happens when the parameters are not
+correct</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.renderers.base.RendererBase.needsContentType">
+<tt class="descname">needsContentType</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase.needsContentType" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use needs_content_type instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.renderers.base.RendererBase.needs_content_type">
+<tt class="descname">needs_content_type</tt><big>(</big><em>flag</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase.needs_content_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use the renderer to determine &#8216;Content-Type: x/x&#8217; default is
+to use the renderer for Content-Type, set flag to None to
+indicate no Content-Type generation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>flag</em> &#8211; True of false value</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.renderers.base.RendererBase.render">
+<tt class="descname">render</tt><big>(</big><em>header=True</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do final rendering.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>header</em> &#8211; whether (True) or not (False) to show the
+headers</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.renderers.base.RendererBase.setContent">
+<tt class="descname">setContent</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase.setContent" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use set_content instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.renderers.base.RendererBase.set_content">
+<tt class="descname">set_content</tt><big>(</big><em>content</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase.set_content" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the content.  The content can be any of the following:</p>
+<ul class="simple">
+<li>dict</li>
+<li>list of entries</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>content</em> &#8211; the content to be displayed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.renderers.base.RendererBase.showHeaders">
+<tt class="descname">showHeaders</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase.showHeaders" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use show_headers instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.renderers.base.RendererBase.show_headers">
+<tt class="descname">show_headers</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase.show_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updated the headers of the
+<tt class="docutils literal"><span class="pre">Response&lt;Pyblosxom.pyblosxom.Response&gt;</span></tt> instance.</p>
+<p>This is here for backwards compatibility.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.renderers.base.RendererBase.write">
+<tt class="descname">write</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience method for programs to use instead of accessing
+self._out.write()</p>
+<p>Other classes can override this if there is a unique way to
+write out data, for example, a two stream output, e.g. one
+output stream and one output log stream.</p>
+<p>Another use for this could be a plugin that writes out binary
+files, but because renderers and other frameworks may probably
+not want you to write to <tt class="docutils literal"><span class="pre">stdout</span></tt> directly, this method
+assists you nicely. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_start</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">req</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&#39;request&#39;</span><span class="p">]</span>
+    <span class="n">renderer</span> <span class="o">=</span> <span class="n">req</span><span class="p">[</span><span class="s">&#39;renderer&#39;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">reqIsGif</span> <span class="ow">and</span> <span class="n">gifFileExists</span><span class="p">(</span><span class="n">theGifFile</span><span class="p">):</span>
+        <span class="c"># Read the file</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">theGifFile</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="c"># Modify header</span>
+        <span class="n">renderer</span><span class="o">.</span><span class="n">addHeader</span><span class="p">(</span><span class="s">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s">&#39;image/gif&#39;</span><span class="p">)</span>
+        <span class="n">renderer</span><span class="o">.</span><span class="n">addHeader</span><span class="p">(</span><span class="s">&#39;Content-Length&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="n">renderer</span><span class="o">.</span><span class="n">showHeaders</span><span class="p">()</span>
+
+        <span class="c"># Write to output</span>
+        <span class="n">renderer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c"># Tell pyblosxom not to render anymore as data is</span>
+        <span class="c"># processed already</span>
+        <span class="n">renderer</span><span class="o">.</span><span class="n">rendered</span> <span class="o">=</span> <span class="mf">1</span>
+</pre></div>
+</div>
+<p>This simple piece of pseudocode explains what you could do
+with this method, though I highly don&#8217;t recommend this, unless
+pyblosxom is running continuously.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>data</em> &#8211; Piece of string you want printed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Pyblosxom.entries.base">
+<h2>Pyblosxom.entries.base<a class="headerlink" href="#module-Pyblosxom.entries.base" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the base class for all the Entry classes.  The
+EntryBase class is essentially the API for entries in PyBlosxom.  Reading
+through the comments for this class will walk you through building your
+own EntryBase derivatives.</p>
+<p>This module also holds a generic generate_entry function which will generate
+a BaseEntry with data that you provide for it.</p>
+<dl class="class">
+<dt id="Pyblosxom.entries.base.EntryBase">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.entries.base.</tt><tt class="descname">EntryBase</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>EntryBase is the base class for all the Entry classes.  Each
+instance of an Entry class represents a single entry in the
+weblog, whether it came from a file, or a database, or even
+somewhere off the InterWeeb.</p>
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.addToCache">
+<tt class="descname">addToCache</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.addToCache" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use add_to_cache instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.add_to_cache">
+<tt class="descname">add_to_cache</tt><big>(</big><em>entryid</em>, <em>data</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.add_to_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Over-writes the cached dict for key entryid with the data
+dict.</p>
+<p>This is a helper method&#8211;call this to add data to the cache.
+Do not override it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>entryid</em> &#8211; a unique key for the information you&#8217;re
+storing</li>
+<li><em>data</em> &#8211; the data to store&#8211;this should probably be a dict</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.get">
+<tt class="descname">get</tt><big>(</big><em>key</em>, <em>default=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves an item from the internal dict based on the key
+given.</p>
+<p>All this does is turn aroun and call <tt class="docutils literal"><span class="pre">__getitem__</span></tt>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">There&#8217;s no reason to override this&#8211;override <tt class="docutils literal"><span class="pre">get_data</span></tt>
+and <tt class="docutils literal"><span class="pre">get_metadata</span></tt> instead.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>key</em> &#8211; the key being sought</li>
+<li><em>default</em> &#8211; the default to return if the key does not
+exist</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the value of <tt class="docutils literal"><span class="pre">get_metadata</span></tt> or <tt class="docutils literal"><span class="pre">get_data</span></tt>
+(through <tt class="docutils literal"><span class="pre">__getitem__</span></tt>)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.getData">
+<tt class="descname">getData</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.getData" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_data instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.getFromCache">
+<tt class="descname">getFromCache</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.getFromCache" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_from_cache instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.getId">
+<tt class="descname">getId</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.getId" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_id instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.getMetadata">
+<tt class="descname">getMetadata</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.getMetadata" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_metadata instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.getMetadataKeys">
+<tt class="descname">getMetadataKeys</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.getMetadataKeys" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use get_metadata_keys instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.get_data">
+<tt class="descname">get_data</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the data string.  This method should be overridden to
+provide from pulling the data from other places.</p>
+<p>Override this.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">the data as a string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.get_from_cache">
+<tt class="descname">get_from_cache</tt><big>(</big><em>entryid</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.get_from_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves information from the cache that pertains to this
+specific entryid.</p>
+<p>This is a helper method&#8211;call this to get data from the cache.
+Do not override it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>entryid</em> &#8211; a unique key for the information you&#8217;re retrieving</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">dict with the values or None if there&#8217;s nothing for that
+entryid</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.get_id">
+<tt class="descname">get_id</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.get_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>This should return an id that&#8217;s unique enough for caching
+purposes.</p>
+<p>Override this.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">string id</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.get_metadata">
+<tt class="descname">get_metadata</tt><big>(</big><em>key</em>, <em>default=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.get_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a given piece of metadata.</p>
+<p>Override this.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><em>key</em> &#8211; the key being sought</li>
+<li><em>default</em> &#8211; the default to return if the key does not
+exist</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">either the default (if the key did not exist) or the
+value of the key in the metadata dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.get_metadata_keys">
+<tt class="descname">get_metadata_keys</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.get_metadata_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of keys for which we have values in our
+stored metadata.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This list gets modified later downstream.  If you cache
+your list of metadata keys, then this method should return
+a copy of that list and not the list itself lest it get
+adjusted.</p>
+</div>
+<p>Override this.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">list of metadata keys</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.has_key">
+<tt class="descname">has_key</tt><big>(</big><em>key</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.has_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether a given key is in the metadata dict.  If the
+key is the <tt class="docutils literal"><span class="pre">CONTENT_KEY</span></tt>, then we automatically return true.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">There&#8217;s no reason to override this&#8211;override
+<tt class="docutils literal"><span class="pre">get_metadata</span></tt> instead.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>key</em> &#8211; the key to check in the metadata dict for</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">whether (True) or not (False) the key exists</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.keys">
+<tt class="descname">keys</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of the keys that can be accessed through
+<tt class="docutils literal"><span class="pre">__getitem__</span></tt>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">There&#8217;s no reason to override this&#8211;override
+<tt class="docutils literal"><span class="pre">get_metadata_keys</span></tt> instead.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">list of key names</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.setData">
+<tt class="descname">setData</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.setData" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use set_data instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.setMetadata">
+<tt class="descname">setMetadata</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.setMetadata" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use set_metadata instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.setTime">
+<tt class="descname">setTime</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.setTime" title="Permalink to this definition">¶</a></dt>
+<dd>DEPRECATED.  Use set_time instead.</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.set_data">
+<tt class="descname">set_data</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the data content for this entry.  If you are not creating
+the entry, then you have no right to set the data of the
+entry.  Doing so could be hazardous depending on what
+EntryBase subclass you&#8217;re dealing with.</p>
+<p>Override this.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>data</em> &#8211; the data</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.set_metadata">
+<tt class="descname">set_metadata</tt><big>(</big><em>key</em>, <em>value</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.set_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a key/value pair in the metadata dict.</p>
+<p>Override this.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>key</em> &#8211; the key string</li>
+<li><em>value</em> &#8211; the value string</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.set_time">
+<tt class="descname">set_time</tt><big>(</big><em>timetuple</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.set_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>This takes in a given time tuple and sets all the magic
+metadata variables we have according to the items in the time
+tuple.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>timetuple</em> &#8211; the timetuple to use to set the data
+with&#8211;this is the same thing as the
+mtime/atime portions of an os.stat.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Pyblosxom.entries.base.EntryBase.update">
+<tt class="descname">update</tt><big>(</big><em>newdict</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the contents in this entry with the contents in the
+dict.  It does so by calling <tt class="docutils literal"><span class="pre">set_data</span></tt> and
+<tt class="docutils literal"><span class="pre">set_metadata</span></tt>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">There&#8217;s no reason to override this&#8211;override <tt class="docutils literal"><span class="pre">set_data</span></tt>
+and <tt class="docutils literal"><span class="pre">set_metadata</span></tt> instead.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>newdict</em> &#8211; the dict we&#8217;re updating this one with</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.entries.base.generate_entry">
+<tt class="descclassname">Pyblosxom.entries.base.</tt><tt class="descname">generate_entry</tt><big>(</big><em>request</em>, <em>properties</em>, <em>data</em>, <em>mtime=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.generate_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a properties dict and a data string and generates a generic
+entry using the data you provided.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>request</em> &#8211; the Request object</li>
+<li><em>properties</em> &#8211; the dict of properties for the entry</li>
+<li><em>data</em> &#8211; the data content for the entry</li>
+<li><em>mtime</em> &#8211; the mtime tuple (as given by <tt class="docutils literal"><span class="pre">time.localtime()</span></tt>).
+if you pass in None, then we&#8217;ll use localtime.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Code Documentation</a><ul>
+<li><a class="reference external" href="#introduction">Introduction</a></li>
+<li><a class="reference external" href="#module-Pyblosxom.pyblosxom">Pyblosxom.pyblosxom</a></li>
+<li><a class="reference external" href="#module-Pyblosxom.tools">Pyblosxom.tools</a></li>
+<li><a class="reference external" href="#module-Pyblosxom.renderers.base">Pyblosxom.renderers.base</a></li>
+<li><a class="reference external" href="#module-Pyblosxom.entries.base">Pyblosxom.entries.base</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="dev_writing_plugins.html"
+                                  title="previous chapter">Writing Plugins</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="notes/AUTHORS.html"
+                                  title="next chapter">Authors</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/dev_codedocs.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="notes/AUTHORS.html" title="Authors"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dev_writing_plugins.html" title="Writing Plugins"
+             >previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Will Kahn-Greene.
+      Last updated on Jan 29, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

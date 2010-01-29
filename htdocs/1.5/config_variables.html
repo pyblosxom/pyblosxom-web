@@ -1,0 +1,651 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Variables in config.py &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="next" title="Writing Entries" href="writing_entries.html" />
+    <link rel="prev" title="Deploy PyBlosxom with Static Rendering" href="deploy_staticrendering.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="writing_entries.html" title="Writing Entries"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="deploy_staticrendering.html" title="Deploy PyBlosxom with Static Rendering"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="variables-in-config-py">
+<h1>Variables in config.py<a class="headerlink" href="#variables-in-config-py" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This is a list of configuration variables in <tt class="docutils literal"><span class="pre">config.py</span></tt>.  This list
+is not comprehensive!</p>
+<p>If you install any plugins, those plugins may ask you to set
+additional variables in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file&#8211;those variables will
+not be documented in this file.</p>
+<p>Additionally, any variables you set in <tt class="docutils literal"><span class="pre">config.py</span></tt> will be available
+in your templates.  This is useful for allowing you to centralize any
+configuration for your blog into your <tt class="docutils literal"><span class="pre">config.py</span></tt> file and use it in
+templates and other places.  For example, you could move all your
+media files (JPEG images, GIF images, CSS, ...) into a directory on
+your server to be served by Apache and then set the variable
+<tt class="docutils literal"><span class="pre">$media_url</span></tt> to the directory with media files and use that in your
+templates.</p>
+<p>If there are variables that are listed here that aren&#8217;t in your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file, you can add them yourself.  The format is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+</pre></div>
+</div>
+<p>where <em>key</em> is the configuration property name and <em>value</em> is the
+value.  If the <em>value</em> is a string, it must be enclosed in quotes.</p>
+</div>
+<div class="section" id="configuration-variables">
+<h2>Configuration variables<a class="headerlink" href="#configuration-variables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="base-url">
+<h3>base_url<a class="headerlink" href="#base-url" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: calculated based on HTTP server variables</p>
+<p>This is the base url for your blog.  If someone were to type this url
+into their browser, then they would see the main index page for your
+blog.</p>
+<p>For example, if Joe Smith put his <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> script into a
+cgi-bin directory and he was using Apache, his base_url might look
+like this:</p>
+<blockquote>
+py[&#8220;base_url&#8221;] = &#8220;<a class="reference external" href="http://joesmith.net/~joe/cgi-bin/pyblosxom.cgi">http://joesmith.net/~joe/cgi-bin/pyblosxom.cgi</a>&#8220;</blockquote>
+<p>However, it&#8217;s common that this can be determined by PyBlosxom by
+looking at the HTTP environment variables&#8211;so if you&#8217;re not doing any
+url re-writing, it&#8217;s possible that PyBlosxom can correctly determine
+the url and you won&#8217;t have to set the base_url variable at all.</p>
+<p>If Joe got tired of that long url, Joe might set up some url
+re-writing on my web-server so that the base_url looked like this:</p>
+<blockquote>
+py[&#8220;base_url&#8221;] = &#8220;<a class="reference external" href="http://joesmith.net/~joe/blog">http://joesmith.net/~joe/blog</a>&#8220;</blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Your base_url property should NOT have a trailing slash.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you use mod_rewrite rules or some other url rewriting system on
+your web-server, then you&#8217;ll want to set this property.</p>
+</div>
+</div>
+<div class="section" id="codebase">
+<h3>codebase<a class="headerlink" href="#codebase" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default set</p>
+<p>This is the full path to where the PyBlosxom directory is on your
+system.</p>
+<p>If you have installed PyBlosxom as a Python library by running
+<tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> then you don&#8217;t need to set the codebase
+variable.</p>
+<p>If you have NOT installed PyBlosxom as a Python library, then you DO
+need to set the codebase variable.  Otherwise the Python interpreter
+won&#8217;t be able to find the PyBlosxom codebase and your blog will not
+work.</p>
+<p>For example, if you untarred PyBlosxom into
+<tt class="docutils literal"><span class="pre">/home/joe/pyblosxom-1.5/</span></tt>, then the Pyblosxom (uppercase P and
+lowercase b) directory should be in <tt class="docutils literal"><span class="pre">/home/joe/pyblosxom-1.5/</span></tt> and
+you would set your codebase variable like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;codebase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/home/joe/pyblosxom-1.5/&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="datadir">
+<h3>datadir<a class="headerlink" href="#datadir" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: yes</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value&#8211;you need to set this</p>
+<p>This is the full path to where your blog entries are kept on the file
+system.</p>
+<p>For example, if you are storing your blog entries in
+<tt class="docutils literal"><span class="pre">/home/joe/blog/entries/</span></tt>, then you would set the <tt class="docutils literal"><span class="pre">datadir</span></tt> like
+this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;datadir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/home/joe/blog/entries/&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>A note about datadir on Windows:</p>
+<p>Use <tt class="docutils literal"><span class="pre">/</span></tt> to separate directories in the datadir path even if you
+are using Windows.  Examples of valid datadirs on Windows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;datadir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/blog/entries/&quot;</span>
+</pre></div>
+</div>
+<p>and:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;datadir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;e:/blog/entries/&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="depth">
+<h3>depth<a class="headerlink" href="#depth" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: integer</p>
+<p><strong>DEFAULT VALUE</strong>: defaults to 0&#8211;infinite depth</p>
+<p>The depth setting determines how many levels deep in the directory
+(category) tree that PyBlosxom will display when doing indexes.</p>
+<ul class="simple">
+<li>0 - infinite depth (aka grab everything) DEFAULT</li>
+<li>1 - datadir only</li>
+<li>2 - two levels</li>
+<li>3 - three levels</li>
+<li>...</li>
+<li><em>n</em> - <em>n</em> levels deep</li>
+</ul>
+</div>
+<div class="section" id="flavourdir">
+<h3>flavourdir<a class="headerlink" href="#flavourdir" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value set</p>
+<p>This is the full path to where your PyBlosxom flavours are kept.</p>
+<p>If you do not set the <tt class="docutils literal"><span class="pre">flavourdir</span></tt>, then PyBlosxom will look for
+your flavours and templates in the datadir alongside your entries.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">&#8220;flavour&#8221; is spelled using the British spelling and not the American
+one.</p>
+</div>
+<p>For example, if you want to put your entries in
+<tt class="docutils literal"><span class="pre">/home/joe/blog/entries/</span></tt> and your flavour templates in
+<tt class="docutils literal"><span class="pre">/home/joe/blog/flavours/</span></tt> you would set <tt class="docutils literal"><span class="pre">flavourdir</span></tt> and
+<tt class="docutils literal"><span class="pre">datadir</span></tt> like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;datadir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/home/joe/blog/entries/&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;flavourdir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/home/joe/blog/flavours/&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Use <tt class="docutils literal"><span class="pre">/</span></tt> to separate directories in the <tt class="docutils literal"><span class="pre">flavourdir</span></tt> path even
+if you are using Windows.  Examples of valid <tt class="docutils literal"><span class="pre">flavourdir</span></tt> on
+Windows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;flavourdir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/blog/flavours/&quot;</span>
+</pre></div>
+</div>
+<p>and:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;flavourdir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;e:/blog/flavours/&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="default-flavour">
+<h3>default_flavour<a class="headerlink" href="#default-flavour" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: &#8220;html&#8221;</p>
+<p>This specified the flavour that will be used if the user doesn&#8217;t
+specify a flavour in the URI.</p>
+<p>For example, if you wanted your default flavour to be &#8220;joy&#8221;, then you
+would set <tt class="docutils literal"><span class="pre">default_flavour</span></tt> like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;default_flavour&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;joy&quot;</span>
+</pre></div>
+</div>
+<p>Doing this will cause PyBlosxom to use the &#8220;joy&#8221; flavour whenever URIs
+are requested that don&#8217;t specify the flavour.</p>
+<p>For example, the following will all use the &#8220;joy&#8221; flavour:</p>
+<div class="highlight-python"><pre>http://joesmith.net/blog/
+http://joesmith.net/blog/index
+http://joesmith.net/blog/movies/
+http://joesmith.net/blog/movies/supermanreturns</pre>
+</div>
+</div>
+<div class="section" id="ignore-directories">
+<h3>ignore_directories<a class="headerlink" href="#ignore-directories" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: list of strings</p>
+<p><strong>DEFAULT VALUE</strong>: [ ]</p>
+<p>The <tt class="docutils literal"><span class="pre">ignore_directories</span></tt> variable allows you to specify which
+directories in your datadir should be ignored by PyBlosxom.</p>
+<p>This defaults to an empty list (i.e. PyBlosxom will not ignore any
+directories).</p>
+<p>For example, if you use CVS to manage the entries in your datadir, then
+you would want to ignore all CVS-related directories like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;ignore_directories&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;CVS&quot;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>If you were using CVS and you also wanted to store drafts of entries
+you need to think about some more in a drafts directory in your
+datadir, then you could set your <tt class="docutils literal"><span class="pre">ignore_directories</span></tt> like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;ignore_directories&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;drafts&quot;</span><span class="p">,</span> <span class="s">&quot;CVS&quot;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>This would ignore all directories named &#8220;CVS&#8221; and &#8220;drafts&#8221; in your
+datadir tree.</p>
+</div>
+</div>
+<div class="section" id="blog-metadata-variables">
+<h2>Blog metadata variables<a class="headerlink" href="#blog-metadata-variables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="blog-author">
+<h3>blog_author<a class="headerlink" href="#blog-author" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: &#8220;&#8221;</p>
+<p>This is the name of the author that you want to appear on your blog.
+Very often this is your name or your pseudonym.</p>
+<p>If Joe Smith had a blog, he might set his blog_author to &#8220;Joe Smith&#8221;:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_author&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Joe Smith&quot;</span>
+</pre></div>
+</div>
+<p>If Joe Smith had a blog, but went by the pseudonym &#8220;Magic Rocks&#8221;, he
+might set his blog_author to &#8220;Magic Rocks&#8221;:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_author&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Magic Rocks&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="blog-description">
+<h3>blog_description<a class="headerlink" href="#blog-description" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: &#8220;&#8221;</p>
+<p>This is the description or byline of your blog.  Typically this is a
+phrase or a sentence that summarizes what your blog covers.</p>
+<p>If you were writing a blog about restaurants in the Boston area, you
+might have a <tt class="docutils literal"><span class="pre">blog_description</span></tt> of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Critiques of restaurants in the Boston area&quot;</span>
+</pre></div>
+</div>
+<p>Or if your blog covered development on PyBlosxom, your
+<tt class="docutils literal"><span class="pre">blog_description</span></tt> might go like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Ruminations on the development of &quot;</span> <span class="o">+</span> \
+                         <span class="s">&quot;PyBlosxom and related things&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Remember that the <tt class="docutils literal"><span class="pre">config.py</span></tt> file is a Python code file just
+like any other Python code file.  Splitting long lines into shorter
+lines can be done with string concatenation and the <tt class="docutils literal"><span class="pre">\</span></tt> character
+which indicates that the next line is a continuation of the current
+one.</p>
+<p class="last">Additionally, you can use &#8220;&#8221;&#8221; ... &#8220;&#8221;&#8221; and &#8216;&#8217;&#8217; ... &#8216;&#8217;&#8217; if you like.</p>
+</div>
+</div>
+<div class="section" id="blog-email">
+<h3>blog_email<a class="headerlink" href="#blog-email" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: &#8220;&#8221;</p>
+<p>This is the email address you want associated with your blog.</p>
+<p>For example, say Joe Smith had an email address <tt class="docutils literal"><span class="pre">joe&#64;joesmith.net</span></tt>
+and wanted that associated with his blog.  Then he would set the email
+address as such:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_email&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;joe@joesmith.net&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="blog-encoding">
+<h3>blog_encoding<a class="headerlink" href="#blog-encoding" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: YES</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value&#8211;you must set this</p>
+<p>This is the character encoding of your blog.</p>
+<p>For example, if your blog was encoded in utf-8, then you would set the
+<tt class="docutils literal"><span class="pre">blog_encoding</span></tt> to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_encoding&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;utf-8&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This value must be a valid character encoding value.  In general,
+if you don&#8217;t know what to set your encoding to then set it to
+<tt class="docutils literal"><span class="pre">utf-8</span></tt>.</p>
+</div>
+<p>This value should be in the meta section of any HTML- or XHTML-based flavours
+and it&#8217;s also in the header for any feed-based flavours.  An improper
+encoding will gummy up some/most feed readers and web-browsers.</p>
+<p>FIXME - where can we find more information about what constitutes a
+valid encoding value?</p>
+</div>
+<div class="section" id="blog-language">
+<h3>blog_language<a class="headerlink" href="#blog-language" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: yes</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value&#8211;you must set this</p>
+<p>This is the primary language code for your blog.</p>
+<p>For example, English users should use <tt class="docutils literal"><span class="pre">en</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_language&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;en&quot;</span>
+</pre></div>
+</div>
+<p>FIXME - where&#8217;s a list of valid language codes?</p>
+<p>This gets used in the RSS flavours.</p>
+</div>
+<div class="section" id="blog-title">
+<h3>blog_title<a class="headerlink" href="#blog-title" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: yes</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value&#8211;you must set this</p>
+<p>This is the title of your blog.  Typically this should be short and is
+accompanied by a longer summary of your blog which is set in
+<tt class="docutils literal"><span class="pre">blog_description</span></tt>.</p>
+<p>For example, if Joe were writing a blog about cooking, he might title
+his blog:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Joe&#39;s blog about cooking&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="locale">
+<h3>locale<a class="headerlink" href="#locale" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: &#8220;C&#8221;</p>
+<p>FIXME - this needs to be verified</p>
+<p>PyBlosxom uses the locale config variable to adjust the values for
+month names and dates.</p>
+<p>In general, you don&#8217;t need to set this unless you know you&#8217;re not
+using en_US or en_UK.</p>
+<p>A listing of language codes is at
+<a class="reference external" href="http://ftp.ics.uci.edu/pub/ietf/http/related/iso639.txt">http://ftp.ics.uci.edu/pub/ietf/http/related/iso639.txt</a></p>
+<p>A listing of country codes is at:
+<a class="reference external" href="http://userpage.chemie.fu-berlin.de/diverse/doc/ISO_3166.html">http://userpage.chemie.fu-berlin.de/diverse/doc/ISO_3166.html</a></p>
+<p>For example, if you wanted to set the locale to the Dutch language in
+the Netherlands you&#8217;d set locale to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;locale&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;nl_NL.UTF-8&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="log-file">
+<h3>log_file<a class="headerlink" href="#log-file" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value set</p>
+<p>This specifies the file that PyBlosxom will log messages to.</p>
+<p>If this is set to &#8220;NONE&#8221;, then log messages will be silently ignored.</p>
+<p>If PyBlosxom cannot open the file for writing, then log messages will
+be sent to sys.stderr.</p>
+<p>For example, if you wanted PyBlosxom to log messages to
+<tt class="docutils literal"><span class="pre">/home/joe/blog/logs/pyblosxom.log</span></tt>, then you would set <tt class="docutils literal"><span class="pre">log_file</span></tt>
+to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;log_file&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/home/joe/blog/logs/pyblosxom.log&quot;</span>
+</pre></div>
+</div>
+<p>If you were on Windows, then you might set it to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;log_file&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;c:/blog/logs/pyblosxom.log&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The webserver that is executing PyBlosxom must be able to write to
+the directory containing your <tt class="docutils literal"><span class="pre">pyblosxom.log</span></tt> file.</p>
+</div>
+</div>
+<div class="section" id="log-level">
+<h3>log_level<a class="headerlink" href="#log-level" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value set</p>
+<p><strong>POSSIBLE VALUES</strong>:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">critical</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">error</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">warning</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">info</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">debug</span></tt></li>
+</ul>
+<p>This sets the log level for logging messages.</p>
+<p>If you set the <tt class="docutils literal"><span class="pre">log_level</span></tt> to <tt class="docutils literal"><span class="pre">critical</span></tt>, then ONLY critical
+messages are logged.</p>
+<p>If you set the <tt class="docutils literal"><span class="pre">log_level</span></tt> to <tt class="docutils literal"><span class="pre">error</span></tt>, then error and critical
+messages are logged.</p>
+<p>If you set the <tt class="docutils literal"><span class="pre">log_level</span></tt> to <tt class="docutils literal"><span class="pre">warning</span></tt>, then warning, error, and
+critical messages are logged.</p>
+<p>So on and so forth.</p>
+<p>For &#8220;production&#8221; blogs (i.e. you&#8217;re not tinkering with configuration,
+new plugins, new flavours, or anything along those lines), then this
+should be set to <tt class="docutils literal"><span class="pre">warning</span></tt> or <tt class="docutils literal"><span class="pre">error</span></tt>.</p>
+<p>For example, if you&#8217;re done tinkering with your blog, you might set
+the <tt class="docutils literal"><span class="pre">log_level</span></tt> to <tt class="docutils literal"><span class="pre">info</span></tt> allowing you to see how requests are
+being processed:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&#39;log_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;info&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="log-filter">
+<h3>log_filter<a class="headerlink" href="#log-filter" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: string</p>
+<p><strong>DEFAULT VALUE</strong>: no default value specified</p>
+<p>This let&#8217;s you specify which channels should be logged.</p>
+<p>If <tt class="docutils literal"><span class="pre">log_filter</span></tt> is set, then ONLY messages from the specified channels
+are logged.  Everything else is silently ignored.</p>
+<p>Each plugin can log messages on its own channel.  Therefore channel
+name == plugin name.</p>
+<p>PyBlosxom logs its messages to a channel named &#8220;root&#8221;.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>A warning about omitting root:</p>
+<p class="last">If you use <tt class="docutils literal"><span class="pre">log_filter</span></tt> and don&#8217;t include &#8220;root&#8221;, then PyBlosxom
+messages will be silently ignored!</p>
+</div>
+<p>For example, if you wanted to filter log messages to &#8220;root&#8221; and
+messages from the &#8220;comments&#8221; plugin, then you would set <tt class="docutils literal"><span class="pre">log_filter</span></tt>
+like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;log_filter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;comments&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>FIXME - is the channel name == plugin name done automatically by
+PyBlosxom or is the channel name specified when logging?</p>
+</div>
+<div class="section" id="num-entries">
+<h3>num_entries<a class="headerlink" href="#num-entries" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: int</p>
+<p><strong>DEFAULT VALUE</strong>: 5</p>
+<p>The <tt class="docutils literal"><span class="pre">num_entries</span></tt> variable specifies the number of entries that show
+up on your home page and other category index pages.  It doesn&#8217;t
+affect the number of entries that show up on date-based archive pages.</p>
+<p>It defaults to 5 which means &#8220;show at most 5 entries&#8221;.</p>
+<p>If you set it to 0, then it will show all entries that it can.</p>
+<p>For example, if you wanted to set <tt class="docutils literal"><span class="pre">num_entries</span></tt> to 10 so that 10
+entries show on your category index pages, you sould set it like
+this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;num_entries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="plugin-variables">
+<h2>Plugin variables<a class="headerlink" href="#plugin-variables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="plugin-dirs">
+<h3>plugin_dirs<a class="headerlink" href="#plugin-dirs" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: list of strings</p>
+<p><strong>DEFAULT VALUE</strong>: []</p>
+<p>The <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> variable lists the directories in which you have
+PyBlosxom plugins.</p>
+<p>When you set this variable, be sure to set the <tt class="docutils literal"><span class="pre">load_plugins</span></tt>
+variable as well.</p>
+<p>This defaults to <tt class="docutils literal"><span class="pre">[]</span></tt> which is an empty list.</p>
+<p>For example, if you stored your PyBlosxom plugins in
+<tt class="docutils literal"><span class="pre">/home/joe/blog/plugins/</span></tt>, then you would set <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> like
+this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;plugin_dirs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;/home/joe/blog/plugins/&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-plugins">
+<h3>load_plugins<a class="headerlink" href="#load-plugins" title="Permalink to this headline">¶</a></h3>
+<p><strong>REQUIRED</strong>: no</p>
+<p><strong>DATATYPE</strong>: list of strings</p>
+<p><strong>DEFAULT VALUE</strong>: no default value set</p>
+<p>If the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> variable is set to a list of strings, then
+PyBlosxom will load the plugins specified in the order they were
+specified in.  If the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> variable is set to <tt class="docutils literal"><span class="pre">[]</span></tt>
+(i.e. an empty list), then PyBlosxom will not load any plugins.</p>
+<p>If the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> variable is not set at all, then PyBlosxom
+will load all plugins that it finds in the plugin directories in
+alphabetical order.</p>
+<p>For example, if you had <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> set to
+<tt class="docutils literal"><span class="pre">[&quot;/home/joe/blog/plugins/&quot;]</span></tt> and there were three plugins in that
+directory <tt class="docutils literal"><span class="pre">plugin_a.py</span></tt>, <tt class="docutils literal"><span class="pre">plugin_b.py</span></tt>, and <tt class="docutils literal"><span class="pre">plugin_c.py</span></tt> and
+you did NOT set load_plugins, then PyBlosxom will load <tt class="docutils literal"><span class="pre">plugin_a</span></tt>
+followed by <tt class="docutils literal"><span class="pre">plugin_b</span></tt> followed by <tt class="docutils literal"><span class="pre">plugin_c</span></tt>.</p>
+<p>If you wanted PyBlosxom to load <tt class="docutils literal"><span class="pre">plugin_a</span></tt> and <tt class="docutils literal"><span class="pre">plugin_c</span></tt>, then you
+would set <tt class="docutils literal"><span class="pre">load_plugins</span></tt> to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;load_plugins&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;pluginA&quot;</span><span class="p">,</span> <span class="s">&quot;pluginC&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><tt class="docutils literal"><span class="pre">load_plugins</span></tt> should contain a list of strings where each string
+is a Python module&#8211;not a filename.  So don&#8217;t add the <tt class="docutils literal"><span class="pre">.py</span></tt> to
+the end of the module name!</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In general, it&#8217;s better to explicitly set <tt class="docutils literal"><span class="pre">load_plugins</span></tt> to the
+plugins you want to use.  This reduces the confusion about which
+plugins did what when you have problems.  It also reduces the
+potential for accidentally loading plugins you didn&#8217;t intend to
+load.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>PyBlosxom loads plugins in the order specified by <tt class="docutils literal"><span class="pre">load_plugins</span></tt>.
+This order also affects the order that callbacks are registered and
+later executed.  For example, if plugin_a and plugin_b both
+implement the handle callback and you load plugin_b first, then
+plugin_b will execute before plugin_a when the handle callback
+kicks off.</p>
+<p class="last">Usually this isn&#8217;t a big deal, however it&#8217;s possible that some
+plugins will want to have a chance to do things before other
+plugins.  This should be specified in the documentation that comes
+with those plugins.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Variables in config.py</a><ul>
+<li><a class="reference external" href="#summary">Summary</a></li>
+<li><a class="reference external" href="#configuration-variables">Configuration variables</a><ul>
+<li><a class="reference external" href="#base-url">base_url</a></li>
+<li><a class="reference external" href="#codebase">codebase</a></li>
+<li><a class="reference external" href="#datadir">datadir</a></li>
+<li><a class="reference external" href="#depth">depth</a></li>
+<li><a class="reference external" href="#flavourdir">flavourdir</a></li>
+<li><a class="reference external" href="#default-flavour">default_flavour</a></li>
+<li><a class="reference external" href="#ignore-directories">ignore_directories</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#blog-metadata-variables">Blog metadata variables</a><ul>
+<li><a class="reference external" href="#blog-author">blog_author</a></li>
+<li><a class="reference external" href="#blog-description">blog_description</a></li>
+<li><a class="reference external" href="#blog-email">blog_email</a></li>
+<li><a class="reference external" href="#blog-encoding">blog_encoding</a></li>
+<li><a class="reference external" href="#blog-language">blog_language</a></li>
+<li><a class="reference external" href="#blog-title">blog_title</a></li>
+<li><a class="reference external" href="#locale">locale</a></li>
+<li><a class="reference external" href="#log-file">log_file</a></li>
+<li><a class="reference external" href="#log-level">log_level</a></li>
+<li><a class="reference external" href="#log-filter">log_filter</a></li>
+<li><a class="reference external" href="#num-entries">num_entries</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#plugin-variables">Plugin variables</a><ul>
+<li><a class="reference external" href="#plugin-dirs">plugin_dirs</a></li>
+<li><a class="reference external" href="#load-plugins">load_plugins</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="deploy_staticrendering.html"
+                                  title="previous chapter">Deploy PyBlosxom with Static Rendering</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="writing_entries.html"
+                                  title="next chapter">Writing Entries</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/config_variables.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="writing_entries.html" title="Writing Entries"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="deploy_staticrendering.html" title="Deploy PyBlosxom with Static Rendering"
+             >previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Will Kahn-Greene.
+      Last updated on Jan 29, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

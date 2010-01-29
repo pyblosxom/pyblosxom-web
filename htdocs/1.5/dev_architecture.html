@@ -1,0 +1,793 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PyBlosxom Architecture &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="next" title="Writing Plugins" href="dev_writing_plugins.html" />
+    <link rel="prev" title="Plugins" href="plugins.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="dev_writing_plugins.html" title="Writing Plugins"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="plugins.html" title="Plugins"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pyblosxom-architecture">
+<h1>PyBlosxom Architecture<a class="headerlink" href="#pyblosxom-architecture" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>PyBlosxom uses the file system for data storage allowing you to use
+the text-based tools that you use for other parts of your workflow for
+your blog.</p>
+<p>PyBlosxom has a plugin system allowing users to augment and extend
+PyBlosxom&#8217;s behavior to meet their specific needs.</p>
+<p>This chapter covers PyBlosxom&#8217;s architecture.</p>
+<p>The code is fairly well documented and you should always consider the
+code to be the authority when the code and this manual are in
+disagreement.</p>
+</div>
+<div class="section" id="parts">
+<h2>Parts<a class="headerlink" href="#parts" title="Permalink to this headline">¶</a></h2>
+<p>PyBlosxom is composed of several parts:</p>
+<ol class="arabic">
+<li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> - This is the CGI script that is executed by your
+web-server, pulls in configuration variables from <tt class="docutils literal"><span class="pre">config.py</span></tt> and
+then instantiates PyBlosxom objects to handle the request.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">PyBlosxomWSGIApp</span></tt> - This is the WSGI application for PyBlosxom.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">Pyblosxom</span></tt> package - This is the Python package that holds the
+PyBlosxom objects and utility functions that handle the request.</p>
+<ol class="arabic">
+<li><p class="first">the <tt class="docutils literal"><span class="pre">entries</span></tt> package - Handles the abstraction allowing
+PyBlosxom to use entries other than those solely found on the
+file system.</p>
+</li>
+<li><p class="first">the <tt class="docutils literal"><span class="pre">renderers</span></tt> package - PyBlosxom can handle different
+renderers.  The renderer gets a list of entries to be rendered
+and can render them using whatever means it so desires: blosxom
+templates, htmltmpl templates, Cheetah templates, hard-coded RSS
+2.0 markup, ...</p>
+<p>PyBlosxom comes with two renderers: default and blosxom.</p>
+</li>
+<li><p class="first">the <tt class="docutils literal"><span class="pre">cache</span></tt> package - PyBlosxom allows for entry-level
+caching.  This helps in cases where your entries are stored in a
+format that requires a lot of processing to convert to HTML.</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>PyBlosxom&#8217;s behavior and output is then augmented by:</p>
+<ol class="arabic simple">
+<li>plugins - Plugins allow you to augment PyBlosxom&#8217;s default
+behavior.  These you can get from the plugin registry or write
+yourself.</li>
+<li>flavour templates - Flavour templates allow you to create the look
+and feel of your blog.  These you can get from the flavour registry
+or write yourself.</li>
+</ol>
+</div>
+<div class="section" id="lifecycle-of-a-pyblosxom-request">
+<h2>Lifecycle of a PyBlosxom Request<a class="headerlink" href="#lifecycle-of-a-pyblosxom-request" title="Permalink to this headline">¶</a></h2>
+<p>This is the life cycle of a single PyBlosxom CGI request. It involves
+the following &#8220;entities&#8221;:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> - A script found in the <tt class="docutils literal"><span class="pre">web/</span></tt> directory.  This
+is the CGI script that handles PyBlosxom requests.</li>
+<li><tt class="docutils literal"><span class="pre">config.py</span></tt> - The configuration file that defines the behavior and
+properties of your blog.</li>
+<li><tt class="docutils literal"><span class="pre">PyBlosxom.pyblosxom</span></tt> - The pyblosxom module holds the default
+PyBlosxom behavior functions. It also defines the Request class and
+the PyBlosxom class.</li>
+<li><tt class="docutils literal"><span class="pre">Pyblosxom.pyblosxom.Request</span></tt> - The Request object holds the state
+of the PyBlosxom request at any given time throughout the lifecycle
+of the request.  The Request object is passed to most callbacks in
+the args dict as <tt class="docutils literal"><span class="pre">request</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">Pyblosxom.pyblosxom.PyBlosxom</span></tt> - The PyBlosxom object holds a
+list of registered plugins, what callbacks they&#8217;re registered to,
+and the methods that handle the the actual request.</li>
+</ul>
+<p>The PyBlosxom request lifecycle starts with the web-server executing
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>.</p>
+<ol class="arabic">
+<li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> loads <tt class="docutils literal"><span class="pre">config.py</span></tt></p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> instantiates a Request object</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> instantiates a <tt class="docutils literal"><span class="pre">Pyblosxom.pyblosxom.PyBlosxom</span></tt>
+object passing it the Request object</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> calls <tt class="docutils literal"><span class="pre">run()</span></tt> on the PyBlosxom object</p>
+<ol class="arabic">
+<li><p class="first">PyBlosxom instance, run method: calls <tt class="docutils literal"><span class="pre">initialize</span></tt></p>
+<blockquote>
+<ol class="arabic simple">
+<li>PyBlosxom instance, <tt class="docutils literal"><span class="pre">initialize</span></tt> method: calls the entry
+parser callback to get a map of all the entry types
+PyBlosxom can handle</li>
+</ol>
+</blockquote>
+</li>
+<li><p class="first">PyBlosxom instance, <tt class="docutils literal"><span class="pre">run</span></tt> method: calls the start callback to
+allow plugins to do any initialization they need to do</p>
+</li>
+<li><p class="first">PyBlosxom instance, <tt class="docutils literal"><span class="pre">run</span></tt> method: calls the handle callback
+allowing plugins to handle the request</p>
+<p>If a plugin handles the request, the plugin should return a
+<tt class="docutils literal"><span class="pre">1</span></tt> signifying it has handled the request and PyBlosxom should
+stop.  FINISHED.</p>
+<p>If no plugin handles the request, then we continue using the
+<tt class="docutils literal"><span class="pre">blosxom_handler</span></tt>.</p>
+</li>
+<li><p class="first">PyBlosxom instance, <tt class="docutils literal"><span class="pre">run</span></tt> method: calls the end callback to
+allow plugins to do any cleanup they need to do.</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>FIXME - add lifecycle for long-running processes through WSGI&#8211;it&#8217;s
+slightly different.</p>
+</div>
+<div class="section" id="lifecycle-of-the-blosxom-handler">
+<h2>Lifecycle of the blosxom_handler<a class="headerlink" href="#lifecycle-of-the-blosxom-handler" title="Permalink to this headline">¶</a></h2>
+<p>This describes what the <tt class="docutils literal"><span class="pre">blosxom_handler</span></tt> does.  This is the default
+handler for PyBlosxom.  It&#8217;s called by the PyBlosxom instance in the
+run method if none of the plugins have handled the request already.</p>
+<ol class="arabic">
+<li><p class="first">Calls the <tt class="docutils literal"><span class="pre">renderer</span></tt> callback to get a renderer instance.</p>
+<p>If none of the plugins return a <tt class="docutils literal"><span class="pre">Renderer</span></tt> instance, then
+PyBlosxom checks to see if the <tt class="docutils literal"><span class="pre">renderer</span></tt> property is set in
+<tt class="docutils literal"><span class="pre">config.py</span></tt>.</p>
+<p>If there <tt class="docutils literal"><span class="pre">renderer</span></tt> is specified, PyBlosxom instantiates that.</p>
+<p>If there <tt class="docutils literal"><span class="pre">renderer</span></tt> is not specified, PyBlosxom uses the
+<tt class="docutils literal"><span class="pre">blosxom</span></tt> renderer in the <tt class="docutils literal"><span class="pre">renderer</span></tt> package.</p>
+</li>
+<li><p class="first">Calls the <tt class="docutils literal"><span class="pre">pathinfo</span></tt> callback which allows all plugins to help
+figure out what to do with the HTTP URI/QUERYSTRING that&#8217;s been
+requested.</p>
+</li>
+<li><p class="first">Calls the <tt class="docutils literal"><span class="pre">filelist</span></tt> callback which returns a list of entries to
+render based on what the pathinfo is.</p>
+</li>
+<li><p class="first">Calls the <tt class="docutils literal"><span class="pre">prepare</span></tt> callback which allows plugins to transform
+the entries and any other data in the <tt class="docutils literal"><span class="pre">Request</span></tt> object prior to
+rendering.</p>
+</li>
+<li><p class="first">Renders the entries.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="lifecycle-of-the-blosxom-renderer">
+<h2>Lifecycle of the blosxom renderer<a class="headerlink" href="#lifecycle-of-the-blosxom-renderer" title="Permalink to this headline">¶</a></h2>
+<p>The blosxom renderer renders the entries in a similar fashion to what
+Blosxom does.  The blosxom renderer uses flavour templates and
+template variables.  It also has a series of callbacks allowing
+plugins to modify templates and entry data at the time of rendering
+that specific piece.</p>
+<ol class="arabic simple">
+<li>Renders the <tt class="docutils literal"><span class="pre">content_type</span></tt> template.</li>
+<li>Calls the <tt class="docutils literal"><span class="pre">head</span></tt> callback and then renders the <tt class="docutils literal"><span class="pre">head</span></tt> template.</li>
+<li>Calls the <tt class="docutils literal"><span class="pre">date_head</span></tt> callback and renders the <tt class="docutils literal"><span class="pre">date_head</span></tt>
+template.</li>
+<li>For each entry:<ol class="arabic">
+<li>If the date of this entry&#8217;s mtime is different than the last
+entry, call the <tt class="docutils literal"><span class="pre">date_foot</span></tt> callback and render the
+<tt class="docutils literal"><span class="pre">date_foot</span></tt> template.  Then call the <tt class="docutils literal"><span class="pre">date_head</span></tt> callback
+and render the <tt class="docutils literal"><span class="pre">date_head</span></tt> template.</li>
+<li>Call the <tt class="docutils literal"><span class="pre">story</span></tt> callback and render the <tt class="docutils literal"><span class="pre">story</span></tt> template.</li>
+</ol>
+</li>
+<li>Call the <tt class="docutils literal"><span class="pre">date_foot</span></tt> callback and render the <tt class="docutils literal"><span class="pre">date_foot</span></tt>
+template.</li>
+<li>Call the <tt class="docutils literal"><span class="pre">foot</span></tt> callback and render the <tt class="docutils literal"><span class="pre">foot</span></tt> template.</li>
+</ol>
+</div>
+<div class="section" id="about-callbacks">
+<h2>About Callbacks<a class="headerlink" href="#about-callbacks" title="Permalink to this headline">¶</a></h2>
+<p>Callbacks allow plugins to override behavior in PyBlosxom or provide
+additional behavior.  The callback mechanism actually encompasses a
+series of different functions.  Callbacks can act as handlers, as
+notifiers, and also as modifiers.</p>
+<div class="section" id="types-of-callbacks">
+<h3>Types of callbacks<a class="headerlink" href="#types-of-callbacks" title="Permalink to this headline">¶</a></h3>
+<p>In the case of handler callbacks, PyBlosxom will query each plugin
+implementing the callback until one of the plugins returns that it has
+handled the callback.  At that point, execution of handling code
+stops.  If none of the plugins handle the callback, then PyBlosxom
+will run its default behavior code.</p>
+<p>In the case of notifier callbacks, PyBlosxom will notify each plugin
+implementing the callback regardless of return values.</p>
+<p>In the case of modifier callbacks, PyBlosxom will query each plugin
+implementing the callback passing in some input.  It takes the output
+from the callback function and passes that in as input to the next
+callback function.  In this way, each plugin has a chance to modify
+and transform the data.</p>
+<p>There&#8217;s no reason you can&#8217;t implement a handler-type callback and use
+it for notification purposes&#8211;that&#8217;s fine.  You should know that in
+the case of handler callbacks and modifier callbacks, the return value
+that your plugin gives will affect PyBlosxom&#8217;s execution.</p>
+</div>
+<div class="section" id="callbacks-that-have-blosxom-equivalents">
+<h3>Callbacks that have blosxom equivalents<a class="headerlink" href="#callbacks-that-have-blosxom-equivalents" title="Permalink to this headline">¶</a></h3>
+<p>There are a series of callbacks in PyBlosxom that have equivalents in
+blosxom 2.0.  The names are sometimes different and in most cases the
+arguments the PyBlosxom versions take are different than the blosxom
+2.0 versions.  Even so, the PyBlosxom versions serve the same purpose
+as the blosxom 2.0 versions.</p>
+<p>This isn&#8217;t very interesting unless you&#8217;re trying to implement the
+functionality of a blosxom 2.0 plugin in Python for PyBlosxom.</p>
+<p>The available blosxom renderer callbacks are:</p>
+<ul class="simple">
+<li>cb_head - corresponds to blosxom 2.0 head</li>
+<li>cb_date_head - corresponds to blosxom 2.0 date</li>
+<li>cb_story - corresponds to blosxom 2.0 story</li>
+<li>cb_foot - corresponds to blosoxm 2.0 foot</li>
+</ul>
+<p>Additionally, we have these lifecycle callbacks available:</p>
+<ul class="simple">
+<li>the blosxom 2.0 entries callback is handled by cb_filelist</li>
+<li>the blosxom 2.0 filter callback is handled by cb_prepare</li>
+<li>the blosxom 2.0 sort callback can sort of be handled by cb_prepare
+depending on what you&#8217;re trying to do</li>
+</ul>
+</div>
+</div>
+<div class="section" id="callbacks">
+<h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cb-prepare">
+<h3>cb_prepare<a class="headerlink" href="#cb-prepare" title="Permalink to this headline">¶</a></h3>
+<p>The prepare callback is called in the default blosxom handler after
+we&#8217;ve figured out what we&#8217;re rendering and before we actually go to
+the renderer.</p>
+<p>Plugins should implement <tt class="docutils literal"><span class="pre">cb_prepare</span></tt> to modify the data dict which
+is in the Request.  Inside the data dict is <tt class="docutils literal"><span class="pre">entry_list</span></tt> (amongst
+other things) which holds the list of entries to be renderered (in the
+order they will be rendered).</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+</dl>
+<p>Functions that implement this callback can return whatever they
+want&#8211;it doesn&#8217;t affect the callback chain.</p>
+<p>Example of a <tt class="docutils literal"><span class="pre">cb_prepare</span></tt> function in a plugin:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_prepare</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This plugin shows the number of entries we are going to render and</span>
+<span class="sd">    place the result in $entrycount</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&#39;request&#39;</span><span class="p">]</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_configuration</span><span class="p">()</span>
+
+    <span class="c"># Can anyone say Ternary? :)</span>
+    <span class="n">IF</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span><span class="p">()</span> <span class="ow">and</span> <span class="p">[</span><span class="n">b</span><span class="p">()]</span> <span class="ow">or</span> <span class="p">[</span><span class="n">c</span><span class="p">()])[</span><span class="mf">0</span><span class="p">]</span>
+
+    <span class="n">num_entry</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s">&#39;num_entries&#39;</span><span class="p">]</span>
+    <span class="n">entries</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;entry_list&#39;</span><span class="p">])</span>
+
+    <span class="n">data</span><span class="p">[</span><span class="s">&#39;entrycount&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">IF</span><span class="p">(</span><span class="n">num_entry</span> <span class="o">&gt;</span> <span class="n">entries</span><span class="p">,</span> <span class="n">num_entry</span><span class="p">,</span> <span class="n">entries</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cb-logrequest">
+<h3>cb_logrequest<a class="headerlink" href="#cb-logrequest" title="Permalink to this headline">¶</a></h3>
+<p>The logrequest callback is used to notify plugins of the current
+PyBlosxom request for the purposes of logging.</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">filename</span></tt></dt>
+<dd>a filename; typically a base filename</dd>
+<dt><tt class="docutils literal"><span class="pre">return_code</span></tt></dt>
+<dd>an HTTP error code (e.g. 200, 404, 304, ...)</dd>
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+</dl>
+<p>Functions that implement this callback can return whatever they
+want&#8211;it doesn&#8217;t affect the callback chain.</p>
+<p><tt class="docutils literal"><span class="pre">cb_logrequest</span></tt> is called after rendering and will contain all the
+modifications to the Request object made by the plugins.</p>
+<p>An example input args dict is like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;filename&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span> <span class="s">&#39;return_code&#39;</span><span class="p">:</span> <span class="s">&#39;200&#39;</span><span class="p">,</span> <span class="s">&#39;request&#39;</span><span class="p">:</span> <span class="n">Request</span><span class="p">()}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cb-filelist">
+<h3>cb_filelist<a class="headerlink" href="#cb-filelist" title="Permalink to this headline">¶</a></h3>
+<p>The filelist callback allows plugins to generate the list of entries
+to be rendered.  Entries should be EntryBase derivatives&#8211;either by
+instantiating EntryBase, FileEntry, or creating your own EntryBase
+subclass.</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+</dl>
+<p>Functions that implement this callback should return <tt class="xref docutils literal"><span class="pre">None</span></tt> if they
+don&#8217;t plan on generating the entry list or a list of entries.  if they
+do.  When a function returns <tt class="xref docutils literal"><span class="pre">None</span></tt>, the callback will continue to
+the next function to see if it will return a list of entries.  When a
+function returns a list of entries, the callback will stop.</p>
+</div>
+<div class="section" id="cb-filestat">
+<h3>cb_filestat<a class="headerlink" href="#cb-filestat" title="Permalink to this headline">¶</a></h3>
+<p>The filestat callback allows plugins to provide mtimes for entries.
+Plugins may use this to override the mtime stored in the filesystem.
+For example, one of the contributed plugins uses this to set the mtime
+to the time specified in the entry&#8217;s filename.</p>
+<p>Plugins may also use this to provide a cheaper alternative to
+filesystem stat calls&#8211;a notorious performance drag.  The
+hardcodedates plugin, for example, stores mtimes in a file: it reads
+the file once at startup then returns mtimes from its in-memory
+database.</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">filename</span></tt></dt>
+<dd>the filename of the entry</dd>
+<dt><tt class="docutils literal"><span class="pre">mtime</span></tt></dt>
+<dd>the result of an <tt class="docutils literal"><span class="pre">os.stat</span></tt> on the filename of the entry</dd>
+</dl>
+<p>Functions that implement this callback must return the input args dict
+whether or not they adjust anything in it.  The callback chain will
+stop as soon as a callback modifies mtime.  If no plugin handles the
+callback, PyBlosxom will fall back to calling <tt class="docutils literal"><span class="pre">os.stat()</span></tt>.</p>
+</div>
+<div class="section" id="cb-pathinfo">
+<h3>cb_pathinfo<a class="headerlink" href="#cb-pathinfo" title="Permalink to this headline">¶</a></h3>
+<p>The pathinfo callback allows plugins to parse the HTTP <tt class="docutils literal"><span class="pre">PATH_INFO</span></tt>
+item.  This item is stored in the http dict of the Request object.
+Functions would parse this as they desire, then set the following
+variables in the data dict of the Request object:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">bl_type</span></tt></dt>
+<dd><tt class="docutils literal"><span class="pre">dir</span></tt> or <tt class="docutils literal"><span class="pre">file</span></tt></dd>
+<dt><tt class="docutils literal"><span class="pre">pi_bl</span></tt></dt>
+<dd>typically the same as <tt class="docutils literal"><span class="pre">PATHINFO</span></tt></dd>
+<dt><tt class="docutils literal"><span class="pre">pi_yr</span></tt></dt>
+<dd>the year in yyyy format</dd>
+<dt><tt class="docutils literal"><span class="pre">pi_mo</span></tt></dt>
+<dd>the month in mm or mmm format (e.g. 02, Jan, Feb, ...)</dd>
+<dt><tt class="docutils literal"><span class="pre">pi_da</span></tt></dt>
+<dd>the day of the month in dd format</dd>
+<dt><tt class="docutils literal"><span class="pre">root_datadir</span></tt></dt>
+<dd>full path to the entry folder or entry file on the file system</dd>
+<dt><tt class="docutils literal"><span class="pre">flavour</span></tt></dt>
+<dd>the flavour gathered from this URL</dd>
+</dl>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+</dl>
+<p>Functions that implement this callback should make the modifications
+to the data dict in place&#8211;no need to return anything.</p>
+</div>
+<div class="section" id="cb-commandline">
+<h3>cb_commandline<a class="headerlink" href="#cb-commandline" title="Permalink to this headline">¶</a></h3>
+<p>The commandline callback allows plugins to implement additional
+<tt class="docutils literal"><span class="pre">pyblosxom-cmd</span></tt> commands.  This allows a plugin to expose
+maintenance and setup functionality to the user at the command line or
+through cron.</p>
+<p>For example. if you wrote a plugin that built an map of tags to
+entries that used that tag, you&#8217;d probably want to write a command
+that updates the index which the user could create a cron job for.</p>
+<p>The <tt class="docutils literal"><span class="pre">cb_commandline</span></tt> function takes a single <tt class="docutils literal"><span class="pre">args</span></tt> argument
+which is a map of command -&gt; tuple of handler and help text.  It
+then returns the args dict.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_commandline</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">args</span><span class="p">[</span><span class="s">&quot;printargs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">printargs</span><span class="p">,</span> <span class="s">&quot;prints command line arguments&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="dev_writing_plugins.html#writing-a-command"><em>Writing a plugin that adds a commandline command</em></a> for more details.</p>
+</div>
+<div class="section" id="cb-renderer">
+<h3>cb_renderer<a class="headerlink" href="#cb-renderer" title="Permalink to this headline">¶</a></h3>
+<p>The renderer callback allows plugins to specify a renderer to use by
+returning a renderer instance to use.  If no renderer is specified, we
+use the default blosxom renderer.</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+</dl>
+<p>Functions that implement this callback should return None if they
+don&#8217;t want to specify a renderer or the renderer object instanct if
+they do.  When a function returns a renderer instance, processing
+stops.</p>
+</div>
+<div class="section" id="cb-entryparser">
+<h3>cb_entryparser<a class="headerlink" href="#cb-entryparser" title="Permalink to this headline">¶</a></h3>
+<p>The entryparser callback allows plugins to register the entryparsers
+they have.  Entry parsers are linked with a filename extension.  For
+example, the default blosxom text entry parser will be used for any
+file ending in <tt class="docutils literal"><span class="pre">.txt</span></tt>.</p>
+<p>Functions that implement this callback will get the entryparser dict
+consisting of file extension -&gt; entry parsing function pairs.</p>
+<p>Functions that implement this callback should return the entryparser
+dict after modifying it.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_entryparser</span><span class="p">(</span><span class="n">entryparsingdict</span><span class="p">):</span>
+    <span class="n">entryparsingdict</span><span class="p">[</span><span class="s">&quot;txtl&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">txtl_parse</span>
+    <span class="k">return</span> <span class="n">entryparsingdict</span>
+</pre></div>
+</div>
+<p>Then the plugin would define <tt class="docutils literal"><span class="pre">txtl_parse</span></tt> which takes a filename
+and a Request and returns an entrydata dict with <tt class="docutils literal"><span class="pre">title</span></tt> and
+<tt class="docutils literal"><span class="pre">body</span></tt> (or whatever the templates need to render this entry).</p>
+<p>See <a class="reference external" href="dev_writing_plugins.html#writing-an-entryparser"><em>Writing an entryparser</em></a>.</p>
+</div>
+<div class="section" id="cb-preformat">
+<h3>cb_preformat<a class="headerlink" href="#cb-preformat" title="Permalink to this headline">¶</a></h3>
+<p>The preformat callback acts in conjunction with the entryparser that
+handled the entry to do a two-pass formatting of the entry.</p>
+<p>Functions that implement <tt class="docutils literal"><span class="pre">cb_preformat</span></tt> are text transformation
+tools.  Once one of them returns a transformed entry, then we stop
+processing.</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">parser</span></tt></dt>
+<dd>a string that indicates whether a preformatter should run</dd>
+<dt><tt class="docutils literal"><span class="pre">story</span></tt></dt>
+<dd>the list of lines of the blog post with <tt class="docutils literal"><span class="pre">\n</span></tt> included</dd>
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+</dl>
+<p>Functions that implement this callback should return None if they
+didn&#8217;t modify the story or a single story string.</p>
+<p>See <a class="reference external" href="dev_writing_plugins.html#writing-a-preformatter"><em>Writing a preformatter plugin</em></a>.</p>
+</div>
+<div class="section" id="cb-postformat">
+<h3>cb_postformat<a class="headerlink" href="#cb-postformat" title="Permalink to this headline">¶</a></h3>
+<p>The postformat callback allows plugins to make further modifications
+to entry text.  It typically gets called after a preformatter by the
+entryparser.  It can also be used to add additional properties to
+entries.  The changes from postformat functions are saved in the cache
+(if the user has caching enabled).  As such, this shouldn&#8217;t be used
+for dynamic data like comment counts.</p>
+<p>Examples of usage:</p>
+<ul class="simple">
+<li>adding a word count property to the entry</li>
+<li>using a macro replacement plugin (Radio Userland glossary)</li>
+<li>acronym expansion</li>
+<li>a &#8216;more&#8217; text processor</li>
+<li>...</li>
+</ul>
+<p>Functions that implement this callback will get an args dict containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">entry_data</span></tt></dt>
+<dd>a dict that minimally contains <tt class="docutils literal"><span class="pre">title</span></tt> and <tt class="docutils literal"><span class="pre">story</span></tt></dd>
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+</dl>
+<p>Functions that implement this callback don&#8217;t need to return
+anything&#8211;modifications to the <tt class="docutils literal"><span class="pre">entry_data</span></tt> dict are done in place.</p>
+<p>See <a class="reference external" href="dev_writing_plugins.html#writing-a-postformatter"><em>Writing a postformatter plugin</em></a>.</p>
+</div>
+<div class="section" id="cb-start">
+<h3>cb_start<a class="headerlink" href="#cb-start" title="Permalink to this headline">¶</a></h3>
+<p>The start callback allows plugins to execute startup/initialization
+code.  Use this callback for any setup code that your plugin needs,
+like:</p>
+<ul class="simple">
+<li>reading saved data from a file</li>
+<li>checking to make sure configuration variables are set</li>
+<li>allocating resources</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><tt class="docutils literal"><span class="pre">cb_start</span></tt> is different in PyBlosxom than in blosxom.</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">cb_start</span></tt> callback is slightly different than in blosxom in
+that <tt class="docutils literal"><span class="pre">cb_start</span></tt> is called for every PyBlosxom request regardless
+of whether it&#8217;s handled by the default blosxom handler.  In
+general, it&#8217;s better to delay allocating resources until you
+absolutely know you are going to use them.</p>
+</div>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+</dl>
+<p>Functions that implement this callback don&#8217;t need to return anything.</p>
+</div>
+<div class="section" id="cb-end">
+<h3>cb_end<a class="headerlink" href="#cb-end" title="Permalink to this headline">¶</a></h3>
+<p>The start callback allows plugins to execute teardown/cleanup code,
+save any data that hasn&#8217;t been saved, clean up temporary files, and
+otherwise return the system to a normal state.</p>
+<p>Examples of usage:</p>
+<ul class="simple">
+<li>save data to a file</li>
+<li>clean up any temporary files</li>
+<li>...</li>
+</ul>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+</dl>
+<p>Functions that implement this callback don&#8217;t need to return anything.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><tt class="docutils literal"><span class="pre">cb_end</span></tt> is different in PyBlosxom than in blosxom</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">cb_end</span></tt> callback is called for every PyBlosxom request
+regardless of whether it&#8217;s handled by the default blosxom handler
+or not.  This is slightly different than blosxom.</p>
+</div>
+</div>
+<div class="section" id="cb-head">
+<h3>cb_head<a class="headerlink" href="#cb-head" title="Permalink to this headline">¶</a></h3>
+<p>The head callback is called before a head flavour template is
+rendered.</p>
+<p><tt class="docutils literal"><span class="pre">cb_head</span></tt> is called before the variables in the entry are
+substituted into the template.  This is the place to modify the head
+template based on the entry content.  You can also set variables on
+the entry that will be used by the <tt class="docutils literal"><span class="pre">cb_story</span></tt> or <tt class="docutils literal"><span class="pre">cb_foot</span></tt>
+templates.  You have access to all the content variables via entry.</p>
+<p>Blosxom 2.0 calls this callback <tt class="docutils literal"><span class="pre">head</span></tt>.</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+<dt><tt class="docutils literal"><span class="pre">renderer</span></tt></dt>
+<dd>the <tt class="docutils literal"><span class="pre">BlosxomRenderer</span></tt> instance that called the callback</dd>
+<dt><tt class="docutils literal"><span class="pre">entry</span></tt></dt>
+<dd>the entry to be rendered</dd>
+<dt><tt class="docutils literal"><span class="pre">template</span></tt></dt>
+<dd>a string containing the flavour template to be processed</dd>
+</dl>
+<p>Functions that implement this callback must return the input args dict
+whether or not they adjust anything in it.</p>
+<p>Example in which we add the number of entries being rendered to the
+<tt class="docutils literal"><span class="pre">$blog_title</span></tt> variable:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_head</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&quot;request&quot;</span><span class="p">]</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_configuration</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+
+    <span class="n">num_entries</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;entry_list&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+    <span class="n">bt</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;blog_title&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">config</span><span class="p">[</span><span class="s">&quot;blog_title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bt</span> <span class="o">+</span> <span class="s">&quot;: </span><span class="si">%d</span><span class="s"> entries&quot;</span> <span class="o">%</span> <span class="n">num_entries</span>
+
+    <span class="k">return</span> <span class="n">args</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cb-date-head">
+<h3>cb_date_head<a class="headerlink" href="#cb-date-head" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">date_head</span></tt> callback is called before a <tt class="docutils literal"><span class="pre">date_head</span></tt> flavour
+template is rendered.</p>
+<p><tt class="docutils literal"><span class="pre">cb_date_head</span></tt> is called before the variables in the entry are
+substituted into the template.  This is the place to modify the
+<tt class="docutils literal"><span class="pre">date_head</span></tt> template based on the entry content.  You have access to
+all the content variables via entry.</p>
+<p>Blosxom 2.0 calls this callback <tt class="docutils literal"><span class="pre">date</span></tt>.</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+<dt><tt class="docutils literal"><span class="pre">renderer</span></tt></dt>
+<dd>the <tt class="docutils literal"><span class="pre">BlosxomRenderer</span></tt> instance that called the callback</dd>
+<dt><tt class="docutils literal"><span class="pre">entry</span></tt></dt>
+<dd>the entry to be rendered</dd>
+<dt><tt class="docutils literal"><span class="pre">template</span></tt></dt>
+<dd>a string containing the flavour template to be processed</dd>
+</dl>
+<p>Functions that implement this callback must return the input args dict
+whether or not they adjust anything in it.</p>
+</div>
+<div class="section" id="cb-story">
+<h3>cb_story<a class="headerlink" href="#cb-story" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">story</span></tt> callback gets called before the entry is rendered.</p>
+<p>The template used is typically the <tt class="docutils literal"><span class="pre">story</span></tt> template, but we allow
+entries to override this if they have a <tt class="docutils literal"><span class="pre">template</span></tt> property.  If
+they have the <tt class="docutils literal"><span class="pre">template</span></tt> property, then we&#8217;ll use the template of
+that name instead.</p>
+<p><tt class="docutils literal"><span class="pre">cb_story</span></tt> is called before the variables in the entry are
+substituted into the template.  This is the place to modify the
+<tt class="docutils literal"><span class="pre">story</span></tt> template based on the entry content.  You have access to all
+the content variables via entry.</p>
+<p>Blosxom 2.0 calls this callback <tt class="docutils literal"><span class="pre">story</span></tt>.</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+<dt><tt class="docutils literal"><span class="pre">renderer</span></tt></dt>
+<dd>the <tt class="docutils literal"><span class="pre">BlosxomRenderer</span></tt> that called the callback</dd>
+<dt><tt class="docutils literal"><span class="pre">entry</span></tt></dt>
+<dd>the entry to be rendered</dd>
+<dt><tt class="docutils literal"><span class="pre">template</span></tt></dt>
+<dd>a string containing the flavour template to be processed</dd>
+</dl>
+<p>Functions that implement this callback must return the input args dict
+whether or not they adjust anything in it.</p>
+</div>
+<div class="section" id="cb-story-end">
+<h3>cb_story_end<a class="headerlink" href="#cb-story-end" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">story_end</span></tt> callback is is called after the variables in the
+entry are substituted into the template.  You have access to all the
+content variables via entry.</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+<dt><tt class="docutils literal"><span class="pre">renderer</span></tt></dt>
+<dd>the <tt class="docutils literal"><span class="pre">BlosxomRenderer</span></tt> instance that called the callback</dd>
+<dt><tt class="docutils literal"><span class="pre">entry</span></tt></dt>
+<dd>the entry object to be rendered</dd>
+<dt><tt class="docutils literal"><span class="pre">template</span></tt></dt>
+<dd>a string containing the flavour template to be processed</dd>
+</dl>
+<p>Functions that implement this callback must return the input args dict
+whether or not they adjust anything in it.</p>
+</div>
+<div class="section" id="cb-foot">
+<h3>cb_foot<a class="headerlink" href="#cb-foot" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">foot</span></tt> callback is called before the variables in the entry are
+substituted into the foot template.  This is the place to modify the
+<tt class="docutils literal"><span class="pre">foot</span></tt> template based on the entry content.  You have access to all
+the content variables via entry.</p>
+<p>Blosxom 2.0 calls this callback <tt class="docutils literal"><span class="pre">foot</span></tt>.</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a Request object</dd>
+<dt><tt class="docutils literal"><span class="pre">renderer</span></tt></dt>
+<dd>the <tt class="docutils literal"><span class="pre">BlosxomRenderer</span></tt> instance that called the callback</dd>
+<dt><tt class="docutils literal"><span class="pre">entry</span></tt></dt>
+<dd>the entry to be rendered</dd>
+<dt><tt class="docutils literal"><span class="pre">template</span></tt></dt>
+<dd>a string containing the flavour template to be processed</dd>
+</dl>
+<p>Functions that implement this callback must return the input args dict
+whether or not they adjust anything in it.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">PyBlosxom Architecture</a><ul>
+<li><a class="reference external" href="#summary">Summary</a></li>
+<li><a class="reference external" href="#parts">Parts</a></li>
+<li><a class="reference external" href="#lifecycle-of-a-pyblosxom-request">Lifecycle of a PyBlosxom Request</a></li>
+<li><a class="reference external" href="#lifecycle-of-the-blosxom-handler">Lifecycle of the blosxom_handler</a></li>
+<li><a class="reference external" href="#lifecycle-of-the-blosxom-renderer">Lifecycle of the blosxom renderer</a></li>
+<li><a class="reference external" href="#about-callbacks">About Callbacks</a><ul>
+<li><a class="reference external" href="#types-of-callbacks">Types of callbacks</a></li>
+<li><a class="reference external" href="#callbacks-that-have-blosxom-equivalents">Callbacks that have blosxom equivalents</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#callbacks">Callbacks</a><ul>
+<li><a class="reference external" href="#cb-prepare">cb_prepare</a></li>
+<li><a class="reference external" href="#cb-logrequest">cb_logrequest</a></li>
+<li><a class="reference external" href="#cb-filelist">cb_filelist</a></li>
+<li><a class="reference external" href="#cb-filestat">cb_filestat</a></li>
+<li><a class="reference external" href="#cb-pathinfo">cb_pathinfo</a></li>
+<li><a class="reference external" href="#cb-commandline">cb_commandline</a></li>
+<li><a class="reference external" href="#cb-renderer">cb_renderer</a></li>
+<li><a class="reference external" href="#cb-entryparser">cb_entryparser</a></li>
+<li><a class="reference external" href="#cb-preformat">cb_preformat</a></li>
+<li><a class="reference external" href="#cb-postformat">cb_postformat</a></li>
+<li><a class="reference external" href="#cb-start">cb_start</a></li>
+<li><a class="reference external" href="#cb-end">cb_end</a></li>
+<li><a class="reference external" href="#cb-head">cb_head</a></li>
+<li><a class="reference external" href="#cb-date-head">cb_date_head</a></li>
+<li><a class="reference external" href="#cb-story">cb_story</a></li>
+<li><a class="reference external" href="#cb-story-end">cb_story_end</a></li>
+<li><a class="reference external" href="#cb-foot">cb_foot</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="plugins.html"
+                                  title="previous chapter">Plugins</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="dev_writing_plugins.html"
+                                  title="next chapter">Writing Plugins</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/dev_architecture.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dev_writing_plugins.html" title="Writing Plugins"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="plugins.html" title="Plugins"
+             >previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Will Kahn-Greene.
+      Last updated on Jan 29, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

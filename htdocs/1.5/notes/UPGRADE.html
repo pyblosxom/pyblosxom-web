@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Upgrading PyBlosxom &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="../index.html" />
+    <link rel="next" title="Deploying PyBlosxom with CGI" href="../deploy_cgi.html" />
+    <link rel="prev" title="Installing PyBlosxom" href="INSTALL.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="../deploy_cgi.html" title="Deploying PyBlosxom with CGI"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="INSTALL.html" title="Installing PyBlosxom"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="upgrading-pyblosxom">
+<h1>Upgrading PyBlosxom<a class="headerlink" href="#upgrading-pyblosxom" title="Permalink to this headline">¶</a></h1>
+<p>This walks through upgrading PyBlosxom from a previous version.</p>
+<div class="section" id="before-upgrading">
+<h2>Before upgrading<a class="headerlink" href="#before-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>First, read through the changelog which includes pointers to users and
+plugin developers regarding changes between older versions and newer
+versions.</p>
+<p>The changelog is in the <tt class="docutils literal"><span class="pre">CHANGELOG</span></tt> file.</p>
+<p>If you&#8217;re reading this online, the changelog is <a class="reference external" href="CHANGELOG.html#id1"><em>here</em></a>.</p>
+<p>To be safe, install PyBlosxom locally and test your blog configuration
+and plugins to make sure everything works with the new version.</p>
+</div>
+<div class="section" id="system-wide-upgrade">
+<h2>System-wide upgrade<a class="headerlink" href="#system-wide-upgrade" title="Permalink to this headline">¶</a></h2>
+<p>At the command line, type:</p>
+<div class="highlight-python"><pre>easy_install -U pyblosxom</pre>
+</div>
+</div>
+<div class="section" id="individual-upgrade">
+<h2>Individual upgrade<a class="headerlink" href="#individual-upgrade" title="Permalink to this headline">¶</a></h2>
+<p>Download the new PyBlosxom <tt class="docutils literal"><span class="pre">.tar.gz</span></tt> file, extract it and point your
+scripts to the directory of the new version.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Upgrading PyBlosxom</a><ul>
+<li><a class="reference external" href="#before-upgrading">Before upgrading</a></li>
+<li><a class="reference external" href="#system-wide-upgrade">System-wide upgrade</a></li>
+<li><a class="reference external" href="#individual-upgrade">Individual upgrade</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="INSTALL.html"
+                                  title="previous chapter">Installing PyBlosxom</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="../deploy_cgi.html"
+                                  title="next chapter">Deploying PyBlosxom with CGI</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/notes/UPGRADE.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../deploy_cgi.html" title="Deploying PyBlosxom with CGI"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="INSTALL.html" title="Installing PyBlosxom"
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Will Kahn-Greene.
+      Last updated on Jan 29, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Deploying PyBlosxom with CGI &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="next" title="Deploying PyBlosxom with Paste" href="deploy_paste.html" />
+    <link rel="prev" title="Upgrading PyBlosxom" href="notes/UPGRADE.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="deploy_paste.html" title="Deploying PyBlosxom with Paste"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="notes/UPGRADE.html" title="Upgrading PyBlosxom"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="deploying-pyblosxom-with-cgi">
+<h1>Deploying PyBlosxom with CGI<a class="headerlink" href="#deploying-pyblosxom-with-cgi" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>You need a server that can do CGI and you need to know how to run CGI
+scripts with the correct permissions on your server.</p>
+</div>
+<div class="section" id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
+<p>Copy the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> file into your CGI directory.</p>
+<p>Edit the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> file.</p>
+<p>The top of the file looks something like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+
+<span class="c"># -u turns off character translation to allow transmission</span>
+<span class="c"># of gzip compressed content on Windows and OS/2</span>
+<span class="c">#!/path/to/python -u</span>
+
+<span class="c"># Uncomment this if something goes wrong (for debugging)</span>
+<span class="c">#import cgitb; cgitb.enable()</span>
+
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+
+<span class="c"># Uncomment this line to add the directory your config.py file is in to the</span>
+<span class="c"># python path:</span>
+<span class="c">#sys.path.append(&quot;/path/to/directory/&quot;)</span>
+</pre></div>
+</div>
+<p>Uncomment the <tt class="docutils literal"><span class="pre">import</span> <span class="pre">cgitb;</span> <span class="pre">cgitb.enable()</span></tt> line to help you get
+PyBlosxom working.</p>
+<p>Uncomment the <tt class="docutils literal"><span class="pre">sys.path.append(&quot;/path/to/directory/&quot;)</span></tt> line and
+make sure the path being appended is the directory that your <tt class="docutils literal"><span class="pre">config.py</span></tt>
+file is in.</p>
+<p>Make sure the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> file has the correct permissions and
+ownership for running a CGI script in this directory.</p>
+<p>Make sure your blog directory has the correct permissions for being
+read by the process executing your CGI script.</p>
+<p>Run your <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> script by doing:</p>
+<div class="highlight-python"><pre>% ./pyblosxom.cgi test</pre>
+</div>
+<p>If that doesn&#8217;t work, double-check to make sure you&#8217;ve completed the
+above steps, then check the trouble-shooting section, then ask for
+help on IRC or the users mailing list.  More details in
+<a class="reference external" href="about_pyblosxom.html#project-details-and-contact"><em>Project details, contact information, and where to go for help</em></a>.</p>
+<p>If that works, then try to run the CGI script from your web-browser.
+The url is dependent on where you put the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> script and
+how CGI works on your web-server.</p>
+<p>If that works, then make sure to comment out the cgitb line in your
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> script.</p>
+</div>
+<div class="section" id="trouble-shooting">
+<h2>Trouble-shooting<a class="headerlink" href="#trouble-shooting" title="Permalink to this headline">¶</a></h2>
+<p>We&#8217;re going to try to break this down a bit into categories. Bear with
+us and keep trying things. If you have problems and have gone through
+this section to no avail, then come talk to us on the pyblosxom-user
+list or on IRC.  Details of the mailing list are located at our
+contact page.</p>
+<div class="section" id="running-pyblosxom-cgi-doesn-t-work">
+<h3>Running ./pyblosxom.cgi doesn&#8217;t work<a class="headerlink" href="#running-pyblosxom-cgi-doesn-t-work" title="Permalink to this headline">¶</a></h3>
+<p>First, you should check to see if you have Python installed on your
+system.  If not, then please install Python.</p>
+<p>If Python is installed on your system, make sure the first line in
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> points to your Python interpreter.  If not, fix
+that and try running <tt class="docutils literal"><span class="pre">./pyblosxom.cgi</span></tt> again.</p>
+<p>If Python is installed on your system and the first line of
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> is correct, check for permissions issues:
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> is a script&#8211;so it needs execute permission in order
+to function.  If those aren&#8217;t set, then fix that and try running
+<tt class="docutils literal"><span class="pre">./pyblosxom.cgi</span></tt> again.</p>
+<p>Check the error logs for your web-server.</p>
+</div>
+<div class="section" id="i-see-a-http-404-error-when-i-try-to-bring-up-my-blog">
+<h3>I see a HTTP 404 error when I try to bring up my blog<a class="headerlink" href="#i-see-a-http-404-error-when-i-try-to-bring-up-my-blog" title="Permalink to this headline">¶</a></h3>
+<p>When you try to look at your blog and you get a HTTP 404 error, then
+you&#8217;re using the wrong URL.  Are you futzing with <tt class="docutils literal"><span class="pre">.htaccess</span></tt>?
+Does your server allow you to run CGI scripts?  Do other CGI scripts
+in this directory work?  Does the URL you&#8217;re trying to use to access
+PyBlosxom look like other URLs that work on your system?</p>
+</div>
+<div class="section" id="i-see-a-http-500-error-when-i-try-to-bring-up-my-blog">
+<h3>I see a HTTP 500 error when I try to bring up my blog<a class="headerlink" href="#i-see-a-http-500-error-when-i-try-to-bring-up-my-blog" title="Permalink to this headline">¶</a></h3>
+<p>At this point, running <tt class="docutils literal"><span class="pre">./pyblosxom.cgi</span></tt> at the command prompt
+should work fine.  If you haven&#8217;t done that and you&#8217;re busy
+trouble-shooting, go back and review the deployment instructions.</p>
+<p>When you try to look at your blog in a web-browser and get a HTTP 500
+error, the first thing you should do is uncomment the line in
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> (remove the # at the beginning of the line)
+that looks like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#import cgitb; cgitb.enable()</span>
+</pre></div>
+</div>
+<p>so that it looks like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cgitb</span><span class="p">;</span> <span class="n">cgitb</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then refresh the page in your browser.  If the problem is with
+PyBlosxom and not your web-server, then you should see a pretty
+traceback that will help you figure out what the specific problem is.</p>
+<p>If it doesn&#8217;t make any sense to you, you can copy and paste that into
+an email to the pyblosxom-users mailing list and we&#8217;re in a better
+position to help you out.</p>
+<p>If you don&#8217;t see a traceback, then you either have a configuration
+problem with your web-server or a configuration problem with Python.
+The first thing you should do is check your web-server&#8217;s error logs.
+For Apache, look for the <tt class="docutils literal"><span class="pre">error.log</span></tt> file in a place like
+<tt class="docutils literal"><span class="pre">/var/logs/apache/</span></tt> or <tt class="docutils literal"><span class="pre">/var/logs/httpd/</span></tt>.</p>
+<p>Does the account your web-server runs as have execute access to your
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> script?  If your web-server does not have the
+permissions to read and execute your <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> script, then
+your blog will not work.</p>
+<p>Do you have plugins loaded?  If you do, try unloading all your plugins
+and see if the problem persists.  Sometimes there are issues with
+plugins that only show up in certain situations.</p>
+</div>
+<div class="section" id="i-have-other-issues">
+<h3>I have other issues<a class="headerlink" href="#i-have-other-issues" title="Permalink to this headline">¶</a></h3>
+<p>Try changing the renderer for your blog to the debug renderer.  You
+can do this by setting the <tt class="docutils literal"><span class="pre">renderer</span></tt> property in your <tt class="docutils literal"><span class="pre">config.py</span></tt>
+file to <tt class="docutils literal"><span class="pre">debug</span></tt>. That will show a lot more detail about your
+configuration, what the web-server passes PyBlosxom in environment
+variables, and other data about your blog that might help you figure
+out what your problem is.</p>
+</div>
+<div class="section" id="ugh-my-blog-looks-ugly">
+<h3>UGH! My blog looks UGLY!<a class="headerlink" href="#ugh-my-blog-looks-ugly" title="Permalink to this headline">¶</a></h3>
+<p>Read the documentation regarding Flavours and Templates to help you out.</p>
+<p>If you&#8217;re reading this documentation online, then it is
+<a class="reference external" href="flavours_and_templates.html#id1"><em>here</em></a>.</p>
+</div>
+<div class="section" id="i-hate-writing-in-html">
+<h3>I hate writing in HTML!<a class="headerlink" href="#i-hate-writing-in-html" title="Permalink to this headline">¶</a></h3>
+<p>That&#8217;s ok.  PyBlosxom supports formatters and entry parsers which
+allow you to use a variety of markups for writing blog entries.  See
+the documentation on Writing Entries for more information.</p>
+<p>If you&#8217;re reading this documentation online, then it is
+<a class="reference external" href="writing_entries.html#id1"><em>here</em></a>.</p>
+</div>
+</div>
+<div class="section" id="advanced-installation">
+<h2>Advanced Installation<a class="headerlink" href="#advanced-installation" title="Permalink to this headline">¶</a></h2>
+<p>We encourage you not to try any of this until you&#8217;ve gotten a blog up
+and running.</p>
+<p>This section covers additional advanced things you can do to your blog
+that will make it nicer.  However, they&#8217;re not necessary and they&#8217;re
+advanced and we consider these things to be very much a &#8220;you&#8217;re on
+your own&#8221; kind of issue.</p>
+<p>If you ever have problems with PyBlosxom and you ask us questions on
+the pyblosxom-users or pyblosxom-devel mailing lists, make sure you
+explicitly state what things you&#8217;ve done from this chapter.  It&#8217;ll go
+a long way in helping us to help you.</p>
+</div>
+<div class="section" id="renaming-the-pyblosxom-cgi-script">
+<h2>Renaming the pyblosxom.cgi script<a class="headerlink" href="#renaming-the-pyblosxom-cgi-script" title="Permalink to this headline">¶</a></h2>
+<p>In the default installation, the PyBlosxom script is named
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>.</p>
+<p>For a typical user on an Apache installation with user folders turned
+on, PyBlosxom URLs could look like this:</p>
+<div class="highlight-python"><pre>http://www.joe.com/~joe/cgi-bin/pyblosxom.cgi
+http://www.joe.com/~joe/cgi-bin/pyblosxom.cgi/an_entry.html
+http://www.joe.com/~joe/cgi-bin/pyblosxom.cgi/dev/another_entry.html</pre>
+</div>
+<p>That gets pretty long and it&#8217;s not very good looking.  For example,
+telling the URL to your mother or best friend over the phone would be
+challenging.  It would be nice if we could shorten and simplify it.</p>
+<p>So, we have some options:</p>
+<ul class="simple">
+<li>Change the name of the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> script.</li>
+<li>And if that&#8217;s not good enough for you, use the Apache mod_rewrite
+module to get URLs internally redirected to the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>
+script.</li>
+</ul>
+<p>Both methods are described here in more detail.</p>
+<div class="section" id="change-the-name-of-the-pyblosxom-cgi-script">
+<h3>Change the Name of the pyblosxom.cgi Script<a class="headerlink" href="#change-the-name-of-the-pyblosxom-cgi-script" title="Permalink to this headline">¶</a></h3>
+<p>There&#8217;s no reason that <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> has to be named
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>.  Let&#8217;s try changing it <tt class="docutils literal"><span class="pre">blog</span></tt>.  Now our example
+URLs look like this:</p>
+<div class="highlight-python"><pre>http://www.joe.com/~joe/cgi-bin/blog
+http://www.joe.com/~joe/cgi-bin/blog/an_entry.html
+http://www.joe.com/~joe/cgi-bin/blog/category1/another_entry.html</pre>
+</div>
+<p>That&#8217;s better looking in the example.  In your specific circumstances,
+that may be all you need.</p>
+<p>You might have to change the <tt class="docutils literal"><span class="pre">base_url</span></tt> property in your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file to match the new URL.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">base_url</span></tt> value should NOT have a trailing slash.</p>
+</div>
+<p>If you&#8217;re running on Apache, you might have to tell Apache that this
+is a CGI script even if it doesn&#8217;t have a <tt class="docutils literal"><span class="pre">.cgi</span></tt> at the end of it.
+If you can use <tt class="docutils literal"><span class="pre">.htaccess</span></tt> files to override Apache settings, you
+might be able to do something like this:</p>
+<div class="highlight-python"><pre># this allows execution of CGI scripts in this directory
+Options ExecCGI
+
+# if the user doesn't specify a file, then instead of doing the
+# regular directory listing, we look at "blog" (which is our
+# pyblosxom.cgi script renamed)
+DirectoryIndex blog
+
+# this tells Apache that even though "blog" doesn't end in .cgi,
+# it is in fact a CGI script and should be treated as such
+&lt;Files blog&gt;
+ForceType application/cgi-script
+SetHandler cgi-script
+&lt;/Files&gt;</pre>
+</div>
+<p>You may need to stop and restart Apache for your Apache changes to
+take effect.</p>
+</div>
+<div class="section" id="hiding-the-cgi-with-rewriterule">
+<h3>Hiding the .cgi with RewriteRule<a class="headerlink" href="#hiding-the-cgi-with-rewriterule" title="Permalink to this headline">¶</a></h3>
+<p>Apache has a module for URL rewriting which allows you to convert
+incoming URLs to other URLs that can be handled internally.  You can
+do URL rewriting based on all sorts of things.  See the Apache manual
+for more details.</p>
+<p>In our case, we want all incoming URLs pointing to <tt class="docutils literal"><span class="pre">blog</span></tt> to get
+rewritten to <tt class="docutils literal"><span class="pre">cgi-bin/pyblosxom.cgi</span></tt> so they can be handled by
+PyBlosxom.  Then all our URLs will look like this:</p>
+<div class="highlight-python"><pre>http://www.joe.com/~joe/blog
+http://www.joe.com/~joe/blog/an_entry.html
+http://www.joe.com/~joe/blog/category1/another_entry.html</pre>
+</div>
+<p>To do this, we create an .htaccess file (it has to be named exactly
+that) in our <tt class="docutils literal"><span class="pre">public_html</span></tt> directory (or wherever it is that /~joe/
+points to).  In that file we have the following code:</p>
+<div class="highlight-python"><pre>RewriteEngine on
+RewriteRule   ^blog?(.*)$   /~joe/cgi-bin/pyblosxom.cgi$1   [last]</pre>
+</div>
+<p>The first line turns on the Apache mod_rewrite engine so that it will
+rewrite URLs.</p>
+<p>The second line has four parts.  The first part denotes the line as a
+RewriteRule.  The second part states the regular expression that
+matches the part of the URL that we want to rewrite.  The third part
+denotes what we&#8217;re rewriting the URL to.  The fourth part states that
+after this rule is applied, no future rewrite rules should be applied.</p>
+<p>If you do URL rewriting, you may have to set the base_url property in
+your <tt class="docutils literal"><span class="pre">config.py</span></tt> accordingly.  In the above example, the
+<tt class="docutils literal"><span class="pre">base_url</span></tt> would be <tt class="docutils literal"><span class="pre">http://www.joe.com/~joe/blog</span></tt> with no
+trailing slash.</p>
+<p>For more information on URL re-writing, see the Apache documentation
+(<a class="reference external" href="http://httpd.apache.org/docs/1.3/mod/mod_rewrite.html">1.3</a>, <a class="reference external" href="http://httpd.apache.org/docs/2.0/mod/mod_rewrite.html">2.0</a>, <a class="reference external" href="http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html">2.2</a>).</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Deploying PyBlosxom with CGI</a><ul>
+<li><a class="reference external" href="#dependencies">Dependencies</a></li>
+<li><a class="reference external" href="#deployment">Deployment</a></li>
+<li><a class="reference external" href="#trouble-shooting">Trouble-shooting</a><ul>
+<li><a class="reference external" href="#running-pyblosxom-cgi-doesn-t-work">Running ./pyblosxom.cgi doesn&#8217;t work</a></li>
+<li><a class="reference external" href="#i-see-a-http-404-error-when-i-try-to-bring-up-my-blog">I see a HTTP 404 error when I try to bring up my blog</a></li>
+<li><a class="reference external" href="#i-see-a-http-500-error-when-i-try-to-bring-up-my-blog">I see a HTTP 500 error when I try to bring up my blog</a></li>
+<li><a class="reference external" href="#i-have-other-issues">I have other issues</a></li>
+<li><a class="reference external" href="#ugh-my-blog-looks-ugly">UGH! My blog looks UGLY!</a></li>
+<li><a class="reference external" href="#i-hate-writing-in-html">I hate writing in HTML!</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#advanced-installation">Advanced Installation</a></li>
+<li><a class="reference external" href="#renaming-the-pyblosxom-cgi-script">Renaming the pyblosxom.cgi script</a><ul>
+<li><a class="reference external" href="#change-the-name-of-the-pyblosxom-cgi-script">Change the Name of the pyblosxom.cgi Script</a></li>
+<li><a class="reference external" href="#hiding-the-cgi-with-rewriterule">Hiding the .cgi with RewriteRule</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="notes/UPGRADE.html"
+                                  title="previous chapter">Upgrading PyBlosxom</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="deploy_paste.html"
+                                  title="next chapter">Deploying PyBlosxom with Paste</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/deploy_cgi.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="deploy_paste.html" title="Deploying PyBlosxom with Paste"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="notes/UPGRADE.html" title="Upgrading PyBlosxom"
+             >previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Will Kahn-Greene.
+      Last updated on Jan 29, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Deploying PyBlosxom with Paste &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="next" title="Deploying PyBlosxom with WSGI" href="deploy_wsgi.html" />
+    <link rel="prev" title="Deploying PyBlosxom with CGI" href="deploy_cgi.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="deploy_wsgi.html" title="Deploying PyBlosxom with WSGI"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="deploy_cgi.html" title="Deploying PyBlosxom with CGI"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="deploying-pyblosxom-with-paste">
+<h1>Deploying PyBlosxom with Paste<a class="headerlink" href="#deploying-pyblosxom-with-paste" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>PyBlosxom 1.4 and later supports Paste.  This document covers
+installing and using PyBlosxom with Paste.</p>
+<p>This installation assumes you have some understanding of Python Paste.
+If this doesn&#8217;t sound like you, then you can read up on Paste on
+the <a class="reference external" href="http://pythonpaste.org/">Paste web-site</a>.</p>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>You will need:</p>
+<ul class="simple">
+<li>Pyblosxom 1.4 or later</li>
+<li>Python Paste which can be found at <a class="reference external" href="http://pythonpaste.org/">http://pythonpaste.org/</a></li>
+</ul>
+<p>Additionally, if you&#8217;re using an earlier version of Python than
+Python 2.5, then you&#8217;ll also need:</p>
+<ul class="simple">
+<li>wsgiref library from <a class="reference external" href="http://svn.eby-sarna.com/wsgiref/">http://svn.eby-sarna.com/wsgiref/</a></li>
+</ul>
+</div>
+<div class="section" id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
+<p>Create a new blog by doing:</p>
+<div class="highlight-python"><pre>pyblosxom-cmd create ./blog</pre>
+</div>
+<p>Then do:</p>
+<div class="highlight-python"><pre>cd ./blog/
+paster serve blog.ini</pre>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">paster</span></tt> script will print the URL for your blog on the command
+line and your blog is now available on your local machine to your
+local machine.</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Paste configuration is done in an <tt class="docutils literal"><span class="pre">.ini</span></tt> file.</p>
+<p>Edit the <tt class="docutils literal"><span class="pre">blog.ini</span></tt> file that <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span></tt> created for you.</p>
+<p>The <tt class="docutils literal"><span class="pre">[server:main]</span></tt> section dictates how Paste is serving your
+blog.  See the <a class="reference external" href="http://pythonpaste.org/">Paste documentation</a> for more details on this
+section.</p>
+<p>The <tt class="docutils literal"><span class="pre">[app:main]</span></tt> section specifies the PyBlosxom WSGI application
+function and the directory your <tt class="docutils literal"><span class="pre">config.py</span></tt> file is in.  A
+sample is here:</p>
+<div class="highlight-python"><pre>[app:main]
+paste.app_factory = Pyblosxom.pyblosxom:pyblosxom_app_factory
+configpydir = /home/joe/blog/</pre>
+</div>
+<p>Additionally, you can override <tt class="docutils literal"><span class="pre">config.py</span></tt> values in your
+<tt class="docutils literal"><span class="pre">blog.ini</span></tt>.  For example, this overrides the <tt class="docutils literal"><span class="pre">blog_title</span></tt>
+value:</p>
+<div class="highlight-python"><pre>[app:main]
+paste.app_factory = Pyblosxom.pyblosxom:pyblosxom_app_factory
+configpydir = /home/joe/blog/
+
+# PyBlosxom config here
+blog_title = Joe's Blog</pre>
+</div>
+<p>This is really handy for testing changes to your blog infrastructure.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Deploying PyBlosxom with Paste</a><ul>
+<li><a class="reference external" href="#summary">Summary</a></li>
+<li><a class="reference external" href="#dependencies">Dependencies</a></li>
+<li><a class="reference external" href="#deployment">Deployment</a></li>
+<li><a class="reference external" href="#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="deploy_cgi.html"
+                                  title="previous chapter">Deploying PyBlosxom with CGI</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="deploy_wsgi.html"
+                                  title="next chapter">Deploying PyBlosxom with WSGI</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/deploy_paste.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="deploy_wsgi.html" title="Deploying PyBlosxom with WSGI"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="deploy_cgi.html" title="Deploying PyBlosxom with CGI"
+             >previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Will Kahn-Greene.
+      Last updated on Jan 29, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Deploy PyBlosxom with Static Rendering &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="next" title="Variables in config.py" href="config_variables.html" />
+    <link rel="prev" title="Deploying PyBlosxom with WSGI" href="deploy_wsgi.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="config_variables.html" title="Variables in config.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="deploy_wsgi.html" title="Deploying PyBlosxom with WSGI"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="deploy-pyblosxom-with-static-rendering">
+<h1>Deploy PyBlosxom with Static Rendering<a class="headerlink" href="#deploy-pyblosxom-with-static-rendering" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Static rendering made its first appearance in PyBlosxom 1.0.  It fills
+the functionality gap for people who want to use PyBlosxom, but don&#8217;t
+have a web-server with CGI installed, don&#8217;t have CGI access, or can&#8217;t
+run PyBlosxom for one of a myriad of other reasons.  Static rendering
+allows these people to run PyBlosxom on their local machine, write
+blog entries, render their entire site into HTML, and then use ftp or
+some other file copy method to move the pages up to their static
+web-site.</p>
+<p>PyBlosxom&#8217;s static rendering allows for incremental building.  It can
+scan your entries, figure out what&#8217;s changed, and render only the
+pages that need re-rendering.</p>
+<p>Beyond that, it&#8217;s not particularly sophisticated.</p>
+</div>
+<div class="section" id="configuring-static-rendering">
+<h2>Configuring Static Rendering<a class="headerlink" href="#configuring-static-rendering" title="Permalink to this headline">¶</a></h2>
+<p>These are the instructions for configuring static rendering in PyBlosxom.</p>
+<ol class="arabic">
+<li><p class="first"><strong>Install PyBlosxom.</strong></p>
+<p>You can install PyBlosxom as a Python library like this:</p>
+<div class="highlight-python"><pre>easy_install pyblosxom</pre>
+</div>
+<p>and move on to step 2.</p>
+<p>If you can&#8217;t or don&#8217;t want to do that, then just untar the pyblosxom
+.tar.gz file into a directory.</p>
+<p>If you&#8217;re using a version of PyBlosxom prior to 1.4, when you&#8217;re
+copying the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> and <tt class="docutils literal"><span class="pre">config.py</span></tt> files, you don&#8217;t have
+to put them in a CGI directory&#8211;you can put them in any directory
+you have permissions in.</p>
+<p>For example, I created a directory <tt class="docutils literal"><span class="pre">/home/joe/pyblosxom/</span></tt> and put
+both files in there.</p>
+<p>If you&#8217;re using PyBlosxom 1.4 or later, copy <tt class="docutils literal"><span class="pre">bin/pyblosxom-cmd</span></tt> and
+<tt class="docutils literal"><span class="pre">web/config.py</span></tt>.</p>
+</li>
+<li><p class="first"><strong>Add ``static_dir`` to your ``config.py`` file.</strong></p>
+<p>This is the directory we will save all the static output.  The value of
+<tt class="docutils literal"><span class="pre">static_dir</span></tt> should be a string representing the absolute path of the
+output directory for static rendering.</p>
+</li>
+<li><p class="first"><strong>Add ``static_flavours`` to your ``config.py`` file.</strong></p>
+<p>The value of <tt class="docutils literal"><span class="pre">static_flavours</span></tt> should be a list of strings representing
+all the flavours that should be rendered.  This defaults to
+<tt class="docutils literal"><span class="pre">[</span> <span class="pre">&quot;html&quot;</span> <span class="pre">]</span></tt>.</p>
+</li>
+<li><p class="first"><strong>Add ``static_monthnames`` to your ``config.py`` file.</strong></p>
+<p>The value (either <tt class="docutils literal"><span class="pre">1</span></tt> or <tt class="docutils literal"><span class="pre">0</span></tt>) will determine if you want month
+names (such as <tt class="docutils literal"><span class="pre">April</span></tt>) in the static pages.</p>
+</li>
+<li><p class="first"><strong>Add ``static_monthnumbers`` to your ``config.py`` file.</strong></p>
+<p>The value (either <tt class="docutils literal"><span class="pre">1</span></tt> or <tt class="docutils literal"><span class="pre">0</span></tt>) will determine if you want month
+numbers (such as <tt class="docutils literal"><span class="pre">04</span></tt> for <tt class="docutils literal"><span class="pre">April</span></tt>) in the static pages.</p>
+</li>
+<li><p class="first"><strong>Set ``base_url`` in your ``config.py`` file to the base url your
+blog will have.</strong></p>
+<p>For example, if your <tt class="docutils literal"><span class="pre">static_dir</span></tt> were set to <tt class="docutils literal"><span class="pre">/home/joe/public_html</span></tt>
+and the url for that directory were <tt class="docutils literal"><span class="pre">http://www.joe.com/~joe/</span></tt>, then
+you probably want to set your base_url like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;base_url&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;http://www.joe.com/~joe/&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Here&#8217;s an example of static rendering configuration:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;static_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/home/joe/public_html/static/&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;static_flavours&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;html&quot;</span><span class="p">]</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;static_monthnames&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0</span>     <span class="c"># i do not want month names</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;static_monthnumbers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1</span>   <span class="c"># i do want month numbers</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-static-rendering">
+<h2>Running Static Rendering<a class="headerlink" href="#running-static-rendering" title="Permalink to this headline">¶</a></h2>
+<p>There are two ways to run static rendering.  The first is to render
+your entire blog from scratch (see &#8220;render everything&#8221;) and the second
+is to render only the parts of the blog that will be different because
+of new blog entries or updated blog entries (see &#8220;incremental rendering&#8221;).</p>
+<div class="section" id="render-everything">
+<h3>Render Everything<a class="headerlink" href="#render-everything" title="Permalink to this headline">¶</a></h3>
+<p>If you&#8217;re using PyBlosxom 1.4 or later, run the static renderer like
+this to render all pages in your blog:</p>
+<div class="highlight-python"><pre>% pyblosxom-cmd --config &lt;config-file&gt; staticrender</pre>
+</div>
+<p>where <tt class="docutils literal"><span class="pre">&lt;config-file&gt;</span></tt> is replaced by the absolute full path of your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file.  For example:</p>
+<div class="highlight-python"><pre>% pyblosxom-cmd --config /home/joe/blog/config.py staticrender</pre>
+</div>
+<p><strong>PyBlosxom 1.4</strong>: If you&#8217;re using PyBlosxom 1.4, then the command line
+is slightly different:</p>
+<div class="highlight-python"><pre>% pyblcmd --config /home/joe/blog/config.py --static</pre>
+</div>
+<p><strong>Before PyBlosxom 1.4</strong>: If you&#8217;re using a version of PyBlosxom earlier
+than 1.4, then the <tt class="docutils literal"><span class="pre">config.py</span></tt> file must be in the same directory
+as the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> file:</p>
+<div class="highlight-python"><pre>% ./pyblosxom.cgi --static</pre>
+</div>
+<p>Lots of output will appear as PyBlosxom figures out all the urls that need
+to be rendered and then renders them.</p>
+</div>
+<div class="section" id="incremental-rendering">
+<h3>Incremental Rendering<a class="headerlink" href="#incremental-rendering" title="Permalink to this headline">¶</a></h3>
+<p>We have incremental rendering which will find all the entries that have
+changed since we rendered them and then re-render them.  It does this by
+comparing the mtime on the entry file with the mtime on the rendered file.</p>
+<p>In PyBlosxom 1.5 and later, incremental static rendering works like this:</p>
+<div class="highlight-python"><pre>% pyblosxom-cmd --config &lt;config-file&gt; staticrender --incremental</pre>
+</div>
+<p><strong>PyBlosxom 1.4</strong>: If you&#8217;re using PyBlosxom 1.4, run the static renderer
+like this to render new pages in your blog:</p>
+<div class="highlight-python"><pre>% pyblcmd --config &lt;config-file&gt; --static incremental</pre>
+</div>
+<p><strong>Before PyBlosxom 1.4</strong>: If you&#8217;re using a version of PyBlosxom earlier
+than 1.4, then run the static renderer like this:</p>
+<div class="highlight-python"><pre>% ./pyblosxom.cgi --static --incremental</pre>
+</div>
+</div>
+</div>
+<div class="section" id="rendering-other-uris">
+<h2>Rendering Other URIs<a class="headerlink" href="#rendering-other-uris" title="Permalink to this headline">¶</a></h2>
+<p>Some plugins provide other URIs that are part of your site, but not
+really part of your blog since they&#8217;re not related to entries.  Examples
+of this include the plugininfo plugin which provides information about
+the plugins that you&#8217;re running.  You can set the static_urls property
+in config.py to a list of all the urls that need to be rendered every time.
+This list could include:</p>
+<ul class="simple">
+<li>RSS, FOAF, OPML, Atom or any other kind of feeds</li>
+<li>urls for plugins that aren&#8217;t related to entries (plugininfo,
+pystaticfile, booklist, ...)</li>
+<li>urls for plugins that provide other kinds of indexes (index by tag,
+index by popularity, ...)</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">static_urls</span></tt> takes a list of strings where each string is a url to be
+rendered.</p>
+<p>For example if I wanted to render the booklist page and the RSS feed
+for my main page, I would set it like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;static_urls&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;/booklist/index.html&quot;</span><span class="p">,</span> <span class="s">&quot;/index.xml&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="additional-thoughts">
+<h2>Additional Thoughts<a class="headerlink" href="#additional-thoughts" title="Permalink to this headline">¶</a></h2>
+<p>Static rendering is pretty simplistic. We use the <tt class="docutils literal"><span class="pre">tools.render_url</span></tt>
+function to render each url.  Plugins that need to re-render the entry
+pages because something has changed (e.g. comments, pingbacks, ...),
+should call this function.</p>
+<p>If you want to statically render your blog every night, you could write
+a shell script like this:</p>
+<div class="highlight-python"><pre>#!/bin/bash
+
+CONFIG=&lt;path to config.py here&gt;
+STATIC_DIR=&lt;your static dir here&gt;
+
+pyblosxom-cmd --config ${CONFIG} static
+find ${STATIC_DIR} -mmin +30 -exec 'rm' '{}' ';'</pre>
+</div>
+<p>That&#8217;ll re-render everything, then delete any files in your static
+dir that are older than 30 minutes in case you moved entries from
+one category to another or deleted an entry or something along those
+lines.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>A note about other files:</p>
+<p class="last">If your web-site requires more files than just the ones that are rendered
+by PyBlosxom (images, CSS, ...), then you should copy those over with
+your shell script as well.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Deploy PyBlosxom with Static Rendering</a><ul>
+<li><a class="reference external" href="#summary">Summary</a></li>
+<li><a class="reference external" href="#configuring-static-rendering">Configuring Static Rendering</a></li>
+<li><a class="reference external" href="#running-static-rendering">Running Static Rendering</a><ul>
+<li><a class="reference external" href="#render-everything">Render Everything</a></li>
+<li><a class="reference external" href="#incremental-rendering">Incremental Rendering</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#rendering-other-uris">Rendering Other URIs</a></li>
+<li><a class="reference external" href="#additional-thoughts">Additional Thoughts</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="deploy_wsgi.html"
+                                  title="previous chapter">Deploying PyBlosxom with WSGI</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="config_variables.html"
+                                  title="next chapter">Variables in config.py</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/deploy_staticrendering.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="config_variables.html" title="Variables in config.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="deploy_wsgi.html" title="Deploying PyBlosxom with WSGI"
+             >previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Will Kahn-Greene.
+      Last updated on Jan 29, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

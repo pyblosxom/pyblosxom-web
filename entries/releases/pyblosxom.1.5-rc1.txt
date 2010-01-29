@@ -1,0 +1,21 @@
+PyBlosxom 1.5-rc1 released
+#published 2010-01-29 16:18:00
+<p>
+  It's been two years since the last release.  Since then the world has turned,
+  tools have improved (thank you Sphinx!), and PyBlosxom has undergone a lot
+  of changes.  The list of changes is really long.  As such, this is a release
+  candidate to get some more testing.
+</p>
+<p>
+  Download here:
+</p>
+<p>
+  <a href="https://sourceforge.net/projects/pyblosxom/files/">https://sourceforge.net/projects/pyblosxom/files/</a>
+</p>
+<p>
+  If you have any problems, please toss a bug in the bug tracker, say hi on IRC (<code>#pyblosxom</code>
+  on <code>irc.freenode.net</code>), or send an email to the pyblosxom-users mailing list.
+</p>
+<p>
+/will (willhelm at users dot sourceforge dot net)
+</p>
