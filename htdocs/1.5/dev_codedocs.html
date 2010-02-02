@@ -567,6 +567,23 @@ in category.</li>
 </dd></dl>
 
 <dl class="function">
+<dt id="Pyblosxom.pyblosxom.blosxom_sort_list_handler">
+<tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">blosxom_sort_list_handler</tt><big>(</big><em>args</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.blosxom_sort_list_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sorts the list based on <tt class="docutils literal"><span class="pre">_mtime</span></tt> attribute such that
+most recently written entries are at the beginning of the list
+and oldest entries are at the end.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>args</em> &#8211; args dict with <tt class="docutils literal"><span class="pre">request</span></tt> object and <tt class="docutils literal"><span class="pre">entry_list</span></tt>
+list of entries</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="Pyblosxom.pyblosxom.blosxom_truncate_list_handler">
 <tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">blosxom_truncate_list_handler</tt><big>(</big><em>args</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.blosxom_truncate_list_handler" title="Permalink to this definition">¶</a></dt>
 <dd><p>If <tt class="docutils literal"><span class="pre">config[&quot;num_entries&quot;]</span></tt> is not 0 and <tt class="docutils literal"><span class="pre">data[&quot;truncate&quot;]</span></tt>
@@ -1068,7 +1085,7 @@ filesystem.</p>
 
 <dl class="function">
 <dt id="Pyblosxom.tools.run_callback">
-<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0x945ce2c&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0x945ce64&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0x958e924&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0x958e95c&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes a callback chain on a given piece of data.  passed in is
 a dict of name/value pairs.  Consult the documentation for the
 specific callback chain you&#8217;re executing.</p>
@@ -1806,7 +1823,7 @@ if you pass in None, then we&#8217;ll use localtime.</li>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Jan 29, 2010.
+      Last updated on Feb 01, 2010.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
     </div>
   </body>

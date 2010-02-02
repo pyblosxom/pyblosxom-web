@@ -348,6 +348,68 @@ do.  When a function returns <tt class="xref docutils literal"><span class="pre"
 the next function to see if it will return a list of entries.  When a
 function returns a list of entries, the callback will stop.</p>
 </div>
+<div class="section" id="cb-sortlist">
+<h3>cb_sortlist<a class="headerlink" href="#cb-sortlist" title="Permalink to this headline">¶</a></h3>
+<p>The sortlist callback allows plugins to implement their own sorting
+of entries.  This callback gets called by filelist handlers.</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>A Request object</dd>
+<dt><tt class="docutils literal"><span class="pre">entry_list</span></tt></dt>
+<dd>The list of entries to be sorted.</dd>
+</dl>
+<p>Return <tt class="xref docutils literal"><span class="pre">None</span></tt> if the function doesn&#8217;t truncate the list.  Return
+the sorted list if the function does sort the list.</p>
+<p>Example of a <tt class="docutils literal"><span class="pre">cb_sortlist</span></tt> function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_sortlist</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sorts the list from oldest (beginning) to newest (end)</span>
+<span class="sd">    for a site that&#39;s less like a blog and more like a</span>
+<span class="sd">    journal.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">entrylist</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&quot;entry_list&quot;</span><span class="p">]</span>
+
+    <span class="n">entrylist</span> <span class="o">=</span> <span class="p">[(</span><span class="n">e</span><span class="o">.</span><span class="n">_mtime</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">entrylist</span><span class="p">]</span>
+    <span class="n">entrylist</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">entrylist</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">entrylist</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">entrylist</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cb-truncatelist">
+<h3>cb_truncatelist<a class="headerlink" href="#cb-truncatelist" title="Permalink to this headline">¶</a></h3>
+<p>The truncatelist callback allows plugins to implement their own
+truncation rules.  This callback gets called by filelist handlers.</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>A Request object</dd>
+<dt><tt class="docutils literal"><span class="pre">entry_list</span></tt></dt>
+<dd>The list of entries to be truncated.</dd>
+</dl>
+<p>Return <tt class="xref docutils literal"><span class="pre">None</span></tt> if the function doesn&#8217;t truncate the list.  Return
+the new list if the function does truncate the list.</p>
+<p>Example of a <tt class="docutils literal"><span class="pre">cb_truncatelist</span></tt> function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_truncatelist</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&quot;request&quot;</span><span class="p">]</span>
+    <span class="n">entrylist</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&quot;entry_list&quot;</span><span class="p">]</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">config</span>
+
+    <span class="n">num_entries</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;num_entries&quot;</span><span class="p">,</span> <span class="mf">5</span><span class="p">)</span>
+    <span class="n">truncate</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;truncate&quot;</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num_entries</span> <span class="ow">and</span> <span class="n">truncate</span><span class="p">:</span>
+        <span class="n">entrylist</span> <span class="o">=</span> <span class="n">entrylist</span><span class="p">[:</span><span class="n">num_entries</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">entrylist</span>
+
+    <span class="k">return</span> <span class="bp">None</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="cb-filestat">
 <h3>cb_filestat<a class="headerlink" href="#cb-filestat" title="Permalink to this headline">¶</a></h3>
 <p>The filestat callback allows plugins to provide mtimes for entries.
@@ -718,6 +780,8 @@ whether or not they adjust anything in it.</p>
 <li><a class="reference external" href="#cb-prepare">cb_prepare</a></li>
 <li><a class="reference external" href="#cb-logrequest">cb_logrequest</a></li>
 <li><a class="reference external" href="#cb-filelist">cb_filelist</a></li>
+<li><a class="reference external" href="#cb-sortlist">cb_sortlist</a></li>
+<li><a class="reference external" href="#cb-truncatelist">cb_truncatelist</a></li>
 <li><a class="reference external" href="#cb-filestat">cb_filestat</a></li>
 <li><a class="reference external" href="#cb-pathinfo">cb_pathinfo</a></li>
 <li><a class="reference external" href="#cb-commandline">cb_commandline</a></li>
@@ -786,7 +850,7 @@ whether or not they adjust anything in it.</p>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Jan 29, 2010.
+      Last updated on Feb 01, 2010.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
     </div>
   </body>

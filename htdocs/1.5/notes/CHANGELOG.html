@@ -146,6 +146,17 @@ causes the front page <tt class="docutils literal"><span class="pre">num_entries
 </li>
 <li><p class="first">Plugins are included in the PyBlosxom source tarball again.</p>
 </li>
+<li><p class="first">Templates in a flavourdir directory no longer require the flavour
+as the file extension.  e.g. This will work fine:</p>
+<div class="highlight-python"><pre>blog/
+ |- flavourdir/
+     |- html.flav/
+         |- content_type
+         |- head
+         |- story
+         |- ...</pre>
+</div>
+</li>
 </ol>
 </div>
 <div class="section" id="pertinent-to-developers">
@@ -233,8 +244,11 @@ then munge through.</p>
 <li><p class="first">Added a commandline callback for allowing plugins to add to the
 command line.</p>
 </li>
-<li><p class="first">Added a truncate callback for allowing plugins to augment the
+<li><p class="first">Added a truncatelist callback allowing plugins to augment the
 truncate (<tt class="docutils literal"><span class="pre">num_entries</span></tt>) behavior.</p>
+</li>
+<li><p class="first">Added a sortlist callback allowing plugins to augment entrylist sorting
+behavior.</p>
 </li>
 </ol>
 </div>
@@ -766,7 +780,7 @@ user is using.</li>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Jan 29, 2010.
+      Last updated on Feb 02, 2010.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
     </div>
   </body>
