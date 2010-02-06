@@ -161,7 +161,7 @@ allow plugins to do any cleanup they need to do.</p>
 </ol>
 </li>
 </ol>
-<p>FIXME - add lifecycle for long-running processes through WSGI&#8211;it&#8217;s
+<p>FIXME - add lifecycle for long-running processes through WSGI&#8212;it&#8217;s
 slightly different.</p>
 </div>
 <div class="section" id="lifecycle-of-the-blosxom-handler">
@@ -239,7 +239,7 @@ from the callback function and passes that in as input to the next
 callback function.  In this way, each plugin has a chance to modify
 and transform the data.</p>
 <p>There&#8217;s no reason you can&#8217;t implement a handler-type callback and use
-it for notification purposes&#8211;that&#8217;s fine.  You should know that in
+it for notification purposes&#8212;that&#8217;s fine.  You should know that in
 the case of handler callbacks and modifier callbacks, the return value
 that your plugin gives will affect PyBlosxom&#8217;s execution.</p>
 </div>
@@ -286,7 +286,7 @@ containing:</p>
 <dd>a Request object</dd>
 </dl>
 <p>Functions that implement this callback can return whatever they
-want&#8211;it doesn&#8217;t affect the callback chain.</p>
+want&#8212;it doesn&#8217;t affect the callback chain.</p>
 <p>Example of a <tt class="docutils literal"><span class="pre">cb_prepare</span></tt> function in a plugin:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_prepare</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -322,7 +322,7 @@ containing:</p>
 <dd>a Request object</dd>
 </dl>
 <p>Functions that implement this callback can return whatever they
-want&#8211;it doesn&#8217;t affect the callback chain.</p>
+want&#8212;it doesn&#8217;t affect the callback chain.</p>
 <p><tt class="docutils literal"><span class="pre">cb_logrequest</span></tt> is called after rendering and will contain all the
 modifications to the Request object made by the plugins.</p>
 <p>An example input args dict is like this:</p>
@@ -333,7 +333,7 @@ modifications to the Request object made by the plugins.</p>
 <div class="section" id="cb-filelist">
 <h3>cb_filelist<a class="headerlink" href="#cb-filelist" title="Permalink to this headline">¶</a></h3>
 <p>The filelist callback allows plugins to generate the list of entries
-to be rendered.  Entries should be EntryBase derivatives&#8211;either by
+to be rendered.  Entries should be EntryBase derivatives&#8212;either by
 instantiating EntryBase, FileEntry, or creating your own EntryBase
 subclass.</p>
 <p>Functions that implement this callback will get an args dict
@@ -417,7 +417,7 @@ Plugins may use this to override the mtime stored in the filesystem.
 For example, one of the contributed plugins uses this to set the mtime
 to the time specified in the entry&#8217;s filename.</p>
 <p>Plugins may also use this to provide a cheaper alternative to
-filesystem stat calls&#8211;a notorious performance drag.  The
+filesystem stat calls&#8212;a notorious performance drag.  The
 hardcodedates plugin, for example, stores mtimes in a file: it reads
 the file once at startup then returns mtimes from its in-memory
 database.</p>
@@ -463,7 +463,7 @@ containing:</p>
 <dd>a Request object</dd>
 </dl>
 <p>Functions that implement this callback should make the modifications
-to the data dict in place&#8211;no need to return anything.</p>
+to the data dict in place&#8212;no need to return anything.</p>
 </div>
 <div class="section" id="cb-commandline">
 <h3>cb_commandline<a class="headerlink" href="#cb-commandline" title="Permalink to this headline">¶</a></h3>
@@ -495,7 +495,7 @@ containing:</p>
 <dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
 <dd>a Request object</dd>
 </dl>
-<p>Functions that implement this callback should return None if they
+<p>Functions that implement this callback should return <tt class="xref docutils literal"><span class="pre">None</span></tt> if they
 don&#8217;t want to specify a renderer or the renderer object instanct if
 they do.  When a function returns a renderer instance, processing
 stops.</p>
@@ -566,7 +566,7 @@ for dynamic data like comment counts.</p>
 <dd>a Request object</dd>
 </dl>
 <p>Functions that implement this callback don&#8217;t need to return
-anything&#8211;modifications to the <tt class="docutils literal"><span class="pre">entry_data</span></tt> dict are done in place.</p>
+anything&#8212;modifications to the <tt class="docutils literal"><span class="pre">entry_data</span></tt> dict are done in place.</p>
 <p>See <a class="reference external" href="dev_writing_plugins.html#writing-a-postformatter"><em>Writing a postformatter plugin</em></a>.</p>
 </div>
 <div class="section" id="cb-start">
@@ -850,7 +850,7 @@ whether or not they adjust anything in it.</p>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Feb 01, 2010.
+      Last updated on Feb 06, 2010.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
     </div>
   </body>
