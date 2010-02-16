@@ -131,11 +131,11 @@ of new blog entries or updated blog entries (see &#8220;incremental rendering&#8
 <h3>Render Everything<a class="headerlink" href="#render-everything" title="Permalink to this headline">¶</a></h3>
 <p>If you&#8217;re using PyBlosxom 1.4 or later, run the static renderer like
 this to render all pages in your blog:</p>
-<div class="highlight-python"><pre>% pyblosxom-cmd --config &lt;config-file&gt; staticrender</pre>
+<div class="highlight-python"><pre>% pyblosxom-cmd staticrender --config &lt;config-file&gt;</pre>
 </div>
 <p>where <tt class="docutils literal"><span class="pre">&lt;config-file&gt;</span></tt> is replaced by the absolute full path of your
 <tt class="docutils literal"><span class="pre">config.py</span></tt> file.  For example:</p>
-<div class="highlight-python"><pre>% pyblosxom-cmd --config /home/joe/blog/config.py staticrender</pre>
+<div class="highlight-python"><pre>% pyblosxom-cmd staticrender --config /home/joe/blog/config.py</pre>
 </div>
 <p><strong>PyBlosxom 1.4</strong>: If you&#8217;re using PyBlosxom 1.4, then the command line
 is slightly different:</p>
@@ -155,7 +155,7 @@ to be rendered and then renders them.</p>
 changed since we rendered them and then re-render them.  It does this by
 comparing the mtime on the entry file with the mtime on the rendered file.</p>
 <p>In PyBlosxom 1.5 and later, incremental static rendering works like this:</p>
-<div class="highlight-python"><pre>% pyblosxom-cmd --config &lt;config-file&gt; staticrender --incremental</pre>
+<div class="highlight-python"><pre>% pyblosxom-cmd staticrender --config &lt;config-file&gt; --incremental</pre>
 </div>
 <p><strong>PyBlosxom 1.4</strong>: If you&#8217;re using PyBlosxom 1.4, run the static renderer
 like this to render new pages in your blog:</p>
@@ -203,7 +203,7 @@ a shell script like this:</p>
 CONFIG=&lt;path to config.py here&gt;
 STATIC_DIR=&lt;your static dir here&gt;
 
-pyblosxom-cmd --config ${CONFIG} static
+pyblosxom-cmd staticrender --config ${CONFIG}
 find ${STATIC_DIR} -mmin +30 -exec 'rm' '{}' ';'</pre>
 </div>
 <p>That&#8217;ll re-render everything, then delete any files in your static
@@ -290,7 +290,7 @@ your shell script as well.</p>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Feb 06, 2010.
+      Last updated on Feb 16, 2010.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
     </div>
   </body>

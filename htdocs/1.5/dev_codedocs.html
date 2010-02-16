@@ -164,12 +164,13 @@ the end callback.</p>
 do things inside of the PyBlosxom framework.</p>
 <p>If you want to run a callback from a plugin, use
 <tt class="docutils literal"><span class="pre">tools.run_callback</span></tt> instead.</p>
-<p>Returns the results of the callback.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>callback</em> &#8211; the name of the callback to execute.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">the results of the callback.</td>
 </tr>
 </tbody>
 </table>
@@ -330,7 +331,14 @@ processing.</p>
 <dd><p>Returns the form data submitted by the client.  The
 <tt class="docutils literal"><span class="pre">form</span></tt> instance is created only when requested to prevent
 overhead and unnecessary consumption of the input stream.</p>
-<p>Returns a <tt class="docutils literal"><span class="pre">cgi.FieldStorage</span></tt> instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">a <tt class="docutils literal"><span class="pre">cgi.FieldStorage</span></tt> instance.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -484,16 +492,18 @@ be a valid HTTP response status.</p>
 <dd><p>Open up a <tt class="docutils literal"><span class="pre">.txt</span></tt> file and read its contents.  The first line
 becomes the title of the entry.  The other lines are the body of
 the entry.</p>
-<p>Returns A dict containing parsed data and meta data with the
-particular file (and plugin).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>filename</em> &#8211; a filename to extract data and metadata from</li>
 <li><em>request</em> &#8211; a standard request object</li>
 </ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict containing parsed data and meta data with the
+particular file (and plugin)</p>
 </td>
 </tr>
 </tbody>
@@ -507,12 +517,13 @@ particular file (and plugin).</p>
 request object in and figures out which entries based on the
 default behavior that we want to show and generates a list of
 EntryBase subclass objects which it returns.</p>
-<p>Returns the content we want to render.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>args</em> &#8211; dict containing the incoming Request object</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">the content we want to render</td>
 </tr>
 </tbody>
 </table>
@@ -579,6 +590,8 @@ and oldest entries are at the end.</p>
 <tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>args</em> &#8211; args dict with <tt class="docutils literal"><span class="pre">request</span></tt> object and <tt class="docutils literal"><span class="pre">entry_list</span></tt>
 list of entries</td>
 </tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">the sorted <tt class="docutils literal"><span class="pre">entry_list</span></tt></td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -589,13 +602,14 @@ list of entries</td>
 <dd><p>If <tt class="docutils literal"><span class="pre">config[&quot;num_entries&quot;]</span></tt> is not 0 and <tt class="docutils literal"><span class="pre">data[&quot;truncate&quot;]</span></tt>
 is not 0, then this truncates <tt class="docutils literal"><span class="pre">args[&quot;entry_list&quot;]</span></tt> by
 <tt class="docutils literal"><span class="pre">config[&quot;num_entries&quot;]</span></tt>.</p>
-<p>Returns the truncated <tt class="docutils literal"><span class="pre">entry_list</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>args</em> &#8211; args dict with <tt class="docutils literal"><span class="pre">request</span></tt> object and <tt class="docutils literal"><span class="pre">entry_list</span></tt>
 list of entries</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">the truncated <tt class="docutils literal"><span class="pre">entry_list</span></tt>.</td>
 </tr>
 </tbody>
 </table>
@@ -604,7 +618,16 @@ list of entries</td>
 <dl class="function">
 <dt id="Pyblosxom.pyblosxom.pyblosxom_app_factory">
 <tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">pyblosxom_app_factory</tt><big>(</big><em>global_config</em>, <em>**local_config</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.pyblosxom_app_factory" title="Permalink to this definition">¶</a></dt>
-<dd>App factory for paste.</dd></dl>
+<dd><p>App factory for paste.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">CgitbMiddleware</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="Pyblosxom.pyblosxom.run_pyblosxom">
@@ -670,12 +693,13 @@ $(id_urlencoded)</pre>
 <div class="highlight-python"><pre>$escape(id)
 $urlencode(id)</pre>
 </div>
-<p>It returns the substituted string.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>matchobj</em> &#8211; the regular expression match object</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">the substituted string</td>
 </tr>
 </tbody>
 </table>
@@ -724,6 +748,14 @@ $urlencode(id)</pre>
 <span class="go">foo\n</span>
 </pre></div>
 </div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">string with n at the end</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -747,12 +779,13 @@ commas in strings correctly.</p>
 <span class="go">[&quot;a&quot;, &quot; &quot;b, c&quot;&quot;]</span>
 </pre></div>
 </div>
-<p>This returns a list of strings.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>s</em> &#8211; the string to split</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">list of strings</td>
 </tr>
 </tbody>
 </table>
@@ -771,6 +804,8 @@ the values, and returns a new config dict.</p>
 </tr>
 <tr class="field"><th class="field-name" colspan="2">Raises <a title="Pyblosxom.tools.ConfigSyntaxErrorException" class="reference internal" href="#Pyblosxom.tools.ConfigSyntaxErrorException">ConfigSyntaxErrorException</a>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">when there&#8217;s a syntax error</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">new config dict</td>
 </tr>
 </tbody>
 </table>
@@ -843,10 +878,13 @@ case we&#8217;ve already retrieved it during this PyBlosxom request.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>request</em> &#8211; the Request object</li>
 <li><em>filename</em> &#8211; the file name of the file to stat</li>
 </ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the filestat (tuple of 9 ints) on the given file</p>
 </td>
 </tr>
 </tbody>
@@ -868,10 +906,13 @@ characters long.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>minlen</em> &#8211; the minimum length of the generated random string</li>
 <li><em>maxlen</em> &#8211; the maximum length of the generated random string</li>
 </ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">generated string</p>
 </td>
 </tr>
 </tbody>
@@ -888,12 +929,13 @@ characters long.</p>
 <tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">get_cache</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.get_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieves the cache from the request or fetches a new CacheDriver
 instance.</p>
-<p>Returns a BlosxomCache object</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>request</em> &#8211; the Request object</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">a BlosxomCache object</td>
 </tr>
 </tbody>
 </table>
@@ -906,8 +948,6 @@ instance.</p>
 <p>If no log_file is given the system-wide logfile as defined in
 config.py is used. If a log_file is given that&#8217;s where the created
 logger logs to.</p>
-<p>Returns a log channel (logger instance) which you can call
-<tt class="docutils literal"><span class="pre">error</span></tt>, <tt class="docutils literal"><span class="pre">warning</span></tt>, <tt class="docutils literal"><span class="pre">debug</span></tt>, <tt class="docutils literal"><span class="pre">info</span></tt>, ... on.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -917,6 +957,9 @@ causes PyBlosxom to check for the <tt class="docutils literal"><span class="pre"
 config.py property and if that&#8217;s blank, then the
 log_file is stderr</td>
 </tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">a log channel (logger instance) which you can call
+<tt class="docutils literal"><span class="pre">error</span></tt>, <tt class="docutils literal"><span class="pre">warning</span></tt>, <tt class="docutils literal"><span class="pre">debug</span></tt>, <tt class="docutils literal"><span class="pre">info</span></tt>, ... on.</td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -925,16 +968,18 @@ log_file is stderr</td>
 <dt id="Pyblosxom.tools.importname">
 <tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">importname</tt><big>(</big><em>modulename</em>, <em>name</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.importname" title="Permalink to this definition">¶</a></dt>
 <dd><p>Safely imports modules for runtime importing.</p>
-<p>Returns the module object or <tt class="xref docutils literal"><span class="pre">None</span></tt> if there were problems
-importing.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>modulename</em> &#8211; the package name of the module to import from</li>
 <li><em>name</em> &#8211; the name of the module to import</li>
 </ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the module object or <tt class="xref docutils literal"><span class="pre">None</span></tt> if there were problems
+importing.</p>
 </td>
 </tr>
 </tbody>
@@ -960,12 +1005,13 @@ criteria:</p>
 <li>four digits</li>
 <li>first two digits are either 19 or 20.</li>
 </ol>
-<p>Returns <tt class="xref docutils literal"><span class="pre">True</span></tt> if it is a year and <tt class="xref docutils literal"><span class="pre">False</span></tt> otherwise.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><em>s</em> &#8211; the string to check for &#8220;year-hood&#8221;</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">True</span></tt> if it is a year and <tt class="xref docutils literal"><span class="pre">False</span></tt> otherwise.</td>
 </tr>
 </tbody>
 </table>
@@ -1024,16 +1070,18 @@ log_file is stderr</td>
 <dd><p>This method parses the <tt class="docutils literal"><span class="pre">template</span></tt> passed in using <tt class="docutils literal"><span class="pre">Replacer</span></tt>
 to expand template variables using values in the <tt class="docutils literal"><span class="pre">var_dict</span></tt>.</p>
 <p>Originally based on OPAGCGI, but mostly re-written.</p>
-<p>This returns the template string with template variables expanded.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>request</em> &#8211; the Request object</li>
 <li><em>var_dict</em> &#8211; the dict holding name/value pair variable replacements</li>
 <li><em>template</em> &#8211; the string template we&#8217;re expanding variables in.</li>
 </ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the template string with template variables expanded.</p>
 </td>
 </tr>
 </tbody>
@@ -1046,17 +1094,19 @@ to expand template variables using values in the <tt class="docutils literal"><s
 <dd><p>Takes a url and a querystring and renders the page that
 corresponds with that by creating a Request and a PyBlosxom object
 and passing it through.  It then returns the resulting Response.</p>
-<p>This returns a PyBlosxom <tt class="docutils literal"><span class="pre">Response</span></tt> object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>cdict</em> &#8211; the config.py dict</li>
 <li><em>pathinfo</em> &#8211; the <tt class="docutils literal"><span class="pre">PATH_INFO</span></tt> string;
 example: <tt class="docutils literal"><span class="pre">/dev/pyblosxom/firstpost.html</span></tt></li>
 <li><em>querystring</em> &#8211; the querystring (if any); example: debug=yes</li>
 </ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a PyBlosxom <tt class="docutils literal"><span class="pre">Response</span></tt> object.</p>
 </td>
 </tr>
 </tbody>
@@ -1085,7 +1135,7 @@ filesystem.</p>
 
 <dl class="function">
 <dt id="Pyblosxom.tools.run_callback">
-<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0x96c0994&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0x96c09cc&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0x9c448ec&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0x9c44924&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes a callback chain on a given piece of data.  passed in is
 a dict of name/value pairs.  Consult the documentation for the
 specific callback chain you&#8217;re executing.</p>
@@ -1101,7 +1151,7 @@ the input for the next function.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>chain</em> &#8211; the name of the callback chain to run</li>
 <li><em>input</em> &#8211; dict with name/value pairs that gets passed as the
 args dict to all callback functions</li>
@@ -1124,6 +1174,9 @@ have returned something that satisfies the
 donefunc, then we&#8217;ll execute the defaultfunc
 with the latest version of the input dict.</li>
 </ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">varies</p>
 </td>
 </tr>
 </tbody>
@@ -1192,12 +1245,11 @@ you list.  So the following:</p>
 <div class="highlight-python"><pre>.*?(CVS|dev/pyblosxom)$</pre>
 </div>
 <p>It will also skip all directories that start with a period.</p>
-<p>Returns a list of file paths.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>request</em> &#8211; the Request object</li>
 <li><em>root</em> &#8211; the root directory to walk</li>
 <li><em>recurse</em> &#8211; the depth of recursion; defaults to 0 which goes all
@@ -1211,6 +1263,9 @@ want files AND folders</li>
 </ul>
 </td>
 </tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of file paths.</p>
+</td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1220,16 +1275,18 @@ want files AND folders</li>
 <tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">what_ext</tt><big>(</big><em>extensions</em>, <em>filepath</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.what_ext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes in a filepath and a list of extensions and tries them all
 until it finds the first extension that works.</p>
-<p>Returns the extension (string) of the file or <tt class="xref docutils literal"><span class="pre">None</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><em>extensions</em> &#8211; the list of extensions to test</li>
 <li><em>filepath</em> &#8211; the complete file path (minus the extension) to
 test and find the extension for</li>
 </ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the extension (string) of the file or <tt class="xref docutils literal"><span class="pre">None</span></tt>.</p>
 </td>
 </tr>
 </tbody>
@@ -1247,12 +1304,12 @@ implement the functionality required by the other rendering system.</p>
 debug module.</p>
 <dl class="class">
 <dt id="Pyblosxom.renderers.base.Renderer">
-<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">Renderer</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x401fa070&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.Renderer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">Renderer</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x401fb070&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.Renderer" title="Permalink to this definition">¶</a></dt>
 <dd>This is a null renderer.</dd></dl>
 
 <dl class="class">
 <dt id="Pyblosxom.renderers.base.RendererBase">
-<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">RendererBase</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x401fa070&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">RendererBase</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x401fb070&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pyblosxom core handles the Input and Process of the system and
 passes the result of the process to the Renderers for output. All
 renderers are child classes of RendererBase. RenderBase will
@@ -1416,6 +1473,13 @@ a BaseEntry with data that you provide for it.</p>
 instance of an Entry class represents a single entry in the
 weblog, whether it came from a file, or a database, or even
 somewhere off the InterWeeb.</p>
+<p>EntryBase derivatives are dict-like except for one key difference:
+when doing <tt class="docutils literal"><span class="pre">__getitem__</span></tt> on a nonexistent key, it returns an
+empty string.  For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">entry</span><span class="p">[</span><span class="s">&quot;some_nonexistent_key&quot;</span><span class="p">]</span>
+<span class="go">&quot;&quot;</span>
+</pre></div>
+</div>
 <dl class="method">
 <dt id="Pyblosxom.entries.base.EntryBase.addToCache">
 <tt class="descname">addToCache</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.entries.base.EntryBase.addToCache" title="Permalink to this definition">¶</a></dt>
@@ -1823,7 +1887,7 @@ if you pass in None, then we&#8217;ll use localtime.</li>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Feb 06, 2010.
+      Last updated on Feb 16, 2010.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
     </div>
   </body>
