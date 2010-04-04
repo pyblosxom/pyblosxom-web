@@ -1,0 +1,57 @@
+Status April 4th, 2010
+#published 2010-04-04 11:47:00
+<p>
+  There have been lots of changes in the last few months.  We're
+  finishing up PyBlosxom 1.5 and we're moving the project to different
+  infrastructure.  Let me cover these one at a time.
+</p>
+<p>
+  We did a PyBlosxom 1.5 rc1 release a couple of months ago.  Since
+  then, we've been hanging out on <code>#pyblosxom</code> on Freenode
+  and fielding questions.  I think it's going really well for
+  everyone.  As people bring up issues, we're fixing them or putting
+  them on the TODO list to get fixed.  Most of the problems revolve
+  around plugin support or plugin bugs.
+</p>
+<p>
+  We've been working on updating plugins in the contributed plugins
+  pack.  We're also getting rid of the contributed plugins pack and
+  going back to what we used to do several versions ago where we ship
+  plugins with the PyBlosxom tarball.  Plugins that are used by many
+  users and are well supported will be located in
+  the <code>plugins/</code> directory of the tarball.  We have a unit
+  test system set up and we're adding tests for these plugins.  We'll
+  be making an effort going forward to update plugins as we update
+  PyBlosxom core and everything should be shiny happy.
+</p>
+<p>
+  We're planning to rework the plugin registry on the site to provide
+  an index of all the plugins out there--both those in the tarball and
+  those maintained by other people.  Work on this hasn't started,
+  yet.  I think this is a post PyBlosxom 1.5 project.
+</p>
+<p>
+  There are a handful of plugins that I want to update, add tests for,
+  and move to the <code>plugins/</code> directory to ship with the
+  tarball.  Once that happens, we'll release a 1.5 final.
+</p>
+<p>
+  In regards to the infrastructure, we're switching to git.  Sebastian
+  very kindly converted our svn repository into three git repositories
+  that are now at
+  <a href="http://gitorious.org/pyblosxom/">http://gitorious.org/pyblosxom/</a>.
+  This will make development a lot easier going forward.
+</p>
+<p>
+  We're also scheming to rework the website so it's a better project
+  website, has a better registry for plugins and flavours, and makes
+  it easier for us to collaborate on PyBlosxom development.
+</p>
+<p>
+  That's where we're at.  If you want to contribute and/or hang out,
+  we're on <code>#pyblosxom</code> on Freenode and the PyBlosxom
+  develop mailing list.
+</p>
+<p>
+  /will (willg at bluesock dot org)
+</p>
