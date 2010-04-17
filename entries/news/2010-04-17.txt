@@ -1,0 +1,30 @@
+New site, new conventions, almost new version
+#published 2010-04-17 17:50:00
+<p>
+  We're moving from SourceForge to Bluesock.  Bluesock is my own personal
+  server where I'll have a lot more control over the site in terms of how
+  it's built.  On SourceForge we're severely limited to static pages or
+  the various applications that they install.  It's been a real pain in
+  the ass.
+</p>
+<p>
+  Additionally, I've gone through the site and updated it to reflect our
+  move from svn to git.
+</p>
+<p>
+  On top of that, we're ditching the SourceForge bug tracker.  We don't
+  have a bug tracker set up, though, so we're just going to wing it with
+  the pyblosxom-devel mailing list.  If it becomes necessary, we'll set
+  up a new bug tracker.
+</p>
+<p>
+  PyBlosxom 1.5 is almost done.  A handful of things have been done since
+  the release candidate a while back.  The documentation still needs another
+  going over and parts of it need to be updated.
+</p>
+<p>
+  Hopefully all that will happen soon.
+</p>
+<p>
+  /will
+</p>

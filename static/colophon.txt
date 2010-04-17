@@ -9,24 +9,24 @@ Colophon
   This web-site is statically compiled with PyBlosxom and these plugins:
 </p>
 <ul>
-  <li><b><a href="http://pyblosxom.sourceforge.net/blog/registry/archives/wbgarchives">wbgarchives</a></b> -
+  <li><b><a href="http://pyblosxom.bluesock.org/blog/registry/archives/wbgarchives">wbgarchives</a></b> -
       Creates the archive-by-year links in the navigation bar and builds the 
       pages those links link to.
-  <li><b><a href="http://pyblosxom.sourceforge.net/blog/registry/files/pystaticfile">pystaticfile</a></b> - 
+  <li><b><a href="http://pyblosxom.bluesock.org/blog/registry/files/pystaticfile">pystaticfile</a></b> - 
       Allows for "static content" which isn't entry-related.  The PyBlosxom 
       manual and the rest of the non-news content are all "static" pages.  
       Note, this has nothing to do with static rendering.
-  <li><b><a href="http://pyblosxom.sourceforge.net/blog/registry/general/registry">registry</a></b> - 
+  <li><b><a href="http://pyblosxom.bluesock.org/blog/registry/general/registry">registry</a></b> - 
       Handles the plugin and flavour registry.
-  <li><b><a href="http://pyblosxom.sourceforge.net/blog/registry/include/pyinclude">pyinclude</a></b> -
+  <li><b><a href="http://pyblosxom.bluesock.org/blog/registry/include/pyinclude">pyinclude</a></b> -
       Allows us to do server-side-include-like things to centralize information
       between multiple templates.
-  <li><b><a href="http://pyblosxom.sourceforge.net/blog/registry/syndication/rss2renderer">rss2renderer</a></b> -
+  <li><b><a href="http://pyblosxom.bluesock.org/blog/registry/syndication/rss2renderer">rss2renderer</a></b> -
       Generates the RSS2 feeds.
 </ul>
 <p>
-  PyBlosxom 1.5 documentation generated using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  PyBlosxom 1.5 and later documentation generated using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
 </p>
 <p>
-  Prior to PyBlosxom 1.5, the API documentation was generated using <a href="http://epydoc.sourceforge.net">epydoc</a>.
+  Prior to PyBlosxom 1.5, the API documentation was generated using <a href="http://epydoc.bluesock.org">epydoc</a>.
 </p>

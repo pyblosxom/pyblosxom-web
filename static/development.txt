@@ -5,7 +5,7 @@ Development HOWTO
   <li><a href="#summary">Summary</a>
   <li><a href="#howtocontribute">How to contribute</a>
   <li><a href="#contributors">Contributors</a>
-  <li><a href="#svn">Subversion</a>
+  <li><a href="#svn">Git</a>
   <li><a href="#coding">Coding style guide</a>
   <li><a href="#release">Release instructions</a>
 </ol>
@@ -77,33 +77,14 @@ Development HOWTO
   and Matej.
 </p>
 
-<a name="svn"><h2>Subversion</h2></a>
+<a name="svn"><h2>Git</h2></a>
 <p>
-  Our code is in a Subversion repository on SourceForge.
+  Our code is in a git repository on Gitorious.
 </p>
 <p>
-  <a href="http://pyblosxom.svn.sourceforge.net/viewcvs.cgi/pyblosxom/">Browse
-  Subversion Repository</a> through your web-browser.
+  For clone instructions, web-based viewing, and all that, see
+  <a href="http://gitorious.org/pyblosxom/">http://gitorious.org/pyblosxom/</a>.
 </p>
-<p>
-  For anonymous read-only access to PyBlosxom trunk code do:
-</p>
-<ol>
-  <li><code>svn co https://pyblosxom.svn.sourceforge.net/svnroot/pyblosxom/trunk/pyblosxom/ pyblosxom</code>
-</ol>
-<p>
-  For anonymous read-only access to PyBlosxom contributed plugins code do:
-</p>
-<ol>
-  <li><code>svn co https://pyblosxom.svn.sourceforge.net/svnroot/pyblosxom/trunk/contrib/ contrib</code>
-</ol>
-<p>
-  If you are a registered PyBlosxom developer with Subversion access, you can check out
-  the code using the above methods.  When you go to commit things, use the form:
-</p>
-<ol>
-  <li><code>svn commit --username <i>your-username</i> <i>files...</i></code>
-</ol>
 <p>
   <b>Notes about checkin comments:</b> PLEASE provide comprehensive checkin comments
   that describe what you did, why you did it, any known ramifications of what you did

@@ -5,8 +5,9 @@ Submitting items to the registry
 </p>
 <h2>Submitting a new plugin</h2>
 <p>
-  Submit a plugin to the registry by emailing <font color="#0000ff">willhelm
-  at users dot sourceforge dot net</font> the following information:
+  Submit a plugin to the registry by emailing
+  <font color="#0000ff">willg at bluesock dot org</font> 
+  the following information:
 </p>
 <ul>
   <li>your name as it should appear on the site
@@ -24,8 +25,9 @@ Submitting items to the registry
 
 <h2>Submitting a new flavour</h2>
 <p>
-  Submit a new flavour to the flavour registry by emailing <font color="#0000ff">willhelm
-  at users dot sourceforge dot net</font> the following information:
+  Submit a new flavour to the flavour registry by emailing
+  <font color="#0000ff">willg at bluesock dot org</font>
+  the following information:
 </p>
 <ul>
   <li>your name as it should appear on the site
@@ -42,8 +44,9 @@ Submitting items to the registry
 <h2>Updating a plugin</h2>
 <p>
   If you want to update the details for a plugin or want to comment on a 
-  plugin, send an email to <font color="#0000ff">willhelm at users dot sourceforge
-  dot net</font> with the details.
+  plugin, send an email to 
+  <font color="#0000ff">willg at bluesock dot org</font>
+  with the details.
 </p>
 <p>
   Allow me a few days to turn around the request--usually I (Will) am pretty 
