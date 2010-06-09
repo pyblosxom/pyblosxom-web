@@ -157,6 +157,12 @@ as the file extension.  e.g. This will work fine:</p>
          |- ...</pre>
 </div>
 </li>
+<li><p class="first">We moved the main PyBlosxom site to
+<a class="reference external" href="http://pyblosxom.bluesock.org/">http://pyblosxom.bluesock.org/</a> .  There&#8217;s a &#8220;powered by
+pyblosxom&#8221; image at
+<a class="reference external" href="http://pyblosxom.bluesock.org/images/pb_pyblosxom.gif">http://pyblosxom.bluesock.org/images/pb_pyblosxom.gif</a></p>
+<p>You should adjust your templates accordingly.</p>
+</li>
 </ol>
 </div>
 <div class="section" id="pertinent-to-developers">
@@ -262,8 +268,8 @@ behavior.</p>
 values like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">foo</span> <span class="o">=</span> <span class="s">&#39;a&#39;</span>                 <span class="c"># string</span>
 <span class="n">foo</span> <span class="o">=</span> <span class="s">&quot;a&quot;</span>                 <span class="c"># string</span>
-<span class="n">foo</span> <span class="o">=</span> <span class="mf">23</span>                  <span class="c"># integer</span>
-<span class="n">foo</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="mf">23</span><span class="p">,</span> <span class="s">&quot;b&quot;</span> <span class="p">]</span>    <span class="c"># list of strings and integers</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="mi">23</span>                  <span class="c"># integer</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s">&quot;b&quot;</span> <span class="p">]</span>    <span class="c"># list of strings and integers</span>
 </pre></div>
 </div>
 <p>as well as:</p>
@@ -541,7 +547,7 @@ Request object.  All of them access the input stream.  You should
 not use sys.stdin directly.</p>
 <p>Usage:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">data_part</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mf">1024</span><span class="p">)</span>
+<span class="n">data_part</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
 <span class="n">one_line</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 </pre></div>
@@ -675,7 +681,7 @@ user is using.</li>
         <div class="sphinxsidebarwrapper">
             <h3><a href="../index.html">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="">Changelog</a><ul>
+<li><a class="reference external" href="#">Changelog</a><ul>
 <li><a class="reference external" href="#changes-between-1-4-3-and-1-5">Changes between 1.4.3 and 1.5</a><ul>
 <li><a class="reference external" href="#pertinent-to-users">Pertinent to users:</a></li>
 <li><a class="reference external" href="#pertinent-to-developers">Pertinent to developers:</a></li>
@@ -780,8 +786,8 @@ user is using.</li>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Feb 16, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+      Last updated on Jun 09, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
 </html>

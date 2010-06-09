@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '#',
         VERSION:     '1.5',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
@@ -52,17 +52,15 @@
 <h1>Deploying PyBlosxom with Paste<a class="headerlink" href="#deploying-pyblosxom-with-paste" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>PyBlosxom 1.4 and later supports Paste.  This document covers
+<p>PyBlosxom 1.4 and later support Paste.  This document covers
 installing and using PyBlosxom with Paste.</p>
 <p>This installation assumes you have some understanding of Python Paste.
 If this doesn&#8217;t sound like you, then you can read up on Paste on
-the <a class="reference external" href="http://pythonpaste.org/">Paste web-site</a>.</p>
+the <a class="reference external" href="http://pythonpaste.org/">Paste web-site</a> or the <a class="reference external" href="http://en.wikipedia.org/wiki/Python_Paste">Wikipedia page</a>.</p>
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p>You will need:</p>
 <ul class="simple">
-<li>Pyblosxom 1.4 or later</li>
 <li>Python Paste which can be found at <a class="reference external" href="http://pythonpaste.org/">http://pythonpaste.org/</a></li>
 </ul>
 <p>Additionally, if you&#8217;re using an earlier version of Python than
@@ -71,8 +69,8 @@ Python 2.5, then you&#8217;ll also need:</p>
 <li>wsgiref library from <a class="reference external" href="http://svn.eby-sarna.com/wsgiref/">http://svn.eby-sarna.com/wsgiref/</a></li>
 </ul>
 </div>
-<div class="section" id="deployment">
-<h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="deployment-for-testing">
+<h2>Deployment for testing<a class="headerlink" href="#deployment-for-testing" title="Permalink to this headline">¶</a></h2>
 <p>Create a new blog by doing:</p>
 <div class="highlight-python"><pre>pyblosxom-cmd create ./blog</pre>
 </div>
@@ -81,11 +79,43 @@ Python 2.5, then you&#8217;ll also need:</p>
 paster serve blog.ini</pre>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">paster</span></tt> script will print the URL for your blog on the command
-line and your blog is now available on your local machine to your
-local machine.</p>
+line and your blog is now available on your local machine to a
+browser on your local machine.</p>
+<p>This allows you to test your blog and make sure it works.</p>
 </div>
-<div class="section" id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="deployment-with-mod-wsgi">
+<h2>Deployment with mod_wsgi<a class="headerlink" href="#deployment-with-mod-wsgi" title="Permalink to this headline">¶</a></h2>
+<p>Paste makes it really easy to use with <tt class="docutils literal"><span class="pre">mod_wsgi</span></tt>.</p>
+<ol class="arabic">
+<li><p class="first">Create a file named <tt class="docutils literal"><span class="pre">something.wsgi</span></tt> like this one:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># If you&#39;re using a virtualenv, uncomment the next two lines and</span>
+<span class="c"># change &#39;/path/to/activate_this.py&#39;.</span>
+<span class="c"># activate_this = &#39;/path/to/activate_this.py&#39;</span>
+<span class="c"># execfile(activate_this, dict(__file__=activate_this))</span>
+
+<span class="kn">from</span> <span class="nn">Pyblosxom.pyblosxom</span> <span class="kn">import</span> <span class="n">pyblosxom_app_factory</span>
+<span class="kn">from</span> <span class="nn">paste.deploy</span> <span class="kn">import</span> <span class="n">loadapp</span>
+
+<span class="c"># Fill in path to Paste .ini config file here</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">loadapp</span><span class="p">(</span><span class="s">&#39;config:/path/to/wsgi.ini&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In the Apache httpd.conf file:</p>
+<div class="highlight-python"><pre>WSGIScriptAlias /myblog /path/to/something.wsgi
+
+&lt;Directory /path/to&gt;
+    Order deny,allow
+    Allow from all
+&lt;/Directory&gt;</pre>
+</div>
+</li>
+</ol>
+<p>For more details, consult the <tt class="docutils literal"><span class="pre">mod_wsgi</span></tt> documentation at
+<a class="reference external" href="http://code.google.com/p/modwsgi/">http://code.google.com/p/modwsgi/</a> .</p>
+</div>
+<div class="section" id="paste-ini-file-configuration">
+<h2>Paste .ini file configuration<a class="headerlink" href="#paste-ini-file-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Paste configuration is done in an <tt class="docutils literal"><span class="pre">.ini</span></tt> file.</p>
 <p>Edit the <tt class="docutils literal"><span class="pre">blog.ini</span></tt> file that <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span></tt> created for you.</p>
 <p>The <tt class="docutils literal"><span class="pre">[server:main]</span></tt> section dictates how Paste is serving your
@@ -120,11 +150,12 @@ blog_title = Joe's Blog</pre>
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="">Deploying PyBlosxom with Paste</a><ul>
+<li><a class="reference external" href="#">Deploying PyBlosxom with Paste</a><ul>
 <li><a class="reference external" href="#summary">Summary</a></li>
 <li><a class="reference external" href="#dependencies">Dependencies</a></li>
-<li><a class="reference external" href="#deployment">Deployment</a></li>
-<li><a class="reference external" href="#configuration">Configuration</a></li>
+<li><a class="reference external" href="#deployment-for-testing">Deployment for testing</a></li>
+<li><a class="reference external" href="#deployment-with-mod-wsgi">Deployment with mod_wsgi</a></li>
+<li><a class="reference external" href="#paste-ini-file-configuration">Paste .ini file configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -177,8 +208,8 @@ blog_title = Joe's Blog</pre>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Feb 05, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+      Last updated on Jun 09, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
 </html>

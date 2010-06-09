@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '#',
         VERSION:     '1.5',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
     <link rel="next" title="Deploying PyBlosxom with Paste" href="deploy_paste.html" />
-    <link rel="prev" title="Upgrading PyBlosxom" href="notes/UPGRADE.html" /> 
+    <link rel="prev" title="PyBlosxom on the command line" href="pyblosxom_cmd.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,7 +37,7 @@
           <a href="deploy_paste.html" title="Deploying PyBlosxom with Paste"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="notes/UPGRADE.html" title="Upgrading PyBlosxom"
+          <a href="pyblosxom_cmd.html" title="PyBlosxom on the command line"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
       </ul>
@@ -57,7 +57,8 @@ scripts with the correct permissions on your server.</p>
 </div>
 <div class="section" id="deployment">
 <h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
-<p>Copy the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> file into your CGI directory.</p>
+<p>Copy the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> file from the blog directory (the directory
+which you created with <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span> <span class="pre">creat</span> <span class="pre">./blog/</span></tt>) into your CGI directory.</p>
 <p>Edit the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> file.</p>
 <p>The top of the file looks something like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
@@ -89,7 +90,7 @@ read by the process executing your CGI script.</p>
 <div class="highlight-python"><pre>% ./pyblosxom.cgi test</pre>
 </div>
 <p>If that doesn&#8217;t work, double-check to make sure you&#8217;ve completed the
-above steps, then check the trouble-shooting section, then ask for
+above steps, then check the trouble-shooting section below, then ask for
 help on IRC or the users mailing list.  More details in
 <a class="reference external" href="about_pyblosxom.html#project-details-and-contact"><em>Project details, contact information, and where to go for help</em></a>.</p>
 <p>If that works, then try to run the CGI script from your web-browser.
@@ -107,11 +108,18 @@ list or on IRC.  Details of the mailing list are located at our
 contact page.</p>
 <div class="section" id="running-pyblosxom-cgi-doesn-t-work">
 <h3>Running ./pyblosxom.cgi doesn&#8217;t work<a class="headerlink" href="#running-pyblosxom-cgi-doesn-t-work" title="Permalink to this headline">¶</a></h3>
-<p>First, you should check to see if you have Python installed on your
+<p>First, you should check to see if you have Python (&gt;=2.3) installed on your
 system.  If not, then please install Python.</p>
 <p>If Python is installed on your system, make sure the first line in
-<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> points to your Python interpreter.  If not, fix
-that and try running <tt class="docutils literal"><span class="pre">./pyblosxom.cgi</span></tt> again.</p>
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> points to your Python interpreter.  By default,
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> uses env to execute the Python interpreter.  But in
+some rare systems, /usr/bin/env may doesn&#8217;t exist.  Or the system may have
+odd environment settings.  In those cases, you may edit the first line to
+point to your Python interpreter directly, e.g.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/home/username/bin/python</span>
+</pre></div>
+</div>
+<p>Then try running <tt class="docutils literal"><span class="pre">./pyblosxom.cgi</span></tt> again.</p>
 <p>If Python is installed on your system and the first line of
 <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> is correct, check for permissions issues:
 <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> is a script&#8212;so it needs execute permission in order
@@ -134,8 +142,7 @@ should work fine.  If you haven&#8217;t done that and you&#8217;re busy
 trouble-shooting, go back and review the deployment instructions.</p>
 <p>When you try to look at your blog in a web-browser and get a HTTP 500
 error, the first thing you should do is uncomment the line in
-<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> (remove the # at the beginning of the line)
-that looks like this:</p>
+<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> that looks like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#import cgitb; cgitb.enable()</span>
 </pre></div>
 </div>
@@ -187,7 +194,7 @@ the documentation on Writing Entries for more information.</p>
 </div>
 </div>
 <div class="section" id="advanced-installation">
-<h2>Advanced Installation<a class="headerlink" href="#advanced-installation" title="Permalink to this headline">¶</a></h2>
+<h2>Advanced installation<a class="headerlink" href="#advanced-installation" title="Permalink to this headline">¶</a></h2>
 <p>We encourage you not to try any of this until you&#8217;ve gotten a blog up
 and running.</p>
 <p>This section covers additional advanced things you can do to your blog
@@ -221,7 +228,7 @@ script.</li>
 </ul>
 <p>Both methods are described here in more detail.</p>
 <div class="section" id="change-the-name-of-the-pyblosxom-cgi-script">
-<h3>Change the Name of the pyblosxom.cgi Script<a class="headerlink" href="#change-the-name-of-the-pyblosxom-cgi-script" title="Permalink to this headline">¶</a></h3>
+<h3>Change the name of the pyblosxom.cgi script<a class="headerlink" href="#change-the-name-of-the-pyblosxom-cgi-script" title="Permalink to this headline">¶</a></h3>
 <p>There&#8217;s no reason that <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> has to be named
 <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>.  Let&#8217;s try changing it <tt class="docutils literal"><span class="pre">blog</span></tt>.  Now our example
 URLs look like this:</p>
@@ -303,7 +310,7 @@ trailing slash.</p>
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="">Deploying PyBlosxom with CGI</a><ul>
+<li><a class="reference external" href="#">Deploying PyBlosxom with CGI</a><ul>
 <li><a class="reference external" href="#dependencies">Dependencies</a></li>
 <li><a class="reference external" href="#deployment">Deployment</a></li>
 <li><a class="reference external" href="#trouble-shooting">Trouble-shooting</a><ul>
@@ -315,9 +322,9 @@ trailing slash.</p>
 <li><a class="reference external" href="#i-hate-writing-in-html">I hate writing in HTML!</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#advanced-installation">Advanced Installation</a></li>
+<li><a class="reference external" href="#advanced-installation">Advanced installation</a></li>
 <li><a class="reference external" href="#renaming-the-pyblosxom-cgi-script">Renaming the pyblosxom.cgi script</a><ul>
-<li><a class="reference external" href="#change-the-name-of-the-pyblosxom-cgi-script">Change the Name of the pyblosxom.cgi Script</a></li>
+<li><a class="reference external" href="#change-the-name-of-the-pyblosxom-cgi-script">Change the name of the pyblosxom.cgi script</a></li>
 <li><a class="reference external" href="#hiding-the-cgi-with-rewriterule">Hiding the .cgi with RewriteRule</a></li>
 </ul>
 </li>
@@ -326,8 +333,8 @@ trailing slash.</p>
 </ul>
 
             <h4>Previous topic</h4>
-            <p class="topless"><a href="notes/UPGRADE.html"
-                                  title="previous chapter">Upgrading PyBlosxom</a></p>
+            <p class="topless"><a href="pyblosxom_cmd.html"
+                                  title="previous chapter">PyBlosxom on the command line</a></p>
             <h4>Next topic</h4>
             <p class="topless"><a href="deploy_paste.html"
                                   title="next chapter">Deploying PyBlosxom with Paste</a></p>
@@ -366,15 +373,15 @@ trailing slash.</p>
           <a href="deploy_paste.html" title="Deploying PyBlosxom with Paste"
              >next</a> |</li>
         <li class="right" >
-          <a href="notes/UPGRADE.html" title="Upgrading PyBlosxom"
+          <a href="pyblosxom_cmd.html" title="PyBlosxom on the command line"
              >previous</a> |</li>
         <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Feb 06, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+      Last updated on Jun 09, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
 </html>

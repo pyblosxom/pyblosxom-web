@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '#',
         VERSION:     '1.5',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
@@ -63,7 +63,7 @@ chapter on writing plugins for more information.</p>
 the blosxom renderer which comes with PyBlosxom.</p>
 </div>
 <div class="section" id="id2">
-<h2>Flavours and Templates<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>Flavours and templates<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>The blosxom renderer renders the output of a request with a
 <a class="reference external" href="glossary.html#term-flavour"><em class="xref">flavour</em></a>.</p>
 <p>A <a class="reference external" href="glossary.html#term-flavour"><em class="xref">flavour</em></a> is a group of templates for a specific output format
@@ -80,7 +80,7 @@ or style.  For example, html, xhtml, atom, rss, rdf, etc.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Many plugins require additional templates to render their output in
-addition ot the standard templates listed above.  See the
+addition to the standard templates listed above.  See the
 documentation for the plugin for more information.</p>
 </div>
 <p>More on flavours, how they&#8217;re stored, and such later.</p>
@@ -152,7 +152,7 @@ flavours.</p>
 <p class="last">Templates in the flavour directory don&#8217;t need an extension.</p>
 </div>
 <p>This structure also makes it easier to use flavour packs found in the
-flavour registry on the <a class="reference external" href="http://pyblosxom.sourceforge.net/">PyBlosxom website</a>.</p>
+flavour registry on the <a class="reference external" href="http://pyblosxom.bluesock.org/">PyBlosxom website</a>.</p>
 </div>
 <div class="section" id="storing-flavours-in-flavour-directories-in-the-datadir">
 <h3>Storing flavours in flavour directories in the datadir<a class="headerlink" href="#storing-flavours-in-flavour-directories-in-the-datadir" title="Permalink to this headline">¶</a></h3>
@@ -289,7 +289,7 @@ the rest of the templates will be taken from <tt class="docutils literal"><span 
 </div>
 <div class="section" id="finding-new-flavours">
 <h2>Finding new flavours<a class="headerlink" href="#finding-new-flavours" title="Permalink to this headline">¶</a></h2>
-<p>There is a flavour registry on the <a class="reference external" href="http://pyblosxom.sourceforge.net/">PyBlosxom website</a>.  You can find
+<p>There is a flavour registry on the <a class="reference external" href="http://pyblosxom.bluesock.org/">PyBlosxom website</a>.  You can find
 flavours here that have been created by other people and submit
 flavours that you&#8217;ve created and want to share.</p>
 <p>Additionally, you can use flavours from <a class="reference external" href="http://www.blosxom.com/">Blosxom</a> and themes from
@@ -310,23 +310,22 @@ override the files it has so far.</li>
 looking at.</p>
 </div>
 <div class="section" id="template-variables">
-<h2>Template Variables<a class="headerlink" href="#template-variables" title="Permalink to this headline">¶</a></h2>
+<h2>Template variables<a class="headerlink" href="#template-variables" title="Permalink to this headline">¶</a></h2>
 <p>This is the list of variables that are available to your templates.
 Templates contain variables that are expanded when the template is
 rendered.  Plugins may add additional variables&#8212;refer to plugin
-documentationfor a list of which variables they add and in which
+documentation for a list of which variables they add and in which
 templates they&#8217;re available.</p>
 <div class="section" id="variable-syntax">
 <h3>Variable syntax<a class="headerlink" href="#variable-syntax" title="Permalink to this headline">¶</a></h3>
 <p>To use a variable in a template, prefix the variable name with a $.
-For example, this would expand to the blog&#8217;s title as a h2:</p>
+For example, this would expand to the blog&#8217;s title as an h2:</p>
 <div class="highlight-python"><pre>&lt;h2&gt;$title&lt;/h2&gt;</pre>
 </div>
-<p>PyBlosxom 1.4.3 and later support parenthesized variables, too:</p>
+<p>To reduce ambiguity, use parenthesized variables.:</p>
 <div class="highlight-python"><pre>&lt;h2&gt;$(title)&lt;/h2&gt;</pre>
 </div>
-<p>This reduced ambiguity.</p>
-<p>PyBlosxom 1.5 also supports variables that expand into functions which
+<p>You can also use variables that expand into functions which
 are evaluated:</p>
 <div class="highlight-python"><pre>&lt;h2&gt;$(escape(title))&lt;/h2&gt;</pre>
 </div>
@@ -344,9 +343,8 @@ involved in the request.  Don&#8217;t forget to change it back when you&#8217;re
 done!</p>
 </div>
 <div class="section" id="url-encoding-and-escaping-of-template-variables">
-<h3>URL Encoding and Escaping of Template Variables<a class="headerlink" href="#url-encoding-and-escaping-of-template-variables" title="Permalink to this headline">¶</a></h3>
-<p>PyBlosxom 1.5 and later has two filters allowing for escaped and
-urlencoded values:</p>
+<h3>URL encoding and escaping of template variables<a class="headerlink" href="#url-encoding-and-escaping-of-template-variables" title="Permalink to this headline">¶</a></h3>
+<p>There are two filters allowing for escaped and urlencoded values:</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">$escape(title)</span></tt> - escapes <tt class="docutils literal"><span class="pre">$title</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">$urlencode(title)</span></tt> - urlencoded <tt class="docutils literal"><span class="pre">$title</span></tt></li>
@@ -542,13 +540,13 @@ variables that come from metadata in the entry are available.  See
 those sections in this document for more details.</p>
 </div>
 <div class="section" id="template-variables-from-plugins">
-<h3>Template Variables from Plugins<a class="headerlink" href="#template-variables-from-plugins" title="Permalink to this headline">¶</a></h3>
+<h3>Template variables from plugins<a class="headerlink" href="#template-variables-from-plugins" title="Permalink to this headline">¶</a></h3>
 <p>Many plugins will create additional variables that are available in
 templates.  Refer to the documentation of the plugins that you have
 installed to see what variables are available and what they do.</p>
 </div>
 <div class="section" id="template-variables-from-entry-metadata">
-<h3>Template Variables from Entry Metadata<a class="headerlink" href="#template-variables-from-entry-metadata" title="Permalink to this headline">¶</a></h3>
+<h3>Template variables from entry metadata<a class="headerlink" href="#template-variables-from-entry-metadata" title="Permalink to this headline">¶</a></h3>
 <p>You can add metadata to your entries on an individual basis and this
 metadata is available to your story templates.</p>
 <p>For example, if I had a blog entry like this:</p>
@@ -566,7 +564,7 @@ available in your story templates.</p>
 </div>
 </div>
 <div class="section" id="invoking-a-flavour">
-<h2>Invoking a Flavour<a class="headerlink" href="#invoking-a-flavour" title="Permalink to this headline">¶</a></h2>
+<h2>Invoking a flavour<a class="headerlink" href="#invoking-a-flavour" title="Permalink to this headline">¶</a></h2>
 <p>The flavour for a given page is specified in the extension of the file
 being requested.  For example:</p>
 <ul class="simple">
@@ -591,7 +589,7 @@ brings up the index for May of 2004 in the &#8220;joy&#8221; flavour</li>
 </ul>
 </div>
 <div class="section" id="setting-default-flavour">
-<h2>Setting Default Flavour<a class="headerlink" href="#setting-default-flavour" title="Permalink to this headline">¶</a></h2>
+<h2>Setting default flavour<a class="headerlink" href="#setting-default-flavour" title="Permalink to this headline">¶</a></h2>
 <p>You can change the default flavour from <tt class="docutils literal"><span class="pre">html</span></tt> to some other flavour
 in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file with the <tt class="docutils literal"><span class="pre">default_flavour</span></tt> property:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;default_flavour&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;joy&quot;</span>
@@ -609,7 +607,7 @@ flavour:</p>
 </div>
 </div>
 <div class="section" id="order-of-operations-to-figure-out-which-flavour-to-use">
-<h2>Order of Operations to Figure Out Which Flavour to Use<a class="headerlink" href="#order-of-operations-to-figure-out-which-flavour-to-use" title="Permalink to this headline">¶</a></h2>
+<h2>Order of operations to figure out which flavour to use<a class="headerlink" href="#order-of-operations-to-figure-out-which-flavour-to-use" title="Permalink to this headline">¶</a></h2>
 <p>We know that you can specify the default flavour to use in the
 <tt class="docutils literal"><span class="pre">config.py</span></tt> file with the <tt class="docutils literal"><span class="pre">default_flavour</span></tt> property.  We know
 that the user can specify which flavour to use by the file extension
@@ -626,7 +624,7 @@ file: if there is one, then we use that.</li>
 </ol>
 </div>
 <div class="section" id="examples-of-templates">
-<h2>Examples of Templates<a class="headerlink" href="#examples-of-templates" title="Permalink to this headline">¶</a></h2>
+<h2>Examples of templates<a class="headerlink" href="#examples-of-templates" title="Permalink to this headline">¶</a></h2>
 <p>For examples of templates and flavours, see the included flavours that
 come with your PyBlosxom installation.</p>
 </div>
@@ -640,9 +638,9 @@ come with your PyBlosxom installation.</p>
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="">Flavours and Templates</a><ul>
+<li><a class="reference external" href="#">Flavours and Templates</a><ul>
 <li><a class="reference external" href="#summary">Summary</a></li>
-<li><a class="reference external" href="#id2">Flavours and Templates</a><ul>
+<li><a class="reference external" href="#id2">Flavours and templates</a><ul>
 <li><a class="reference external" href="#storing-flavours-in-the-flavourdir">Storing flavours in the flavourdir</a></li>
 <li><a class="reference external" href="#storing-flavours-in-flavour-directories-in-the-datadir">Storing flavours in flavour directories in the datadir</a></li>
 <li><a class="reference external" href="#storing-flavours-in-the-datadir">Storing flavours in the datadir</a></li>
@@ -651,22 +649,22 @@ come with your PyBlosxom installation.</p>
 <li><a class="reference external" href="#included-flavours">Included flavours</a></li>
 <li><a class="reference external" href="#overriding-included-flavours">Overriding included flavours</a></li>
 <li><a class="reference external" href="#finding-new-flavours">Finding new flavours</a></li>
-<li><a class="reference external" href="#template-variables">Template Variables</a><ul>
+<li><a class="reference external" href="#template-variables">Template variables</a><ul>
 <li><a class="reference external" href="#variable-syntax">Variable syntax</a></li>
 <li><a class="reference external" href="#getting-a-complete-list-of-variables">Getting a complete list of variables</a></li>
-<li><a class="reference external" href="#url-encoding-and-escaping-of-template-variables">URL Encoding and Escaping of Template Variables</a></li>
+<li><a class="reference external" href="#url-encoding-and-escaping-of-template-variables">URL encoding and escaping of template variables</a></li>
 <li><a class="reference external" href="#variables-from-config-py">Variables from config.py</a></li>
 <li><a class="reference external" href="#calculated-template-variables">Calculated template variables</a></li>
 <li><a class="reference external" href="#template-variables-only-available-in-the-date-head-and-date-foot-templates">Template variables only available in the date_head and date_foot templates</a></li>
 <li><a class="reference external" href="#template-variables-only-available-in-the-story-template">Template variables only available in the story template</a></li>
-<li><a class="reference external" href="#template-variables-from-plugins">Template Variables from Plugins</a></li>
-<li><a class="reference external" href="#template-variables-from-entry-metadata">Template Variables from Entry Metadata</a></li>
+<li><a class="reference external" href="#template-variables-from-plugins">Template variables from plugins</a></li>
+<li><a class="reference external" href="#template-variables-from-entry-metadata">Template variables from entry metadata</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#invoking-a-flavour">Invoking a Flavour</a></li>
-<li><a class="reference external" href="#setting-default-flavour">Setting Default Flavour</a></li>
-<li><a class="reference external" href="#order-of-operations-to-figure-out-which-flavour-to-use">Order of Operations to Figure Out Which Flavour to Use</a></li>
-<li><a class="reference external" href="#examples-of-templates">Examples of Templates</a></li>
+<li><a class="reference external" href="#invoking-a-flavour">Invoking a flavour</a></li>
+<li><a class="reference external" href="#setting-default-flavour">Setting default flavour</a></li>
+<li><a class="reference external" href="#order-of-operations-to-figure-out-which-flavour-to-use">Order of operations to figure out which flavour to use</a></li>
+<li><a class="reference external" href="#examples-of-templates">Examples of templates</a></li>
 </ul>
 </li>
 </ul>
@@ -719,8 +717,8 @@ come with your PyBlosxom installation.</p>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Feb 06, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+      Last updated on Jun 09, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
 </html>

@@ -37,7 +37,7 @@ front---you can add them as you need them.
 
 
 
-The Format of an Entry
+The format of an entry
 ======================
 
 PyBlosxom entries consist of three parts: the title, the metadata, and
@@ -74,6 +74,26 @@ available in your story template.  So for the above example, the
 template variable ``$mood`` would be filled in with ``bored`` and
 ``$music`` would be filled in with ``The Doors - Greatest Hits Vol
 1``.
+
+.. Note::
+
+   Metadata is not collected in a multi-dict.  If you include two
+   pieces of metadata with the same key, the second one will overwrite
+   the first one.
+
+   Example::
+
+      #mood bored
+      #mood happy
+
+   will result in ``'mood'`` --> ``'happy'`` in the metadata.   
+
+
+.. Note::
+
+   You can provide metadata keys with no value.  If you do this, then
+   the default value is ``'1'``.  This seems a bit weird, but it makes
+   it easier for plugin developers to use these as flags.
 
 
 Body
@@ -124,7 +144,7 @@ Here's an example of a post with title, metadata, and a body::
    </p>
 
 
-Posting Date
+Posting date
 ============
 
 The posting date of the entry file is the modification time (also
@@ -179,7 +199,7 @@ You can see this in the following example of output::
 
 
 
-Entry Parsers
+Entry parsers
 =============
 
 PyBlosxom supports one format for entry files by default.  This format
@@ -207,7 +227,7 @@ plugins allow you to use other markup formats.  Check the Plugin
 Registry on the `PyBlosxom web-site`_ for other available entry
 parsers.
 
-.. _PyBlosxom web-site: http://pyblosxom.sourceforge.net/
+.. _PyBlosxom web-site: http://pyblosxom.bluesock.org/
 
 Entry parsers can be written by anyone.  The entry parsers that
 currently exist were written by people who needed that functionality.
@@ -221,7 +241,7 @@ Details on the various entry parsers should be at the top of the entry
 parser plugin itself in the Python doc-string.
 
 
-Beyond Editors
+Beyond editors
 ==============
 
 There's no reason that all your entries have to come from editing blog

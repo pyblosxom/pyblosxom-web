@@ -22,7 +22,7 @@ the blosxom renderer which comes with PyBlosxom.
 
 
 
-Flavours and Templates
+Flavours and templates
 ======================
 
 The blosxom renderer renders the output of a request with a
@@ -43,7 +43,7 @@ A flavour consists of at least the following templates:
 .. Note::
 
    Many plugins require additional templates to render their output in
-   addition ot the standard templates listed above.  See the
+   addition to the standard templates listed above.  See the
    documentation for the plugin for more information.
 
 More on flavours, how they're stored, and such later.
@@ -126,7 +126,7 @@ flavours.
 This structure also makes it easier to use flavour packs found in the
 flavour registry on the `PyBlosxom website`_.
 
-.. _PyBlosxom website: http://pyblosxom.sourceforge.net/
+.. _PyBlosxom website: http://pyblosxom.bluesock.org/
 
 
 
@@ -289,7 +289,7 @@ There is a flavour registry on the `PyBlosxom website`_.  You can find
 flavours here that have been created by other people and submit
 flavours that you've created and want to share.
 
-.. _PyBlosxom website: http://pyblosxom.sourceforge.net/
+.. _PyBlosxom website: http://pyblosxom.bluesock.org/
 
 Additionally, you can use flavours from `Blosxom`_ and themes from
 `WordPress`_ after spending some time converting them.
@@ -313,13 +313,13 @@ This allows you to easily override specific templates in your blog
 looking at.
 
 
-Template Variables
+Template variables
 ==================
 
 This is the list of variables that are available to your templates.
 Templates contain variables that are expanded when the template is
 rendered.  Plugins may add additional variables---refer to plugin
-documentationfor a list of which variables they add and in which
+documentation for a list of which variables they add and in which
 templates they're available.
 
 
@@ -327,17 +327,15 @@ Variable syntax
 ---------------
 
 To use a variable in a template, prefix the variable name with a $.
-For example, this would expand to the blog's title as a h2::
+For example, this would expand to the blog's title as an h2::
 
    <h2>$title</h2>
 
-PyBlosxom 1.4.3 and later support parenthesized variables, too::
+To reduce ambiguity, use parenthesized variables.::
 
    <h2>$(title)</h2>
 
-This reduced ambiguity.
-
-PyBlosxom 1.5 also supports variables that expand into functions which
+You can also use variables that expand into functions which
 are evaluated::
 
    <h2>$(escape(title))</h2>
@@ -358,11 +356,10 @@ involved in the request.  Don't forget to change it back when you're
 done!
 
 
-URL Encoding and Escaping of Template Variables
+URL encoding and escaping of template variables
 -----------------------------------------------
 
-PyBlosxom 1.5 and later has two filters allowing for escaped and
-urlencoded values:
+There are two filters allowing for escaped and urlencoded values:
 
 * ``$escape(title)`` - escapes ``$title``
 * ``$urlencode(title)`` - urlencoded ``$title``
@@ -598,7 +595,7 @@ variables that come from metadata in the entry are available.  See
 those sections in this document for more details.
 
 
-Template Variables from Plugins
+Template variables from plugins
 -------------------------------
 
 Many plugins will create additional variables that are available in
@@ -606,7 +603,7 @@ templates.  Refer to the documentation of the plugins that you have
 installed to see what variables are available and what they do.
 
 
-Template Variables from Entry Metadata
+Template variables from entry metadata
 --------------------------------------
 
 You can add metadata to your entries on an individual basis and this
@@ -629,7 +626,7 @@ available in your story templates.
 
 
 
-Invoking a Flavour
+Invoking a flavour
 ==================
 
 The flavour for a given page is specified in the extension of the file
@@ -661,7 +658,7 @@ variable in the query-string.  Examples:
   brings up the index for May of 2004 in the "joy" flavour
 
 
-Setting Default Flavour
+Setting default flavour
 =======================
 
 You can change the default flavour from ``html`` to some other flavour
@@ -684,7 +681,7 @@ flavour::
    http://www.joe.com/cgi-bin/pyblosxom.cgi/2005/03/?flav=html
 
 
-Order of Operations to Figure Out Which Flavour to Use
+Order of operations to figure out which flavour to use
 ======================================================
 
 We know that you can specify the default flavour to use in the
@@ -703,7 +700,7 @@ The order in which we figure out which flavour to use is this:
 4. use the ``html`` flavour.
 
 
-Examples of Templates
+Examples of templates
 =====================
 
 For examples of templates and flavours, see the included flavours that

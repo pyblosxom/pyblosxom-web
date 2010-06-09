@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '#',
         VERSION:     '1.5',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
@@ -20,7 +20,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
-    <link rel="next" title="Authors" href="notes/AUTHORS.html" />
+    <link rel="next" title="Testing" href="dev_testing.html" />
     <link rel="prev" title="Writing Plugins" href="dev_writing_plugins.html" /> 
   </head>
   <body>
@@ -34,7 +34,7 @@
           <a href="modindex.html" title="Global Module Index"
              accesskey="M">modules</a> |</li>
         <li class="right" >
-          <a href="notes/AUTHORS.html" title="Authors"
+          <a href="dev_testing.html" title="Testing"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="dev_writing_plugins.html" title="Writing Plugins"
@@ -765,7 +765,18 @@ $urlencode(id)</pre>
 more involved than just an <tt class="docutils literal"><span class="pre">s.split(&quot;,&quot;)</span></tt> because this handles
 commas in strings correctly.</p>
 <p>Note: commasplit doesn&#8217;t remove extranneous spaces.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">commasplit</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">commasplit</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
 <span class="go">[]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">commasplit</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
 <span class="go">[&quot;&quot;]</span>
@@ -778,7 +789,7 @@ commas in strings correctly.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">commasplit</span><span class="p">(</span><span class="s">&quot;&#39;a&#39;, &quot;</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="s">&quot;&quot;</span><span class="p">)</span>
 <span class="go">[&quot;a&quot;, &quot; &quot;b, c&quot;&quot;]</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -855,7 +866,14 @@ isn&#8217;t a directory</p>
 <li><tt class="docutils literal"><span class="pre">/</span></tt> to <tt class="docutils literal"><span class="pre">&amp;#x2F;</span></tt></li>
 </ul>
 <p>Note: if <tt class="docutils literal"><span class="pre">s</span></tt> is <tt class="xref docutils literal"><span class="pre">None</span></tt>, then we return <tt class="xref docutils literal"><span class="pre">None</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">escape_text</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">escape_text</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
 <span class="go">None</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">escape_text</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
 <span class="go">&quot;&quot;</span>
@@ -864,7 +882,7 @@ isn&#8217;t a directory</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">escape_text</span><span class="p">(</span><span class="s">&#39;a&quot;b&#39;</span><span class="p">)</span>
 <span class="go">&quot;a&amp;quot;b&quot;</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </dd></dl>
 
 <dl class="function">
@@ -1025,8 +1043,8 @@ debugging.</p>
 <p>Usage:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tools</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">log_caller</span><span class="p">()</span>     <span class="c"># logs frame 1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">log_caller</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">log_caller</span><span class="p">(</span><span class="mf">3</span><span class="p">,</span> <span class="n">log_file</span><span class="o">=</span><span class="s">&quot;/path/to/file&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">log_caller</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span><span class="o">.</span><span class="n">log_caller</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">log_file</span><span class="o">=</span><span class="s">&quot;/path/to/file&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1135,7 +1153,7 @@ filesystem.</p>
 
 <dl class="function">
 <dt id="Pyblosxom.tools.run_callback">
-<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0x9c448ec&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0x9c44924&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0xa9f7b54&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0xa9f7b8c&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes a callback chain on a given piece of data.  passed in is
 a dict of name/value pairs.  Consult the documentation for the
 specific callback chain you&#8217;re executing.</p>
@@ -1214,7 +1232,16 @@ example: <tt class="docutils literal"><span class="pre">/movies/xmen2</span></tt
 <tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">urlencode_text</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.urlencode_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls <tt class="docutils literal"><span class="pre">urllib.quote</span></tt> on the string <tt class="docutils literal"><span class="pre">s</span></tt>.</p>
 <p>Note: if <tt class="docutils literal"><span class="pre">s</span></tt> is <tt class="xref docutils literal"><span class="pre">None</span></tt>, then we return <tt class="xref docutils literal"><span class="pre">None</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">urlencode_text</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">urlencode_text</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
 <span class="go">None</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">urlencode_text</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
 <span class="go">&quot;&quot;</span>
@@ -1225,7 +1252,7 @@ example: <tt class="docutils literal"><span class="pre">/movies/xmen2</span></tt
 <span class="gp">&gt;&gt;&gt; </span><span class="n">urlencode_text</span><span class="p">(</span><span class="s">&quot;a=c&quot;</span><span class="p">)</span>
 <span class="go">&quot;a%3Dc&quot;</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </dd></dl>
 
 <dl class="function">
@@ -1304,12 +1331,12 @@ implement the functionality required by the other rendering system.</p>
 debug module.</p>
 <dl class="class">
 <dt id="Pyblosxom.renderers.base.Renderer">
-<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">Renderer</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x401fb070&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.Renderer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">Renderer</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x403a6078&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.Renderer" title="Permalink to this definition">¶</a></dt>
 <dd>This is a null renderer.</dd></dl>
 
 <dl class="class">
 <dt id="Pyblosxom.renderers.base.RendererBase">
-<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">RendererBase</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x401fb070&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">RendererBase</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x403a6078&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pyblosxom core handles the Input and Process of the system and
 passes the result of the process to the Renderers for output. All
 renderers are child classes of RendererBase. RenderBase will
@@ -1421,7 +1448,25 @@ output stream and one output log stream.</p>
 files, but because renderers and other frameworks may probably
 not want you to write to <tt class="docutils literal"><span class="pre">stdout</span></tt> directly, this method
 assists you nicely. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_start</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_start</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">req</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&#39;request&#39;</span><span class="p">]</span>
     <span class="n">renderer</span> <span class="o">=</span> <span class="n">req</span><span class="p">[</span><span class="s">&#39;renderer&#39;</span><span class="p">]</span>
 
@@ -1439,9 +1484,9 @@ assists you nicely. For example:</p>
 
         <span class="c"># Tell pyblosxom not to render anymore as data is</span>
         <span class="c"># processed already</span>
-        <span class="n">renderer</span><span class="o">.</span><span class="n">rendered</span> <span class="o">=</span> <span class="mf">1</span>
+        <span class="n">renderer</span><span class="o">.</span><span class="n">rendered</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 <p>This simple piece of pseudocode explains what you could do
 with this method, though I highly don&#8217;t recommend this, unless
 pyblosxom is running continuously.</p>
@@ -1829,7 +1874,7 @@ if you pass in None, then we&#8217;ll use localtime.</li>
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="">Code Documentation</a><ul>
+<li><a class="reference external" href="#">Code Documentation</a><ul>
 <li><a class="reference external" href="#introduction">Introduction</a></li>
 <li><a class="reference external" href="#module-Pyblosxom.pyblosxom">Pyblosxom.pyblosxom</a></li>
 <li><a class="reference external" href="#module-Pyblosxom.tools">Pyblosxom.tools</a></li>
@@ -1843,8 +1888,8 @@ if you pass in None, then we&#8217;ll use localtime.</li>
             <p class="topless"><a href="dev_writing_plugins.html"
                                   title="previous chapter">Writing Plugins</a></p>
             <h4>Next topic</h4>
-            <p class="topless"><a href="notes/AUTHORS.html"
-                                  title="next chapter">Authors</a></p>
+            <p class="topless"><a href="dev_testing.html"
+                                  title="next chapter">Testing</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/dev_codedocs.txt"
@@ -1877,7 +1922,7 @@ if you pass in None, then we&#8217;ll use localtime.</li>
           <a href="modindex.html" title="Global Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="notes/AUTHORS.html" title="Authors"
+          <a href="dev_testing.html" title="Testing"
              >next</a> |</li>
         <li class="right" >
           <a href="dev_writing_plugins.html" title="Writing Plugins"
@@ -1887,8 +1932,8 @@ if you pass in None, then we&#8217;ll use localtime.</li>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Feb 16, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+      Last updated on May 24, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
 </html>

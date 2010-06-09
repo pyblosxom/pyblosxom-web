@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Glossary &mdash; PyBlosxom v1.5 documentation</title>
+    <title>PyBlosxom on the command line &mdash; PyBlosxom v1.5 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -20,7 +20,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
-    <link rel="prev" title="Thanks" href="notes/THANKS.html" /> 
+    <link rel="next" title="Deploying PyBlosxom with CGI" href="deploy_cgi.html" />
+    <link rel="prev" title="Upgrading PyBlosxom" href="notes/UPGRADE.html" /> 
   </head>
   <body>
     <div class="related">
@@ -33,7 +34,10 @@
           <a href="modindex.html" title="Global Module Index"
              accesskey="M">modules</a> |</li>
         <li class="right" >
-          <a href="notes/THANKS.html" title="Thanks"
+          <a href="deploy_cgi.html" title="Deploying PyBlosxom with CGI"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="notes/UPGRADE.html" title="Upgrading PyBlosxom"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
       </ul>
@@ -44,37 +48,22 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="glossary">
-<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
-<dl class="glossary docutils">
-<dt id="term-flavour">flavour</dt>
-<dd><p class="first">A flavour is a group of templates for a specifc output like
-html, xhtml, xml, atom, rss, etc.</p>
-<p>A flavour consists of at least the following templates:</p>
-<ul class="simple">
-<li><strong>content_type</strong> - holds the content type of the flavour</li>
-<li><strong>head</strong> - holds everything before all the entries</li>
-<li><strong>story</strong> - holds a single entry</li>
-<li><strong>foot</strong> - holds everything after all the entries</li>
-<li><strong>date_head</strong> - shows at the start of a date</li>
-<li><strong>date_foot</strong> - shows at the end of a date</li>
-</ul>
-<p class="last">See <a class="reference external" href="flavours_and_templates.html#id1"><em>Flavours and Templates</em></a> for
-more details.</p>
-</dd>
-<dt id="term-template">template</dt>
-<dd><p class="first">A template specifies a specific portion of the output.</p>
-<p>For example, here&#8217;s a <strong>head</strong> template for an html flavour:</p>
-<div class="highlight-python"><pre>&lt;html&gt;
-&lt;head&gt;
-  &lt;title&gt;My blog&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;</pre>
+  <div class="section" id="pyblosxom-on-the-command-line">
+<h1>PyBlosxom on the command line<a class="headerlink" href="#pyblosxom-on-the-command-line" title="Permalink to this headline">¶</a></h1>
+<p>PyBlosxom comes with a command line tool called <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span></tt>.  It allows
+you to create new blogs, verify your configuration, run static rendering,
+render single urls, and run command line functions implemented in plugins.</p>
+<p>For help, do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">pyblosxom</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
 </div>
-<p class="last">See <a class="reference external" href="flavours_and_templates.html#id1"><em>Flavours and Templates</em></a> for
-more details.</p>
-</dd>
-</dl>
+<p>It&#8217;ll list the commands and options available.</p>
+<p>If you tell it where your config file is, then it&#8217;ll list commands and
+options available as well as those implemented in plugins you have installed.</p>
+<p>For example:</p>
+<div class="highlight-python"><pre>pyblosxom-cmd --config=/path/to/config.py --help</pre>
+</div>
+<p>For more information on static rendering, see <a class="reference external" href="deploy_staticrendering.html#static-rendering"><em>Deploy PyBlosxom with Static Rendering</em></a>.</p>
 </div>
 
 
@@ -84,11 +73,14 @@ more details.</p>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <h4>Previous topic</h4>
-            <p class="topless"><a href="notes/THANKS.html"
-                                  title="previous chapter">Thanks</a></p>
+            <p class="topless"><a href="notes/UPGRADE.html"
+                                  title="previous chapter">Upgrading PyBlosxom</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="deploy_cgi.html"
+                                  title="next chapter">Deploying PyBlosxom with CGI</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
-              <li><a href="_sources/glossary.txt"
+              <li><a href="_sources/pyblosxom_cmd.txt"
                      rel="nofollow">Show Source</a></li>
             </ul>
           <div id="searchbox" style="display: none">
@@ -118,7 +110,10 @@ more details.</p>
           <a href="modindex.html" title="Global Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="notes/THANKS.html" title="Thanks"
+          <a href="deploy_cgi.html" title="Deploying PyBlosxom with CGI"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="notes/UPGRADE.html" title="Upgrading PyBlosxom"
              >previous</a> |</li>
         <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
       </ul>

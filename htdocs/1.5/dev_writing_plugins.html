@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '#',
         VERSION:     '1.5',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
@@ -78,7 +78,89 @@ in detail:</p>
 <li>any notes about requirements (e.g. &#8220;Requires Python 2.3 or greater&#8221;)</li>
 </ol>
 <p>For example, this is at the top of Will&#8217;s wbgpager plugin:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre></div></td><td class="code"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Quickly written plugin for paging long index pages.</span>
 
 <span class="sd">PyBlosxom uses the num_entries configuration variable to prevent</span>
@@ -162,7 +244,7 @@ in detail:</p>
 <span class="sd">Copyright 2004, 2005, 2006 Will Kahn-Greene</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="section" id="metadata">
 <h3>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h3>
@@ -239,7 +321,15 @@ they can.</p>
 <p>As a plugin developer, you should add a <tt class="docutils literal"><span class="pre">verify_installation</span></tt>
 function to your plugin module.  Something like this (taken from
 pycategories):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">verify_installation</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">verify_installation</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">config</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_configuration</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&quot;category_flavour&quot;</span><span class="p">):</span>
@@ -247,9 +337,9 @@ pycategories):</p>
         <span class="k">print</span> <span class="s">&quot;which allows you to specify the flavour for the category &quot;</span>
         <span class="k">print</span> <span class="s">&quot;link.  refer to pycategory plugin documentation for more &quot;</span>
         <span class="k">print</span> <span class="s">&quot;details.&quot;</span>
-    <span class="k">return</span> <span class="mf">1</span>
+    <span class="k">return</span> <span class="mi">1</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 <p>This gives you (the plugin developer) the opportunity to walk the user
 through configuring your highly complex, quantum-charged, turbo plugin
 in small baby steps without having to hunt for where their logs might
@@ -267,19 +357,29 @@ nature.</p>
 </div>
 <p>Here&#8217;s an example of <tt class="docutils literal"><span class="pre">verify_installation</span></tt> from Will&#8217;s wbgpager
 plugin:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">verify_installation</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">verify_installation</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">config</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_configuration</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;num_entries&quot;</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;num_entries&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">print</span> <span class="s">&quot;missing config property &#39;num_entries&#39;.  wbgpager won&#39;t do &quot;</span>
         <span class="k">print</span> <span class="s">&quot;anything without num_entries set.  either set num_entries &quot;</span>
         <span class="k">print</span> <span class="s">&quot;to a positive integer, or disable the wbgpager plugin.&quot;</span>
         <span class="k">print</span> <span class="s">&quot;see the documentation at the top of the wbgpager plugin &quot;</span>
         <span class="k">print</span> <span class="s">&quot;code file for more details.&quot;</span>
-        <span class="k">return</span> <span class="mf">0</span>
+        <span class="k">return</span> <span class="mi">0</span>
 
-    <span class="k">return</span> <span class="mf">1</span>
+    <span class="k">return</span> <span class="mi">1</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 </div>
 <div class="section" id="how-to-log-messages-to-a-log-file">
@@ -287,25 +387,54 @@ plugin:</p>
 <p>First you need to get the logger instance.  After that, you can call
 debug, info, warning, error and critical on the logger instance.  For
 example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyblosxom</span> <span class="kn">import</span> <span class="n">tools</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyblosxom</span> <span class="kn">import</span> <span class="n">tools</span>
 
 <span class="k">def</span> <span class="nf">cb_prepare</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-    <span class="o">...</span>
+    <span class="c"># ...</span>
     <span class="n">logger</span> <span class="o">=</span> <span class="n">tools</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;blah blah blah...&quot;</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="o">...</span>
-    <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">pass</span>
+        <span class="c"># ...</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="section" id="how-to-store-plugin-state-between-callbacks">
 <h2>How to store plugin state between callbacks<a class="headerlink" href="#how-to-store-plugin-state-between-callbacks" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to store state between callbacks is to store the data
 in the data dict of the Request object.  For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">STATE_KEY</span> <span class="o">=</span> <span class="s">&quot;myplugin_state&quot;</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">STATE_KEY</span> <span class="o">=</span> <span class="s">&quot;myplugin_state&quot;</span>
 
 <span class="k">def</span> <span class="nf">cb_date_head</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">request</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&quot;request&quot;</span><span class="p">]</span>
@@ -313,7 +442,8 @@ in the data dict of the Request object.  For example:</p>
 
     <span class="k">if</span> <span class="p">((</span><span class="n">data</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">STATE_KEY</span><span class="p">)</span>
          <span class="ow">and</span> <span class="n">data</span><span class="p">[</span><span class="n">STATE_KEY</span><span class="p">][</span><span class="s">&quot;blah&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&quot;blahblah&quot;</span><span class="p">)):</span>
-        <span class="o">...</span>
+        <span class="k">pass</span>
+        <span class="c"># ...</span>
 
 
 <span class="k">def</span> <span class="nf">cb_filelist</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
@@ -323,7 +453,7 @@ in the data dict of the Request object.  For example:</p>
     <span class="n">data</span><span class="p">[</span><span class="n">STATE_KEY</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">data</span><span class="p">[</span><span class="n">STATE_KEY</span><span class="p">][</span><span class="s">&quot;blah&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;blahblah&quot;</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="section" id="how-to-implement-a-callback">
 <h2>How to implement a callback<a class="headerlink" href="#how-to-implement-a-callback" title="Permalink to this headline">¶</a></h2>
@@ -355,7 +485,30 @@ single string and should be formatted in HTML.</p>
 <p>Here&#8217;s an example code that reads <tt class="docutils literal"><span class="pre">.plain</span></tt> files which have the
 title as the first line, metadata lines that start with <tt class="docutils literal"><span class="pre">#</span></tt> and then
 after all the metadata the body of the entry:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="k">def</span> <span class="nf">cb_entryparser</span><span class="p">(</span><span class="n">entryparsingdict</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -380,7 +533,7 @@ after all the metadata the body of the entry:</p>
 
     <span class="k">return</span> <span class="n">entrydata</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 <p>You can also specify the template to use by setting the
 <tt class="docutils literal"><span class="pre">&quot;template_name&quot;</span></tt> variable in the returned dict.  If the template
 specified doesn&#8217;t exist, PyBlosxom will use the <tt class="docutils literal"><span class="pre">story</span></tt> template for
@@ -390,7 +543,39 @@ a image entry and you want image entries to be displayed on your blog
 with an image and then a caption below it and that&#8217;s it, then you
 would create a template for that and set <tt class="docutils literal"><span class="pre">&quot;template_name&quot;</span></tt> to the
 name of the template:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_entryparser</span><span class="p">(</span><span class="n">entryparsingdict</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_entryparser</span><span class="p">(</span><span class="n">entryparsingdict</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Register self as plain file handler</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -414,23 +599,31 @@ name of the template:</p>
     <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="c"># we do this for RSS purposes</span>
-    <span class="n">entrydata</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;image </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">lines</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="n">entrydata</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;image </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">entrydata</span><span class="p">[</span><span class="s">&#39;body&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
         <span class="s">&quot;&lt;img src=</span><span class="se">\&quot;</span><span class="s">/images/</span><span class="si">%s</span><span class="se">\&quot;</span><span class="s">&gt;&quot;</span><span class="p">,</span>
-        <span class="s">&quot;&lt;p&gt;</span><span class="si">%s</span><span class="s">&lt;/p&gt;&quot;</span> <span class="o">%</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mf">1</span><span class="p">:])</span>
+        <span class="s">&quot;&lt;p&gt;</span><span class="si">%s</span><span class="s">&lt;/p&gt;&quot;</span> <span class="o">%</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
         <span class="p">])</span>
 
     <span class="n">entrydata</span><span class="p">[</span><span class="s">&quot;template_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;image_post&quot;</span>
 
     <span class="k">return</span> <span class="n">entrydata</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="section" id="writing-a-preformatter-plugin">
 <span id="writing-a-preformatter"></span><h2>Writing a preformatter plugin<a class="headerlink" href="#writing-a-preformatter-plugin" title="Permalink to this headline">¶</a></h2>
 <p>FIXME - need more about preformatters here</p>
 <p>A typical preformatter plugin looks like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_preformat</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_preformat</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="s">&#39;parser&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;linebreaks&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">parse</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s">&#39;story&#39;</span><span class="p">]))</span>
 
@@ -440,7 +633,7 @@ name of the template:</p>
     <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">n&#39;</span><span class="p">,</span><span class="s">&#39;&lt;br /&gt;&#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
     <span class="k">return</span> <span class="s">&#39;&lt;p&gt;</span><span class="si">%s</span><span class="s">&lt;/p&gt;&#39;</span> <span class="o">%</span> <span class="n">text</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="section" id="writing-a-postformatter-plugin">
 <span id="writing-a-postformatter"></span><h2>Writing a postformatter plugin<a class="headerlink" href="#writing-a-postformatter-plugin" title="Permalink to this headline">¶</a></h2>
@@ -464,15 +657,21 @@ handler, and command summary</li>
 <li>implement the command function</li>
 </ol>
 <p>For example, this adds a command to print command line arguments:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">printargs</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">argv</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">printargs</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">argv</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">argv</span>
-    <span class="k">return</span> <span class="mf">0</span>
+    <span class="k">return</span> <span class="mi">0</span>
 
 <span class="k">def</span> <span class="nf">cb_commandline</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">args</span><span class="p">[</span><span class="s">&quot;printargs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">printargs</span><span class="p">,</span> <span class="s">&quot;prints arguments&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">args</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The plugin must be in a directory specified by <tt class="docutils literal"><span class="pre">load_plugins</span></tt> in
@@ -494,7 +693,7 @@ a b c</pre>
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="">Writing Plugins</a><ul>
+<li><a class="reference external" href="#">Writing Plugins</a><ul>
 <li><a class="reference external" href="#summary">Summary</a></li>
 <li><a class="reference external" href="#things-that-all-plugins-should-have">Things that all plugins should have</a><ul>
 <li><a class="reference external" href="#documentation">Documentation</a></li>
@@ -562,8 +761,8 @@ a b c</pre>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Feb 06, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+      Last updated on May 24, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
 </html>

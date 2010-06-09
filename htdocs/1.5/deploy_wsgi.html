@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '#',
         VERSION:     '1.5',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
@@ -63,15 +63,14 @@ instructions aren&#8217;t as mature as other instructions.</p>
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Either:</p>
+<blockquote>
 <ul class="simple">
-<li>Pyblosxom 1.4.2 or a later version</li>
-<li>Either:<ul>
 <li>Python 2.5, OR</li>
 <li>Python 2.4 with the wsgiref library installed:
 <a class="reference external" href="http://cheeseshop.python.org/pypi/wsgiref">http://cheeseshop.python.org/pypi/wsgiref</a></li>
 </ul>
-</li>
-</ul>
+</blockquote>
 </div>
 <div class="section" id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
@@ -103,16 +102,16 @@ do the following:</p>
 
 <span class="k">def</span> <span class="nf">add_to_path</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
    <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-      <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+      <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
 
 <span class="c"># call add_to_path with the directory that your config.py lives in.</span>
 <span class="n">add_to_path</span><span class="p">(</span><span class="s">&quot;/home/joe/blog&quot;</span><span class="p">)</span>
 
 <span class="c"># if you have PyBlosxom installed in a directory and NOT as a Python</span>
 <span class="c"># library, then call add_to_path with the directory that PyBlosxom</span>
-<span class="c"># lives in.  For example, if I untar&#39;d pyblosxom-1.4.1.tar.gz into</span>
+<span class="c"># lives in.  For example, if I untar&#39;d pyblosxom-1.5.tar.gz into</span>
 <span class="c"># /home/joe/, then add like this:</span>
-<span class="c"># add_to_path(&quot;/home/joe/pyblosxom-1.4.1/&quot;)</span>
+<span class="c"># add_to_path(&quot;/home/joe/pyblosxom-1.5/&quot;)</span>
 
 <span class="kn">import</span> <span class="nn">Pyblosxom.pyblosxom</span>
 <span class="n">application</span> <span class="o">=</span> <span class="n">Pyblosxom</span><span class="o">.</span><span class="n">pyblosxom</span><span class="o">.</span><span class="n">PyBlosxomWSGIApp</span><span class="p">()</span>
@@ -140,7 +139,7 @@ do the following:</p>
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="">Deploying PyBlosxom with WSGI</a><ul>
+<li><a class="reference external" href="#">Deploying PyBlosxom with WSGI</a><ul>
 <li><a class="reference external" href="#summary">Summary</a></li>
 <li><a class="reference external" href="#dependencies">Dependencies</a></li>
 <li><a class="reference external" href="#setup">Setup</a><ul>
@@ -201,8 +200,8 @@ do the following:</p>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Feb 06, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+      Last updated on Jun 09, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
 </html>

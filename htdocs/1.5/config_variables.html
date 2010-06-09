@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '#',
         VERSION:     '1.5',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
@@ -143,9 +143,9 @@ this:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>A note about datadir on Windows:</p>
-<p>Use <tt class="docutils literal"><span class="pre">/</span></tt> to separate directories in the datadir path even if you
-are using Windows.  Examples of valid datadirs on Windows:</p>
+<p>A note about <tt class="docutils literal"><span class="pre">datadir</span></tt> on Windows:</p>
+<p>Use <tt class="docutils literal"><span class="pre">/</span></tt> to separate directories in the <tt class="docutils literal"><span class="pre">datadir</span></tt> path even if
+you are using Windows.  Examples of valid datadirs on Windows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;datadir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/blog/entries/&quot;</span>
 </pre></div>
 </div>
@@ -331,8 +331,8 @@ if you don&#8217;t know what to set your encoding to then set it to
 <p>This value should be in the meta section of any HTML- or XHTML-based flavours
 and it&#8217;s also in the header for any feed-based flavours.  An improper
 encoding will gummy up some/most feed readers and web-browsers.</p>
-<p>FIXME - where can we find more information about what constitutes a
-valid encoding value?</p>
+<p>W3C has a nice <a class="reference external" href="http://www.w3.org/International/tutorials/tutorial-char-enc/">tutorial on encoding</a>.  You may refer to
+<a class="reference external" href="http://www.iana.org/assignments/character-sets">IANA charset registry</a> for a complete list of encoding names.</p>
 </div>
 <div class="section" id="blog-language">
 <h3>blog_language<a class="headerlink" href="#blog-language" title="Permalink to this headline">¶</a></h3>
@@ -344,8 +344,12 @@ valid encoding value?</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_language&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;en&quot;</span>
 </pre></div>
 </div>
-<p>FIXME - where&#8217;s a list of valid language codes?</p>
 <p>This gets used in the RSS flavours.</p>
+<p>Refer to <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes">ISO 639-2</a> for language codes.  Many systems use two-letter
+ISO 639-1 codes supplemented by three-letter ISO 639-2 codes when no
+two-letter code is applicable.  Often ISO 639-2 is sufficient.  If you use
+very special languages, you may want to refer to <a class="reference external" href="http://www.sil.org/iso639-3/">ISO 639-3</a>, which is a
+super set of ISO 639-2 and contains languages used thousands of years ago.</p>
 </div>
 <div class="section" id="blog-title">
 <h3>blog_title<a class="headerlink" href="#blog-title" title="Permalink to this headline">¶</a></h3>
@@ -476,7 +480,7 @@ affect the number of entries that show up on date-based archive pages.</p>
 <p>For example, if you wanted to set <tt class="docutils literal"><span class="pre">num_entries</span></tt> to 10 so that 10
 entries show on your category index pages, you sould set it like
 this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;num_entries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;num_entries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
@@ -519,7 +523,7 @@ you did NOT set load_plugins, then PyBlosxom will load <tt class="docutils liter
 followed by <tt class="docutils literal"><span class="pre">plugin_b</span></tt> followed by <tt class="docutils literal"><span class="pre">plugin_c</span></tt>.</p>
 <p>If you wanted PyBlosxom to load <tt class="docutils literal"><span class="pre">plugin_a</span></tt> and <tt class="docutils literal"><span class="pre">plugin_c</span></tt>, then you
 would set <tt class="docutils literal"><span class="pre">load_plugins</span></tt> to:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;load_plugins&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;pluginA&quot;</span><span class="p">,</span> <span class="s">&quot;pluginC&quot;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;load_plugins&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;plugin_a&quot;</span><span class="p">,</span> <span class="s">&quot;plugin_c&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -561,7 +565,7 @@ with those plugins.</p>
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="">Variables in config.py</a><ul>
+<li><a class="reference external" href="#">Variables in config.py</a><ul>
 <li><a class="reference external" href="#summary">Summary</a></li>
 <li><a class="reference external" href="#configuration-variables">Configuration variables</a><ul>
 <li><a class="reference external" href="#base-url">base_url</a></li>
@@ -644,8 +648,8 @@ with those plugins.</p>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Feb 05, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+      Last updated on Jun 09, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
 </html>

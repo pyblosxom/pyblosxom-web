@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Testing &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '1.5',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="next" title="Authors" href="notes/AUTHORS.html" />
+    <link rel="prev" title="Code Documentation" href="dev_codedocs.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="notes/AUTHORS.html" title="Authors"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dev_codedocs.html" title="Code Documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="testing">
+<h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
+<p>In the pyblosxom git repository, there are two big things that have
+test suites:</p>
+<ol class="arabic simple">
+<li>the PyBlosxom core code</li>
+<li>the plugins that are in plugins/</li>
+</ol>
+<p>These have two separate testing infrastructures, but both are based on
+unittest which comes with Python.</p>
+<div class="section" id="pyblosxom-core-code-testing">
+<h2>PyBlosxom core code testing<a class="headerlink" href="#pyblosxom-core-code-testing" title="Permalink to this headline">¶</a></h2>
+<p>These tests are located in <tt class="docutils literal"><span class="pre">Pyblosxom/tests/</span></tt> and test the PyBlosxom
+core functionality.</p>
+<p>Tests are executed by:</p>
+<div class="highlight-python"><pre>python setup.py test</pre>
+</div>
+<p>This uses the <tt class="docutils literal"><span class="pre">test_suite</span></tt> parameter to setup which is in both
+distribute and setuptools.</p>
+<p>The <tt class="docutils literal"><span class="pre">test_suite</span></tt> is <tt class="docutils literal"><span class="pre">Pyblosxom.tests.testrunner.test_suite</span></tt> which
+is a function that goes through all the files in <tt class="docutils literal"><span class="pre">Pyblosxom/tests/</span></tt>
+and loads tests in files where the filename starts with <tt class="docutils literal"><span class="pre">test_</span></tt> and
+ends in <tt class="docutils literal"><span class="pre">.py</span></tt>.</p>
+<p>There&#8217;s a helper module which has a UnitTestBase derived from
+<tt class="docutils literal"><span class="pre">unittest.TestCase</span></tt> which has some helper functions for building a
+blog setup, tearing it down, building a <tt class="docutils literal"><span class="pre">Request</span></tt> object, and
+comparing two dicts where one must be a subset the other.</p>
+<p>Writing tests for the core is pretty easy:</p>
+<ol class="arabic simple">
+<li>create a file in <tt class="docutils literal"><span class="pre">Pyblosxom/tests/</span></tt> with a filename that starts with
+<tt class="docutils literal"><span class="pre">test_</span></tt> and ends with <tt class="docutils literal"><span class="pre">.py</span></tt>.</li>
+<li>import <tt class="docutils literal"><span class="pre">UnitTestBase</span></tt> from <tt class="docutils literal"><span class="pre">Pyblosxom.tests.helpers</span></tt></li>
+<li>create a subclass of <tt class="docutils literal"><span class="pre">UnitTestBase</span></tt></li>
+<li>write some tests using pretty standard unittest stuff</li>
+</ol>
+<p>There are a bunch of existing examples in the directory.</p>
+</div>
+<div class="section" id="testing-plugins">
+<h2>Testing plugins<a class="headerlink" href="#testing-plugins" title="Permalink to this headline">¶</a></h2>
+<p>Plugins are a lot harder because we want to make sure they remain
+modular and easy to install.  &#8220;Easy to install&#8221; really means that a
+plugin is a single monolithic file.  I didn&#8217;t want to have a ton of
+testing code in the modules, so I wrote the test harness to allow for
+plugins to have tests in the plugin as well as tests in a parallel tests
+directory.</p>
+<p>To run all the plugin tests, I do something like this:</p>
+<div class="highlight-python"><pre>PYTHONPATH=. python plugins/testrunner.py</pre>
+</div>
+<div class="section" id="tests-in-the-plugin-file">
+<h3>Tests in the plugin file<a class="headerlink" href="#tests-in-the-plugin-file" title="Permalink to this headline">¶</a></h3>
+<p>Testing inside a plugin is pretty limited because you can&#8217;t take
+advantage of the helper infrastructure&#8211;you&#8217;re limited to what you can
+load from Python and PyBlosxom core.</p>
+<ol class="arabic simple">
+<li>import <tt class="docutils literal"><span class="pre">unittest</span></tt></li>
+<li>create a class that extends <tt class="docutils literal"><span class="pre">unittest.TestCase</span></tt></li>
+<li>write your tests in that</li>
+<li>create a function at the module level called <tt class="docutils literal"><span class="pre">get_test_suite</span></tt>
+that returns the tests loaded from the test class(es)</li>
+</ol>
+<p>For an example, look at <tt class="docutils literal"><span class="pre">plugins/date/w3cdate.py</span></tt>.</p>
+</div>
+<div class="section" id="tests-in-the-parallel-directory">
+<h3>Tests in the parallel directory<a class="headerlink" href="#tests-in-the-parallel-directory" title="Permalink to this headline">¶</a></h3>
+<p>Writing tests in the parallel directory has the benefit of being able to
+use helper infrastructure, but the cost of being separate from the
+actual plugin.  I think this is ok, but it&#8217;s something that we have to
+keep in mind when we make plugin fixes.</p>
+<p>Tests are located in <tt class="docutils literal"><span class="pre">plugins/tests/</span></tt> and are in a parallel
+directory structure to the plugins in <tt class="docutils literal"><span class="pre">plugins/</span></tt> .</p>
+<p>For example, the test_acronyms.py test file is in
+<tt class="docutils literal"><span class="pre">plugins/tests/text/test_acronyms.py</span></tt> and the plugin is in
+<tt class="docutils literal"><span class="pre">plugins/text/acronyms.py</span></tt>.</p>
+<p>Test files should import <tt class="docutils literal"><span class="pre">PluginTest</span></tt> from
+<tt class="docutils literal"><span class="pre">plugins.test.test_base</span></tt>.  This class has a bunch of helper
+functions for dealing with request objects, creating blog data,
+flavours, ...</p>
+<ol class="arabic simple">
+<li>import <tt class="docutils literal"><span class="pre">PluginTest</span></tt> from <tt class="docutils literal"><span class="pre">plugins.test.test_base</span></tt></li>
+<li>create a class that extends <tt class="docutils literal"><span class="pre">PluginTest</span></tt></li>
+<li>write your tests in that</li>
+<li>edit <tt class="docutils literal"><span class="pre">plugins/tests/__init__.py</span></tt> and add a line to import things
+from your new test module</li>
+</ol>
+<p>For examples, see files in <tt class="docutils literal"><span class="pre">plugins/test/</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>I think that&#8217;s it.  It definitely seems more complicated than it is.
+Generally speaking, the test infrastructure is ok, but not
+fantastically amazing.  It&#8217;ll evolve over time as we need it to do
+more.</p>
+<p>Speaking of doing more, there are parts of PyBlosxom that could use
+better testing.  Help on this front would be fantastic.</p>
+<p>Having said that, adding tests for the code we&#8217;re writing helps us a
+TON in the quality department.  PyBlosxom 1.5 is ten times as good as
+previous versions because we&#8217;ve got a better testing infrastructure
+and we&#8217;re testing plugin functionality.</p>
+<p>Many thanks to Ryan Barret for the awesome work he did a while back.
+The infrastructure we have now is based largely on his efforts.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Testing</a><ul>
+<li><a class="reference external" href="#pyblosxom-core-code-testing">PyBlosxom core code testing</a></li>
+<li><a class="reference external" href="#testing-plugins">Testing plugins</a><ul>
+<li><a class="reference external" href="#tests-in-the-plugin-file">Tests in the plugin file</a></li>
+<li><a class="reference external" href="#tests-in-the-parallel-directory">Tests in the parallel directory</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="dev_codedocs.html"
+                                  title="previous chapter">Code Documentation</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="notes/AUTHORS.html"
+                                  title="next chapter">Authors</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/dev_testing.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="notes/AUTHORS.html" title="Authors"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dev_codedocs.html" title="Code Documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Will Kahn-Greene.
+      Last updated on May 24, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+    </div>
+  </body>
+</html>

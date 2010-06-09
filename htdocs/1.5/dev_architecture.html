@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    '#',
         VERSION:     '1.5',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
@@ -104,7 +104,7 @@ or write yourself.</li>
 </ol>
 </div>
 <div class="section" id="lifecycle-of-a-pyblosxom-request">
-<h2>Lifecycle of a PyBlosxom Request<a class="headerlink" href="#lifecycle-of-a-pyblosxom-request" title="Permalink to this headline">¶</a></h2>
+<h2>Lifecycle of a PyBlosxom request<a class="headerlink" href="#lifecycle-of-a-pyblosxom-request" title="Permalink to this headline">¶</a></h2>
 <p>This is the life cycle of a single PyBlosxom CGI request. It involves
 the following &#8220;entities&#8221;:</p>
 <ul class="simple">
@@ -219,7 +219,7 @@ template.</li>
 </ol>
 </div>
 <div class="section" id="about-callbacks">
-<h2>About Callbacks<a class="headerlink" href="#about-callbacks" title="Permalink to this headline">¶</a></h2>
+<h2>About callbacks<a class="headerlink" href="#about-callbacks" title="Permalink to this headline">¶</a></h2>
 <p>Callbacks allow plugins to override behavior in PyBlosxom or provide
 additional behavior.  The callback mechanism actually encompasses a
 series of different functions.  Callbacks can act as handlers, as
@@ -288,7 +288,22 @@ containing:</p>
 <p>Functions that implement this callback can return whatever they
 want&#8212;it doesn&#8217;t affect the callback chain.</p>
 <p>Example of a <tt class="docutils literal"><span class="pre">cb_prepare</span></tt> function in a plugin:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_prepare</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_prepare</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This plugin shows the number of entries we are going to render and</span>
 <span class="sd">    place the result in $entrycount</span>
@@ -298,14 +313,14 @@ want&#8212;it doesn&#8217;t affect the callback chain.</p>
     <span class="n">config</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_configuration</span><span class="p">()</span>
 
     <span class="c"># Can anyone say Ternary? :)</span>
-    <span class="n">IF</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span><span class="p">()</span> <span class="ow">and</span> <span class="p">[</span><span class="n">b</span><span class="p">()]</span> <span class="ow">or</span> <span class="p">[</span><span class="n">c</span><span class="p">()])[</span><span class="mf">0</span><span class="p">]</span>
+    <span class="n">IF</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span><span class="p">()</span> <span class="ow">and</span> <span class="p">[</span><span class="n">b</span><span class="p">()]</span> <span class="ow">or</span> <span class="p">[</span><span class="n">c</span><span class="p">()])[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="n">num_entry</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s">&#39;num_entries&#39;</span><span class="p">]</span>
     <span class="n">entries</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;entry_list&#39;</span><span class="p">])</span>
 
     <span class="n">data</span><span class="p">[</span><span class="s">&#39;entrycount&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">IF</span><span class="p">(</span><span class="n">num_entry</span> <span class="o">&gt;</span> <span class="n">entries</span><span class="p">,</span> <span class="n">num_entry</span><span class="p">,</span> <span class="n">entries</span><span class="p">)</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="section" id="cb-logrequest">
 <h3>cb_logrequest<a class="headerlink" href="#cb-logrequest" title="Permalink to this headline">¶</a></h3>
@@ -363,7 +378,18 @@ containing:</p>
 <p>Return <tt class="xref docutils literal"><span class="pre">None</span></tt> if the function doesn&#8217;t truncate the list.  Return
 the sorted list if the function does sort the list.</p>
 <p>Example of a <tt class="docutils literal"><span class="pre">cb_sortlist</span></tt> function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_sortlist</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_sortlist</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Sorts the list from oldest (beginning) to newest (end)</span>
 <span class="sd">    for a site that&#39;s less like a blog and more like a</span>
 <span class="sd">    journal.</span>
@@ -372,11 +398,11 @@ the sorted list if the function does sort the list.</p>
 
     <span class="n">entrylist</span> <span class="o">=</span> <span class="p">[(</span><span class="n">e</span><span class="o">.</span><span class="n">_mtime</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">entrylist</span><span class="p">]</span>
     <span class="n">entrylist</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-    <span class="n">entrylist</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">entrylist</span><span class="p">]</span>
+    <span class="n">entrylist</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">entrylist</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="n">entrylist</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="section" id="cb-truncatelist">
 <h3>cb_truncatelist<a class="headerlink" href="#cb-truncatelist" title="Permalink to this headline">¶</a></h3>
@@ -393,22 +419,35 @@ containing:</p>
 <p>Return <tt class="xref docutils literal"><span class="pre">None</span></tt> if the function doesn&#8217;t truncate the list.  Return
 the new list if the function does truncate the list.</p>
 <p>Example of a <tt class="docutils literal"><span class="pre">cb_truncatelist</span></tt> function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_truncatelist</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_truncatelist</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">request</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&quot;request&quot;</span><span class="p">]</span>
     <span class="n">entrylist</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&quot;entry_list&quot;</span><span class="p">]</span>
 
     <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span>
     <span class="n">config</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">config</span>
 
-    <span class="n">num_entries</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;num_entries&quot;</span><span class="p">,</span> <span class="mf">5</span><span class="p">)</span>
-    <span class="n">truncate</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;truncate&quot;</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span>
+    <span class="n">num_entries</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;num_entries&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">truncate</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;truncate&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">num_entries</span> <span class="ow">and</span> <span class="n">truncate</span><span class="p">:</span>
         <span class="n">entrylist</span> <span class="o">=</span> <span class="n">entrylist</span><span class="p">[:</span><span class="n">num_entries</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">entrylist</span>
 
     <span class="k">return</span> <span class="bp">None</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="section" id="cb-filestat">
 <h3>cb_filestat<a class="headerlink" href="#cb-filestat" title="Permalink to this headline">¶</a></h3>
@@ -622,6 +661,31 @@ regardless of whether it&#8217;s handled by the default blosxom handler
 or not.  This is slightly different than blosxom.</p>
 </div>
 </div>
+<div class="section" id="cb-staticrender-filelist">
+<h3>cb_staticrender_filelist<a class="headerlink" href="#cb-staticrender-filelist" title="Permalink to this headline">¶</a></h3>
+<p>Gives plugins a chance to modify the list of (url, query) tuples that
+are about to be rendered statically.  Plugins can add additional
+tuples, remove tuples, modify tuples, ...</p>
+<p>Functions that implement this callback will get an args dict
+containing:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
+<dd>a request object</dd>
+<dt><tt class="docutils literal"><span class="pre">filelist</span></tt></dt>
+<dd>list of (url, query) tuples of all urls to be rendered</dd>
+<dt><tt class="docutils literal"><span class="pre">flavours</span></tt></dt>
+<dd>list of flavours to be rendered</dd>
+</dl>
+<p>Functions that implement this callback can modify the filelist
+in-place and don&#8217;t have to return anything.</p>
+<p>Example in which the plugin adds the search page url so that the
+search page gets rendered:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_staticrender_filelist</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">filelist</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&quot;filelist&quot;</span><span class="p">]</span>
+    <span class="n">filelist</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&quot;/search&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="cb-head">
 <h3>cb_head<a class="headerlink" href="#cb-head" title="Permalink to this headline">¶</a></h3>
 <p>The head callback is called before a head flavour template is
@@ -648,7 +712,16 @@ containing:</p>
 whether or not they adjust anything in it.</p>
 <p>Example in which we add the number of entries being rendered to the
 <tt class="docutils literal"><span class="pre">$blog_title</span></tt> variable:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_head</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_head</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">request</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&quot;request&quot;</span><span class="p">]</span>
     <span class="n">config</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_configuration</span><span class="p">()</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
@@ -659,7 +732,7 @@ whether or not they adjust anything in it.</p>
 
     <span class="k">return</span> <span class="n">args</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 <div class="section" id="cb-date-head">
 <h3>cb_date_head<a class="headerlink" href="#cb-date-head" title="Permalink to this headline">¶</a></h3>
@@ -765,13 +838,13 @@ whether or not they adjust anything in it.</p>
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="">PyBlosxom Architecture</a><ul>
+<li><a class="reference external" href="#">PyBlosxom Architecture</a><ul>
 <li><a class="reference external" href="#summary">Summary</a></li>
 <li><a class="reference external" href="#parts">Parts</a></li>
-<li><a class="reference external" href="#lifecycle-of-a-pyblosxom-request">Lifecycle of a PyBlosxom Request</a></li>
+<li><a class="reference external" href="#lifecycle-of-a-pyblosxom-request">Lifecycle of a PyBlosxom request</a></li>
 <li><a class="reference external" href="#lifecycle-of-the-blosxom-handler">Lifecycle of the blosxom_handler</a></li>
 <li><a class="reference external" href="#lifecycle-of-the-blosxom-renderer">Lifecycle of the blosxom renderer</a></li>
-<li><a class="reference external" href="#about-callbacks">About Callbacks</a><ul>
+<li><a class="reference external" href="#about-callbacks">About callbacks</a><ul>
 <li><a class="reference external" href="#types-of-callbacks">Types of callbacks</a></li>
 <li><a class="reference external" href="#callbacks-that-have-blosxom-equivalents">Callbacks that have blosxom equivalents</a></li>
 </ul>
@@ -791,6 +864,7 @@ whether or not they adjust anything in it.</p>
 <li><a class="reference external" href="#cb-postformat">cb_postformat</a></li>
 <li><a class="reference external" href="#cb-start">cb_start</a></li>
 <li><a class="reference external" href="#cb-end">cb_end</a></li>
+<li><a class="reference external" href="#cb-staticrender-filelist">cb_staticrender_filelist</a></li>
 <li><a class="reference external" href="#cb-head">cb_head</a></li>
 <li><a class="reference external" href="#cb-date-head">cb_date_head</a></li>
 <li><a class="reference external" href="#cb-story">cb_story</a></li>
@@ -850,8 +924,8 @@ whether or not they adjust anything in it.</p>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on Feb 06, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+      Last updated on May 24, 2010.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
 </html>
