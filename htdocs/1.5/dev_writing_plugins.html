@@ -276,7 +276,7 @@ plugin does.</li>
 verifies that the plugin is configured correctly.  As of PyBlosxom 0.9,
 PyBlosxom allows users to test their configuration and installation from
 the console.</p>
-<p>In PyBlosxom 1.5 and later, you can test using either the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>
+<p>You can test using either the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>
 script or the <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span></tt> script:</p>
 <div class="highlight-python"><pre>% ./pyblosxom.cgi test</pre>
 </div>
@@ -300,17 +300,6 @@ Checking config.py file
 
 Checking plugin configuration
 =============================
-....</pre>
-</div>
-<p>Prior to PyBlosxom 1.5, you would just execute the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>
-script:</p>
-<div class="highlight-python"><pre>% ./pyblosxom.cgi
-Trying to import the config module....
-PyBlosxom version: 1.4.3-rc1 12/11/2007
-Welcome to PyBlosxom's installation verification system.
-------
-]] printing diagnostics [[
-pyblosxom:   1.4.3-rc1 12/11/2007
 ....</pre>
 </div>
 <p>This goes through and verifies the properties in the <tt class="docutils literal"><span class="pre">config.py</span></tt>
@@ -471,8 +460,9 @@ function in your plugin will get called when PyBlosxom runs the
 prepare callback.</p>
 <p>Each callback passes in arguments through a single dictionary.  Each
 callback passes in different arguments and expects different return
-values.  Check the architecture chapter for a list of all the
-callbacks that are available, their arguments, and return values.</p>
+values.  Check the doc:<cite>dev_architecture &lt;architecture&gt;</cite> chapter
+for a list of all the callbacks that are available, their arguments,
+and return values.</p>
 </div>
 <div class="section" id="writing-an-entryparser">
 <span id="id2"></span><h2>Writing an entryparser<a class="headerlink" href="#writing-an-entryparser" title="Permalink to this headline">¶</a></h2>
@@ -761,7 +751,7 @@ a b c</pre>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on May 24, 2010.
+      Last updated on Jun 15, 2010.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>

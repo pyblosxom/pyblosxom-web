@@ -84,7 +84,7 @@ renderers.  The renderer gets a list of entries to be rendered
 and can render them using whatever means it so desires: blosxom
 templates, htmltmpl templates, Cheetah templates, hard-coded RSS
 2.0 markup, ...</p>
-<p>PyBlosxom comes with two renderers: default and blosxom.</p>
+<p>PyBlosxom comes with two renderers: blosxom and debug.</p>
 </li>
 <li><p class="first">the <tt class="docutils literal"><span class="pre">cache</span></tt> package - PyBlosxom allows for entry-level
 caching.  This helps in cases where your entries are stored in a
@@ -358,8 +358,8 @@ containing:</p>
 <dd>a Request object</dd>
 </dl>
 <p>Functions that implement this callback should return <tt class="xref docutils literal"><span class="pre">None</span></tt> if they
-don&#8217;t plan on generating the entry list or a list of entries.  if they
-do.  When a function returns <tt class="xref docutils literal"><span class="pre">None</span></tt>, the callback will continue to
+don&#8217;t plan on generating the entry list or a list of entries if they do.
+When a function returns <tt class="xref docutils literal"><span class="pre">None</span></tt>, the callback will continue to
 the next function to see if it will return a list of entries.  When a
 function returns a list of entries, the callback will stop.</p>
 </div>
@@ -375,7 +375,7 @@ containing:</p>
 <dt><tt class="docutils literal"><span class="pre">entry_list</span></tt></dt>
 <dd>The list of entries to be sorted.</dd>
 </dl>
-<p>Return <tt class="xref docutils literal"><span class="pre">None</span></tt> if the function doesn&#8217;t truncate the list.  Return
+<p>Return <tt class="xref docutils literal"><span class="pre">None</span></tt> if the function doesn&#8217;t sort the list.  Return
 the sorted list if the function does sort the list.</p>
 <p>Example of a <tt class="docutils literal"><span class="pre">cb_sortlist</span></tt> function:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -924,7 +924,7 @@ whether or not they adjust anything in it.</p>
     </div>
     <div class="footer">
       &copy; Copyright 2009, Will Kahn-Greene.
-      Last updated on May 24, 2010.
+      Last updated on Jun 15, 2010.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
