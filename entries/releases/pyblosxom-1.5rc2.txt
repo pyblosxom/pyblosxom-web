@@ -1,0 +1,24 @@
+PyBlosxom 1.5rc2 released
+#published 2010-08-03 10:00:00
+<p>
+  It's been about 6 months since 1.5 rc1.  Since then we've been updating
+  plugins, added some new plugins, adding tests, fixed documentation, 
+  added a sortlist callback, updated docstrings, switched from subversion
+  to git, moved from SourceForge to Bluesock, and some other stuff.
+</p>
+<p>
+  Doing another release candidate because there's still a lot of work to
+  do updating plugins, adding tests, and fixing documentation.
+</p>
+<p>
+  Download the new version at 
+  <a href="/download/pyblosxom-1.5rc2.tar.gz">pyblosxom-1.5rc2.tag.gz</a>.
+</p>
+<p>
+  If you have any problems, say hi on IRC (<code>#pyblosxom</code>
+  on <code>irc.freenode.net</code>), send an email to the pyblosxom-users 
+  mailing list, or send me an email at <code>willg at bluesock dot org</code>.
+</p>
+<p>
+/will (willg at bluesock dot org)
+</p>
