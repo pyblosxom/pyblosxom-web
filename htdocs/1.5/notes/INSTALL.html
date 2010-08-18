@@ -50,8 +50,7 @@
             
   <div class="section" id="installing-pyblosxom">
 <h1>Installing PyBlosxom<a class="headerlink" href="#installing-pyblosxom" title="Permalink to this headline">¶</a></h1>
-<p>This guide walks through two different ways to install PyBlosxom:
-site-wide and individual.</p>
+<p>This guide walks through how to install PyBlosxom.</p>
 <p>If this file doesn&#8217;t meet your needs, ask us on the pyblosxom-users
 mailing list or on IRC.  Information on both is on the <a class="reference external" href="http://pyblosxom.bluesock.org/">website</a>.</p>
 <div class="admonition note">
@@ -75,41 +74,67 @@ WSGI application, and might work in other contexts.</p>
 </div>
 <div class="section" id="install">
 <h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-in-a-virtual-environment">
+<h3>Installing in a virtual environment<a class="headerlink" href="#installing-in-a-virtual-environment" title="Permalink to this headline">¶</a></h3>
+<p>If you want to install PyBlosxom for a single user or want to install
+it in a virtual environment where it can&#8217;t get naughty with your
+system installation of Python, use <a class="reference external" href="http://pypi.python.org/pypi/virtualenv">virtualenv</a>.</p>
+<ol class="arabic">
+<li><p class="first">Install virtualenv:</p>
+<div class="highlight-python"><pre>easy_install virtualenv
+
+pip install virtualenv</pre>
+</div>
+</li>
+<li><p class="first">Build a virtual environment in the directory specified by
+<tt class="docutils literal"><span class="pre">&lt;dest_dir&gt;</span></tt>:</p>
+<div class="highlight-python"><pre>virtualenv --no-site-packages &lt;dest_dir&gt;</pre>
+</div>
+</li>
+<li><p class="first">Activate your virtual environment:</p>
+<div class="highlight-python"><pre>&lt;dest_dir&gt;/usr/bin/activate</pre>
+</div>
+</li>
+<li><p class="first">Install PyBlosxom using one of the instructions below.</p>
+</li>
+</ol>
+</div>
 <div class="section" id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p><em>Installing with distribute and pip</em></p>
 <p>If you have <a class="reference external" href="http://pypi.python.org/pypi/distribute">distribute</a> and <a class="reference external" href="http://pypi.python.org/pypi/pip">pip</a> installed and want to do a
 site-wide installation, do:</p>
 <div class="highlight-python"><pre>pip install pyblosxom</pre>
 </div>
+<p><em>Installing with setuptools and easy_install</em></p>
 <p>If you have <a class="reference external" href="http://pypi.python.org/pypi/setuptools">setuptools</a> installed and want to do a site-wide
 installation, do:</p>
 <div class="highlight-python"><pre>easy_install pyblosxom</pre>
 </div>
-<p>You can download the tarball.  Tarballs are at
-<a class="reference external" href="http://pyblosxom.bluesock.org/download/">http://pyblosxom.bluesock.org/download/</a> .  Extract
-the <tt class="docutils literal"><span class="pre">tar.gz</span></tt> file and run:</p>
+<p><em>Installing from a tarball</em></p>
+<p>You can install PyBlosxom from a tarball.</p>
+<p>Tarballs are at <a class="reference external" href="http://pyblosxom.bluesock.org/download/">http://pyblosxom.bluesock.org/download/</a> .</p>
+<p>Extract the <tt class="docutils literal"><span class="pre">tar.gz</span></tt> file and run:</p>
 <div class="highlight-python"><pre>python setup.py install</pre>
 </div>
-<p>Lastly, you can do a git clone.  Instructions are at
-<a class="reference external" href="http://gitorious.org/pyblosxom/">http://gitorious.org/pyblosxom/</a> .  Generally, master is unstable,
-but any of the tags are stable.  Then run:</p>
+<p>If you&#8217;re installing PyBlosxom for development, do:</p>
+<div class="highlight-python"><pre>python setup.py develop</pre>
+</div>
+<p><em>Installing from a git clone</em></p>
+<p>We develop PyBlosxom using git.  You can clone the git repository and
+install PyBlosxom from that.</p>
+<p>Instructions for cloning the git repository are at
+<a class="reference external" href="http://gitorious.org/pyblosxom/">http://gitorious.org/pyblosxom/</a> .</p>
+<p>Generally, master is unstable, but any of the tags are stable.</p>
+<p>After you&#8217;ve cloned the repository, run:</p>
 <div class="highlight-python"><pre>python setup.py install</pre>
 </div>
-<p>If none of those methods works for you, then you might want to
-reconsider using PyBlosxom.</p>
+<p>If you&#8217;re installing PyBlosxom for development, do:</p>
+<div class="highlight-python"><pre>python setup.py develop</pre>
 </div>
-<div class="section" id="single-user-install">
-<h3>Single user install<a class="headerlink" href="#single-user-install" title="Permalink to this headline">¶</a></h3>
-<p>If you want to install PyBlosxom for a single user or want to install
-it in a virtual environment where it can&#8217;t get naughty with anything
-else, use <a class="reference external" href="http://pypi.python.org/pypi/virtualenv">virtualenv</a>.</p>
-<p>First build a virtual environment:</p>
-<div class="highlight-python"><pre>virtualenv --no-site-packages &lt;dest_dir&gt;</pre>
-</div>
-<p>Then activate the virtual environment:</p>
-<div class="highlight-python"><pre>&lt;dest_dir&gt;/usr/bin/activate</pre>
-</div>
-<p>Then install PyBlosxom using one of the instructions below.</p>
+<p><em>None of these methods works for me</em></p>
+<p>If none of those methods works for you, talk to us on pyblosxom-users
+mailing list or on IRC.</p>
 </div>
 </div>
 <div class="section" id="creating-a-blog">
@@ -122,8 +147,17 @@ post in the <tt class="docutils literal"><span class="pre">./blog/</span></tt> d
 </div>
 <div class="section" id="deploying">
 <h2>Deploying<a class="headerlink" href="#deploying" title="Permalink to this headline">¶</a></h2>
-<p>There are a bunch of ways to deploy your blog.  See the chapters on
-deployment for documented options.</p>
+<p>We use the word &#8220;deploy&#8221; to cover the steps and setup required to turn
+your blog into a web-site.  This could be any of the following:</p>
+<ol class="arabic simple">
+<li>static rendering where your blog is compiled into a set of HTML pages</li>
+<li>running your blog as a CGI program</li>
+<li>running your blog as a WSGI application</li>
+<li>some fourth thing!</li>
+</ol>
+<p>The PyBlosxom documentation covers some of these deployment options.
+If you want to deploy your blog in a way that&#8217;s not covered in the
+documentation, ask on the pyblosxom-users mailing list or on IRC.</p>
 </div>
 <div class="section" id="post-install">
 <h2>Post-install<a class="headerlink" href="#post-install" title="Permalink to this headline">¶</a></h2>
@@ -147,8 +181,8 @@ to get your blog up and going.</p>
 <li><a class="reference external" href="#">Installing PyBlosxom</a><ul>
 <li><a class="reference external" href="#requirements">Requirements</a></li>
 <li><a class="reference external" href="#install">Install</a><ul>
+<li><a class="reference external" href="#installing-in-a-virtual-environment">Installing in a virtual environment</a></li>
 <li><a class="reference external" href="#installation">Installation</a></li>
-<li><a class="reference external" href="#single-user-install">Single user install</a></li>
 </ul>
 </li>
 <li><a class="reference external" href="#creating-a-blog">Creating a blog</a></li>
@@ -206,7 +240,7 @@ to get your blog up and going.</p>
     </div>
     <div class="footer">
       &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Aug 03, 2010.
+      Last updated on Aug 17, 2010.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
