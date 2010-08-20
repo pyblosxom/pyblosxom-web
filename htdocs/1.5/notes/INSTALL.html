@@ -72,69 +72,26 @@ and might work on Windows.</p>
 <p>PyBlosxom works with any web-server as a CGI application, works as a
 WSGI application, and might work in other contexts.</p>
 </div>
-<div class="section" id="install">
-<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="installing-in-a-virtual-environment">
-<h3>Installing in a virtual environment<a class="headerlink" href="#installing-in-a-virtual-environment" title="Permalink to this headline">¶</a></h3>
-<p>If you want to install PyBlosxom for a single user or want to install
-it in a virtual environment where it can&#8217;t get naughty with your
-system installation of Python, use <a class="reference external" href="http://pypi.python.org/pypi/virtualenv">virtualenv</a>.</p>
-<ol class="arabic">
-<li><p class="first">Install virtualenv:</p>
-<div class="highlight-python"><pre>easy_install virtualenv
-
-pip install virtualenv</pre>
-</div>
-</li>
-<li><p class="first">Build a virtual environment in the directory specified by
-<tt class="docutils literal"><span class="pre">&lt;dest_dir&gt;</span></tt>:</p>
-<div class="highlight-python"><pre>virtualenv --no-site-packages &lt;dest_dir&gt;</pre>
-</div>
-</li>
-<li><p class="first">Activate your virtual environment:</p>
-<div class="highlight-python"><pre>&lt;dest_dir&gt;/usr/bin/activate</pre>
-</div>
-</li>
-<li><p class="first">Install PyBlosxom using one of the instructions below.</p>
-</li>
-</ol>
-</div>
 <div class="section" id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
-<p><em>Installing with distribute and pip</em></p>
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you plan to install PyBlosxom to hack on it, see the section on
+Installing PyBlosxom to hack on it.</p>
+</div>
+<div class="section" id="installing-with-distribute-and-pip">
+<h3>Installing with distribute and pip<a class="headerlink" href="#installing-with-distribute-and-pip" title="Permalink to this headline">¶</a></h3>
 <p>If you have <a class="reference external" href="http://pypi.python.org/pypi/distribute">distribute</a> and <a class="reference external" href="http://pypi.python.org/pypi/pip">pip</a> installed and want to do a
 site-wide installation, do:</p>
 <div class="highlight-python"><pre>pip install pyblosxom</pre>
 </div>
-<p><em>Installing with setuptools and easy_install</em></p>
+</div>
+<div class="section" id="installing-with-setuptools-and-easy-install">
+<h3>Installing with setuptools and easy_install<a class="headerlink" href="#installing-with-setuptools-and-easy-install" title="Permalink to this headline">¶</a></h3>
 <p>If you have <a class="reference external" href="http://pypi.python.org/pypi/setuptools">setuptools</a> installed and want to do a site-wide
 installation, do:</p>
 <div class="highlight-python"><pre>easy_install pyblosxom</pre>
 </div>
-<p><em>Installing from a tarball</em></p>
-<p>You can install PyBlosxom from a tarball.</p>
-<p>Tarballs are at <a class="reference external" href="http://pyblosxom.bluesock.org/download/">http://pyblosxom.bluesock.org/download/</a> .</p>
-<p>Extract the <tt class="docutils literal"><span class="pre">tar.gz</span></tt> file and run:</p>
-<div class="highlight-python"><pre>python setup.py install</pre>
-</div>
-<p>If you&#8217;re installing PyBlosxom for development, do:</p>
-<div class="highlight-python"><pre>python setup.py develop</pre>
-</div>
-<p><em>Installing from a git clone</em></p>
-<p>We develop PyBlosxom using git.  You can clone the git repository and
-install PyBlosxom from that.</p>
-<p>Instructions for cloning the git repository are at
-<a class="reference external" href="http://gitorious.org/pyblosxom/">http://gitorious.org/pyblosxom/</a> .</p>
-<p>Generally, master is unstable, but any of the tags are stable.</p>
-<p>After you&#8217;ve cloned the repository, run:</p>
-<div class="highlight-python"><pre>python setup.py install</pre>
-</div>
-<p>If you&#8217;re installing PyBlosxom for development, do:</p>
-<div class="highlight-python"><pre>python setup.py develop</pre>
-</div>
-<p><em>None of these methods works for me</em></p>
-<p>If none of those methods works for you, talk to us on pyblosxom-users
-mailing list or on IRC.</p>
 </div>
 </div>
 <div class="section" id="creating-a-blog">
@@ -168,6 +125,91 @@ documentation, ask on the pyblosxom-users mailing list or on IRC.</p>
 acquainted with PyBlosxom and it&#8217;ll reduce the amount of time it takes
 to get your blog up and going.</p>
 </div>
+<div class="section" id="installing-pyblosxom-to-hack-on-it">
+<h2>Installing PyBlosxom to hack on it<a class="headerlink" href="#installing-pyblosxom-to-hack-on-it" title="Permalink to this headline">¶</a></h2>
+<p>Installing PyBlosxom to hack on it is a little different since you:</p>
+<ol class="arabic simple">
+<li>want to be running PyBlosxom from a git clone</li>
+<li>probably need a virtual environment to separate PyBlosxom things
+from the rest of your environment</li>
+</ol>
+<p>To do that, we&#8217;re going to use <a class="reference external" href="http://pypi.python.org/pypi/virtualenv">virtualenv</a> and <a class="reference external" href="http://pypi.python.org/pypi/PasteScript">paster</a>.</p>
+<ol class="arabic">
+<li><p class="first">Install virtualenv:</p>
+<div class="highlight-python"><pre>easy_install virtualenv</pre>
+</div>
+<p>OR:</p>
+<div class="highlight-python"><pre>pip install virtualenv</pre>
+</div>
+</li>
+<li><p class="first">Build a virtual environment in the directory specified by
+<tt class="docutils literal"><span class="pre">VEDIR</span></tt>:</p>
+<div class="highlight-python"><pre>virtualenv --no-site-packages VEDIR</pre>
+</div>
+<p>For example, if you want to create a virtual environment in
+<tt class="docutils literal"><span class="pre">~/pyblosxom_dev/venv/</span></tt>, you&#8217;d do:</p>
+<div class="highlight-python"><pre>virtualenv --no-site-packages ~/pyblosxom_dev/venv/</pre>
+</div>
+</li>
+<li><p class="first">Activate your virtual environment:</p>
+<div class="highlight-python"><pre>source VEDIR/bin/activate</pre>
+</div>
+</li>
+<li><p class="first">Install paste into your virtual environment:</p>
+<div class="highlight-python"><pre>easy_install paste_deploy</pre>
+</div>
+<p>OR:</p>
+<div class="highlight-python"><pre>pip install paste_deploy</pre>
+</div>
+</li>
+</ol>
+<ol class="arabic" start="4">
+<li><p class="first">Using git, clone the PyBlosxom repository:</p>
+<div class="highlight-python"><pre>git clone git://gitorious.org/pyblosxom/pyblosxom.git pyblosxom</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you have a gitorious account, you can clone it to your
+account.  That makes it easier to send us merge requests.</p>
+<p class="last">If you don&#8217;t have a gitorious account, you can still clone the
+repository, but you can&#8217;t send us merge requests as easily.
+Instead, you&#8217;ll have to send us patches.</p>
+</div>
+</li>
+<li><p class="first">Change directories into the <tt class="docutils literal"><span class="pre">pyblosxom</span></tt> directory and run:</p>
+<div class="highlight-python"><pre>python setup.py develop</pre>
+</div>
+</li>
+<li><p class="first">Then you can create a blog into the directory specified by
+<tt class="docutils literal"><span class="pre">BLOGDIR</span></tt>:</p>
+<div class="highlight-python"><pre>pyblosxom-cmd create BLOGDIR</pre>
+</div>
+<p>For example, if you wanted to create your blog in
+<tt class="docutils literal"><span class="pre">~/blog/</span></tt>, you&#8217;d do:</p>
+<div class="highlight-python"><pre>pyblosxom-cmd create ~/blog/</pre>
+</div>
+</li>
+</ol>
+<p>That&#8217;s all you have to do for set up.  You now have a new virtual
+environment, Paste and PyBlosxom installed in the virtual environment,
+and you have a fresh blog set up.</p>
+<p>When you want to run PyBlosxom from your git clone in your virtual
+environment, you will:</p>
+<ol class="arabic">
+<li><p class="first">Make sure the virtual environment is activated and if it isn&#8217;t
+do:</p>
+<div class="highlight-python"><pre>source VEDIR/bin/activate</pre>
+</div>
+</li>
+<li><p class="first">Change directories into where you have your blog and do:</p>
+<div class="highlight-python"><pre>paster serve blog.ini</pre>
+</div>
+</li>
+</ol>
+<p>Because you installed PyBlosxom with <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></tt>, when
+you make changes to the PyBlosxom code, they&#8217;ll be available in the
+environment&#8211;you don&#8217;t need to re-run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></tt>.</p>
+</div>
 </div>
 
 
@@ -180,14 +222,15 @@ to get your blog up and going.</p>
             <ul>
 <li><a class="reference external" href="#">Installing PyBlosxom</a><ul>
 <li><a class="reference external" href="#requirements">Requirements</a></li>
-<li><a class="reference external" href="#install">Install</a><ul>
-<li><a class="reference external" href="#installing-in-a-virtual-environment">Installing in a virtual environment</a></li>
-<li><a class="reference external" href="#installation">Installation</a></li>
+<li><a class="reference external" href="#installation">Installation</a><ul>
+<li><a class="reference external" href="#installing-with-distribute-and-pip">Installing with distribute and pip</a></li>
+<li><a class="reference external" href="#installing-with-setuptools-and-easy-install">Installing with setuptools and easy_install</a></li>
 </ul>
 </li>
 <li><a class="reference external" href="#creating-a-blog">Creating a blog</a></li>
 <li><a class="reference external" href="#deploying">Deploying</a></li>
 <li><a class="reference external" href="#post-install">Post-install</a></li>
+<li><a class="reference external" href="#installing-pyblosxom-to-hack-on-it">Installing PyBlosxom to hack on it</a></li>
 </ul>
 </li>
 </ul>
@@ -240,7 +283,7 @@ to get your blog up and going.</p>
     </div>
     <div class="footer">
       &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Aug 17, 2010.
+      Last updated on Aug 20, 2010.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
