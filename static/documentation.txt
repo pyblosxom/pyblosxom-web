@@ -12,7 +12,7 @@ Documentation
 </td>
 <td>
   Covers how to contribute to the PyBlosxom project, code style guide,
-  list of contributors, SVN policies, and various other things.
+  list of contributors, workflow, policies, and various other things.
 </td>
 </tr>
 </table>
