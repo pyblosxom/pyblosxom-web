@@ -1,8 +1,10 @@
 snarfed.org
-#download http://pyblosxom.sourceforge.net/flavours/snarfed_flavour.tar.gz
-#image_thumbnail http://pyblosxom.sourceforge.net/flavours/snarfed_flavour.jpg
+#download http://pyblosxom.bluesock.org/flavours/snarfed_flavour.tar.gz
+#image_thumbnail http://pyblosxom.bluesock.org/flavours/snarfed_flavour.jpg
 #email ryan@barrett.name
 #author Ryan Barrett
 This is the flavour that is used on snarfed.org.  For more information,
 see:
 http://snarfed.org/space/snarfed.org+PyBlosxom+flavour
+
+[NOTE: This needs to be updated/checked for PyBlosxom 1.5.]

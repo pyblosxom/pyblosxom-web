@@ -1,10 +1,12 @@
 Blue and blue
-#download http://pyblosxom.sourceforge.net/flavours/wbg1.tar.gz
-#image_thumbnail http://pyblosxom.sourceforge.net/flavours/wbg1.jpg
+#download http://pyblosxom.bluesock.org/flavours/wbg1.tar.gz
+#image_thumbnail http://pyblosxom.bluesock.org/flavours/wbg1.jpg
 #email willg@bluesock.org
-#author Will Guaraldi
+#author Will Kahn-Greene
 This was my old set of templates.  There are files in there for most
 of my plugins as well as the required assortment (head, story, foot, ...).
 
 If you have problems, add to the comments below and I'll fix what I 
 can.
+
+[NOTE: This needs to be updated/checked for PyBlosxom 1.5.]
