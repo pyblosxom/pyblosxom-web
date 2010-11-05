@@ -65,6 +65,22 @@ details in <a class="reference external" href="about_pyblosxom.html#project-deta
 <p>This section covers things that all plugins should have.  This makes
 plugins easier to distribute, maintain, update, and easier for users
 to use them.</p>
+<div class="section" id="name">
+<h3>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
+<p>All plugins need a good name that&#8217;s unique so that your plugin doesn&#8217;t get
+confused with other plugins.  Additionally, the filename for your plugin
+needs to be unique.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Make sure the filename for your plugin is unique!  PyBlosxom imports your
+plugin using Python import machinery which means that if your plugin has
+the same name as a package on your system, then depending on how sys.path
+is set up, PyBlosxom may load the package on your system and NOT your
+plugin.</p>
+<p class="last">If you think this might be happening to you, do <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span> <span class="pre">test</span></tt> and
+it&#8217;ll tell you the paths of what it&#8217;s loading.</p>
+</div>
+</div>
 <div class="section" id="documentation">
 <h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
 <p>All plugins should have a docstring at the top of the file that describes
@@ -686,6 +702,7 @@ a b c</pre>
 <li><a class="reference external" href="#">Writing Plugins</a><ul>
 <li><a class="reference external" href="#summary">Summary</a></li>
 <li><a class="reference external" href="#things-that-all-plugins-should-have">Things that all plugins should have</a><ul>
+<li><a class="reference external" href="#name">Name</a></li>
 <li><a class="reference external" href="#documentation">Documentation</a></li>
 <li><a class="reference external" href="#metadata">Metadata</a></li>
 <li><a class="reference external" href="#configuration-installation-and-verification">Configuration, installation and verification</a></li>
@@ -751,7 +768,7 @@ a b c</pre>
     </div>
     <div class="footer">
       &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jun 18, 2010.
+      Last updated on Nov 05, 2010.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>

@@ -492,16 +492,22 @@ this:</p>
 <p><strong>REQUIRED</strong>: no</p>
 <p><strong>DATATYPE</strong>: list of strings</p>
 <p><strong>DEFAULT VALUE</strong>: []</p>
-<p>The <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> variable lists the directories in which you have
-PyBlosxom plugins.</p>
-<p>When you set this variable, be sure to set the <tt class="docutils literal"><span class="pre">load_plugins</span></tt>
-variable as well.</p>
-<p>This defaults to <tt class="docutils literal"><span class="pre">[]</span></tt> which is an empty list.</p>
+<p>The <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> variable allows you to specify which directories
+have plugins that you want to load.  You can list as many plugin
+directories as you want.</p>
+<p>This defaults to <tt class="docutils literal"><span class="pre">[]</span></tt> which is an empty list which means that you don&#8217;t
+plan on loading any plugins.</p>
 <p>For example, if you stored your PyBlosxom plugins in
 <tt class="docutils literal"><span class="pre">/home/joe/blog/plugins/</span></tt>, then you would set <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> like
 this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;plugin_dirs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;/home/joe/blog/plugins/&quot;</span><span class="p">]</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Plugin directories are not searched recursively for plugins.  If you
+have a tree of plugin directories that have plugins in them, you&#8217;ll
+need to specify each directory in the tree.</p>
 </div>
 </div>
 <div class="section" id="load-plugins">
@@ -509,19 +515,35 @@ this:</p>
 <p><strong>REQUIRED</strong>: no</p>
 <p><strong>DATATYPE</strong>: list of strings</p>
 <p><strong>DEFAULT VALUE</strong>: no default value set</p>
-<p>If the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> variable is set to a list of strings, then
-PyBlosxom will load the plugins specified in the order they were
-specified in.  If the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> variable is set to <tt class="docutils literal"><span class="pre">[]</span></tt>
-(i.e. an empty list), then PyBlosxom will not load any plugins.</p>
-<p>If the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> variable is not set at all, then PyBlosxom
-will load all plugins that it finds in the plugin directories in
-alphabetical order.</p>
-<p>For example, if you had <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> set to
-<tt class="docutils literal"><span class="pre">[&quot;/home/joe/blog/plugins/&quot;]</span></tt> and there were three plugins in that
-directory <tt class="docutils literal"><span class="pre">plugin_a.py</span></tt>, <tt class="docutils literal"><span class="pre">plugin_b.py</span></tt>, and <tt class="docutils literal"><span class="pre">plugin_c.py</span></tt> and
-you did NOT set load_plugins, then PyBlosxom will load <tt class="docutils literal"><span class="pre">plugin_a</span></tt>
-followed by <tt class="docutils literal"><span class="pre">plugin_b</span></tt> followed by <tt class="docutils literal"><span class="pre">plugin_c</span></tt>.</p>
-<p>If you wanted PyBlosxom to load <tt class="docutils literal"><span class="pre">plugin_a</span></tt> and <tt class="docutils literal"><span class="pre">plugin_c</span></tt>, then you
+<p>There are two ways for PyBlosxom to load plugins:</p>
+<p>The first is the default way where PyBlosxom loads all plugins it
+finds in the directories specified by <tt class="docutils literal"><span class="pre">plugins_dir</span></tt> in alphanumeric
+order by filename.</p>
+<p>The second is by specifying a <tt class="docutils literal"><span class="pre">load_plugins</span></tt> key here.  Specifying
+<tt class="docutils literal"><span class="pre">load_plugins</span></tt> will cause PyBlosxom to load only the plugins you name
+and in in the order you name them.</p>
+<p>The <tt class="docutils literal"><span class="pre">load_plugins</span></tt> key is a list of strings where each string is
+the name of a plugin module (i.e. the filename without the .py at
+the end).</p>
+<p>If you specify an empty list, then this will load no plugins.</p>
+<p>For example, if you had:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;plugin_dirs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;/home/joe/blog/plugins/&quot;</span><span class="p">]</span>
+<span class="c"># py[&quot;load_plugins&quot;] = []</span>
+</pre></div>
+</div>
+<p>in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file and there were three plugins in
+<tt class="docutils literal"><span class="pre">/home/joe/blog/plugins/</span></tt>:</p>
+<div class="highlight-python"><pre>/home/
++- joe/
+   +- blog/
+      +- plugins/
+         +- plugin_a.py
+         +- plugin_b.py
+         +- plugin_c.py</pre>
+</div>
+<p>then PyBlosxom will load all three plugins in alphabetical order by
+filename: <tt class="docutils literal"><span class="pre">plugin_a</span></tt>, then <tt class="docutils literal"><span class="pre">plugin_b</span></tt>, then <tt class="docutils literal"><span class="pre">plugin_c</span></tt>.</p>
+<p>If you wanted PyBlosxom to only load <tt class="docutils literal"><span class="pre">plugin_a</span></tt> and <tt class="docutils literal"><span class="pre">plugin_c</span></tt>, then you
 would set <tt class="docutils literal"><span class="pre">load_plugins</span></tt> to:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;load_plugins&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;plugin_a&quot;</span><span class="p">,</span> <span class="s">&quot;plugin_c&quot;</span><span class="p">]</span>
 </pre></div>
@@ -544,9 +566,9 @@ load.</p>
 <p class="first admonition-title">Note</p>
 <p>PyBlosxom loads plugins in the order specified by <tt class="docutils literal"><span class="pre">load_plugins</span></tt>.
 This order also affects the order that callbacks are registered and
-later executed.  For example, if plugin_a and plugin_b both
-implement the handle callback and you load plugin_b first, then
-plugin_b will execute before plugin_a when the handle callback
+later executed.  For example, if <tt class="docutils literal"><span class="pre">plugin_a</span></tt> and <tt class="docutils literal"><span class="pre">plugin_b</span></tt> both
+implement the <tt class="docutils literal"><span class="pre">handle</span></tt> callback and you load <tt class="docutils literal"><span class="pre">plugin_b</span></tt> first, then
+<tt class="docutils literal"><span class="pre">plugin_b</span></tt> will execute before <tt class="docutils literal"><span class="pre">plugin_a</span></tt> when the <tt class="docutils literal"><span class="pre">handle</span></tt> callback
 kicks off.</p>
 <p class="last">Usually this isn&#8217;t a big deal, however it&#8217;s possible that some
 plugins will want to have a chance to do things before other
@@ -648,7 +670,7 @@ with those plugins.</p>
     </div>
     <div class="footer">
       &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jun 18, 2010.
+      Last updated on Sep 28, 2010.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
     </div>
   </body>
