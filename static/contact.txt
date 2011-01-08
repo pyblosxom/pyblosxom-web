@@ -11,21 +11,20 @@ Contact us
 
 <a name="bug"><h2>To report a bug in PyBlosxom</h2></a>
 <p>
-  To file a bug report, send an email to the pyblosxom-devel list:
-  <a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-devel">pyblosxom-devel subscribe/unsubscribe</a>.
+  To file a bug report, go to <a href="http://pyblosxom.bluesock.org/bugs/">our issue tracker</a>.
 </p>
 <p>
-  When sending us a bug report, it helps to provide enough information so that
-  we can reproduce your bug.  Version numbers, plugins in use, sample data, ...
+  When filing a bug report, it helps to provide enough information so that
+  we can reproduce your bug.  Version numbers, plugins in use, sample data, 
+  log files, ...
 </p>
 
 <a name="feature"><h2>To request a feature in PyBlosxom</h2></a>
 <p>
-  To file a feature request, send an email to the pyblosxom-devel list:
-  <a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-devel">pyblosxom-devel subscribe/unsubscribe</a>.
+  To file a feature request, go to <a href="http://pyblosxom.bluesock.org/bugs/">our issue tracker</a>.
 </p>
 <p>
-  When sending us a feature request, please provide enough information so that
+  When filing a feature request, please provide enough information so that
   we understand what it is you want.  Examples, use cases, ...  these are
   all very helpful.
 </p>

@@ -1,0 +1,46 @@
+Status January 8th, 2011
+#published 2011-01-08 12:35:00
+<p>
+  Development slowed down during the second half of 2010 because I was
+  bogged down with other things.  I recognize how that totally sucks
+  for the project.  I'm working on rectifying it now.
+</p>
+<p>
+  Previously, we were using the SF bug tracker which sucked.  Since
+  we did much with it, it's undergone a user interface overhaul and it's
+  better, but it's still missing features this project needs.  So we
+  stopped using it and I directed people to file bug reports by sending
+  email to the pyblosxom-devel mailing list.
+</p>
+<p>
+  In October of 2010, we discussed issue trackers.  Then I went on
+  hiatus for a little over a month.  I've returned now and set up Roundup
+  to host PyBlosxom issues and feature requests.  With help from Asheesh
+  and the awesome folks at <a href="http://openhatch.org">OpenHatch</a>
+  I added support for tracking milestones.  I've moved all open bugs
+  and features from the SF bug tracker to the new bug tracker.
+</p>
+<p>
+  You can find it at <a href="http://pyblosxom.bluesock.org/bugs/">http://pyblosxom.bluesock.org/bugs/</a>.
+</p>
+<p>
+  I also got through the queue of merge requests from Dieter.  I
+  really apologize for sitting on those for so long.  I really appreciate
+  the work he did on them.
+</p>
+<p>
+  I want to move ahead and get a PyBlosxom 1.5 rc3 out soon.  We're still
+  fixing problems in plugins and working on getting PyBlosxom and the core
+  plugins to a stable state--hence the need for ongoing release candidates
+  rather than a final release.
+</p>
+<p>
+  I want to thank Dieter for his prodding.  Also, Tim, Marius, Bill, Michael,
+  Glennie, Sean, Sebastian, and Asheesh for their participation, efforts, 
+  thoughts, and other positive energy things on #miro-hackers and the
+  pyblosxom-devel list.  I'm looking forward to the rest of 2011, cleaning
+  up the project and making it better for everyone.
+</p>
+<p>
+  /will (willg at bluesock dot org)
+</p>
