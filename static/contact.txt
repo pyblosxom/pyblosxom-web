@@ -1,67 +1,12 @@
 Contact us
 #nocomments yes
-<h2>For problems with a specific plugin</h2>
+<h2>IRC</h2>
 <p>
-  Contact the author of the plugin using the contact information that author
-  provided in the plugin docstring or in the README that accompanied the
-  plugin.  If that proves unsuccessful, you can try asking the pyblosxom-devel
-  mailing list, but we make no warranties for supporting other peoples' plugins
-  and it is possible that we will be no help at all.
-</p>
-
-<a name="bug"><h2>To report a bug in PyBlosxom</h2></a>
-<p>
-  To file a bug report, go to <a href="http://pyblosxom.bluesock.org/bugs/">our issue tracker</a>.
-</p>
-<p>
-  When filing a bug report, it helps to provide enough information so that
-  we can reproduce your bug.  Version numbers, plugins in use, sample data, 
-  log files, ...
-</p>
-
-<a name="feature"><h2>To request a feature in PyBlosxom</h2></a>
-<p>
-  To file a feature request, go to <a href="http://pyblosxom.bluesock.org/bugs/">our issue tracker</a>.
-</p>
-<p>
-  When filing a feature request, please provide enough information so that
-  we understand what it is you want.  Examples, use cases, ...  these are
-  all very helpful.
-</p>
-<p>
-  Many features can probably be done in a plugin.  Take the time to
-  investigate whether someone has already implemented a plugin that enables
-  your favorite feature.  If not, try to build one yourself.
-</p>
-  
-<h2>For comments or issues with the website or the PyBlosxom users list</h2>
-<p>
-  Either send an email to <font color="#0000ff">willg at bluesock dot org</font> or
-  send an email to the pyblosxom-devel mailing list.
-</p>
-
-<h2>For questions or comments or anything else</h2>
-<p>
-  Read through the documentation on this web-site and please search the
-  archives before asking questions.  If you're still having problems after
-  doing research, send an email to the pyblosxom-users mailing list.  Details
-  are below.
+  We hang out on <pre>#pyblosxom</pre> on Freenode.net.
 </p>
 
 <h2>Mailing lists</h2>
 <ul>
-  <li><b>pyblosxom-announce</b> -
-  pyblosxom-announce at lists dot sourceforge dot net
-  (<a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-announce">subscribe/unsubscribe</a>) 
-  <br />
-  This mailing list is for announcements.  Releases, security issues, and
-  such will be mentioned on this mailing list.  All posts must be approved
-  which makes this a very very low-traffic announcement-only mailing list.
-  If you're a package maintainer, you should subscribe to this list.
-  <br />
-  It is not archived.
-  </li>
-
   <li><b>pyblosxom-users</b> -
   pyblosxom-users at lists dot sourceforge dot net
   (<a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-users">subscribe/unsubscribe</a>)
