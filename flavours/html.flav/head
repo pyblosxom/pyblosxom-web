@@ -21,7 +21,8 @@
   <a href="/static/documentation.html" class="menulink">documentation</a><br />
   <a href="/bugs/" class="menulink">report bug</a><br />
   <a href="/bugs/" class="menulink">request feature</a><br />
-  <a href="/static/contact.html" class="menulink">mailing lists</a><br />
+  <a href="/static/contact.html" class="menulink">mailing list</a><br />
+  <a href="/static/contact.html" class="menulink">IRC</a><br />
 </p>
 
 <p>
@@ -121,4 +122,4 @@ Hosted by<br>
 </p>
   </td>
   <td valign="top">
-$util::include("./description.html")
+$util::include("./description")
