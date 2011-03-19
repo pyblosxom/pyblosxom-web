@@ -1,96 +1,74 @@
-Development HOWTO
+Development
 #nocomments yes
 <h2>Table of Contents</h2>
 <ol>
   <li><a href="#summary">Summary</a>
-  <li><a href="#howtocontribute">How to contribute</a>
-  <li><a href="#contributors">Contributors</a>
-  <li><a href="#git">Git</a>
+  <li><a href="#patch">How to send us a patch</a>
   <li><a href="#coding">Coding style guide</a>
-  <li><a href="#release">Release instructions</a>
+  <li><a href="#tests">Tests</a>
+  <li><a href="#documentation">Documentation</a>
 </ol>
 
 <hr noshade>
 
 <a name="summary"><h2>Summary</h2></a>
 <p>
-  This page covers how to contribute to PyBlosxom development, what our 
-  coding conventions (or should be), our mission, lists a non-comprehensive
-  list of contributors, and then ends with a short blurb that will eventually
-  be replaced with the processes we use to do things.
+  This page covers how to contribute to PyBlosxom development, what
+  our coding conventions (or should be), our mission, lists a
+  non-comprehensive list of contributors, and then ends with a short
+  blurb that will eventually be replaced with the processes we use to
+  do things.
 </p>
 <p>
-  If you plan on contributing to PyBlosxom, please read this guide in its 
-  entirety.
+  If you plan on contributing to PyBlosxom, please read this guide in
+  its entirety.
 </p>
 <p>
-  Having said that, this guide is a draft and can change at any time--we 
-  update it as necessary.
-</p>
-
-<a name="howtocontribute"><h2>How to contribute</h2></a>
-<p>
-  Some folks want to become part of the development.  Other folks just want
-  to send us a patch that fixes something that bugged them.  We appreciate
-  both groups of folks and ...  well, we'll take whatever we can get.
-</p>
-<p>
-  If you want to send us a patch, send it to the pyblosxom-devel mailing
-  list.  Make sure it's clear what the patch is fixing and why you fixed
-  it that way.  Please note any issues there might be and how much testing
-  it went through.  Details on the pyblosxom-devel mailing list are on
-  the <a href="/blog/static/contact">contact page</a>.
-</p>
-<p>
-  All contributions are appreciated even if they aren't directly used.
-  Sometimes the patch will start a conversation that might end up in a
-  different fix.
-</p>
-<p>
-  If you want to become a PyBlosxom developer we ask that you join the
-  pyblosxom-devel mailing list, tell us your intentions and what your
-  mission is, and then the conversation will go from there.
-</p>
-<p>
-  If you want to contribute but have no coding skills--that's ok!  There's
-  all kinds of other ways people can contribute: fixing/editing/adding
-  documentation, finding bugs, contributing tutorials, helping folks who
-  are new to PyBlosxom come up to speed, ...
-</p>
-<p>
-  PyBlosxom has a sophisticated callback framework allowing for plugins to
-  modify existing PyBlosxom behavior.  Many problems can be solved by
-  writing a plugin rather than adding more code to the PyBlosxom core.
+  Having said that, this guide is a draft and can change at any
+  time--we update it as necessary.
 </p>
 
-<a name="contributors"><h2>Contributors</h2></a>
-<p>
-  Note from Will: I don't have a list of contributors.  If you've contributed
-  to PyBlosxom but don't see your name here (or if you want your name modified
-  or even removed), let us know on the pyblosxom-devel mailing list.
-</p>
-<p>
-  This list is in no particular order:
-</p>
-<p>
-  Wari, Blake, Ted, Will, Bill, Robert, LionKimbro, Limdou, Steven, David,
-  and Matej.
-</p>
 
-<a name="git"><h2>Git</h2></a>
+<a name="patch"><h2>How to send us a patch</h2></a>
 <p>
-  Our code is in a git repository on Gitorious.
+  Here's one way to send us a patch:
+</p>
+<ol>
+<li>clone the repository:<br/>
+<pre>
+$ git clone git://gitorious.org/pyblosxom/pyblosxom.git
+</pre>
+<li>set the <tt>user.name</tt> and <tt>user.email</tt> config bits:<br/>
+<pre>
+$ git config user.name "your name"
+$ git config user.email "your@email.address"
+</pre>
+<li>make the changes you want to make and commit them to your clone
+  with useful comments
+<li>when you're done, create patches:<br/>
+<pre>
+$ git format-patch -o patches origin/master
+</pre>
+</ol>
+<p>
+  After that we're prefer you either attach your patches to an
+  existing issue in the issue tracker, create a new issue and attach
+  the patches to that, or send your patches to the pyblosxom-devel
+  list.  The former two methods are best since it's less likely your
+  patches will get lost.  The latter method is there for people who
+  really don't want to use our issue tracker.
 </p>
 <p>
-  For clone instructions, web-based viewing, and all that, see
-  <a href="http://gitorious.org/pyblosxom/">http://gitorious.org/pyblosxom/</a>.
+  Three things to do to make it easier for us to use your hard
+  work!:
 </p>
+<ol>
+<li>describe the problem you're solving with your patch
+<li>describe how your patch solves the problem
+<li>include unit tests
+</ol>
 <p>
-  <b>Notes about checkin comments:</b> PLEASE provide comprehensive checkin comments
-  that describe what you did, why you did it, any known ramifications of what you did
-  to users/developers, related bug numbers, and any other notes.  We use the checkin 
-  comments to figure out the CHANGELOG for releases and also to tell users what changes 
-  they have to make to their installation when they upgrade.
+  If you have questions, ask us on the pyblosxom-devel mailing list.
 </p>
 
 <a name="coding"><h2>Coding Style Guide</h2></a>
@@ -98,85 +76,22 @@ Development HOWTO
   Follow <a href="http://www.python.org/dev/peps/pep-0008/">PEP-8</a>.
 </p>
 
-<h3>Tests</h3>
+
+<a name="tests"><h2>Tests</h2></a>
 <p>
-  Tests go in the <code>Pyblosxom/tests/</code> directory.  From PyBlosxom 
+  Tests go in the <tt>Pyblosxom/tests/</tt> directory.  From PyBlosxom
   1.4 on, write tests for new functionality.
 </p>
-
-<h3>Documentation</h3>
 <p>
-  The PyBlosxom manual is in the <code>docs/</code> directory.  Documentation
-  is in <a href="http://docutils.sourceforge.net/rst.html">restructured text</a>
-  format.
+  Tests are written using the <tt>unittest</tt> module.
 </p>
 
-<a name="release"><h2>Release Instructions</h2></a>
+
+<a name="documentation"><h2>Documentation</h2></a>
 <p>
-  <b>NOTE:</b> These are outdated and need to be re-written.
+  The PyBlosxom manual is in the <code>docs/</code> directory.
+  Documentation is
+  in <a href="http://docutils.sourceforge.net/rst.html">restructured
+  text</a> format and built
+  with <a href="http://sphinx.pocoo.org/">Sphinx</a>.
 </p>
-<p>
-  First, the checklist:
-</p>
-<ul>
-  <li>make sure everything is checked in and there are no outstanding issues
-  <li>make sure MANIFEST.in is correct
-  <li>build the tar ball:
-<pre>
-python setup.py sdist
-</pre>
-  <li>run a test install
-  <li>run tests:
-<pre>
-python setup.py test
-python plugins/testrunner.py
-</pre>
-  <li>make sure the documentation builds correctly:
-<pre>
-cd docs
-make html
-</pre>
-</ul>
-<p>
-  Now the instructions:
-</p>
-<ol>
-  <li>change VERSION in pyblosxom/Pyblosxom/pyblosxom.py to something like
-      this: <code>"1.4"</code>
-  <li>change VERSION_DATE in pyblosxom/Pyblosxom/pyblosxom.py to something
-      like: <code>VERSION + " 7/2/2007" (m/d/yyyy)</code>
-  <li>check in all changes
-  <li>tag the release
-<pre>
-svn cp https://pyblosxom.svn.sourceforge.net/svnroot/pyblosxom/branches/PYBLOSXOM_1_4 \
-       https://pyblosxom.svn.sourceforge.net/svnroot/pyblosxom/tags/pyblosxom_1.4.3/
-</pre>
-  <li>run:
-<pre>
-python setup.py sdist
-</pre>
-  <li>use ReleaseForge to create the new release with the resulting .tar.gz
-  <ol>
-    <li>launch releaseforge
-    <li>log in
-    <li>select "pyblosxom" from the projects list
-    <li>select "pyblosxom" from the packages list
-    <li>press the "create new release" button
-    <ul>
-      <li>Release name: 1.4
-      <li>Release notes: specify what the release is about
-      <li>ChangeLog: (anything in the CHANGELOG for that version)
-    </ul>
-    <li>press the "next" button
-    <ul>
-      <li>press the "Add Files" button
-      <li>choose pyblosxom-1.4.tar.gz file
-      <li>processor: platform-independent
-      <li>file type: source .gz
-    </ul>
-    <li>press the "next" button
-    <li>press the "submit" button
-  </ol>
-  <li>send an announcement email to <code>pyblosxom-announce at lists dot sourceforge dot net</code>
-  <li>write up a blog entry for the web-site in /releases
-</ol>

@@ -3,7 +3,7 @@ Documentation
 <h2>Project documentation</h2>
 <table>
 <tr>
-  <th>document name</th>
+  <th width="200px">document name</th>
   <th>description</th>
 </tr>
 <tr>
@@ -20,7 +20,7 @@ Documentation
 <h2>Documentation for PyBlosxom 1.5</h2>
 <table>
 <tr>
-  <th>document name</th>
+  <th width="200px">document name</th>
   <th>description</th>
 </tr>
 <tr>
@@ -39,7 +39,7 @@ Documentation
 <h2>Documentation for PyBlosxom 1.4, 1.4.1, 1.4.2, and 1.4.3</h2>
 <table>
 <tr>
-  <th>document name</th>
+  <th width="200px">document name</th>
   <th>description</th>
 </tr>
 <tr>
@@ -79,7 +79,7 @@ Documentation
 <h2>Documentation for PyBlosxom 1.3.1 and 1.3.2</h2>
 <table>
 <tr>
-  <th>document name</th>
+  <th width="200px">document name</th>
   <th>description</th>
 </tr>
 <tr>

@@ -2,9 +2,9 @@
 
 <html>
 <head>
-   <title>$blog_title</title>
+   <title>$(blog_title)</title>
    <link rel="stylesheet" href="/default.css" type="text/css" />
-   <link rel="alternate" type="application/xml" title="RSS" href="/index.xml" />
+   <link rel="alternate" type="application/xml" title="RSS" href="/news/index.xml" />
    <link rel="top" href="/" title="pyblosxom.bluesock.org" />
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
@@ -16,26 +16,21 @@
 
 <p><b>Contents</b></p>
 <p>
-  <a href="/static/about.html" class="menulink">what is pyblosxom?</a><br />
-  <a href="/" class="menulink">news</a><br />
+  <a href="/" class="menulink">home</a><br />
+  <a href="/news/" class="menulink">news</a><br />
+  <a href="/bugs/" class="menulink">bugtracker</a><br />
   <a href="/static/documentation.html" class="menulink">documentation</a><br />
-  <a href="/bugs/" class="menulink">report bug</a><br />
-  <a href="/bugs/" class="menulink">request feature</a><br />
-  <a href="/static/contact.html" class="menulink">mailing list</a><br />
-  <a href="/static/contact.html" class="menulink">IRC</a><br />
+  <a href="/static/development.html" class="menulink">development</a><br />
 </p>
 
+<p><b>Community</b></p>
 <p>
   <a href="/pyblosxom_users.html" class="menulink">pyblosxom users</a><br />
   <a href="/registry/flavours/" class="menulink">flavour registry</a><br />
   <a href="/registry/" class="menulink">plugin registry</a><br />   
-</p>
-
-<p>
-  <a href="/static/development.html" class="menulink">development howto</a><br />
-  <a href="http://gitorious.org/pyblosxom/" class="menulink">git repositories</a><br />
-  <a href="/static/reference.html" class="menulink">references/specs</a><br />
-  <a href="/static/colophon.html" class="menulink">site colophon</a><br />
+  <a href="/#pyblosxomusers" class="menulink">pyblosxom-users list</a><br />
+  <a href="/#pyblosxomdevel" class="menulink">pyblosxom-devel list</a><br />
+  <a href="/#irc" class="menulink">irc</a><br />
 </p>
 
 <p><b>Download</b></p>
@@ -46,80 +41,17 @@
 
 <p><b>News Archives</b></p>
 <p>
-  $archivelinks
+  $(archivelinks)
 </p>
 
 <p><b>Syndicate</b></p>
 <p>
-  <a href="/index.xml" class="menulink"><img border="0" src="/images/xml.gif" alt="news RSS 2.0"> news RSS</a><br />
+  <a href="/news/index.xml" class="menulink"><img border="0" src="/images/xml.gif" alt="news RSS 2.0"> news RSS</a><br />
 </p>
-
-<p><b>I want to help</b></p>
-<div style="margin: 10px; padding-bottom: 10px;">
-<form method="POST" action="https://openhatch.org/+do/project.views.wanna_help_do" id="openhatch-want2help_form">
-            <input type="hidden" name="from_offsite" value="True" />
-            <input type="hidden" value="61" name="project"/>
-            <input type="submit" value="I want to help" rel="tipsy-south" id="openhatch-wannahelp-button" original-title="Click to add yourself to the list of people who want to contribute. People of all levels are welcome!"/>
-</form>
-
-<style>
-  @import url('https://openhatch.org/static/css/tipsy.css?1269539648');
-</style>
-
-<style type="text/css">
-#openhatch-wannahelp-button:hover, #openhatch-wannahelp-button:focus {
-background-image:url('https://openhatch.org/static/images/wannahelp-button-bg-hover.png');
-color:#222222;
-text-decoration:none;
-}
-#openhatch-wannahelp-button {
--moz-background-clip:border;
--moz-background-inline-policy:continuous;
--moz-background-origin:padding;
-background:#C8E29D url('https://openhatch.org/static/images/wannahelp-button-bg.png') repeat-x scroll center top;
-border:3px solid #FFFFFF;
-cursor:pointer;
-font-family:Helvetica,sans-serif;
-font-size:13pt;
-font-weight:normal;
-text-align:center;
-text-shadow:0 1px 0 #FFFFFF;
-white-space:normal;
-}
-
-#openhatch-wannahelp-button {
--moz-border-radius-bottomleft:8px;
--moz-border-radius-bottomright:8px;
--moz-border-radius-topleft:8px;
--moz-border-radius-topright:8px;
-color:#444444;
-float:left;
-padding:10px 20px;
-display:block;
-padding:2px 8px;
-}
-
-#openhatch-wannahelp-button:focus {
-outline-color:-moz-use-text-color;
-outline-style:none;
-outline-width:medium;
-}
-</style>
-
-<script type="text/javascript" src="https://openhatch.org/static/js/jquery.js?1244261870"></script>
-<script type="text/javascript" src="https://openhatch.org/static/js/jquery.tipsy.js?1269539649"></script>
-<script type="text/javascript" src="https://openhatch.org/static/js/tipsy-onload.js"></script>
-</div>
 
 <p>
 <a href="http://pyblosxom.bluesock.org/"><img src="/images/pb_pyblosxom.gif" border="0" alt="powered by pyblosxom"/></a>
-<br />
-pyblosxom $pyblosxom_version
-<br />
-<br />
-Hosted by<br>
-<a href="http://bluesock.org/">bluesock.org</a>
 </p>
   </td>
   <td valign="top">
-$util::include("./description")
+$(util::include("../flavours/html.flav/description"))

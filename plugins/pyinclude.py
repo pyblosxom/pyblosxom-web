@@ -12,7 +12,7 @@ To insert a file in your head or foot template, do the following::
 
 where "filename" is replaced by the file name.  In most cases you will
 want to provide an absolute path, however pyinclude will handle
-relative paths and base them off of the template file.
+relative paths and base them off of the datadir.
 
 Examples::
 
@@ -99,11 +99,8 @@ def include(req, vd, filename):
     PyBlosxom.)
     """
     if not filename.startswith(os.sep):
-        data = req.getData()
-        basedir = data["root_datadir"]
-        if data.has_key("bl_type") and data["bl_type"] == "file":
-            basedir = os.path.dirname(basedir)
-
+        cfg = req.get_configuration()
+        basedir = cfg["datadir"]
         filename = os.path.normpath(basedir + os.sep + filename)
 
     try:
@@ -111,6 +108,8 @@ def include(req, vd, filename):
         lines = f.read()
         f.close()
         return eval_python_blocks(req, lines)
+    except Exception, e:
+        return "Exception: %s" % e
     except:
         return ""
 
@@ -153,10 +152,6 @@ def eval_python_blocks(req, body):
     return body
 
 def cb_head(args):
-    """
-    This method gets called in the cb_story callback.  Refer to
-    the documentation for that.
-    """
     entry = args["entry"]
     entry["util::include"] = include
 

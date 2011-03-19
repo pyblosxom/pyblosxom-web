@@ -10,12 +10,12 @@ code {
 
 pre {
    background: #eeeeee;
-   border: 1pt solid #999;
+   border: 1px solid #999;
 }
 
 .comment {
    background: #eeeeee;
-   border: 1pt solid #999;
+   border: 1px solid #999;
 }
 
 H1 { 
@@ -27,11 +27,11 @@ H1 {
    padding-left: .2em;
    padding-bottom: .2em;
    padding-right: .2em;
-   border: 1pt solid #999;
+   border: 1px solid #999;
 }
 
 H2 { 
-   border-bottom: 1pt solid #999;
+   border-bottom: 1px solid #999;
    font-size: 12pt;
    font-weight: bold;
    font-family: Verdana, Arial, Helvetica;
@@ -68,7 +68,7 @@ a.menulink:active { font-size: 9pt; color: #ff0000; text-decoration: underline; 
    padding-top: 0.5em;
    padding-bottom: 0.75em;
    background: #eeeeee;
-   border: 1pt solid #999;
+   border: 1px solid #999;
 }
 
 P, TD {
@@ -92,6 +92,7 @@ DIV.datatable TR {
 
 DIV.datatable TD {
    background: white;
+   border-bottom: 1px solid black;
 }
 
 TH {

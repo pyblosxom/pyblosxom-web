@@ -10,7 +10,8 @@ def run(address="localhost", port=8000, dir="."):
     server_class = BaseHTTPServer.HTTPServer
     handler_class = SimpleHTTPServer.SimpleHTTPRequestHandler
     server_address = (address, port)
-    print "Serving files under %s at %s" % (os.getcwd(), "http://%s:%d/" % (address, port))
+    print "Serving files under %s" % os.getcwd()
+    print "URL: http://%s:%d/" % (address, port)
     httpd = server_class(server_address, handler_class)
     httpd.serve_forever()
 

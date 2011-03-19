@@ -1,5 +1,5 @@
 <%
-h = request.getHttp()
+h = request.get_http()
 
 pinfo = h["PATH_INFO"]
 qstring = h["QUERY_STRING"]
@@ -12,9 +12,9 @@ if pinfo.startswith("/registry/flavours") or qstring.find("flavour-form") != -1:
 </p>
 <p>
   [
-  <a href="/blog/registry/flavours?sortby=path">Sorted by category</a> |
-  <a href="/blog/registry/flavours?sortby=date">Sorted by date</a> |
-  <a href="/blog/static/registry_submit.html">Submit new flavour</a>
+  <a href="/registry/flavours/?sortby=path">Sorted by category</a> |
+  <a href="/registry/flavours/?sortby=date">Sorted by date</a> |
+  <a href="/static/registry_submit.html">Submit new flavour</a>
   ]
 </p>
 """
@@ -27,10 +27,10 @@ elif pinfo.startswith("/registry"):
 </p>
 <p>
   [
-  <a href="/blog/static/registry_submit.html">Submit new plugin</a> |
-  <a href="/blog/static/registry_help.html">How to get help on plugins</a> |
-  <a href="/blog/registry?sortby=path">Sorted by category</a> |
-  <a href="/blog/registry?sortby=date">Sorted by date</a>
+  <a href="/static/registry_submit.html">Submit new plugin</a> |
+  <a href="/static/registry_help.html">How to get help on plugins</a> |
+  <a href="/registry/?sortby=path">Sorted by category</a> |
+  <a href="/registry/?sortby=date">Sorted by date</a>
   ]
 </p>
 """

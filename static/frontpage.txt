@@ -1,0 +1,185 @@
+Welcome to PyBlosxom!
+<h2>What is PyBlosxom?</h2>
+<p>
+  PyBlosxom is a lightweight file-based weblog system.  PyBlosxom
+  focuses on three things: simplicity, extensibility, and community.
+</p>
+
+<ul>
+<li><b>simplicity</b> - PyBlosxom uses the file system for all its
+  data storage.  Because of this you can use whatever existing
+  editor, scripts and tools you want to create, update and
+  manipulate entries and other blog data.
+<li><b>extensibility</b> - PyBlosxom has a plugin framework allowing
+  you to build plugins in Python to augment and change PyBlosxom's
+  default behavior.
+<li><b>community</b> - There are hundreds of PyBlosxom users out there
+  all of whom have different needs.  PyBlosxom is used on a variety
+  of operating systems in a variety of environments.  The pyblosxom
+  users list shares their experiences, plugins, and expertise.  The
+  pyblosxom devel list shares their ideas for changes, patches and
+  plugins.
+</ul>
+
+<h2>Features</h2>
+<ul>
+<li><b>file-based</b> - entries are files, configuration is a file,
+  plugins are files, ...
+<li><b>run it many different ways</b> - as a static renderer that
+  compiles your blog to html, as a CGI script, as a WSGI applicatoin
+<li><b>easy to modify and extend behavior</b> - lots of plugins that
+  modify and extend behavior
+<li><b>works with blog standards</b> - RSS 2.0 and Atom syndication
+  feeds
+<li><b>lots of different ways to view your blog contents</b> -
+  category and date-based archives and feeds
+</ul>
+
+<p>
+  PyBlosxom allows you to use your favorite editor, toolset and
+  workflow to maintain your blog without forcing you to build it all
+  from scratch.
+</p>
+
+<h2>Quickstart</h2>
+<p>
+  This is generally how you install and test out PyBlosxom.  There are
+  other ways to install it and other ways to deploy your blog.  See
+  the documentation for more details.
+</p>
+
+<pre>
+ $ pip install pyblosxom
+ $ pyblosxom-cmd create ./blog
+ $ cd blog
+ [ edit config.py ]
+ $ paster serve blog.ini
+</pre>
+
+<h2>Project information</h2>
+
+<h3>Source code</h3>
+<p>
+  You can clone the PyBlosxom repository with:
+</p>
+<pre>
+ $ git clone http://gitorious.org/pyblosxom/pyblosxom/
+</pre>
+<p>
+  Source code is located at <a href="http://gitorious.org/pyblosxom/">http://gitorious.org/pyblosxom/</a>
+</p>
+
+<a name="irc"></a>
+<h3>IRC</h3>
+<p>
+  A bunch of us hang out on <tt>#pyblosxom</tt> on irc.freenode.net.  If you
+  have problems or need help, look for us here.
+</p>
+
+<h3>Mailing lists</h3>
+
+<a name="pyblosxomusers"></a>
+<p><b>pyblosxom-users</b></p>
+
+<p>
+  pyblosxom-users at lists dot sourceforge dot net
+  (<a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-users">subscribe/unsubscribe</a>)
+  (<a href="http://news.gmane.org/gmane.comp.web.pyblosxom.user">archives</a>)
+</p>
+<p>
+  This mailing list is for users who are having problems installing or
+  configuring PyBlosxom.  It can also be used for questions, comments, bugs,
+  ideas, and things of that nature as well.
+</p>
+
+<a name="pyblosxomdevel"></a>
+<p><b>pyblosxom-devel</b></p>
+<p>
+  pyblosxom-devel at lists dot sourceforge dot net
+  (<a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-devel">subscribe/unsubscribe</a>)
+  (<a href="http://news.gmane.org/gmane.comp.web.pyblosxom.devel">archives</a>)
+</p>
+<p>
+  This mailing list is for developers who want to add/modify/delete
+  functionality in PyBlosxom.  Since it revolves around PyBlosxom development,
+  it's also a good place to ask questions about how to build plugins and
+  for advice on working around various plugin development issues.
+</p>
+
+<h3>Bugs/Features</h3>
+<p>
+  Please file bugs and feature requests in our <a href="/bugs/">issue tracker</a>.
+</p>
+
+
+<h2>Interested in contributing?</h2>
+<p>
+  We need your help!  We could use help with the following things:
+</p>
+<ul>
+<li>hanging out with us -- pyblosxom is a social community
+<li>testing pyblosxom and plugins
+<li>fixing and updating documentation
+<li>writing new plugins; enhancing existing plugins; fixing bugs in plugins
+</ul>
+
+<p>
+  If you're interested in contributing, but don't know where to start,
+  click the "I want to help" button below and we'll contact you!
+</p>
+
+<div style="margin: 10px; padding-bottom: 10px;">
+<form method="POST" action="https://openhatch.org/+do/project.views.wanna_help_do" id="openhatch-want2help_form">
+  <input type="hidden" name="from_offsite" value="True" />
+  <input type="hidden" value="61" name="project"/>
+  <input type="submit" value="I want to help" rel="tipsy-south" id="openhatch-wannahelp-button" original-title="Click to add yourself to the list of people who want to contribute. People of all levels are welcome!"/>
+</form>
+
+<style>
+  @import url('https://openhatch.org/static/css/tipsy.css?1269539648');
+</style>
+
+<style type="text/css">
+#openhatch-wannahelp-button:hover, #openhatch-wannahelp-button:focus {
+background-image:url('https://openhatch.org/static/images/wannahelp-button-bg-hover.png');
+color:#222222;
+text-decoration:none;
+}
+#openhatch-wannahelp-button {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#C8E29D url('https://openhatch.org/static/images/wannahelp-button-bg.png') repeat-x scroll center top;
+border:3px solid #FFFFFF;
+cursor:pointer;
+font-family:Helvetica,sans-serif;
+font-size:13pt;
+font-weight:normal;
+text-align:center;
+text-shadow:0 1px 0 #FFFFFF;
+white-space:normal;
+}
+
+#openhatch-wannahelp-button {
+-moz-border-radius-bottomleft:8px;
+-moz-border-radius-bottomright:8px;
+-moz-border-radius-topleft:8px;
+-moz-border-radius-topright:8px;
+color:#444444;
+float:left;
+padding:10px 20px;
+display:block;
+padding:2px 8px;
+}
+
+#openhatch-wannahelp-button:focus {
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:medium;
+}
+</style>
+
+<script type="text/javascript" src="https://openhatch.org/static/js/jquery.js?1244261870"></script>
+<script type="text/javascript" src="https://openhatch.org/static/js/jquery.tipsy.js?1269539649"></script>
+<script type="text/javascript" src="https://openhatch.org/static/js/tipsy-onload.js"></script>
+</div>

@@ -17,7 +17,8 @@ fi
 if [[ -d ./compiled_site/ ]]
     then
         echo "compiled_site exists, doing incremental static rendering...."
-        PYTHONPATH=../pyblosxom/ python ./pyblosxom.cgi staticrender --incremental
+        # PYTHONPATH=../pyblosxom/ python ./pyblosxom.cgi staticrender --incremental
+        PYTHONPATH=../pyblosxom/ python ./pyblosxom.cgi staticrender
     else
         echo "compiled_site doesn't exist, doing full static rendering...."
         mkdir ./compiled_site/

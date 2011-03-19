@@ -56,7 +56,7 @@ py['num_entries'] = 10
 #############################
 py["lists"] = ["users"]
 py["list-users-file"] = "pyblosxom_users.dat"
-py["list-users-format"] = [ [], [] ]
+py["list-users-format"] = [[], []]
 py["list-users-output"] = '<a href="%(1)s">%(0)s</a> [ %(1)s ]<br />'
 
 ###########################
@@ -87,11 +87,18 @@ py['plugin_dirs'] = [ os.path.join(blogdir, "plugins") ]
 # the name of a plugin module (i.e. the filename without the .py at
 # the end).
 # ex: py['load_plugins'] = ["pycalendar", "pyfortune", "pyarchives"]
-py['load_plugins'] = ["pyinclude", "pystaticfile", "registry", 
-                      "wbgarchives", "pylist", "published_date"]
+py['load_plugins'] = [
+    "pyinclude",
+    "pages",
+    "registry", 
+    "wbgarchives",
+    "pylist",
+    "published_date"
+]
 
-# py["staticdir"] = "/home/groups/p/py/pyblosxom/datadir/static"
-py["staticdir"] = os.path.join(blogdir, "static")
+py["pagesdir"] = os.path.join(blogdir, "static")
+py["pages_trigger"] = "static"
+py["pages_frontpage"] = True
 
 # py["registry_dir"] = "/home/groups/p/py/pyblosxom/datadir/registry"
 py["registry_dir"] = os.path.join(blogdir, "registry")
@@ -116,8 +123,10 @@ py["static_flavours"] = ["html"]
 # ex: py["static_urls"] = ["/booklist.rss", "/booklist.html"]
 
 # index
-static_urls = [ "/index.xml", 
-                "/pyblosxom_users.html" ]
+static_urls = [
+    "/news/index.xml", 
+    "/pyblosxom_users.html"
+]
 
 # add static files
 for mem in os.listdir(os.path.join(blogdir, "static")):
