@@ -1,0 +1,34 @@
+Status March 19th, 2011
+#published 2011-03-19 17:03:00
+<p>
+  We've done a ton of work over the last 3 and a half months.  One thing
+  that I finally got around to was overhauling the web-site.  The new
+  web-site is (I think) a lot better, more informative, and easier to
+  use.
+</p>
+<p>
+  Things that still need to be done:
+</p>
+<ol>
+<li>update the plugin registry
+<li>update the flavour registry
+<li>compile the 1.5 documentation and push that to the site
+</ol>
+<p>
+  There are still a series of outstanding tasks for PyBlosxom 1.5 that should
+  get finished before we release 1.5 final.  We're working on them.  We
+  could use your help!
+</p>
+<ul>
+<li>check PyBlosxom 1.5 in git to see if it works with your blog and plugins
+<li>run the unit tests
+<li>edit and update documentation
+<li>triage and fix bugs in the 1.5 milestone in the bug tracker
+</ul>
+<p>
+  We just finished up a sprint week and we're eager to finish up 1.5 and
+  get it out.  Hopefully, we'll get that done in the next week or two.
+</p>
+<p>
+  /will (willg at bluesock dot org)
+</p>
