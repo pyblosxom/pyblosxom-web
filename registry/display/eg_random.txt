@@ -1,0 +1,7 @@
+eg_random
+#infourl http://dollhouse.diosa.ph/cgit/cgit.cgi/pyblosxom-plugins/eg_random/plain/README
+#download http://dollhouse.diosa.ph/cgit/cgit.cgi/pyblosxom-plugins/eg_random/
+#email_address pyblosxom_plugins@neil.diosa.ph
+#author Neil Santos
+
+Returns a random entry when a (configurable) URL trigger is accessed.

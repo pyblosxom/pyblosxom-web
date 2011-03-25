@@ -1,0 +1,9 @@
+eg_pager
+#infourl http://dollhouse.diosa.ph/cgit/cgit.cgi/pyblosxom-plugins/eg_pager/plain/README
+#download http://dollhouse.diosa.ph/cgit/cgit.cgi/pyblosxom-plugins/eg_pager/
+#email_address pyblosxom_plugins@neil.diosa.ph
+#author Neil Santos
+
+Makes available a pair of template variables that link to either older
+or newer *pages* of entries (dictated by your `num_entries` setting), or
+older or newer posts, depending on the current URL.

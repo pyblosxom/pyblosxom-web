@@ -1,0 +1,7 @@
+eg_xapian
+#infourl http://dollhouse.diosa.ph/cgit/cgit.cgi/pyblosxom-plugins/eg_xapian/plain/README
+#download http://dollhouse.diosa.ph/cgit/cgit.cgi/pyblosxom-plugins/eg_xapian/
+#email_address pyblosxom_plugins@neil.diosa.ph
+#author Neil Santos
+
+Indexes individual entries and facilitates in-blog searching; powered by Xapian.
