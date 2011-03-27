@@ -108,22 +108,6 @@ REGISTRY_STORY = """
 </div>
 """
 
-CONTRIB_DESC = """
-This used to come in the ./contrib directory of the PyBlosxom tar.gz
-download.  As of PyBlosxom 1.1, we no longer distribute contributed
-plugins with PyBlosxom.  There are various good reasons for this,
-though we do apologize for the inconvenience it causes.
-
-Contributed plugins periodically are released as contributed plugin
-packs in a big .tar.gz file.  You can get that here:
-
-https://sourceforge.net/project/showfiles.php?group_id=67445&package_id=145140
-
-Between releases, you can get plugins from the SVN repository here:
-
-http://pyblosxom.svn.sourceforge.net/viewvc/pyblosxom/trunk/contrib/plugins/
-"""
-
 URLRE = re.compile("(http[s]?://[^\\s\\>\\<]+)", re.I)
 
 def urlme(req, vd, text):
@@ -193,7 +177,6 @@ def generate_entry(request, output, title="Registry", filename="", mtime=None):
     creates a timestamp so that conditionalhttp can handle it without
     getting all fussy.
     """
-    global CONTRIB_DESC
     entry = base.EntryBase(request)
     registrydir = request.get_configuration()["registry_dir"]
 
@@ -342,9 +325,6 @@ def cb_filelist(args):
                 entry["template_name"] = "flavour-story"
             else:
                 entry["template_name"] = "registry-story"
-
-            if entry.has_key("contrib"):
-                entry["body"] = entry["body"] + CONTRIB_DESC
 
             return [entry]
 
