@@ -1,13 +1,14 @@
 """
 This plugin handles displaying a file registry, submitting new entries
-to a registry, and comments for existing entries.  A registry 
-is a series of .txt files which provide information about a given series 
-of things which are registered.  They are organized into categories by 
-the directory structure.  
+to a registry, and comments for existing entries.  A registry is a
+series of .txt files which provide information about a given series of
+things which are registered.  They are organized into categories by
+the directory structure.
 
-The registry plugin can use entries parsed by other entry parsers so long
-as they support meta information.  It supports preformatters and 
-postformatters and all that stuff because it uses the regular entry parsers.
+The registry plugin can use entries parsed by other entry parsers so
+long as they support meta information.  It supports preformatters and
+postformatters and all that stuff because it uses the regular entry
+parsers.
 
 The registry requires several templates in your data directory:
 
@@ -27,8 +28,8 @@ The registry will support the following urls:
     /registry/category        -- prints contents in a category
     /registry/path/to/item    -- prints full contents of specific item
 
-The registry plugin requires the following variables to be set in
-your config.py file:
+The registry plugin requires the following variables to be set in your
+config.py file:
 
     registry_dir    - the directory holding your registry entries
     registry_edit   - whether (1) or not (0) you allow people to submit
@@ -37,25 +38,24 @@ your config.py file:
                       if none are requested--defaults to "html"
 
 
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without restriction,
-including without limitation the rights to use, copy, modify,
-merge, publish, distribute, sublicense, and/or sell copies of the
-Software, and to permit persons to whom the Software is furnished
-to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
 
 The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
-BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
-ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Copyright 2002 - 2008 Will Guaraldi
 
@@ -71,7 +71,12 @@ Revisions:
 1.1 - (3 May, 2003) Minor changes.
 1.0 - Created.
 """
-import time, re, os.path, os, string
+
+import time
+import re
+import os.path
+import os
+
 from Pyblosxom.entries import fileentry, base
 from Pyblosxom import tools
 
@@ -106,8 +111,8 @@ REGISTRY_STORY = """
 CONTRIB_DESC = """
 This used to come in the ./contrib directory of the PyBlosxom tar.gz
 download.  As of PyBlosxom 1.1, we no longer distribute contributed
-plugins with PyBlosxom.  There are various good reasons for this, though
-we do apologize for the inconvenience it causes.
+plugins with PyBlosxom.  There are various good reasons for this,
+though we do apologize for the inconvenience it causes.
 
 Contributed plugins periodically are released as contributed plugin
 packs in a big .tar.gz file.  You can get that here:
@@ -119,58 +124,53 @@ Between releases, you can get plugins from the SVN repository here:
 http://pyblosxom.svn.sourceforge.net/viewvc/pyblosxom/trunk/contrib/plugins/
 """
 
-URLRE = None
+URLRE = re.compile("(http[s]?://[^\\s\\>\\<]+)", re.I)
 
-def urlme(req, vd, arg1):
+def urlme(req, vd, text):
     """
-    Takes in the request and the argument and converts everything 
-    in the argument that resembles a url into an a href.  Then it 
-    returns the converted thing.
+    Takes in the request and the text and converts everything in the
+    text that resembles a url into an a href.
+
+    Then it returns the converted thing.
     """
-    global URLRE
-
-    if not URLRE:
-        URLRE = re.compile("(http[s]?://[^\\s\\>\\<]+)", re.I)
-
-    sin = arg1
     # FIXME - this could be sped up by using a buffer for "done"
     # pieces.
-    mo = URLRE.search(sin)
-    while mo:
-        s = mo.start()
-        e = mo.end()
-        if sin[e-1] == "." or sin[e-1] == ",":
+    match = URLRE.search(text)
+    while match:
+        s = match.start()
+        e = match.end()
+        if text[e-1] == "." or text[e-1] == ",":
             e = e - 1
-        newtext = '<a href=\"%s\">%s</a>' % (sin[s:e], sin[s:e])
-        sin = '%s%s%s' % (sin[:s], newtext, sin[e:])
-        mo = URLRE.search(sin, s + len(newtext))
+        newtext = '<a href=\"%s\">%s</a>' % (text[s:e], text[s:e])
+        text = '%s%s%s' % (text[:s], newtext, text[e:])
+        match = URLRE.search(text, s + len(newtext))
 
-    return sin
+    return text
+
 
 def render(request, entry, template):
     """
-    Takes a given request and summarizes it given the registry-template
-    template for this flavour.
+    Takes a given request and summarizes it given the
+    registry-template template for this flavour.
     """
-    config = request.get_configuration()
     data = request.get_data()
-    flavour = data.get("flavour", "html")
     renderer = data["renderer"]
 
-    vars = renderer.get_parse_vars()
-    vars.update(entry)
-    vars["registry::url"] = urlme
+    var_dict = renderer.get_parse_vars()
+    var_dict.update(entry)
+    var_dict["registry::url"] = urlme
 
-    return renderer.render_template(vars, "registry-%s" % template)
+    return renderer.render_template(var_dict, "registry-%s" % template)
 
 
 def cb_date_head(args):
     request = args["request"]
-    data = request.getData()
+    data = request.get_data()
 
     if data.has_key(INIT_KEY):
         args["template"] = ""
     return args
+
 
 def cb_story(args):
     entry = args["entry"]
@@ -186,15 +186,16 @@ def cb_story(args):
 
     return args
 
+
 def generate_entry(request, output, title="Registry", filename="", mtime=None):
     """
-    Takes a bunch of text and generates an entry out of it.  It creates
-    a timestamp so that conditionalhttp can handle it without getting
-    all fussy.
+    Takes a bunch of text and generates an entry out of it.  It
+    creates a timestamp so that conditionalhttp can handle it without
+    getting all fussy.
     """
     global CONTRIB_DESC
     entry = base.EntryBase(request)
-    registrydir = request.getConfiguration()["registry_dir"]
+    registrydir = request.get_configuration()["registry_dir"]
 
     entry['title'] = title
     entry['fn'] = filename
@@ -217,11 +218,14 @@ def generate_entry(request, output, title="Registry", filename="", mtime=None):
     entry.setData(output)
     return entry
 
+
 def fix(s):
     return s.replace("<br>", " ").replace("<", "&lt;").replace(">", "&gt;")
 
+
 def get_entries(request, registrydir, entries):
-    items = [fileentry.FileEntry(request, m, registrydir, registrydir) for m in entries]
+    items = [fileentry.FileEntry(request, m, registrydir, registrydir) 
+             for m in entries]
     for mem in items:
         desc = mem["body"]
         if len(desc) > 200:
@@ -231,6 +235,7 @@ def get_entries(request, registrydir, entries):
         mem["short_body"] = fix(desc)
     return items
  
+
 def get_entries_by_item(request, registrydir, entries, sortbyitem):
     """
     Takes in a list of filenames for all the entries in a registry and
@@ -272,14 +277,14 @@ def get_entries_by_item(request, registrydir, entries, sortbyitem):
 
     return entries
 
+
 def cb_filelist(args):
     global registrydir, TRIGGER
     request = args["request"]
 
-    pyhttp = request.getHttp()
-    data = request.getData()
-    config = request.getConfiguration()
-    form = pyhttp["form"]
+    pyhttp = request.get_http()
+    data = request.get_data()
+    config = request.get_configuration()
 
     if not pyhttp["PATH_INFO"].startswith(TRIGGER):
         return
@@ -288,10 +293,11 @@ def cb_filelist(args):
 
     data['root_datadir'] = config['datadir']
 
-    # if they haven't add a registrydir to their config file, 
-    # we pleasantly error out
+    # if they haven't add a registrydir to their config file, we
+    # pleasantly error out
     if not config.has_key("registry_dir"):
-        output = "<p>\"registry_dir\" config setting is not set.  Refer to documentation.</p>"
+        output = ("<p>\"registry_dir\" config setting is not set.  "
+                  "Refer to documentation.</p>")
         return [generate_entry(request, output, "setup error")]
 
     registrydir = config["registry_dir"]
@@ -330,7 +336,8 @@ def cb_filelist(args):
     # if we're looking at a specific entry....
     if len(entries) == 1:
         try:
-            entry = fileentry.FileEntry(request, entries[0], registrydir, registrydir)
+            entry = fileentry.FileEntry(
+                request, entries[0], registrydir, registrydir)
             if entries[0].find("/flavours/") != -1:
                 entry["template_name"] = "flavour-story"
             else:
@@ -341,7 +348,7 @@ def cb_filelist(args):
 
             return [entry]
 
-        except Exception, e:
+        except Exception:
             output = "<p>That plugin does not exist.</p>"
             return [generate_entry(request, output)]
 
