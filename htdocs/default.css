@@ -11,6 +11,8 @@ code {
 pre {
    background: #eeeeee;
    border: 1px solid #999;
+   padding: 1.0em; 
+   margin-left: 1.0em;
 }
 
 .comment {
@@ -46,6 +48,7 @@ H3 {
    font-size: 11pt;
    font-weight: bold;
    font-family: Verdana, Arial, Helvetica;
+   text-decoration: underline;
    color: #000000;
    padding-top: .2em;
    padding-left: .2em;
