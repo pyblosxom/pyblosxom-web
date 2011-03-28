@@ -3,13 +3,14 @@ selective ads
 #infourl http://mako.cc/projects/pyblosxom/
 #download http://mako.cc/projects/pyblosxom/
 #email mako@atdot.cc
-This very simple plugin is designed to include advertisement 
-text onto a page if, and only if the page request is referred 
-from a search engine.  The idea is that a blog owner may want 
-to show advertisements to those who have found the blog by 
-searching but not to their core readership.  
-
-In reality, the machinery is more general.  The plugin 
-displays an arbitrary string on your blog if the referrer of 
-the requests matches any of a set of patterns or regular 
-expressions.
+<p>
+  This very simple plugin is designed to include advertisement text onto a 
+  page if, and only if the page request is referred from a search engine.  
+  The idea is that a blog owner may want to show advertisements to those 
+  who have found the blog by searching but not to their core readership.  
+</p>
+<p>
+  In reality, the machinery is more general.  The plugin displays an 
+  arbitrary string on your blog if the referrer of the requests matches 
+  any of a set of patterns or regular expressions.
+</p>

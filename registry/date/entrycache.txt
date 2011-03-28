@@ -3,5 +3,7 @@ entrycache
 #download http://joe.terrarum.net/site-media/code/python/entrycache.txt
 #email_address joe@terrarum.net
 #author Joe Topjian
-Will cache the creation date of your entries just like the original 
-blosxom plugin.
+<p>
+  Will cache the creation date of your entries just like the original 
+  blosxom plugin.
+</p>

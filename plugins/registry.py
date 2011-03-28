@@ -210,12 +210,12 @@ def get_entries(request, registrydir, entries):
     items = [fileentry.FileEntry(request, m, registrydir, registrydir) 
              for m in entries]
     for mem in items:
-        desc = mem["body"]
-        if len(desc) > 200:
-            desc = desc[:200] + "..."
+        summary = mem.get("summary", mem["title"])
+        if len(summary) > 200:
+            summary = summary[:200] + "..."
 
         mem["body"] = fix(mem["body"])
-        mem["short_body"] = fix(desc)
+        mem["summary"] = summary
     return items
  
 

@@ -3,4 +3,6 @@ tagger
 #download http://joe.terrarum.net/projects.html
 #email_address joe@terrarum.net
 #author Joe Topjian
+<p>
 Create your own tagging markup.  Instructions are in the code. 
+</p>

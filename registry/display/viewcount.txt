@@ -1,10 +1,11 @@
 viewcount
-#author Will Guaraldi
+#author Will Kahn-Greene
 #infourl http://www.bluesock.org/~willg/dev/pyblosxom/
 #download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/browser/trunk/pyblosxom/viewcount.py?format=txt
-Keeps track of the number of times a given entry has been
-viewed. It populates the $viewcount variable with this
-number for display. It adds one to the viewcount every time
-the entry is viewed.  It stores the information in a
-pickled dict in your content directory (or wherever you
-want).
+<p>
+  Keeps track of the number of times a given entry has been viewed. 
+  It populates the <tt>$(viewcount)</tt> variable with this number for 
+  display.  It adds one to the viewcount every time the entry is 
+  viewed.  It stores the information in a pickled dict in your 
+  content directory (or wherever you want).
+</p>

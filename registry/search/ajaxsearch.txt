@@ -3,8 +3,10 @@ Ajax search
 #download http://snarfed.org/ajax_search.js
 #author Ryan Barrett
 #email_address ryan@barrett.name
+<p>
 ajax_search.js uses the Google AJAX Search API to do site search.  It's
 similar to Google's existing site search, except that it shows the 
 results within your site, not Google's.  It also degrades gracefully, 
 by falling back to standard Google site search over HTTP for users who 
 don't have JavaScript.
+</p>

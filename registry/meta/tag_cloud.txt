@@ -3,5 +3,7 @@ Tag cloud
 #download http://www.timfanelli.com/projects/tag_cloud.txt
 #email_address tim.fanelli@gmail.com
 #author Timothy C. Fanelli
+<p>
 Creates a tag cloud to be used in conjunction with Joe Topjian's
 Tags plugin.
+</p>

@@ -2,15 +2,17 @@ autoping
 #author Wari Wahab
 #infourl None
 #download None
-#contrib yes
+<p>
 Ping all traceback-eligable or pingback-elibable servers 
 associated with hrefs found in a given blog entry - Most code is 
 by Sam Ruby.
-
+</p>
+<p>
 This is not a plugin, it's more of a helper application.
-
+</p>
+<p>
 12/01/2007 - As reported by darkmessenger as part of GHOP, this plugin 
 is pretty broken.  xmlrpc_metaweblog uses it, though, so if someone 
 wanted to fix this one or write a new one that xmlrpc_metaweblog could
-use, that'd be really cool.
--- will guaraldi
+use, that'd be really cool.  (will kahn-greene)
+</p>

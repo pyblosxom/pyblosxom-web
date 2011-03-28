@@ -2,10 +2,11 @@ rst
 #author Wari Wahab
 #infourl None
 #download None
-#contrib yes
+<p>
 A reStructuredText entry formatter for pyblosxom. 
 reStructuredText is part of the docutils project 
 (http://docutils.sourceforge.net/). To use, you need a *recent* 
 version of docutils. A development snapshot 
 (http://docutils.sourceforge.net/#development-snapshots) will work 
 fine.
+</p>

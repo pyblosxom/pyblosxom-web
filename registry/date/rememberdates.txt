@@ -2,5 +2,7 @@ rememberdates
 #infourl http://www.sunsetandlabrea.com/python/rememberdates.txt
 #download http://www.sunsetandlabrea.com/python/rememberdates.txt
 #author Richard Chamberlain
-Stores and uses the original post dates allowing you to edit files without 
-changing the date.
+<p>
+  Stores and uses the original post dates allowing you to edit files without 
+  changing the date.
+</p>

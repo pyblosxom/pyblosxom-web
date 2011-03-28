@@ -3,14 +3,15 @@ Native
 #download http://www.nathanbullock.org/nathan/software/pyblosxom.html
 #email_address nathan_kent_bullock at yahoo.ca
 #author Nathan Bullock
+<p>
 This plugin allows you to use a different format for your weblog entries. 
 This format is basically a simple python file, similar to the config.py file. 
 For example:
-
+</p>
+<pre>
 title="Example Entry"
 date="2004-06-30-00-00"
 body="""
-<p>This is the body of the example entry.</p>
+&lt;p&gt;This is the body of the example entry.&lt;/p&gt;
 """
-
-<b>Update (9/27/2004):</b> - Changed the url and download urls.  (will guaraldi)
+</pre>

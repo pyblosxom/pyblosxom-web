@@ -2,10 +2,9 @@ HardCodeDates
 #infourl http://snarfed.org/space/hardcodedates
 #download http://snarfed.org/space/hardcodedates.py
 #author Ryan Barrett
-This plugin enables pyblosxom to look up entry timestamps in a global 
-timestamps file, instead of using the actual timestamp of the file.  I did 
-this mostly because I wanted to be able to use a version control system, 
-and be able to make corrections to entries without modifying the timestamps.
-
-<b>Update (9/27/2004):</b> - Changed the url and download urls.  (will guaraldi)
-<b>Update (10/16/2006):</b> - Now maintained by Ryan Barrett.  (will guaraldi)
+<p>
+  This plugin enables pyblosxom to look up entry timestamps in a global 
+  timestamps file, instead of using the actual timestamp of the file.  I 
+  did this mostly because I wanted to be able to use a version control system, 
+  and be able to make corrections to entries without modifying the timestamps.
+</p>

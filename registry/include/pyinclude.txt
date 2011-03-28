@@ -1,12 +1,15 @@
 pyinclude
-#author Will Guaraldi
+#author Will Kahn-Greene
+#email willg at bluesock dot org
 #infourl http://www.bluesock.org/~willg/dev/pyblosxom/
 #download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/browser/trunk/pyblosxom/pyinclude.py?rev=latest&format=txt
+<p>
 Allows you to include a file in your web-site verbatim.  I used to 
-use this to add my .project file to the top of my blog by throwing a 
-$util::include("/home/willg/.project") in my head template.
-
-This requires absolute pathnames.
-
+use this to add my <tt>.project</tt> file to the top of my blog by 
+throwing a <tt>$(util::include("/home/willg/.project"))</tt> in my 
+head template.
+</p>
+<p>
 This plugin allows you to execute arbitrary Python in the included
 file.
+</p>

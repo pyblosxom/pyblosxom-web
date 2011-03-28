@@ -2,11 +2,20 @@ gecko_notice
 #infourl http://www.bluesock.org/~willg/dev/pyblosxom/
 #download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/gecko
 #email_address willg@bluesock.org
-#author Will Guaraldi
-Checks the HTTP_USER_AGENT to see if it's a Gecko-based browser and if it 
-isn't then it populates the $gecko_notice variable with a notice that the 
-user should switch to Firefox with a link to http://www.mozilla.org/ .
-
-Installation involves dropping the plugin into your plugindir, adding the 
-plugin to the plugin list in your config.py file, and then adding $gecko_notice
-to your head or foot template.
+#author Will Kahn-Greene
+<p>
+  Checks the <tt>HTTP_USER_AGENT</tt> to see if it's a Gecko-based
+  browser and if it isn't then it populates the
+  <tt>$(gecko_notice)</tt> variable with a notice that the user should
+  switch to Firefox with a link to http://www.mozilla.org/ .
+</p>
+<p>
+  Installation involves dropping the plugin into your plugindir,
+  adding the plugin to the plugin list in your <tt>config.py</tt>
+  file, and then adding <tt>$(gecko_notice)</tt> to your head or foot
+  template.
+</p>
+<p>
+  Note: This plugin was written partially as an example on how to write
+  plugins.  It's not a very serious plugin.
+</p>

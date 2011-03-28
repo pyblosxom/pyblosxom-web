@@ -3,5 +3,7 @@ PyMarkdown
 #download http://err.no/pymarkdown/
 #email_address tfheen@raw.no
 #author Tollef Fog Heen
+<p>
 Allows you to format your blog postings in Markdown format 
 (http://daringfireball.net/projects/markdown/).
+</p>

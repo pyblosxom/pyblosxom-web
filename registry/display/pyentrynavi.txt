@@ -2,4 +2,6 @@ pyentrynavi
 #author Shunuhs
 #infourl http://sh1.2-d.jp/b/static/pyentrynavi.html
 #download http://sh1.2-d.jp/b/static/pyentrynavi.html
-Creates navigation to previous and next entries for each entry.
+<p>
+  Creates navigation to previous and next entries for each entry.
+</p>

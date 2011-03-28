@@ -1,9 +1,0 @@
-pycategories
-#author Will Guaraldi
-#infourl None
-#download None
-#contrib yes
-Walks through your blog root figuring out all the categories 
-you have and how many entries are in each category. It generates 
-html with this information and stores it in the $categorylinks 
-variable which you can use in your head or foot templates.

@@ -1,8 +1,10 @@
 book list
-#author Will Guaraldi
+#author Will Kahn-Greene
 #infourl http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/booklist
 #download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/booklist
-Reads from a :: delimited file a series of books and how far 
-you are through reading them. It displays the 5 least done books 
-in the $booklist variable. If you go to blog/booklist, it shows 
-the complete list of books.
+<p>
+  Reads from a <tt>::</tt> delimited file a series of books and how far 
+  you are through reading them.  It displays the 5 least done books 
+  in the <tt>$(booklist)</tt> variable.  If you go to blog/booklist, it 
+  shows the complete list of books.
+</p>

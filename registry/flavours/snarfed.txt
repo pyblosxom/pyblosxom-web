@@ -3,8 +3,11 @@ snarfed.org
 #image_thumbnail http://pyblosxom.bluesock.org/flavours/snarfed_flavour.jpg
 #email ryan@barrett.name
 #author Ryan Barrett
+<p>
 This is the flavour that is used on snarfed.org.  For more information,
 see:
 http://snarfed.org/space/snarfed.org+PyBlosxom+flavour
-
+</p>
+<p>
 [NOTE: This needs to be updated/checked for PyBlosxom 1.5.]
+</p>

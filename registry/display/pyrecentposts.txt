@@ -3,10 +3,9 @@ pyrecent posts
 #email pgroce@gmail.com
 #infourl http://philgroce.com/blog/geekery/python/pyrecentposts
 #download http://philgroce.com/software/pyrecentposts.py
-Shows a list of recent blog post titles.
-
-Good for a sidebar.
-
-----
-
-June 3rd, 2008: Added to registry.
+<p>
+  Shows a list of recent blog post titles.
+</p>
+<p>
+  Good for a sidebar.
+</p>

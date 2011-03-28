@@ -2,6 +2,7 @@ py
 #author Wari Wahab
 #infourl None
 #download None
-#contrib yes
+<p>
 An entryparser that reads python source code and formats 
 it accordingly.
+</p>

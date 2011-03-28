@@ -2,13 +2,17 @@ filekicker
 #author Ryan Barrett
 #infourl http://snarfed.org/space/filekicker
 #download http://snarfed.org/space/filekicker
-filekicker handles requests for static files. if the static file named 
-by the request URL exists in datadir, filekicker serves that file,
-intact.  if not, it defers to pyblosxom.  the MIME type is inferred
-from the file's extension.
-
-for more information, see http://snarfed.org/space/filekicker .
-
-filekicker is different from, but related to, plugins such as pystaticfile,
-pyinclude, and imagekicker. it's basically a generalization of imagekicker.
-(thanks magnus. :P)  feedback is welcome!
+<p>
+  <b>filekicker</b> handles requests for static files.  If the static file 
+  named by the request URL exists in datadir, filekicker serves that file,
+  intact.  If not, it defers to pyblosxom.  The MIME type is inferred
+  from the file's extension.
+</p>
+<p>
+  For more information, see http://snarfed.org/space/filekicker .
+</p>
+<p>
+  <b>filekicker</b> is different from, but related to, plugins such as 
+  pages, pyinclude, and imagekicker.  It's basically a generalization of 
+  imagekicker.  (Thanks Magnus. :P)  Feedback is welcome!
+</p>

@@ -2,10 +2,14 @@ wbgamazon
 #author Will Guaraldi
 #infourl http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/wbgamazon
 #download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/browser/trunk/pyblosxom/wbgamazon.py?rev=latest&format=txt
+<p>
 Builds Amazon links (with images) from a line in your entry
 that looks like:
-
+</p>
+<p>
 AMAZON::B00008KA60::The Confluence
-
+</p>
+<p>
 Most things are hard-coded in the plugin code.  It could use some 
 work, but it's useable.
+</p>

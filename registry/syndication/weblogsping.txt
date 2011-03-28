@@ -2,5 +2,6 @@ weblogsping
 #author Wari Wahab
 #infourl None
 #download None
-#contrib yes
+<p>
 Pings Weblogs.com and blo.gs with every new entry.
+</p>

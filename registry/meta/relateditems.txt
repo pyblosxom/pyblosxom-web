@@ -3,5 +3,7 @@ Related items
 #download http://www.timfanelli.com/projects/RelatedAmazonProducts_py.txt
 #email_address tim.fanelli@gmail.com
 #author Timothy C. Fanelli
+<p>
 Uses Amazon Web Services to generate links to related products
 using an entry's tags as keywords to the Item Search method.
+</p>

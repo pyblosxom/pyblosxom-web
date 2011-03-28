@@ -3,5 +3,7 @@ eg_xapian
 #download http://dollhouse.diosa.ph/cgit/cgit.cgi/pyblosxom-plugins/eg_xapian/
 #email_address pyblosxom_plugins@neil.diosa.ph
 #author Neil Santos
-
-Indexes individual entries and facilitates in-blog searching; powered by Xapian.
+<p>
+Indexes individual entries and facilitates in-blog searching; 
+powered by Xapian.
+</p>

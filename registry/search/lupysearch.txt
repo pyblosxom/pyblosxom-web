@@ -3,13 +3,22 @@ lupy_search
 #download http://www.c-area.ch/code/pyblosxom/plugins/
 #email_address sa+pyblosxom@c-area.ch
 #author Steven Armstrong
+<p>
 Original Version by Roberto De Almeida.
+</p>
+<p>
 Hacked renamed and ported to new lupy version by Steven Armstrong.
-
+</p>
+<p>
 This is based on Ted Leung's lucene.py.
-
+</p>
+<p>
 Allow searching of the blog by using a Lupy search for a set of terms.
-
+</p>
+<p>
 This plugin consists of two scripts:
-- lupy_search.py: the actual plugin
-- lupy_index.py: a helper script to create the index
+</p>
+<ul>
+<li>lupy_search.py: the actual plugin
+<li>lupy_index.py: a helper script to create the index
+</ul>

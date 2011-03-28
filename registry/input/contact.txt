@@ -3,9 +3,11 @@ contact
 #download http://www.c-area.ch/code/pyblosxom/plugins/
 #email_address sa+pyblosxom@c-area.ch
 #author Steven Armstrong
+<p>
 Provides a form to send an email to the blog-owner.
-
+</p>
+<p>
 11/30/2007 - As reported by CanadaBear as part of GHOP, this plugin had some
 minor issues which were reported upstream and fixed.  This plugin works
-with PyBlosxom 1.4.2.
--- will guaraldi
+with PyBlosxom 1.4.2.  (will kahn-greene)
+</p>

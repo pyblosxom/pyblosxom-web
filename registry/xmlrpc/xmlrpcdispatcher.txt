@@ -2,7 +2,8 @@ xmlrpc dispatcher plugin
 #author Wari Wahab
 #infourl None
 #download None
-#contrib yes
+<p>
 This is the plugin that handles all XMLRPC requests and 
 dispatches them to XMLRPC plugins.  This plugin is required
 for the bloggerapi and metaweblog plugins.
+</p>

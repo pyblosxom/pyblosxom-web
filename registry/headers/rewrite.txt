@@ -3,18 +3,25 @@ rewrite
 #download http://www.c-area.ch/code/pyblosxom/plugins/
 #email_address sa+pyblosxom@c-area.ch
 #author Steven Armstrong
+<p>
 Request rewrite plugin. Similar to Apache mod_rewrite.
-
+</p>
+<p>
 Sends a '301 Moved Permanently' status code allong with the new location 
 of the resource.
-
+</p>
+<p>
 Generates a simple html page with a meta-refresh and a link to the new 
 resource as a fallback version for clients that do not understand http 
 header redirects.
-
+</p>
+<p>
 Configurable through a variable in config.py:
+</p>
+<pre>
 py['rewrite_rules'] = {
   '^/old$': r'/new', 
   '^/olddir/(.*)': r'/newdir/\1',
   '^/nothere/(.*)': r'http://www.example.com/here/it/is/\1'
 }
+</pre>

@@ -2,5 +2,11 @@ atom1renderer
 #author Timothy C. Fanelli
 #infourl http://www.timfanelli.com/item/atom_renderer.html
 #download http://www.timfanelli.com/projects/AtomRenderer_py.txt
+<p>
 AtomRenderer renders a valid ATOM 1.0 feed without the need for
 ATOM flavour templates.
+</p>
+<p>
+<b>2008-04-05 note:</b> If you're using PyBlosxom 1.3 or later, you
+do not need this plugin.
+</p>

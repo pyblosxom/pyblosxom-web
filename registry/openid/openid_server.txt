@@ -3,13 +3,15 @@ openid_server
 #download http://snarfed.org/space/openid_server.py
 #email_address pyblosxom at ryanb dot org
 #author Ryan Barrett
-
+<p>
 This plug-in is an OpenID server. Specifically, it's an Identifier and an
-Identity Provider. OpenID (http://openid.net/ ) is a distributed authentication
+Identity Provider. OpenID (http://openid.net/) is a distributed authentication
 protocol, ie a single sign on platform, that uses URLs as identifiers. If you
 have a PyBlosxom site, this plugin allows you to login anywhere that accepts
 OpenID.
-
+</p>
+<p>
 This plugin also implements the Simple Registration Extension, which lets you
 optionally provide your name, email address, and other information
 automatically to sites that you log into with OpenID.
+</p>

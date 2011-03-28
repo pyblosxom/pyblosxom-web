@@ -93,7 +93,8 @@ py['load_plugins'] = [
     "registry", 
     "wbgarchives",
     "pylist",
-    "published_date"
+    "published_date",
+    "rst"
 ]
 
 py["pagesdir"] = os.path.join(blogdir, "static")
@@ -105,6 +106,9 @@ py["registry_dir"] = os.path.join(blogdir, "registry")
 py["registry_edit"] = 0
 
 py["mediadir"] = "/images/"
+
+py["reST_initial_header_level"] = 3
+
 
 # Doing static rendering?  Static rendering essentially "compiles" your
 # blog into a series of static html pages.  For more details, read:
@@ -141,7 +145,7 @@ for root, dirs, files in os.walk(os.path.join(blogdir, "registry")):
     root = root[len(blogdir) + 9:]
     static_urls.append("/registry%s/index.html?sortby=path" % root)
     for mem in files:
-        if mem.endswith(".txt"):
+        if mem.endswith((".txt", ".rst")):
             static_urls.append( "/registry%s/%s.html" % (root, os.path.splitext(mem)[0]))
 
 py["static_urls"] = static_urls

@@ -2,6 +2,8 @@ htmlentryparser
 #author Joseph Reagle
 #infourl http://reagle.org/joseph/blog/technology/python/pyblosxom-htmlentryparser
 #download http://reagle.org/joseph/2003/09/htmlentryparser.py
+<p>
 This file will use a simple HTML file as the entry format. 
 The &lt;h1/&gt; is used as the title of the entry; all content after the 
 closing &lt;/h1&gt; and the closing &lt;/body&gt; is the body of the entry.
+</p>

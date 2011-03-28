@@ -2,9 +2,11 @@ logrequest
 #author Wari Wahab
 #infourl None
 #download None
-#contrib yes
+<p>
 Standard logRequest plugin.
-
+</p>
+<p>
 Drop this file in the Pyblosxom/plugins/ directory of pyblosxom, 
 and in your config.py, create a config entry called logfile and 
 this will be the filename you want this logRequest plugin to log to.
+</p>

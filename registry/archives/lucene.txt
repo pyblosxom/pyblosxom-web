@@ -1,7 +1,0 @@
-lucene
-#author Ted Leung
-#infourl None
-#download None
-#contrib yes
-Allow searching of the blog by using a Lucene search for a 
-set of terms.

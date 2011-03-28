@@ -3,8 +3,9 @@ eg_recent_posts
 #download http://dollhouse.diosa.ph/cgit/cgit.cgi/pyblosxom-plugins/eg_recent_posts/
 #email_address pyblosxom_plugins@neil.diosa.ph
 #author Neil Santos
-
-Provides a list of recent posts (with the count of items configurable),
-as well as the list of the latest posts; i.e., the posts that appear on
-your homepage (the number of which is controlled by the `num_entries`
-setting).
+<p>
+  Provides a list of recent posts (with the count of items configurable),
+  as well as the list of the latest posts; i.e., the posts that appear on
+  your homepage (the number of which is controlled by the `num_entries`
+  setting).
+</p>

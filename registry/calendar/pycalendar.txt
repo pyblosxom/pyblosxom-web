@@ -1,9 +1,0 @@
-pycalendar
-#author Will Guaraldi
-#infourl None
-#download None
-#contrib yes
-Generates a nice looking, but basic, calendar with links to weblog entries.
-
-Read the docstring at the top of the file for details on how to install
-and features.

@@ -3,15 +3,21 @@ Mainly Green (version 2)
 #image_thumbnail http://pyblosxom.bluesock.org/flavours/mainlygreen001.jpg
 #email andy47@halfcooked.com
 #author Andy Todd
+<p>
 A pyblosxom version of my Movable Type templates, which were in turn inspired 
 by an old blogger template. It's a two column CSS layout with content in the 
 left column and links in the right, topped by a border containing the blog name.
-
+</p>
+<p>
 You will find the home for this flavour at:
-
+</p>
+<p>
 http://www.halfcooked.com/mt/archives/000834.html
-
+</p>
+<p>
 12-7-2007 - Adjusted the .tar.gz file and added a README with instructions
 for installation.  (will guaraldi)
-
+</p>
+<p>
 [NOTE: This needs to be updated/checked for PyBlosxom 1.5.]
+</p>

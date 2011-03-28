@@ -3,25 +3,33 @@ xmlrpc_newedit.py
 #download http://wiki.woodpecker.org.cn/moin.cgi/PyBlosxomDev?action=AttachFile&do=get&target=xmlrpc_newedit.py
 #email_address chatme@263.net
 #author limodou
+<p>
 This plugin provides some misc method, and it is a xmlrpc plugin, so you need 
 to install xmlrpc.py plugin first. This plugin provides these methods, just 
 like: 
-
+</p>
+<p>
 newedit.editCategory 
     you can edit the existing category, if the category is not existed, 
     it'll create a new one 
-
+</p>
+<p>
 newedit.putFile 
     put file to blog 
-
+</p>
+<p>
 newedit.getFileList 
     get file list which you'v uploaded 
-
+</p>
+<p>
 newedit.getSysFile 
     get system file which you have the right 
-
+</p>
+<p>
 newedit.putSysFile 
     put system file which you have the right 
-
+</p>
+<p>
 (Editor's note: This just adds additional functions to the xmlrpc interface
 but doesn't work with any blogging tools that we know of.)
+</p>

@@ -3,7 +3,10 @@ RDF
 #image_thumbnail http://pyblosxom.bluesock.org/flavours/no-image.jpg
 #email ryan@barrett.name
 #author Ryan Barrett
+<p>
 This is a flavour for the RDF format.  For more information, see:
 http://snarfed.org/space/pyblosxom+rdf+flavour
-
+</p>
+<p>
 [NOTE: This needs to be updated/checked for PyBlosxom 1.5.]
+</p>
