@@ -117,6 +117,11 @@ def urlme(req, vd, text):
 
     Then it returns the converted thing.
     """
+    # this is a hack to handle the case where registry::url(license) returns
+    # "license" because it's not a key in the entry's metadata.
+    if text in ("infourl", "download", "license"):
+        return ""
+
     # FIXME - this could be sped up by using a buffer for "done"
     # pieces.
     match = URLRE.search(text)
