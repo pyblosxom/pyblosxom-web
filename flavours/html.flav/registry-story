@@ -9,6 +9,7 @@
   <b>download:</b> $(registry::url(download))<br />
   <b>license:</b> $(registry::url(license))<br />
   <b>category:</b> $(path)<br />
+  <b>tags:</b> $(registrytags)<br />
   <b>last edited:</b> $(mo) $(da), $(yr) ($(dw))
 </p>
 

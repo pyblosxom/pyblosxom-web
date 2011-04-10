@@ -5,6 +5,7 @@ comments
 #download None
 #summary Allows for comments on each blog entry.
 #license MIT
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 Summary

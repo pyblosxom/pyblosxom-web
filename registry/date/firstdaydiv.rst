@@ -5,6 +5,7 @@ firstdaydiv
 #download None
 #summary Adds a token which tells us whether we're the first day being displayed or not.
 #license MIT
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 This is my fancy module to add a token which tells us whether we're

@@ -5,6 +5,7 @@ conditionalhttp
 #download None
 #summary Allows for caching if-not-modified-since....
 #license MIT
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 This plugin can help save bandwidth for low bandwidth quota sites (how

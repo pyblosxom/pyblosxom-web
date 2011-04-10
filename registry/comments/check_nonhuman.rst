@@ -5,6 +5,7 @@ check_nonhuman
 #download None
 #summary Rejects comments that aren't from a human.
 #license MIT
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 Summary

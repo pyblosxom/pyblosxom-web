@@ -5,6 +5,7 @@ tags
 #download None
 #summary Tags plugin
 #license MIT
+#registrytags 1.5, core
 #generator update_registry
 
 Summary

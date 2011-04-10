@@ -5,6 +5,7 @@ check_javascript
 #download None
 #summary Use JavaScript to filter out spam comments
 #license GPLv2
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 Summary

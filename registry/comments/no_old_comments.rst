@@ -5,6 +5,7 @@ no_old_comments
 #download None
 #summary Prevent comments on entries older than a month.
 #license Public Domain
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 Summary

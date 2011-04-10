@@ -5,6 +5,7 @@ pages
 #download None
 #summary Allows you to include non-blog-entry files in your site.
 #license MIT
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 Usage

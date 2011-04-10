@@ -163,6 +163,7 @@ def cb_date_head(args):
 
 def cb_story(args):
     entry = args["entry"]
+
     if not entry.has_key("registry_render"):
         entry["registry::url"] = urlme
         return args
@@ -199,11 +200,11 @@ def generate_entry(request, output, title="Registry", filename="", mtime=None):
         entry["nocomments"] = 1
 
     if mtime:
-        entry.setTime(time.localtime(mtime))
+        entry.set_time(time.localtime(mtime))
     else:
-        entry.setTime(time.localtime())
+        entry.set_time(time.localtime())
 
-    entry.setData(output)
+    entry.set_data(output)
     return entry
 
 
@@ -211,17 +212,28 @@ def fix(s):
     return s.replace("<br>", " ").replace("<", "&lt;").replace(">", "&gt;")
 
 
-def get_entries(request, registrydir, entries):
-    items = [fileentry.FileEntry(request, m, registrydir, registrydir) 
-             for m in entries]
-    for mem in items:
-        summary = mem.get("summary", mem["title"])
-        if len(summary) > 200:
-            summary = summary[:200] + "..."
+def build_entry(request, entry, registrydir, fix_body=True):
+    f = fileentry.FileEntry(request, entry, registrydir, registrydir)
+    summary = f.get("summary", f["title"])
+    if len(summary) > 200:
+        summary = summary[:200] + "..."
 
-        mem["body"] = fix(mem["body"])
-        mem["summary"] = summary
-    return items
+    if fix_body:
+        f["body"] = fix(f["body"])
+
+    f["summary"] = summary
+
+    tags = f.get("registrytags", "")
+    f["registrytags"] = " ".join([
+            '<span class="registry-tag">%s</span>' % tag
+            for tag in tags.split(", ")
+            if tag])
+    return f
+
+
+def get_entries(request, registrydir, entries):
+    return [build_entry(request, entry, registrydir)
+            for entry in entries]
  
 
 def get_entries_by_item(request, registrydir, entries, sortbyitem):
@@ -254,7 +266,7 @@ def get_entries_by_item(request, registrydir, entries, sortbyitem):
             output = []
             item = mem.get(sortbyitem, "none")
 
-        output.append( (mem, "summary") )
+        output.append((mem, "summary"))
 
     if output:
         entry = generate_entry(request, "", item, item + "." + sortbyitem)
@@ -324,8 +336,7 @@ def cb_filelist(args):
     # if we're looking at a specific entry....
     if len(entries) == 1:
         try:
-            entry = fileentry.FileEntry(
-                request, entries[0], registrydir, registrydir)
+            entry = build_entry(request, entries[0], registrydir, False)
             if entries[0].find("/flavours/") != -1:
                 entry["template_name"] = "flavour-story"
             else:

@@ -5,6 +5,7 @@ akismetcomments
 #download None
 #summary Run comments through Akismet.
 #license GPLv2
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 Summary

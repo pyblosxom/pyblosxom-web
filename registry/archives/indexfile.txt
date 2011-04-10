@@ -4,6 +4,7 @@ index
 #infourl http://snarfed.org/space/pyblosxom+index
 #download http://snarfed.org/space/index.py
 #summary Shows index of all entries, sorted and displayed alphabetically by filename.
+#tags 1.4
 <p>
   <b>index</b> is a PyBlosxom plugin that displays an index of all
   entries, sorted and displayed alphabetically by filename.

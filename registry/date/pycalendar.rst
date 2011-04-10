@@ -5,6 +5,7 @@ pycalendar
 #download None
 #summary Displays a calendar on your blog.
 #license MIT
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 Generates a calendar along the lines of this one (with month and day names in

@@ -94,7 +94,7 @@ py['load_plugins'] = [
     "wbgarchives",
     "pylist",
     "published_date",
-    "rst"
+    "rst",
 ]
 
 py["pagesdir"] = os.path.join(blogdir, "static")

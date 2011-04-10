@@ -5,6 +5,7 @@ commentAPI
 #download None
 #summary CommentAPI provides support for Joe Gregario's CommentAPI.
 #license MIT
+#registrytags 1.4, core
 #generator update_registry
 
 Summary

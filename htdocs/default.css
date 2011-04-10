@@ -143,3 +143,10 @@ LI.spaced {
    padding-left: 1.0em;
    padding-right: 1.0em;
 }
+
+.registry-tag {
+   background: #ffdddd;
+   padding: 0px 5px 0px 5px;
+   margin: 1px;
+   border: 1px solid #ddbbbb;
+}

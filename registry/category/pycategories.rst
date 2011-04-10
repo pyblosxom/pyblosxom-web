@@ -5,6 +5,7 @@ pycategories
 #download None
 #summary Builds a list of categories.
 #license MIT
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 Summary

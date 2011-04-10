@@ -15,6 +15,9 @@ else
     mkdir ./logs/
 fi
 
+# update the registry from the pyblosxom/plugins
+PYTHONPATH=../pyblosxom/ python ./update_registry.py ../pyblosxom/plugins/ ./registry/
+
 if [[ -d ./compiled_site/ ]]
 then
     echo "compiled_site exists, doing incremental static rendering...."

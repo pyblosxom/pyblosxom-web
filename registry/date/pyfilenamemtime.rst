@@ -5,6 +5,7 @@ pyfilenamemtime
 #download None
 #summary Allows you to codify the mtime in the filename.
 #license MIT
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 If a filename contains a timestamp in the form of

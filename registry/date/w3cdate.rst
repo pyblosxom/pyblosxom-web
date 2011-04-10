@@ -5,6 +5,7 @@ w3cdate
 #download None
 #summary Adds a 'w3cdate' variable which is the mtime in ISO8601 format.
 #license MIT
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 Adds a ``w3cdate`` variable to the head and foot templates which has

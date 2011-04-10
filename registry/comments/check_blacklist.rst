@@ -5,6 +5,7 @@ check_blacklist
 #download None
 #summary Rejects comments that contain specified blacklisted words.
 #license MIT
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 Summary

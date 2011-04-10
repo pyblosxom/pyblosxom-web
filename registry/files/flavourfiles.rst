@@ -5,6 +5,7 @@ flavourfiles
 #download None
 #summary Serves static files related to flavours (css, js, ...)
 #license MIT License
+#registrytags 1.5, core, experimental
 #generator update_registry
 
 Summary

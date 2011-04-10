@@ -5,6 +5,7 @@ xmlrpc_pingback
 #download None
 #summary XMLRPC pingback support.
 #license MIT
+#registrytags 1.4, core
 #generator update_registry
 
 Summary

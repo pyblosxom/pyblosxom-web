@@ -1,1 +1,1 @@
-   <li><b><a href="/registry/$(file_path).html">$(title)</a></b> : $(summary)
+   <li><b><a href="/registry/$(file_path).html">$(title)</a></b> : $(registrytags) $(summary)

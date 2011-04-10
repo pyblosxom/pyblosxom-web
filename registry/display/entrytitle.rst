@@ -5,6 +5,7 @@ entrytitle
 #download None
 #summary Populates $(entry_title) for head template.
 #license MIT
+#registrytags 1.4, 1.5, core
 #generator update_registry
 
 Summary

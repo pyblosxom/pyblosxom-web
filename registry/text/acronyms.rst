@@ -5,6 +5,7 @@ acronyms
 #download None
 #summary Marks acronyms and abbreviations in blog entries.
 #license MIT
+#registrytags 1.5, core
 #generator update_registry
 
 Summary

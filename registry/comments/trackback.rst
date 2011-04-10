@@ -5,6 +5,7 @@ trackback
 #download None
 #summary Trackback support.
 #license MIT
+#registrytags 1.4, core
 #generator update_registry
 
 Summary
