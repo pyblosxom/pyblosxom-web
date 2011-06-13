@@ -31,7 +31,52 @@ Development
 
 <a name="patch"><h2>How to send us a patch</h2></a>
 <p>
-  Here's one way to send us a patch:
+  <b>Tie your changes to an issue in the issue tracker!</b>
+</p>
+<p>
+  It vastly simplifies the work if your work is tied to an issue
+  in the tracker.  If there isn't an issue, yet, for the work you
+  want to do, please create one.  If there is an issue, then assign
+  it to yourself, do the work, and comment on that issue when you're
+  done.
+</p>
+
+<p>
+  <b>Use bugfix branches!</b>
+</p>
+<p>
+  It's important to use a workflow that puts changes related to a
+  single bug/feature in a separate branch.  We call this a bugfix
+  branch.  You can name it something like <code>issue_101</code>.
+  Generally, short branch names are easier to use.
+</p>
+<p>
+  If you're working on two different features, you should have a
+  different branch for each of them.  This greatly simplifies things
+  when I accept patches, reject patches, make changes, etc in the
+  master branch.  This way, when you fetch, your master branch isn't
+  wildly diverged from the PyBlosxom master branch which requires
+  some tinkering to get aligned again.
+</p>
+
+<p>
+  <b>Properly document your changes!</b>
+</p>
+<p>
+  Three things to do to make it easier for us to use your hard
+  work!:
+</p>
+<ol>
+<li>describe the problem you're solving with your patch
+<li>describe how your patch solves the problem
+<li>include unit tests
+</ol>
+
+<p>
+  <b>How to create a bugfix branch</b>
+</p>
+<p>
+  Here's how to clone the repository and create a bugfix branch:
 </p>
 <ol>
 <li>clone the repository:<br/>
@@ -43,33 +88,45 @@ $ git clone git://gitorious.org/pyblosxom/pyblosxom.git
 $ git config user.name "your name"
 $ git config user.email "your@email.address"
 </pre>
-<li>make the changes you want to make and commit them to your clone
-  with useful comments
-<li>when you're done, create patches:<br/>
+<li>create a bug/feature focused branch for the change you want to make
+<pre>
+$ git fetch --all
+$ git checkout -b BRANCHNAME origin/master
+</pre>
+<li>make the changes you want to make in that bug/feature focused branch
+  and commit them
+<li>when you're done, send us the changes
+</ol>
+
+<p>
+  <b>How to send us your changes</b>
+</p>
+<p>
+  There are a few ways to send us your changes:
+</p>
+<ol>
+
+<li>do:
 <pre>
 $ git format-patch -o patches origin/master
 </pre>
+  tar up the directory and attach it to the issue it relates to, OR
+
+<li>push your changes to a publicly available repository and add
+  a comment to the issue with the url of your repository, the branch
+  the changes are in, and what you did, OR
+
+<li>push your changes to a clone on gitorious and request a merge
+  between PyBlosxom master and your bugfix branch
 </ol>
+
 <p>
-  After that we're prefer you either attach your patches to an
-  existing issue in the issue tracker, create a new issue and attach
-  the patches to that, or send your patches to the pyblosxom-devel
-  list.  The former two methods are best since it's less likely your
-  patches will get lost.  The latter method is there for people who
-  really don't want to use our issue tracker.
+  <b>If you have questions</b>
 </p>
 <p>
-  Three things to do to make it easier for us to use your hard
-  work!:
+  If you have questions, please ask us on the pyblosxom-devel mailing list.
 </p>
-<ol>
-<li>describe the problem you're solving with your patch
-<li>describe how your patch solves the problem
-<li>include unit tests
-</ol>
-<p>
-  If you have questions, ask us on the pyblosxom-devel mailing list.
-</p>
+
 
 <a name="coding"><h2>Coding Style Guide</h2></a>
 <p>
