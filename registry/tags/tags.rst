@@ -21,6 +21,8 @@ which lists all the tags.
 It creates a ``$(tags)`` variable for story templates which lists tags
 for the story.
 
+It creates a ``$(tagcloud)`` variable for the tag cloud.
+
 
 Configuration
 =============
@@ -97,6 +99,41 @@ following three config properties:
 ``tags_list_finish``
 
     Printed after the list.  Defaults to ``</p>``.
+
+
+In the head and foot templates, you can also add a tag cloud with the
+``$(tagcloud)`` variable.  The templates for the cloud use the
+following three config properties:
+
+``tags_cloud_start``
+
+    Printed before the cloud.  Defaults to ``<p>``.
+
+``tags_cloud_item``
+
+    Used for each tag in the cloud list.  There are a bunch of
+    variables you can use:
+
+    * ``base_url`` - the baseurl for your blog
+    * ``flavour`` - the default flavour or flavour currently showing
+    * ``tag`` - the tag name
+    * ``count`` - the number of items that are tagged with this tag
+    * ``class`` - bigTag, mediumTag or smallTag--the css class for
+      this tag representing the frequency the tag is used
+    * ``tagurl`` - url composed of baseurl, trigger, and tag
+
+    Defaults to ``<a href="%(tagurl)s">%(tag)s</a>``.
+
+``tags_cloud_finish``
+
+    Printed after the cloud.  Defaults to ``</p>``.
+
+You'll also want to add CSS classes for ``bigTag``, ``mediumTag``,
+and ``smallTag`` to your CSS.  For example, something like this::
+
+   .bigTag { font-size: 12pt }
+   .mediumTag { font-size: 10pt }
+   .smallTag { font-size: 8pt ]
 
 
 You can list the tags for a given entry in the story template with the
