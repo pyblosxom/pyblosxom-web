@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,14 +12,15 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '',
         VERSION:     '1.5',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
     <link rel="next" title="Syndication" href="syndication.html" />
@@ -31,8 +34,8 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="syndication.html" title="Syndication"
              accesskey="N">next</a> |</li>
@@ -54,7 +57,7 @@
 <span id="id1"></span><h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>This chapter covers the blosxom renderer in PyBlosxom.  There are other
 renderers (like the debug renderer) that operate differently.  See
-the chapter on <a class="reference external" href="renderers.html#id1"><em>renderers</em></a> for more details.</p>
+the chapter on <a class="reference internal" href="renderers.html#id1"><em>renderers</em></a> for more details.</p>
 <p>If you want your blog rendered using a different template system&#8212;say
 Cheetah or htmltmpl&#8212;implement a renderer that renders the output.
 This new renderer can be implemented as a PyBlosxom plugin.  See the
@@ -65,8 +68,8 @@ the blosxom renderer which comes with PyBlosxom.</p>
 <div class="section" id="id2">
 <h2>Flavours and templates<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>The blosxom renderer renders the output of a request with a
-<a class="reference external" href="glossary.html#term-flavour"><em class="xref">flavour</em></a>.</p>
-<p>A <a class="reference external" href="glossary.html#term-flavour"><em class="xref">flavour</em></a> is a group of templates for a specific output format
+<a class="reference internal" href="glossary.html#term-flavour"><em class="xref std std-term">flavour</em></a>.</p>
+<p>A <a class="reference internal" href="glossary.html#term-flavour"><em class="xref std std-term">flavour</em></a> is a group of templates for a specific output format
 or style.  For example, html, xhtml, atom, rss, rdf, etc.</p>
 <p>A flavour consists of at least the following templates:</p>
 <ul class="simple">
@@ -85,12 +88,12 @@ documentation for the plugin for more information.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Refer to <em class="xref">lifecycle-of-the-blosxom-renderer</em>
-for detailed information on how Pyblosxom&#8217;s default renderer blosxom
-uses these templates.</p>
+<p class="last">Refer to <a class="reference internal" href="dev_architecture.html#lifecycle-of-the-blosxom-renderer"><em>Lifecycle of a PyBlosxom request</em></a> for detailed
+information on how Pyblosxom&#8217;s default renderer blosxom uses these
+templates.</p>
 </div>
 <p>More on flavours, how they&#8217;re stored, and such later.</p>
-<p>A <a class="reference external" href="glossary.html#term-template"><em class="xref">template</em></a> is one piece of a flavour that specifies a specific
+<p>A <a class="reference internal" href="glossary.html#term-template"><em class="xref std std-term">template</em></a> is one piece of a flavour that specifies a specific
 portion of the output.  For example, the head template of an html
 flavour would be in a file called <tt class="docutils literal"><span class="pre">head</span></tt> and might look like this:</p>
 <div class="highlight-python"><pre>&lt;html&gt;
@@ -642,63 +645,63 @@ come with your PyBlosxom installation.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="#">Flavours and Templates</a><ul>
-<li><a class="reference external" href="#summary">Summary</a></li>
-<li><a class="reference external" href="#id2">Flavours and templates</a><ul>
-<li><a class="reference external" href="#storing-flavours-in-the-flavourdir">Storing flavours in the flavourdir</a></li>
-<li><a class="reference external" href="#storing-flavours-in-flavour-directories-in-the-datadir">Storing flavours in flavour directories in the datadir</a></li>
-<li><a class="reference external" href="#storing-flavours-in-the-datadir">Storing flavours in the datadir</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Flavours and Templates</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#id2">Flavours and templates</a><ul>
+<li><a class="reference internal" href="#storing-flavours-in-the-flavourdir">Storing flavours in the flavourdir</a></li>
+<li><a class="reference internal" href="#storing-flavours-in-flavour-directories-in-the-datadir">Storing flavours in flavour directories in the datadir</a></li>
+<li><a class="reference internal" href="#storing-flavours-in-the-datadir">Storing flavours in the datadir</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#included-flavours">Included flavours</a></li>
-<li><a class="reference external" href="#overriding-included-flavours">Overriding included flavours</a></li>
-<li><a class="reference external" href="#finding-new-flavours">Finding new flavours</a></li>
-<li><a class="reference external" href="#template-variables">Template variables</a><ul>
-<li><a class="reference external" href="#variable-syntax">Variable syntax</a></li>
-<li><a class="reference external" href="#getting-a-complete-list-of-variables">Getting a complete list of variables</a></li>
-<li><a class="reference external" href="#url-encoding-and-escaping-of-template-variables">URL encoding and escaping of template variables</a></li>
-<li><a class="reference external" href="#variables-from-config-py">Variables from config.py</a></li>
-<li><a class="reference external" href="#calculated-template-variables">Calculated template variables</a></li>
-<li><a class="reference external" href="#template-variables-only-available-in-the-date-head-and-date-foot-templates">Template variables only available in the date_head and date_foot templates</a></li>
-<li><a class="reference external" href="#template-variables-only-available-in-the-story-template">Template variables only available in the story template</a></li>
-<li><a class="reference external" href="#template-variables-from-plugins">Template variables from plugins</a></li>
-<li><a class="reference external" href="#template-variables-from-entry-metadata">Template variables from entry metadata</a></li>
+<li><a class="reference internal" href="#included-flavours">Included flavours</a></li>
+<li><a class="reference internal" href="#overriding-included-flavours">Overriding included flavours</a></li>
+<li><a class="reference internal" href="#finding-new-flavours">Finding new flavours</a></li>
+<li><a class="reference internal" href="#template-variables">Template variables</a><ul>
+<li><a class="reference internal" href="#variable-syntax">Variable syntax</a></li>
+<li><a class="reference internal" href="#getting-a-complete-list-of-variables">Getting a complete list of variables</a></li>
+<li><a class="reference internal" href="#url-encoding-and-escaping-of-template-variables">URL encoding and escaping of template variables</a></li>
+<li><a class="reference internal" href="#variables-from-config-py">Variables from config.py</a></li>
+<li><a class="reference internal" href="#calculated-template-variables">Calculated template variables</a></li>
+<li><a class="reference internal" href="#template-variables-only-available-in-the-date-head-and-date-foot-templates">Template variables only available in the date_head and date_foot templates</a></li>
+<li><a class="reference internal" href="#template-variables-only-available-in-the-story-template">Template variables only available in the story template</a></li>
+<li><a class="reference internal" href="#template-variables-from-plugins">Template variables from plugins</a></li>
+<li><a class="reference internal" href="#template-variables-from-entry-metadata">Template variables from entry metadata</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#invoking-a-flavour">Invoking a flavour</a></li>
-<li><a class="reference external" href="#setting-default-flavour">Setting default flavour</a></li>
-<li><a class="reference external" href="#order-of-operations-to-figure-out-which-flavour-to-use">Order of operations to figure out which flavour to use</a></li>
-<li><a class="reference external" href="#examples-of-templates">Examples of templates</a></li>
+<li><a class="reference internal" href="#invoking-a-flavour">Invoking a flavour</a></li>
+<li><a class="reference internal" href="#setting-default-flavour">Setting default flavour</a></li>
+<li><a class="reference internal" href="#order-of-operations-to-figure-out-which-flavour-to-use">Order of operations to figure out which flavour to use</a></li>
+<li><a class="reference internal" href="#examples-of-templates">Examples of templates</a></li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="writing_entries.html"
-                                  title="previous chapter">Writing Entries</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="syndication.html"
-                                  title="next chapter">Syndication</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/flavours_and_templates.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="writing_entries.html"
+                        title="previous chapter">Writing Entries</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="syndication.html"
+                        title="next chapter">Syndication</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/flavours_and_templates.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -710,7 +713,7 @@ come with your PyBlosxom installation.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="syndication.html" title="Syndication"
@@ -722,9 +725,9 @@ come with your PyBlosxom installation.</p>
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jun 18, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

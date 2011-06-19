@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,14 +12,15 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '',
         VERSION:     '1.5',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
     <link rel="next" title="Plugins" href="plugins.html" />
@@ -31,8 +34,8 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="plugins.html" title="Plugins"
              accesskey="N">next</a> |</li>
@@ -55,53 +58,107 @@ trackback, pingback, and CommentAPI plugins.</p>
 <p>FIXME - September 27th, 2009 - This needs to be updated. Srsly.</p>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>PyBlosxom does not come with comments functionality built-in.
-Instead, comments are implemented as a plugin which people who are
-interested in in having comments can install and everyone else can
-ignore.</p>
-<p>You can get the latest stable version of the comments plugin from the
-<a class="reference external" href="http://sourceforge.net/project/showfiles.php?group_id=67445&amp;amp;package_id=145140">contributed plugins pack</a>. Alternatively, you can get the latest
-version <a class="reference external" href="http://gitorious.org/pyblosxom/pyblosxom/trees/master/plugins/comments">from Git</a>, which is even more recent but may be broken.
-Caveat hacker!</p>
-<p>The comments plugin also has a <a class="reference external" href="http://pyblosxom.svn.sourceforge.net/viewvc/*checkout*/pyblosxom/trunk/contrib/plugins/comments/README">README file</a> that has more
+<p>PyBlosxom does not come with comments functionality built-in.  There are
+several ways you can add comments functionality to your blog.  This chapter
+talks about those.</p>
+</div>
+<div class="section" id="disqus">
+<h2>Disqus<a class="headerlink" href="#disqus" title="Permalink to this headline">¶</a></h2>
+<p>Disqus is a comments platform web service that allows you to add comments to
+your blog.</p>
+<p>Pros:</p>
+<ul class="simple">
+<li>it&#8217;s easy to install</li>
+<li>it handles spam for you</li>
+<li>supports notifications and replies</li>
+</ul>
+<p>Cons:</p>
+<ul class="simple">
+<li>it&#8217;s a web-service that you have no control over</li>
+<li>it might be difficult to move your comments over to a new system</li>
+</ul>
+<p>If this is interesting to you, <a class="reference external" href="http://disqus.com/">sign up for a Disqus account</a>.</p>
+</div>
+<div class="section" id="writing-your-own-comments-plugin">
+<h2>Writing your own comments plugin<a class="headerlink" href="#writing-your-own-comments-plugin" title="Permalink to this headline">¶</a></h2>
+<p>PyBlosxom allows for plugins allowing you to write a plugin to add comments
+to your website.  This isn&#8217;t for the feint of heart&#8211;there are a lot of bits
+to think about.</p>
+<p>Pros:</p>
+<ul class="simple">
+<li>you&#8217;re in complete control over how comments work on your site</li>
+</ul>
+<p>Cons:</p>
+<ul class="simple">
+<li>not for the feint of heart</li>
+</ul>
+</div>
+<div class="section" id="comments-plugin">
+<h2>Comments plugin<a class="headerlink" href="#comments-plugin" title="Permalink to this headline">¶</a></h2>
+<p>There&#8217;s a comments plugin that many PyBlosxom users use and which is sort
+of supported, but needs a lot of work.</p>
+<p>Pros:</p>
+<ul class="simple">
+<li>it&#8217;s entirely in your control</li>
+<li>you can extend and modify it to meet your needs</li>
+<li>a lot of PyBlosxom users use it</li>
+</ul>
+<p>Cons:</p>
+<ul class="simple">
+<li>many people find it difficult to install</li>
+<li>it&#8217;s missing common comment system features like replies, threads, ...</li>
+<li>you have to implement and maintain your own anti-spam measures</li>
+<li>it hasn&#8217;t been well maintained in the last couple of years</li>
+</ul>
+<p>The comments plugin comes in the <tt class="docutils literal"><span class="pre">.tar.gz</span></tt> file alongside PyBlosxom as
+of PyBlosxom 1.5.  Prior to that, you can get the latest stable version
+of the comments plugin from the <a class="reference external" href="http://pyblosxom.bluesock.org/download/">contributed plugins pack</a>. Alternatively,
+you can get the latest version <a class="reference external" href="http://gitorious.org/pyblosxom/pyblosxom/trees/master/plugins/comments">from Git</a>, which is even more recent but
+may be broken.  Caveat hacker!</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The comments plugin also has a <a class="reference external" href="http://gitorious.org/pyblosxom/pyblosxom/blobs/master/plugins/comments/README">README file</a> that has more
 information on installing comments, traceback, pingback, and the
 comment API.</p>
 </div>
 <div class="section" id="installing-the-comments-plugin">
-<h2>Installing the comments plugin<a class="headerlink" href="#installing-the-comments-plugin" title="Permalink to this headline">¶</a></h2>
+<h3>Installing the comments plugin<a class="headerlink" href="#installing-the-comments-plugin" title="Permalink to this headline">¶</a></h3>
 <p>Requirements:</p>
-<ul class="simple">
+<ol class="arabic simple">
 <li>A directory the web-server has writable permissions to.</li>
-</ul>
+<li>Time and patience.</li>
+</ol>
 <p>After making sure you have the requirements, do the following:</p>
 <ol class="arabic">
-<li><p class="first">Copy <tt class="docutils literal"><span class="pre">contrib/plugins/comments/plugins/comments.py</span></tt> to your
+<li><p class="first">Copy <tt class="docutils literal"><span class="pre">plugins/comments/plugins/comments.py</span></tt> to your
 plugins directory.  Then add <tt class="docutils literal"><span class="pre">&quot;comments&quot;</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt>
 property in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
 </li>
 <li><p class="first">Comments are stored in a directory tree which will parallel the
 data directory tree.  The comments themselves are stored as XML
-files named <tt class="docutils literal"><span class="pre">entryname-datetime.suffix</span></tt>.  The comment system
-allows you to specify the directory where the comment directory
-tree will stored, and the suffix used for comment files.  You need
-to make sure that this directory is writable by the pyblosxom CGI
-scripts.</p>
+files named <tt class="docutils literal"><span class="pre">entryname-datetime.suffix</span></tt>.  For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">video_audio_podcast_enhancements_in_firefox_3</span><span class="o">-</span><span class="mf">1244176234.0</span><span class="o">.</span><span class="n">cmt</span>
+</pre></div>
+</div>
+<p>The comment system allows you to specify the directory where the comment
+directory tree will stored, and the suffix used for comment files.  You
+need to make sure that this directory is writable by PyBlosxom however
+you have it installed.</p>
 <p>Set <tt class="docutils literal"><span class="pre">comment_dir</span></tt> to the directory (in your data directory) where
 you want the comments to be stored.  The default value is a
 directory named <tt class="docutils literal"><span class="pre">comments</span></tt> in your data directory.</p>
 <p>Set <tt class="docutils literal"><span class="pre">comment_ext</span></tt> to the change comment file extension.  The
 default file extension is <tt class="docutils literal"><span class="pre">cmt</span></tt>.</p>
 </li>
-<li><p class="first">Copy the flavour files from the contrib/plugins/comments/flavours
-directory.  There are flavours for <tt class="docutils literal"><span class="pre">html</span></tt> and <tt class="docutils literal"><span class="pre">rss</span></tt>. You should
-copy all the files to your data directory.</p>
-<p>The <tt class="docutils literal"><span class="pre">comment-story</span></tt> template is used to format a single entry
-that has comments.  The <tt class="docutils literal"><span class="pre">comment</span></tt> template is used to format a
-single comment/trackback/pingback.  The <tt class="docutils literal"><span class="pre">comment-form</span></tt> template
-provides the form used to enter new comments.</p>
+<li><p class="first">Copy the flavour files from the <tt class="docutils literal"><span class="pre">plugins/comments/flavours</span></tt>
+directory to the appropriate places alongside your flavour files.</p>
+<p><tt class="docutils literal"><span class="pre">comment-story</span></tt> template is used to format a single entry that has
+comments.</p>
+<p><tt class="docutils literal"><span class="pre">comment</span></tt> template is used to format a single comment/trackback/pingback.</p>
+<p><tt class="docutils literal"><span class="pre">comment-form</span></tt> template provides the form used to enter new comments.</p>
 </li>
 <li><p class="first">Edit the <tt class="docutils literal"><span class="pre">comment-story</span></tt>, <tt class="docutils literal"><span class="pre">comment</span></tt>, and <tt class="docutils literal"><span class="pre">comment-form</span></tt>
-templates.  Variables that are available are:</p>
+templates if you need to.  Variables that are available are:</p>
 <p>Available in the <tt class="docutils literal"><span class="pre">story</span></tt> and <tt class="docutils literal"><span class="pre">comment-story</span></tt> templates:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -186,9 +243,7 @@ associated withthis entry</p>
 </ol>
 </div>
 <div class="section" id="email-notification">
-<h2>Email notification<a class="headerlink" href="#email-notification" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="enabling-email-notification">
-<h3>Enabling email notification<a class="headerlink" href="#enabling-email-notification" title="Permalink to this headline">¶</a></h3>
+<h3>Email notification<a class="headerlink" href="#email-notification" title="Permalink to this headline">¶</a></h3>
 <p>The comment system can notify you via e-mail when new
 comments/trackbacks/pingbacks are posted.  There are two ways to
 configure this feature.  The first is to have email notifications sent
@@ -196,15 +251,13 @@ through your MTA via SMTP and the second is to have email
 notifications sent through your MTA via a local command.</p>
 <p>If you want to enable this feature, add the following properties to
 your <tt class="docutils literal"><span class="pre">config.py</span></tt> file:</p>
-<div class="highlight-python"><pre>py['comment_smtp_server'] - your SMTP server
-
-OR
-
-py['comment_mta_cmd']     - alternatively, the path to your MTA
-
-AND THEN
-
-py['comment_smtp_from']   - the address sending the notification
+<div class="highlight-python"><pre>py['comment_smtp_server'] - your SMTP server</pre>
+</div>
+<p>OR:</p>
+<div class="highlight-python"><pre>py['comment_mta_cmd']     - alternatively, the path to your MTA</pre>
+</div>
+<p>AND THEN:</p>
+<div class="highlight-python"><pre>py['comment_smtp_from']   - the address sending the notification
 py['comment_smtp_to']     - the address receiving the notification</pre>
 </div>
 <p>For example, this sends email through your MTA via SMTP connecting to
@@ -221,13 +274,8 @@ localhost:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="problems-you-might-have">
-<h3>Problems you might have<a class="headerlink" href="#problems-you-might-have" title="Permalink to this headline">¶</a></h3>
-<p>FIXME</p>
-</div>
-</div>
 <div class="section" id="writing-comments-plugin-templates">
-<h2>Writing comments plugin templates<a class="headerlink" href="#writing-comments-plugin-templates" title="Permalink to this headline">¶</a></h2>
+<h3>Writing comments plugin templates<a class="headerlink" href="#writing-comments-plugin-templates" title="Permalink to this headline">¶</a></h3>
 <p>This &#8220;diagram&#8221; shows which templates are responsible for what for
 rendering a single entry:</p>
 <div class="highlight-python"><pre>&lt;div class="news"&gt;           &lt;- story.html
@@ -253,7 +301,7 @@ form stuff here.              |
 </div>
 </div>
 <div class="section" id="ajax-commenting">
-<h2>AJAX commenting<a class="headerlink" href="#ajax-commenting" title="Permalink to this headline">¶</a></h2>
+<h3>AJAX commenting<a class="headerlink" href="#ajax-commenting" title="Permalink to this headline">¶</a></h3>
 <p>Comment previewing and posting can optionally use <a class="reference external" href="http://en.wikipedia.org/wiki/Ajax_(programming)">AJAX</a>, as opposed
 to full HTTP POST requests. This avoids a full-size roundtrip and
 re-render, so commenting feels faster and more lightweight.</p>
@@ -261,8 +309,7 @@ re-render, so commenting feels faster and more lightweight.</p>
 browser doesn&#8217;t support JavaScript or XmlHttpRequest, or if the user
 has turned JavaScript off, comment posting and preview will use normal
 HTTP POST.</p>
-<div class="section" id="enabling">
-<h3>Enabling<a class="headerlink" href="#enabling" title="Permalink to this headline">¶</a></h3>
+<p><strong>Enabling</strong></p>
 <p>To enable AJAX commenting in your pyblosxom installation, just copy
 <tt class="docutils literal"><span class="pre">comments.js</span></tt> to your plugin directory and add the following
 JavaScript to your <tt class="docutils literal"><span class="pre">comment-form</span></tt> template. (It&#8217;s already included
@@ -292,16 +339,13 @@ closing tag:</p>
 </div>
 <p>The separate closing <tt class="docutils literal"><span class="pre">&amp;lt;/script&amp;gt;</span></tt> tag is necessary for
 IE. Without it, IE won&#8217;t actually run the code in <tt class="docutils literal"><span class="pre">comments.js</span></tt>.</p>
-</div>
-<div class="section" id="disabling">
-<h3>Disabling<a class="headerlink" href="#disabling" title="Permalink to this headline">¶</a></h3>
+<p><strong>Disabling</strong></p>
 <p>To disable AJAX support, simply remove the JavaScript <tt class="docutils literal"><span class="pre">onsubmit</span></tt> and
 <tt class="docutils literal"><span class="pre">onclick</span></tt> handlers from your <tt class="docutils literal"><span class="pre">comment-form</span></tt> template. The comments
 plugin will fall back to traditional HTTP POST commenting.</p>
 </div>
-</div>
 <div class="section" id="dealing-with-comment-spam">
-<h2>Dealing with comment spam<a class="headerlink" href="#dealing-with-comment-spam" title="Permalink to this headline">¶</a></h2>
+<h3>Dealing with comment spam<a class="headerlink" href="#dealing-with-comment-spam" title="Permalink to this headline">¶</a></h3>
 <p>Expect it to happen.  Some folks get comment spam trickling in and
 others get a torrential downpour.  It&#8217;s best to deal with it from the
 start.  It&#8217;s also something you&#8217;re going to have to deal with every
@@ -321,8 +365,7 @@ rejection plugin you have running on your blog.</p>
 <a class="reference external" href="http://akismet.com/">Akismet</a>, a centralized comment spam database and filter, and
 <tt class="docutils literal"><span class="pre">check_javascript</span></tt> simply checks that the client&#8217;s user agent
 supports Javascript.  (Spam bots almost never do.)</p>
-<div class="section" id="akismetcomments">
-<h3>akismetcomments<a class="headerlink" href="#akismetcomments" title="Permalink to this headline">¶</a></h3>
+<p><strong>akismetcomments</strong></p>
 <p><a class="reference external" href="http://akismet.com/">Akismet</a> is a spam filter service developed and operated by
 <a class="reference external" href="http://automattic.com/">Automattic</a>, the people behind <a class="reference external" href="http://wordpress.com/">WordPress</a>.  Akismet maintains an
 up-to-date blacklist, Bayesian filter, and other tools to determine
@@ -346,9 +389,7 @@ hosting providers and firewalls may prevent this.  If you&#8217;re not sure
 about this, check with your webmaster or hosting provider.</p>
 <p><tt class="docutils literal"><span class="pre">akismetcomments</span></tt> was written by <a class="reference external" href="http://mako.cc/">Benjamin &#8216;Mako&#8217; Hill</a> and <a class="reference external" href="http://bwinton.latte.ca/">Blake
 Winton</a>.</p>
-</div>
-<div class="section" id="check-javascript">
-<h3>check_javascript<a class="headerlink" href="#check-javascript" title="Permalink to this headline">¶</a></h3>
+<p><strong>check_javascript</strong></p>
 <p>Comment spam is usually sent by automated spam bots, which blindly
 send HTTP POSTs to a large, static list of blog addresses. These spam
 bots have very little in common with web browsers. In particular, they
@@ -376,9 +417,7 @@ document.getElementById("secretTokenInput").value = "$blog_title";
 <tt class="docutils literal"><span class="pre">contrib/plugins/comments/flavours/</span></tt>, so if you use that template,
 you&#8217;re good to go.</p>
 <p><tt class="docutils literal"><span class="pre">check_javascript</span></tt> was written by <a class="reference external" href="http://snarfed.org/">Ryan Barrett</a>.</p>
-</div>
-<div class="section" id="rolling-your-own">
-<h3>rolling your own<a class="headerlink" href="#rolling-your-own" title="Permalink to this headline">¶</a></h3>
+<p><strong>Rolling your own</strong></p>
 <p>It&#8217;s not hard to roll your own comment rejection plugin.  First figure
 out what the heuristics involved would be.  Then write a plugin with a
 <tt class="docutils literal"><span class="pre">cb_comment_reject</span></tt> function in it.  In that function, look at the
@@ -416,11 +455,10 @@ def cb_comment_reject(args):
     # comment, return 1.  Otherwise return 0.</pre>
 </div>
 </div>
-</div>
 <div class="section" id="installing-trackback">
-<h2>Installing trackback<a class="headerlink" href="#installing-trackback" title="Permalink to this headline">¶</a></h2>
+<h3>Installing trackback<a class="headerlink" href="#installing-trackback" title="Permalink to this headline">¶</a></h3>
 <p>If you want to support <a class="reference external" href="http://www.sixapart.com/pronet/docs/trackback_spec">trackbacks</a>, copy
-<tt class="docutils literal"><span class="pre">contrib/plugins/comments/plugins/trackback.py</span></tt> to your plugins
+<tt class="docutils literal"><span class="pre">plugins/comments/plugins/trackback.py</span></tt> to your plugins
 directory.  Then add <tt class="docutils literal"><span class="pre">&quot;trackback&quot;</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property
 in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
 <p>If you want trackbacks you need to advertise the trackback ping URL
@@ -450,10 +488,10 @@ files:</p>
 Since it is in an HTML comment, it doesn&#8217;t matter where you put it.</p>
 </div>
 <div class="section" id="installing-pingback">
-<h2>Installing pingback<a class="headerlink" href="#installing-pingback" title="Permalink to this headline">¶</a></h2>
+<h3>Installing pingback<a class="headerlink" href="#installing-pingback" title="Permalink to this headline">¶</a></h3>
 <p>If you want to support <a class="reference external" href="http://www.hixie.ch/specs/pingback/pingback">pingbacks</a>, copy
-<tt class="docutils literal"><span class="pre">contrib/plugins/comments/plugins/xmlrpc_pingback.py</span></tt> and
-<tt class="docutils literal"><span class="pre">contrib/xmlrpc_plugins/xmlrpc.py</span></tt> to your plugins directory.  Make
+<tt class="docutils literal"><span class="pre">plugins/comments/plugins/xmlrpc_pingback.py</span></tt> and
+<tt class="docutils literal"><span class="pre">xmlrpc_plugins/xmlrpc.py</span></tt> to your plugins directory.  Make
 sure you have the <tt class="docutils literal"><span class="pre">base_url</span></tt> property defined in your <tt class="docutils literal"><span class="pre">config.py</span></tt>
 file.  Then add <tt class="docutils literal"><span class="pre">&quot;xmlrpc_pingback&quot;</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property
 in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
@@ -463,26 +501,6 @@ template. Add the following tag to the <tt class="docutils literal"><span class=
 </div>
 <p>Replace <tt class="docutils literal"><span class="pre">joe.com</span></tt> with your <tt class="docutils literal"><span class="pre">baseurl</span></tt>.</p>
 </div>
-<div class="section" id="installing-the-commentapi">
-<h2>Installing the CommentAPI<a class="headerlink" href="#installing-the-commentapi" title="Permalink to this headline">¶</a></h2>
-<p>FIXME - this text probably needs fixing.</p>
-<p>If you want to support <a class="reference external" href="http://wellformedweb.org/story/9">CommentAPI</a>, copy
-<tt class="docutils literal"><span class="pre">contrib/plugins/comments/plugins/commentAPI.py</span></tt> to your plugins
-directory.  If you enable CommentAPI in your RSS feed (see below),
-some RSS aggregator programs will provide an interface that can post a
-comment to a blog entry.</p>
-<p>You need to have <tt class="docutils literal"><span class="pre">comments.py</span></tt> installed in order for this to work.</p>
-<p>Then you must add the CommentAPI tags to your RSS 2.0 feed.  The best
-way to do this is to add an XML namespace declaration to the rss
-element:</p>
-<div class="highlight-python"><pre>xmlns:wfw="http://wellformedweb.org/CommentAPI"</pre>
-</div>
-<p>Then inside your RSS items you need to add a wfw:comment element:</p>
-<div class="highlight-python"><pre>&lt;wfw:comment&gt;###commentAPI###/$file_path&lt;/wfw:comment&gt;</pre>
-</div>
-<p>where ###commentAPI### is replaced by the URI that you mapped your
-CommentAPI.cgi to At the moment, you need to map to a URI one level
-below the $base_url of the blog</p>
 </div>
 </div>
 
@@ -492,59 +510,50 @@ below the $base_url of the blog</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="#">Comments</a><ul>
-<li><a class="reference external" href="#summary">Summary</a></li>
-<li><a class="reference external" href="#installing-the-comments-plugin">Installing the comments plugin</a></li>
-<li><a class="reference external" href="#email-notification">Email notification</a><ul>
-<li><a class="reference external" href="#enabling-email-notification">Enabling email notification</a></li>
-<li><a class="reference external" href="#problems-you-might-have">Problems you might have</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Comments</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#disqus">Disqus</a></li>
+<li><a class="reference internal" href="#writing-your-own-comments-plugin">Writing your own comments plugin</a></li>
+<li><a class="reference internal" href="#comments-plugin">Comments plugin</a><ul>
+<li><a class="reference internal" href="#installing-the-comments-plugin">Installing the comments plugin</a></li>
+<li><a class="reference internal" href="#email-notification">Email notification</a></li>
+<li><a class="reference internal" href="#writing-comments-plugin-templates">Writing comments plugin templates</a></li>
+<li><a class="reference internal" href="#ajax-commenting">AJAX commenting</a></li>
+<li><a class="reference internal" href="#dealing-with-comment-spam">Dealing with comment spam</a></li>
+<li><a class="reference internal" href="#installing-trackback">Installing trackback</a></li>
+<li><a class="reference internal" href="#installing-pingback">Installing pingback</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#writing-comments-plugin-templates">Writing comments plugin templates</a></li>
-<li><a class="reference external" href="#ajax-commenting">AJAX commenting</a><ul>
-<li><a class="reference external" href="#enabling">Enabling</a></li>
-<li><a class="reference external" href="#disabling">Disabling</a></li>
-</ul>
-</li>
-<li><a class="reference external" href="#dealing-with-comment-spam">Dealing with comment spam</a><ul>
-<li><a class="reference external" href="#akismetcomments">akismetcomments</a></li>
-<li><a class="reference external" href="#check-javascript">check_javascript</a></li>
-<li><a class="reference external" href="#rolling-your-own">rolling your own</a></li>
-</ul>
-</li>
-<li><a class="reference external" href="#installing-trackback">Installing trackback</a></li>
-<li><a class="reference external" href="#installing-pingback">Installing pingback</a></li>
-<li><a class="reference external" href="#installing-the-commentapi">Installing the CommentAPI</a></li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="renderers.html"
-                                  title="previous chapter">Renderers</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="plugins.html"
-                                  title="next chapter">Plugins</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/comments.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="renderers.html"
+                        title="previous chapter">Renderers</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="plugins.html"
+                        title="next chapter">Plugins</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/comments.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -556,7 +565,7 @@ below the $base_url of the blog</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="plugins.html" title="Plugins"
@@ -568,9 +577,9 @@ below the $base_url of the blog</p>
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jun 18, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

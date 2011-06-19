@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -5,41 +7,42 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Changelog &mdash; PyBlosxom v1.5 documentation</title>
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <title>What’s new in older versions &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
+        URL_ROOT:    '',
         VERSION:     '1.5',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom v1.5 documentation" href="../index.html" />
-    <link rel="next" title="Installing PyBlosxom" href="INSTALL.html" />
-    <link rel="prev" title="About PyBlosxom" href="../about_pyblosxom.html" /> 
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="next" title="Installing PyBlosxom" href="install.html" />
+    <link rel="prev" title="What’s new in 1.5" href="whatsnew.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
-          <a href="INSTALL.html" title="Installing PyBlosxom"
+          <a href="install.html" title="Installing PyBlosxom"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../about_pyblosxom.html" title="About PyBlosxom"
+          <a href="whatsnew.html" title="What’s new in 1.5"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -48,269 +51,12 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="changelog">
-<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="changes-between-1-4-3-and-1-5">
-<span id="id1"></span><h2>Changes between 1.4.3 and 1.5<a class="headerlink" href="#changes-between-1-4-3-and-1-5" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="what-s-new-in-older-versions">
+<h1>What&#8217;s new in older versions<a class="headerlink" href="#what-s-new-in-older-versions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-s-new-in-1-4-3">
+<h2>What&#8217;s new in 1.4.3<a class="headerlink" href="#what-s-new-in-1-4-3" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pertinent-to-users">
-<h3>Pertinent to users:<a class="headerlink" href="#pertinent-to-users" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic">
-<li><p class="first">Renamed <tt class="docutils literal"><span class="pre">pyblcmd</span></tt> to <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span></tt>.</p>
-</li>
-<li><p class="first">PyBlosxom now requires Python 2.3.  We&#8217;ve removed the _logging
-module that provided logging facilities to pre-Python 2.3 versions.</p>
-</li>
-<li><p class="first">To install PyBlosxom on your system, you will now need setuptools.</p>
-</li>
-<li><p class="first">The <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> file has changed significantly&#8212;if you&#8217;re
-using it you should grab the new one that comes with this
-distribution.  We&#8217;ve gutted the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> script and turned
-it into a stub.  This will reduce the need for you to update your
-<tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> in the future when you upgrade PyBlosxom.</p>
-</li>
-<li><p class="first">pyblosxom-cmd now has an option to create the blog directory
-structure and skeleton files for you.  This makes it much faster to
-get a new blog up and running.  Syntax is this:</p>
-<div class="highlight-python"><pre>pyblosxom-cmd create &lt;path&gt;</pre>
-</div>
-<p>Some examples:</p>
-<div class="highlight-python"><pre>pyblosxom-cmd create .
-pyblosxom-cmd create /home/joe/blog</pre>
-</div>
-</li>
-<li><p class="first">Template variable syntax <tt class="docutils literal"><span class="pre">$id_escaped</span></tt> and <tt class="docutils literal"><span class="pre">$id_urlencoded</span></tt> has
-been removed.  Use <tt class="docutils literal"><span class="pre">$escape(id)</span></tt> and <tt class="docutils literal"><span class="pre">$urlencode(id)</span></tt> instead.</p>
-</li>
-<li><p class="first">Switched to using Python&#8217;s optparse module instead of our
-home-brewed one.  There are some changes in command line syntax.
-Do <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span> <span class="pre">--help</span></tt> for command line help.</p>
-</li>
-<li><p class="first">Changed around <tt class="docutils literal"><span class="pre">INSTALL</span></tt>, <tt class="docutils literal"><span class="pre">README</span></tt> and added <tt class="docutils literal"><span class="pre">UPGRADE</span></tt>.</p>
-</li>
-<li><p class="first">Removed <tt class="docutils literal"><span class="pre">blog_title_with_path</span></tt> variable.  If you were using this
-variable in your templates, replace it.  i.e. instead of:</p>
-<div class="highlight-python"><pre>$blog_title_with_path</pre>
-</div>
-<p>do:</p>
-<div class="highlight-python"><pre>$blog_title : $pi_bl</pre>
-</div>
-</li>
-<li><p class="first">Re-worked PyBlosxom so that it uses the same encoding throughout.
-This means you need to use the same encoding for all your data
-files and that encoding has to match the <tt class="docutils literal"><span class="pre">blog_encoding</span></tt>
-property in <tt class="docutils literal"><span class="pre">config.py</span></tt>.  This defaults to UTF-8.</p>
-</li>
-<li><p class="first">Re-worked documentation to use Sphinx.  The end result is that the
-&#8220;source&#8221; for the docs is in <tt class="docutils literal"><span class="pre">docs/source/</span></tt>, there&#8217;s an HTML
-version that&#8217;s built by Sphinx in <tt class="docutils literal"><span class="pre">docs/build/html/</span></tt>, and it&#8217;s a
-lot easier to read and use now.  Thank you to the Sphinx team!</p>
-</li>
-<li><p class="first">Reworked the command line for static rendering.  It now works like
-this:</p>
-<div class="highlight-python"><pre>pyblosxom-cmd staticrender \
-              [--config &lt;path/to/config/file&gt;] \
-              [--incremenal]</pre>
-</div>
-<p>If the <tt class="docutils literal"><span class="pre">config.py</span></tt> file is in your <tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt>, then you can
-skip the <tt class="docutils literal"><span class="pre">--config</span> <span class="pre">&lt;path/to/config/file&gt;</span></tt> stuff.</p>
-</li>
-<li><p class="first">Removed portalocker code.  This will cause any plugins using the
-locking code to fail.  The only one I saw like this was the
-logstats plugin which had a lot of other problems.</p>
-</li>
-<li><p class="first">Added a <tt class="docutils literal"><span class="pre">--silent</span></tt> flag to pyblcmd so that it quells all stdout.
-This is useful for cron jobs.</p>
-</li>
-<li><p class="first">Added <tt class="docutils literal"><span class="pre">truncate_date</span></tt> config variable.  When set to True, it
-causes date-based archives to be truncated to <tt class="docutils literal"><span class="pre">num_entries</span></tt> entries.
-Defaults to False.</p>
-<p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;truncate_date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">Added <tt class="docutils literal"><span class="pre">truncate_category</span></tt> config variable.  When set to True, it
-causes category-based archives to be truncated to <tt class="docutils literal"><span class="pre">num_entries</span></tt>
-entries.  Defaults to True.</p>
-<p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;truncate_category&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">Added <tt class="docutils literal"><span class="pre">truncate_frontpage</span></tt> config variable.  When set to True, it
-causes the front page <tt class="docutils literal"><span class="pre">num_entries</span></tt> entries.  Defaults to True.</p>
-<p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;truncate_frontpage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">Plugins are included in the PyBlosxom source tarball again.</p>
-</li>
-<li><p class="first">Templates in a flavourdir directory no longer require the flavour
-as the file extension.  e.g. This will work fine:</p>
-<div class="highlight-python"><pre>blog/
- |- flavourdir/
-     |- html.flav/
-         |- content_type
-         |- head
-         |- story
-         |- ...</pre>
-</div>
-</li>
-<li><p class="first">We moved the main PyBlosxom site to
-<a class="reference external" href="http://pyblosxom.bluesock.org/">http://pyblosxom.bluesock.org/</a> .  There&#8217;s a &#8220;powered by
-pyblosxom&#8221; image at
-<a class="reference external" href="http://pyblosxom.bluesock.org/images/pb_pyblosxom.gif">http://pyblosxom.bluesock.org/images/pb_pyblosxom.gif</a></p>
-<p>You should adjust your templates accordingly.</p>
-</li>
-<li><p class="first">The following plugins have been added to the pyblosxom release
-tarball:</p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">archives/</span></tt><ul>
-<li>pyarchives</li>
-<li>yeararchives (was wbgarchives)</li>
-</ul>
-</li>
-<li><tt class="docutils literal"><span class="pre">categories/</span></tt><ul>
-<li>pycategories</li>
-</ul>
-</li>
-<li><tt class="docutils literal"><span class="pre">comments/plugins/</span></tt><ul>
-<li>akismetcomments</li>
-<li>comments</li>
-<li>no_old_comments</li>
-<li>trackback</li>
-<li>xmlrpc_pingback</li>
-</ul>
-</li>
-<li><tt class="docutils literal"><span class="pre">date/</span></tt><ul>
-<li>pycalendar</li>
-<li>firstdaydiv</li>
-<li>pyfilenamemtime</li>
-<li>w3cdate</li>
-</ul>
-</li>
-<li><tt class="docutils literal"><span class="pre">display/</span></tt><ul>
-<li>paginate (was wbgpager)</li>
-<li>entrytitle</li>
-</ul>
-</li>
-<li><tt class="docutils literal"><span class="pre">headers/</span></tt><ul>
-<li>conditionalhttp</li>
-</ul>
-</li>
-<li><tt class="docutils literal"><span class="pre">tags/</span></tt><ul>
-<li>tags (was wbgtags)</li>
-</ul>
-</li>
-<li><tt class="docutils literal"><span class="pre">text/</span></tt><ul>
-<li>acronyms</li>
-</ul>
-</li>
-</ul>
-<p>If you have older versions of these plugins, better to switch to
-the new versions.</p>
-</li>
-</ol>
-</div>
-<div class="section" id="pertinent-to-developers">
-<h3>Pertinent to developers:<a class="headerlink" href="#pertinent-to-developers" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic">
-<li><p class="first"><tt class="docutils literal"><span class="pre">Pyblosxom.tools.VariableDict</span></tt> is no more.</p>
-</li>
-<li><p class="first">If you have template variables that end in <tt class="docutils literal"><span class="pre">_urlencoded</span></tt> and
-<tt class="docutils literal"><span class="pre">_escaped</span></tt>, it&#8217;s better to instead call
-<tt class="docutils literal"><span class="pre">tools.escape_text(...)</span></tt> and <tt class="docutils literal"><span class="pre">tools.urlencode_text(...)</span></tt> or use
-filter functions <tt class="docutils literal"><span class="pre">$escape(var)</span></tt> and <tt class="docutils literal"><span class="pre">$urlencode(var)</span></tt>.</p>
-</li>
-<li><p class="first">The blosxom renderer has undergone a bunch of fixes.  If you
-depended on functions that started with <tt class="docutils literal"><span class="pre">_</span></tt>, then you&#8217;ll probably
-need to rework your plugin.  These functions were not intended for
-outside use.</p>
-<p>Additionally, we fixed the bug where the renderer was adding the
-contents of the config and data dicts to each entry when it was
-rendered as a story.  Now the items in the entrylist are untouched
-during rendering.</p>
-</li>
-<li><p class="first">Added a lot of tests and rewrote everything to ditch the nose
-requirement.  Tests can be run with:</p>
-<div class="highlight-python"><pre>python setup.py test</pre>
-</div>
-</li>
-<li><p class="first">Added a lot of documentation.</p>
-</li>
-<li><p class="first">Plugins can now do command-line things.  See the <tt class="docutils literal"><span class="pre">commandline</span></tt>
-callback in the documentation.</p>
-</li>
-<li><p class="first">Removed the portalocker code so PyBlosxom no longer provides a way
-to lock/unlock text files.</p>
-</li>
-<li><p class="first">Changed a lot of camel-case function/method names to PEP-8
-versions.  Camel case names are deprecated and will be removed in a
-future version:</p>
-<p><tt class="docutils literal"><span class="pre">tools.py</span></tt>:</p>
-<ul class="simple">
-<li>Walk -&gt; walk</li>
-<li>getLogger -&gt; get_logger</li>
-<li>generateRandStr -&gt; generate_rand_str</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">pyblosxom/Pyblosxom.py</span></tt>:</p>
-<ul class="simple">
-<li>PyBlosxom: getRequest -&gt; get_request</li>
-<li>PyBlosxom: getResponse -&gt; get_response</li>
-<li>PyBlosxom: runCallback -&gt; run_callback</li>
-<li>PyBlosxom: runRenderOne -&gt; run_render_one</li>
-<li>PyBlosxom: runStaticRenderer removed</li>
-<li>Request: setResponse -&gt; set_response</li>
-<li>Request: getResponse -&gt; get_response</li>
-<li>Request: getForm -&gt; get_form</li>
-<li>Request: getConfiguration -&gt; get_configuration</li>
-<li>Request: getHttp -&gt; get_http</li>
-<li>Request: getData -&gt; get_data</li>
-<li>Request: addHttp -&gt; add_http</li>
-<li>Request: addData -&gt; add_data</li>
-<li>Request: addConfiguration -&gt; add_configuration</li>
-<li>Response: setStatus -&gt; set_status</li>
-<li>Response: addHeader -&gt; add_header</li>
-<li>Response: getHeaders -&gt; get_headers</li>
-<li>Response: sendBody -&gt; send_body</li>
-<li>Response: sendHeaders -&gt; send_headers</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">pyblosxom/renderers/base.py</span></tt>:</p>
-<ul class="simple">
-<li>RendererBase: addHeader -&gt; add_header</li>
-<li>RendererBase: setContent -&gt; set_content</li>
-<li>RendererBase: needsContentType -&gt; needs_content_type</li>
-<li>RendererBase: showHeaders -&gt; show_headers</li>
-</ul>
-<p><tt class="docutils literal"><span class="pre">pyblosxom/renderers/blosxom.py</span></tt>:</p>
-<ul class="simple">
-<li>BlosxomRenderer: renderContent -&gt; render_content</li>
-<li>BlosxomRenderer: renderTemplate -&gt; render_template</li>
-<li>BlosxomRenderer: getContent -&gt; get_content</li>
-<li>BlosxomRenderer: outputTemplate -&gt; output_template</li>
-</ul>
-</li>
-<li><p class="first">Changed <tt class="docutils literal"><span class="pre">add_header</span></tt> in the <tt class="docutils literal"><span class="pre">Response</span></tt> class to take a key and
-value instead of a list of strings that it has to use * magic and
-then munge through.</p>
-</li>
-<li><p class="first">Added a commandline callback for allowing plugins to add to the
-command line.</p>
-</li>
-<li><p class="first">Added a truncatelist callback allowing plugins to augment the
-truncate (<tt class="docutils literal"><span class="pre">num_entries</span></tt>) behavior.</p>
-</li>
-<li><p class="first">Added a sortlist callback allowing plugins to augment entrylist sorting
-behavior.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="section" id="changes-between-1-4-2-and-1-4-3">
-<h2>Changes between 1.4.2 and 1.4.3<a class="headerlink" href="#changes-between-1-4-2-and-1-4-3" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id2">
-<h3>Pertinent to users:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>Pertinent to users<a class="headerlink" href="#pertinent-to-users" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">Adjusted the code that parses blog.ini values so that it can take
 values like:</p>
@@ -341,8 +87,8 @@ of variables.</p>
 </li>
 </ol>
 </div>
-<div class="section" id="id3">
-<h3>Pertinent to developers:<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="pertinent-to-developers">
+<h3>Pertinent to developers<a class="headerlink" href="#pertinent-to-developers" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Fixed tools.importname&#8212;it now logs errors to the logger.</li>
 <li>Fixed PyBlosxomWSGIApp so that it&#8217;s WSGI compliant as an
@@ -352,10 +98,10 @@ running unit tests are in the REDAME.</li>
 </ol>
 </div>
 </div>
-<div class="section" id="changes-between-1-4-1-and-1-4-2">
-<h2>Changes between 1.4.1 and 1.4.2<a class="headerlink" href="#changes-between-1-4-1-and-1-4-2" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id4">
-<h3>Pertinent to users:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-s-new-in-1-4-2">
+<h2>What&#8217;s new in 1.4.2<a class="headerlink" href="#what-s-new-in-1-4-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Pertinent to users<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Fixed another bug with the WSGI application creation code.  (Thanks
 Christine!)</li>
@@ -369,10 +115,10 @@ module).  (Thanks Liz!)</li>
 </ol>
 </div>
 </div>
-<div class="section" id="changes-between-1-4-and-1-4-1">
-<h2>Changes between 1.4 and 1.4.1<a class="headerlink" href="#changes-between-1-4-and-1-4-1" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id5">
-<h3>Pertinent to users:<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-s-new-in-1-4-1">
+<h2>What&#8217;s new in 1.4.1<a class="headerlink" href="#what-s-new-in-1-4-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Pertinent to users<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Fixed a problem where running PyBlosxom under Paste won&#8217;t pick up
 the <tt class="docutils literal"><span class="pre">config.py</span></tt> file.  Be sure to add a <tt class="docutils literal"><span class="pre">configpydir</span></tt> property
@@ -385,10 +131,10 @@ the <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</
 </ol>
 </div>
 </div>
-<div class="section" id="changes-between-1-3-2-and-1-4">
-<h2>Changes between 1.3.2 and 1.4<a class="headerlink" href="#changes-between-1-3-2-and-1-4" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id6">
-<h3>Pertinent to users:<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-s-new-in-1-4">
+<h2>What&#8217;s new in 1.4<a class="headerlink" href="#what-s-new-in-1-4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Pertinent to users<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Added a pyblcmd command line program for PyBlosxom command line
 things.  This now handles static rendering, rendering a single url
@@ -420,8 +166,8 @@ tools.  (Thanks John!)</li>
 codebase.  (Thanks Steven and Yury!)</li>
 </ol>
 </div>
-<div class="section" id="id7">
-<h3>Pertinent to developers:<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>Pertinent to developers<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>1. Lots of code clean-up, documentation, test-code, and some
 refactoring.</p>
 <ol class="arabic" start="2">
@@ -438,10 +184,10 @@ nosetests --verbose --include functional</pre>
 </ol>
 </div>
 </div>
-<div class="section" id="changes-between-1-3-1-and-1-3-2">
-<h2>Changes between 1.3.1 and 1.3.2<a class="headerlink" href="#changes-between-1-3-1-and-1-3-2" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id8">
-<h3>Pertinent to users:<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-s-new-in-1-3-2">
+<h2>What&#8217;s new in 1.3.2<a class="headerlink" href="#what-s-new-in-1-3-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Pertinent to users<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Fixes a security issue where the path_info can come in with
 multiple / at the beginning.  Whether this happens or not depends
@@ -451,10 +197,10 @@ Thanks FX!</li>
 </ol>
 </div>
 </div>
-<div class="section" id="changes-between-1-3-and-1-3-1">
-<h2>Changes between 1.3 and 1.3.1<a class="headerlink" href="#changes-between-1-3-and-1-3-1" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id9">
-<h3>Pertinent to users:<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-s-new-in-1-3-1">
+<h2>What&#8217;s new in 1.3.1<a class="headerlink" href="#what-s-new-in-1-3-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>Pertinent to users<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>The <tt class="docutils literal"><span class="pre">num_entries</span></tt> property now affects the home page and category
 index pages.  It no longer affects archive index pages.</li>
@@ -471,8 +217,8 @@ of <tt class="docutils literal"><span class="pre">&lt;![CDATA[</span> <span clas
 their root category.</li>
 </ol>
 </div>
-<div class="section" id="id10">
-<h3>Pertinent to developers:<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>Pertinent to developers<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>If you have plugins that use the logger functions in PyBlosxom 1.2,
 you need to update those plugins to use the new logger functions in
@@ -481,10 +227,10 @@ PyBlosxom 1.3.  Read through the API for details.</li>
 </ol>
 </div>
 </div>
-<div class="section" id="changes-between-1-2-and-1-3">
-<h2>Changes between 1.2 and 1.3<a class="headerlink" href="#changes-between-1-2-and-1-3" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id11">
-<h3>Pertinent to users:<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-s-new-in-1-3">
+<h2>What&#8217;s new in 1.3<a class="headerlink" href="#what-s-new-in-1-3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3>Pertinent to users<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">We added a <tt class="docutils literal"><span class="pre">blog_rights</span></tt> property.  This holds a textual
 description of the rights you give to others who read your blog.
@@ -527,24 +273,24 @@ usually gets logged to your web-server&#8217;s error log.</p>
 </ol>
 </div>
 <div class="section" id="pertinent-to-developers-and-plugin-developers">
-<h3>Pertinent to developers and plugin developers:<a class="headerlink" href="#pertinent-to-developers-and-plugin-developers" title="Permalink to this headline">¶</a></h3>
+<h3>Pertinent to developers and plugin developers<a class="headerlink" href="#pertinent-to-developers-and-plugin-developers" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Plugins that used logging in 1.2 need to be changed to use the new
 logging utilities in 1.3.  Until that happens, they won&#8217;t work.</li>
 </ol>
 </div>
 </div>
-<div class="section" id="changes-between-1-1-and-1-2">
-<h2>Changes between 1.1 and 1.2<a class="headerlink" href="#changes-between-1-1-and-1-2" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id12">
-<h3>Pertinent to users:<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-s-new-in-1-2">
+<h2>What&#8217;s new in 1.2<a class="headerlink" href="#what-s-new-in-1-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>Pertinent to users<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">We added a <tt class="docutils literal"><span class="pre">blog_email</span></tt> item to config.py and changed
 <tt class="docutils literal"><span class="pre">blog_author</span></tt> to just the author&#8217;s name.  Examples:</p>
 <blockquote>
-<p>py[&#8220;blog_email&#8221;] = &#8220;<a class="reference external" href="mailto:joe&#37;&#52;&#48;blah&#46;com">joe<span>&#64;</span>blah<span>&#46;</span>com</a>&#8221;
+<div><p>py[&#8220;blog_email&#8221;] = &#8220;<a class="reference external" href="mailto:joe&#37;&#52;&#48;blah&#46;com">joe<span>&#64;</span>blah<span>&#46;</span>com</a>&#8221;
 py[&#8220;blog_author&#8221;] = &#8220;Joe Man&#8221;</p>
-</blockquote>
+</div></blockquote>
 </li>
 <li><p class="first">We no longer adjust blog_title from what you set in <tt class="docutils literal"><span class="pre">config.py</span></tt>.
 Now we have a <tt class="docutils literal"><span class="pre">blog_title_with_path</span></tt> variable which is in the
@@ -571,8 +317,8 @@ pyblosxom&#8221; image at
 </li>
 </ol>
 </div>
-<div class="section" id="id13">
-<h3>Pertinent to developers and plugin developers:<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Pertinent to developers<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">We now have a Request and a Response object.  See API documentation
 for more details.</p>
@@ -631,10 +377,10 @@ getConfiguration() method to get the config py dict.</p>
 </ol>
 </div>
 </div>
-<div class="section" id="changes-between-1-0-and-1-1">
-<h2>Changes between 1.0 and 1.1<a class="headerlink" href="#changes-between-1-0-and-1-1" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id14">
-<h3>Pertinent to users:<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-s-new-in-1-1">
+<h2>What&#8217;s new in 1.1<a class="headerlink" href="#what-s-new-in-1-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h3>Pertinent to users<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>We no longer include contributed plugins and flavours.  To find
 plugins and flavours, go to the PyBlosxom registry located at
@@ -646,8 +392,8 @@ number, then the blosxom default file handler will display at most
 that many entries.</li>
 </ol>
 </div>
-<div class="section" id="id15">
-<h3>Pertinent to developers and plugin developers:<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>Pertinent to developers<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Plugins that implement cb_filelist are now in charge of adjusting
 the number of entries to be displayed based on the <tt class="docutils literal"><span class="pre">num_entries</span></tt>
@@ -657,10 +403,10 @@ http dict in the Request object.</li>
 </ol>
 </div>
 </div>
-<div class="section" id="changes-between-0-9-and-1-0">
-<h2>Changes between 0.9 and 1.0<a class="headerlink" href="#changes-between-0-9-and-1-0" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id16">
-<h3>Pertinent to users:<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-s-new-in-1-0">
+<h2>What&#8217;s new in 1.0<a class="headerlink" href="#what-s-new-in-1-0" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h3>Pertinent to users<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">We ditched <tt class="docutils literal"><span class="pre">blosxom_custom_flavours</span></tt>&#8212;you can remove it from your
 <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
@@ -701,8 +447,8 @@ script.</p>
 </li>
 </ol>
 </div>
-<div class="section" id="id17">
-<h3>Pertinent to developers and plugin developers:<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>Pertinent to developers and plugin developers<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Rewrote the startup for PyBlosxom request handling&#8212;we ditched the
 common_start function and picked up a common initialize function.</li>
@@ -727,89 +473,84 @@ user is using.</li>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="../index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="#">Changelog</a><ul>
-<li><a class="reference external" href="#changes-between-1-4-3-and-1-5">Changes between 1.4.3 and 1.5</a><ul>
-<li><a class="reference external" href="#pertinent-to-users">Pertinent to users:</a></li>
-<li><a class="reference external" href="#pertinent-to-developers">Pertinent to developers:</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">What&#8217;s new in older versions</a><ul>
+<li><a class="reference internal" href="#what-s-new-in-1-4-3">What&#8217;s new in 1.4.3</a><ul>
+<li><a class="reference internal" href="#pertinent-to-users">Pertinent to users</a></li>
+<li><a class="reference internal" href="#pertinent-to-developers">Pertinent to developers</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#changes-between-1-4-2-and-1-4-3">Changes between 1.4.2 and 1.4.3</a><ul>
-<li><a class="reference external" href="#id2">Pertinent to users:</a></li>
-<li><a class="reference external" href="#id3">Pertinent to developers:</a></li>
+<li><a class="reference internal" href="#what-s-new-in-1-4-2">What&#8217;s new in 1.4.2</a><ul>
+<li><a class="reference internal" href="#id1">Pertinent to users</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#changes-between-1-4-1-and-1-4-2">Changes between 1.4.1 and 1.4.2</a><ul>
-<li><a class="reference external" href="#id4">Pertinent to users:</a></li>
+<li><a class="reference internal" href="#what-s-new-in-1-4-1">What&#8217;s new in 1.4.1</a><ul>
+<li><a class="reference internal" href="#id2">Pertinent to users</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#changes-between-1-4-and-1-4-1">Changes between 1.4 and 1.4.1</a><ul>
-<li><a class="reference external" href="#id5">Pertinent to users:</a></li>
+<li><a class="reference internal" href="#what-s-new-in-1-4">What&#8217;s new in 1.4</a><ul>
+<li><a class="reference internal" href="#id3">Pertinent to users</a></li>
+<li><a class="reference internal" href="#id4">Pertinent to developers</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#changes-between-1-3-2-and-1-4">Changes between 1.3.2 and 1.4</a><ul>
-<li><a class="reference external" href="#id6">Pertinent to users:</a></li>
-<li><a class="reference external" href="#id7">Pertinent to developers:</a></li>
+<li><a class="reference internal" href="#what-s-new-in-1-3-2">What&#8217;s new in 1.3.2</a><ul>
+<li><a class="reference internal" href="#id5">Pertinent to users</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#changes-between-1-3-1-and-1-3-2">Changes between 1.3.1 and 1.3.2</a><ul>
-<li><a class="reference external" href="#id8">Pertinent to users:</a></li>
+<li><a class="reference internal" href="#what-s-new-in-1-3-1">What&#8217;s new in 1.3.1</a><ul>
+<li><a class="reference internal" href="#id6">Pertinent to users</a></li>
+<li><a class="reference internal" href="#id7">Pertinent to developers</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#changes-between-1-3-and-1-3-1">Changes between 1.3 and 1.3.1</a><ul>
-<li><a class="reference external" href="#id9">Pertinent to users:</a></li>
-<li><a class="reference external" href="#id10">Pertinent to developers:</a></li>
+<li><a class="reference internal" href="#what-s-new-in-1-3">What&#8217;s new in 1.3</a><ul>
+<li><a class="reference internal" href="#id8">Pertinent to users</a></li>
+<li><a class="reference internal" href="#pertinent-to-developers-and-plugin-developers">Pertinent to developers and plugin developers</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#changes-between-1-2-and-1-3">Changes between 1.2 and 1.3</a><ul>
-<li><a class="reference external" href="#id11">Pertinent to users:</a></li>
-<li><a class="reference external" href="#pertinent-to-developers-and-plugin-developers">Pertinent to developers and plugin developers:</a></li>
+<li><a class="reference internal" href="#what-s-new-in-1-2">What&#8217;s new in 1.2</a><ul>
+<li><a class="reference internal" href="#id9">Pertinent to users</a></li>
+<li><a class="reference internal" href="#id10">Pertinent to developers</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#changes-between-1-1-and-1-2">Changes between 1.1 and 1.2</a><ul>
-<li><a class="reference external" href="#id12">Pertinent to users:</a></li>
-<li><a class="reference external" href="#id13">Pertinent to developers and plugin developers:</a></li>
+<li><a class="reference internal" href="#what-s-new-in-1-1">What&#8217;s new in 1.1</a><ul>
+<li><a class="reference internal" href="#id11">Pertinent to users</a></li>
+<li><a class="reference internal" href="#id12">Pertinent to developers</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#changes-between-1-0-and-1-1">Changes between 1.0 and 1.1</a><ul>
-<li><a class="reference external" href="#id14">Pertinent to users:</a></li>
-<li><a class="reference external" href="#id15">Pertinent to developers and plugin developers:</a></li>
-</ul>
-</li>
-<li><a class="reference external" href="#changes-between-0-9-and-1-0">Changes between 0.9 and 1.0</a><ul>
-<li><a class="reference external" href="#id16">Pertinent to users:</a></li>
-<li><a class="reference external" href="#id17">Pertinent to developers and plugin developers:</a></li>
+<li><a class="reference internal" href="#what-s-new-in-1-0">What&#8217;s new in 1.0</a><ul>
+<li><a class="reference internal" href="#id13">Pertinent to users</a></li>
+<li><a class="reference internal" href="#id14">Pertinent to developers and plugin developers</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="../about_pyblosxom.html"
-                                  title="previous chapter">About PyBlosxom</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="INSTALL.html"
-                                  title="next chapter">Installing PyBlosxom</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="../_sources/notes/CHANGELOG.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="../search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="whatsnew.html"
+                        title="previous chapter">What&#8217;s new in 1.5</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="next chapter">Installing PyBlosxom</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/whatsnewolder.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -818,24 +559,24 @@ user is using.</li>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="INSTALL.html" title="Installing PyBlosxom"
+          <a href="install.html" title="Installing PyBlosxom"
              >next</a> |</li>
         <li class="right" >
-          <a href="../about_pyblosxom.html" title="About PyBlosxom"
+          <a href="whatsnew.html" title="What’s new in 1.5"
              >previous</a> |</li>
-        <li><a href="../index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Nov 05, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

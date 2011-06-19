@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,14 +12,15 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '',
         VERSION:     '1.5',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
     <link rel="next" title="Code Documentation" href="dev_codedocs.html" />
@@ -31,8 +34,8 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="dev_codedocs.html" title="Code Documentation"
              accesskey="N">next</a> |</li>
@@ -57,7 +60,7 @@ PyBlosxom plugins.  This chapter, moreso than the rest of this manual,
 is very much a work in progress.</p>
 <p>If you need help with plugin development, sign up on the devel mailing
 list and/or join us on <tt class="docutils literal"><span class="pre">#pyblosxom</span></tt> on <tt class="docutils literal"><span class="pre">irc.freenode.net</span></tt>.  More
-details in <a class="reference external" href="about_pyblosxom.html#project-details-and-contact"><em>Project details, contact information, and where to go for help</em></a>.</p>
+details in <a class="reference internal" href="about_pyblosxom.html#project-details-and-contact"><em>Project details, contact information, and where to go for help</em></a>.</p>
 <p>FIXME - this needs more work</p>
 </div>
 <div class="section" id="things-that-all-plugins-should-have">
@@ -697,53 +700,53 @@ a b c</pre>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="#">Writing Plugins</a><ul>
-<li><a class="reference external" href="#summary">Summary</a></li>
-<li><a class="reference external" href="#things-that-all-plugins-should-have">Things that all plugins should have</a><ul>
-<li><a class="reference external" href="#name">Name</a></li>
-<li><a class="reference external" href="#documentation">Documentation</a></li>
-<li><a class="reference external" href="#metadata">Metadata</a></li>
-<li><a class="reference external" href="#configuration-installation-and-verification">Configuration, installation and verification</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Writing Plugins</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#things-that-all-plugins-should-have">Things that all plugins should have</a><ul>
+<li><a class="reference internal" href="#name">Name</a></li>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#metadata">Metadata</a></li>
+<li><a class="reference internal" href="#configuration-installation-and-verification">Configuration, installation and verification</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#how-to-log-messages-to-a-log-file">How to log messages to a log file</a></li>
-<li><a class="reference external" href="#how-to-store-plugin-state-between-callbacks">How to store plugin state between callbacks</a></li>
-<li><a class="reference external" href="#how-to-implement-a-callback">How to implement a callback</a></li>
-<li><a class="reference external" href="#writing-an-entryparser">Writing an entryparser</a></li>
-<li><a class="reference external" href="#writing-a-preformatter-plugin">Writing a preformatter plugin</a></li>
-<li><a class="reference external" href="#writing-a-postformatter-plugin">Writing a postformatter plugin</a></li>
-<li><a class="reference external" href="#writing-a-renderer">Writing a renderer</a></li>
-<li><a class="reference external" href="#writing-a-plugin-that-adds-a-commandline-command">Writing a plugin that adds a commandline command</a></li>
+<li><a class="reference internal" href="#how-to-log-messages-to-a-log-file">How to log messages to a log file</a></li>
+<li><a class="reference internal" href="#how-to-store-plugin-state-between-callbacks">How to store plugin state between callbacks</a></li>
+<li><a class="reference internal" href="#how-to-implement-a-callback">How to implement a callback</a></li>
+<li><a class="reference internal" href="#writing-an-entryparser">Writing an entryparser</a></li>
+<li><a class="reference internal" href="#writing-a-preformatter-plugin">Writing a preformatter plugin</a></li>
+<li><a class="reference internal" href="#writing-a-postformatter-plugin">Writing a postformatter plugin</a></li>
+<li><a class="reference internal" href="#writing-a-renderer">Writing a renderer</a></li>
+<li><a class="reference internal" href="#writing-a-plugin-that-adds-a-commandline-command">Writing a plugin that adds a commandline command</a></li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="dev_architecture.html"
-                                  title="previous chapter">PyBlosxom Architecture</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="dev_codedocs.html"
-                                  title="next chapter">Code Documentation</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/dev_writing_plugins.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dev_architecture.html"
+                        title="previous chapter">PyBlosxom Architecture</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dev_codedocs.html"
+                        title="next chapter">Code Documentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/dev_writing_plugins.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -755,7 +758,7 @@ a b c</pre>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="dev_codedocs.html" title="Code Documentation"
@@ -767,9 +770,9 @@ a b c</pre>
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Nov 05, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>What’s new in 1.3.2 &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="what-s-new-in-1-3-2">
+<h1>What&#8217;s new in 1.3.2<a class="headerlink" href="#what-s-new-in-1-3-2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pertinent-to-users">
+<h2>Pertinent to users<a class="headerlink" href="#pertinent-to-users" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Fixes a security issue where the path_info can come in with
+multiple / at the beginning.  Whether this happens or not depends
+on the web-server you&#8217;re using and possibly other things.  Some
+people have the issue and some don&#8217;t.  If you&#8217;re in doubt, upgrade.
+Thanks FX!</li>
+</ol>
+</div>
+</div>
+<div class="section" id="what-s-new-in-1-3-1">
+<h1>What&#8217;s new in 1.3.1<a class="headerlink" href="#what-s-new-in-1-3-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>Pertinent to users<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>The <tt class="docutils literal"><span class="pre">num_entries</span></tt> property now affects the home page and category
+index pages.  It no longer affects archive index pages.</li>
+<li>Fixed the RSS 0.9.1 feed templates.  It has the correct link url
+and shows the entry bodies.  Thanks Norbert!</li>
+<li>The version string is correct.</li>
+<li>Added support for <tt class="docutils literal"><span class="pre">$body_escaped</span></tt> .</li>
+<li>Fixed the blog encoding on the RSS 2.0 feed so that it uses the
+value provided in the config.py <tt class="docutils literal"><span class="pre">$blog_encoding</span></tt> variable.</li>
+<li>Fixed the Atom 1.0 story flavour to use <tt class="docutils literal"><span class="pre">$body_escaped</span></tt> instead
+of <tt class="docutils literal"><span class="pre">&lt;![CDATA[</span> <span class="pre">$body</span> <span class="pre">]]&gt;</span></tt></li>
+<li>Fixed a problem with static rendering where we&#8217;d render
+<tt class="docutils literal"><span class="pre">/index.html</span></tt> and <tt class="docutils literal"><span class="pre">//index.html</span></tt> if the user had entries in
+their root category.</li>
+</ol>
+</div>
+<div class="section" id="pertinent-to-developers">
+<h2>Pertinent to developers<a class="headerlink" href="#pertinent-to-developers" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>If you have plugins that use the logger functions in PyBlosxom 1.2,
+you need to update those plugins to use the new logger functions in
+PyBlosxom 1.3.  Read through the API for details.</li>
+<li>Moved documentation in ReadMeForPlugins.py over to the manual.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="what-s-new-in-1-3">
+<h1>What&#8217;s new in 1.3<a class="headerlink" href="#what-s-new-in-1-3" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>Pertinent to users<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">We added a <tt class="docutils literal"><span class="pre">blog_rights</span></tt> property.  This holds a textual
+description of the rights you give to others who read your blog.
+Leaving this blank or not filling it in will affect the RSS 2.0 and
+Atom 1.0 feeds.</p>
+</li>
+<li><p class="first">If you set <tt class="docutils literal"><span class="pre">flavourdir``in</span> <span class="pre">your</span> <span class="pre">config.py</span> <span class="pre">file,</span> <span class="pre">you</span> <span class="pre">have</span> <span class="pre">to</span> <span class="pre">put</span>
+<span class="pre">your</span> <span class="pre">flavour</span> <span class="pre">files</span> <span class="pre">in</span> <span class="pre">that</span> <span class="pre">directory</span> <span class="pre">tree.</span>&nbsp; <span class="pre">If</span> <span class="pre">you</span> <span class="pre">don't</span> <span class="pre">set</span>
+<span class="pre">``flavourdir</span></tt>, then PyBlosxom expects to find your flavour files
+in your <tt class="docutils literal"><span class="pre">datadir</span></tt>.</p>
+<p>The flavour overhaul is backwards compatible with previous
+PyBlosxom versions.  So if you want to upgrade your blog, but don&#8217;t
+want to move your flavour files to a new directory, DON&#8217;T set your
+<tt class="docutils literal"><span class="pre">flavourdir</span></tt> property.</p>
+</li>
+<li><p class="first">Moved the content that was in README to CHANGELOG.</p>
+</li>
+<li><p class="first">You can now organize the directory hierarchy of your blog by date.
+For example, you could create a category for each year and put
+posts for that year in that year (2003, 2004, 2005, ...).
+Previously URLs requesting &#8220;2003&#8221;, &#8220;2004&#8221;, ... would get parsed as
+dates and would pull blog entries by mtime and not by category.</p>
+</li>
+<li><p class="first">Logging works now.  The following configuration properties are
+useful for determining whether events in PyBlosxom are logged and
+what will get logged:</p>
+<ul class="simple">
+<li>&#8220;log_file&#8221; - the file that PyBlosxom events will be logged
+to&#8212;the web-server MUST be able to write to this file.</li>
+<li>&#8220;log_level&#8221; - the level of events to write to the log.  options
+are &#8220;critical&#8221;, &#8220;error&#8221;, &#8220;warning&#8221;, &#8220;info&#8221;, and &#8220;debug&#8221;</li>
+<li>&#8220;log_filter&#8221; - the list of channels that should have messages
+logged.  if you set the log_filter and omit &#8220;root&#8221;, then
+app-level messages are not logged.</li>
+</ul>
+<p>It&#8217;s likely you&#8217;ll want to set log_file and log_level and that&#8217;s
+it.  Omit log_file and logging will fall back to stderr which
+usually gets logged to your web-server&#8217;s error log.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="pertinent-to-developers-and-plugin-developers">
+<h2>Pertinent to developers and plugin developers<a class="headerlink" href="#pertinent-to-developers-and-plugin-developers" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Plugins that used logging in 1.2 need to be changed to use the new
+logging utilities in 1.3.  Until that happens, they won&#8217;t work.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">What&#8217;s new in 1.3.2</a><ul>
+<li><a class="reference internal" href="#pertinent-to-users">Pertinent to users</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#what-s-new-in-1-3-1">What&#8217;s new in 1.3.1</a><ul>
+<li><a class="reference internal" href="#id1">Pertinent to users</a></li>
+<li><a class="reference internal" href="#pertinent-to-developers">Pertinent to developers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#what-s-new-in-1-3">What&#8217;s new in 1.3</a><ul>
+<li><a class="reference internal" href="#id2">Pertinent to users</a></li>
+<li><a class="reference internal" href="#pertinent-to-developers-and-plugin-developers">Pertinent to developers and plugin developers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/whatsnew_1_3.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,18 +12,19 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '',
         VERSION:     '1.5',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
     <link rel="next" title="Deploying PyBlosxom with CGI" href="deploy_cgi.html" />
-    <link rel="prev" title="Upgrading PyBlosxom" href="notes/UPGRADE.html" /> 
+    <link rel="prev" title="Upgrading PyBlosxom" href="upgrade.html" /> 
   </head>
   <body>
     <div class="related">
@@ -31,13 +34,13 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="deploy_cgi.html" title="Deploying PyBlosxom with CGI"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="notes/UPGRADE.html" title="Upgrading PyBlosxom"
+          <a href="upgrade.html" title="Upgrading PyBlosxom"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
       </ul>
@@ -63,7 +66,7 @@ options available as well as those implemented in plugins you have installed.</p
 <p>For example:</p>
 <div class="highlight-python"><pre>pyblosxom-cmd --config=/path/to/config.py --help</pre>
 </div>
-<p>For more information on static rendering, see <a class="reference external" href="deploy_staticrendering.html#static-rendering"><em>Deploy PyBlosxom with Static Rendering</em></a>.</p>
+<p>For more information on static rendering, see <a class="reference internal" href="deploy_staticrendering.html#static-rendering"><em>Deploy PyBlosxom with Static Rendering</em></a>.</p>
 </div>
 
 
@@ -72,30 +75,30 @@ options available as well as those implemented in plugins you have installed.</p
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="notes/UPGRADE.html"
-                                  title="previous chapter">Upgrading PyBlosxom</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="deploy_cgi.html"
-                                  title="next chapter">Deploying PyBlosxom with CGI</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/pyblosxom_cmd.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="upgrade.html"
+                        title="previous chapter">Upgrading PyBlosxom</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="deploy_cgi.html"
+                        title="next chapter">Deploying PyBlosxom with CGI</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/pyblosxom_cmd.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -107,21 +110,21 @@ options available as well as those implemented in plugins you have installed.</p
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="deploy_cgi.html" title="Deploying PyBlosxom with CGI"
              >next</a> |</li>
         <li class="right" >
-          <a href="notes/UPGRADE.html" title="Upgrading PyBlosxom"
+          <a href="upgrade.html" title="Upgrading PyBlosxom"
              >previous</a> |</li>
         <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jun 18, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

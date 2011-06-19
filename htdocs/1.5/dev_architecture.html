@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,14 +12,15 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '',
         VERSION:     '1.5',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
     <link rel="next" title="Writing Plugins" href="dev_writing_plugins.html" />
@@ -31,8 +34,8 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="dev_writing_plugins.html" title="Writing Plugins"
              accesskey="N">next</a> |</li>
@@ -104,7 +107,7 @@ or write yourself.</li>
 </ol>
 </div>
 <div class="section" id="lifecycle-of-a-pyblosxom-request">
-<h2>Lifecycle of a PyBlosxom request<a class="headerlink" href="#lifecycle-of-a-pyblosxom-request" title="Permalink to this headline">¶</a></h2>
+<span id="lifecycle-of-the-blosxom-renderer"></span><h2>Lifecycle of a PyBlosxom request<a class="headerlink" href="#lifecycle-of-a-pyblosxom-request" title="Permalink to this headline">¶</a></h2>
 <p>This is the life cycle of a single PyBlosxom CGI request. It involves
 the following &#8220;entities&#8221;:</p>
 <ul class="simple">
@@ -137,12 +140,12 @@ object passing it the Request object</p>
 <ol class="arabic">
 <li><p class="first">PyBlosxom instance, run method: calls <tt class="docutils literal"><span class="pre">initialize</span></tt></p>
 <blockquote>
-<ol class="arabic simple">
+<div><ol class="arabic simple">
 <li>PyBlosxom instance, <tt class="docutils literal"><span class="pre">initialize</span></tt> method: calls the entry
 parser callback to get a map of all the entry types
 PyBlosxom can handle</li>
 </ol>
-</blockquote>
+</div></blockquote>
 </li>
 <li><p class="first">PyBlosxom instance, <tt class="docutils literal"><span class="pre">run</span></tt> method: calls the start callback to
 allow plugins to do any initialization they need to do</p>
@@ -193,8 +196,8 @@ rendering.</p>
 </li>
 </ol>
 </div>
-<div class="section" id="lifecycle-of-the-blosxom-renderer">
-<h2>Lifecycle of the blosxom renderer<a class="headerlink" href="#lifecycle-of-the-blosxom-renderer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>Lifecycle of the blosxom renderer<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>The blosxom renderer renders the entries in a similar fashion to what
 Blosxom does.  The blosxom renderer uses flavour templates and
 template variables.  It also has a series of callbacks allowing
@@ -521,7 +524,7 @@ then returns the args dict.</p>
     <span class="n">args</span><span class="p">[</span><span class="s">&quot;printargs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">printargs</span><span class="p">,</span> <span class="s">&quot;prints command line arguments&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="dev_writing_plugins.html#writing-a-command"><em>Writing a plugin that adds a commandline command</em></a> for more details.</p>
+<p>See <a class="reference internal" href="dev_writing_plugins.html#writing-a-command"><em>Writing a plugin that adds a commandline command</em></a> for more details.</p>
 </div>
 <div class="section" id="cb-renderer">
 <h3>cb_renderer<a class="headerlink" href="#cb-renderer" title="Permalink to this headline">¶</a></h3>
@@ -558,7 +561,7 @@ dict after modifying it.</p>
 <p>Then the plugin would define <tt class="docutils literal"><span class="pre">txtl_parse</span></tt> which takes a filename
 and a Request and returns an entrydata dict with <tt class="docutils literal"><span class="pre">title</span></tt> and
 <tt class="docutils literal"><span class="pre">body</span></tt> (or whatever the templates need to render this entry).</p>
-<p>See <a class="reference external" href="dev_writing_plugins.html#writing-an-entryparser"><em>Writing an entryparser</em></a>.</p>
+<p>See <a class="reference internal" href="dev_writing_plugins.html#writing-an-entryparser"><em>Writing an entryparser</em></a>.</p>
 </div>
 <div class="section" id="cb-preformat">
 <h3>cb_preformat<a class="headerlink" href="#cb-preformat" title="Permalink to this headline">¶</a></h3>
@@ -579,7 +582,7 @@ containing:</p>
 </dl>
 <p>Functions that implement this callback should return None if they
 didn&#8217;t modify the story or a single story string.</p>
-<p>See <a class="reference external" href="dev_writing_plugins.html#writing-a-preformatter"><em>Writing a preformatter plugin</em></a>.</p>
+<p>See <a class="reference internal" href="dev_writing_plugins.html#writing-a-preformatter"><em>Writing a preformatter plugin</em></a>.</p>
 </div>
 <div class="section" id="cb-postformat">
 <h3>cb_postformat<a class="headerlink" href="#cb-postformat" title="Permalink to this headline">¶</a></h3>
@@ -606,7 +609,7 @@ for dynamic data like comment counts.</p>
 </dl>
 <p>Functions that implement this callback don&#8217;t need to return
 anything&#8212;modifications to the <tt class="docutils literal"><span class="pre">entry_data</span></tt> dict are done in place.</p>
-<p>See <a class="reference external" href="dev_writing_plugins.html#writing-a-postformatter"><em>Writing a postformatter plugin</em></a>.</p>
+<p>See <a class="reference internal" href="dev_writing_plugins.html#writing-a-postformatter"><em>Writing a postformatter plugin</em></a>.</p>
 </div>
 <div class="section" id="cb-start">
 <h3>cb_start<a class="headerlink" href="#cb-start" title="Permalink to this headline">¶</a></h3>
@@ -784,6 +787,33 @@ containing:</p>
 </dl>
 <p>Functions that implement this callback must return the input args dict
 whether or not they adjust anything in it.</p>
+<p>Example which adds a <tt class="docutils literal"><span class="pre">guid</span></tt> variable to the entry which is available
+to use in the story template.  The <tt class="docutils literal"><span class="pre">guid</span></tt> can be manually set by
+the user in the entry metadata and if it&#8217;s not there, then it
+defaults to the <tt class="docutils literal"><span class="pre">file_path</span></tt> value:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb_story</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="c"># grab the entry from the args dict.</span>
+    <span class="n">entry</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&quot;entry&quot;</span><span class="p">]</span>
+
+    <span class="c"># set the &quot;guid&quot; variable in the entry.  it&#39;s either the &quot;guid&quot;</span>
+    <span class="c"># value (if the user set one in the entry metadata) or it&#39;s</span>
+    <span class="c"># whatever the value of &quot;file_path&quot; is.</span>
+    <span class="n">entry</span><span class="p">[</span><span class="s">&quot;guid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;guid&quot;</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;file_path&quot;</span><span class="p">))</span>
+
+    <span class="c"># the cb_story function _must_ return the args dict.</span>
+    <span class="k">return</span> <span class="n">args</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="cb-story-end">
 <h3>cb_story_end<a class="headerlink" href="#cb-story-end" title="Permalink to this headline">¶</a></h3>
@@ -836,70 +866,70 @@ whether or not they adjust anything in it.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="#">PyBlosxom Architecture</a><ul>
-<li><a class="reference external" href="#summary">Summary</a></li>
-<li><a class="reference external" href="#parts">Parts</a></li>
-<li><a class="reference external" href="#lifecycle-of-a-pyblosxom-request">Lifecycle of a PyBlosxom request</a></li>
-<li><a class="reference external" href="#lifecycle-of-the-blosxom-handler">Lifecycle of the blosxom_handler</a></li>
-<li><a class="reference external" href="#lifecycle-of-the-blosxom-renderer">Lifecycle of the blosxom renderer</a></li>
-<li><a class="reference external" href="#about-callbacks">About callbacks</a><ul>
-<li><a class="reference external" href="#types-of-callbacks">Types of callbacks</a></li>
-<li><a class="reference external" href="#callbacks-that-have-blosxom-equivalents">Callbacks that have blosxom equivalents</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">PyBlosxom Architecture</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#parts">Parts</a></li>
+<li><a class="reference internal" href="#lifecycle-of-a-pyblosxom-request">Lifecycle of a PyBlosxom request</a></li>
+<li><a class="reference internal" href="#lifecycle-of-the-blosxom-handler">Lifecycle of the blosxom_handler</a></li>
+<li><a class="reference internal" href="#id1">Lifecycle of the blosxom renderer</a></li>
+<li><a class="reference internal" href="#about-callbacks">About callbacks</a><ul>
+<li><a class="reference internal" href="#types-of-callbacks">Types of callbacks</a></li>
+<li><a class="reference internal" href="#callbacks-that-have-blosxom-equivalents">Callbacks that have blosxom equivalents</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#callbacks">Callbacks</a><ul>
-<li><a class="reference external" href="#cb-prepare">cb_prepare</a></li>
-<li><a class="reference external" href="#cb-logrequest">cb_logrequest</a></li>
-<li><a class="reference external" href="#cb-filelist">cb_filelist</a></li>
-<li><a class="reference external" href="#cb-sortlist">cb_sortlist</a></li>
-<li><a class="reference external" href="#cb-truncatelist">cb_truncatelist</a></li>
-<li><a class="reference external" href="#cb-filestat">cb_filestat</a></li>
-<li><a class="reference external" href="#cb-pathinfo">cb_pathinfo</a></li>
-<li><a class="reference external" href="#cb-commandline">cb_commandline</a></li>
-<li><a class="reference external" href="#cb-renderer">cb_renderer</a></li>
-<li><a class="reference external" href="#cb-entryparser">cb_entryparser</a></li>
-<li><a class="reference external" href="#cb-preformat">cb_preformat</a></li>
-<li><a class="reference external" href="#cb-postformat">cb_postformat</a></li>
-<li><a class="reference external" href="#cb-start">cb_start</a></li>
-<li><a class="reference external" href="#cb-end">cb_end</a></li>
-<li><a class="reference external" href="#cb-staticrender-filelist">cb_staticrender_filelist</a></li>
-<li><a class="reference external" href="#cb-head">cb_head</a></li>
-<li><a class="reference external" href="#cb-date-head">cb_date_head</a></li>
-<li><a class="reference external" href="#cb-story">cb_story</a></li>
-<li><a class="reference external" href="#cb-story-end">cb_story_end</a></li>
-<li><a class="reference external" href="#cb-foot">cb_foot</a></li>
+<li><a class="reference internal" href="#callbacks">Callbacks</a><ul>
+<li><a class="reference internal" href="#cb-prepare">cb_prepare</a></li>
+<li><a class="reference internal" href="#cb-logrequest">cb_logrequest</a></li>
+<li><a class="reference internal" href="#cb-filelist">cb_filelist</a></li>
+<li><a class="reference internal" href="#cb-sortlist">cb_sortlist</a></li>
+<li><a class="reference internal" href="#cb-truncatelist">cb_truncatelist</a></li>
+<li><a class="reference internal" href="#cb-filestat">cb_filestat</a></li>
+<li><a class="reference internal" href="#cb-pathinfo">cb_pathinfo</a></li>
+<li><a class="reference internal" href="#cb-commandline">cb_commandline</a></li>
+<li><a class="reference internal" href="#cb-renderer">cb_renderer</a></li>
+<li><a class="reference internal" href="#cb-entryparser">cb_entryparser</a></li>
+<li><a class="reference internal" href="#cb-preformat">cb_preformat</a></li>
+<li><a class="reference internal" href="#cb-postformat">cb_postformat</a></li>
+<li><a class="reference internal" href="#cb-start">cb_start</a></li>
+<li><a class="reference internal" href="#cb-end">cb_end</a></li>
+<li><a class="reference internal" href="#cb-staticrender-filelist">cb_staticrender_filelist</a></li>
+<li><a class="reference internal" href="#cb-head">cb_head</a></li>
+<li><a class="reference internal" href="#cb-date-head">cb_date_head</a></li>
+<li><a class="reference internal" href="#cb-story">cb_story</a></li>
+<li><a class="reference internal" href="#cb-story-end">cb_story_end</a></li>
+<li><a class="reference internal" href="#cb-foot">cb_foot</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="plugins.html"
-                                  title="previous chapter">Plugins</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="dev_writing_plugins.html"
-                                  title="next chapter">Writing Plugins</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/dev_architecture.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="plugins.html"
+                        title="previous chapter">Plugins</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dev_writing_plugins.html"
+                        title="next chapter">Writing Plugins</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/dev_architecture.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -911,7 +941,7 @@ whether or not they adjust anything in it.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="dev_writing_plugins.html" title="Writing Plugins"
@@ -923,9 +953,9 @@ whether or not they adjust anything in it.</p>
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jun 18, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

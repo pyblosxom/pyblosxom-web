@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,17 +12,18 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '',
         VERSION:     '1.5',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
-    <link rel="next" title="Changelog" href="notes/CHANGELOG.html" />
+    <link rel="next" title="License" href="license.html" />
     <link rel="prev" title="Introduction" href="introduction.html" /> 
   </head>
   <body>
@@ -31,10 +34,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
-          <a href="notes/CHANGELOG.html" title="Changelog"
+          <a href="license.html" title="License"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="introduction.html" title="Introduction"
@@ -50,38 +53,47 @@
             
   <div class="section" id="about-pyblosxom">
 <h1>About PyBlosxom<a class="headerlink" href="#about-pyblosxom" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-pyblosxom">
+<h2>What is PyBlosxom<a class="headerlink" href="#what-is-pyblosxom" title="Permalink to this headline">¶</a></h2>
 <p>PyBlosxom is a lightweight weblog system.  It was originally a Python
 clone of <a class="reference external" href="http://www.blosxom.com/">Blosxom</a> but has since evolved into a weblog system of its
 own reminiscent of <a class="reference external" href="http://www.blosxom.com/">Blosxom</a>.</p>
 <p>PyBlosxom focuses on three things:</p>
 <p><strong>simplicity</strong></p>
 <blockquote>
-<p>PyBlosxom stores all data on the file system in plain text files.
+<div><p>PyBlosxom stores all data on the file system in plain text files.
 This allows you to use any text editor to create, update and
 manipulate entries.  You can also use existing text-manipulation
 tools, version control, scripts, grep, ...  for managing your blog.</p>
 <p>PyBlosxom can run as a CGI script, WSGI component or you can use it
-to statically compile your web-site into HTML/XML files.</p>
+to statically compile your website into HTML/XML files.</p>
 <p>Your workflow is your workflow.</p>
-</blockquote>
+</div></blockquote>
 <p><strong>extensibility</strong></p>
 <blockquote>
-<p>PyBlosxom has a plugin framework enabling you to augment and enhance
+<div><p>PyBlosxom has a plugin framework enabling you to augment and enhance
 PyBlosxom&#8217;s default behavior.  Plugins are written in Python.  We
 maintain a list of plugins in the plugin registry on the website.</p>
 <p>Plugins aren&#8217;t hard to write.  We&#8217;re happy to help you write
 plugins.</p>
-</blockquote>
+</div></blockquote>
 <p><strong>community</strong></p>
 <blockquote>
-There are several hundred PyBlosxom users out there all of whom have
+<div>There are several hundred PyBlosxom users out there all of whom have
 different needs.  PyBlosxom is used on a variety of operating
 systems in a variety of environments.  We have the standard open
-source project fare: mailing lists, IRC channel, wiki, ...</blockquote>
+source project fare: mailing lists, IRC channel, wiki, ...</div></blockquote>
 <p>PyBlosxom is built to let you use existing text-manipulation tools
 without having to build the whole ecology from scratch.</p>
-<div class="section" id="why-you-wouldn-t-want-to-use-pyblosxom">
-<h2>Why you wouldn&#8217;t want to use PyBlosxom<a class="headerlink" href="#why-you-wouldn-t-want-to-use-pyblosxom" title="Permalink to this headline">¶</a></h2>
+<p>PyBlosxom can be run as:</p>
+<ul class="simple">
+<li>a &#8220;static renderer&#8221; and compile your blog</li>
+<li>a CGI script</li>
+<li>a WSGI application</li>
+</ul>
+</div>
+<div class="section" id="why-you-might-not-want-to-use-pyblosxom">
+<h2>Why you might not want to use PyBlosxom<a class="headerlink" href="#why-you-might-not-want-to-use-pyblosxom" title="Permalink to this headline">¶</a></h2>
 <p>PyBlosxom is a small open source project and while there is a
 community, it&#8217;s pretty small.  PyBlosxom&#8217;s features are great
 but make it a niche weblog engine.</p>
@@ -96,26 +108,26 @@ that PyBlosxom won&#8217;t work for you, don&#8217;t force it&#8212;use somethin
 Possibilities include:</p>
 <p><strong>WordPress</strong></p>
 <blockquote>
-<p><a class="reference external" href="http://wordpress.org/">http://wordpress.org/</a></p>
+<div><p><a class="reference external" href="http://wordpress.org/">http://wordpress.org/</a></p>
 <p>PHP/database based weblog system that a lot of people use.</p>
-</blockquote>
+</div></blockquote>
 <p><strong>Zine</strong></p>
 <blockquote>
-<p><a class="reference external" href="http://zine.pocoo.org/">http://zine.pocoo.org/</a></p>
+<div><p><a class="reference external" href="http://zine.pocoo.org/">http://zine.pocoo.org/</a></p>
 <p>Python-based weblog system that&#8217;s a lot like WordPress, but it&#8217;s
 written in Python and supports Python plugins.</p>
-</blockquote>
+</div></blockquote>
 <p><strong>ikiwiki</strong></p>
 <blockquote>
-<p><a class="reference external" href="http://ikiwiki.info/">http://ikiwiki.info/</a></p>
+<div><p><a class="reference external" href="http://ikiwiki.info/">http://ikiwiki.info/</a></p>
 <p>ikiwiki is written in Perl and melds blogging with wiki with
 version control storage.</p>
-</blockquote>
+</div></blockquote>
 <p><strong>jekyll</strong></p>
 <blockquote>
-<p><a class="reference external" href="http://github.com/mojombo/jekyll">http://github.com/mojombo/jekyll</a></p>
+<div><p><a class="reference external" href="http://github.com/mojombo/jekyll">http://github.com/mojombo/jekyll</a></p>
 <p>A blog-aware, static site generator in Ruby.</p>
-</blockquote>
+</div></blockquote>
 </div>
 <div class="section" id="overview-of-pyblosxom">
 <h2>Overview of PyBlosxom<a class="headerlink" href="#overview-of-pyblosxom" title="Permalink to this headline">¶</a></h2>
@@ -134,10 +146,10 @@ your blog.</li>
 <li>A flavour consists of a set of templates.</li>
 <li>Flavours are stored in a directory called the <em>flavourdir</em>.</li>
 <li>PyBlosxom comes with several flavours: html, rss20, and atom.</li>
-<li>The <a class="reference external" href="http://pyblosxom.bluesock.org/">PyBlosxom web-site</a> maintains a flavour registry for flavours
+<li>The <a class="reference external" href="http://pyblosxom.bluesock.org/">PyBlosxom website</a> maintains a flavour registry for flavours
 contributed by people like you.</li>
 <li>There&#8217;s more information in the chapter on
-<a class="reference external" href="flavours_and_templates.html#id1"><em>Flavours and Templates</em></a>.</li>
+<a class="reference internal" href="flavours_and_templates.html#id1"><em>Flavours and Templates</em></a>.</li>
 </ul>
 <p>Plugins:</p>
 <ul class="simple">
@@ -146,30 +158,65 @@ contributed by people like you.</li>
 <li>Plugins are loaded using the <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> and <tt class="docutils literal"><span class="pre">load_plugins</span></tt>
 configuration variables.</li>
 <li>For more information on using plugins see
-<a class="reference external" href="plugins.html#using-plugins"><em>Plugins</em></a>.</li>
+<a class="reference internal" href="plugins.html#using-plugins"><em>Plugins</em></a>.</li>
 <li>For more information on writing plugins see
-<a class="reference external" href="dev_writing_plugins.html#id1"><em>Writing Plugins</em></a>.</li>
-<li>The <a class="reference external" href="http://pyblosxom.bluesock.org/">PyBlosxom web-site</a> maintains a plugin registry for plugins
+<a class="reference internal" href="dev_writing_plugins.html#id1"><em>Writing Plugins</em></a>.</li>
+<li>The <a class="reference external" href="http://pyblosxom.bluesock.org/">PyBlosxom website</a> maintains a plugin registry for plugins
 submitted by people like you.</li>
 </ul>
 </div>
 <div class="section" id="project-details-contact-information-and-where-to-go-for-help">
 <span id="project-details-and-contact"></span><h2>Project details, contact information, and where to go for help<a class="headerlink" href="#project-details-contact-information-and-where-to-go-for-help" title="Permalink to this headline">¶</a></h2>
-<p><strong>Web-site and documentation</strong></p>
-<blockquote>
-<a class="reference external" href="http://pyblosxom.bluesock.org/">http://pyblosxom.bluesock.org/</a></blockquote>
-<p><strong>IRC</strong></p>
-<blockquote>
-<tt class="docutils literal"><span class="pre">#pyblosxom</span></tt> on <tt class="docutils literal"><span class="pre">irc.freenode.net</span></tt></blockquote>
-<p><strong>User mailing list</strong></p>
-<blockquote>
-<a class="reference external" href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-users">http://lists.sourceforge.net/lists/listinfo/pyblosxom-users</a></blockquote>
-<p><strong>Developer mailing list</strong></p>
-<blockquote>
-<a class="reference external" href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-devel">http://lists.sourceforge.net/lists/listinfo/pyblosxom-devel</a></blockquote>
-<p><strong>Git repository</strong></p>
-<blockquote>
-<a class="reference external" href="http://gitorious.org/pyblosxom/">http://gitorious.org/pyblosxom/</a></blockquote>
+<p>See <a class="reference external" href="http://pyblosxom.bluesock.org/contact">http://pyblosxom.bluesock.org/contact</a> for details on the mailing lists,
+IRC, source code, issue tracker, and everything else.</p>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Python 2.4 or higher, but not Python 3</li>
+<li>(optional) Sphinx for building documentation</li>
+<li>(optional) other things depending on what plugins you install</li>
+</ul>
+</div>
+<div class="section" id="how-to-install-pyblosxom">
+<h2>How to install PyBlosxom<a class="headerlink" href="#how-to-install-pyblosxom" title="Permalink to this headline">¶</a></h2>
+<p>Read the <tt class="docutils literal"><span class="pre">INSTALL</span></tt> document as well as other documents in the <tt class="docutils literal"><span class="pre">docs/</span></tt>
+directory.</p>
+<p>If you&#8217;re upgrading from a previous PyBlosxom version, read the
+<tt class="docutils literal"><span class="pre">UPGRADE</span></tt> document as well as <tt class="docutils literal"><span class="pre">CHANGELOG</span></tt> which covers what&#8217;s new
+in this version and what you&#8217;ll need to change in your blog.</p>
+</div>
+<div class="section" id="how-to-find-comprehensive-documentation">
+<h2>How to find comprehensive documentation<a class="headerlink" href="#how-to-find-comprehensive-documentation" title="Permalink to this headline">¶</a></h2>
+<p>There&#8217;s a series of text files in the <tt class="docutils literal"><span class="pre">docs/</span></tt> directory which
+comprise the current state of the PyBlosxom manual at the time of this
+release.</p>
+<p>The most current version of the manual can be found on the <a class="reference external" href="http://pyblosxom.bluesock.org/">PyBlosxom
+website</a> .</p>
+</div>
+<div class="section" id="how-to-report-bugs-send-in-patches-fix-problems">
+<h2>How to report bugs, send in patches, fix problems<a class="headerlink" href="#how-to-report-bugs-send-in-patches-fix-problems" title="Permalink to this headline">¶</a></h2>
+<p>We really appreciate people helping out.</p>
+<p>If you discover a problem with PyBlosxom, please let us know on IRC
+(<tt class="docutils literal"><span class="pre">#pyblosxom</span></tt> on <tt class="docutils literal"><span class="pre">irc.freenode.net</span></tt>) or on the mailing lists.</p>
+<p>If you can additionally fix it, attach a patch file to the bug or send
+the patch as an attachment to the pyblosxom-devel mailing list.
+When sending a patch, please make sure to describe the details of
+the problem you are fixing.</p>
+</div>
+<div class="section" id="how-to-run-unit-tests">
+<h2>How to run unit tests<a class="headerlink" href="#how-to-run-unit-tests" title="Permalink to this headline">¶</a></h2>
+<p>Tests are written with the Python unittest module.</p>
+<p>To run core tests, do this:</p>
+<div class="highlight-python"><pre>python setup.py test</pre>
+</div>
+<p>This will build PyBlosxom, then run the tests.</p>
+<p>To run plugin unit tests do this:</p>
+<div class="highlight-python"><pre>PYTHONPATH=. python plugins/testrunner.py</pre>
+</div>
+<p>That will run all the plugins tests.</p>
+<p>If you would like to add tests to the test suite, please do and send
+us patches!</p>
 </div>
 </div>
 
@@ -179,40 +226,46 @@ submitted by people like you.</li>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="#">About PyBlosxom</a><ul>
-<li><a class="reference external" href="#why-you-wouldn-t-want-to-use-pyblosxom">Why you wouldn&#8217;t want to use PyBlosxom</a></li>
-<li><a class="reference external" href="#overview-of-pyblosxom">Overview of PyBlosxom</a></li>
-<li><a class="reference external" href="#project-details-contact-information-and-where-to-go-for-help">Project details, contact information, and where to go for help</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">About PyBlosxom</a><ul>
+<li><a class="reference internal" href="#what-is-pyblosxom">What is PyBlosxom</a></li>
+<li><a class="reference internal" href="#why-you-might-not-want-to-use-pyblosxom">Why you might not want to use PyBlosxom</a></li>
+<li><a class="reference internal" href="#overview-of-pyblosxom">Overview of PyBlosxom</a></li>
+<li><a class="reference internal" href="#project-details-contact-information-and-where-to-go-for-help">Project details, contact information, and where to go for help</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#how-to-install-pyblosxom">How to install PyBlosxom</a></li>
+<li><a class="reference internal" href="#how-to-find-comprehensive-documentation">How to find comprehensive documentation</a></li>
+<li><a class="reference internal" href="#how-to-report-bugs-send-in-patches-fix-problems">How to report bugs, send in patches, fix problems</a></li>
+<li><a class="reference internal" href="#how-to-run-unit-tests">How to run unit tests</a></li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="introduction.html"
-                                  title="previous chapter">Introduction</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="notes/CHANGELOG.html"
-                                  title="next chapter">Changelog</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/about_pyblosxom.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="license.html"
+                        title="next chapter">License</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/about_pyblosxom.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -224,10 +277,10 @@ submitted by people like you.</li>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="notes/CHANGELOG.html" title="Changelog"
+          <a href="license.html" title="License"
              >next</a> |</li>
         <li class="right" >
           <a href="introduction.html" title="Introduction"
@@ -236,9 +289,9 @@ submitted by people like you.</li>
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jun 18, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

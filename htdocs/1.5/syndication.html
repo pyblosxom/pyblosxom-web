@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,14 +12,15 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '',
         VERSION:     '1.5',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
     <link rel="next" title="Renderers" href="renderers.html" />
@@ -31,8 +34,8 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="renderers.html" title="Renderers"
              accesskey="N">next</a> |</li>
@@ -54,9 +57,9 @@
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>Syndicating your blog is very important as it provides a mechanism for
 readers of your blog to keep up to date.  Typically this is done with
-newsreader software.  Additionally, there are web-sites that post blog
+newsreader software.  Additionally, there are websites that post blog
 entries from a variety of blogs that have similar content.  Both
-newsreaders and planet-type web-sites need a semantically marked up
+newsreaders and planet-type websites need a semantically marked up
 version of your blog.</p>
 <p>Most newsreaders read most of the syndication formats.  So you
 shouldn&#8217;t feel that you have to implement each one of them in your
@@ -148,45 +151,45 @@ feed is valid and fixing bugs in your feed content.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="#">Syndication</a><ul>
-<li><a class="reference external" href="#summary">Summary</a></li>
-<li><a class="reference external" href="#feed-formats-that-come-with-pyblosxom">Feed formats that come with PyBlosxom</a><ul>
-<li><a class="reference external" href="#rss-0-9-1">RSS 0.9.1</a></li>
-<li><a class="reference external" href="#rss-2-0">RSS 2.0</a></li>
-<li><a class="reference external" href="#atom-1-0">Atom 1.0</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Syndication</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#feed-formats-that-come-with-pyblosxom">Feed formats that come with PyBlosxom</a><ul>
+<li><a class="reference internal" href="#rss-0-9-1">RSS 0.9.1</a></li>
+<li><a class="reference internal" href="#rss-2-0">RSS 2.0</a></li>
+<li><a class="reference internal" href="#atom-1-0">Atom 1.0</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#debugging-your-feeds">Debugging your feeds</a></li>
+<li><a class="reference internal" href="#debugging-your-feeds">Debugging your feeds</a></li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="flavours_and_templates.html"
-                                  title="previous chapter">Flavours and Templates</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="renderers.html"
-                                  title="next chapter">Renderers</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/syndication.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="flavours_and_templates.html"
+                        title="previous chapter">Flavours and Templates</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="renderers.html"
+                        title="next chapter">Renderers</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/syndication.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -198,7 +201,7 @@ feed is valid and fixing bugs in your feed content.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="renderers.html" title="Renderers"
@@ -210,9 +213,9 @@ feed is valid and fixing bugs in your feed content.</p>
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jun 18, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

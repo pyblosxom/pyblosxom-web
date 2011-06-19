@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,17 +12,18 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '',
         VERSION:     '1.5',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
-    <link rel="next" title="Authors" href="notes/AUTHORS.html" />
+    <link rel="next" title="&lt;no title&gt;" href="authors.html" />
     <link rel="prev" title="Code Documentation" href="dev_codedocs.html" /> 
   </head>
   <body>
@@ -31,10 +34,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
-          <a href="notes/AUTHORS.html" title="Authors"
+          <a href="authors.html" title="&lt;no title&gt;"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="dev_codedocs.html" title="Code Documentation"
@@ -158,44 +161,44 @@ The infrastructure we have now is based largely on his efforts.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="#">Testing</a><ul>
-<li><a class="reference external" href="#pyblosxom-core-code-testing">PyBlosxom core code testing</a></li>
-<li><a class="reference external" href="#testing-plugins">Testing plugins</a><ul>
-<li><a class="reference external" href="#tests-in-the-plugin-file">Tests in the plugin file</a></li>
-<li><a class="reference external" href="#tests-in-the-parallel-directory">Tests in the parallel directory</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Testing</a><ul>
+<li><a class="reference internal" href="#pyblosxom-core-code-testing">PyBlosxom core code testing</a></li>
+<li><a class="reference internal" href="#testing-plugins">Testing plugins</a><ul>
+<li><a class="reference internal" href="#tests-in-the-plugin-file">Tests in the plugin file</a></li>
+<li><a class="reference internal" href="#tests-in-the-parallel-directory">Tests in the parallel directory</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="dev_codedocs.html"
-                                  title="previous chapter">Code Documentation</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="notes/AUTHORS.html"
-                                  title="next chapter">Authors</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/dev_testing.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dev_codedocs.html"
+                        title="previous chapter">Code Documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="authors.html"
+                        title="next chapter">&lt;no title&gt;</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/dev_testing.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -207,10 +210,10 @@ The infrastructure we have now is based largely on his efforts.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="notes/AUTHORS.html" title="Authors"
+          <a href="authors.html" title="&lt;no title&gt;"
              >next</a> |</li>
         <li class="right" >
           <a href="dev_codedocs.html" title="Code Documentation"
@@ -219,9 +222,9 @@ The infrastructure we have now is based largely on his efforts.</p>
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jun 18, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

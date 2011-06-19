@@ -1,0 +1,128 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>What’s new in 1.1 &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="what-s-new-in-1-1">
+<h1>What&#8217;s new in 1.1<a class="headerlink" href="#what-s-new-in-1-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pertinent-to-users">
+<h2>Pertinent to users<a class="headerlink" href="#pertinent-to-users" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>We no longer include contributed plugins and flavours.  To find
+plugins and flavours, go to the PyBlosxom registry located at
+<a class="reference external" href="http://pyblosxom.sourceforge.net/">http://pyblosxom.sourceforge.net/</a> .</li>
+<li>We changed how <tt class="docutils literal"><span class="pre">num_entries</span></tt> is handled internally.  If
+<tt class="docutils literal"><span class="pre">num_entries</span></tt> is set to 0, the blosxom default file handler will
+display all the entries.  If <tt class="docutils literal"><span class="pre">num_entries</span></tt> is set to a positive
+number, then the blosxom default file handler will display at most
+that many entries.</li>
+</ol>
+</div>
+<div class="section" id="pertinent-to-developers">
+<h2>Pertinent to developers<a class="headerlink" href="#pertinent-to-developers" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Plugins that implement cb_filelist are now in charge of adjusting
+the number of entries to be displayed based on the <tt class="docutils literal"><span class="pre">num_entries</span></tt>
+configuration variable.  This is no longer done in the renderer.</li>
+<li>We added HTTP_COOKIE to the list of things that get added to the
+http dict in the Request object.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">What&#8217;s new in 1.1</a><ul>
+<li><a class="reference internal" href="#pertinent-to-users">Pertinent to users</a></li>
+<li><a class="reference internal" href="#pertinent-to-developers">Pertinent to developers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/whatsnew_1_1.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

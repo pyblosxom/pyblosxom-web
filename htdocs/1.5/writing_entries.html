@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,18 +12,19 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '',
         VERSION:     '1.5',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
     <link rel="next" title="Flavours and Templates" href="flavours_and_templates.html" />
-    <link rel="prev" title="Variables in config.py" href="config_variables.html" /> 
+    <link rel="prev" title="Configuring PyBlosxom" href="config_variables.html" /> 
   </head>
   <body>
     <div class="related">
@@ -31,13 +34,13 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="flavours_and_templates.html" title="Flavours and Templates"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="config_variables.html" title="Variables in config.py"
+          <a href="config_variables.html" title="Configuring PyBlosxom"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
       </ul>
@@ -212,7 +215,7 @@ it&#8217;ll reset the mtime of the file back to what it was.</p>
 </div>
 </div>
 <div class="section" id="entry-parsers">
-<h2>Entry parsers<a class="headerlink" href="#entry-parsers" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>Entry parsers<a class="headerlink" href="#entry-parsers" title="Permalink to this headline">¶</a></h2>
 <p>PyBlosxom supports one format for entry files by default.  This format
 is the same format that blosxom uses and is described in previous
 sections.</p>
@@ -231,7 +234,7 @@ formats.</p>
 <p>PyBlosxom allows you to install entry parser plugins which are
 PyBlosxom plugins that implement an entry parser.  These entry parser
 plugins allow you to use other markup formats.  Check the Plugin
-Registry on the <a class="reference external" href="http://pyblosxom.bluesock.org/">PyBlosxom web-site</a> for other available entry
+Registry on the <a class="reference external" href="http://pyblosxom.bluesock.org/">PyBlosxom website</a> for other available entry
 parsers.</p>
 <p>Entry parsers can be written by anyone.  The entry parsers that
 currently exist were written by people who needed that functionality.</p>
@@ -257,48 +260,48 @@ sources.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="#">Writing Entries</a><ul>
-<li><a class="reference external" href="#categories">Categories</a></li>
-<li><a class="reference external" href="#the-format-of-an-entry">The format of an entry</a><ul>
-<li><a class="reference external" href="#title">Title</a></li>
-<li><a class="reference external" href="#metadata">Metadata</a></li>
-<li><a class="reference external" href="#body">Body</a></li>
-<li><a class="reference external" href="#examples">Examples</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Writing Entries</a><ul>
+<li><a class="reference internal" href="#categories">Categories</a></li>
+<li><a class="reference internal" href="#the-format-of-an-entry">The format of an entry</a><ul>
+<li><a class="reference internal" href="#title">Title</a></li>
+<li><a class="reference internal" href="#metadata">Metadata</a></li>
+<li><a class="reference internal" href="#body">Body</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#posting-date">Posting date</a></li>
-<li><a class="reference external" href="#entry-parsers">Entry parsers</a></li>
-<li><a class="reference external" href="#beyond-editors">Beyond editors</a></li>
+<li><a class="reference internal" href="#posting-date">Posting date</a></li>
+<li><a class="reference internal" href="#entry-parsers">Entry parsers</a></li>
+<li><a class="reference internal" href="#beyond-editors">Beyond editors</a></li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="config_variables.html"
-                                  title="previous chapter">Variables in config.py</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="flavours_and_templates.html"
-                                  title="next chapter">Flavours and Templates</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/writing_entries.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="config_variables.html"
+                        title="previous chapter">Configuring PyBlosxom</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="flavours_and_templates.html"
+                        title="next chapter">Flavours and Templates</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/writing_entries.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -310,21 +313,21 @@ sources.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="flavours_and_templates.html" title="Flavours and Templates"
              >next</a> |</li>
         <li class="right" >
-          <a href="config_variables.html" title="Variables in config.py"
+          <a href="config_variables.html" title="Configuring PyBlosxom"
              >previous</a> |</li>
         <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jun 18, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>What’s new in 1.2 &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="what-s-new-in-1-2">
+<h1>What&#8217;s new in 1.2<a class="headerlink" href="#what-s-new-in-1-2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pertinent-to-users">
+<h2>Pertinent to users<a class="headerlink" href="#pertinent-to-users" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">We added a <tt class="docutils literal"><span class="pre">blog_email</span></tt> item to config.py and changed
+<tt class="docutils literal"><span class="pre">blog_author</span></tt> to just the author&#8217;s name.  Examples:</p>
+<blockquote>
+<div><p>py[&#8220;blog_email&#8221;] = &#8220;<a class="reference external" href="mailto:joe&#37;&#52;&#48;blah&#46;com">joe<span>&#64;</span>blah<span>&#46;</span>com</a>&#8221;
+py[&#8220;blog_author&#8221;] = &#8220;Joe Man&#8221;</p>
+</div></blockquote>
+</li>
+<li><p class="first">We no longer adjust blog_title from what you set in <tt class="docutils literal"><span class="pre">config.py</span></tt>.
+Now we have a <tt class="docutils literal"><span class="pre">blog_title_with_path</span></tt> variable which is in the
+data dict which is the <tt class="docutils literal"><span class="pre">blog_title</span></tt> with the path information.
+People who want the title of their blog to be the title and not
+include the path should use <tt class="docutils literal"><span class="pre">$blog_title</span></tt>.  Folks who want the
+old behavior where the path was appended to the title should use
+<tt class="docutils literal"><span class="pre">$blog_title_with_path</span></tt> .</p>
+</li>
+<li><p class="first">We now support WSGI, mod_python, and Twisted in addition to CGI.</p>
+</li>
+<li><p class="first">Upped our Python requirement to Python 2.2.  If you have an earlier
+version than that, you won&#8217;t be able to use PyBlosxom 1.2.</p>
+</li>
+<li><p class="first">Changed <tt class="docutils literal"><span class="pre">defaultFlavour</span></tt> to <tt class="docutils literal"><span class="pre">default_flavour</span></tt>.  This property
+allows you to specify the flavour to use by default if the URI
+doesn&#8217;t specify one.  It default to <tt class="docutils literal"><span class="pre">html</span></tt>.</p>
+</li>
+<li><p class="first">We moved the main PyBlosxom site to
+<a class="reference external" href="http://pyblosxom.sourceforge.net/">http://pyblosxom.sourceforge.net/</a> .  There&#8217;s a &#8220;powered by
+pyblosxom&#8221; image at
+<a class="reference external" href="http://pyblosxom.sourceforge.net/images/pb_pyblosxom.gif">http://pyblosxom.sourceforge.net/images/pb_pyblosxom.gif</a></p>
+<p>You should adjust your templates accordingly.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="pertinent-to-developers">
+<h2>Pertinent to developers<a class="headerlink" href="#pertinent-to-developers" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">We now have a Request and a Response object.  See API documentation
+for more details.</p>
+</li>
+<li><p class="first">Don&#8217;t use <tt class="docutils literal"><span class="pre">os.environ</span></tt> directly&#8212;use the http dict.  For
+example, this is bad:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">path_info</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&quot;HTTP_PATHINFO&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This is what you should be doing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">http</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getHttp</span><span class="p">()</span>
+<span class="n">path_info</span> <span class="o">=</span> <span class="n">http</span><span class="p">[</span><span class="s">&quot;HTTP_PATHINFO&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If you use os.environ directly, it&#8217;s likely your plugin won&#8217;t work
+with non-CGI installations of PyBlosxom.</p>
+</li>
+<li><p class="first">We added __iter__, read, readline, readlines, seek, and tell to the
+Request object.  All of them access the input stream.  You should
+not use sys.stdin directly.</p>
+<p>Usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">data_part</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<span class="n">one_line</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The output stream should be accessed through the PyBlosxom Response
+object.  The following methods are implemented in the Response
+object: __iter__, close, flush, read, readline, readlines, seek,
+tell, write, writelines, setStatus, and addHeader.  You should not
+use sys.stdout directly. See the API for more details.</p>
+<p>Usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getResponse</span><span class="p">()</span>
+<span class="n">response</span><span class="o">.</span><span class="n">addHeader</span><span class="p">(</span><span class="s">&#39;Status&#39;</span><span class="p">,</span> <span class="s">&#39;200 Ok&#39;</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">addHeader</span><span class="p">(</span><span class="s">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s">&#39;text/html&#39;</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">writelines</span><span class="p">([</span><span class="s">&quot;list&quot;</span><span class="p">,</span> <span class="s">&quot;of&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Instead of doing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">form</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getHttp</span><span class="p">()[</span><span class="s">&quot;form&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>you can now do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">form</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getForm</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Plugins should not be importing the config module and looking at
+the <tt class="docutils literal"><span class="pre">py</span></tt> dict directly.  You should instead use the Request
+getConfiguration() method to get the config py dict.</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">What&#8217;s new in 1.2</a><ul>
+<li><a class="reference internal" href="#pertinent-to-users">Pertinent to users</a></li>
+<li><a class="reference internal" href="#pertinent-to-developers">Pertinent to developers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/whatsnew_1_2.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

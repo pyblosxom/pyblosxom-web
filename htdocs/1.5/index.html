@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,14 +12,15 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '',
         VERSION:     '1.5',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom v1.5 documentation" href="#" />
     <link rel="next" title="Introduction" href="introduction.html" /> 
@@ -30,8 +33,8 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="introduction.html" title="Introduction"
              accesskey="N">next</a> |</li>
@@ -47,185 +50,194 @@
   <div class="section" id="welcome-to-pyblosxom-s-documentation">
 <h1>Welcome to PyBlosxom&#8217;s documentation!<a class="headerlink" href="#welcome-to-pyblosxom-s-documentation" title="Permalink to this headline">¶</a></h1>
 <p>Contents:</p>
+<div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference external" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference external" href="about_pyblosxom.html">About PyBlosxom</a><ul>
-<li class="toctree-l2"><a class="reference external" href="about_pyblosxom.html#why-you-wouldn-t-want-to-use-pyblosxom">Why you wouldn&#8217;t want to use PyBlosxom</a></li>
-<li class="toctree-l2"><a class="reference external" href="about_pyblosxom.html#overview-of-pyblosxom">Overview of PyBlosxom</a></li>
-<li class="toctree-l2"><a class="reference external" href="about_pyblosxom.html#project-details-contact-information-and-where-to-go-for-help">Project details, contact information, and where to go for help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_pyblosxom.html">About PyBlosxom</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about_pyblosxom.html#what-is-pyblosxom">What is PyBlosxom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_pyblosxom.html#why-you-might-not-want-to-use-pyblosxom">Why you might not want to use PyBlosxom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_pyblosxom.html#overview-of-pyblosxom">Overview of PyBlosxom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_pyblosxom.html#project-details-contact-information-and-where-to-go-for-help">Project details, contact information, and where to go for help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_pyblosxom.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_pyblosxom.html#how-to-install-pyblosxom">How to install PyBlosxom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_pyblosxom.html#how-to-find-comprehensive-documentation">How to find comprehensive documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_pyblosxom.html#how-to-report-bugs-send-in-patches-fix-problems">How to report bugs, send in patches, fix problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_pyblosxom.html#how-to-run-unit-tests">How to run unit tests</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="notes/CHANGELOG.html">Changelog</a><ul>
-<li class="toctree-l2"><a class="reference external" href="notes/CHANGELOG.html#changes-between-1-4-3-and-1-5">Changes between 1.4.3 and 1.5</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/CHANGELOG.html#changes-between-1-4-2-and-1-4-3">Changes between 1.4.2 and 1.4.3</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/CHANGELOG.html#changes-between-1-4-1-and-1-4-2">Changes between 1.4.1 and 1.4.2</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/CHANGELOG.html#changes-between-1-4-and-1-4-1">Changes between 1.4 and 1.4.1</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/CHANGELOG.html#changes-between-1-3-2-and-1-4">Changes between 1.3.2 and 1.4</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/CHANGELOG.html#changes-between-1-3-1-and-1-3-2">Changes between 1.3.1 and 1.3.2</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/CHANGELOG.html#changes-between-1-3-and-1-3-1">Changes between 1.3 and 1.3.1</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/CHANGELOG.html#changes-between-1-2-and-1-3">Changes between 1.2 and 1.3</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/CHANGELOG.html#changes-between-1-1-and-1-2">Changes between 1.1 and 1.2</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/CHANGELOG.html#changes-between-1-0-and-1-1">Changes between 1.0 and 1.1</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/CHANGELOG.html#changes-between-0-9-and-1-0">Changes between 0.9 and 1.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What&#8217;s new in 1.5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#what-s-new-in-1-5-rc3">What&#8217;s new in 1.5 rc3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#what-s-new-in-1-5-rc2">What&#8217;s new in 1.5 rc2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#what-s-new-in-1-5-rc1">What&#8217;s new in 1.5 rc1</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="notes/INSTALL.html">Installing PyBlosxom</a><ul>
-<li class="toctree-l2"><a class="reference external" href="notes/INSTALL.html#upgrading">Upgrading</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/INSTALL.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/INSTALL.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/INSTALL.html#creating-a-blog">Creating a blog</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/INSTALL.html#deploying">Deploying</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/INSTALL.html#post-install">Post-install</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/INSTALL.html#installing-pyblosxom-to-hack-on-it">Installing PyBlosxom to hack on it</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whatsnewolder.html">What&#8217;s new in older versions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="whatsnewolder.html#what-s-new-in-1-4-3">What&#8217;s new in 1.4.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnewolder.html#what-s-new-in-1-4-2">What&#8217;s new in 1.4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnewolder.html#what-s-new-in-1-4-1">What&#8217;s new in 1.4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnewolder.html#what-s-new-in-1-4">What&#8217;s new in 1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnewolder.html#what-s-new-in-1-3-2">What&#8217;s new in 1.3.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnewolder.html#what-s-new-in-1-3-1">What&#8217;s new in 1.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnewolder.html#what-s-new-in-1-3">What&#8217;s new in 1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnewolder.html#what-s-new-in-1-2">What&#8217;s new in 1.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnewolder.html#what-s-new-in-1-1">What&#8217;s new in 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnewolder.html#what-s-new-in-1-0">What&#8217;s new in 1.0</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="notes/UPGRADE.html">Upgrading PyBlosxom</a><ul>
-<li class="toctree-l2"><a class="reference external" href="notes/UPGRADE.html#before-upgrading">Before upgrading</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/UPGRADE.html#system-wide-upgrade">System-wide upgrade</a></li>
-<li class="toctree-l2"><a class="reference external" href="notes/UPGRADE.html#individual-upgrade">Individual upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing PyBlosxom</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#upgrading">Upgrading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installation-site-wide-locally-or-to-hack-on-pyblosxom">Installation: site-wide, locally, or to hack on pyblosxom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#creating-a-blog">Creating a blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#deploying">Deploying</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#post-install">Post-install</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="pyblosxom_cmd.html">PyBlosxom on the command line</a></li>
-<li class="toctree-l1"><a class="reference external" href="deploy_cgi.html">Deploying PyBlosxom with CGI</a><ul>
-<li class="toctree-l2"><a class="reference external" href="deploy_cgi.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_cgi.html#deployment">Deployment</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_cgi.html#trouble-shooting">Trouble-shooting</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_cgi.html#advanced-installation">Advanced installation</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_cgi.html#renaming-the-pyblosxom-cgi-script">Renaming the pyblosxom.cgi script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade.html">Upgrading PyBlosxom</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.html#before-upgrading">Before upgrading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.html#upgrading-site-wide">Upgrading site-wide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.html#upgrading-locally">Upgrading locally</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="deploy_paste.html">Deploying PyBlosxom with Paste</a><ul>
-<li class="toctree-l2"><a class="reference external" href="deploy_paste.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_paste.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_paste.html#deployment-for-testing">Deployment for testing</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_paste.html#deployment-with-mod-wsgi">Deployment with mod_wsgi</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_paste.html#paste-ini-file-configuration">Paste .ini file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyblosxom_cmd.html">PyBlosxom on the command line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy_cgi.html">Deploying PyBlosxom with CGI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deploy_cgi.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_cgi.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_cgi.html#trouble-shooting">Trouble-shooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_cgi.html#advanced-installation">Advanced installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_cgi.html#renaming-the-pyblosxom-cgi-script">Renaming the pyblosxom.cgi script</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="deploy_wsgi.html">Deploying PyBlosxom with WSGI</a><ul>
-<li class="toctree-l2"><a class="reference external" href="deploy_wsgi.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_wsgi.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_wsgi.html#setup">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy_paste.html">Deploying PyBlosxom with Paste</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deploy_paste.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_paste.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_paste.html#deployment-for-testing">Deployment for testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_paste.html#deployment-with-mod-wsgi">Deployment with mod_wsgi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_paste.html#paste-ini-file-configuration">Paste .ini file configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="deploy_staticrendering.html">Deploy PyBlosxom with Static Rendering</a><ul>
-<li class="toctree-l2"><a class="reference external" href="deploy_staticrendering.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_staticrendering.html#configuring-static-rendering">Configuring static rendering</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_staticrendering.html#running-static-rendering">Running static rendering</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_staticrendering.html#rendering-other-uris">Rendering other URIs</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_staticrendering.html#pitfalls">Pitfalls</a></li>
-<li class="toctree-l2"><a class="reference external" href="deploy_staticrendering.html#additional-thoughts">Additional thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy_wsgi.html">Deploying PyBlosxom with WSGI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deploy_wsgi.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_wsgi.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_wsgi.html#setup">Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="config_variables.html">Variables in config.py</a><ul>
-<li class="toctree-l2"><a class="reference external" href="config_variables.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference external" href="config_variables.html#configuration-variables">Configuration variables</a></li>
-<li class="toctree-l2"><a class="reference external" href="config_variables.html#blog-metadata-variables">Blog metadata variables</a></li>
-<li class="toctree-l2"><a class="reference external" href="config_variables.html#plugin-variables">Plugin variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy_staticrendering.html">Deploy PyBlosxom with Static Rendering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deploy_staticrendering.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_staticrendering.html#configuring-static-rendering">Configuring static rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_staticrendering.html#running-static-rendering">Running static rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_staticrendering.html#rendering-other-uris">Rendering other URIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_staticrendering.html#pitfalls">Pitfalls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy_staticrendering.html#additional-thoughts">Additional thoughts</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="writing_entries.html">Writing Entries</a><ul>
-<li class="toctree-l2"><a class="reference external" href="writing_entries.html#categories">Categories</a></li>
-<li class="toctree-l2"><a class="reference external" href="writing_entries.html#the-format-of-an-entry">The format of an entry</a></li>
-<li class="toctree-l2"><a class="reference external" href="writing_entries.html#posting-date">Posting date</a></li>
-<li class="toctree-l2"><a class="reference external" href="writing_entries.html#entry-parsers">Entry parsers</a></li>
-<li class="toctree-l2"><a class="reference external" href="writing_entries.html#beyond-editors">Beyond editors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config_variables.html">Configuring PyBlosxom</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config_variables.html#codebase-configuration">Codebase configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_variables.html#blog-configuration">Blog configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_variables.html#logging-configuration">Logging configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_variables.html#plugin-configuration">Plugin Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_variables.html#caching-configuration">Caching Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_variables.html#static-rendering-configuration">Static Rendering Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="flavours_and_templates.html">Flavours and Templates</a><ul>
-<li class="toctree-l2"><a class="reference external" href="flavours_and_templates.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference external" href="flavours_and_templates.html#id2">Flavours and templates</a></li>
-<li class="toctree-l2"><a class="reference external" href="flavours_and_templates.html#included-flavours">Included flavours</a></li>
-<li class="toctree-l2"><a class="reference external" href="flavours_and_templates.html#overriding-included-flavours">Overriding included flavours</a></li>
-<li class="toctree-l2"><a class="reference external" href="flavours_and_templates.html#finding-new-flavours">Finding new flavours</a></li>
-<li class="toctree-l2"><a class="reference external" href="flavours_and_templates.html#template-variables">Template variables</a></li>
-<li class="toctree-l2"><a class="reference external" href="flavours_and_templates.html#invoking-a-flavour">Invoking a flavour</a></li>
-<li class="toctree-l2"><a class="reference external" href="flavours_and_templates.html#setting-default-flavour">Setting default flavour</a></li>
-<li class="toctree-l2"><a class="reference external" href="flavours_and_templates.html#order-of-operations-to-figure-out-which-flavour-to-use">Order of operations to figure out which flavour to use</a></li>
-<li class="toctree-l2"><a class="reference external" href="flavours_and_templates.html#examples-of-templates">Examples of templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing_entries.html">Writing Entries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="writing_entries.html#categories">Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_entries.html#the-format-of-an-entry">The format of an entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_entries.html#posting-date">Posting date</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_entries.html#entry-parsers">Entry parsers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_entries.html#beyond-editors">Beyond editors</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="syndication.html">Syndication</a><ul>
-<li class="toctree-l2"><a class="reference external" href="syndication.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference external" href="syndication.html#feed-formats-that-come-with-pyblosxom">Feed formats that come with PyBlosxom</a></li>
-<li class="toctree-l2"><a class="reference external" href="syndication.html#debugging-your-feeds">Debugging your feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flavours_and_templates.html">Flavours and Templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="flavours_and_templates.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flavours_and_templates.html#id2">Flavours and templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flavours_and_templates.html#included-flavours">Included flavours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flavours_and_templates.html#overriding-included-flavours">Overriding included flavours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flavours_and_templates.html#finding-new-flavours">Finding new flavours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flavours_and_templates.html#template-variables">Template variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flavours_and_templates.html#invoking-a-flavour">Invoking a flavour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flavours_and_templates.html#setting-default-flavour">Setting default flavour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flavours_and_templates.html#order-of-operations-to-figure-out-which-flavour-to-use">Order of operations to figure out which flavour to use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flavours_and_templates.html#examples-of-templates">Examples of templates</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="renderers.html">Renderers</a><ul>
-<li class="toctree-l2"><a class="reference external" href="renderers.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference external" href="renderers.html#blosxom">blosxom</a></li>
-<li class="toctree-l2"><a class="reference external" href="renderers.html#debug">debug</a></li>
-<li class="toctree-l2"><a class="reference external" href="renderers.html#other-renderers">Other renderers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syndication.html">Syndication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="syndication.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syndication.html#feed-formats-that-come-with-pyblosxom">Feed formats that come with PyBlosxom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syndication.html#debugging-your-feeds">Debugging your feeds</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="comments.html">Comments</a><ul>
-<li class="toctree-l2"><a class="reference external" href="comments.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference external" href="comments.html#installing-the-comments-plugin">Installing the comments plugin</a></li>
-<li class="toctree-l2"><a class="reference external" href="comments.html#email-notification">Email notification</a></li>
-<li class="toctree-l2"><a class="reference external" href="comments.html#writing-comments-plugin-templates">Writing comments plugin templates</a></li>
-<li class="toctree-l2"><a class="reference external" href="comments.html#ajax-commenting">AJAX commenting</a></li>
-<li class="toctree-l2"><a class="reference external" href="comments.html#dealing-with-comment-spam">Dealing with comment spam</a></li>
-<li class="toctree-l2"><a class="reference external" href="comments.html#installing-trackback">Installing trackback</a></li>
-<li class="toctree-l2"><a class="reference external" href="comments.html#installing-pingback">Installing pingback</a></li>
-<li class="toctree-l2"><a class="reference external" href="comments.html#installing-the-commentapi">Installing the CommentAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renderers.html">Renderers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="renderers.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="renderers.html#blosxom">blosxom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="renderers.html#debug">debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="renderers.html#other-renderers">Other renderers</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="plugins.html">Plugins</a><ul>
-<li class="toctree-l2"><a class="reference external" href="plugins.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference external" href="plugins.html#setting-pyblosxom-up-to-use-plugins">Setting PyBlosxom up to use plugins</a></li>
-<li class="toctree-l2"><a class="reference external" href="plugins.html#finding-plugins">Finding plugins</a></li>
-<li class="toctree-l2"><a class="reference external" href="plugins.html#installing-plugins">Installing plugins</a></li>
-<li class="toctree-l2"><a class="reference external" href="plugins.html#writing-your-own-plugins">Writing Your Own plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments.html">Comments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comments.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comments.html#disqus">Disqus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comments.html#writing-your-own-comments-plugin">Writing your own comments plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comments.html#comments-plugin">Comments plugin</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="dev_architecture.html">PyBlosxom Architecture</a><ul>
-<li class="toctree-l2"><a class="reference external" href="dev_architecture.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_architecture.html#parts">Parts</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_architecture.html#lifecycle-of-a-pyblosxom-request">Lifecycle of a PyBlosxom request</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_architecture.html#lifecycle-of-the-blosxom-handler">Lifecycle of the blosxom_handler</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_architecture.html#lifecycle-of-the-blosxom-renderer">Lifecycle of the blosxom renderer</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_architecture.html#about-callbacks">About callbacks</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_architecture.html#callbacks">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#setting-pyblosxom-up-to-use-plugins">Setting PyBlosxom up to use plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#finding-plugins">Finding plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#installing-plugins">Installing plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#writing-your-own-plugins">Writing Your Own plugins</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="dev_writing_plugins.html">Writing Plugins</a><ul>
-<li class="toctree-l2"><a class="reference external" href="dev_writing_plugins.html#summary">Summary</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_writing_plugins.html#things-that-all-plugins-should-have">Things that all plugins should have</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_writing_plugins.html#how-to-log-messages-to-a-log-file">How to log messages to a log file</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_writing_plugins.html#how-to-store-plugin-state-between-callbacks">How to store plugin state between callbacks</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_writing_plugins.html#how-to-implement-a-callback">How to implement a callback</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_writing_plugins.html#writing-an-entryparser">Writing an entryparser</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_writing_plugins.html#writing-a-preformatter-plugin">Writing a preformatter plugin</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_writing_plugins.html#writing-a-postformatter-plugin">Writing a postformatter plugin</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_writing_plugins.html#writing-a-renderer">Writing a renderer</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_writing_plugins.html#writing-a-plugin-that-adds-a-commandline-command">Writing a plugin that adds a commandline command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_architecture.html">PyBlosxom Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_architecture.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_architecture.html#parts">Parts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_architecture.html#lifecycle-of-a-pyblosxom-request">Lifecycle of a PyBlosxom request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_architecture.html#lifecycle-of-the-blosxom-handler">Lifecycle of the blosxom_handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_architecture.html#id1">Lifecycle of the blosxom renderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_architecture.html#about-callbacks">About callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_architecture.html#callbacks">Callbacks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="dev_codedocs.html">Code Documentation</a><ul>
-<li class="toctree-l2"><a class="reference external" href="dev_codedocs.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_codedocs.html#module-Pyblosxom.pyblosxom">Pyblosxom.pyblosxom</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_codedocs.html#module-Pyblosxom.tools">Pyblosxom.tools</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_codedocs.html#module-Pyblosxom.renderers.base">Pyblosxom.renderers.base</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_codedocs.html#module-Pyblosxom.entries.base">Pyblosxom.entries.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_writing_plugins.html">Writing Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_writing_plugins.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_writing_plugins.html#things-that-all-plugins-should-have">Things that all plugins should have</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_writing_plugins.html#how-to-log-messages-to-a-log-file">How to log messages to a log file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_writing_plugins.html#how-to-store-plugin-state-between-callbacks">How to store plugin state between callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_writing_plugins.html#how-to-implement-a-callback">How to implement a callback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_writing_plugins.html#writing-an-entryparser">Writing an entryparser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_writing_plugins.html#writing-a-preformatter-plugin">Writing a preformatter plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_writing_plugins.html#writing-a-postformatter-plugin">Writing a postformatter plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_writing_plugins.html#writing-a-renderer">Writing a renderer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_writing_plugins.html#writing-a-plugin-that-adds-a-commandline-command">Writing a plugin that adds a commandline command</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="dev_testing.html">Testing</a><ul>
-<li class="toctree-l2"><a class="reference external" href="dev_testing.html#pyblosxom-core-code-testing">PyBlosxom core code testing</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_testing.html#testing-plugins">Testing plugins</a></li>
-<li class="toctree-l2"><a class="reference external" href="dev_testing.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_codedocs.html">Code Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_codedocs.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_codedocs.html#pyblosxom-pyblosxom">Pyblosxom.pyblosxom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_codedocs.html#module-Pyblosxom.tools">Pyblosxom.tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_codedocs.html#module-Pyblosxom.renderers.base">Pyblosxom.renderers.base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_codedocs.html#module-Pyblosxom.entries.base">Pyblosxom.entries.base</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference external" href="notes/AUTHORS.html">Authors</a></li>
-<li class="toctree-l1"><a class="reference external" href="notes/THANKS.html">Thanks</a></li>
-<li class="toctree-l1"><a class="reference external" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_testing.html#pyblosxom-core-code-testing">PyBlosxom core code testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_testing.html#testing-plugins">Testing plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_testing.html#summary">Summary</a></li>
 </ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="thanks.html">Thanks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference external" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference external" href="modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference external" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
 </ul>
 </div>
 
@@ -235,35 +247,35 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="#">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="#">Welcome to PyBlosxom&#8217;s documentation!</a><ul>
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to PyBlosxom&#8217;s documentation!</a><ul>
 </ul>
 </li>
-<li><a class="reference external" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
-            <h4>Next topic</h4>
-            <p class="topless"><a href="introduction.html"
-                                  title="next chapter">Introduction</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/index.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="next chapter">Introduction</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -275,7 +287,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="introduction.html" title="Introduction"
@@ -284,9 +296,9 @@
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Nov 05, 2010.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

@@ -1,0 +1,164 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>What’s new in 1.0 &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="what-s-new-in-1-0">
+<h1>What&#8217;s new in 1.0<a class="headerlink" href="#what-s-new-in-1-0" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pertinent-to-users">
+<h2>Pertinent to users<a class="headerlink" href="#pertinent-to-users" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">We ditched <tt class="docutils literal"><span class="pre">blosxom_custom_flavours</span></tt>&#8212;you can remove it from your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
+</li>
+<li><p class="first">We added static rendering&#8212;see the howto in the PyBlosxom manual.</p>
+</li>
+<li><p class="first">Rewrote comments to use the new handler system.  You should replace
+the comments, pingbacks, trackbacks, and other comments-oriented
+plugins with the new versions from <tt class="docutils literal"><span class="pre">contrib/plugins/comments/</span></tt>.</p>
+</li>
+<li><p class="first">pingbacks plugin is now <tt class="docutils literal"><span class="pre">xmlrpc_pingbacks.py</span></tt> .</p>
+</li>
+<li><p class="first">Adjusted the default templates for HTML and RSS.  Removed all other
+default templates.  Look at the flavour_examples directory for
+flavour examples.</p>
+</li>
+<li><p class="first">Added an <tt class="docutils literal"><span class="pre">ignore_properties</span></tt> property to <tt class="docutils literal"><span class="pre">config.py</span></tt> which
+allows you to specify which directories in your datadir should be
+ignored.  For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;ignore_directories&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;CVS&quot;</span><span class="p">,</span> <span class="s">&quot;.svn&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Added a template variable <tt class="docutils literal"><span class="pre">pyblosxom_version</span></tt> which points to
+<tt class="docutils literal"><span class="pre">pyblosxom/Pyblosxom/pyblosxom.VERSION_DATE</span></tt> .</p>
+</li>
+<li><p class="first">Fixed some code in pyarchives so it worked with Python 2.1.  Thanks
+to Wilhelm.</p>
+</li>
+<li><p class="first">Fixed template retrieving code so that you can specify templates to
+use for a given category or parent categories.  Thanks to Nathan
+for fixing this.</p>
+</li>
+<li><p class="first">We added a <tt class="docutils literal"><span class="pre">logdir</span></tt> property to config.  PyBlosxom (and plugins)
+will create logs in this directory so the directory has to have
+write access for whatever user the webserver uses to run the
+script.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="pertinent-to-developers-and-plugin-developers">
+<h2>Pertinent to developers and plugin developers<a class="headerlink" href="#pertinent-to-developers-and-plugin-developers" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Rewrote the startup for PyBlosxom request handling&#8212;we ditched the
+common_start function and picked up a common initialize function.</li>
+<li>Unhardcoded where contrib and web files go when doing a multi-user
+installation using <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</li>
+<li>Adjusted the comments plugin so that if a given entry has a
+<tt class="docutils literal"><span class="pre">nocomments</span></tt> property, then it won&#8217;t get comments.</li>
+<li>Moved the Request object into <tt class="docutils literal"><span class="pre">pyblosxom/Pyblosxom/pyblosxom.py</span></tt>.</li>
+<li>Fixed variable parsing so that if the variable value is a function
+that takes arguments, we pass the request in as the first argument.</li>
+<li>Added VERSION, VERSION_DATE, and VERSION_SPLIT.  This allows you to
+verify that your plugin works with the version of PyBlosxom the
+user is using.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">What&#8217;s new in 1.0</a><ul>
+<li><a class="reference internal" href="#pertinent-to-users">Pertinent to users</a></li>
+<li><a class="reference internal" href="#pertinent-to-developers-and-plugin-developers">Pertinent to developers and plugin developers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/whatsnew_1_0.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

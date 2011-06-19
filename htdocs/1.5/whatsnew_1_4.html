@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>What’s new in 1.4.3 &mdash; PyBlosxom v1.5 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="what-s-new-in-1-4-3">
+<h1>What&#8217;s new in 1.4.3<a class="headerlink" href="#what-s-new-in-1-4-3" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pertinent-to-users">
+<h2>Pertinent to users<a class="headerlink" href="#pertinent-to-users" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Adjusted the code that parses blog.ini values so that it can take
+values like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">foo</span> <span class="o">=</span> <span class="s">&#39;a&#39;</span>                 <span class="c"># string</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="s">&quot;a&quot;</span>                 <span class="c"># string</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="mi">23</span>                  <span class="c"># integer</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="s">&quot;b&quot;</span> <span class="p">]</span>    <span class="c"># list of strings and integers</span>
+</pre></div>
+</div>
+<p>as well as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">foo</span> <span class="o">=</span> <span class="n">a</span>                   <span class="c"># string</span>
+</pre></div>
+</div>
+<p>Note: if you want the string &#8220;23&#8221;, then you MUST enclose it in
+quotes, otherwise it will be parsed as an integer.</p>
+<p>blog.ini is used when you set up PyBlosxom using Paste.</p>
+</li>
+<li><p class="first">Fixed PyBlosxomWSGIApp so that it&#8217;s WSGI compliant as an
+application.  Thanks Michael!</p>
+</li>
+<li><p class="first">Template variables can be parenthesized.  Examples:</p>
+<div class="highlight-python"><pre>$foo                      - variable is "foo"
+$(foo)                    - variable is "foo"
+$(url)index.atom          - variable is "url"</pre>
+</div>
+<p>This reduces ambiguity which was causing problems with recognition
+of variables.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="pertinent-to-developers">
+<h2>Pertinent to developers<a class="headerlink" href="#pertinent-to-developers" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Fixed tools.importname&#8212;it now logs errors to the logger.</li>
+<li>Fixed PyBlosxomWSGIApp so that it&#8217;s WSGI compliant as an
+application.  Thanks Michael!</li>
+<li>Added more unit tests and corrected more behavior.  Details on
+running unit tests are in the REDAME.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="what-s-new-in-1-4-2">
+<h1>What&#8217;s new in 1.4.2<a class="headerlink" href="#what-s-new-in-1-4-2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>Pertinent to users<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Fixed another bug with the WSGI application creation code.  (Thanks
+Christine!)</li>
+<li>Added instructions for installing PyBlosxom with mod_wsgi to
+<tt class="docutils literal"><span class="pre">install_wsgi.txt</span></tt>.  This includes a basic wsgi script for
+PyBlosxom.  (Thanks Christine!)</li>
+<li>Fixed up the Python Paste installation document.  (Thanks Liz!)</li>
+<li>Fixed the <tt class="docutils literal"><span class="pre">month2num</span></tt> code in tools so that PyBlosxom runs on
+Windows (Windows doesn&#8217;t have <tt class="docutils literal"><span class="pre">nl_langinfo</span></tt> in the <tt class="docutils literal"><span class="pre">locale</span></tt>
+module).  (Thanks Liz!)</li>
+</ol>
+</div>
+</div>
+<div class="section" id="what-s-new-in-1-4-1">
+<h1>What&#8217;s new in 1.4.1<a class="headerlink" href="#what-s-new-in-1-4-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>Pertinent to users<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Fixed a problem where running PyBlosxom under Paste won&#8217;t pick up
+the <tt class="docutils literal"><span class="pre">config.py</span></tt> file.  Be sure to add a <tt class="docutils literal"><span class="pre">configpydir</span></tt> property
+to your <tt class="docutils literal"><span class="pre">blog.ini</span></tt> file which points to the directory your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file is in.</li>
+<li>Fixed a problem where running PyBlosxom in Python 2.5 won&#8217;t pick up
+the <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</li>
+<li>Merged Ryan&#8217;s optimization to Walk (removes an os.listdir call).</li>
+<li>Updated documentation.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="what-s-new-in-1-4">
+<h1>What&#8217;s new in 1.4<a class="headerlink" href="#what-s-new-in-1-4" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id3">
+<h2>Pertinent to users<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Added a pyblcmd command line program for PyBlosxom command line
+things.  This now handles static rendering, rendering a single url
+to stdout, testing your blog setup, ...</li>
+<li>The Atom story template now has a $default_flavour bit in the link.
+Bug 1667937.  (Thanks Michael!)</li>
+<li>PyBlosxom is now locale aware in respects to dates, months, days of
+the week and such.  Users should set the locale config property to
+a valid locale if they don&#8217;t want English.</li>
+<li>Added a <tt class="docutils literal"><span class="pre">blog_icbm</span></tt> config variable for use in the ICBM meta tag.
+See config_variables.txt for more information.</li>
+<li>Changed the <tt class="docutils literal"><span class="pre">num_entries</span></tt> property in config.py from 40 to a much
+more conservative 5.  Also changed the default value from 0 to 5 if
+you happened not to set <tt class="docutils literal"><span class="pre">num_entries</span></tt> at all.
+<a class="reference external" href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=373658">http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=373658</a> (Thanks
+Jon!)</li>
+<li>Changed the self link in the atom feed to be of type
+application/atom+xml.
+<a class="reference external" href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=403008">http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=403008</a> (Thanks
+Brian!)</li>
+<li>Added DOCUMENT_ROOT to the python path per Martin&#8217;s suggestion.
+<a class="reference external" href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=367127">http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=367127</a> (Thanks
+Martin!)</li>
+<li>Translated all documentation from Docbook to reST.  reST
+documentation is easier to read in &#8220;source-form&#8221; and a lot easier
+to convert to HTML and other formats using the Python docutils
+tools.  (Thanks John!)</li>
+<li>Added support for Paste and brought the WSGI support into the
+codebase.  (Thanks Steven and Yury!)</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h2>Pertinent to developers<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>1. Lots of code clean-up, documentation, test-code, and some
+refactoring.</p>
+<ol class="arabic" start="2">
+<li><p class="first">cb_filestat will only do an os.stat if no plugin handles the
+filestat.  Previously, cb_filestat did an os.stat and ran through
+all the plugins allowing them to over-ride it.</p>
+</li>
+<li><p class="first">Added some testing framework pieces.  This requires nose.  To run
+the tests, do:</p>
+<div class="highlight-python"><pre>nosetests --verbose --include unit
+nosetests --verbose --include functional</pre>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">What&#8217;s new in 1.4.3</a><ul>
+<li><a class="reference internal" href="#pertinent-to-users">Pertinent to users</a></li>
+<li><a class="reference internal" href="#pertinent-to-developers">Pertinent to developers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#what-s-new-in-1-4-2">What&#8217;s new in 1.4.2</a><ul>
+<li><a class="reference internal" href="#id1">Pertinent to users</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#what-s-new-in-1-4-1">What&#8217;s new in 1.4.1</a><ul>
+<li><a class="reference internal" href="#id2">Pertinent to users</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#what-s-new-in-1-4">What&#8217;s new in 1.4</a><ul>
+<li><a class="reference internal" href="#id3">Pertinent to users</a></li>
+<li><a class="reference internal" href="#id4">Pertinent to developers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/whatsnew_1_4.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009, 2010, Will Kahn-Greene.
+      Last updated on Jun 18, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
