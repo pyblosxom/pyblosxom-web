@@ -121,6 +121,15 @@ $ git format-patch -o patches origin/master
 </ol>
 
 <p>
+  <b>If you're new to git</b>
+</p>
+<p>
+  The <a href="http://git-scm.com/documentation">Git site has a great
+  page covering documentation and tutorials</a>.  Please check out their
+  resources and spend some time learning how to use git.
+</p>
+
+<p>
   <b>If you have questions</b>
 </p>
 <p>
