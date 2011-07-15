@@ -15,6 +15,10 @@ else
     mkdir ./logs/
 fi
 
+# get the latest docs
+pushd ../pyblosxom/docs/ && make html && popd
+cp -ar ../pyblosxom/docs/_build/html/* htdocs/1.5/
+
 # update the registry from the pyblosxom/plugins
 PYTHONPATH=../pyblosxom/ python ./update_registry.py ../pyblosxom/plugins/ ./registry/
 
