@@ -69,11 +69,18 @@ Configuration
 
 ``pagesdir``
 
-    Optional.  Defaults to the datadir.
+    This is the directory that holds the pages files.
 
-    Example::
+    For example, if you wanted your pages in ``/home/foo/blog/pages/``, then
+    you would set it to::
 
-        py["pagesdir"] = os.path.join(datadir, "pages")
+        py["pagesdir"] = "/home/foo/blog/pages/"
+
+    If you have ``blogdir`` defined in your ``config.py`` file which holds
+    your ``datadir`` and ``flavourdir`` directories, then you could set it
+    to::
+
+        py["pagesdir"] = os.path.join(blogdir, "pages")
 
 ``pages_trigger``
 
@@ -81,9 +88,20 @@ Configuration
 
     This is the url trigger that causes the pages plugin to look for pages.
 
+        py["pages_trigger"] = "pages"
+
 ``pages_frontpage``
 
     Optional.  Defaults to False.
 
-    If set to True, then pages will show the ``frontpage`` entry for the 
+    If set to True, then pages will show the ``frontpage`` page for the 
     front page.
+
+    This requires you to have a ``frontpage`` file in your pages directory.
+    The extension for this file works the same way as blog entries.  So if
+    your blog entries end in ``.txt``, then you would need a ``frontpage.txt``
+    file.
+
+    Example::
+
+        py["pages_frontpage"] = True
