@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>What’s new in 1.1 &mdash; PyBlosxom v1.5 documentation</title>
+    <title>Authors &mdash; PyBlosxom v1.5 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -22,7 +22,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" /> 
+    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="prev" title="Testing" href="dev_testing.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,6 +36,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="glossary.html" title="Glossary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dev_testing.html" title="Testing"
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -43,31 +51,59 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="what-s-new-in-1-1">
-<h1>What&#8217;s new in 1.1<a class="headerlink" href="#what-s-new-in-1-1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="pertinent-to-users">
-<h2>Pertinent to users<a class="headerlink" href="#pertinent-to-users" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>We no longer include contributed plugins and flavours.  To find
-plugins and flavours, go to the PyBlosxom registry located at
-<a class="reference external" href="http://pyblosxom.sourceforge.net/">http://pyblosxom.sourceforge.net/</a> .</li>
-<li>We changed how <tt class="docutils literal"><span class="pre">num_entries</span></tt> is handled internally.  If
-<tt class="docutils literal"><span class="pre">num_entries</span></tt> is set to 0, the blosxom default file handler will
-display all the entries.  If <tt class="docutils literal"><span class="pre">num_entries</span></tt> is set to a positive
-number, then the blosxom default file handler will display at most
-that many entries.</li>
-</ol>
-</div>
-<div class="section" id="pertinent-to-developers">
-<h2>Pertinent to developers<a class="headerlink" href="#pertinent-to-developers" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Plugins that implement cb_filelist are now in charge of adjusting
-the number of entries to be displayed based on the <tt class="docutils literal"><span class="pre">num_entries</span></tt>
-configuration variable.  This is no longer done in the renderer.</li>
-<li>We added HTTP_COOKIE to the list of things that get added to the
-http dict in the Request object.</li>
-</ol>
-</div>
+  <div class="section" id="authors">
+<h1>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h1>
+<p>PyBlosxom was originally written by Wari Wahab and is now maintained by
+Will Kahn-Greene &lt;<a class="reference external" href="mailto:willg&#37;&#52;&#48;bluesock&#46;org">willg<span>&#64;</span>bluesock<span>&#46;</span>org</a>&gt;.</p>
+<p>Over the years, PyBlosxom has had many contributors who have helped
+make the project what it is today (in no particular order):</p>
+<ul class="simple">
+<li>Martin Kraft</li>
+<li>Joerg Wendland</li>
+<li>Enrico Zini</li>
+<li>Gpal. V</li>
+<li>Nathan Gray</li>
+<li>Alexandre Patry</li>
+<li>Brian Warner</li>
+<li>Ryan Thiessen</li>
+<li>Dewayne Christensen</li>
+<li>Joe Gregorio</li>
+<li>James Henstridge</li>
+<li>Myers Carpenter</li>
+<li>Scott C.</li>
+<li>Axel Kollmorgen</li>
+<li>Thenault Sylvain</li>
+<li>Russell Nelson</li>
+<li>IWS</li>
+<li>Joseph Reagle</li>
+<li>Tollef Fog Heen</li>
+<li>Colin Walters</li>
+<li>Norbert Tretkowski</li>
+<li>David Stanek</li>
+<li>FX</li>
+<li>Zoom Quiet</li>
+<li>Matej Cepl</li>
+<li>Andrew Kuchling</li>
+<li>Dieter Plaetinck</li>
+<li>Jordi Mallach</li>
+<li>Marius Gedminas</li>
+<li>Mikko Värri</li>
+<li>Robert Wall</li>
+<li>Ryan Barrett</li>
+<li>Sebastian Spaeth</li>
+<li>Steven Armstrong</li>
+<li>Ted Leung</li>
+<li>Wari Wahab</li>
+<li>Weakish Jakukyo</li>
+<li>Weakish Jiang</li>
+<li>Doug Ransom</li>
+<li>Abe Fettig</li>
+<li>Benjamin Mako Hill</li>
+<li>David Pashley</li>
+<li>David Geller</li>
+<li>Roberto De Almeida</li>
+</ul>
+<p>Many thanks for all their work and efforts!</p>
 </div>
 
 
@@ -76,18 +112,15 @@ http dict in the Request object.</li>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">What&#8217;s new in 1.1</a><ul>
-<li><a class="reference internal" href="#pertinent-to-users">Pertinent to users</a></li>
-<li><a class="reference internal" href="#pertinent-to-developers">Pertinent to developers</a></li>
-</ul>
-</li>
-</ul>
-
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dev_testing.html"
+                        title="previous chapter">Testing</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="glossary.html"
+                        title="next chapter">Glossary</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/whatsnew_1_1.txt"
+    <li><a href="_sources/authors.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -116,6 +149,12 @@ http dict in the Request object.</li>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="glossary.html" title="Glossary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dev_testing.html" title="Testing"
+             >previous</a> |</li>
         <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>

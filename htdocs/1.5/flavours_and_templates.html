@@ -339,6 +339,18 @@ are evaluated:</p>
 <div class="highlight-python"><pre>&lt;h2&gt;$(escape(title))&lt;/h2&gt;</pre>
 </div>
 </div>
+<div class="section" id="escaping-the">
+<h3>Escaping the $<a class="headerlink" href="#escaping-the" title="Permalink to this headline">¶</a></h3>
+<p>If you want a $ in your template that shouldn&#8217;t signify variable expansion,
+then you need to escape it with a <tt class="docutils literal"><span class="pre">\</span></tt>:</p>
+<div class="highlight-python"><pre>&lt;p&gt;
+   This blog is all about \$!
+&lt;/p&gt;</pre>
+</div>
+<p>renders as:</p>
+<div class="highlight-python"><pre>This blog is all about $!</pre>
+</div>
+</div>
 <div class="section" id="getting-a-complete-list-of-variables">
 <h3>Getting a complete list of variables<a class="headerlink" href="#getting-a-complete-list-of-variables" title="Permalink to this headline">¶</a></h3>
 <p>To get a complete list of what variables are available in your blog,
@@ -660,6 +672,7 @@ come with your PyBlosxom installation.</p>
 <li><a class="reference internal" href="#finding-new-flavours">Finding new flavours</a></li>
 <li><a class="reference internal" href="#template-variables">Template variables</a><ul>
 <li><a class="reference internal" href="#variable-syntax">Variable syntax</a></li>
+<li><a class="reference internal" href="#escaping-the">Escaping the $</a></li>
 <li><a class="reference internal" href="#getting-a-complete-list-of-variables">Getting a complete list of variables</a></li>
 <li><a class="reference internal" href="#url-encoding-and-escaping-of-template-variables">URL encoding and escaping of template variables</a></li>
 <li><a class="reference internal" href="#variables-from-config-py">Variables from config.py</a></li>
@@ -726,7 +739,7 @@ come with your PyBlosxom installation.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jun 19, 2011.
+      Last updated on Jul 14, 2011.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
