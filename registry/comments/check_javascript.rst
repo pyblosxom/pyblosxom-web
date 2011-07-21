@@ -2,7 +2,7 @@ check_javascript
 #author Ryan Barrett
 #email pyblosxom at ryanb dot org
 #infourl http://pyblosxom.bluesock.org/
-#download None
+#download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary Use JavaScript to filter out spam comments
 #license GPLv2
 #registrytags 1.4, 1.5, core

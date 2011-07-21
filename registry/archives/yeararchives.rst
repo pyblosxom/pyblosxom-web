@@ -2,7 +2,7 @@ yeararchives
 #author Will Kahn-Greene
 #email willg at bluesock dot org
 #infourl http://pyblosxom.bluesock.org/
-#download None
+#download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary Builds year-based archives listing.
 #license MIT
 #registrytags 1.4, 1.5, core

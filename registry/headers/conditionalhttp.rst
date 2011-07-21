@@ -2,7 +2,7 @@ conditionalhttp
 #author Wari Wahab
 #email pyblosxom at wari dot per dot sg
 #infourl http://pyblosxom.bluesock.org/
-#download None
+#download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary Allows for caching if-not-modified-since....
 #license MIT
 #registrytags 1.4, 1.5, core

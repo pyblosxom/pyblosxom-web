@@ -2,7 +2,7 @@ trackback
 #author Ted Leung
 #email 
 #infourl http://pyblosxom.bluesock.org/
-#download None
+#download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary Trackback support.
 #license MIT
 #registrytags 1.4, core

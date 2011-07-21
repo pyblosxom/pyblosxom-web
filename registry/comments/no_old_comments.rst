@@ -2,7 +2,7 @@ no_old_comments
 #author Blake Winton
 #email bwinton+blog@latte.ca
 #infourl http://example.com/
-#download None
+#download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary Prevent comments on entries older than a month.
 #license Public Domain
 #registrytags 1.4, 1.5, core

@@ -2,7 +2,7 @@ w3cdate
 #author Ted Leung
 #email twl at sauria dot com
 #infourl http://pyblosxom.bluesock.org/
-#download None
+#download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary Adds a 'w3cdate' variable which is the mtime in ISO8601 format.
 #license MIT
 #registrytags 1.4, 1.5, core

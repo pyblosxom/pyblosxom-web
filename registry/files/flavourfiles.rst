@@ -2,7 +2,7 @@ flavourfiles
 #author Will Kahn-Greene
 #email willg at bluesock dot org
 #infourl http://pyblosxom.bluesock.org/
-#download None
+#download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary Serves static files related to flavours (css, js, ...)
 #license MIT License
 #registrytags 1.5, core, experimental

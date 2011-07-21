@@ -2,7 +2,7 @@ akismetcomments
 #author Benjamin Mako Hill
 #email 
 #infourl http://mako.cc/projects/pyblosxom
-#download None
+#download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary Run comments through Akismet.
 #license GPLv2
 #registrytags 1.4, 1.5, core

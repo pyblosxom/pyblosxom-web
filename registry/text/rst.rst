@@ -2,7 +2,7 @@ rst
 #author Sean Bowman
 #email sean dot bowman at acm dot org
 #infourl http://pyblosxom.bluesock.org/
-#download None
+#download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary restructured text support for blog entries
 #license MIT
 #registrytags 1.5, core

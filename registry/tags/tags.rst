@@ -2,7 +2,7 @@ tags
 #author Will Kahn-Greene
 #email willg at bluesock dot org
 #infourl http://pyblosxom.bluesock.org/
-#download None
+#download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary Tags plugin
 #license MIT
 #registrytags 1.5, core

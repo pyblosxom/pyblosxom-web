@@ -2,7 +2,7 @@ xmlrpc_pingback
 #author Ted Leung, Ryan Barrett
 #email 
 #infourl http://pyblosxom.bluesock.org/
-#download None
+#download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary XMLRPC pingback support.
 #license MIT
 #registrytags 1.4, core
