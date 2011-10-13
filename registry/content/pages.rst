@@ -8,8 +8,8 @@ pages
 #registrytags 1.4, 1.5, core
 #generator update_registry
 
-Usage
-=====
+Summary
+=======
 
 A blog consists of blog entries, plus a bunch of pages that exist outside
 of the blog structure.  For example, an "About me" page or a "Guestbook"
@@ -22,7 +22,8 @@ pages can also have plugins.
 
 It looks for urls like::
 
-   /pages/blah
+    /pages/blah
+    /pages/blah.html
 
 and pulls up the file ``blah.txt`` [1]_ which is located in the path specified
 in the config file as ``pagesdir``.  If no pagesdir is specified, then we
@@ -34,10 +35,23 @@ If the file is not there, it kicks up a 404.
    valid for entries on your blog.  For example, if you have the textile
    entryparser installed, then ``.txtl`` is also a valid file ending.
 
+
+Template
+========
+
 pages formats the page using the ``pages`` template.
-So you need to add a ``pages.html`` file to your datadir (assuming
-you're using the ``html`` flavour).  I tend to copy my story flavour
-templates over and remove the date/time-related bits.
+So you need a ``pages`` template in the flavours that you want these
+pages to be rendered in.  I tend to copy my story flavour template
+and remove the date/time-related bits.
+
+For example, if you're using the html flavour and that is stored in
+``/home/foo/blog/flavours/html.flav/``, then you could copy the ``story``
+file in that directory to ``pages`` and that would become your 
+``pages`` template.
+
+
+Python code blocks
+==================
 
 pages handles evaluating python code blocks.  Enclose python
 code in ``<%`` and ``%>``.  The assumption is that only you can edit your 

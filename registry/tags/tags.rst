@@ -74,6 +74,21 @@ how tag metadata is formatted, and how tag lists triggered.
     This is the url trigger to indicate that the tags plugin should
     handle the file list based on the tag.  Defaults to ``tag``.
 
+``truncate_tags``
+
+    If this is True, then tags index listings will get passed through
+    the truncate callback.  If this is False, then the tags index
+    listing will not be truncated.
+
+    If you're using a paging plugin, then setting this to True will
+    allow your tags index to be paged.
+
+    Example::
+
+        py["truncate_tags"] = True
+
+    Defaults to True.
+
 
 In the head and foot templates, you can list all the tags with the
 ``$(tagslist)`` variable.  The templates for this listing use the
