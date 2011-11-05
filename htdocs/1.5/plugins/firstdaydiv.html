@@ -1,0 +1,170 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>firstdaydiv - Adds a token which tells us whether... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="flavourfiles - Serves static files related to flav..." href="flavourfiles.html" />
+    <link rel="prev" title="entrytitle - Puts entry title in page title...." href="entrytitle.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="flavourfiles.html" title="flavourfiles - Serves static files related to flav..."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="entrytitle.html" title="entrytitle - Puts entry title in page title...."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="firstdaydiv-adds-a-token-which-tells-us-whether">
+<h1>firstdaydiv - Adds a token which tells us whether...<a class="headerlink" href="#firstdaydiv-adds-a-token-which-tells-us-whether" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Adds a token which allows you to differentiate between the first day
+of entries in a series of entries to be displayed from the other days.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic">
+<li><p class="first">In your <tt class="docutils literal"><span class="pre">config.py</span></tt> file, add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.firstdaydiv</span></tt>
+to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list.</p>
+</li>
+<li><p class="first">(optional) Set the <tt class="docutils literal"><span class="pre">firstDayDiv</span></tt> config variable.  This defaults
+to <tt class="docutils literal"><span class="pre">blosxomFirstDayDiv</span></tt>.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&#39;firstDayDiv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;blosxomFirstDayDiv&#39;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>This denotes the first day with the css class set in the
+<tt class="docutils literal"><span class="pre">firstDayDiv</span></tt> config variable.  This is available in the
+<tt class="docutils literal"><span class="pre">$(dayDivClass)</span></tt> template variable.  You probably want to put this
+in your <tt class="docutils literal"><span class="pre">date_head</span></tt> template in a <tt class="docutils literal"><span class="pre">&lt;div...&gt;</span></tt> tag.</p>
+<p>For example, in your <tt class="docutils literal"><span class="pre">date_head</span></tt>, you could have:</p>
+<div class="highlight-python"><pre>&lt;div class="$dayDivClass"&gt;
+&lt;span class="blosxomDate"&gt;$date&lt;/span&gt;</pre>
+</div>
+<p>and in your <tt class="docutils literal"><span class="pre">date_foot</span></tt>, you&#8217;d want to close that <tt class="docutils literal"><span class="pre">&lt;div&gt;</span></tt> off:</p>
+<div class="highlight-python"><pre>&lt;/div&gt;</pre>
+</div>
+<p>Feel free to use this in other ways.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">firstdaydiv - Adds a token which tells us whether...</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="entrytitle.html"
+                        title="previous chapter">entrytitle - Puts entry title in page title....</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="flavourfiles.html"
+                        title="next chapter">flavourfiles - Serves static files related to flav...</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/firstdaydiv.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="flavourfiles.html" title="flavourfiles - Serves static files related to flav..."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="entrytitle.html" title="entrytitle - Puts entry title in page title...."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tags - Tags plugin... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="trackback - Trackback support...." href="trackback.html" />
+    <link rel="prev" title="rst_parser - restructured text support for blog ..." href="rst_parser.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="trackback.html" title="trackback - Trackback support...."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="rst_parser.html" title="rst_parser - restructured text support for blog ..."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tags-tags-plugin">
+<h1>tags - Tags plugin...<a class="headerlink" href="#tags-tags-plugin" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This is a tags plugin.  It uses PyBlosxom&#8217;s command line abilities to
+split generation of tags index data from display of tags index data.</p>
+<p>It creates a <tt class="docutils literal"><span class="pre">$(tagslist)</span></tt> variable for head and foot templates
+which lists all the tags.</p>
+<p>It creates a <tt class="docutils literal"><span class="pre">$(tags)</span></tt> variable for story templates which lists tags
+for the story.</p>
+<p>It creates a <tt class="docutils literal"><span class="pre">$(tagcloud)</span></tt> variable for the tag cloud.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic simple">
+<li>Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.tags</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list in your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file.</li>
+<li>Configure as documented below.</li>
+</ol>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>The following config properties define where the tags file is located,
+how tag metadata is formatted, and how tag lists triggered.</p>
+<p><tt class="docutils literal"><span class="pre">tags_separator</span></tt></p>
+<blockquote>
+<div><p>This defines the separator between tags in the metadata line.
+Defaults to &#8221;,&#8221;.</p>
+<p>After splitting on the separator, each individual tag is stripped
+of whitespace before and after the text.</p>
+<p>For example:</p>
+<div class="highlight-python"><pre>Weather in Boston
+#tags weather, boston
+&lt;p&gt;
+  The weather in Boston today is pretty nice.
+&lt;/p&gt;</pre>
+</div>
+<p>returns tags <tt class="docutils literal"><span class="pre">weather</span></tt> and <tt class="docutils literal"><span class="pre">boston</span></tt>.</p>
+<p>If the <tt class="docutils literal"><span class="pre">tags_separator</span></tt> is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;tags_separator&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;::&quot;</span>
+</pre></div>
+</div>
+<p>then tags could be declared in the entries like this:</p>
+<div class="highlight-python"><pre>Weather in Boston
+#tags weather::boston
+&lt;p&gt;
+  The weather in Boston today is pretty nice.
+&lt;/p&gt;</pre>
+</div>
+</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">tags_filename</span></tt></p>
+<blockquote>
+<div><p>This is the file that holds indexed tags data.  Defaults to
+datadir + os.pardir + <tt class="docutils literal"><span class="pre">tags.index</span></tt>.</p>
+<p>This file needs to be readable by the process that runs your blog.
+This file needs to be writable by the process that creates the
+index.</p>
+</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">tags_trigger</span></tt></p>
+<blockquote>
+<div>This is the url trigger to indicate that the tags plugin should
+handle the file list based on the tag.  Defaults to <tt class="docutils literal"><span class="pre">tag</span></tt>.</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">truncate_tags</span></tt></p>
+<blockquote>
+<div><p>If this is True, then tags index listings will get passed through
+the truncate callback.  If this is False, then the tags index
+listing will not be truncated.</p>
+<p>If you&#8217;re using a paging plugin, then setting this to True will
+allow your tags index to be paged.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;truncate_tags&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>Defaults to True.</p>
+</div></blockquote>
+<p>In the head and foot templates, you can list all the tags with the
+<tt class="docutils literal"><span class="pre">$(tagslist)</span></tt> variable.  The templates for this listing use the
+following three config properties:</p>
+<p><tt class="docutils literal"><span class="pre">tags_list_start</span></tt></p>
+<blockquote>
+<div>Printed before the list.  Defaults to <tt class="docutils literal"><span class="pre">&lt;p&gt;</span></tt>.</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">tags_list_item</span></tt></p>
+<blockquote>
+<div><p>Used for each tag in the list.  There are a bunch of variables you can
+use:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">base_url</span></tt> - the baseurl for your blog</li>
+<li><tt class="docutils literal"><span class="pre">flavour</span></tt> - the default flavour or flavour currently showing</li>
+<li><tt class="docutils literal"><span class="pre">tag</span></tt> - the tag name</li>
+<li><tt class="docutils literal"><span class="pre">count</span></tt> - the number of items that are tagged with this tag</li>
+<li><tt class="docutils literal"><span class="pre">tagurl</span></tt> - url composed of baseurl, trigger, and tag</li>
+</ul>
+<p>Defaults to <tt class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href=&quot;%(tagurl)s&quot;&gt;%(tag)s&lt;/a&gt;</span></tt>.</p>
+</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">tags_list_finish</span></tt></p>
+<blockquote>
+<div>Printed after the list.  Defaults to <tt class="docutils literal"><span class="pre">&lt;/p&gt;</span></tt>.</div></blockquote>
+<p>In the head and foot templates, you can also add a tag cloud with the
+<tt class="docutils literal"><span class="pre">$(tagcloud)</span></tt> variable.  The templates for the cloud use the
+following three config properties:</p>
+<p><tt class="docutils literal"><span class="pre">tags_cloud_start</span></tt></p>
+<blockquote>
+<div>Printed before the cloud.  Defaults to <tt class="docutils literal"><span class="pre">&lt;p&gt;</span></tt>.</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">tags_cloud_item</span></tt></p>
+<blockquote>
+<div><p>Used for each tag in the cloud list.  There are a bunch of
+variables you can use:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">base_url</span></tt> - the baseurl for your blog</li>
+<li><tt class="docutils literal"><span class="pre">flavour</span></tt> - the default flavour or flavour currently showing</li>
+<li><tt class="docutils literal"><span class="pre">tag</span></tt> - the tag name</li>
+<li><tt class="docutils literal"><span class="pre">count</span></tt> - the number of items that are tagged with this tag</li>
+<li><tt class="docutils literal"><span class="pre">class</span></tt> - biggestTag, bigTag, mediumTag, smallTag or smallestTag&#8211;the
+css class for this tag representing the frequency the tag is used</li>
+<li><tt class="docutils literal"><span class="pre">tagurl</span></tt> - url composed of baseurl, trigger, and tag</li>
+</ul>
+<p>Defaults to <tt class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href=&quot;%(tagurl)s&quot;&gt;%(tag)s&lt;/a&gt;</span></tt>.</p>
+</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">tags_cloud_finish</span></tt></p>
+<blockquote>
+<div>Printed after the cloud.  Defaults to <tt class="docutils literal"><span class="pre">&lt;/p&gt;</span></tt>.</div></blockquote>
+<p>You&#8217;ll also want to add CSS classes for the size classes to your CSS.
+For example, you could add this:</p>
+<div class="highlight-python"><pre>.biggestTag { font-size: 16pt; }
+.bigTag { font-size: 14pt }
+.mediumTag { font-size: 12pt }
+.smallTag { font-size: 10pt ]
+.smallestTag { font-size: 8pt ]</pre>
+</div>
+<p>You can list the tags for a given entry in the story template with the
+<tt class="docutils literal"><span class="pre">$(tags)</span></tt> variable.  The tag items in the story are formatted with one
+configuration property:</p>
+<p><tt class="docutils literal"><span class="pre">tags_item</span></tt></p>
+<blockquote>
+<div><p>This is the template for a single tag for an entry.  It can use the
+following bits:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">base_url</span></tt> - the baseurl for this blog</li>
+<li><tt class="docutils literal"><span class="pre">flavour</span></tt> - the default flavour or flavour currently being viewed</li>
+<li><tt class="docutils literal"><span class="pre">tag</span></tt> - the tag</li>
+<li><tt class="docutils literal"><span class="pre">tagurl</span></tt> - url composed of baseurl, trigger and tag</li>
+</ul>
+<p>Defaults to <tt class="docutils literal"><span class="pre">&lt;a</span> <span class="pre">href=&quot;%(tagurl)s&quot;&gt;%(tag)s&lt;/a&gt;</span></tt>.</p>
+<p>Tags are joined together with <tt class="docutils literal"><span class="pre">,</span></tt>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="creating-the-tags-index-file">
+<h2>Creating the tags index file<a class="headerlink" href="#creating-the-tags-index-file" title="Permalink to this headline">¶</a></h2>
+<p>Run:</p>
+<div class="highlight-python"><pre>pyblosxom-cmd buildtags</pre>
+</div>
+<p>from the directory your <tt class="docutils literal"><span class="pre">config.py</span></tt> is in or:</p>
+<div class="highlight-python"><pre>pyblosxom-cmd buildtags --config=/path/to/config/file</pre>
+</div>
+<p>from anywhere.</p>
+<p>This builds the tags index file that the tags plugin requires to
+generate tags-based bits for the request.</p>
+<p>Until you rebuild the tags index file, the entry will not have its
+tags indexed.  Thus you should either rebuild the tags file after writing
+or updating an entry or you should rebuild the tags file as a cron job.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you&#8217;re using static rendering, you need to build the tags
+index before you statically render your blog.</p>
+</div>
+</div>
+<div class="section" id="converting-from-categories-to-tags">
+<h2>Converting from categories to tags<a class="headerlink" href="#converting-from-categories-to-tags" title="Permalink to this headline">¶</a></h2>
+<p>This plugin has a command that goes through your entries and adds tag
+metadata based on the category.  There are some caveats:</p>
+<ol class="arabic simple">
+<li>it assumes entries are in the blosxom format of title, then
+metadata, then the body.</li>
+<li>it only operates on entries in the datadir.</li>
+</ol>
+<p>It maintains the atime and mtime of the file.  My suggestion is to
+back up your files (use tar or something that maintains file stats),
+then try it out and see how well it works, and figure out if that
+works or not.</p>
+<p>To run the command do:</p>
+<div class="highlight-python"><pre>pyblosxom-cmd categorytotags</pre>
+</div>
+<p>from the directory your <tt class="docutils literal"><span class="pre">config.py</span></tt> is in or:</p>
+<div class="highlight-python"><pre>pyblosxom-cmd categorytotags --config=/path/to/config/file</pre>
+</div>
+<p>from anywhere.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">tags - Tags plugin...</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#creating-the-tags-index-file">Creating the tags index file</a></li>
+<li><a class="reference internal" href="#converting-from-categories-to-tags">Converting from categories to tags</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="rst_parser.html"
+                        title="previous chapter">rst_parser - restructured text support for blog ...</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="trackback.html"
+                        title="next chapter">trackback - Trackback support....</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/tags.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="trackback.html" title="trackback - Trackback support...."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="rst_parser.html" title="rst_parser - restructured text support for blog ..."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

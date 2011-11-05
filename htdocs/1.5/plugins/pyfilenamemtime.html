@@ -1,0 +1,153 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pyfilenamemtime - Allows you to codify the mtime in t... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="rst_parser - restructured text support for blog ..." href="rst_parser.html" />
+    <link rel="prev" title="pycategories - Builds a list of categories...." href="pycategories.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rst_parser.html" title="rst_parser - restructured text support for blog ..."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pycategories.html" title="pycategories - Builds a list of categories...."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pyfilenamemtime-allows-you-to-codify-the-mtime-in-t">
+<h1>pyfilenamemtime - Allows you to codify the mtime in t...<a class="headerlink" href="#pyfilenamemtime-allows-you-to-codify-the-mtime-in-t" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Allows you to specify the mtime for a file in the file name.</p>
+<p>If a filename contains a timestamp in the form of
+<tt class="docutils literal"><span class="pre">YYYY-MM-DD-hh-mm</span></tt>, change the mtime to be the timestamp instead of
+the one kept by the filesystem.</p>
+<p>For example, a valid filename would be <tt class="docutils literal"><span class="pre">foo-2002-04-01-00-00.txt</span></tt>
+for April fools day on the year 2002.  It is also possible to use
+timestamps in the form of <tt class="docutils literal"><span class="pre">YYYY-MM-DD</span></tt>.</p>
+<p><a class="reference external" href="http://www.probo.com/timr/blog/">http://www.probo.com/timr/blog/</a></p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic simple">
+<li>Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.pyfilenamemtime</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt>
+list of your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</li>
+<li>Use date stamps in your entry filenames.</li>
+</ol>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pyfilenamemtime - Allows you to codify the mtime in t...</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pycategories.html"
+                        title="previous chapter">pycategories - Builds a list of categories....</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="rst_parser.html"
+                        title="next chapter">rst_parser - restructured text support for blog ...</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/pyfilenamemtime.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rst_parser.html" title="rst_parser - restructured text support for blog ..."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pycategories.html" title="pycategories - Builds a list of categories...."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

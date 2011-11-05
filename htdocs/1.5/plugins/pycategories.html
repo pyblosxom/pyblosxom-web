@@ -1,0 +1,235 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pycategories - Builds a list of categories.... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="pyfilenamemtime - Allows you to codify the mtime in t..." href="pyfilenamemtime.html" />
+    <link rel="prev" title="pycalendar - Displays a calendar on your blog...." href="pycalendar.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pyfilenamemtime.html" title="pyfilenamemtime - Allows you to codify the mtime in t..."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pycalendar.html" title="pycalendar - Displays a calendar on your blog...."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pycategories-builds-a-list-of-categories">
+<h1>pycategories - Builds a list of categories....<a class="headerlink" href="#pycategories-builds-a-list-of-categories" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Walks through your blog root figuring out all the categories you have
+and how many entries are in each category.  It generates html with
+this information and stores it in the <tt class="docutils literal"><span class="pre">$(categorylinks)</span></tt> variable
+which you can use in your head or foot templates.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic simple">
+<li>Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.pycategories</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list
+in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</li>
+<li>Add <tt class="docutils literal"><span class="pre">$(categorylinks)</span></tt> to your head and/or foot templates.</li>
+</ol>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>You can format the output by setting <tt class="docutils literal"><span class="pre">category_begin</span></tt>,
+<tt class="docutils literal"><span class="pre">category_item</span></tt>, and <tt class="docutils literal"><span class="pre">category_end</span></tt> properties.</p>
+<p>Categories exist in a hierarchy.  <tt class="docutils literal"><span class="pre">category_start</span></tt> starts the
+category listing and is only used at the very beginning.  The
+<tt class="docutils literal"><span class="pre">category_begin</span></tt> property begins a new category group and the
+<tt class="docutils literal"><span class="pre">category_end</span></tt> property ends that category group.  The
+<tt class="docutils literal"><span class="pre">category_item</span></tt> property is the template for each category item.
+Then after all the categories are printed, <tt class="docutils literal"><span class="pre">category_finish</span></tt> ends
+the category listing.</p>
+<p>For example, the following properties will use <tt class="docutils literal"><span class="pre">&lt;ul&gt;</span></tt> to open a
+category, <tt class="docutils literal"><span class="pre">&lt;/ul&gt;</span></tt> to close a category and <tt class="docutils literal"><span class="pre">&lt;li&gt;</span></tt> for each item:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;category_start&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&lt;ul&gt;&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;category_begin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&lt;li&gt;&lt;ul&gt;&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;category_item&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">r&#39;&lt;li&gt;&lt;a href=&quot;</span><span class="si">%(base_url)s</span><span class="s">/</span><span class="si">%(category_urlencoded)s</span><span class="s">index&quot;&gt;&#39;</span>
+    <span class="s">r&#39;</span><span class="si">%(category)s</span><span class="s">&lt;/a&gt;&lt;/li&gt;&#39;</span><span class="p">)</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;category_end&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&lt;/li&gt;&lt;/ul&gt;&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;category_finish&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&lt;/ul&gt;&quot;</span>
+</pre></div>
+</div>
+<p>Another example, the following properties don&#8217;t have a begin or an end
+but instead use indentation for links and displays the number of
+entries in that category:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;category_start&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;category_begin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;category_item&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">r&#39;</span><span class="si">%(indent)s</span><span class="s">&lt;a href=&quot;</span><span class="si">%(base_url)s</span><span class="s">/</span><span class="si">%(category_urlencoded)s</span><span class="s">index&quot;&gt;&#39;</span>
+    <span class="s">r&#39;</span><span class="si">%(category)s</span><span class="s">&lt;/a&gt; (</span><span class="si">%(count)d</span><span class="s">)&lt;br /&gt;&#39;</span><span class="p">)</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;category_end&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;category_finish&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+</pre></div>
+</div>
+<p>There are no variables available in the <tt class="docutils literal"><span class="pre">category_begin</span></tt> or
+<tt class="docutils literal"><span class="pre">category_end</span></tt> templates.</p>
+<p>Available variables in the category_item template:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="38%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">variable</th>
+<th class="head">example</th>
+<th class="head">datatype</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>base_url</td>
+<td><a class="reference external" href="http://joe.com/blog/">http://joe.com/blog/</a></td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>fullcategory_urlencoded</td>
+<td>&#8216;dev/pyblosxom/status/&#8217;</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>fullcategory</td>
+<td>&#8216;dev/pyblosxom/status/&#8217;</td>
+<td>string (urlencoded)</td>
+</tr>
+<tr class="row-odd"><td>category</td>
+<td>&#8216;status/&#8217;</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>category_urlencoded</td>
+<td>&#8216;status/&#8217;</td>
+<td>string (urlencoed)</td>
+</tr>
+<tr class="row-odd"><td>flavour</td>
+<td>&#8216;html&#8217;</td>
+<td>string</td>
+</tr>
+<tr class="row-even"><td>count</td>
+<td>70</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>indent</td>
+<td>&#8216;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#8217;</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pycategories - Builds a list of categories....</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pycalendar.html"
+                        title="previous chapter">pycalendar - Displays a calendar on your blog....</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pyfilenamemtime.html"
+                        title="next chapter">pyfilenamemtime - Allows you to codify the mtime in t...</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/pycategories.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pyfilenamemtime.html" title="pyfilenamemtime - Allows you to codify the mtime in t..."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pycalendar.html" title="pycalendar - Displays a calendar on your blog...."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

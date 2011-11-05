@@ -1,0 +1,511 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>comments - Adds comments to a blog entry.... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="conditionalhttp - Allows browser-side caching with if..." href="conditionalhttp.html" />
+    <link rel="prev" title="check_nonhuman - Rejects non-human comments...." href="check_nonhuman.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="conditionalhttp.html" title="conditionalhttp - Allows browser-side caching with if..."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="check_nonhuman.html" title="check_nonhuman - Rejects non-human comments...."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="comments-adds-comments-to-a-blog-entry">
+<h1>comments - Adds comments to a blog entry....<a class="headerlink" href="#comments-adds-comments-to-a-blog-entry" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Adds comments to your blog.  Supports preview, AJAX posting, SMTP
+notifications, plugins for rejecting comments (and thus reducing
+spam), ...</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic simple">
+<li>Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.comments</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list of
+your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</li>
+<li>Configure as documented below.</li>
+</ol>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Comments are stored in a directory which will parallel the data
+directory.  The comments themselves are stored as XML files named
+entryname-datetime.suffix.  The comment system allows you to
+specify the directory where the comment directory tree will stored,
+and the suffix used for comment files.  You need to make sure that
+this directory is writable by the pyblosxom CGI scripts.</p>
+<p>Set py[&#8216;comment_dir&#8217;] to the directory (in your data directory)
+where you want the comments to be stored.  The default value is a
+directory named &#8216;comments&#8217; in your datadir.</p>
+</li>
+<li><p class="first">Copy the templates required.  See the Flavour templates section
+below for examples.</p>
+</li>
+<li><p class="first">(optional) Set py[&#8216;comment_ext&#8217;] to the change comment file
+extension.  The default file extension is &#8216;cmt&#8217;.</p>
+</li>
+<li><p class="first">(optional) The comment system can notify you via e-mail when new
+comments/trackbacks/pingbacks are posted.  If you want to enable this
+feature, create the following config.py entries:</p>
+<div class="highlight-python"><pre>py['comment_smtp_from']   - the address sending the notification
+py['comment_smtp_to']     - the address receiving the notification</pre>
+</div>
+<p>If you want to use an SMTP server, then set:</p>
+<div class="highlight-python"><pre>py['comment_smtp_server'] - your SMTP server</pre>
+</div>
+<p><strong>OR</strong> if you want to use a mail command, set:</p>
+<div class="highlight-python"><pre>py['comment_mta_cmd']     - the path to your MTA, e.g. /usr/bin/mail</pre>
+</div>
+<p>Example 1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&#39;comment_smtp_from&#39;</span><span class="p">]</span>   <span class="o">=</span> <span class="s">&quot;joe@joe.com&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&#39;comment_smtp_to&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="s">&quot;joe@joe.com&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&#39;comment_smtp_server&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;localhost&quot;</span>
+</pre></div>
+</div>
+<p>Example 2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&#39;comment_smtp_from&#39;</span><span class="p">]</span>   <span class="o">=</span> <span class="s">&quot;joe@joe.com&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&#39;comment_smtp_to&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="s">&quot;joe@joe.com&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&#39;comment_mta_cmd&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="s">&quot;/usr/bin/mail&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This module supports the following config parameters (they are not
+required):</p>
+<p><tt class="docutils literal"><span class="pre">comment_dir</span></tt></p>
+<blockquote>
+<div>the directory we&#8217;re going to store all our comments in.  this
+defaults to datadir + &#8220;comments&#8221;.</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">comment_ext</span></tt></p>
+<blockquote>
+<div>the file extension used to denote a comment file.  this defaults
+to &#8220;cmt&#8221;.</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">comment_draft_ext</span></tt></p>
+<blockquote>
+<div>the file extension used for new comments that have not been
+manually approved by you.  this defaults to comment_ext
+(i.e. there is no draft stage)</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">comment_smtp_server</span></tt></p>
+<blockquote>
+<div>the smtp server to send comments notifications through.</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">comment_mta_cmd</span></tt></p>
+<blockquote>
+<div>alternatively, a command line to invoke your MTA (e.g.
+sendmail) to send comment notifications through.</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">comment_smtp_from</span></tt></p>
+<blockquote>
+<div>the email address comment notifications will be from. If you&#8217;re
+using SMTP, this should be an email address accepted by your
+SMTP server. If you omit this, the from address will be the
+e-mail address as input in the comment form.</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">comment_smtp_to</span></tt></p>
+<blockquote>
+<div>the email address to send comment notifications to.</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">comment_nofollow</span></tt></p>
+<blockquote>
+<div>set this to 1 to add rel=&#8221;nofollow&#8221; attributes to links in the
+description &#8211; these attributes are embedded in the stored
+representation.</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">comment_disable_after_x_days</span></tt></p>
+<blockquote>
+<div>set this to a positive integer and users won&#8217;t be able to leave
+comments on entries older than x days.</div></blockquote>
+<p>Comments are stored one or more per file in a parallel hierarchy to
+the datadir hierarchy.  The filename of the comment is the filename of
+the blog entry, plus the creation time of the comment as a float, plus
+the comment extension.</p>
+<p>Comments now follow the <tt class="docutils literal"><span class="pre">blog_encoding</span></tt> variable specified in
+<tt class="docutils literal"><span class="pre">config.py</span></tt>.  If you don&#8217;t include a <tt class="docutils literal"><span class="pre">blog_encoding</span></tt> variable,
+this will default to iso-8859-1.</p>
+<p>Comments will be shown for a given page if one of the following is
+true:</p>
+<ol class="arabic simple">
+<li>the page has only one blog entry on it and the request is for a
+specific blog entry as opposed to a category with only one entry
+in it</li>
+<li>if &#8220;showcomments=yes&#8221; is in the querystring then comments will
+be shown</li>
+</ol>
+</div>
+<div class="section" id="related-files">
+<h2>Related files<a class="headerlink" href="#related-files" title="Permalink to this headline">¶</a></h2>
+<p>This plugin has related files like flavour templates, javascript file,
+shell scripts and such.  All of these files can be gotten from <a class="reference external" href="../_static/plugins/comments/">here</a></p>
+</div>
+<div class="section" id="flavour-templates">
+<h2>Flavour templates<a class="headerlink" href="#flavour-templates" title="Permalink to this headline">¶</a></h2>
+<p>The comments plugin requires at least the <tt class="docutils literal"><span class="pre">comment-story</span></tt>,
+<tt class="docutils literal"><span class="pre">comment</span></tt>, and <tt class="docutils literal"><span class="pre">comment-form</span></tt> templates.  The <tt class="docutils literal"><span class="pre">comment-preview</span></tt>
+template is optional.</p>
+<p>The way the comments plugin assembles flavour files is like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">comment</span><span class="o">-</span><span class="n">story</span>
+<span class="n">comment</span> <span class="p">(</span><span class="n">zero</span> <span class="ow">or</span> <span class="n">more</span><span class="p">)</span>
+<span class="n">comment</span><span class="o">-</span><span class="n">preview</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span>
+<span class="n">comment</span><span class="o">-</span><span class="n">form</span>
+</pre></div>
+</div>
+<p>Thus if you want to have your entire comment section in a div
+container, you&#8217;d start the div container at the top of comment-story
+and end it at the bottom of comment-form.</p>
+<div class="section" id="comment-story">
+<h3>comment-story<a class="headerlink" href="#comment-story" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">comment-story</span></tt> template comes at the beginning of the comment
+section before the comments and the comment form.</p>
+<p>Variables available:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>$num_comments - Contains an integer count of the number of comments</dt>
+<dd>associated with this entry</dd>
+</dl>
+</div></blockquote>
+<p>Link to file: <a class="reference external" href="../_static/plugins/comments/comment-story">comment-story</a></p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;blosxomComments&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="comment">
+<h3>comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">comment</span></tt> template is used to format a single entry that has
+comments.</p>
+<p>Variables available:</p>
+<div class="highlight-python"><pre>$cmt_title - the title of the comment
+$cmt_description - the content of the comment or excerpt of the
+                   trackback/pingback
+$cmt_link - the pingback link referring to this entry
+$cmt_author - the author of the comment or trackback
+$cmt_optionally_linked_author - the author, wrapped in an &lt;a href&gt; tag
+                                to their link if one was provided
+$cmt_pubDate - the date and time of the comment/trackback/pingback
+$cmt_source - the source of the trackback</pre>
+</div>
+<p>Link to file: <a class="reference external" href="../_static/plugins/comments/comment">comment</a></p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;blosxomComment&quot;</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;$(cmt_time)&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+Posted by $(cmt_optionally_linked_author) at $(cmt_pubDate)<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+$(cmt_description)<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="comment-preview">
+<h3>comment-preview<a class="headerlink" href="#comment-preview" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">comment-preview</span></tt> template shows a comment that is being
+previewed, but hasn&#8217;t been posted to the blog, yet.</p>
+<p>Link to file: <a class="reference external" href="../_static/plugins/comments/comment-preview">comment-preview</a></p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;blosxomComment&quot;</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;b&gt;</span>THIS IS YOUR COMMENT PREVIEW--IT HAS NOT BEEN SUBMITTED YET.<span class="nt">&lt;/b&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;$(cmt_time)&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+Posted by $(cmt_optionally_linked_author) at $(cmt_pubDate)<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+$(cmt_description)<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="comment-form">
+<h3>comment-form<a class="headerlink" href="#comment-form" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">comment-form</span></tt> comes at the end of all the comments.  It has the
+comment form used to enter new comments.</p>
+<p>Link to file: <a class="reference external" href="../_static/plugins/comments/comment-form">comment-form</a></p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">&quot;comment-anchor&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;b&gt;</span>$(comment_message)<span class="nt">&lt;/b&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;blosxomCommentForm&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">action=</span><span class="s">&quot;$(base_url)/$(file_path)&quot;</span> <span class="na">accept-charset=</span><span class="s">&quot;UTF-8&quot;</span>
+      <span class="na">name=</span><span class="s">&quot;comments_form&quot;</span> <span class="na">id=</span><span class="s">&quot;comments_form&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">&quot;parent&quot;</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">value=</span><span class="s">&quot;$(file_path)&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">value=</span><span class="s">&quot;$(title)&quot;</span> <span class="nt">/&gt;</span>
+  Name:<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">maxlength=</span><span class="s">&quot;50&quot;</span> <span class="na">name=</span><span class="s">&quot;author&quot;</span> <span class="na">id=</span><span class="s">&quot;comment-author&quot;</span> <span class="na">size=</span><span class="s">&quot;50&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span>
+   <span class="na">value=</span><span class="s">&quot;$(cmt_author)&quot;</span> <span class="nt">/&gt;&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  E-mail:<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">maxlength=</span><span class="s">&quot;75&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="na">id=</span><span class="s">&quot;comment-email&quot;</span> <span class="na">size=</span><span class="s">&quot;50&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span>
+   <span class="na">value=</span><span class="s">&quot;$(cmt_email)&quot;</span> <span class="nt">/&gt;&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  URL:<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">maxlength=</span><span class="s">&quot;100&quot;</span> <span class="na">name=</span><span class="s">&quot;url&quot;</span> <span class="na">id=</span><span class="s">&quot;comment-url&quot;</span> <span class="na">size=</span><span class="s">&quot;50&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span>
+   <span class="na">value=</span><span class="s">&quot;$(cmt_link)&quot;</span> <span class="nt">/&gt;&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  Comment:<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;textarea</span> <span class="na">cols=</span><span class="s">&quot;50&quot;</span> <span class="na">name=</span><span class="s">&quot;body&quot;</span> <span class="na">id=</span><span class="s">&quot;comment-body&quot;</span> <span class="na">rows=</span><span class="s">&quot;12&quot;</span><span class="nt">&gt;</span>$(cmt_description)<span class="nt">&lt;/textarea&gt;&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">value=</span><span class="s">&quot;Preview&quot;</span> <span class="na">name=</span><span class="s">&quot;preview&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">id=</span><span class="s">&quot;preview&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span> <span class="na">name=</span><span class="s">&quot;submit&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">id=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dealing-with-comment-spam">
+<h2>Dealing with comment spam<a class="headerlink" href="#dealing-with-comment-spam" title="Permalink to this headline">¶</a></h2>
+<p>You&#8217;ll probably have comment spam.  There are a bunch of core plugins
+that will help you reduce the comment spam that come with Pyblosxom as
+well as ones that don&#8217;t.</p>
+<p>Best to check the core plugins first.</p>
+</div>
+<div class="section" id="compacting-comments">
+<h2>Compacting comments<a class="headerlink" href="#compacting-comments" title="Permalink to this headline">¶</a></h2>
+<p>This plugin always writes each comment to its own file, but as an
+optimization, it supports files that contain multiple comments.  You
+can use <tt class="docutils literal"><span class="pre">compact_comments.sh</span></tt> to compact comments into a single file
+per entry.</p>
+<p>You can find <tt class="docutils literal"><span class="pre">compact_comments.sh</span></tt> <a class="reference external" href="../_static/plugins/comments/">here</a>.</p>
+</div>
+<div class="section" id="implementing-comment-preview">
+<h2>Implementing comment preview<a class="headerlink" href="#implementing-comment-preview" title="Permalink to this headline">¶</a></h2>
+<p>If you would like comment previews, you need to do 2 things.</p>
+<ol class="arabic">
+<li><p class="first">Add a preview button to comment-form.html like this:</p>
+<div class="highlight-python"><pre>&lt;input name="preview" type="submit" value="Preview" /&gt;</pre>
+</div>
+<p>You may change the contents of the value attribute, but the name of
+the input must be &#8220;preview&#8221;.</p>
+</li>
+<li><p class="first">Still in your <tt class="docutils literal"><span class="pre">comment-form.html</span></tt> template, you need to use the
+comment values to fill in the values of your input fields like so:</p>
+<div class="highlight-python"><pre>&lt;input name="author" type="text" value="$(cmt_author)"&gt;
+&lt;input name="email" type="text" value="$(cmt_email)"&gt;
+&lt;input name="url" type="text" value="$(cmt_link)"&gt;
+&lt;textarea name="body"&gt;$(cmt_description)&lt;/textarea&gt;</pre>
+</div>
+<p>If there is no preview available, these variables will be stripped
+from the text and cause no problem.</p>
+</li>
+<li><p class="first">Copy <tt class="docutils literal"><span class="pre">comment.html</span></tt> to a template called
+<tt class="docutils literal"><span class="pre">comment-preview.html</span></tt>. All of the available variables from the
+comment template are available for this template.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="ajax-support">
+<h2>AJAX support<a class="headerlink" href="#ajax-support" title="Permalink to this headline">¶</a></h2>
+<p>Comment previewing and posting can optionally use AJAX, as opposed to
+full HTTP POST requests. This avoids a full-size roundtrip and
+re-render, so commenting feels faster and more lightweight.</p>
+<p>AJAX commenting degrades gracefully in older browsers.  If JavaScript
+is disabled or not supported in the user&#8217;s browser, or if it doesn&#8217;t
+support XmlHttpRequest, comment posting and preview will use normal
+HTTP POST.  This will also happen if comment plugins that use
+alternative protocols are detected, like <tt class="docutils literal"><span class="pre">comments_openid.py</span></tt>.</p>
+<p>To add AJAX support, you need to make the following modifications to your
+<tt class="docutils literal"><span class="pre">comment-form</span></tt> template:</p>
+<ol class="arabic">
+<li><p class="first">The comment-anchor tag must be the first thing in the
+<tt class="docutils literal"><span class="pre">comment-form</span></tt> template:</p>
+<div class="highlight-python"><pre>&lt;p id="comment-anchor" /&gt;</pre>
+</div>
+</li>
+<li><p class="first">Change the <tt class="docutils literal"><span class="pre">&lt;form...&gt;</span></tt> tag to something like this:</p>
+<div class="highlight-python"><pre>&lt;form method="post" action="$(base_url)/$(file_path)#comment-anchor"
+   name="comments_form" id="comments_form" onsubmit="return false;"&gt;</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you run pyblosxom inside cgiwrap, you&#8217;ll probably need to
+remove <tt class="docutils literal"><span class="pre">#comment-anchor</span></tt> from the URL in the action attribute.
+They&#8217;re incompatible.</p>
+<p class="last">Your host may even be using cgiwrap without your knowledge. If
+AJAX comment previewing and posting don&#8217;t work, try removing
+<tt class="docutils literal"><span class="pre">#comment-anchor</span></tt>.</p>
+</div>
+</li>
+<li><p class="first">Add <tt class="docutils literal"><span class="pre">onclick</span></tt> handlers to the button input tags:</p>
+<div class="highlight-python"><pre>&lt;input value="Preview" name="preview" type="button" id="preview"
+    onclick="send_comment('preview');" /&gt;
+&lt;input value="Submit" name="submit" type="button" id="post"
+    onclick="send_comment('post');" /&gt;</pre>
+</div>
+</li>
+<li><p class="first">Copy <tt class="docutils literal"><span class="pre">comments.js</span></tt> file to a location on your server that&#8217;s
+servable by your web server.</p>
+<p>You can find this file <a class="reference external" href="../_static/plugins/comments/">here</a>.</p>
+</li>
+<li><p class="first">Include this script tag somewhere after the <tt class="docutils literal"><span class="pre">&lt;/form&gt;</span></tt> closing tag:</p>
+<div class="highlight-python"><pre>&lt;script type="text/javascript" src="/comments.js"&gt;&lt;/script&gt;</pre>
+</div>
+<p>Set the url for <tt class="docutils literal"><span class="pre">comments.js</span></tt> to the url for where
+<tt class="docutils literal"><span class="pre">comments.js</span></tt> is located on your server from step 4.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note the separate closing <tt class="docutils literal"><span class="pre">&lt;/script&gt;</span></tt> tag!  It&#8217;s for IE;
+without it, IE won&#8217;t actually run the code in <tt class="docutils literal"><span class="pre">comments.js</span></tt>.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="nofollow-support">
+<h2>nofollow support<a class="headerlink" href="#nofollow-support" title="Permalink to this headline">¶</a></h2>
+<p>This implements Google&#8217;s nofollow support for links in the body of the
+comment.  If you display the link of the comment poster in your HTML
+template then you must add the <tt class="docutils literal"><span class="pre">rel=&quot;nofollow&quot;</span></tt> attribute to your
+template as well</p>
+</div>
+<div class="section" id="note-to-developers-who-are-writing-plugins-that-create-comments">
+<h2>Note to developers who are writing plugins that create comments<a class="headerlink" href="#note-to-developers-who-are-writing-plugins-that-create-comments" title="Permalink to this headline">¶</a></h2>
+<p>Each entry has to have the following properties in order to work with
+comments:</p>
+<ol class="arabic">
+<li><p class="first"><tt class="docutils literal"><span class="pre">absolute_path</span></tt> - the category of the entry.</p>
+<p>Example: &#8220;dev/pyblosxom&#8221; or &#8220;&#8221;</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">fn</span></tt> - the filename of the entry without the file extension and without
+the directory.</p>
+<p>Example: &#8220;staticrendering&#8221;</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">file_path</span></tt> - the absolute_path plus the fn.</p>
+<p>Example: &#8220;dev/pyblosxom/staticrendering&#8221;</p>
+</li>
+</ol>
+<p>Also, if you don&#8217;t want comments for an entry, add:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#nocomments 1</span>
+</pre></div>
+</div>
+<p>to the entry or set <tt class="docutils literal"><span class="pre">nocomments</span></tt> to <tt class="docutils literal"><span class="pre">1</span></tt> in the properties of the
+entry.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">comments - Adds comments to a blog entry....</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#related-files">Related files</a></li>
+<li><a class="reference internal" href="#flavour-templates">Flavour templates</a><ul>
+<li><a class="reference internal" href="#comment-story">comment-story</a></li>
+<li><a class="reference internal" href="#comment">comment</a></li>
+<li><a class="reference internal" href="#comment-preview">comment-preview</a></li>
+<li><a class="reference internal" href="#comment-form">comment-form</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dealing-with-comment-spam">Dealing with comment spam</a></li>
+<li><a class="reference internal" href="#compacting-comments">Compacting comments</a></li>
+<li><a class="reference internal" href="#implementing-comment-preview">Implementing comment preview</a></li>
+<li><a class="reference internal" href="#ajax-support">AJAX support</a></li>
+<li><a class="reference internal" href="#nofollow-support">nofollow support</a></li>
+<li><a class="reference internal" href="#note-to-developers-who-are-writing-plugins-that-create-comments">Note to developers who are writing plugins that create comments</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="check_nonhuman.html"
+                        title="previous chapter">check_nonhuman - Rejects non-human comments....</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="conditionalhttp.html"
+                        title="next chapter">conditionalhttp - Allows browser-side caching with if...</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/comments.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="conditionalhttp.html" title="conditionalhttp - Allows browser-side caching with if..."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="check_nonhuman.html" title="check_nonhuman - Rejects non-human comments...."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

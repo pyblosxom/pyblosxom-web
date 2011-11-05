@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PyBlosxom Architecture &mdash; PyBlosxom v1.5 documentation</title>
+    <title>PyBlosxom Architecture &mdash; PyBlosxom 1.5 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -22,9 +25,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Writing Plugins" href="dev_writing_plugins.html" />
-    <link rel="prev" title="Plugins" href="plugins.html" /> 
+    <link rel="prev" title="yeararchives - Builds year-based archives listing...." href="plugins/yeararchives.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,9 +43,9 @@
           <a href="dev_writing_plugins.html" title="Writing Plugins"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="plugins.html" title="Plugins"
+          <a href="plugins/yeararchives.html" title="yeararchives - Builds year-based archives listing...."
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -70,7 +73,7 @@ disagreement.</p>
 <p>PyBlosxom is composed of several parts:</p>
 <ol class="arabic">
 <li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> - This is the CGI script that is executed by your
-web-server, pulls in configuration variables from <tt class="docutils literal"><span class="pre">config.py</span></tt> and
+web server, pulls in configuration variables from <tt class="docutils literal"><span class="pre">config.py</span></tt> and
 then instantiates PyBlosxom objects to handle the request.</p>
 </li>
 <li><p class="first"><tt class="docutils literal"><span class="pre">PyBlosxomWSGIApp</span></tt> - This is the WSGI application for PyBlosxom.</p>
@@ -126,7 +129,7 @@ the args dict as <tt class="docutils literal"><span class="pre">request</span></
 list of registered plugins, what callbacks they&#8217;re registered to,
 and the methods that handle the the actual request.</li>
 </ul>
-<p>The PyBlosxom request lifecycle starts with the web-server executing
+<p>The PyBlosxom request lifecycle starts with the web server executing
 <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>.</p>
 <ol class="arabic">
 <li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> loads <tt class="docutils literal"><span class="pre">config.py</span></tt></p>
@@ -360,9 +363,9 @@ containing:</p>
 <dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
 <dd>a Request object</dd>
 </dl>
-<p>Functions that implement this callback should return <tt class="xref docutils literal"><span class="pre">None</span></tt> if they
+<p>Functions that implement this callback should return <tt class="docutils literal"><span class="pre">None</span></tt> if they
 don&#8217;t plan on generating the entry list or a list of entries if they do.
-When a function returns <tt class="xref docutils literal"><span class="pre">None</span></tt>, the callback will continue to
+When a function returns <tt class="docutils literal"><span class="pre">None</span></tt>, the callback will continue to
 the next function to see if it will return a list of entries.  When a
 function returns a list of entries, the callback will stop.</p>
 </div>
@@ -378,7 +381,7 @@ containing:</p>
 <dt><tt class="docutils literal"><span class="pre">entry_list</span></tt></dt>
 <dd>The list of entries to be sorted.</dd>
 </dl>
-<p>Return <tt class="xref docutils literal"><span class="pre">None</span></tt> if the function doesn&#8217;t sort the list.  Return
+<p>Return <tt class="docutils literal"><span class="pre">None</span></tt> if the function doesn&#8217;t sort the list.  Return
 the sorted list if the function does sort the list.</p>
 <p>Example of a <tt class="docutils literal"><span class="pre">cb_sortlist</span></tt> function:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -419,7 +422,7 @@ containing:</p>
 <dt><tt class="docutils literal"><span class="pre">entry_list</span></tt></dt>
 <dd>The list of entries to be truncated.</dd>
 </dl>
-<p>Return <tt class="xref docutils literal"><span class="pre">None</span></tt> if the function doesn&#8217;t truncate the list.  Return
+<p>Return <tt class="docutils literal"><span class="pre">None</span></tt> if the function doesn&#8217;t truncate the list.  Return
 the new list if the function does truncate the list.</p>
 <p>Example of a <tt class="docutils literal"><span class="pre">cb_truncatelist</span></tt> function:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -537,7 +540,7 @@ containing:</p>
 <dt><tt class="docutils literal"><span class="pre">request</span></tt></dt>
 <dd>a Request object</dd>
 </dl>
-<p>Functions that implement this callback should return <tt class="xref docutils literal"><span class="pre">None</span></tt> if they
+<p>Functions that implement this callback should return <tt class="docutils literal"><span class="pre">None</span></tt> if they
 don&#8217;t want to specify a renderer or the renderer object instanct if
 they do.  When a function returns a renderer instance, processing
 stops.</p>
@@ -907,8 +910,8 @@ whether or not they adjust anything in it.</p>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="plugins.html"
-                        title="previous chapter">Plugins</a></p>
+  <p class="topless"><a href="plugins/yeararchives.html"
+                        title="previous chapter">yeararchives - Builds year-based archives listing....</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="dev_writing_plugins.html"
                         title="next chapter">Writing Plugins</a></p>
@@ -920,7 +923,7 @@ whether or not they adjust anything in it.</p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -947,15 +950,15 @@ whether or not they adjust anything in it.</p>
           <a href="dev_writing_plugins.html" title="Writing Plugins"
              >next</a> |</li>
         <li class="right" >
-          <a href="plugins.html" title="Plugins"
+          <a href="plugins/yeararchives.html" title="yeararchives - Builds year-based archives listing...."
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jul 14, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

@@ -1,0 +1,170 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>entrytitle - Puts entry title in page title.... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="firstdaydiv - Adds a token which tells us whether..." href="firstdaydiv.html" />
+    <link rel="prev" title="conditionalhttp - Allows browser-side caching with if..." href="conditionalhttp.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="firstdaydiv.html" title="firstdaydiv - Adds a token which tells us whether..."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="conditionalhttp.html" title="conditionalhttp - Allows browser-side caching with if..."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entrytitle-puts-entry-title-in-page-title">
+<h1>entrytitle - Puts entry title in page title....<a class="headerlink" href="#entrytitle-puts-entry-title-in-page-title" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>If PyBlosxom is rendering a single entry (i.e. entry_list has 1 item in it),
+then this populates the <tt class="docutils literal"><span class="pre">entry_title</span></tt> variable for the header template.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic simple">
+<li>Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.entrytitle</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list
+of your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</li>
+<li>Configure as documented below.</li>
+</ol>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To use, add the <tt class="docutils literal"><span class="pre">entry_title</span></tt> variable to your header template in
+the <tt class="docutils literal"><span class="pre">&lt;title&gt;</span></tt> area.</p>
+<p>Example:</p>
+<div class="highlight-python"><pre>&lt;title&gt;$(blog_title)$(entry_title)&lt;/title&gt;</pre>
+</div>
+<p>The default <tt class="docutils literal"><span class="pre">$(entry_title)</span></tt> starts with a <tt class="docutils literal"><span class="pre">::</span></tt> and ends with the
+title of the entry.  For example:</p>
+<div class="highlight-python"><pre>:: Guess what happened today</pre>
+</div>
+<p>You can set the entry title template in the configuration properties
+with the <tt class="docutils literal"><span class="pre">entry_title_template</span></tt> variable:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">config</span><span class="p">[</span><span class="s">&quot;entry_title_template&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;:: </span><span class="si">%(title)s</span><span class="s">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><tt class="docutils literal"><span class="pre">%(title)s</span></tt> is a Python string formatter that gets filled in with
+the entry title.</p>
+</div>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">entrytitle - Puts entry title in page title....</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="conditionalhttp.html"
+                        title="previous chapter">conditionalhttp - Allows browser-side caching with if...</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="firstdaydiv.html"
+                        title="next chapter">firstdaydiv - Adds a token which tells us whether...</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/entrytitle.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="firstdaydiv.html" title="firstdaydiv - Adds a token which tells us whether..."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="conditionalhttp.html" title="conditionalhttp - Allows browser-side caching with if..."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

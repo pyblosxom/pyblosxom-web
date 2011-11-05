@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>check_nonhuman - Rejects non-human comments.... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="comments - Adds comments to a blog entry...." href="comments.html" />
+    <link rel="prev" title="check_javascript - Rejects comments using JavaScript..." href="check_javascript.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="comments.html" title="comments - Adds comments to a blog entry...."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="check_javascript.html" title="check_javascript - Rejects comments using JavaScript..."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="check-nonhuman-rejects-non-human-comments">
+<h1>check_nonhuman - Rejects non-human comments....<a class="headerlink" href="#check-nonhuman-rejects-non-human-comments" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This works in conjunction with the comments plugin and allows you to
+significantly reduce comment spam by adding a &#8220;I am human&#8221; checkbox to
+your form.  Any comments that aren&#8217;t &#8220;from a human&#8221; get rejected
+immediately.</p>
+<p>This shouldn&#8217;t be the only way you reduce comment spam.  It&#8217;s probably
+not useful to everyone, but would be useful to some people as a quick
+way of catching some of the comment spam they&#8217;re getting.</p>
+<p>Usually this works for a while, then spam starts coming in again.  At
+that point, I change the <tt class="docutils literal"><span class="pre">nonhuman_name</span></tt> config.py variable value
+and I stop getting comment spam.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>Requires the <tt class="docutils literal"><span class="pre">comments</span></tt> plugin.</p>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic simple">
+<li>Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.check_nonhuman</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list
+in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</li>
+<li>Configure as documented below.</li>
+</ol>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>For setup, copy the plugin to your plugins directory and add it to
+your load_plugins list in your config.py file.</p>
+<p>Then add the following item to your config.py (this defaults to
+&#8220;iamhuman&#8221;):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;nonhuman_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;iamhuman&quot;</span>
+</pre></div>
+</div>
+<p>Then add the following to your comment-form template just above the
+submit button (make sure to match the input name to your configured
+input name):</p>
+<div class="highlight-python"><pre>&lt;input type="checkbox" name="iamhuman" value="yes"&gt;
+Yes, I am human!</pre>
+</div>
+<p>Alternatively, if you set the <tt class="docutils literal"><span class="pre">nonhuman_name</span></tt> property, then you should
+do this:</p>
+<div class="highlight-python"><pre>&lt;input type="checkbox" name="$(nonhuman_name)" value="yes"&gt;
+Yes, I am human!</pre>
+</div>
+<p>Additionally, the nonhuman plugin can log when it rejected a comment.
+This is good for statistical purposes.  1 if &#8220;yes, I want to log&#8221; and
+0 (default) if &#8220;no, i don&#8217;t want to log&#8221;.  Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;nonhuman_log&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>And that&#8217;s it!</p>
+<p>The idea came from:</p>
+<div class="highlight-python"><pre>http://www.davidpashley.com/cgi/pyblosxom.cgi/2006/04/28#blog-spam</pre>
+</div>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">check_nonhuman - Rejects non-human comments....</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="check_javascript.html"
+                        title="previous chapter">check_javascript - Rejects comments using JavaScript...</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="comments.html"
+                        title="next chapter">comments - Adds comments to a blog entry....</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/check_nonhuman.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="comments.html" title="comments - Adds comments to a blog entry...."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="check_javascript.html" title="check_javascript - Rejects comments using JavaScript..."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

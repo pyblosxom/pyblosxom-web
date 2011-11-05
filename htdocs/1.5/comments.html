@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Comments &mdash; PyBlosxom v1.5 documentation</title>
+    <title>Comments &mdash; PyBlosxom 1.5 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Plugins" href="plugins.html" />
     <link rel="prev" title="Renderers" href="renderers.html" /> 
   </head>
@@ -42,7 +45,7 @@
         <li class="right" >
           <a href="renderers.html" title="Renderers"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -74,7 +77,7 @@ your blog.</p>
 </ul>
 <p>Cons:</p>
 <ul class="simple">
-<li>it&#8217;s a web-service that you have no control over</li>
+<li>it&#8217;s a web service that you have no control over</li>
 <li>it might be difficult to move your comments over to a new system</li>
 </ul>
 <p>If this is interesting to you, <a class="reference external" href="http://disqus.com/">sign up for a Disqus account</a>.</p>
@@ -125,7 +128,7 @@ comment API.</p>
 <h3>Installing the comments plugin<a class="headerlink" href="#installing-the-comments-plugin" title="Permalink to this headline">¶</a></h3>
 <p>Requirements:</p>
 <ol class="arabic simple">
-<li>A directory the web-server has writable permissions to.</li>
+<li>A directory the web server has writable permissions to.</li>
 <li>Time and patience.</li>
 </ol>
 <p>After making sure you have the requirements, do the following:</p>
@@ -166,17 +169,17 @@ templates if you need to.  Variables that are available are:</p>
 <col width="81%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head" colspan="2"><p class="first last">Template variables from comments.py available in story and comment-story</p>
+<tr class="row-odd"><th class="head" colspan="2"><p class="first last">Template variables from comments.py available in story and comment-story</p>
 </th>
 </tr>
-<tr><th class="head"><p class="first last">variable name</p>
+<tr class="row-even"><th class="head"><p class="first last">variable name</p>
 </th>
 <th class="head"><p class="first last">description</p>
 </th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td><p class="first last">num_comments</p>
+<tr class="row-odd"><td><p class="first last">num_comments</p>
 </td>
 <td><p class="first last">contains an integer count of the number of comments
 associated withthis entry</p>
@@ -191,48 +194,48 @@ associated withthis entry</p>
 <col width="69%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head" colspan="2"><p class="first last">Template variables from comments.py</p>
+<tr class="row-odd"><th class="head" colspan="2"><p class="first last">Template variables from comments.py</p>
 </th>
 </tr>
-<tr><th class="head"><p class="first last">variable name</p>
+<tr class="row-even"><th class="head"><p class="first last">variable name</p>
 </th>
 <th class="head"><p class="first last">description</p>
 </th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td><p class="first last">cmt_title</p>
+<tr class="row-odd"><td><p class="first last">cmt_title</p>
 </td>
 <td><p class="first last">the title of the comment</p>
 </td>
 </tr>
-<tr><td><p class="first last">cmt_description</p>
+<tr class="row-even"><td><p class="first last">cmt_description</p>
 </td>
 <td><p class="first last">the content of the comment or excerpt of the trackback/pingback</p>
 </td>
 </tr>
-<tr><td><p class="first last">cmt_link</p>
+<tr class="row-odd"><td><p class="first last">cmt_link</p>
 </td>
 <td><p class="first last">the pingback link referring to this entry</p>
 </td>
 </tr>
-<tr><td><p class="first last">cmt_author</p>
+<tr class="row-even"><td><p class="first last">cmt_author</p>
 </td>
 <td><p class="first last">the author of the comment or trackback</p>
 </td>
 </tr>
-<tr><td><p class="first last">cmt_optionally_linked_author</p>
+<tr class="row-odd"><td><p class="first last">cmt_optionally_linked_author</p>
 </td>
 <td><p class="first last">the author, wrapped in an &amp;lt;a href&amp;gt; tag to
 <tt class="docutils literal"><span class="pre">$cmt_link</span></tt> <em>if</em> it was provided</p>
 </td>
 </tr>
-<tr><td><p class="first last">cmt_pubDate</p>
+<tr class="row-even"><td><p class="first last">cmt_pubDate</p>
 </td>
 <td><p class="first last">the date and time of the comment/trackback/pingback</p>
 </td>
 </tr>
-<tr><td><p class="first last">cmt_source</p>
+<tr class="row-odd"><td><p class="first last">cmt_source</p>
 </td>
 <td><p class="first last">the source of the trackback</p>
 </td>
@@ -544,7 +547,7 @@ template. Add the following tag to the <tt class="docutils literal"><span class=
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -573,13 +576,13 @@ template. Add the following tag to the <tt class="docutils literal"><span class=
         <li class="right" >
           <a href="renderers.html" title="Renderers"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jul 14, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

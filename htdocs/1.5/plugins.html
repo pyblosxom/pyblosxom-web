@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plugins &mdash; PyBlosxom v1.5 documentation</title>
+    <title>Plugins &mdash; PyBlosxom 1.5 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -22,8 +25,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
-    <link rel="next" title="PyBlosxom Architecture" href="dev_architecture.html" />
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
+    <link rel="next" title="Authors" href="authors.html" />
     <link rel="prev" title="Comments" href="comments.html" /> 
   </head>
   <body>
@@ -37,12 +40,12 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="dev_architecture.html" title="PyBlosxom Architecture"
+          <a href="authors.html" title="Authors"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="comments.html" title="Comments"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,73 +55,82 @@
           <div class="body">
             
   <div class="section" id="plugins">
-<h1>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="summary">
-<span id="using-plugins"></span><h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>PyBlosxom allows you to extend and augment its base functionality using
-PyBlosxom plugins.  Plugins allow you to create additional variables; provide
-additional entry parsers, renderers, post-formatters, and pre-formatters;
-create new output data types; pull information from other non-blog sources;
-create images; and a variety of other things.</p>
-</div>
+<span id="using-plugins"></span><h1>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h1>
+<p>PyBlosxom allows you to extend and augment its base functionality
+using PyBlosxom plugins.  Plugins allow you to create additional
+variables; provide additional entry parsers, renderers,
+post-formatters, and pre-formatters; create new output data types;
+pull information from other non-blog sources; create images; and a
+variety of other things.</p>
 <div class="section" id="setting-pyblosxom-up-to-use-plugins">
 <h2>Setting PyBlosxom up to use plugins<a class="headerlink" href="#setting-pyblosxom-up-to-use-plugins" title="Permalink to this headline">¶</a></h2>
-<p>There are two properties in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file that affect the behavior
-for loading plugins.</p>
+<p>There are two properties in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file that affect the
+behavior for loading plugins.</p>
 <p>The first one is the <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> property which is a list of
-strings specifying all the directories you might have plugins.  For example:</p>
+strings specifying all the directories you might have plugins.  For
+example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;plugin_dirs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;/home/will/pybloxsom/plugins&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>This will cause PyBlosxom to look in this specific directory for plugins.</p>
-<p>The other property is the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property.  If you don&#8217;t have this
-set at all (i.e. it&#8217;s either not in the <tt class="docutils literal"><span class="pre">config.py</span></tt> file or the line is
-commented out), PyBlosxom will load all plugins it finds in the plugin
-directories you&#8217;ve specified.  It will look in each directory in order as
-you&#8217;ve specified.  It will load the plugins in each directory in alphabetical
-order by filename.</p>
-<p>The other way to load plugins is by specifying the plugins explicitly by
-setting the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property.  PyBlosxom will load only the plugins
-you&#8217;ve specified and will load them in the order you&#8217;ve specified.  The
-<tt class="docutils literal"><span class="pre">load_plugins</span></tt> property takes a list of strings.  For example:</p>
+<p>This will cause PyBlosxom to look in this specific directory for
+plugins.</p>
+<p>The other property is the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property.  If you don&#8217;t
+have this set at all (i.e. it&#8217;s either not in the <tt class="docutils literal"><span class="pre">config.py</span></tt> file
+or the line is commented out), PyBlosxom will load all plugins it
+finds in the plugin directories you&#8217;ve specified.  It will look in
+each directory in order as you&#8217;ve specified.  It will load the plugins
+in each directory in alphabetical order by filename.</p>
+<p>The other way to load plugins is by specifying the plugins explicitly
+by setting the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property.  PyBlosxom will load only
+the plugins you&#8217;ve specified and will load them in the order you&#8217;ve
+specified.  The <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property takes a list of strings.
+For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;load_plugins&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;calendar&quot;</span><span class="p">,</span> <span class="s">&quot;category&quot;</span><span class="p">,</span> <span class="s">&quot;booklist&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>This will load the plugins whose filenames are <tt class="docutils literal"><span class="pre">calendar.py</span></tt>,
-<tt class="docutils literal"><span class="pre">category.py</span></tt>, and <tt class="docutils literal"><span class="pre">booklist.py</span></tt>.  It will only load those plugins even
-if other plugins are in the directory and it will load them in that order.</p>
+<tt class="docutils literal"><span class="pre">category.py</span></tt>, and <tt class="docutils literal"><span class="pre">booklist.py</span></tt>.  It will only load those plugins
+even if other plugins are in the directory and it will load them in
+that order.</p>
 </div>
 <div class="section" id="finding-plugins">
 <h2>Finding plugins<a class="headerlink" href="#finding-plugins" title="Permalink to this headline">¶</a></h2>
-<p>You can find plugins in the <a class="reference external" href="http://pyblosxom.bluesock.org/registry/">PyBlosxom plugin registry</a>.</p>
-<p>Additionally, some people write plugins, but never register with the plugin
-registry. Sometimes this is because the author doesn&#8217;t feel the plugin is
-finished for public consumption. Even so, it might meet your needs. The best
-way to find these plugins is to ask on the pyblosxom-users mailing list for
-a plugin that has the functionality you desire.</p>
+<p>As of 1.5, Pyblosxom comes with a core set of plugins.  Documentation
+for these plugins is in <a class="reference internal" href="index.html#part-two"><em>Part 2: Core plugin documentation</em></a>.</p>
+<p>Not all plugins come with Pyblosxom.  You can find more plugins in the
+plugin registry on the <a class="reference external" href="http://pyblosxom.bluesock.org/">website</a>.</p>
+<p>Additionally, some people write plugins, but never register with the
+plugin registry. Sometimes this is because the author doesn&#8217;t feel the
+plugin is finished for public consumption. Even so, it might meet your
+needs. The best way to find these plugins is to ask on the
+pyblosxom-users mailing list for a plugin that has the functionality
+you desire.</p>
 </div>
 <div class="section" id="installing-plugins">
 <h2>Installing plugins<a class="headerlink" href="#installing-plugins" title="Permalink to this headline">¶</a></h2>
 <p>When you&#8217;re installing a plugin, refer to its documentation.  The
-documentation could be in a <tt class="docutils literal"><span class="pre">README</span></tt> file, but more commonly it&#8217;s in the
-plugin code itself at the top of the file.  This documentation should tell
-you how to install the plugin, what template variables the plugin exposes,
-how to invoke the plugin, how to get in touch with the author should you
-find bugs or need help, and any additional things you should know about.</p>
-<p>Most plugins should have a pretty easy installation method. You should be
-able to copy the plugin into the directory defined in your <tt class="docutils literal"><span class="pre">config.py</span></tt>
-file in the <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> property.  Then there might be some additional
-properties you&#8217;ll have to set in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file to define the
-plugin&#8217;s behavior.  That should be about it.  On some occasions, you may
-have to change the code in the plugin itself to meet your specific needs.</p>
+documentation could be in a <tt class="docutils literal"><span class="pre">README</span></tt> file, but more commonly it&#8217;s in
+the plugin code itself at the top of the file.  This documentation
+should tell you how to install the plugin, what template variables the
+plugin exposes, how to invoke the plugin, how to get in touch with the
+author should you find bugs or need help, and any additional things
+you should know about.</p>
+<p>Most plugins should have a pretty easy installation method. You should
+be able to copy the plugin into the directory defined in your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file in the <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> property.  Then there might
+be some additional properties you&#8217;ll have to set in your <tt class="docutils literal"><span class="pre">config.py</span></tt>
+file to define the plugin&#8217;s behavior.  That should be about it.  On
+some occasions, you may have to change the code in the plugin itself
+to meet your specific needs.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>A note about Apache, no suexec, .pyc files, and permission problems:</p>
-<p>If you&#8217;re not running suexec, then Apache may not be able to generate
-the <tt class="docutils literal"><span class="pre">.pyc</span></tt> files for your plugins.  This may result in your plugins
-failing to load.</p>
-<p>If that happens, you should run <tt class="docutils literal"><span class="pre">./pyblosxom.cgi</span></tt> in your shell to
-generate the <tt class="docutils literal"><span class="pre">.pyc</span></tt> files.</p>
+<p>A note about Apache, no suexec, .pyc files, and permission
+problems:</p>
+<p>If you&#8217;re not running suexec, then Apache may not be able to
+generate the <tt class="docutils literal"><span class="pre">.pyc</span></tt> files for your plugins.  This may result in
+your plugins failing to load.</p>
+<p>If that happens, you should run <tt class="docutils literal"><span class="pre">./pyblosxom.cgi</span></tt> in your shell
+to generate the <tt class="docutils literal"><span class="pre">.pyc</span></tt> files.</p>
 <p class="last">Every time you install a new plugin or change an existing plugin,
 you&#8217;ll need to remove the existing <tt class="docutils literal"><span class="pre">.pyc</span></tt> files and regenerate
 them.</p>
@@ -126,19 +138,19 @@ them.</p>
 </div>
 <div class="section" id="writing-your-own-plugins">
 <h2>Writing Your Own plugins<a class="headerlink" href="#writing-your-own-plugins" title="Permalink to this headline">¶</a></h2>
-<p>You may find that you desire functionality and there is no plugin that anyone
-knows about that performs that functionality.  It&#8217;s probably best at this
-point for you to ask someone to write the plugin you need or write it
-yourself.</p>
-<p>PyBlosxom plugins are fairly easy to write and can cover a lot of really
-different functionality.  The best way to learn how to write PyBlosxom
-plugins is to read through the plugins in the plugin registry.  Many of them
-are well written and may provide insight as to how to solve your specific
-problem.</p>
+<p>You may find that you desire functionality and there is no plugin that
+anyone knows about that performs that functionality.  It&#8217;s probably
+best at this point for you to ask someone to write the plugin you need
+or write it yourself.</p>
+<p>PyBlosxom plugins are fairly easy to write and can cover a lot of
+really different functionality.  The best way to learn how to write
+PyBlosxom plugins is to read through the plugins in the plugin
+registry.  Many of them are well written and may provide insight as to
+how to solve your specific problem.</p>
 <p>If you plan on writing your own plugin, refer to the manual file on
 writing PyBlosxom plugins.</p>
 <p>Additionally, feel free to ask for help on the pyblosxom-users and
-pyblosxom-devel mailing lists.</p>
+pyblosxom-devel mailing lists or on IRC.  Details are on the <a class="reference external" href="http://pyblosxom.bluesock.org/">website</a></p>
 </div>
 </div>
 
@@ -151,7 +163,6 @@ pyblosxom-devel mailing lists.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Plugins</a><ul>
-<li><a class="reference internal" href="#summary">Summary</a></li>
 <li><a class="reference internal" href="#setting-pyblosxom-up-to-use-plugins">Setting PyBlosxom up to use plugins</a></li>
 <li><a class="reference internal" href="#finding-plugins">Finding plugins</a></li>
 <li><a class="reference internal" href="#installing-plugins">Installing plugins</a></li>
@@ -164,8 +175,8 @@ pyblosxom-devel mailing lists.</p>
   <p class="topless"><a href="comments.html"
                         title="previous chapter">Comments</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="dev_architecture.html"
-                        title="next chapter">PyBlosxom Architecture</a></p>
+  <p class="topless"><a href="authors.html"
+                        title="next chapter">Authors</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/plugins.txt"
@@ -174,7 +185,7 @@ pyblosxom-devel mailing lists.</p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -198,18 +209,18 @@ pyblosxom-devel mailing lists.</p>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="dev_architecture.html" title="PyBlosxom Architecture"
+          <a href="authors.html" title="Authors"
              >next</a> |</li>
         <li class="right" >
           <a href="comments.html" title="Comments"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jul 14, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

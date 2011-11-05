@@ -1,0 +1,187 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>yeararchives - Builds year-based archives listing.... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="PyBlosxom Architecture" href="../dev_architecture.html" />
+    <link rel="prev" title="xmlrpc_pingback - XMLRPC pingback support...." href="xmlrpc_pingback.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../dev_architecture.html" title="PyBlosxom Architecture"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="xmlrpc_pingback.html" title="xmlrpc_pingback - XMLRPC pingback support...."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="yeararchives-builds-year-based-archives-listing">
+<h1>yeararchives - Builds year-based archives listing....<a class="headerlink" href="#yeararchives-builds-year-based-archives-listing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Walks through your blog root figuring out all the available years for
+the archives list.  It stores the years with links to year summaries
+in the variable <tt class="docutils literal"><span class="pre">$(archivelinks)</span></tt>.  You should put this variable in
+either your head or foot template.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic simple">
+<li>Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.yeararchives</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list
+in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</li>
+<li>Add <tt class="docutils literal"><span class="pre">$(archivelinks)</span></tt> to your head and/or foot templates.</li>
+<li>Configure as documented below.</li>
+</ol>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>When the user clicks on one of the year links
+(e.g. <tt class="docutils literal"><span class="pre">http://base_url/2004/</span></tt>), then yeararchives will display a
+summary page for that year.  The summary is generated using the
+<tt class="docutils literal"><span class="pre">yearsummarystory</span></tt> template for each month in the year.</p>
+<p>My <tt class="docutils literal"><span class="pre">yearsummarystory</span></tt> template looks like this:</p>
+<div class="highlight-python"><pre>&lt;div class="blosxomEntry"&gt;
+&lt;span class="blosxomTitle"&gt;$title&lt;/span&gt;
+&lt;div class="blosxomBody"&gt;
+&lt;table&gt;
+$body
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</pre>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">$(archivelinks)</span></tt> link can be configured with the
+<tt class="docutils literal"><span class="pre">archive_template</span></tt> config variable.  It uses the Python string
+formatting syntax.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&#39;archive_template&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;&lt;a href=&quot;</span><span class="si">%(base_url)s</span><span class="s">/</span><span class="si">%(Y)s</span><span class="s">/index.</span><span class="si">%(f)s</span><span class="s">&quot;&gt;&#39;</span>
+    <span class="s">&#39;</span><span class="si">%(Y)s</span><span class="s">&lt;/a&gt;&lt;br /&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The vars available with typical example values are:</p>
+<div class="highlight-python"><pre>Y      4-digit year   ex: '1978'
+y      2-digit year   ex: '78'
+f      the flavour    ex: 'html'</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">archive_template</span></tt> variable value is formatted using Python
+string formatting rules&#8211;not Pyblosxom template rules!</p>
+</div>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">yeararchives - Builds year-based archives listing....</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="xmlrpc_pingback.html"
+                        title="previous chapter">xmlrpc_pingback - XMLRPC pingback support....</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../dev_architecture.html"
+                        title="next chapter">PyBlosxom Architecture</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/yeararchives.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../dev_architecture.html" title="PyBlosxom Architecture"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="xmlrpc_pingback.html" title="xmlrpc_pingback - XMLRPC pingback support...."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

@@ -96,7 +96,7 @@ print '</ul>'
   You can clone the PyBlosxom repository with:
 </p>
 <pre>
- $ git clone http://gitorious.org/pyblosxom/pyblosxom/
+ $ git clone https://git.gitorious.org/pyblosxom/pyblosxom.git
 </pre>
 <p>
   PyBlosxom is written in Python.  PyBlosxom is distributed

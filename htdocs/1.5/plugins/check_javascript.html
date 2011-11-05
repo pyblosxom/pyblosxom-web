@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>check_javascript - Rejects comments using JavaScript... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="check_nonhuman - Rejects non-human comments...." href="check_nonhuman.html" />
+    <link rel="prev" title="check_blacklist - Rejects comments using a word black..." href="check_blacklist.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="check_nonhuman.html" title="check_nonhuman - Rejects non-human comments...."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="check_blacklist.html" title="check_blacklist - Rejects comments using a word black..."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="check-javascript-rejects-comments-using-javascript">
+<h1>check_javascript - Rejects comments using JavaScript...<a class="headerlink" href="#check-javascript-rejects-comments-using-javascript" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This plugin filters spam with a dash of JavaScript on the client side.
+The JavaScript sets a hidden input field <tt class="docutils literal"><span class="pre">secretToken</span></tt> in the
+comment form to the blog&#8217;s title.  This plugin checks the
+<tt class="docutils literal"><span class="pre">secretToken</span></tt> URL parameter and rejects the comment if it&#8217;s not set
+correctly.</p>
+<p>The benefit of JavaScript as an anti-spam technique is that it&#8217;s very
+successful.  It has extremely low false positive and false negative
+rates, as compared to conventional techniques like CAPTCHAs, bayesian
+filtering, and keyword detection.</p>
+<p>Of course, JavaScript has its own drawbacks, primarily that it&#8217;s not
+supported in extremely old browsers, and that users can turn it off.
+That&#8217;s a very small minority of cases, though.  Its effectiveness as
+an anti-spam technique usually make that tradeoff worthwhile.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>Requires the <tt class="docutils literal"><span class="pre">comments</span></tt> plugin.</p>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic simple">
+<li>Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.check_javascript</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt>
+list in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</li>
+<li>Configure as documented below.</li>
+</ol>
+</div>
+<div class="section" id="configure">
+<h2>Configure<a class="headerlink" href="#configure" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Make sure you have <tt class="docutils literal"><span class="pre">blog_title</span></tt> set in your <tt class="docutils literal"><span class="pre">config.py</span></tt>.</p>
+</li>
+<li><p class="first">Add the following bits to your <tt class="docutils literal"><span class="pre">comment-form</span></tt> template inside
+the <tt class="docutils literal"><span class="pre">&lt;form&gt;</span></tt> tags:</p>
+<div class="highlight-python"><pre>&lt;input type="hidden" name="secretToken" id="secretTokenInput"
+  value="pleaseDontSpam" /&gt;
+
+&lt;script type="text/javascript"&gt;
+// used by check_javascript.py. this is almost entirely backwards
+// compatible, back to 4.x browsers.
+document.getElementById("secretTokenInput").value = "$(blog_title)";
+&lt;/script&gt;</pre>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: GPLv2</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">check_javascript - Rejects comments using JavaScript...</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#configure">Configure</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="check_blacklist.html"
+                        title="previous chapter">check_blacklist - Rejects comments using a word black...</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="check_nonhuman.html"
+                        title="next chapter">check_nonhuman - Rejects non-human comments....</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/check_javascript.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="check_nonhuman.html" title="check_nonhuman - Rejects non-human comments...."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="check_blacklist.html" title="check_blacklist - Rejects comments using a word black..."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

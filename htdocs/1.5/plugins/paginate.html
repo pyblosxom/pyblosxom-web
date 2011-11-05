@@ -1,0 +1,204 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>paginate - Allows navigation by page for index... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="pyarchives - Builds month/year-based archives li..." href="pyarchives.html" />
+    <link rel="prev" title="pages - Allows you to include non-blog-entr..." href="pages.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pyarchives.html" title="pyarchives - Builds month/year-based archives li..."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pages.html" title="pages - Allows you to include non-blog-entr..."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="paginate-allows-navigation-by-page-for-index">
+<h1>paginate - Allows navigation by page for index...<a class="headerlink" href="#paginate-allows-navigation-by-page-for-index" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Plugin for paging long index pages.</p>
+<p>PyBlosxom uses the num_entries configuration variable to prevent more
+than <tt class="docutils literal"><span class="pre">num_entries</span></tt> being rendered by cutting the list down to
+<tt class="docutils literal"><span class="pre">num_entries</span></tt> entries.  So if your <tt class="docutils literal"><span class="pre">num_entries</span></tt> is set to 20, you
+will only see the first 20 entries rendered.</p>
+<p>The paginate overrides this functionality and allows for paging.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic">
+<li><p class="first">Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.paginate</span></tt> to your <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list
+variable in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
+<p>Make sure it&#8217;s the first plugin in the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list so
+that it has a chance to operate on the entry list before other
+plugins.</p>
+</li>
+<li><p class="first">add the <tt class="docutils literal"><span class="pre">$(page_navigation)</span></tt> variable to your head or foot (or
+both) templates.  this is where the page navigation HTML will
+appear.</p>
+</li>
+</ol>
+<p>Here are some additional configuration variables to adjust the
+behavior:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sb">``</span><span class="n">paginate_count_from</span><span class="sb">``</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Defaults to 0.</p>
+<p>This is the number to start counting from.  Some folks like their
+pages to start at 0 and others like it to start at 1.  This enables
+you to set it as you like.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;paginate_count_from&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">paginate_previous_text</span></tt></p>
+<blockquote>
+<div><p>Defaults to &#8220;&amp;lt;&amp;lt;&#8221;.</p>
+<p>This is the text for the &#8220;previous page&#8221; link.</p>
+</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">paginate_next_text</span></tt></p>
+<blockquote>
+<div><p>Defaults to &#8220;&amp;gt;&amp;gt;&#8221;.</p>
+<p>This is the text for the &#8220;next page&#8221; link.</p>
+</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">paginate_linkstyle</span></tt></p>
+<blockquote>
+<div><p>Defaults to 1.</p>
+<p>This allows you to change the link style of the paging.</p>
+<p>Style 0:</p>
+<div class="highlight-python"><pre>[1] 2 3 4 5 6 7 8 9 ... &gt;&gt;</pre>
+</div>
+<p>Style 1:</p>
+<div class="highlight-python"><pre>Page 1 of 4 &gt;&gt;</pre>
+</div>
+<p>If you want a style different than that, you&#8217;ll have to copy the
+plugin and implement your own style.</p>
+</div></blockquote>
+</div>
+<div class="section" id="note-about-static-rendering">
+<h2>Note about static rendering<a class="headerlink" href="#note-about-static-rendering" title="Permalink to this headline">¶</a></h2>
+<p>This plugin doesn&#8217;t work with static rendering.  The problem is that
+it relies on the querystring to figure out which page to show and when
+you&#8217;re static rendering, only the first page is rendered.  At some
+point, someone will fix this.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">paginate - Allows navigation by page for index...</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#note-about-static-rendering">Note about static rendering</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pages.html"
+                        title="previous chapter">pages - Allows you to include non-blog-entr...</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pyarchives.html"
+                        title="next chapter">pyarchives - Builds month/year-based archives li...</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/paginate.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pyarchives.html" title="pyarchives - Builds month/year-based archives li..."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pages.html" title="pages - Allows you to include non-blog-entr..."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

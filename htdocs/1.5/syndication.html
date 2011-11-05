@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Syndication &mdash; PyBlosxom v1.5 documentation</title>
+    <title>Syndication &mdash; PyBlosxom 1.5 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Renderers" href="renderers.html" />
     <link rel="prev" title="Flavours and Templates" href="flavours_and_templates.html" /> 
   </head>
@@ -42,7 +45,7 @@
         <li class="right" >
           <a href="flavours_and_templates.html" title="Flavours and Templates"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -64,14 +67,15 @@ version of your blog.</p>
 <p>Most newsreaders read most of the syndication formats.  So you
 shouldn&#8217;t feel that you have to implement each one of them in your
 blog&#8212;you can most assuredly get away with implementing RSS 2.0 or
-Atom 1.0 and be just fine.</p>
+Atom and be just fine.</p>
 <p>The syndication flavours that come with PyBlosxom should be fine for
 most blogs.  When pointing people to your syndication feed, just use
-one of the syndication flavours:</p>
+one of the syndication flavours.</p>
+<p>Examples:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">http://your-server/path-to-blog/index.rss</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">http://your-server/path-to-blog/index.rss20</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">http://your-server/path-to-blog/index.atom</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">http://example.com/blog/index.rss</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">http://example.com/~willg/blog/index.rss20</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">http://example.com/index.atom</span></tt></li>
 </ul>
 </div>
 <div class="section" id="feed-formats-that-come-with-pyblosxom">
@@ -116,7 +120,7 @@ include the date for the entry somewhere in the description block,
 people looking at your RSS 0.9.1 feed won&#8217;t know what the date the
 entry was created on was.</p>
 <p class="last">Unless you have some reason to use RSS 0.9.1 as your syndication
-format, you should look at using RSS 2.0 or Atom 1.0 both of which
+format, you should look at using RSS 2.0 or Atom both of which
 also come with PyBlosxom.</p>
 </div>
 <p>For more information, look at the <a class="reference external" href="http://my.netscape.com/publish/formats/rss-spec-0.91.html">RSS 0.9.1 spec</a>.</p>
@@ -129,17 +133,17 @@ podcasting with their blog), then override the individual templates
 you need to adjust.</p>
 <p>For more information on RSS 2.0, see the <a class="reference external" href="http://blogs.law.harvard.edu/tech/rss">RSS 2.0 spec</a>.</p>
 </div>
-<div class="section" id="atom-1-0">
-<h3>Atom 1.0<a class="headerlink" href="#atom-1-0" title="Permalink to this headline">¶</a></h3>
-<p>PyBlosxom 1.3 comes with an Atom 1.0 flavour called &#8220;atom&#8221;.  If it&#8217;s
-missing features that you want, then override the individual templates
-you need to adjust.</p>
-<p>For more information on Atom 1.0, see the <a class="reference external" href="http://atomenabled.org/">Atom 1.0 spec</a>.</p>
+<div class="section" id="atom">
+<h3>Atom<a class="headerlink" href="#atom" title="Permalink to this headline">¶</a></h3>
+<p>Starting with 1.3, PyBlosxom comes with an Atom flavour called &#8220;atom&#8221;.
+If it&#8217;s missing features that you want, then override the individual
+templates you need to adjust.</p>
+<p>For more information on Atom, see the <a class="reference external" href="http://atomenabled.org/">Atom spec</a>.</p>
 </div>
 </div>
 <div class="section" id="debugging-your-feeds">
 <h2>Debugging your feeds<a class="headerlink" href="#debugging-your-feeds" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://feedvalidator.org/">FeedValidator</a> is a hugely useful tool for figuring out whether your
+<p><a class="reference external" href="http://feedvalidator.org/">FeedValidator</a> is a useful tool for figuring out whether your
 feed is valid and fixing bugs in your feed content.</p>
 <p>Additionally, feel free to ask on the pyblosxom-users mailing list.</p>
 </div>
@@ -158,7 +162,7 @@ feed is valid and fixing bugs in your feed content.</p>
 <li><a class="reference internal" href="#feed-formats-that-come-with-pyblosxom">Feed formats that come with PyBlosxom</a><ul>
 <li><a class="reference internal" href="#rss-0-9-1">RSS 0.9.1</a></li>
 <li><a class="reference internal" href="#rss-2-0">RSS 2.0</a></li>
-<li><a class="reference internal" href="#atom-1-0">Atom 1.0</a></li>
+<li><a class="reference internal" href="#atom">Atom</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#debugging-your-feeds">Debugging your feeds</a></li>
@@ -180,7 +184,7 @@ feed is valid and fixing bugs in your feed content.</p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -209,13 +213,13 @@ feed is valid and fixing bugs in your feed content.</p>
         <li class="right" >
           <a href="flavours_and_templates.html" title="Flavours and Templates"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jul 14, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

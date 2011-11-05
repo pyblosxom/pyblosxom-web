@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>What’s new in 1.5 &mdash; PyBlosxom v1.5 documentation</title>
+    <title>What’s new in 1.5 &mdash; PyBlosxom 1.5 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="What’s new in older versions" href="whatsnewolder.html" />
     <link rel="prev" title="License" href="license.html" /> 
   </head>
@@ -42,7 +45,7 @@
         <li class="right" >
           <a href="license.html" title="License"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -53,10 +56,84 @@
             
   <div class="section" id="what-s-new-in-1-5">
 <h1>What&#8217;s new in 1.5<a class="headerlink" href="#what-s-new-in-1-5" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-s-new-in-1-5-rc3">
-<span id="whatsnew"></span><h2>What&#8217;s new in 1.5 rc3<a class="headerlink" href="#what-s-new-in-1-5-rc3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-s-new-in-1-5-rc4-in-development">
+<span id="whatsnew"></span><h2>What&#8217;s new in 1.5 rc4 (in development!)<a class="headerlink" href="#what-s-new-in-1-5-rc4-in-development" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pertinent-to-users">
 <h3>Pertinent to users:<a class="headerlink" href="#pertinent-to-users" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">I moved all the plugins again.  This time, instead of being in
+<tt class="docutils literal"><span class="pre">plugins/</span></tt>, they&#8217;re now in <tt class="docutils literal"><span class="pre">Pyblosxom/plugins/</span></tt>.</p>
+<p>You no longer have to copy core plugins into your plugins
+directory.  Instead of copying core plugin files, refer to the
+plugins in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file using their full Python path in
+the Pyblosxom package.</p>
+<p>For example, the pycalendar plugin is now in
+<tt class="docutils literal"><span class="pre">Pyblosxom/plugins/pycalendar.py</span></tt> and thus its Pyblosxom
+package path is <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.pycalendar</span></tt>.  Your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file would look have this:</p>
+<div class="highlight-python"><pre>py["load_plugins"] = [
+    ...
+    "Pyblosxom.plugins.pycalendar",
+    ...
+    ]</pre>
+</div>
+<p>If you do this, then the next time you upgrade PyBlosxom, the
+plugins will be upgraded automatically.</p>
+<p>Further, documentation for plugins is at the top of the individual
+plugin files, but also in the documentation.  This includes a list
+of the plugins available in the core.</p>
+<p>You can see the plugin documentation at <a class="reference internal" href="index.html#part-two"><em>Part 2: Core plugin documentation</em></a>.</p>
+</li>
+<li><p class="first">Plugins added: markdown_parser</p>
+</li>
+<li><p class="first">Plugins changed:</p>
+<p>pages</p>
+<ul class="simple">
+<li>Fixed documentation and error messages for <tt class="docutils literal"><span class="pre">pagesdir</span></tt>.</li>
+<li>Fixed frontpage checking.  Should catch / as well as /index
+now.</li>
+<li>Adds more examples to documentation.</li>
+</ul>
+<p>tags</p>
+<ul class="simple">
+<li>Increased tag cloud range from 3 sizes to 5.</li>
+<li>Adds truncate support.</li>
+<li>Fixes problems with initialization when building tags so that
+it initializes plugins allowing them to do startup things.
+This fixes problems with plugins that augment entry parsers.</li>
+</ul>
+<p>rst</p>
+<ul class="simple">
+<li>renamed it to rst_parser so it&#8217;s clearer what it is</li>
+</ul>
+<p>the rest of the plugins: pep8 fixes and documentation updates</p>
+</li>
+<li><p class="first">Plugins removed from Pyblosxom: commentAPI</p>
+</li>
+<li><p class="first">Fixes error handling for loading plugins.  When doing
+<tt class="docutils literal"><span class="pre">pyblosxom-cmd</span> <span class="pre">test</span></tt> and a plugin fails to load, it&#8217;ll now tell
+you.  When using the debug renderer and a plugin fails to load,
+it&#8217;ll now tell you.</p>
+</li>
+<li><p class="first">Lot of work on simplifying and improving the documentation.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="pertinent-to-developers">
+<h3>Pertinent to developers<a class="headerlink" href="#pertinent-to-developers" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>I removed all the extra infrastructure for testing plugins.
+Plugins that come with the core are now in the Pyblosxom package
+and their tests are in <tt class="docutils literal"><span class="pre">Pyblosxom/tests/</span></tt>.</li>
+<li>Adds <em>generate</em> subcommand to pyblosxom-cmd.  This makes it easier
+to test blogs and plugins that do things with entries.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="what-s-new-in-1-5-rc3-june-2011">
+<h2>What&#8217;s new in 1.5 rc3 (June 2011)<a class="headerlink" href="#what-s-new-in-1-5-rc3-june-2011" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Pertinent to users:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">PyBlosxom shows an error page if it crashes rather than forcing
 you to go figure out what happened by finding the web server logs.
@@ -79,10 +156,10 @@ check_blacklist.</p>
 </ol>
 </div>
 </div>
-<div class="section" id="what-s-new-in-1-5-rc2">
-<h2>What&#8217;s new in 1.5 rc2<a class="headerlink" href="#what-s-new-in-1-5-rc2" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>Pertinent to users:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-s-new-in-1-5-rc2-august-2010">
+<h2>What&#8217;s new in 1.5 rc2 (August 2010)<a class="headerlink" href="#what-s-new-in-1-5-rc2-august-2010" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Pertinent to users:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>The static renderer has a new command line.</li>
 <li>New entrytitle, acronym and paginate plugins.</li>
@@ -90,17 +167,17 @@ check_blacklist.</p>
 version.</li>
 </ol>
 </div>
-<div class="section" id="pertinent-to-developers">
-<h3>Pertinent to developers:<a class="headerlink" href="#pertinent-to-developers" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Pertinent to developers:<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>New sortlist callback</li>
 </ol>
 </div>
 </div>
-<div class="section" id="what-s-new-in-1-5-rc1">
-<h2>What&#8217;s new in 1.5 rc1<a class="headerlink" href="#what-s-new-in-1-5-rc1" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id2">
-<h3>Pertinent to users:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-s-new-in-1-5-rc1-january-2010">
+<h2>What&#8217;s new in 1.5 rc1 (January 2010)<a class="headerlink" href="#what-s-new-in-1-5-rc1-january-2010" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Pertinent to users:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">Renamed <tt class="docutils literal"><span class="pre">pyblcmd</span></tt> to <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span></tt>.</p>
 </li>
@@ -261,8 +338,8 @@ the new versions.</p>
 </li>
 </ol>
 </div>
-<div class="section" id="id3">
-<h3>Pertinent to developers:<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>Pertinent to developers:<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first"><tt class="docutils literal"><span class="pre">Pyblosxom.tools.VariableDict</span></tt> is no more.</p>
 </li>
@@ -366,18 +443,23 @@ behavior.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">What&#8217;s new in 1.5</a><ul>
-<li><a class="reference internal" href="#what-s-new-in-1-5-rc3">What&#8217;s new in 1.5 rc3</a><ul>
+<li><a class="reference internal" href="#what-s-new-in-1-5-rc4-in-development">What&#8217;s new in 1.5 rc4 (in development!)</a><ul>
 <li><a class="reference internal" href="#pertinent-to-users">Pertinent to users:</a></li>
+<li><a class="reference internal" href="#pertinent-to-developers">Pertinent to developers</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#what-s-new-in-1-5-rc2">What&#8217;s new in 1.5 rc2</a><ul>
+<li><a class="reference internal" href="#what-s-new-in-1-5-rc3-june-2011">What&#8217;s new in 1.5 rc3 (June 2011)</a><ul>
 <li><a class="reference internal" href="#id1">Pertinent to users:</a></li>
-<li><a class="reference internal" href="#pertinent-to-developers">Pertinent to developers:</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#what-s-new-in-1-5-rc1">What&#8217;s new in 1.5 rc1</a><ul>
+<li><a class="reference internal" href="#what-s-new-in-1-5-rc2-august-2010">What&#8217;s new in 1.5 rc2 (August 2010)</a><ul>
 <li><a class="reference internal" href="#id2">Pertinent to users:</a></li>
 <li><a class="reference internal" href="#id3">Pertinent to developers:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#what-s-new-in-1-5-rc1-january-2010">What&#8217;s new in 1.5 rc1 (January 2010)</a><ul>
+<li><a class="reference internal" href="#id4">Pertinent to users:</a></li>
+<li><a class="reference internal" href="#id5">Pertinent to developers:</a></li>
 </ul>
 </li>
 </ul>
@@ -398,7 +480,7 @@ behavior.</p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -427,13 +509,13 @@ behavior.</p>
         <li class="right" >
           <a href="license.html" title="License"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jul 14, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

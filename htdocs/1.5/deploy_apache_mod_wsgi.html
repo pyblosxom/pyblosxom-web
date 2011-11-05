@@ -1,0 +1,218 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Deploying PyBlosxom with Apache and mod_wsgi &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
+    <link rel="next" title="Deploy PyBlosxom with Static Rendering" href="deploy_staticrendering.html" />
+    <link rel="prev" title="Deploying PyBlosxom with Paste" href="deploy_paste.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="deploy_staticrendering.html" title="Deploy PyBlosxom with Static Rendering"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="deploy_paste.html" title="Deploying PyBlosxom with Paste"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="deploying-pyblosxom-with-apache-and-mod-wsgi">
+<h1>Deploying PyBlosxom with Apache and mod_wsgi<a class="headerlink" href="#deploying-pyblosxom-with-apache-and-mod-wsgi" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This walks through install Pyblosxom as an WSGI application on an
+Apache web server with mod_wsgi installed.</p>
+<p>If you find any issues, please let us know.</p>
+<p>If you can help with the documentation efforts, please let us know.</p>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Apache</li>
+<li>mod_wsgi</li>
+<li>administrative priveliges to the server</li>
+</ul>
+</div>
+<div class="section" id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Make sure mod_wsgi is installed correctly and working.</p>
+</li>
+<li><p class="first">Create a blog&#8212;see the instructions for the blog directories,
+<tt class="docutils literal"><span class="pre">config.py</span></tt> setup and other bits of <strong>Setting up a blog</strong> in
+<tt class="docutils literal"><span class="pre">install_cgi</span></tt>.</p>
+</li>
+<li><p class="first">Create a <tt class="docutils literal"><span class="pre">pyblosxom.wsgi</span></tt> script that looks something like this:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># This is the pyblosxom.wsgi script that powers the _______</span>
+<span class="c"># blog.</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">add_to_path</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+   <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+      <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+
+<span class="c"># call add_to_path with the directory that your config.py lives in.</span>
+<span class="n">add_to_path</span><span class="p">(</span><span class="s">&quot;/home/joe/blog&quot;</span><span class="p">)</span>
+
+<span class="c"># if you have PyBlosxom installed in a directory and NOT as a</span>
+<span class="c"># Python library, then call add_to_path with the directory that</span>
+<span class="c"># PyBlosxom lives in.  For example, if I untar&#39;d</span>
+<span class="c"># pyblosxom-1.5.tar.gz into /home/joe/, then add like this:</span>
+<span class="c"># add_to_path(&quot;/home/joe/pyblosxom-1.5/&quot;)</span>
+
+<span class="kn">import</span> <span class="nn">Pyblosxom.pyblosxom</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">Pyblosxom</span><span class="o">.</span><span class="n">pyblosxom</span><span class="o">.</span><span class="n">PyBlosxomWSGIApp</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</li>
+<li><p class="first">In the Apache conf file, add:</p>
+<div class="highlight-python"><pre>WSGIScriptAlias /myblog /path/to/something.wsgi
+
+&lt;Directory /path/to&gt;
+    Order deny,allow
+    Allow from all
+&lt;/Directory&gt;</pre>
+</div>
+<p>Change <tt class="docutils literal"><span class="pre">/myblog</span></tt> to the url path you want your blog to live at.</p>
+<p>Change <tt class="docutils literal"><span class="pre">/path/to/something.wsgi</span></tt> to be the absolute path to the
+.wsgi file set up in step 3.</p>
+<p>Change <tt class="docutils literal"><span class="pre">/path/to</span></tt> to the directory of the .wsgi file.</p>
+</li>
+<li><p class="first">Restart the Apache web server.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Any time you make changes to Pyblosxom (update, add plugins, change
+configuration), you&#8217;ll have to restart Apache.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Deploying PyBlosxom with Apache and mod_wsgi</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#deployment">Deployment</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="deploy_paste.html"
+                        title="previous chapter">Deploying PyBlosxom with Paste</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="deploy_staticrendering.html"
+                        title="next chapter">Deploy PyBlosxom with Static Rendering</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/deploy_apache_mod_wsgi.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="deploy_staticrendering.html" title="Deploy PyBlosxom with Static Rendering"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="deploy_paste.html" title="Deploying PyBlosxom with Paste"
+             >previous</a> |</li>
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

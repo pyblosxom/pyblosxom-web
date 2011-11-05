@@ -1,0 +1,187 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>magicword - Magic word method for reducing comm... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="markdown_parser - Markdown entry parser..." href="markdown_parser.html" />
+    <link rel="prev" title="flavourfiles - Serves static files related to flav..." href="flavourfiles.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="markdown_parser.html" title="markdown_parser - Markdown entry parser..."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="flavourfiles.html" title="flavourfiles - Serves static files related to flav..."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="magicword-magic-word-method-for-reducing-comm">
+<h1>magicword - Magic word method for reducing comm...<a class="headerlink" href="#magicword-magic-word-method-for-reducing-comm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This is about the simplest anti-comment-spam measure you can imagine,
+but it&#8217;s probably effective enough for all but the most popular blogs.
+Here&#8217;s how it works.  You pick a question and put a field on your
+comment for for the answer to the question.  If the user answers it
+correctly, his comment is accepted.  Otherwise it&#8217;s rejected.  Here&#8217;s
+how it works:</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>Requires the <tt class="docutils literal"><span class="pre">comments</span></tt> plugin.</p>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic simple">
+<li>Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.magicword</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list in
+your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</li>
+<li>Configure as documented below.</li>
+</ol>
+</div>
+<div class="section" id="configure">
+<h2>Configure<a class="headerlink" href="#configure" title="Permalink to this headline">¶</a></h2>
+<p>Here&#8217;s an example of what to put in config.py:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&#39;mw_question&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;What is the first word in this sentence?&quot;</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&#39;mw_answer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;what&quot;</span>
+</pre></div>
+</div>
+<p>Note that <tt class="docutils literal"><span class="pre">mw_answer</span></tt> must be lowercase and without leading or
+trailing whitespace, even if you expect the user to enter capital
+letters.  Their input will be lowercased and stripped before it is
+compared to <tt class="docutils literal"><span class="pre">mw_answer</span></tt>.</p>
+<p>Here&#8217;s what you put in your <tt class="docutils literal"><span class="pre">comment-form</span></tt> file:</p>
+<div class="highlight-python"><pre>The Magic Word:&lt;br /&gt;
+&lt;i&gt;$(mw_question)&lt;/i&gt;&lt;br /&gt;
+&lt;input maxlenth="32" name="magicword" size="50" type="text" /&gt;&lt;br /&gt;</pre>
+</div>
+<p>It&#8217;s important that the name of the input field is exactly &#8220;magicword&#8221;.</p>
+</div>
+<div class="section" id="security-note">
+<h2>Security note<a class="headerlink" href="#security-note" title="Permalink to this headline">¶</a></h2>
+<p>In order for this to be secure(ish) you need to protect your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file.  This is a good idea anyway!</p>
+<p>If your <tt class="docutils literal"><span class="pre">config.py</span></tt> file is in your web directory, protect it from
+being seen by creating or modifying a <tt class="docutils literal"><span class="pre">.htaccess</span></tt> file in the
+directory where <tt class="docutils literal"><span class="pre">config.py</span></tt> lives with the following contents:</p>
+<div class="highlight-python"><pre>&lt;Files config.py&gt;
+Order allow,deny
+deny from all
+&lt;/Files&gt;</pre>
+</div>
+<p>This will prevent people from being able to view <tt class="docutils literal"><span class="pre">config.py</span></tt> by
+browsing to it.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">magicword - Magic word method for reducing comm...</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#configure">Configure</a></li>
+<li><a class="reference internal" href="#security-note">Security note</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="flavourfiles.html"
+                        title="previous chapter">flavourfiles - Serves static files related to flav...</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="markdown_parser.html"
+                        title="next chapter">markdown_parser - Markdown entry parser...</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/magicword.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="markdown_parser.html" title="markdown_parser - Markdown entry parser..."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="flavourfiles.html" title="flavourfiles - Serves static files related to flav..."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

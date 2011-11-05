@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>acronyms - Marks acronyms and abbreviations in... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="akismetcomments - Rejects comments using akismet..." href="akismetcomments.html" />
+    <link rel="prev" title="Glossary" href="../glossary.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="akismetcomments.html" title="akismetcomments - Rejects comments using akismet..."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../glossary.html" title="Glossary"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="acronyms-marks-acronyms-and-abbreviations-in">
+<h1>acronyms - Marks acronyms and abbreviations in...<a class="headerlink" href="#acronyms-marks-acronyms-and-abbreviations-in" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This plugin marks abbreviations and acronyms based on an
+acronyms/abbreviations files.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic">
+<li><p class="first">In your <tt class="docutils literal"><span class="pre">config.py</span></tt> file, add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.acronyms</span></tt> to the
+<tt class="docutils literal"><span class="pre">load_plugins</span></tt> variable.</p>
+</li>
+<li><p class="first">Create an acronyms file with acronyms and abbreviations in it.</p>
+<p>See below for the syntax.</p>
+</li>
+<li><p class="first">(optional) In your <tt class="docutils literal"><span class="pre">config.py</span></tt> file, add a line like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;acronyms_file&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/path/to/file&quot;</span>
+</pre></div>
+</div>
+<p>Make sure to use the complete path to your acronyms file in place of
+<tt class="docutils literal"><span class="pre">&quot;/path/to/file&quot;</span></tt>.</p>
+<p>This defaults to <tt class="docutils literal"><span class="pre">acronyms.txt</span></tt> in the parent directory of your
+datadir.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="building-the-acronyms-file">
+<h2>Building the acronyms file<a class="headerlink" href="#building-the-acronyms-file" title="Permalink to this headline">¶</a></h2>
+<p>The file should be a text file with one acronym or abbreviation
+followed by an = followed by the explanation.  The
+acronym/abbreviation is a regular expression and can contain regular
+expression bits.</p>
+<p>An acronym is upper or lower case letters that is NOT followed by a
+period.  If it&#8217;s followed by a period, then you need to explicitly
+state it&#8217;s an acronym.</p>
+<blockquote>
+<div>&lt;acronym&gt; = explanation
+&lt;acronym&gt; = acronym|explanation</div></blockquote>
+<p>Examples:</p>
+<div class="highlight-python"><pre>ASCII = American Standard Code for Information Interchange
+CGI = Common Gateway Interface; Computer Generated Imagery
+CSS = Cascading Stylesheets
+HTML = Hypertext Markup Language
+HTTP = Hypertext Transport Protocol
+RDF = Resource Description Framework
+RSS = Really Simple Sindication
+URL = Uniform Resource Locator
+URI = Uniform Resource Indicator
+WSGI = Web Server Gateway Interface
+XHTML = Extensible Hypertext Markup Language
+XML = Extensible Markup Language</pre>
+</div>
+<p>This one is explicitly labeled an acronym:</p>
+<div class="highlight-python"><pre>X.M.L. = acronym|Extensible Markup Language</pre>
+</div>
+<p>This one uses regular expression to match both <tt class="docutils literal"><span class="pre">UTF-8</span></tt> and
+<tt class="docutils literal"><span class="pre">UTF8</span></tt>:</p>
+<div class="highlight-python"><pre>UTF\-?8 = 8-bit UCS/Unicode Transformation Format</pre>
+</div>
+<p>An abbreviation is a series of characters followed by a period.  If
+it&#8217;s not followed by a period, then you need to explicitly state that
+it&#8217;s an abbreviation.</p>
+<blockquote>
+<div>&lt;abbreviation&gt; = explanation
+&lt;abbreviation&gt; = abbr|explanation</div></blockquote>
+<p>Examples:</p>
+<div class="highlight-python"><pre>dr. = doctor</pre>
+</div>
+<p>This one is explicitly labeled an abbreviation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">dr</span> <span class="o">=</span> <span class="n">abbr</span><span class="o">|</span><span class="n">doctor</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If the first part is an improperly formed regular expression, then
+it will be skipped.</p>
+<p class="last">You can verify that your file is properly formed by running
+<tt class="docutils literal"><span class="pre">pyblosxom-cmd</span> <span class="pre">test</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="using-acronyms-in-your-blog-entries">
+<h2>Using acronyms in your blog entries<a class="headerlink" href="#using-acronyms-in-your-blog-entries" title="Permalink to this headline">¶</a></h2>
+<p>When writing a blog entry, write the acronyms and abbreviations
+and they&#8217;ll be marked up by the plugin in the story callback.</p>
+<p>If you&#8217;re writing an entry that you don&#8217;t want to have marked up, add
+this to the metadata for the entry:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#noacronyms 1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="styling">
+<h2>Styling<a class="headerlink" href="#styling" title="Permalink to this headline">¶</a></h2>
+<p>You might want to add something like this to your CSS:</p>
+<div class="highlight-python"><pre>acronym {
+    bordor-bottom: 1px dashed #aaa;
+    cursor: help;
+}
+
+abbr {
+    bordor-bottom: 1px dashed #aaa;
+    cursor: help;
+}</pre>
+</div>
+</div>
+<div class="section" id="origins">
+<h2>Origins<a class="headerlink" href="#origins" title="Permalink to this headline">¶</a></h2>
+<p>Based on the Blosxom acronyms plugin by Axel Beckert at
+<a class="reference external" href="http://noone.org/blosxom/acronyms">http://noone.org/blosxom/acronyms</a> .</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">acronyms - Marks acronyms and abbreviations in...</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#building-the-acronyms-file">Building the acronyms file</a></li>
+<li><a class="reference internal" href="#using-acronyms-in-your-blog-entries">Using acronyms in your blog entries</a></li>
+<li><a class="reference internal" href="#styling">Styling</a></li>
+<li><a class="reference internal" href="#origins">Origins</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../glossary.html"
+                        title="previous chapter">Glossary</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="akismetcomments.html"
+                        title="next chapter">akismetcomments - Rejects comments using akismet...</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/acronyms.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="akismetcomments.html" title="akismetcomments - Rejects comments using akismet..."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../glossary.html" title="Glossary"
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

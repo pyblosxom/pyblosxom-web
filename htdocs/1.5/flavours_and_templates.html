@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Flavours and Templates &mdash; PyBlosxom v1.5 documentation</title>
+    <title>Flavours and Templates &mdash; PyBlosxom 1.5 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Syndication" href="syndication.html" />
     <link rel="prev" title="Writing Entries" href="writing_entries.html" /> 
   </head>
@@ -42,7 +45,7 @@
         <li class="right" >
           <a href="writing_entries.html" title="Writing Entries"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,12 +55,12 @@
           <div class="body">
             
   <div class="section" id="flavours-and-templates">
-<h1>Flavours and Templates<a class="headerlink" href="#flavours-and-templates" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Flavours and Templates<a class="headerlink" href="#flavours-and-templates" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="summary">
-<span id="id1"></span><h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>This chapter covers the blosxom renderer in PyBlosxom.  There are other
 renderers (like the debug renderer) that operate differently.  See
-the chapter on <a class="reference internal" href="renderers.html#id1"><em>renderers</em></a> for more details.</p>
+the chapter on <a class="reference internal" href="renderers.html#renderers"><em>renderers</em></a> for more details.</p>
 <p>If you want your blog rendered using a different template system&#8212;say
 Cheetah or htmltmpl&#8212;implement a renderer that renders the output.
 This new renderer can be implemented as a PyBlosxom plugin.  See the
@@ -397,7 +400,7 @@ your templates.  For example, these standard properties in your
 available in your templates.  If you wanted to create a
 <tt class="docutils literal"><span class="pre">blog_images</span></tt> variable holding the base url of the directory with
 all your images in it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_images&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;http://www.joe.com/~joe/images/&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_images&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;http://example.com/~joe/images/&quot;</span>
 </pre></div>
 </div>
 <p>to your <tt class="docutils literal"><span class="pre">config.py</span></tt> file and it would be available in all your
@@ -589,23 +592,23 @@ available in your story templates.</p>
 <p>The flavour for a given page is specified in the extension of the file
 being requested.  For example:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">http://some.blog.org/</span></tt> -
+<li><tt class="docutils literal"><span class="pre">http://example.com/</span></tt> -
 brings up the index in the default flavour which is &#8220;html&#8221;</li>
-<li><tt class="docutils literal"><span class="pre">http://some.blog.org/index.html</span></tt> -
+<li><tt class="docutils literal"><span class="pre">http://example.com/index.html</span></tt> -
 brings up the index in the &#8220;html&#8221; flavour</li>
-<li><tt class="docutils literal"><span class="pre">http://some.blog.org/index.rss</span></tt> -
+<li><tt class="docutils literal"><span class="pre">http://example.com/index.rss</span></tt> -
 brings up the index in the &#8220;rss&#8221; flavour (which by default is RSS 0.9.1)</li>
-<li><tt class="docutils literal"><span class="pre">http://some.blog.org/2004/05/index.joy</span></tt> -
+<li><tt class="docutils literal"><span class="pre">http://example.com/2004/05/index.joy</span></tt> -
 brings up the index for May of 2004 in the &#8220;joy&#8221; flavour</li>
 </ul>
 <p>Additionally, you can specify the flavour by adding a <tt class="docutils literal"><span class="pre">flav</span></tt>
 variable in the query-string.  Examples:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">http://some.blog.org/</span></tt> -
+<li><tt class="docutils literal"><span class="pre">http://example.com/</span></tt> -
 brings up the index in the default flavour which is &#8220;html&#8221;</li>
-<li><tt class="docutils literal"><span class="pre">http://some.blog.org/?flav=rss</span></tt> -
+<li><tt class="docutils literal"><span class="pre">http://example.com/?flav=rss</span></tt> -
 brings up the index in the &#8220;rss&#8221; flavour</li>
-<li><tt class="docutils literal"><span class="pre">http://some.blog.org/2004/05/index?flav=joy</span></tt> -
+<li><tt class="docutils literal"><span class="pre">http://example.com/2004/05/index?flav=joy</span></tt> -
 brings up the index for May of 2004 in the &#8220;joy&#8221; flavour</li>
 </ul>
 </div>
@@ -620,11 +623,11 @@ in your <tt class="docutils literal"><span class="pre">config.py</span></tt> fil
 has used doesn&#8217;t specify which flavour to use.</p>
 <p>This url doesn&#8217;t specify the flavour to use, so it will be rendered
 with the default flavour:</p>
-<div class="highlight-python"><pre>http://www.joe.com/cgi-bin/pyblosxom.cgi/2005/03</pre>
+<div class="highlight-python"><pre>http://example.com/cgi-bin/pyblosxom.cgi/2005/03</pre>
 </div>
 <p>This url specifies the flavour, so it will be rendered with that
 flavour:</p>
-<div class="highlight-python"><pre>http://www.joe.com/cgi-bin/pyblosxom.cgi/2005/03/?flav=html</pre>
+<div class="highlight-python"><pre>http://example.com/cgi-bin/pyblosxom.cgi/2005/03/?flav=html</pre>
 </div>
 </div>
 <div class="section" id="order-of-operations-to-figure-out-which-flavour-to-use">
@@ -705,7 +708,7 @@ come with your PyBlosxom installation.</p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -734,13 +737,13 @@ come with your PyBlosxom installation.</p>
         <li class="right" >
           <a href="writing_entries.html" title="Writing Entries"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jul 14, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

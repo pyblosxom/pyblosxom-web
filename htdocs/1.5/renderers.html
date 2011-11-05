@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Renderers &mdash; PyBlosxom v1.5 documentation</title>
+    <title>Renderers &mdash; PyBlosxom 1.5 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Comments" href="comments.html" />
     <link rel="prev" title="Syndication" href="syndication.html" /> 
   </head>
@@ -42,7 +45,7 @@
         <li class="right" >
           <a href="syndication.html" title="Syndication"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,14 +55,11 @@
           <div class="body">
             
   <div class="section" id="renderers">
-<h1>Renderers<a class="headerlink" href="#renderers" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="summary">
-<span id="id1"></span><h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h1>Renderers<a class="headerlink" href="#renderers" title="Permalink to this headline">¶</a></h1>
 <p>PyBlosxom supports multiple renderers and comes with two by default:
 debug and blosxom.</p>
-</div>
-<div class="section" id="blosxom">
-<h2>blosxom<a class="headerlink" href="#blosxom" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="blosxom-renderer">
+<h2>blosxom renderer<a class="headerlink" href="#blosxom-renderer" title="Permalink to this headline">¶</a></h2>
 <p>You can set which renderer to use in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file like
 this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;renderer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;blosxom&quot;</span>
@@ -71,10 +71,10 @@ this:</p>
 PyBlosxom uses the blosxom renderer.</p>
 </div>
 <p>The blosxom renderer is named as such because it operates similarly to
-blosxom.  Read the chapter on <a class="reference internal" href="flavours_and_templates.html#id1"><em>flavours and templates</em></a>.</p>
+blosxom.  Read the chapter on <a class="reference internal" href="flavours_and_templates.html#flavours-and-templates"><em>flavours and templates</em></a>.</p>
 </div>
-<div class="section" id="debug">
-<h2>debug<a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="debug-renderer">
+<h2>debug renderer<a class="headerlink" href="#debug-renderer" title="Permalink to this headline">¶</a></h2>
 <p>The debug renderer outputs your blog in a form that makes it easy to
 see the data generated when handling a PyBlosxom request.  This is
 useful for debugging plugins, working on blosxom flavours and
@@ -102,9 +102,8 @@ need to install a plugin that implements the <tt class="docutils literal"><span 
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Renderers</a><ul>
-<li><a class="reference internal" href="#summary">Summary</a></li>
-<li><a class="reference internal" href="#blosxom">blosxom</a></li>
-<li><a class="reference internal" href="#debug">debug</a></li>
+<li><a class="reference internal" href="#blosxom-renderer">blosxom renderer</a></li>
+<li><a class="reference internal" href="#debug-renderer">debug renderer</a></li>
 <li><a class="reference internal" href="#other-renderers">Other renderers</a></li>
 </ul>
 </li>
@@ -124,7 +123,7 @@ need to install a plugin that implements the <tt class="docutils literal"><span 
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -153,13 +152,13 @@ need to install a plugin that implements the <tt class="docutils literal"><span 
         <li class="right" >
           <a href="syndication.html" title="Syndication"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jul 14, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

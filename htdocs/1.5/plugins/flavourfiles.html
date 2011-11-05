@@ -1,0 +1,173 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>flavourfiles - Serves static files related to flav... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="magicword - Magic word method for reducing comm..." href="magicword.html" />
+    <link rel="prev" title="firstdaydiv - Adds a token which tells us whether..." href="firstdaydiv.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="magicword.html" title="magicword - Magic word method for reducing comm..."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="firstdaydiv.html" title="firstdaydiv - Adds a token which tells us whether..."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="flavourfiles-serves-static-files-related-to-flav">
+<h1>flavourfiles - Serves static files related to flav...<a class="headerlink" href="#flavourfiles-serves-static-files-related-to-flav" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This plugin allows flavour templates to use file urls that will
+resolve to files in the flavour directory.  Those files will then get
+served by PyBlosxom.</p>
+<p>This solves the problem that flavour packs are currently difficult to
+package, install, and maintain because static files (images, css, js,
+...) have to get put somewhere else and served by the web server and
+this is difficult to walk a user through.</p>
+<p>It handles urls that start with <tt class="docutils literal"><span class="pre">flavourfiles/</span></tt>, then the flavour
+name, then the path to the file.</p>
+<p>For example:</p>
+<div class="highlight-python"><pre>http://example.com/blog/flavourfiles/html/style.css</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This plugin is very beta!  It&#8217;s missing important functionality,
+probably has bugs, and hasn&#8217;t been well tested!</p>
+</div>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic">
+<li><p class="first">Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.flavourfiles</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list
+of your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
+</li>
+<li><p class="first">In templates you want to use flavourfiles, use urls like this:</p>
+<div class="highlight-python"><pre>$(base_url)/flavourfiles/$(flavour)/path-to-file</pre>
+</div>
+<p>For example:</p>
+<div class="highlight-python"><pre>&lt;img src="$(base_url)/flavourfiles/$(flavour)/header_image.jpg"&gt;</pre>
+</div>
+</li>
+</ol>
+<p>The <tt class="docutils literal"><span class="pre">$(base_url)</span></tt> will get filled in with the correct url root.</p>
+<p>The <tt class="docutils literal"><span class="pre">$(flavour)</span></tt> will get filled in with the name of the url.  This
+allows users to change the flavour name without having to update all
+the templates.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT License</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">flavourfiles - Serves static files related to flav...</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="firstdaydiv.html"
+                        title="previous chapter">firstdaydiv - Adds a token which tells us whether...</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="magicword.html"
+                        title="next chapter">magicword - Magic word method for reducing comm...</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/flavourfiles.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="magicword.html" title="magicword - Magic word method for reducing comm..."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="firstdaydiv.html" title="firstdaydiv - Adds a token which tells us whether..."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

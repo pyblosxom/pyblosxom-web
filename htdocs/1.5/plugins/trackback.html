@@ -1,0 +1,182 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>trackback - Trackback support.... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="w3cdate - Adds a ‘w3cdate’ variable which is ..." href="w3cdate.html" />
+    <link rel="prev" title="tags - Tags plugin..." href="tags.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="w3cdate.html" title="w3cdate - Adds a ‘w3cdate’ variable which is ..."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tags.html" title="tags - Tags plugin..."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="trackback-trackback-support">
+<h1>trackback - Trackback support....<a class="headerlink" href="#trackback-trackback-support" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This plugin allows pyblosxom to process trackback
+<a class="reference external" href="http://www.sixapart.com/pronet/docs/trackback_spec">http://www.sixapart.com/pronet/docs/trackback_spec</a> pings.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>Requires the <tt class="docutils literal"><span class="pre">comments</span></tt> plugin.  Though you don&#8217;t need to have
+comments enabled on your blog in order for trackbacks to work.</p>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic">
+<li><p class="first">Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.trackback</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list
+in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
+</li>
+<li><p class="first">Add this to your <tt class="docutils literal"><span class="pre">config.py</span></tt> file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&#39;trackback_urltrigger&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/trackback&quot;</span>
+</pre></div>
+</div>
+<p>These web forms are useful for testing.  You can use them to send
+trackback pings with arbitrary content to the URL of your choice:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://kalsey.com/tools/trackback/">http://kalsey.com/tools/trackback/</a></li>
+<li><a class="reference external" href="http://www.reedmaniac.com/scripts/trackback_form.php">http://www.reedmaniac.com/scripts/trackback_form.php</a></li>
+</ul>
+</li>
+<li><p class="first">Now you need to advertise the trackback ping link.  Add this to your
+<tt class="docutils literal"><span class="pre">story</span></tt> template:</p>
+<div class="highlight-python"><pre>&lt;a href="$(base_url)/trackback/$(file_path)" title="Trackback"&gt;TB&lt;/a&gt;</pre>
+</div>
+</li>
+<li><p class="first">You can supply an embedded RDF description of the trackback ping, too.
+Add this to your <tt class="docutils literal"><span class="pre">story</span></tt> or <tt class="docutils literal"><span class="pre">comment-story</span></tt> template:</p>
+<div class="highlight-python"><pre>&lt;!--
+&lt;rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"&gt;
+&lt;rdf:Description
+     about="$(base_url)/$(file_path)"
+     dc:title="$(title)"
+     dc:identifier="$(base_url)/$(file_path)"
+     trackback:ping="$(base_url)/trackback/$(file_path)"
+/&gt;
+&lt;/rdf:RDF&gt;
+--&gt;</pre>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">trackback - Trackback support....</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tags.html"
+                        title="previous chapter">tags - Tags plugin...</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="w3cdate.html"
+                        title="next chapter">w3cdate - Adds a &#8216;w3cdate&#8217; variable which is ...</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/trackback.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="w3cdate.html" title="w3cdate - Adds a ‘w3cdate’ variable which is ..."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tags.html" title="tags - Tags plugin..."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>

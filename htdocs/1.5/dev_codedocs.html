@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Code Documentation &mdash; PyBlosxom v1.5 documentation</title>
+    <title>Code Documentation &mdash; PyBlosxom 1.5 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Testing" href="dev_testing.html" />
     <link rel="prev" title="Writing Plugins" href="dev_writing_plugins.html" /> 
   </head>
@@ -42,7 +45,7 @@
         <li class="right" >
           <a href="dev_writing_plugins.html" title="Writing Plugins"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -153,7 +156,7 @@ request.  If nothing handles the request, then we use the
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>static</strong> &#8211; True if PyBlosxom should execute in &#8220;static rendering
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>static</strong> &#8211; True if PyBlosxom should execute in &#8220;static rendering
 mode&#8221; and False otherwise.</td>
 </tr>
 </tbody>
@@ -180,9 +183,9 @@ do things inside of the PyBlosxom framework.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>callback</strong> &#8211; the name of the callback to execute.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>callback</strong> &#8211; the name of the callback to execute.</td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">the results of the callback.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the results of the callback.</td>
 </tr>
 </tbody>
 </table>
@@ -196,7 +199,7 @@ do things inside of the PyBlosxom framework.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>url</strong> &#8211; the url to render&#8211;this has to be relative to the
 base url for this blog.</li>
 <li><strong>headers</strong> &#8211; True if you want headers to be rendered and
@@ -220,7 +223,7 @@ calls <tt class="docutils literal"><span class="pre">self.run()</span></tt> a ba
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>incremental</strong> &#8211; Whether (True) or not (False) to
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>incremental</strong> &#8211; Whether (True) or not (False) to
 incrementally render the pages.  If we&#8217;re
 incrementally rendering pages, then we
 render only the ones that have changed.</td>
@@ -360,7 +363,7 @@ overhead and unnecessary consumption of the input stream.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">a <tt class="docutils literal"><span class="pre">cgi.FieldStorage</span></tt> instance.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a <tt class="docutils literal"><span class="pre">cgi.FieldStorage</span></tt> instance.</td>
 </tr>
 </tbody>
 </table>
@@ -422,8 +425,8 @@ containes a &#8216;Status&#8217; header.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">This happens when the parameters are
+<tr class="field-odd field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">This happens when the parameters are
 not correct.</td>
 </tr>
 </tbody>
@@ -468,7 +471,7 @@ not correct.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out</strong> &#8211; the file-like object to print the body to.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out</strong> &#8211; the file-like object to print the body to.</td>
 </tr>
 </tbody>
 </table>
@@ -487,7 +490,7 @@ separates headers from the body.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out</strong> &#8211; The file-like object to print headers to.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out</strong> &#8211; The file-like object to print headers to.</td>
 </tr>
 </tbody>
 </table>
@@ -513,7 +516,7 @@ be a valid HTTP response status.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>status</strong> &#8211; the status string.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>status</strong> &#8211; the status string.</td>
 </tr>
 </tbody>
 </table>
@@ -531,13 +534,13 @@ the entry.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>filename</strong> &#8211; a filename to extract data and metadata from</li>
 <li><strong>request</strong> &#8211; a standard request object</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict containing parsed data and meta data with the
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict containing parsed data and meta data with the
 particular file (and plugin)</p>
 </td>
 </tr>
@@ -556,9 +559,9 @@ EntryBase subclass objects which it returns.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; dict containing the incoming Request object</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; dict containing the incoming Request object</td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">the content we want to render</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the content we want to render</td>
 </tr>
 </tbody>
 </table>
@@ -581,7 +584,7 @@ before rendering the entries.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> &#8211; the request object.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> &#8211; the request object.</td>
 </tr>
 </tbody>
 </table>
@@ -606,7 +609,7 @@ in category.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; dict containing the incoming Request object</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; dict containing the incoming Request object</td>
 </tr>
 </tbody>
 </table>
@@ -622,10 +625,10 @@ and oldest entries are at the end.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; args dict with <tt class="docutils literal"><span class="pre">request</span></tt> object and <tt class="docutils literal"><span class="pre">entry_list</span></tt>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; args dict with <tt class="docutils literal"><span class="pre">request</span></tt> object and <tt class="docutils literal"><span class="pre">entry_list</span></tt>
 list of entries</td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">the sorted <tt class="docutils literal"><span class="pre">entry_list</span></tt></td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the sorted <tt class="docutils literal"><span class="pre">entry_list</span></tt></td>
 </tr>
 </tbody>
 </table>
@@ -641,10 +644,10 @@ is not 0, then this truncates <tt class="docutils literal"><span class="pre">arg
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; args dict with <tt class="docutils literal"><span class="pre">request</span></tt> object and <tt class="docutils literal"><span class="pre">entry_list</span></tt>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; args dict with <tt class="docutils literal"><span class="pre">request</span></tt> object and <tt class="docutils literal"><span class="pre">entry_list</span></tt>
 list of entries</td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">the truncated <tt class="docutils literal"><span class="pre">entry_list</span></tt>.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the truncated <tt class="docutils literal"><span class="pre">entry_list</span></tt>.</td>
 </tr>
 </tbody>
 </table>
@@ -658,7 +661,7 @@ list of entries</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">WSGI application</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">WSGI application</td>
 </tr>
 </tbody>
 </table>
@@ -735,9 +738,9 @@ $urlencode(id)</pre>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>matchobj</strong> &#8211; the regular expression match object</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>matchobj</strong> &#8211; the regular expression match object</td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">the substituted string</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the substituted string</td>
 </tr>
 </tbody>
 </table>
@@ -795,7 +798,7 @@ $urlencode(id)</pre>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">string with n at the end</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string with n at the end</td>
 </tr>
 </tbody>
 </table>
@@ -837,9 +840,9 @@ commas in strings correctly.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>s</strong> &#8211; the string to split</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>s</strong> &#8211; the string to split</td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">list of strings</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of strings</td>
 </tr>
 </tbody>
 </table>
@@ -854,12 +857,12 @@ the values, and returns a new config dict.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>confini</strong> &#8211; dict containing the config.ini style keys and values</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>confini</strong> &#8211; dict containing the config.ini style keys and values</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2">Raises ConfigSyntaxErrorException:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">when there&#8217;s a syntax error</td>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ConfigSyntaxErrorException:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">when there&#8217;s a syntax error</td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">new config dict</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">new config dict</td>
 </tr>
 </tbody>
 </table>
@@ -875,7 +878,7 @@ by scripts and other tools.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>datadir</strong> &#8211; the datadir</li>
 <li><strong>category</strong> &#8211; the category the entry should go in</li>
 <li><strong>filename</strong> &#8211; the name of the blog entry (filename and
@@ -888,7 +891,7 @@ epoch</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises IOError:</th><td class="field-body"><p class="first last">if the datadir + category directory exists, but
+<tr class="field-even field"><th class="field-name">Raises IOError:</th><td class="field-body"><p class="first last">if the datadir + category directory exists, but
 isn&#8217;t a directory</p>
 </td>
 </tr>
@@ -908,7 +911,7 @@ isn&#8217;t a directory</p>
 <li><tt class="docutils literal"><span class="pre">'</span></tt> to <tt class="docutils literal"><span class="pre">&amp;#x27;</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">/</span></tt> to <tt class="docutils literal"><span class="pre">&amp;#x2F;</span></tt></li>
 </ul>
-<p>Note: if <tt class="docutils literal"><span class="pre">s</span></tt> is <tt class="xref docutils literal"><span class="pre">None</span></tt>, then we return <tt class="xref docutils literal"><span class="pre">None</span></tt>.</p>
+<p>Note: if <tt class="docutils literal"><span class="pre">s</span></tt> is <tt class="docutils literal"><span class="pre">None</span></tt>, then we return <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -939,13 +942,13 @@ case we&#8217;ve already retrieved it during this PyBlosxom request.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>request</strong> &#8211; the Request object</li>
 <li><strong>filename</strong> &#8211; the file name of the file to stat</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the filestat (tuple of 9 ints) on the given file</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the filestat (tuple of 9 ints) on the given file</p>
 </td>
 </tr>
 </tbody>
@@ -968,13 +971,13 @@ characters long.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>minlen</strong> &#8211; the minimum length of the generated random string</li>
 <li><strong>maxlen</strong> &#8211; the maximum length of the generated random string</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">generated string</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">generated string</p>
 </td>
 </tr>
 </tbody>
@@ -996,9 +999,9 @@ instance.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> &#8211; the Request object</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> &#8211; the Request object</td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">a BlosxomCache object</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a BlosxomCache object</td>
 </tr>
 </tbody>
 </table>
@@ -1015,12 +1018,12 @@ logger logs to.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log_file</strong> &#8211; the file to log to.  defaults to None which
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log_file</strong> &#8211; the file to log to.  defaults to None which
 causes PyBlosxom to check for the <tt class="docutils literal"><span class="pre">log_file</span></tt>
 config.py property and if that&#8217;s blank, then the
 log_file is stderr</td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">a log channel (logger instance) which you can call
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a log channel (logger instance) which you can call
 <tt class="docutils literal"><span class="pre">error</span></tt>, <tt class="docutils literal"><span class="pre">warning</span></tt>, <tt class="docutils literal"><span class="pre">debug</span></tt>, <tt class="docutils literal"><span class="pre">info</span></tt>, ... on.</td>
 </tr>
 </tbody>
@@ -1035,13 +1038,13 @@ log_file is stderr</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>modulename</strong> &#8211; the package name of the module to import from</li>
 <li><strong>name</strong> &#8211; the name of the module to import</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the module object or <tt class="xref docutils literal"><span class="pre">None</span></tt> if there were problems
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the module object or <tt class="docutils literal"><span class="pre">None</span></tt> if there were problems
 importing.</p>
 </td>
 </tr>
@@ -1072,9 +1075,9 @@ criteria:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>s</strong> &#8211; the string to check for &#8220;year-hood&#8221;</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>s</strong> &#8211; the string to check for &#8220;year-hood&#8221;</td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><tt class="xref docutils literal"><span class="pre">True</span></tt> if it is a year and <tt class="xref docutils literal"><span class="pre">False</span></tt> otherwise.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">True</span></tt> if it is a year and <tt class="docutils literal"><span class="pre">False</span></tt> otherwise.</td>
 </tr>
 </tbody>
 </table>
@@ -1096,7 +1099,7 @@ debugging.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>frame_num</strong> &#8211; the index of the frame to log; defaults to 1</li>
 <li><strong>log_file</strong> &#8211; the file to log to.  defaults to None which
 causes PyBlosxom to check for the <tt class="docutils literal"><span class="pre">log_file</span></tt>
@@ -1118,7 +1121,7 @@ log_file as defined in config.py if none is given here.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log_file</strong> &#8211; the file to log to.  defaults to None which
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log_file</strong> &#8211; the file to log to.  defaults to None which
 causes PyBlosxom to check for the <tt class="docutils literal"><span class="pre">log_file</span></tt>
 config.py property and if that&#8217;s blank, then the
 log_file is stderr</td>
@@ -1137,18 +1140,30 @@ to expand template variables using values in the <tt class="docutils literal"><s
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>request</strong> &#8211; the Request object</li>
 <li><strong>var_dict</strong> &#8211; the dict holding name/value pair variable replacements</li>
 <li><strong>template</strong> &#8211; the string template we&#8217;re expanding variables in.</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the template string with template variables expanded.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the template string with template variables expanded.</p>
 </td>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.pwrap">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">pwrap</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.pwrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps the text and prints it.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Pyblosxom.tools.pwrap_error">
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">pwrap_error</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.pwrap_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps an error message and prints it to stderr.</p>
 </dd></dl>
 
 <dl class="function">
@@ -1161,7 +1176,7 @@ and passing it through.  It then returns the resulting Response.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>cdict</strong> &#8211; the config.py dict</li>
 <li><strong>pathinfo</strong> &#8211; the <tt class="docutils literal"><span class="pre">PATH_INFO</span></tt> string;
 example: <tt class="docutils literal"><span class="pre">/dev/pyblosxom/firstpost.html</span></tt></li>
@@ -1169,7 +1184,7 @@ example: <tt class="docutils literal"><span class="pre">/dev/pyblosxom/firstpost
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a PyBlosxom <tt class="docutils literal"><span class="pre">Response</span></tt> object.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a PyBlosxom <tt class="docutils literal"><span class="pre">Response</span></tt> object.</p>
 </td>
 </tr>
 </tbody>
@@ -1185,7 +1200,7 @@ filesystem.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>cdict</strong> &#8211; config dict</li>
 <li><strong>url</strong> &#8211; url to render</li>
 <li><strong>querystring</strong> &#8211; querystring of the url to render or &#8220;&#8221;</li>
@@ -1198,7 +1213,7 @@ filesystem.</p>
 
 <dl class="function">
 <dt id="Pyblosxom.tools.run_callback">
-<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0x2cf4500&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0x2cf4578&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0xaa11f7c&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0xaa11fb4&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes a callback chain on a given piece of data.  passed in is
 a dict of name/value pairs.  Consult the documentation for the
 specific callback chain you&#8217;re executing.</p>
@@ -1214,7 +1229,7 @@ the input for the next function.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>chain</strong> &#8211; the name of the callback chain to run</li>
 <li><strong>input</strong> &#8211; dict with name/value pairs that gets passed as the
 args dict to all callback functions</li>
@@ -1239,7 +1254,7 @@ with the latest version of the input dict.</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">varies</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">varies</p>
 </td>
 </tr>
 </tbody>
@@ -1261,7 +1276,7 @@ page.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>cdict</strong> &#8211; the config.py dict</li>
 <li><strong>entry_filename</strong> &#8211; the url path of the entry to be updated;
 example: <tt class="docutils literal"><span class="pre">/movies/xmen2</span></tt></li>
@@ -1276,7 +1291,7 @@ example: <tt class="docutils literal"><span class="pre">/movies/xmen2</span></tt
 <dt id="Pyblosxom.tools.urlencode_text">
 <tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">urlencode_text</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.urlencode_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls <tt class="docutils literal"><span class="pre">urllib.quote</span></tt> on the string <tt class="docutils literal"><span class="pre">s</span></tt>.</p>
-<p>Note: if <tt class="docutils literal"><span class="pre">s</span></tt> is <tt class="xref docutils literal"><span class="pre">None</span></tt>, then we return <tt class="xref docutils literal"><span class="pre">None</span></tt>.</p>
+<p>Note: if <tt class="docutils literal"><span class="pre">s</span></tt> is <tt class="docutils literal"><span class="pre">None</span></tt>, then we return <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1321,7 +1336,7 @@ you list.  So the following:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>request</strong> &#8211; the Request object</li>
 <li><strong>root</strong> &#8211; the root directory to walk</li>
 <li><strong>recurse</strong> &#8211; the depth of recursion; defaults to 0 which goes all
@@ -1335,7 +1350,7 @@ want files AND folders</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of file paths.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of file paths.</p>
 </td>
 </tr>
 </tbody>
@@ -1351,14 +1366,14 @@ until it finds the first extension that works.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>extensions</strong> &#8211; the list of extensions to test</li>
 <li><strong>filepath</strong> &#8211; the complete file path (minus the extension) to
 test and find the extension for</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the extension (string) of the file or <tt class="xref docutils literal"><span class="pre">None</span></tt>.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the extension (string) of the file or <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
 </td>
 </tr>
 </tbody>
@@ -1376,13 +1391,13 @@ implement the functionality required by the other rendering system.</p>
 debug module.</p>
 <dl class="class">
 <dt id="Pyblosxom.renderers.base.Renderer">
-<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">Renderer</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x2ab9fd8e31e0&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.Renderer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">Renderer</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x4040d078&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.Renderer" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is a null renderer.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="Pyblosxom.renderers.base.RendererBase">
-<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">RendererBase</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x2ab9fd8e31e0&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">RendererBase</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x4040d078&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pyblosxom core handles the Input and Process of the system and
 passes the result of the process to the Renderers for output. All
 renderers are child classes of RendererBase. RenderBase will
@@ -1401,10 +1416,10 @@ contain the public interfaces for all Renderer onject.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; Paired list of headers</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; Paired list of headers</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">This happens when the parameters are not
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">This happens when the parameters are not
 correct</td>
 </tr>
 </tbody>
@@ -1426,7 +1441,7 @@ correct</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">content</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">content</td>
 </tr>
 </tbody>
 </table>
@@ -1448,7 +1463,7 @@ indicate no Content-Type generation.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>flag</strong> &#8211; True of false value</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>flag</strong> &#8211; True of false value</td>
 </tr>
 </tbody>
 </table>
@@ -1462,7 +1477,7 @@ indicate no Content-Type generation.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>header</strong> &#8211; whether (True) or not (False) to show the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>header</strong> &#8211; whether (True) or not (False) to show the
 headers</td>
 </tr>
 </tbody>
@@ -1487,7 +1502,7 @@ headers</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>content</strong> &#8211; the content to be displayed</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>content</strong> &#8211; the content to be displayed</td>
 </tr>
 </tbody>
 </table>
@@ -1565,7 +1580,7 @@ pyblosxom is running continuously.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> &#8211; Piece of string you want printed</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> &#8211; Piece of string you want printed</td>
 </tr>
 </tbody>
 </table>
@@ -1613,7 +1628,7 @@ Do not override it.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>entryid</strong> &#8211; a unique key for the information you&#8217;re
 storing</li>
 <li><strong>data</strong> &#8211; the data to store&#8211;this should probably be a dict</li>
@@ -1639,14 +1654,14 @@ and <tt class="docutils literal"><span class="pre">get_metadata</span></tt> inst
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>key</strong> &#8211; the key being sought</li>
 <li><strong>default</strong> &#8211; the default to return if the key does not
 exist</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the value of <tt class="docutils literal"><span class="pre">get_metadata</span></tt> or <tt class="docutils literal"><span class="pre">get_data</span></tt>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the value of <tt class="docutils literal"><span class="pre">get_metadata</span></tt> or <tt class="docutils literal"><span class="pre">get_data</span></tt>
 (through <tt class="docutils literal"><span class="pre">__getitem__</span></tt>)</p>
 </td>
 </tr>
@@ -1694,7 +1709,7 @@ provide from pulling the data from other places.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">the data as a string</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the data as a string</td>
 </tr>
 </tbody>
 </table>
@@ -1711,9 +1726,9 @@ Do not override it.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entryid</strong> &#8211; a unique key for the information you&#8217;re retrieving</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>entryid</strong> &#8211; a unique key for the information you&#8217;re retrieving</td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">dict with the values or None if there&#8217;s nothing for that
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict with the values or None if there&#8217;s nothing for that
 entryid</td>
 </tr>
 </tbody>
@@ -1730,7 +1745,7 @@ purposes.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">string id</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string id</td>
 </tr>
 </tbody>
 </table>
@@ -1745,14 +1760,14 @@ purposes.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>key</strong> &#8211; the key being sought</li>
 <li><strong>default</strong> &#8211; the default to return if the key does not
 exist</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">either the default (if the key did not exist) or the
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">either the default (if the key did not exist) or the
 value of the key in the metadata dict</p>
 </td>
 </tr>
@@ -1777,7 +1792,7 @@ adjusted.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">list of metadata keys</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of metadata keys</td>
 </tr>
 </tbody>
 </table>
@@ -1797,9 +1812,9 @@ key is the <tt class="docutils literal"><span class="pre">CONTENT_KEY</span></tt
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> &#8211; the key to check in the metadata dict for</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> &#8211; the key to check in the metadata dict for</td>
 </tr>
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">whether (True) or not (False) the key exists</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">whether (True) or not (False) the key exists</td>
 </tr>
 </tbody>
 </table>
@@ -1819,7 +1834,7 @@ key is the <tt class="docutils literal"><span class="pre">CONTENT_KEY</span></tt
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Returns:</th><td class="field-body">list of key names</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of key names</td>
 </tr>
 </tbody>
 </table>
@@ -1855,7 +1870,7 @@ EntryBase subclass you&#8217;re dealing with.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> &#8211; the data</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> &#8211; the data</td>
 </tr>
 </tbody>
 </table>
@@ -1870,7 +1885,7 @@ EntryBase subclass you&#8217;re dealing with.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>key</strong> &#8211; the key string</li>
 <li><strong>value</strong> &#8211; the value string</li>
 </ul>
@@ -1890,7 +1905,7 @@ tuple.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timetuple</strong> &#8211; the timetuple to use to set the data
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timetuple</strong> &#8211; the timetuple to use to set the data
 with&#8211;this is the same thing as the
 mtime/atime portions of an os.stat.  This
 time is expected to be local time, not UTC.</td>
@@ -1914,7 +1929,7 @@ and <tt class="docutils literal"><span class="pre">set_metadata</span></tt> inst
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>newdict</strong> &#8211; the dict we&#8217;re updating this one with</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>newdict</strong> &#8211; the dict we&#8217;re updating this one with</td>
 </tr>
 </tbody>
 </table>
@@ -1931,7 +1946,7 @@ entry using the data you provided.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>request</strong> &#8211; the Request object</li>
 <li><strong>properties</strong> &#8211; the dict of properties for the entry</li>
 <li><strong>data</strong> &#8211; the data content for the entry</li>
@@ -1979,7 +1994,7 @@ if you pass in None, then we&#8217;ll use localtime.</li>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -2008,13 +2023,13 @@ if you pass in None, then we&#8217;ll use localtime.</li>
         <li class="right" >
           <a href="dev_writing_plugins.html" title="Writing Plugins"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jul 14, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Deploy PyBlosxom with Static Rendering &mdash; PyBlosxom v1.5 documentation</title>
+    <title>Deploy PyBlosxom with Static Rendering &mdash; PyBlosxom 1.5 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -22,9 +25,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom v1.5 documentation" href="index.html" />
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Configuring PyBlosxom" href="config_variables.html" />
-    <link rel="prev" title="Deploying PyBlosxom with WSGI" href="deploy_wsgi.html" /> 
+    <link rel="prev" title="Deploying PyBlosxom with Apache and mod_wsgi" href="deploy_apache_mod_wsgi.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,9 +43,9 @@
           <a href="config_variables.html" title="Configuring PyBlosxom"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="deploy_wsgi.html" title="Deploying PyBlosxom with WSGI"
+          <a href="deploy_apache_mod_wsgi.html" title="Deploying PyBlosxom with Apache and mod_wsgi"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -57,45 +60,64 @@
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>Static rendering made its first appearance in PyBlosxom 1.0.  It fills
 the functionality gap for people who want to use PyBlosxom, but don&#8217;t
-have a web-server with CGI installed, don&#8217;t have CGI access, or can&#8217;t
+have a web server with CGI installed, don&#8217;t have CGI access, or can&#8217;t
 run PyBlosxom for one of a myriad of other reasons.  Static rendering
 allows these people to run PyBlosxom on their local machine, write
 blog entries, render their entire site into HTML, and then use ftp or
 some other file copy method to move the pages up to their static
 website.</p>
-<p>PyBlosxom&#8217;s static rendering allows for incremental building.  It can
-scan your entries, figure out what&#8217;s changed, and render only the
+<p>PyBlosxom&#8217;s static rendering also allows for incremental building.  It
+can scan your entries, figure out what&#8217;s changed, and render only the
 pages that need re-rendering.</p>
-<p>Beyond that, it&#8217;s not particularly sophisticated.</p>
 </div>
 <div class="section" id="configuring-static-rendering">
 <h2>Configuring static rendering<a class="headerlink" href="#configuring-static-rendering" title="Permalink to this headline">¶</a></h2>
 <p>These are the instructions for configuring static rendering in PyBlosxom.</p>
 <ol class="arabic">
-<li><p class="first"><strong>Uncomment ``static_dir`` in your ``config.py`` file.</strong></p>
+<li><p class="first">Uncomment <tt class="docutils literal"><span class="pre">static_dir</span></tt> in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
 <p>This is the directory we will save all the static output.  The value of
 <tt class="docutils literal"><span class="pre">static_dir</span></tt> should be a string representing the <strong>absolute path</strong> of the
 output directory for static rendering.</p>
+<p>For example, Joe puts the output in his <tt class="docutils literal"><span class="pre">public_html</span></tt> directory of his
+account:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;static_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/home/joe/public_html&quot;</span>
+</pre></div>
+</div>
 </li>
-<li><p class="first"><strong>Uncomment ``static_flavours`` in your ``config.py`` file.</strong></p>
+<li><p class="first">(optional) Uncomment <tt class="docutils literal"><span class="pre">static_flavours</span></tt> in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
 <p>The value of <tt class="docutils literal"><span class="pre">static_flavours</span></tt> should be a list of strings representing
-all the flavours that should be rendered.  This defaults to
-<tt class="docutils literal"><span class="pre">[</span> <span class="pre">&quot;html&quot;</span> <span class="pre">]</span></tt>.</p>
+all the flavours that should be rendered.</p>
+<p>Defaults to <tt class="docutils literal"><span class="pre">[&quot;html&quot;]</span></tt> which only renders the html flavour.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;static_flavours&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;html&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
 </li>
-<li><p class="first"><strong>Uncomment ``static_monthnames`` in your ``config.py`` file.</strong></p>
-<p>The value (either <tt class="docutils literal"><span class="pre">1</span></tt> or <tt class="docutils literal"><span class="pre">0</span></tt>) will determine if you want month
-names (such as <tt class="docutils literal"><span class="pre">April</span></tt>) in the static pages.</p>
+<li><p class="first">(optional) Uncomment <tt class="docutils literal"><span class="pre">static_monthnames</span></tt> in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
+<p>The value (either <tt class="docutils literal"><span class="pre">True</span></tt> or <tt class="docutils literal"><span class="pre">False</span></tt>) will determine if you want
+month names (such as <tt class="docutils literal"><span class="pre">April</span></tt>) in the static pages.</p>
+<p>Defaults to True.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;static_monthnames&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+</pre></div>
+</div>
 </li>
-<li><p class="first"><strong>Uncomment ``static_monthnumbers`` in your ``config.py`` file.</strong></p>
-<p>The value (either <tt class="docutils literal"><span class="pre">1</span></tt> or <tt class="docutils literal"><span class="pre">0</span></tt>) will determine if you want month
-numbers (such as <tt class="docutils literal"><span class="pre">04</span></tt> for <tt class="docutils literal"><span class="pre">April</span></tt>) in the static pages.</p>
+<li><p class="first">Uncomment <tt class="docutils literal"><span class="pre">static_monthnumbers</span></tt> in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
+<p>The value (either <tt class="docutils literal"><span class="pre">True</span></tt> or <tt class="docutils literal"><span class="pre">False</span></tt>) will determine if you want
+month numbers (such as <tt class="docutils literal"><span class="pre">04</span></tt> for <tt class="docutils literal"><span class="pre">April</span></tt>) in the static pages.</p>
+<p>Defaults to False.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;static_monthnumbers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+</pre></div>
+</div>
 </li>
-<li><p class="first"><strong>Set ``base_url`` in your ``config.py`` file to the base url your
-blog will have.</strong></p>
-<p>For example, if your <tt class="docutils literal"><span class="pre">static_dir</span></tt> were set to <tt class="docutils literal"><span class="pre">/home/joe/public_html</span></tt>
-and the url for that directory were <tt class="docutils literal"><span class="pre">http://www.joe.com/~joe/</span></tt>, then
-you probably want to set your base_url like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;base_url&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;http://www.joe.com/~joe/&quot;</span>
+<li><p class="first">Set <tt class="docutils literal"><span class="pre">base_url</span></tt> in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file to the base url your
+blog will have.</p>
+<p>For example, if your <tt class="docutils literal"><span class="pre">static_dir</span></tt> were set to
+<tt class="docutils literal"><span class="pre">/home/joe/public_html</span></tt> and the url for that directory were
+<tt class="docutils literal"><span class="pre">http://example.com/~joe/</span></tt>, then you probably want to set your
+base_url like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;base_url&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;http://example.com/~joe/&quot;</span>
 </pre></div>
 </div>
 </li>
@@ -103,19 +125,20 @@ you probably want to set your base_url like this:</p>
 <p>Here&#8217;s an example of static rendering configuration:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;static_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/home/joe/public_html/static/&quot;</span>
 <span class="n">py</span><span class="p">[</span><span class="s">&quot;static_flavours&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;html&quot;</span><span class="p">]</span>
-<span class="n">py</span><span class="p">[</span><span class="s">&quot;static_monthnames&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c"># i do not want month names</span>
-<span class="n">py</span><span class="p">[</span><span class="s">&quot;static_monthnumbers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c"># i do want month numbers</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;static_monthnames&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>    <span class="c"># I do not want month names</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;static_monthnumbers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>   <span class="c"># I do want month numbers</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="running-static-rendering">
 <h2>Running static rendering<a class="headerlink" href="#running-static-rendering" title="Permalink to this headline">¶</a></h2>
 <p>There are two ways to run static rendering.  The first is to render
-your entire blog from scratch (see &#8220;render everything&#8221;) and the second
-is to render only the parts of the blog that will be different because
-of new blog entries or updated blog entries (see &#8220;incremental rendering&#8221;).</p>
+your entire blog from scratch (see <a class="reference internal" href="#render-everything"><em>Render everything</em></a>) and the
+second is to render only the parts of the blog that will be different
+because of new blog entries or updated blog entries (see
+<a class="reference internal" href="#incremental-rendering"><em>Incremental rendering</em></a>).</p>
 <div class="section" id="render-everything">
-<h3>Render everything<a class="headerlink" href="#render-everything" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3>Render everything<a class="headerlink" href="#render-everything" title="Permalink to this headline">¶</a></h3>
 <p>To render all pages in your blog, <tt class="docutils literal"><span class="pre">cd</span></tt> into the directory that
 contains your <tt class="docutils literal"><span class="pre">config.py</span></tt> file and run:</p>
 <div class="highlight-python"><pre>% pyblosxom-cmd staticrender</pre>
@@ -127,32 +150,30 @@ contains your <tt class="docutils literal"><span class="pre">config.py</span></t
 that contains your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.  For example:</p>
 <div class="highlight-python"><pre>% pyblosxom-cmd staticrender --config /home/joe/blog/</pre>
 </div>
-<p>Or, if the location of your <tt class="docutils literal"><span class="pre">config.py</span></tt> file is on your
-<tt class="docutils literal"><span class="pre">$PYTHONPATH</span></tt> then you can run <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span> <span class="pre">staticrender</span></tt> from
-any directory without giving the <tt class="docutils literal"><span class="pre">--config</span></tt> option.</p>
-<p>Lots of output will appear as PyBlosxom figures out all the urls that need
-to be rendered and then renders them.</p>
+<p>Or, if the location of your <tt class="docutils literal"><span class="pre">config.py</span></tt> file is in your
+<tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt> (an environment variable) then you can run
+<tt class="docutils literal"><span class="pre">pyblosxom-cmd</span> <span class="pre">staticrender</span></tt> from any directory without giving the
+<tt class="docutils literal"><span class="pre">--config</span></tt> option.</p>
+<p>Lots of output will appear as PyBlosxom figures out all the urls that
+need to be rendered and then renders them.</p>
 </div>
 <div class="section" id="incremental-rendering">
-<h3>Incremental rendering<a class="headerlink" href="#incremental-rendering" title="Permalink to this headline">¶</a></h3>
-<p>To find all the entries that have changed since you last rendered
-them and then re-render just those entries, do:</p>
-<div class="highlight-python"><pre>% pyblosxom-cmd staticrender --config &lt;/path/to/blog_dir&gt; --incremental</pre>
-</div>
-<p>Again the <tt class="docutils literal"><span class="pre">&lt;/path/to/blog_dir&gt;</span></tt> must be the path of the directory
-that contains your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
-<p>Incremental static rendering works by comparing the mtime of the
-entry file with the mtime of the rendered file.</p>
+<span id="id2"></span><h3>Incremental rendering<a class="headerlink" href="#incremental-rendering" title="Permalink to this headline">¶</a></h3>
+<p>To find all the entries that have changed since you last rendered them
+and then re-render just those entries, do what you did in
+<a class="reference internal" href="#render-everything"><em>Render everything</em></a>, but tack on <tt class="docutils literal"><span class="pre">--incremental</span></tt> to the end.</p>
+<p>Incremental static rendering works by comparing the mtime of the entry
+file with the mtime of the rendered file.</p>
 </div>
 </div>
-<div class="section" id="rendering-other-uris">
-<h2>Rendering other URIs<a class="headerlink" href="#rendering-other-uris" title="Permalink to this headline">¶</a></h2>
-<p>Some plugins provide other URIs that are part of your site, but not
-really part of your blog since they&#8217;re not related to entries.  Examples
-of this include the plugininfo plugin which provides information about
-the plugins that you&#8217;re running.  You can set the static_urls property
-in config.py to a list of all the urls that need to be rendered every time.
-This list could include:</p>
+<div class="section" id="rendering-other-urls">
+<h2>Rendering other URLs<a class="headerlink" href="#rendering-other-urls" title="Permalink to this headline">¶</a></h2>
+<p>Some plugins provide other URLs that are part of your site, but not
+really part of your blog since they&#8217;re not related to entries.
+Examples of this include the plugininfo plugin which provides
+information about the plugins that you&#8217;re running.  You can set the
+static_urls property in config.py to a list of all the urls that need
+to be rendered every time.  This list could include:</p>
 <ul class="simple">
 <li>RSS, FOAF, OPML, Atom or any other kind of feeds</li>
 <li>urls for plugins that aren&#8217;t related to entries (plugininfo,
@@ -160,48 +181,67 @@ pystaticfile, booklist, ...)</li>
 <li>urls for plugins that provide other kinds of indexes (index by tag,
 index by popularity, ...)</li>
 </ul>
-<p><tt class="docutils literal"><span class="pre">static_urls</span></tt> takes a list of strings where each string is a url to be
-rendered.</p>
+<p><tt class="docutils literal"><span class="pre">static_urls</span></tt> takes a list of strings where each string is a url to
+be rendered.</p>
 <p>For example if I wanted to render the booklist page and the RSS feed
 for my main page, I would set it like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;static_urls&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;/booklist/index.html&quot;</span><span class="p">,</span> <span class="s">&quot;/index.xml&quot;</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;static_urls&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&quot;/index.xml&quot;</span><span class="p">,</span>            <span class="c"># blog feed</span>
+    <span class="s">&quot;/pages/about.html&quot;</span><span class="p">,</span>     <span class="c"># about this blog page</span>
+    <span class="s">&quot;/booklist/index.html&quot;</span><span class="p">,</span>  <span class="c"># list of books I&#39;ve read</span>
+    <span class="p">]</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="pitfalls">
-<h2>Pitfalls<a class="headerlink" href="#pitfalls" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="things-to-note">
+<h2>Things to note<a class="headerlink" href="#things-to-note" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Both rendering everything and incremental rendering <em>won&#8217;t</em> remove outdated
-files.</li>
+<li>Both rendering everything and incremental rendering <em>won&#8217;t</em> remove
+outdated files.</li>
+<li>You probably don&#8217;t want to render an rss or Atom version of every
+page, so don&#8217;t include those flavours in <tt class="docutils literal"><span class="pre">static_flavours</span></tt> and
+instead specify the urls by hand in <tt class="docutils literal"><span class="pre">static_urls</span></tt>.</li>
+<li>If your website requires more files than just the ones that are
+rendered by PyBlosxom (images, CSS, ...), then you need to copy
+those files over separately&#8212;Pyblosxom won&#8217;t do it for you.</li>
 </ul>
 </div>
-<div class="section" id="additional-thoughts">
-<h2>Additional thoughts<a class="headerlink" href="#additional-thoughts" title="Permalink to this headline">¶</a></h2>
-<p>Static rendering is pretty simplistic. We use the <tt class="docutils literal"><span class="pre">tools.render_url</span></tt>
-function to render each url.  Plugins that need to re-render the entry
-pages because something has changed (e.g. comments, pingbacks, ...),
-should call this function.</p>
-<p>If you want to statically render your blog every night, you could write
-a shell script like this:</p>
-<div class="highlight-python"><pre>#!/bin/bash
-
-CONFIG=&lt;path to directory containing config.py here&gt;
-STATIC_DIR=&lt;your static dir here&gt;
-
-pyblosxom-cmd staticrender --config ${CONFIG}
-find ${STATIC_DIR} -mmin +30 -exec 'rm' '{}' ';'</pre>
+<div class="section" id="example-setup">
+<h2>Example setup<a class="headerlink" href="#example-setup" title="Permalink to this headline">¶</a></h2>
+<p>I have all my blog files located in <tt class="docutils literal"><span class="pre">/home/joe/blog/</span></tt>.</p>
+<p>My blog consists of blog entries and also a CSS file, a JavaScript
+file, and a bunch of images.</p>
+<p>My directory layout looks like:</p>
+<div class="highlight-python"><pre>blog/
+  |- www/
+  |  |- images/
+  |  |- css/
+  |  \- js/
+  |
+  |- entries/       # all my blog entries
+  |- flavourdir/    # flavours and templates
+  |- plugins/       # a couple of plugins I use
+  |
+  |- config.py      # my config.py file
+  \- compile.sh     # shell script below</pre>
 </div>
-<p>That&#8217;ll re-render everything, then delete any files in your static
-dir that are older than 30 minutes in case you moved entries from
-one category to another or deleted an entry or something along those
-lines.  Be careful.  If you have copied other files (CSS, images, etc)
-to the <tt class="docutils literal"><span class="pre">static_dir</span></tt> manually before, you will lose them!</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>A note about other files:</p>
-<p class="last">If your website requires more files than just the ones that are rendered
-by PyBlosxom (images, CSS, ...), then you should copy those over with
-your shell script as well.</p>
+<p>I render my blog to <tt class="docutils literal"><span class="pre">/home/joe/public_html</span></tt>.</p>
+<p>I like having my blog updated nightly&#8212;that gives me time to write
+entries during the day at my leisure and they all appear the next day.
+I do this by having a <tt class="docutils literal"><span class="pre">compile.sh</span></tt> that gets run by cron every
+night.</p>
+<p>The script looks like this:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
+
+<span class="nv">BLOGDIR</span><span class="o">=</span>/home/joe/blog
+<span class="nv">OUTPUTDIR</span><span class="o">=</span>/home/joe/public_html
+
+<span class="c"># incrementally render entire blog</span>
+pyblosxom-cmd staticrender --config <span class="k">${</span><span class="nv">BLOGDIR</span><span class="k">}</span> --incremental
+
+<span class="c"># copy static files (images, css, ...)</span>
+cp -ar <span class="k">${</span><span class="nv">BLOGDIR</span><span class="k">}</span>/www/* <span class="k">${</span><span class="nv">OUTPUTDIR</span><span class="k">}</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -222,16 +262,16 @@ your shell script as well.</p>
 <li><a class="reference internal" href="#incremental-rendering">Incremental rendering</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#rendering-other-uris">Rendering other URIs</a></li>
-<li><a class="reference internal" href="#pitfalls">Pitfalls</a></li>
-<li><a class="reference internal" href="#additional-thoughts">Additional thoughts</a></li>
+<li><a class="reference internal" href="#rendering-other-urls">Rendering other URLs</a></li>
+<li><a class="reference internal" href="#things-to-note">Things to note</a></li>
+<li><a class="reference internal" href="#example-setup">Example setup</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="deploy_wsgi.html"
-                        title="previous chapter">Deploying PyBlosxom with WSGI</a></p>
+  <p class="topless"><a href="deploy_apache_mod_wsgi.html"
+                        title="previous chapter">Deploying PyBlosxom with Apache and mod_wsgi</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="config_variables.html"
                         title="next chapter">Configuring PyBlosxom</a></p>
@@ -243,7 +283,7 @@ your shell script as well.</p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -270,15 +310,15 @@ your shell script as well.</p>
           <a href="config_variables.html" title="Configuring PyBlosxom"
              >next</a> |</li>
         <li class="right" >
-          <a href="deploy_wsgi.html" title="Deploying PyBlosxom with WSGI"
+          <a href="deploy_apache_mod_wsgi.html" title="Deploying PyBlosxom with Apache and mod_wsgi"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom v1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2009, 2010, Will Kahn-Greene.
-      Last updated on Jul 14, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

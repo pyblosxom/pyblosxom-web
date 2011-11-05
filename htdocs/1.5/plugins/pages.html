@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pages - Allows you to include non-blog-entr... &mdash; PyBlosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PyBlosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="paginate - Allows navigation by page for index..." href="paginate.html" />
+    <link rel="prev" title="no_old_comments - Prevent comments on entries older t..." href="no_old_comments.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="paginate.html" title="paginate - Allows navigation by page for index..."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="no_old_comments.html" title="no_old_comments - Prevent comments on entries older t..."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pages-allows-you-to-include-non-blog-entr">
+<h1>pages - Allows you to include non-blog-entr...<a class="headerlink" href="#pages-allows-you-to-include-non-blog-entr" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Blogs don&#8217;t always consist solely of blog entries.  Sometimes you want
+to add other content to your blog that&#8217;s not a blog entry.  For
+example, an &#8220;about this blog&#8221; page or a page covering a list of your
+development projects.</p>
+<p>This plugin allows you to have pages served by Pyblosxom that aren&#8217;t
+blog entries.</p>
+<p>Additionally, this plugin allows you to have a non-blog-entry front
+page.  This makes it easier to use Pyblosxom to run your entire
+website.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic simple">
+<li>add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.pages</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list in
+your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</li>
+<li>configure the plugin using the configuration variables below</li>
+</ol>
+<p><tt class="docutils literal"><span class="pre">pagesdir</span></tt></p>
+<blockquote>
+<div><p>This is the directory that holds the pages files.</p>
+<p>For example, if you wanted your pages in
+<tt class="docutils literal"><span class="pre">/home/foo/blog/pages/</span></tt>, then you would set it to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;pagesdir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/home/foo/blog/pages/&quot;</span>
+</pre></div>
+</div>
+<p>If you have <tt class="docutils literal"><span class="pre">blogdir</span></tt> defined in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file which
+holds your <tt class="docutils literal"><span class="pre">datadir</span></tt> and <tt class="docutils literal"><span class="pre">flavourdir</span></tt> directories, then you
+could set it to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;pagesdir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">blogdir</span><span class="p">,</span> <span class="s">&quot;pages&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">pages_trigger</span></tt> (optional)</p>
+<blockquote>
+<div><p>Defaults to <tt class="docutils literal"><span class="pre">pages</span></tt>.</p>
+<p>This is the url trigger that causes the pages plugin to look for
+pages.</p>
+<blockquote>
+<div>py[&#8220;pages_trigger&#8221;] = &#8220;pages&#8221;</div></blockquote>
+</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">pages_frontpage</span></tt> (optional)</p>
+<blockquote>
+<div><p>Defaults to False.</p>
+<p>If set to True, then pages will show the <tt class="docutils literal"><span class="pre">frontpage</span></tt> page for
+the front page.</p>
+<p>This requires you to have a <tt class="docutils literal"><span class="pre">frontpage</span></tt> file in your pages
+directory.  The extension for this file works the same way as blog
+entries.  So if your blog entries end in <tt class="docutils literal"><span class="pre">.txt</span></tt>, then you would
+need a <tt class="docutils literal"><span class="pre">frontpage.txt</span></tt> file.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;pages_frontpage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Pages looks for urls that start with the trigger <tt class="docutils literal"><span class="pre">pages_trigger</span></tt>
+value as set in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.  For example, if your
+<tt class="docutils literal"><span class="pre">pages_trigger</span></tt> was <tt class="docutils literal"><span class="pre">pages</span></tt>, then it would look for urls like
+this:</p>
+<div class="highlight-python"><pre>/pages/blah
+/pages/blah.html</pre>
+</div>
+<p>and pulls up the file <tt class="docutils literal"><span class="pre">blah.txt</span></tt> <a class="footnote-reference" href="#id2" id="id1">[1]</a> which is located in the path
+specified in the config file as <tt class="docutils literal"><span class="pre">pagesdir</span></tt>.</p>
+<p>If the file is not there, it kicks up a 404.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The file ending (the <tt class="docutils literal"><span class="pre">.txt</span></tt> part) can be any file ending
+that&#8217;s valid for entries on your blog.  For example, if you have
+the textile entryparser installed, then <tt class="docutils literal"><span class="pre">.txtl</span></tt> is also a valid
+file ending.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="template">
+<h2>Template<a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h2>
+<p>pages formats the page using the <tt class="docutils literal"><span class="pre">pages</span></tt> template.  So you need a
+<tt class="docutils literal"><span class="pre">pages</span></tt> template in the flavours that you want these pages to be
+rendered in.  I copy my <tt class="docutils literal"><span class="pre">story</span></tt> template and remove some bits.</p>
+<p>For example, if you&#8217;re using the html flavour and that is stored in
+<tt class="docutils literal"><span class="pre">/home/foo/blog/flavours/html.flav/</span></tt>, then you could copy the
+<tt class="docutils literal"><span class="pre">story</span></tt> file in that directory to <tt class="docutils literal"><span class="pre">pages</span></tt> and that would become
+your <tt class="docutils literal"><span class="pre">pages</span></tt> template.</p>
+</div>
+<div class="section" id="python-code-blocks">
+<h2>Python code blocks<a class="headerlink" href="#python-code-blocks" title="Permalink to this headline">¶</a></h2>
+<p>pages handles evaluating python code blocks.  Enclose python code in
+<tt class="docutils literal"><span class="pre">&lt;%</span></tt> and <tt class="docutils literal"><span class="pre">%&gt;</span></tt>.  The assumption is that only you can edit your
+pages files, so there are no restrictions (security or otherwise).</p>
+<p>For example:</p>
+<div class="highlight-python"><pre>&lt;%
+print "testing"
+%&gt;
+
+&lt;%
+x = { "apple": 5, "banana": 6, "pear": 4 }
+for mem in x.keys():
+   print "&lt;li&gt;%s - %s&lt;/li&gt;" % (mem, x[mem])
+%&gt;</pre>
+</div>
+<p>The request object is available in python code blocks.  Reference it
+by <tt class="docutils literal"><span class="pre">request</span></tt>.  Example:</p>
+<div class="highlight-python"><pre>&lt;%
+config = request.get_configuration()
+print "your datadir is: %s" % config["datadir"]
+%&gt;</pre>
+</div>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pages - Allows you to include non-blog-entr...</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#template">Template</a></li>
+<li><a class="reference internal" href="#python-code-blocks">Python code blocks</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="no_old_comments.html"
+                        title="previous chapter">no_old_comments - Prevent comments on entries older t...</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="paginate.html"
+                        title="next chapter">paginate - Allows navigation by page for index...</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/pages.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="paginate.html" title="paginate - Allows navigation by page for index..."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="no_old_comments.html" title="no_old_comments - Prevent comments on entries older t..."
+             >previous</a> |</li>
+        <li><a href="../index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Nov 05, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>
