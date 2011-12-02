@@ -46,7 +46,7 @@ for entry in entrylist:
                   urlencode_text(entry.get('file_path')))
     title = escape_text(entry.get('title'))
     postdate = entry.get('date')
-    print '<li><a href="%s">%s</a> (%s)' % (url, title, postdate)
+    print '<li><a href="%s.html">%s</a> (%s)' % (url, title, postdate)
 print '</ul>'
 %>
 

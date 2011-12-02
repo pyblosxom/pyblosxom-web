@@ -61,43 +61,69 @@
 <p>Adds comments to your blog.  Supports preview, AJAX posting, SMTP
 notifications, plugins for rejecting comments (and thus reducing
 spam), ...</p>
+<p>Comments are stored in a directory that parallels the data directory.
+The comments themselves are stored as XML files named
+entryname-datetime.suffix.  The comment system allows you to specify
+the directory where the comment directory tree will stored, and the
+suffix used for comment files.  You need to make sure that this
+directory is writable by whatever is running Pyblosxom.</p>
+<p>Comments are stored one or more per file in a parallel hierarchy to
+the datadir hierarchy.  The filename of the comment is the filename of
+the blog entry, plus the creation time of the comment as a float, plus
+the comment extension.</p>
+<p>Comments now follow the <tt class="docutils literal"><span class="pre">blog_encoding</span></tt> variable specified in
+<tt class="docutils literal"><span class="pre">config.py</span></tt>.  If you don&#8217;t include a <tt class="docutils literal"><span class="pre">blog_encoding</span></tt> variable,
+this will default to utf-8.</p>
+<p>Comments will be shown for a given page if one of the following is
+true:</p>
+<ol class="arabic simple">
+<li>the page has only one blog entry on it and the request is for a
+specific blog entry as opposed to a category with only one entry
+in it</li>
+<li>if &#8220;showcomments=yes&#8221; is in the querystring then comments will
+be shown</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This comments plugin does not work with static rendering.  If you
+are using static rendering to build your blog, you won&#8217;t be able to
+use this plugin.</p>
+</div>
 </div>
 <div class="section" id="install">
 <h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <p>This plugin comes with Pyblosxom.  To install, do the following:</p>
-<ol class="arabic simple">
-<li>Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.comments</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list of
-your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</li>
-<li>Configure as documented below.</li>
+<ol class="arabic">
+<li><p class="first">Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.comments</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list of
+your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;load_plugins&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Pyblosxom.plugins.comments&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Configure as documented below in the Configuration section.</p>
+</li>
+<li><p class="first">Add templates to your html flavour as documented in the Flavour
+templates section.</p>
+</li>
 </ol>
 </div>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Comments are stored in a directory which will parallel the data
-directory.  The comments themselves are stored as XML files named
-entryname-datetime.suffix.  The comment system allows you to
-specify the directory where the comment directory tree will stored,
-and the suffix used for comment files.  You need to make sure that
-this directory is writable by the pyblosxom CGI scripts.</p>
-<p>Set py[&#8216;comment_dir&#8217;] to the directory (in your data directory)
+<li><p class="first">Set <tt class="docutils literal"><span class="pre">py['comment_dir']</span></tt> to the directory (in your data directory)
 where you want the comments to be stored.  The default value is a
-directory named &#8216;comments&#8217; in your datadir.</p>
-</li>
-<li><p class="first">Copy the templates required.  See the Flavour templates section
-below for examples.</p>
-</li>
-<li><p class="first">(optional) Set py[&#8216;comment_ext&#8217;] to the change comment file
-extension.  The default file extension is &#8216;cmt&#8217;.</p>
+directory named &#8220;comments&#8221; in your datadir.</p>
 </li>
 <li><p class="first">(optional) The comment system can notify you via e-mail when new
-comments/trackbacks/pingbacks are posted.  If you want to enable this
-feature, create the following config.py entries:</p>
-<div class="highlight-python"><pre>py['comment_smtp_from']   - the address sending the notification
-py['comment_smtp_to']     - the address receiving the notification</pre>
-</div>
+comments/trackbacks/pingbacks are posted.  If you want to enable
+this feature, create the following config.py entries:</p>
+<blockquote>
+<div><p>py[&#8216;comment_smtp_from&#8217;] - the email address sending the notification
+py[&#8216;comment_smtp_to&#8217;]   - the email address receiving the notification</p>
+</div></blockquote>
 <p>If you want to use an SMTP server, then set:</p>
-<div class="highlight-python"><pre>py['comment_smtp_server'] - your SMTP server</pre>
+<div class="highlight-python"><pre>py['comment_smtp_server'] - your SMTP server hostname/ip address</pre>
 </div>
 <p><strong>OR</strong> if you want to use a mail command, set:</p>
 <div class="highlight-python"><pre>py['comment_mta_cmd']     - the path to your MTA, e.g. /usr/bin/mail</pre>
@@ -115,63 +141,55 @@ py['comment_smtp_to']     - the address receiving the notification</pre>
 </pre></div>
 </div>
 </li>
+<li><p class="first">(optional) Set <tt class="docutils literal"><span class="pre">py['comment_ext']</span></tt> to the change comment file
+extension.  The default file extension is &#8220;cmt&#8221;.</p>
+</li>
 </ol>
 <p>This module supports the following config parameters (they are not
 required):</p>
 <p><tt class="docutils literal"><span class="pre">comment_dir</span></tt></p>
 <blockquote>
-<div>the directory we&#8217;re going to store all our comments in.  this
-defaults to datadir + &#8220;comments&#8221;.</div></blockquote>
+<div><p>The directory we&#8217;re going to store all our comments in.  This
+defaults to datadir + &#8220;comments&#8221;.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;comment_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/home/joe/blog/comments/&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
 <p><tt class="docutils literal"><span class="pre">comment_ext</span></tt></p>
 <blockquote>
-<div>the file extension used to denote a comment file.  this defaults
+<div>The file extension used to denote a comment file.  This defaults
 to &#8220;cmt&#8221;.</div></blockquote>
 <p><tt class="docutils literal"><span class="pre">comment_draft_ext</span></tt></p>
 <blockquote>
-<div>the file extension used for new comments that have not been
-manually approved by you.  this defaults to comment_ext
-(i.e. there is no draft stage)</div></blockquote>
+<div>The file extension used for new comments that have not been
+manually approved by you.  This defaults to the value in
+<tt class="docutils literal"><span class="pre">comment_ext</span></tt>&#8212;i.e. there is no draft stage.</div></blockquote>
 <p><tt class="docutils literal"><span class="pre">comment_smtp_server</span></tt></p>
 <blockquote>
-<div>the smtp server to send comments notifications through.</div></blockquote>
+<div>The smtp server to send comments notifications through.</div></blockquote>
 <p><tt class="docutils literal"><span class="pre">comment_mta_cmd</span></tt></p>
 <blockquote>
-<div>alternatively, a command line to invoke your MTA (e.g.
-sendmail) to send comment notifications through.</div></blockquote>
+<div>Alternatively, a command line to invoke your MTA (e.g.  sendmail)
+to send comment notifications through.</div></blockquote>
 <p><tt class="docutils literal"><span class="pre">comment_smtp_from</span></tt></p>
 <blockquote>
-<div>the email address comment notifications will be from. If you&#8217;re
-using SMTP, this should be an email address accepted by your
-SMTP server. If you omit this, the from address will be the
-e-mail address as input in the comment form.</div></blockquote>
+<div>The email address comment notifications will be from.  If you&#8217;re
+using SMTP, this should be an email address accepted by your SMTP
+server.  If you omit this, the from address will be the e-mail
+address as input in the comment form.</div></blockquote>
 <p><tt class="docutils literal"><span class="pre">comment_smtp_to</span></tt></p>
 <blockquote>
-<div>the email address to send comment notifications to.</div></blockquote>
+<div>The email address to send comment notifications to.</div></blockquote>
 <p><tt class="docutils literal"><span class="pre">comment_nofollow</span></tt></p>
 <blockquote>
-<div>set this to 1 to add rel=&#8221;nofollow&#8221; attributes to links in the
-description &#8211; these attributes are embedded in the stored
+<div>Set this to 1 to add <tt class="docutils literal"><span class="pre">rel=&quot;nofollow&quot;</span></tt> attributes to links in the
+description&#8212;these attributes are embedded in the stored
 representation.</div></blockquote>
 <p><tt class="docutils literal"><span class="pre">comment_disable_after_x_days</span></tt></p>
 <blockquote>
-<div>set this to a positive integer and users won&#8217;t be able to leave
+<div>Set this to a positive integer and users won&#8217;t be able to leave
 comments on entries older than x days.</div></blockquote>
-<p>Comments are stored one or more per file in a parallel hierarchy to
-the datadir hierarchy.  The filename of the comment is the filename of
-the blog entry, plus the creation time of the comment as a float, plus
-the comment extension.</p>
-<p>Comments now follow the <tt class="docutils literal"><span class="pre">blog_encoding</span></tt> variable specified in
-<tt class="docutils literal"><span class="pre">config.py</span></tt>.  If you don&#8217;t include a <tt class="docutils literal"><span class="pre">blog_encoding</span></tt> variable,
-this will default to iso-8859-1.</p>
-<p>Comments will be shown for a given page if one of the following is
-true:</p>
-<ol class="arabic simple">
-<li>the page has only one blog entry on it and the request is for a
-specific blog entry as opposed to a category with only one entry
-in it</li>
-<li>if &#8220;showcomments=yes&#8221; is in the querystring then comments will
-be shown</li>
-</ol>
 </div>
 <div class="section" id="related-files">
 <h2>Related files<a class="headerlink" href="#related-files" title="Permalink to this headline">¶</a></h2>
@@ -504,7 +522,7 @@ entry.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2009-2011, Will Kahn-Greene.
-      Last updated on Nov 05, 2011.
+      Last updated on Dec 02, 2011.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
