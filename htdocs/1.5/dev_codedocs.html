@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Code Documentation &mdash; PyBlosxom 1.5 documentation</title>
+    <title>Code Documentation &mdash; Pyblosxom 1.5 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
+    <link rel="top" title="Pyblosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Testing" href="dev_testing.html" />
     <link rel="prev" title="Writing Plugins" href="dev_writing_plugins.html" /> 
   </head>
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="dev_writing_plugins.html" title="Writing Plugins"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -58,7 +58,7 @@
 <h1>Code Documentation<a class="headerlink" href="#code-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>This chapter covers important functions, methods and classes in PyBlosxom.
+<p>This chapter covers important functions, methods and classes in Pyblosxom.
 When in doubt, read the code.</p>
 </div>
 <div class="section" id="pyblosxom-pyblosxom">
@@ -66,23 +66,23 @@ When in doubt, read the code.</p>
 <dl class="data">
 <dt id="VERSION">
 <tt class="descname">VERSION</tt><a class="headerlink" href="#VERSION" title="Permalink to this definition">¶</a></dt>
-<dd><p>PyBlosxom version.  For example <tt class="docutils literal"><span class="pre">&quot;1.5&quot;</span></tt>.</p>
+<dd><p>Pyblosxom version.  For example <tt class="docutils literal"><span class="pre">&quot;1.5&quot;</span></tt>.</p>
 </dd></dl>
 
 <dl class="data">
 <dt id="VERSION_DATA">
 <tt class="descname">VERSION_DATA</tt><a class="headerlink" href="#VERSION_DATA" title="Permalink to this definition">¶</a></dt>
-<dd><p>PyBlosxom version with date.  For example <tt class="docutils literal"><span class="pre">&quot;1.5</span> <span class="pre">dev&quot;</span></tt>.</p>
+<dd><p>Pyblosxom version with date.  For example <tt class="docutils literal"><span class="pre">&quot;1.5</span> <span class="pre">dev&quot;</span></tt>.</p>
 </dd></dl>
 
 <dl class="data">
 <dt id="VERSION_SPLIT">
 <tt class="descname">VERSION_SPLIT</tt><a class="headerlink" href="#VERSION_SPLIT" title="Permalink to this definition">¶</a></dt>
-<dd><p>PyBlosxom version as a tuple&#8212;use this for version checking.
+<dd><p>Pyblosxom version as a tuple&#8212;use this for version checking.
 For example <tt class="docutils literal"><span class="pre">(&quot;1&quot;,</span> <span class="pre">&quot;5&quot;)</span></tt>.</p>
 </dd></dl>
 
-<span class="target" id="module-Pyblosxom.pyblosxom"></span><p>This is the main module for PyBlosxom functionality.  PyBlosxom&#8217;s
+<span class="target" id="module-Pyblosxom.pyblosxom"></span><p>This is the main module for Pyblosxom functionality.  Pyblosxom&#8217;s
 setup and default handlers are defined here.</p>
 <dl class="class">
 <dt id="Pyblosxom.pyblosxom.EnvDict">
@@ -99,56 +99,56 @@ get the <tt class="docutils literal"><span class="pre">form</span></tt> with syn
 </dd></dl>
 
 <dl class="class">
-<dt id="Pyblosxom.pyblosxom.PyBlosxom">
-<em class="property">class </em><tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">PyBlosxom</tt><big>(</big><em>config</em>, <em>environ</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom" title="Permalink to this definition">¶</a></dt>
-<dd><p>Main class for PyBlosxom functionality.  It handles
+<dt id="Pyblosxom.pyblosxom.Pyblosxom">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">Pyblosxom</tt><big>(</big><em>config</em>, <em>environ</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Pyblosxom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main class for Pyblosxom functionality.  It handles
 initialization, defines default behavior, and also pushes the
 request through all the steps until the output is rendered and
 we&#8217;re complete.</p>
 <dl class="method">
-<dt id="Pyblosxom.pyblosxom.PyBlosxom.cleanup">
-<tt class="descname">cleanup</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.cleanup" title="Permalink to this definition">¶</a></dt>
-<dd><p>This cleans up PyBlosxom after a run.</p>
+<dt id="Pyblosxom.pyblosxom.Pyblosxom.cleanup">
+<tt class="descname">cleanup</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Pyblosxom.cleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>This cleans up Pyblosxom after a run.</p>
 <p>This should be called when Pyblosxom has done everything it
 needs to do before exiting.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Pyblosxom.pyblosxom.PyBlosxom.getRequest">
-<tt class="descname">getRequest</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.getRequest" title="Permalink to this definition">¶</a></dt>
+<dt id="Pyblosxom.pyblosxom.Pyblosxom.getRequest">
+<tt class="descname">getRequest</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Pyblosxom.getRequest" title="Permalink to this definition">¶</a></dt>
 <dd><p>DEPRECATED.  Use get_request instead.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Pyblosxom.pyblosxom.PyBlosxom.getResponse">
-<tt class="descname">getResponse</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.getResponse" title="Permalink to this definition">¶</a></dt>
+<dt id="Pyblosxom.pyblosxom.Pyblosxom.getResponse">
+<tt class="descname">getResponse</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Pyblosxom.getResponse" title="Permalink to this definition">¶</a></dt>
 <dd><p>DEPRECATED.  Use get_response instead.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Pyblosxom.pyblosxom.PyBlosxom.get_request">
-<tt class="descname">get_request</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.get_request" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the Request object for this PyBlosxom instance.</p>
+<dt id="Pyblosxom.pyblosxom.Pyblosxom.get_request">
+<tt class="descname">get_request</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Pyblosxom.get_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Request object for this Pyblosxom instance.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Pyblosxom.pyblosxom.PyBlosxom.get_response">
-<tt class="descname">get_response</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.get_response" title="Permalink to this definition">¶</a></dt>
+<dt id="Pyblosxom.pyblosxom.Pyblosxom.get_response">
+<tt class="descname">get_response</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Pyblosxom.get_response" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Response object associated with this Request.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Pyblosxom.pyblosxom.PyBlosxom.initialize">
-<tt class="descname">initialize</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.initialize" title="Permalink to this definition">¶</a></dt>
+<dt id="Pyblosxom.pyblosxom.Pyblosxom.initialize">
+<tt class="descname">initialize</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Pyblosxom.initialize" title="Permalink to this definition">¶</a></dt>
 <dd><p>The initialize step further initializes the Request by
 setting additional information in the <tt class="docutils literal"><span class="pre">data</span></tt> dict,
 registering plugins, and entryparsers.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Pyblosxom.pyblosxom.PyBlosxom.run">
-<tt class="descname">run</tt><big>(</big><em>static=False</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is the main loop for PyBlosxom.  This method will run
+<dt id="Pyblosxom.pyblosxom.Pyblosxom.run">
+<tt class="descname">run</tt><big>(</big><em>static=False</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Pyblosxom.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the main loop for Pyblosxom.  This method will run
 the handle callback to allow registered handlers to handle the
 request.  If nothing handles the request, then we use the
 <tt class="docutils literal"><span class="pre">default_blosxom_handler</span></tt>.</p>
@@ -156,7 +156,7 @@ request.  If nothing handles the request, then we use the
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>static</strong> &#8211; True if PyBlosxom should execute in &#8220;static rendering
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>static</strong> &#8211; True if Pyblosxom should execute in &#8220;static rendering
 mode&#8221; and False otherwise.</td>
 </tr>
 </tbody>
@@ -164,19 +164,19 @@ mode&#8221; and False otherwise.</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="Pyblosxom.pyblosxom.PyBlosxom.runCallback">
-<tt class="descname">runCallback</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.runCallback" title="Permalink to this definition">¶</a></dt>
+<dt id="Pyblosxom.pyblosxom.Pyblosxom.runCallback">
+<tt class="descname">runCallback</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Pyblosxom.runCallback" title="Permalink to this definition">¶</a></dt>
 <dd><p>DEPRECATED.  Use run_callback instead.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Pyblosxom.pyblosxom.PyBlosxom.run_callback">
-<tt class="descname">run_callback</tt><big>(</big><em>callback='help'</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.run_callback" title="Permalink to this definition">¶</a></dt>
+<dt id="Pyblosxom.pyblosxom.Pyblosxom.run_callback">
+<tt class="descname">run_callback</tt><big>(</big><em>callback='help'</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Pyblosxom.run_callback" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method executes the start callback (initializing
 plugins), executes the requested callback, and then executes
 the end callback.</p>
-<p>This is useful for scripts outside of PyBlosxom that need to
-do things inside of the PyBlosxom framework.</p>
+<p>This is useful for scripts outside of Pyblosxom that need to
+do things inside of the Pyblosxom framework.</p>
 <p>If you want to run a callback from a plugin, use
 <tt class="docutils literal"><span class="pre">tools.run_callback</span></tt> instead.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -192,8 +192,8 @@ do things inside of the PyBlosxom framework.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Pyblosxom.pyblosxom.PyBlosxom.run_render_one">
-<tt class="descname">run_render_one</tt><big>(</big><em>url</em>, <em>headers</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.run_render_one" title="Permalink to this definition">¶</a></dt>
+<dt id="Pyblosxom.pyblosxom.Pyblosxom.run_render_one">
+<tt class="descname">run_render_one</tt><big>(</big><em>url</em>, <em>headers</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Pyblosxom.run_render_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renders a single page from the blog.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -212,8 +212,8 @@ False if not.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="Pyblosxom.pyblosxom.PyBlosxom.run_static_renderer">
-<tt class="descname">run_static_renderer</tt><big>(</big><em>incremental=False</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxom.run_static_renderer" title="Permalink to this definition">¶</a></dt>
+<dt id="Pyblosxom.pyblosxom.Pyblosxom.run_static_renderer">
+<tt class="descname">run_static_renderer</tt><big>(</big><em>incremental=False</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Pyblosxom.run_static_renderer" title="Permalink to this definition">¶</a></dt>
 <dd><p>This will go through all possible things in the blog and
 statically render everything to the <tt class="docutils literal"><span class="pre">static_dir</span></tt> specified
 in the config file.</p>
@@ -235,13 +235,13 @@ render only the ones that have changed.</td>
 </dd></dl>
 
 <dl class="class">
-<dt id="Pyblosxom.pyblosxom.PyBlosxomWSGIApp">
-<em class="property">class </em><tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">PyBlosxomWSGIApp</tt><big>(</big><em>environ=None</em>, <em>start_response=None</em>, <em>configini=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxomWSGIApp" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class is the WSGI application for PyBlosxom.</p>
+<dt id="Pyblosxom.pyblosxom.PyblosxomWSGIApp">
+<em class="property">class </em><tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">PyblosxomWSGIApp</tt><big>(</big><em>environ=None</em>, <em>start_response=None</em>, <em>configini=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyblosxomWSGIApp" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is the WSGI application for Pyblosxom.</p>
 <dl class="method">
-<dt id="Pyblosxom.pyblosxom.PyBlosxomWSGIApp.run_pyblosxom">
-<tt class="descname">run_pyblosxom</tt><big>(</big><em>env</em>, <em>start_response</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyBlosxomWSGIApp.run_pyblosxom" title="Permalink to this definition">¶</a></dt>
-<dd><p>Executes a single run of PyBlosxom wrapped in the crash handler.</p>
+<dt id="Pyblosxom.pyblosxom.PyblosxomWSGIApp.run_pyblosxom">
+<tt class="descname">run_pyblosxom</tt><big>(</big><em>env</em>, <em>start_response</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.PyblosxomWSGIApp.run_pyblosxom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a single run of Pyblosxom wrapped in the crash handler.</p>
 </dd></dl>
 
 </dd></dl>
@@ -249,12 +249,12 @@ render only the ones that have changed.</td>
 <dl class="class">
 <dt id="Pyblosxom.pyblosxom.Request">
 <em class="property">class </em><tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">Request</tt><big>(</big><em>config</em>, <em>environ</em>, <em>data</em><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.Request" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class holds the PyBlosxom request.  It holds configuration
+<dd><p>This class holds the Pyblosxom request.  It holds configuration
 information, HTTP/CGI information, and data that we calculate and
 transform over the course of execution.</p>
 <p>There should be only one instance of this class floating around
 and it should get created by <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> and passed into the
-PyBlosxom instance which will do further manipulation on the
+Pyblosxom instance which will do further manipulation on the
 Request instance.</p>
 <dl class="method">
 <dt id="Pyblosxom.pyblosxom.Request.addConfiguration">
@@ -670,14 +670,14 @@ list of entries</td>
 <dl class="function">
 <dt id="Pyblosxom.pyblosxom.run_pyblosxom">
 <tt class="descclassname">Pyblosxom.pyblosxom.</tt><tt class="descname">run_pyblosxom</tt><big>(</big><big>)</big><a class="headerlink" href="#Pyblosxom.pyblosxom.run_pyblosxom" title="Permalink to this definition">¶</a></dt>
-<dd><p>Executes PyBlosxom either as a commandline script or CGI
+<dd><p>Executes Pyblosxom either as a commandline script or CGI
 script.</p>
 </dd></dl>
 
 </div>
 <div class="section" id="module-Pyblosxom.tools">
 <span id="pyblosxom-tools"></span><h2>Pyblosxom.tools<a class="headerlink" href="#module-Pyblosxom.tools" title="Permalink to this headline">¶</a></h2>
-<p>Utility module for functions that are useful to PyBlosxom and plugins.</p>
+<p>Utility module for functions that are useful to Pyblosxom and plugins.</p>
 <dl class="exception">
 <dt id="Pyblosxom.tools.ConfigSyntaxErrorException">
 <em class="property">exception </em><tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">ConfigSyntaxErrorException</tt><a class="headerlink" href="#Pyblosxom.tools.ConfigSyntaxErrorException" title="Permalink to this definition">¶</a></dt>
@@ -935,7 +935,7 @@ isn&#8217;t a directory</p>
 <dt id="Pyblosxom.tools.filestat">
 <tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">filestat</tt><big>(</big><em>request</em>, <em>filename</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.filestat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the filestat on a given file.  We store the filestat in
-case we&#8217;ve already retrieved it during this PyBlosxom request.</p>
+case we&#8217;ve already retrieved it during this Pyblosxom request.</p>
 <p>This returns the mtime of the file (same as returned by
 <tt class="docutils literal"><span class="pre">time.localtime()</span></tt>) &#8211; tuple of 9 ints.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1019,7 +1019,7 @@ logger logs to.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log_file</strong> &#8211; the file to log to.  defaults to None which
-causes PyBlosxom to check for the <tt class="docutils literal"><span class="pre">log_file</span></tt>
+causes Pyblosxom to check for the <tt class="docutils literal"><span class="pre">log_file</span></tt>
 config.py property and if that&#8217;s blank, then the
 log_file is stderr</td>
 </tr>
@@ -1058,7 +1058,7 @@ importing.</p>
 <dd><p>Initializes the tools module.</p>
 <p>This gives the module a chance to use configuration from the
 pyblosxom config.py file.</p>
-<p>This should be called from <tt class="docutils literal"><span class="pre">Pyblosxom.pyblosxom.PyBlosxom.initialize</span></tt>.</p>
+<p>This should be called from <tt class="docutils literal"><span class="pre">Pyblosxom.pyblosxom.Pyblosxom.initialize</span></tt>.</p>
 </dd></dl>
 
 <dl class="function">
@@ -1102,7 +1102,7 @@ debugging.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>frame_num</strong> &#8211; the index of the frame to log; defaults to 1</li>
 <li><strong>log_file</strong> &#8211; the file to log to.  defaults to None which
-causes PyBlosxom to check for the <tt class="docutils literal"><span class="pre">log_file</span></tt>
+causes Pyblosxom to check for the <tt class="docutils literal"><span class="pre">log_file</span></tt>
 config.py property and if that&#8217;s blank, then the
 log_file is stderr</li>
 </ul>
@@ -1122,7 +1122,7 @@ log_file as defined in config.py if none is given here.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log_file</strong> &#8211; the file to log to.  defaults to None which
-causes PyBlosxom to check for the <tt class="docutils literal"><span class="pre">log_file</span></tt>
+causes Pyblosxom to check for the <tt class="docutils literal"><span class="pre">log_file</span></tt>
 config.py property and if that&#8217;s blank, then the
 log_file is stderr</td>
 </tr>
@@ -1170,7 +1170,7 @@ to expand template variables using values in the <tt class="docutils literal"><s
 <dt id="Pyblosxom.tools.render_url">
 <tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">render_url</tt><big>(</big><em>cdict</em>, <em>pathinfo</em>, <em>querystring=''</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.render_url" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes a url and a querystring and renders the page that
-corresponds with that by creating a Request and a PyBlosxom object
+corresponds with that by creating a Request and a Pyblosxom object
 and passing it through.  It then returns the resulting Response.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1184,7 +1184,7 @@ example: <tt class="docutils literal"><span class="pre">/dev/pyblosxom/firstpost
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a PyBlosxom <tt class="docutils literal"><span class="pre">Response</span></tt> object.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a Pyblosxom <tt class="docutils literal"><span class="pre">Response</span></tt> object.</p>
 </td>
 </tr>
 </tbody>
@@ -1213,7 +1213,7 @@ filesystem.</p>
 
 <dl class="function">
 <dt id="Pyblosxom.tools.run_callback">
-<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0x98fdf7c&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0x98fdfb4&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0xa5029cc&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0xa502a04&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes a callback chain on a given piece of data.  passed in is
 a dict of name/value pairs.  Consult the documentation for the
 specific callback chain you&#8217;re executing.</p>
@@ -1342,7 +1342,7 @@ you list.  So the following:</p>
 <li><strong>recurse</strong> &#8211; the depth of recursion; defaults to 0 which goes all
 the way down</li>
 <li><strong>pattern</strong> &#8211; the regexp object for matching files; defaults to
-&#8216;&#8217; which causes PyBlosxom to return files with
+&#8216;&#8217; which causes Pyblosxom to return files with
 file extensions that match those the entryparsers
 handle</li>
 <li><strong>return_folders</strong> &#8211; True if you want only folders, False if you
@@ -1391,13 +1391,13 @@ implement the functionality required by the other rendering system.</p>
 debug module.</p>
 <dl class="class">
 <dt id="Pyblosxom.renderers.base.Renderer">
-<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">Renderer</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x4040d078&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.Renderer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">Renderer</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x4040e078&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.Renderer" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is a null renderer.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="Pyblosxom.renderers.base.RendererBase">
-<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">RendererBase</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x4040d078&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">RendererBase</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x4040e078&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pyblosxom core handles the Input and Process of the system and
 passes the result of the process to the Renderers for output. All
 renderers are child classes of RendererBase. RenderBase will
@@ -1592,7 +1592,7 @@ pyblosxom is running continuously.</p>
 <div class="section" id="module-Pyblosxom.entries.base">
 <span id="pyblosxom-entries-base"></span><h2>Pyblosxom.entries.base<a class="headerlink" href="#module-Pyblosxom.entries.base" title="Permalink to this headline">¶</a></h2>
 <p>This module contains the base class for all the Entry classes.  The
-EntryBase class is essentially the API for entries in PyBlosxom.  Reading
+EntryBase class is essentially the API for entries in Pyblosxom.  Reading
 through the comments for this class will walk you through building your
 own EntryBase derivatives.</p>
 <p>This module also holds a generic generate_entry function which will generate
@@ -2023,13 +2023,13 @@ if you pass in None, then we&#8217;ll use localtime.</li>
         <li class="right" >
           <a href="dev_writing_plugins.html" title="Writing Plugins"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2009-2011, Will Kahn-Greene.
-      Last updated on Nov 07, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+      Last updated on Dec 12, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

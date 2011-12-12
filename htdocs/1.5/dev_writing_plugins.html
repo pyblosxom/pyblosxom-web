@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Writing Plugins &mdash; PyBlosxom 1.5 documentation</title>
+    <title>Writing Plugins &mdash; Pyblosxom 1.5 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,9 +25,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
+    <link rel="top" title="Pyblosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Code Documentation" href="dev_codedocs.html" />
-    <link rel="prev" title="PyBlosxom Architecture" href="dev_architecture.html" /> 
+    <link rel="prev" title="Pyblosxom Architecture" href="dev_architecture.html" /> 
   </head>
   <body>
     <div class="related">
@@ -43,9 +43,9 @@
           <a href="dev_codedocs.html" title="Code Documentation"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="dev_architecture.html" title="PyBlosxom Architecture"
+          <a href="dev_architecture.html" title="Pyblosxom Architecture"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,7 +59,7 @@
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>This chapter covers a bunch of useful things to know when writing
-PyBlosxom plugins.  This chapter, moreso than the rest of this manual,
+Pyblosxom plugins.  This chapter, moreso than the rest of this manual,
 is very much a work in progress.</p>
 <p>If you need help with plugin development, sign up on the devel mailing
 list and/or join us on <tt class="docutils literal"><span class="pre">#pyblosxom</span></tt> on <tt class="docutils literal"><span class="pre">irc.freenode.net</span></tt>.  More
@@ -78,10 +78,10 @@ confused with other plugins.  Additionally, the filename for your plugin
 needs to be unique.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>Make sure the filename for your plugin is unique!  PyBlosxom imports your
+<p>Make sure the filename for your plugin is unique!  Pyblosxom imports your
 plugin using Python import machinery which means that if your plugin has
 the same name as a package on your system, then depending on how sys.path
-is set up, PyBlosxom may load the package on your system and NOT your
+is set up, Pyblosxom may load the package on your system and NOT your
 plugin.</p>
 <p class="last">If you think this might be happening to you, do <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span> <span class="pre">test</span></tt> and
 it&#8217;ll tell you the paths of what it&#8217;s loading.</p>
@@ -185,13 +185,13 @@ in detail:</p>
 83</pre></div></td><td class="code"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Quickly written plugin for paging long index pages.</span>
 
-<span class="sd">PyBlosxom uses the num_entries configuration variable to prevent</span>
+<span class="sd">Pyblosxom uses the num_entries configuration variable to prevent</span>
 <span class="sd">more than num_entries being rendered by cutting the list down</span>
 <span class="sd">to num_entries entries.  So if your num_entries is set to 20, you</span>
 <span class="sd">will only see the first 20 entries rendered.</span>
 
 <span class="sd">The wbgpager overrides this functionality and allows for paging.</span>
-<span class="sd">It does some dirty stuff so that PyBlosxom doesn&#39;t cut the list down</span>
+<span class="sd">It does some dirty stuff so that Pyblosxom doesn&#39;t cut the list down</span>
 <span class="sd">and then wbgpager cuts it down in the prepare callback later down</span>
 <span class="sd">the line.</span>
 
@@ -295,8 +295,8 @@ plugin does.</li>
 <div class="section" id="configuration-installation-and-verification">
 <h3>Configuration, installation and verification<a class="headerlink" href="#configuration-installation-and-verification" title="Permalink to this headline">¶</a></h3>
 <p>After that, you should have a <tt class="docutils literal"><span class="pre">verify_installation</span></tt> section that
-verifies that the plugin is configured correctly.  As of PyBlosxom 0.9,
-PyBlosxom allows users to test their configuration and installation from
+verifies that the plugin is configured correctly.  As of Pyblosxom 0.9,
+Pyblosxom allows users to test their configuration and installation from
 the console.</p>
 <p>You can test using either the <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>
 script or the <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span></tt> script:</p>
@@ -477,8 +477,8 @@ implement <tt class="docutils literal"><span class="pre">cb_prepare</span></tt> 
 </pre></div>
 </div>
 <p>Obviously, since we have <tt class="docutils literal"><span class="pre">pass</span></tt> we&#8217;re not actually doing anything
-here, but when the user sends a request and PyBlosxom handles it, this
-function in your plugin will get called when PyBlosxom runs the
+here, but when the user sends a request and Pyblosxom handles it, this
+function in your plugin will get called when Pyblosxom runs the
 prepare callback.</p>
 <p>Each callback passes in arguments through a single dictionary.  Each
 callback passes in different arguments and expects different return
@@ -548,7 +548,7 @@ after all the metadata the body of the entry:</p>
 </td></tr></table></div>
 <p>You can also specify the template to use by setting the
 <tt class="docutils literal"><span class="pre">&quot;template_name&quot;</span></tt> variable in the returned dict.  If the template
-specified doesn&#8217;t exist, PyBlosxom will use the <tt class="docutils literal"><span class="pre">story</span></tt> template for
+specified doesn&#8217;t exist, Pyblosxom will use the <tt class="docutils literal"><span class="pre">story</span></tt> template for
 the specified flavour.</p>
 <p>For example, if you were creating a tumblelog and the file parsed was
 a image entry and you want image entries to be displayed on your blog
@@ -657,7 +657,7 @@ name of the template:</p>
 </div>
 <div class="section" id="writing-a-plugin-that-adds-a-commandline-command">
 <span id="writing-a-command"></span><h2>Writing a plugin that adds a commandline command<a class="headerlink" href="#writing-a-plugin-that-adds-a-commandline-command" title="Permalink to this headline">¶</a></h2>
-<p><em>New in PyBlosxom 1.5</em></p>
+<p><em>New in Pyblosxom 1.5</em></p>
 <p>The <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span></tt> command allows for plugin-defined commands.
 This allows your plugin to do maintenance tasks (updating an index,
 statistics, generating content, ...) and allows the user to schedule
@@ -728,7 +728,7 @@ a b c</pre>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="dev_architecture.html"
-                        title="previous chapter">PyBlosxom Architecture</a></p>
+                        title="previous chapter">Pyblosxom Architecture</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="dev_codedocs.html"
                         title="next chapter">Code Documentation</a></p>
@@ -767,15 +767,15 @@ a b c</pre>
           <a href="dev_codedocs.html" title="Code Documentation"
              >next</a> |</li>
         <li class="right" >
-          <a href="dev_architecture.html" title="PyBlosxom Architecture"
+          <a href="dev_architecture.html" title="Pyblosxom Architecture"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2009-2011, Will Kahn-Greene.
-      Last updated on Nov 07, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+      Last updated on Dec 12, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

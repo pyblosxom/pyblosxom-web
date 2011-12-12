@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plugins &mdash; PyBlosxom 1.5 documentation</title>
+    <title>Plugins &mdash; Pyblosxom 1.5 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
+    <link rel="top" title="Pyblosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Authors" href="authors.html" />
     <link rel="prev" title="Comments" href="comments.html" /> 
   </head>
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="comments.html" title="Comments"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -56,14 +56,14 @@
             
   <div class="section" id="plugins">
 <span id="using-plugins"></span><h1>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h1>
-<p>PyBlosxom allows you to extend and augment its base functionality
-using PyBlosxom plugins.  Plugins allow you to create additional
+<p>Pyblosxom allows you to extend and augment its base functionality
+using Pyblosxom plugins.  Plugins allow you to create additional
 variables; provide additional entry parsers, renderers,
 post-formatters, and pre-formatters; create new output data types;
 pull information from other non-blog sources; create images; and a
 variety of other things.</p>
 <div class="section" id="setting-pyblosxom-up-to-use-plugins">
-<h2>Setting PyBlosxom up to use plugins<a class="headerlink" href="#setting-pyblosxom-up-to-use-plugins" title="Permalink to this headline">¶</a></h2>
+<h2>Setting Pyblosxom up to use plugins<a class="headerlink" href="#setting-pyblosxom-up-to-use-plugins" title="Permalink to this headline">¶</a></h2>
 <p>There are two properties in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file that affect the
 behavior for loading plugins.</p>
 <p>The first one is the <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> property which is a list of
@@ -72,16 +72,16 @@ example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;plugin_dirs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;/home/will/pybloxsom/plugins&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>This will cause PyBlosxom to look in this specific directory for
+<p>This will cause Pyblosxom to look in this specific directory for
 plugins.</p>
 <p>The other property is the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property.  If you don&#8217;t
 have this set at all (i.e. it&#8217;s either not in the <tt class="docutils literal"><span class="pre">config.py</span></tt> file
-or the line is commented out), PyBlosxom will load all plugins it
+or the line is commented out), Pyblosxom will load all plugins it
 finds in the plugin directories you&#8217;ve specified.  It will look in
 each directory in order as you&#8217;ve specified.  It will load the plugins
 in each directory in alphabetical order by filename.</p>
 <p>The other way to load plugins is by specifying the plugins explicitly
-by setting the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property.  PyBlosxom will load only
+by setting the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property.  Pyblosxom will load only
 the plugins you&#8217;ve specified and will load them in the order you&#8217;ve
 specified.  The <tt class="docutils literal"><span class="pre">load_plugins</span></tt> property takes a list of strings.
 For example:</p>
@@ -142,13 +142,13 @@ them.</p>
 anyone knows about that performs that functionality.  It&#8217;s probably
 best at this point for you to ask someone to write the plugin you need
 or write it yourself.</p>
-<p>PyBlosxom plugins are fairly easy to write and can cover a lot of
+<p>Pyblosxom plugins are fairly easy to write and can cover a lot of
 really different functionality.  The best way to learn how to write
-PyBlosxom plugins is to read through the plugins in the plugin
+Pyblosxom plugins is to read through the plugins in the plugin
 registry.  Many of them are well written and may provide insight as to
 how to solve your specific problem.</p>
 <p>If you plan on writing your own plugin, refer to the manual file on
-writing PyBlosxom plugins.</p>
+writing Pyblosxom plugins.</p>
 <p>Additionally, feel free to ask for help on the pyblosxom-users and
 pyblosxom-devel mailing lists or on IRC.  Details are on the <a class="reference external" href="http://pyblosxom.bluesock.org/">website</a></p>
 </div>
@@ -163,7 +163,7 @@ pyblosxom-devel mailing lists or on IRC.  Details are on the <a class="reference
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Plugins</a><ul>
-<li><a class="reference internal" href="#setting-pyblosxom-up-to-use-plugins">Setting PyBlosxom up to use plugins</a></li>
+<li><a class="reference internal" href="#setting-pyblosxom-up-to-use-plugins">Setting Pyblosxom up to use plugins</a></li>
 <li><a class="reference internal" href="#finding-plugins">Finding plugins</a></li>
 <li><a class="reference internal" href="#installing-plugins">Installing plugins</a></li>
 <li><a class="reference internal" href="#writing-your-own-plugins">Writing Your Own plugins</a></li>
@@ -214,13 +214,13 @@ pyblosxom-devel mailing lists or on IRC.  Details are on the <a class="reference
         <li class="right" >
           <a href="comments.html" title="Comments"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2009-2011, Will Kahn-Greene.
-      Last updated on Nov 07, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+      Last updated on Dec 12, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Configuring PyBlosxom &mdash; PyBlosxom 1.5 documentation</title>
+    <title>Configuring Pyblosxom &mdash; Pyblosxom 1.5 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,9 +25,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
+    <link rel="top" title="Pyblosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Writing Entries" href="writing_entries.html" />
-    <link rel="prev" title="Deploy PyBlosxom with Static Rendering" href="deploy_staticrendering.html" /> 
+    <link rel="prev" title="Deploy Pyblosxom with Static Rendering" href="deploy_staticrendering.html" /> 
   </head>
   <body>
     <div class="related">
@@ -43,9 +43,9 @@
           <a href="writing_entries.html" title="Writing Entries"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="deploy_staticrendering.html" title="Deploy PyBlosxom with Static Rendering"
+          <a href="deploy_staticrendering.html" title="Deploy Pyblosxom with Static Rendering"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,9 +55,9 @@
           <div class="body">
             
   <div class="section" id="configuring-pyblosxom">
-<h1>Configuring PyBlosxom<a class="headerlink" href="#configuring-pyblosxom" title="Permalink to this headline">¶</a></h1>
-<p>You configure a PyBlosxom blog by setting configuration variables in a
-Python file called <tt class="docutils literal"><span class="pre">config.py</span></tt>.  Each PyBlosxom blog has its own
+<h1>Configuring Pyblosxom<a class="headerlink" href="#configuring-pyblosxom" title="Permalink to this headline">¶</a></h1>
+<p>You configure a Pyblosxom blog by setting configuration variables in a
+Python file called <tt class="docutils literal"><span class="pre">config.py</span></tt>.  Each Pyblosxom blog has its own
 <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
 <p>This chapter documents the <tt class="docutils literal"><span class="pre">config.py</span></tt> variables.  Some of these are
 required, others are optional.</p>
@@ -115,7 +115,7 @@ uses Python code conventions.</p>
 </div>
 <div class="section" id="plugin-variables">
 <h2>Plugin variables<a class="headerlink" href="#plugin-variables" title="Permalink to this headline">¶</a></h2>
-<p>If you install any PyBlosxom plugins those plugins may ask you to set
+<p>If you install any Pyblosxom plugins those plugins may ask you to set
 additional variables in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.  Those variables will
 be documented in the documentation that comes with the plugin or at
 the top of the plugin&#8217;s source code file.  Additional plugin variables
@@ -141,17 +141,17 @@ in your flavour templates.</p>
 <dt id="codebase">
 <tt class="descname">codebase</tt><a class="headerlink" href="#codebase" title="Permalink to this definition">¶</a></dt>
 <dd><p>(optional) string</p>
-<p>If you have installed PyBlosxom on your web server using your
+<p>If you have installed Pyblosxom on your web server using your
 distribution&#8217;s package manager or Python setuptools then you don&#8217;t
 need to set the codebase variable.</p>
-<p>If you cannot install PyBlosxom on your web server then you can
-save the PyBlosxom source code to a location on your server and use
+<p>If you cannot install Pyblosxom on your web server then you can
+save the Pyblosxom source code to a location on your server and use
 the codebase setting instead. The codebase setting tells the Python
-interpreter where to find the PyBlosxom codebase. This should be
-the full path to where the PyBlosxom directory is on your
+interpreter where to find the Pyblosxom codebase. This should be
+the full path to where the Pyblosxom directory is on your
 system. It should be the path to the directory that holds the
 &#8220;Pyblosxom&#8221; directory (note the case&#8211;uppercase P lowercase b!).</p>
-<p>For example, if you untarred PyBlosxom into
+<p>For example, if you untarred Pyblosxom into
 <tt class="docutils literal"><span class="pre">/home/joe/pyblosxom-1.5/</span></tt>, then the Pyblosxom (uppercase P and
 lowercase b) directory should be in <tt class="docutils literal"><span class="pre">/home/joe/pyblosxom-1.5/</span></tt>
 and you would set your codebase variable like this:</p>
@@ -188,10 +188,10 @@ might have a <tt class="docutils literal"><span class="pre">blog_description</sp
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Critiques of restaurants in the Boston area&quot;</span>
 </pre></div>
 </div>
-<p>Or if your blog covered development on PyBlosxom, your
+<p>Or if your blog covered development on Pyblosxom, your
 <tt class="docutils literal"><span class="pre">blog_description</span></tt> might go like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;blog_description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s">&quot;Ruminations on the development of PyBlosxom and &quot;</span>
+    <span class="s">&quot;Ruminations on the development of Pyblosxom and &quot;</span>
     <span class="s">&quot;related things that I discovered while working on &quot;</span>
     <span class="s">&quot;the project&quot;</span><span class="p">)</span>
 </pre></div>
@@ -290,7 +290,7 @@ charset registry</a> for a complete list of encoding names.</p>
 <dt id="locale">
 <tt class="descname">locale</tt><a class="headerlink" href="#locale" title="Permalink to this definition">¶</a></dt>
 <dd><p>(optional) string; defaults to <tt class="docutils literal"><span class="pre">&quot;C&quot;</span></tt></p>
-<p>PyBlosxom uses the locale config variable to adjust the values for
+<p>Pyblosxom uses the locale config variable to adjust the values for
 month names and dates.</p>
 <p>In general, you don&#8217;t need to set this unless you know you&#8217;re not
 using en_US or en_UK.</p>
@@ -337,7 +337,7 @@ you are using Windows.  Examples of valid datadirs on Windows:</p>
 <tt class="descname">depth</tt><a class="headerlink" href="#depth" title="Permalink to this definition">¶</a></dt>
 <dd><p>(optional) integer; defaults to 0</p>
 <p>The depth setting determines how many levels deep in the directory
-(category) tree that PyBlosxom will display when doing indexes.</p>
+(category) tree that Pyblosxom will display when doing indexes.</p>
 <ul class="simple">
 <li>0 - infinite depth (aka grab everything) DEFAULT</li>
 <li>1 - datadir only</li>
@@ -353,8 +353,8 @@ you are using Windows.  Examples of valid datadirs on Windows:</p>
 <tt class="descname">ignore_directories</tt><a class="headerlink" href="#ignore_directories" title="Permalink to this definition">¶</a></dt>
 <dd><p>(optional) list of strings; defaults to <tt class="docutils literal"><span class="pre">[]</span></tt></p>
 <p>The <tt class="docutils literal"><span class="pre">ignore_directories</span></tt> variable allows you to specify which
-directories in your datadir should be ignored by PyBlosxom.</p>
-<p>This defaults to an empty list (i.e. PyBlosxom will not ignore any
+directories in your datadir should be ignored by Pyblosxom.</p>
+<p>This defaults to an empty list (i.e. Pyblosxom will not ignore any
 directories).</p>
 <p>For example, if you use CVS to manage the entries in your datadir,
 then you would want to ignore all CVS-related directories like
@@ -377,8 +377,8 @@ datadir tree.</p>
 <dt id="flavourdir">
 <tt class="descname">flavourdir</tt><a class="headerlink" href="#flavourdir" title="Permalink to this definition">¶</a></dt>
 <dd><p>(optional) string</p>
-<p>This is the full path to where your PyBlosxom flavours are kept.</p>
-<p>If you do not set the <tt class="docutils literal"><span class="pre">flavourdir</span></tt>, then PyBlosxom will look for
+<p>This is the full path to where your Pyblosxom flavours are kept.</p>
+<p>If you do not set the <tt class="docutils literal"><span class="pre">flavourdir</span></tt>, then Pyblosxom will look for
 your flavours and templates in the datadir alongside your entries.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -419,7 +419,7 @@ you would set <tt class="docutils literal"><span class="pre">default_flavour</sp
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;default_flavour&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;joy&quot;</span>
 </pre></div>
 </div>
-<p>Doing this will cause PyBlosxom to use the &#8220;joy&#8221; flavour whenever
+<p>Doing this will cause Pyblosxom to use the &#8220;joy&#8221; flavour whenever
 URIs are requested that don&#8217;t specify the flavour.</p>
 <p>For example, the following will all use the &#8220;joy&#8221; flavour:</p>
 <div class="highlight-python"><pre>http://example.com/blog/
@@ -495,9 +495,9 @@ like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;base_url&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;http://example.com/~joe/cgi-bin/pyblosxom.cgi&quot;</span>
 </pre></div>
 </div>
-<p>However, it&#8217;s common that this can be determined by PyBlosxom by
+<p>However, it&#8217;s common that this can be determined by Pyblosxom by
 looking at the HTTP environment variables&#8211;so if you&#8217;re not doing
-any url re-writing, it&#8217;s possible that PyBlosxom can correctly
+any url re-writing, it&#8217;s possible that Pyblosxom can correctly
 determine the url and you won&#8217;t have to set the base_url variable
 at all.</p>
 <p>If Joe got tired of that long url, Joe might set up some url
@@ -520,7 +520,7 @@ on your web server, then you&#8217;ll want to set this property.</p>
 <dt id="parser">
 <tt class="descname">parser</tt><a class="headerlink" href="#parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>(optional) string; defaults to &#8220;plain&#8221;</p>
-<p>The default entry parser that PyBlosxom will use to parse this
+<p>The default entry parser that Pyblosxom will use to parse this
 blog&#8217;s entry files.  See <a class="reference internal" href="writing_entries.html#entry-parsers"><em>Entry parsers</em></a>.</p>
 </dd></dl>
 
@@ -531,12 +531,12 @@ blog&#8217;s entry files.  See <a class="reference internal" href="writing_entri
 <dt id="log_file">
 <tt class="descname">log_file</tt><a class="headerlink" href="#log_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>(optional) string</p>
-<p>This specifies the file that PyBlosxom will log messages to.</p>
+<p>This specifies the file that Pyblosxom will log messages to.</p>
 <p>If this is set to &#8220;NONE&#8221;, then log messages will be silently
 ignored.</p>
-<p>If PyBlosxom cannot open the file for writing, then log messages
+<p>If Pyblosxom cannot open the file for writing, then log messages
 will be sent to sys.stderr.</p>
-<p>For example, if you wanted PyBlosxom to log messages to
+<p>For example, if you wanted Pyblosxom to log messages to
 <tt class="docutils literal"><span class="pre">/home/joe/blog/logs/pyblosxom.log</span></tt>, then you would set
 <tt class="docutils literal"><span class="pre">log_file</span></tt> to:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;log_file&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/home/joe/blog/logs/pyblosxom.log&quot;</span>
@@ -548,7 +548,7 @@ will be sent to sys.stderr.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The web server that is executing PyBlosxom must be able to write
+<p class="last">The web server that is executing Pyblosxom must be able to write
 to the directory containing your <tt class="docutils literal"><span class="pre">pyblosxom.log</span></tt> file.</p>
 </div>
 </dd></dl>
@@ -594,11 +594,11 @@ being processed:</p>
 channels are logged.  Everything else is silently ignored.</p>
 <p>Each plugin can log messages on its own channel.  Therefore channel
 name == plugin name.</p>
-<p>PyBlosxom logs its messages to a channel named &#8220;root&#8221;.</p>
+<p>Pyblosxom logs its messages to a channel named &#8220;root&#8221;.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>A warning about omitting root:</p>
-<p class="last">If you use <tt class="docutils literal"><span class="pre">log_filter</span></tt> and don&#8217;t include &#8220;root&#8221;, then PyBlosxom
+<p class="last">If you use <tt class="docutils literal"><span class="pre">log_filter</span></tt> and don&#8217;t include &#8220;root&#8221;, then Pyblosxom
 messages will be silently ignored!</p>
 </div>
 <p>For example, if you wanted to filter log messages to &#8220;root&#8221; and
@@ -616,10 +616,10 @@ messages from the &#8220;comments&#8221; plugin, then you would set
 <dt id="plugin_dirs">
 <tt class="descname">plugin_dirs</tt><a class="headerlink" href="#plugin_dirs" title="Permalink to this definition">¶</a></dt>
 <dd><p>(optional) list of strings; defaults to an empty list</p>
-<p>The <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> variable tells PyBlosxom which directories to
+<p>The <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> variable tells Pyblosxom which directories to
 look in for plugin files to load. You can list as many plugin
 directories as you want.</p>
-<p>For example, if you stored your PyBlosxom plugins in
+<p>For example, if you stored your Pyblosxom plugins in
 <tt class="docutils literal"><span class="pre">/home/joe/blog/plugins/</span></tt>, then you would set <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt>
 like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;plugin_dirs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;/home/joe/blog/plugins/&quot;</span><span class="p">]</span>
@@ -637,10 +637,10 @@ you&#8217;ll need to specify each directory in the tree.</p>
 <dt id="load_plugins">
 <tt class="descname">load_plugins</tt><a class="headerlink" href="#load_plugins" title="Permalink to this definition">¶</a></dt>
 <dd><p>(optional) list of strings</p>
-<p>If there is no <tt class="docutils literal"><span class="pre">load_plugins</span></tt> setting in <tt class="docutils literal"><span class="pre">config.py</span></tt> PyBlosxom
+<p>If there is no <tt class="docutils literal"><span class="pre">load_plugins</span></tt> setting in <tt class="docutils literal"><span class="pre">config.py</span></tt> Pyblosxom
 loads all plugins it finds in the directories specified by
 <tt class="docutils literal"><span class="pre">plugins_dir</span></tt> in alphanumeric order by filename.  Specifying
-<tt class="docutils literal"><span class="pre">load_plugins</span></tt> causes PyBlosxom to load only the plugins you name
+<tt class="docutils literal"><span class="pre">load_plugins</span></tt> causes Pyblosxom to load only the plugins you name
 and in in the order you name them.</p>
 <p>The value of <tt class="docutils literal"><span class="pre">load_plugins</span></tt> should be a list of strings where
 each string is the name of a plugin module (i.e. the filename
@@ -661,9 +661,9 @@ without the .py at the end).</p>
          +- plugin_b.py
          +- plugin_c.py</pre>
 </div>
-<p>then PyBlosxom would load all three plugins in alphabetical order
+<p>then Pyblosxom would load all three plugins in alphabetical order
 by filename: <tt class="docutils literal"><span class="pre">plugin_a</span></tt>, then <tt class="docutils literal"><span class="pre">plugin_b</span></tt>, then <tt class="docutils literal"><span class="pre">plugin_c</span></tt>.</p>
-<p>If you wanted PyBlosxom to only load <tt class="docutils literal"><span class="pre">plugin_a</span></tt> and <tt class="docutils literal"><span class="pre">plugin_c</span></tt>,
+<p>If you wanted Pyblosxom to only load <tt class="docutils literal"><span class="pre">plugin_a</span></tt> and <tt class="docutils literal"><span class="pre">plugin_c</span></tt>,
 then you would set <tt class="docutils literal"><span class="pre">load_plugins</span></tt> to:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;load_plugins&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;plugin_a&quot;</span><span class="p">,</span> <span class="s">&quot;plugin_c&quot;</span><span class="p">]</span>
 </pre></div>
@@ -678,7 +678,7 @@ to load.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>PyBlosxom loads plugins in the order specified by
+<p>Pyblosxom loads plugins in the order specified by
 <tt class="docutils literal"><span class="pre">load_plugins</span></tt>.  This order also affects the order that
 callbacks are registered and later executed.  For example, if
 <tt class="docutils literal"><span class="pre">plugin_a</span></tt> and <tt class="docutils literal"><span class="pre">plugin_b</span></tt> both implement the <tt class="docutils literal"><span class="pre">handle</span></tt>
@@ -696,13 +696,13 @@ comes with those plugins.</p>
 <div class="section" id="caching-configuration">
 <h2>Caching Configuration<a class="headerlink" href="#caching-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Enabling caching by setting the <tt class="docutils literal"><span class="pre">cacheDriver</span></tt> and <tt class="docutils literal"><span class="pre">cacheConfig</span></tt>
-variables in <tt class="docutils literal"><span class="pre">config.py</span></tt> speeds up rendering of your PyBlosxom
+variables in <tt class="docutils literal"><span class="pre">config.py</span></tt> speeds up rendering of your Pyblosxom
 pages.</p>
 <dl class="data">
 <dt id="cacheDriver">
 <tt class="descname">cacheDriver</tt><a class="headerlink" href="#cacheDriver" title="Permalink to this definition">¶</a></dt>
 <dd><p>(optional) string; defaults to &#8220;&#8221;</p>
-<p>PyBlosxom has multiple cache mechanisms. Look at the source files
+<p>Pyblosxom has multiple cache mechanisms. Look at the source files
 in <tt class="docutils literal"><span class="pre">Pyblosxom/cache</span></tt> to see what mechanisms are available, then
 set <tt class="docutils literal"><span class="pre">cacheDriver</span></tt> to the cache mechanism that you want. For
 example:</p>
@@ -732,9 +732,9 @@ string is a Python module&#8212;not a filename.  So don&#8217;t add the
 </div>
 <div class="section" id="static-rendering-configuration">
 <h2>Static Rendering Configuration<a class="headerlink" href="#static-rendering-configuration" title="Permalink to this headline">¶</a></h2>
-<p>If you are using static rendering to deploy your PyBlosxom blog you
+<p>If you are using static rendering to deploy your Pyblosxom blog you
 need to set some additional configuration variables in your
-<tt class="docutils literal"><span class="pre">config.py</span></tt> file, see <a class="reference internal" href="deploy_staticrendering.html#static-rendering"><em>Deploy PyBlosxom with Static Rendering</em></a>.</p>
+<tt class="docutils literal"><span class="pre">config.py</span></tt> file, see <a class="reference internal" href="deploy_staticrendering.html#static-rendering"><em>Deploy Pyblosxom with Static Rendering</em></a>.</p>
 </div>
 </div>
 
@@ -746,7 +746,7 @@ need to set some additional configuration variables in your
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Configuring PyBlosxom</a><ul>
+<li><a class="reference internal" href="#">Configuring Pyblosxom</a><ul>
 <li><a class="reference internal" href="#config-variables-and-syntax">Config variables and syntax</a></li>
 <li><a class="reference internal" href="#plugin-variables">Plugin variables</a></li>
 <li><a class="reference internal" href="#personal-configuration-variables">Personal configuration variables</a></li>
@@ -762,7 +762,7 @@ need to set some additional configuration variables in your
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="deploy_staticrendering.html"
-                        title="previous chapter">Deploy PyBlosxom with Static Rendering</a></p>
+                        title="previous chapter">Deploy Pyblosxom with Static Rendering</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="writing_entries.html"
                         title="next chapter">Writing Entries</a></p>
@@ -801,15 +801,15 @@ need to set some additional configuration variables in your
           <a href="writing_entries.html" title="Writing Entries"
              >next</a> |</li>
         <li class="right" >
-          <a href="deploy_staticrendering.html" title="Deploy PyBlosxom with Static Rendering"
+          <a href="deploy_staticrendering.html" title="Deploy Pyblosxom with Static Rendering"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2009-2011, Will Kahn-Greene.
-      Last updated on Nov 07, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+      Last updated on Dec 12, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

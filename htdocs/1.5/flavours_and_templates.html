@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Flavours and Templates &mdash; PyBlosxom 1.5 documentation</title>
+    <title>Flavours and Templates &mdash; Pyblosxom 1.5 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
+    <link rel="top" title="Pyblosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Syndication" href="syndication.html" />
     <link rel="prev" title="Writing Entries" href="writing_entries.html" /> 
   </head>
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="writing_entries.html" title="Writing Entries"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -58,15 +58,15 @@
 <span id="id1"></span><h1>Flavours and Templates<a class="headerlink" href="#flavours-and-templates" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>This chapter covers the blosxom renderer in PyBlosxom.  There are other
+<p>This chapter covers the blosxom renderer in Pyblosxom.  There are other
 renderers (like the debug renderer) that operate differently.  See
 the chapter on <a class="reference internal" href="renderers.html#renderers"><em>renderers</em></a> for more details.</p>
 <p>If you want your blog rendered using a different template system&#8212;say
 Cheetah or htmltmpl&#8212;implement a renderer that renders the output.
-This new renderer can be implemented as a PyBlosxom plugin.  See the
+This new renderer can be implemented as a Pyblosxom plugin.  See the
 chapter on writing plugins for more information.</p>
 <p>The rest of this chapter talks about the various things you can do with
-the blosxom renderer which comes with PyBlosxom.</p>
+the blosxom renderer which comes with Pyblosxom.</p>
 </div>
 <div class="section" id="id2">
 <h2>Flavours and templates<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
@@ -91,7 +91,7 @@ documentation for the plugin for more information.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Refer to <a class="reference internal" href="dev_architecture.html#lifecycle-of-the-blosxom-renderer"><em>Lifecycle of a PyBlosxom request</em></a> for detailed
+<p class="last">Refer to <a class="reference internal" href="dev_architecture.html#lifecycle-of-the-blosxom-renderer"><em>Lifecycle of a Pyblosxom request</em></a> for detailed
 information on how Pyblosxom&#8217;s default renderer blosxom uses these
 templates.</p>
 </div>
@@ -106,7 +106,7 @@ flavour would be in a file called <tt class="docutils literal"><span class="pre"
 &lt;body&gt;</pre>
 </div>
 <p>More on templates later.</p>
-<p>PyBlosxom allows you to manage the flavours and templates for your
+<p>Pyblosxom allows you to manage the flavours and templates for your
 blog in several different ways:</p>
 <ol class="arabic simple">
 <li>in directories in the flavourdir, OR</li>
@@ -115,11 +115,11 @@ blog in several different ways:</p>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">PyBlosxom is backwards compatible with previous versions of
-PyBlosxom.  You can put your flavour files in your datadir.  You
+<p class="last">Pyblosxom is backwards compatible with previous versions of
+Pyblosxom.  You can put your flavour files in your datadir.  You
 can also put your flavour files in the categories of your datadir.
 However you cannot have a flavourdir and put flavour files in your
-datadir&#8212;PyBlosxom will look at <strong>EITHER</strong> your datadir <strong>OR</strong>
+datadir&#8212;Pyblosxom will look at <strong>EITHER</strong> your datadir <strong>OR</strong>
 your flavourdir for flavour files.</p>
 </div>
 <div class="section" id="storing-flavours-in-the-flavourdir">
@@ -164,7 +164,7 @@ flavours.</p>
 <p class="last">Templates in the flavour directory don&#8217;t need an extension.</p>
 </div>
 <p>This structure also makes it easier to use flavour packs found in the
-flavour registry on the <a class="reference external" href="http://pyblosxom.bluesock.org/">PyBlosxom website</a>.</p>
+flavour registry on the <a class="reference external" href="http://pyblosxom.bluesock.org/">Pyblosxom website</a>.</p>
 </div>
 <div class="section" id="storing-flavours-in-flavour-directories-in-the-datadir">
 <h3>Storing flavours in flavour directories in the datadir<a class="headerlink" href="#storing-flavours-in-flavour-directories-in-the-datadir" title="Permalink to this headline">¶</a></h3>
@@ -198,7 +198,7 @@ in either your datadir or your flavourdir, you can store the templates
 alongside your entries.</p>
 <p>This is not recommended&#8212;it&#8217;s a pain in the ass to maintain and
 everything gets all mixed up.  It&#8217;s supported since this is how
-PyBlosxom used to work.</p>
+Pyblosxom used to work.</p>
 <p>The template files for a given flavour all have to have the flavour
 name as the extension of the file.  For example, if you were using an
 &#8220;html&#8221; flavour, the flavour itself would be composed of the following
@@ -233,13 +233,13 @@ don&#8217;t create a <strong>txt</strong> flavour!</p>
 </div>
 <div class="section" id="included-flavours">
 <h2>Included flavours<a class="headerlink" href="#included-flavours" title="Permalink to this headline">¶</a></h2>
-<p>PyBlosxom comes with the following flavours:</p>
+<p>Pyblosxom comes with the following flavours:</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">html</span></tt> - a basic html flavour</li>
 <li><tt class="docutils literal"><span class="pre">rss</span></tt> - an RSS 2.0 flavour for syndication</li>
 <li><tt class="docutils literal"><span class="pre">atom</span></tt> - an Atom 1.0 flavour for syndication</li>
 </ul>
-<p>These flavours are included with PyBlosxom and they will work out of the
+<p>These flavours are included with Pyblosxom and they will work out of the
 box with no modifications and no configuration changes.</p>
 <p>When you run <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span> <span class="pre">create</span> <span class="pre">&lt;blog-dir&gt;</span></tt>, these get copied
 into the flavourdir.</p>
@@ -247,7 +247,7 @@ into the flavourdir.</p>
 </div>
 <div class="section" id="overriding-included-flavours">
 <h2>Overriding included flavours<a class="headerlink" href="#overriding-included-flavours" title="Permalink to this headline">¶</a></h2>
-<p>PyBlosxom allows you to override templates and flavours on a
+<p>Pyblosxom allows you to override templates and flavours on a
 category-by-category basis.</p>
 <p>For example, Joe has a category devoted to his work on plants which he
 wants branded differently than the rest of his blog.  Joe uses the
@@ -301,18 +301,18 @@ the rest of the templates will be taken from <tt class="docutils literal"><span 
 </div>
 <div class="section" id="finding-new-flavours">
 <h2>Finding new flavours<a class="headerlink" href="#finding-new-flavours" title="Permalink to this headline">¶</a></h2>
-<p>There is a flavour registry on the <a class="reference external" href="http://pyblosxom.bluesock.org/">PyBlosxom website</a>.  You can find
+<p>There is a flavour registry on the <a class="reference external" href="http://pyblosxom.bluesock.org/">Pyblosxom website</a>.  You can find
 flavours here that have been created by other people and submit
 flavours that you&#8217;ve created and want to share.</p>
 <p>Additionally, you can use flavours from <a class="reference external" href="http://www.blosxom.com/">Blosxom</a> and themes from
 <a class="reference external" href="http://wordpress.org/">WordPress</a> after spending some time converting them.</p>
 <p>The order of overiding works like this:</p>
 <ol class="arabic simple">
-<li>PyBlosxom looks for flavour files that came with PyBlosxom</li>
-<li>PyBlosxom starts at the root of the flavourdir and looks for
+<li>Pyblosxom looks for flavour files that came with Pyblosxom</li>
+<li>Pyblosxom starts at the root of the flavourdir and looks for
 flavour files there.  If there are some, then these files override
-the files PyBlosxom has found so far.</li>
-<li>PyBlosxom iterates through category directories in the flavourdir
+the files Pyblosxom has found so far.</li>
+<li>Pyblosxom iterates through category directories in the flavourdir
 if there are any that are parallel to the datadir and looks for
 flavour directories there.  If there are some, then those files
 override the files it has so far.</li>
@@ -376,9 +376,9 @@ done!</p>
 <p>Plugins can add additional filters.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>PyBlosxom versions 1.3 and 1.4 escaped and urlencoded variables
+<p>Pyblosxom versions 1.3 and 1.4 escaped and urlencoded variables
 that ended with <tt class="docutils literal"><span class="pre">_escaped</span></tt> and <tt class="docutils literal"><span class="pre">_urlencoded</span></tt>.</p>
-<p class="last">Deprecated in PyBlosxom 1.5.</p>
+<p class="last">Deprecated in Pyblosxom 1.5.</p>
 </div>
 </div>
 <div class="section" id="variables-from-config-py">
@@ -578,7 +578,7 @@ metadata is available to your story templates.</p>
 #mood happy
 #music The Doors - Break on Through to the Other Side
 &lt;p&gt;
-  This is the first post to my new PyBlosxom blog.  I've
+  This is the first post to my new Pyblosxom blog.  I've
   also got two metadata items in it which will be available
   as variables!
 &lt;/p&gt;</pre>
@@ -650,7 +650,7 @@ file: if there is one, then we use that.</li>
 <div class="section" id="examples-of-templates">
 <h2>Examples of templates<a class="headerlink" href="#examples-of-templates" title="Permalink to this headline">¶</a></h2>
 <p>For examples of templates and flavours, see the included flavours that
-come with your PyBlosxom installation.</p>
+come with your Pyblosxom installation.</p>
 </div>
 </div>
 
@@ -737,13 +737,13 @@ come with your PyBlosxom installation.</p>
         <li class="right" >
           <a href="writing_entries.html" title="Writing Entries"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2009-2011, Will Kahn-Greene.
-      Last updated on Nov 07, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+      Last updated on Dec 12, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

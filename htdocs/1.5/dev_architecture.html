@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PyBlosxom Architecture &mdash; PyBlosxom 1.5 documentation</title>
+    <title>Pyblosxom Architecture &mdash; Pyblosxom 1.5 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
+    <link rel="top" title="Pyblosxom 1.5 documentation" href="index.html" />
     <link rel="next" title="Writing Plugins" href="dev_writing_plugins.html" />
     <link rel="prev" title="Hacking on Pyblosxom" href="hacking.html" /> 
   </head>
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="hacking.html" title="Hacking on Pyblosxom"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,53 +55,53 @@
           <div class="body">
             
   <div class="section" id="pyblosxom-architecture">
-<h1>PyBlosxom Architecture<a class="headerlink" href="#pyblosxom-architecture" title="Permalink to this headline">¶</a></h1>
+<h1>Pyblosxom Architecture<a class="headerlink" href="#pyblosxom-architecture" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>PyBlosxom uses the file system for data storage allowing you to use
+<p>Pyblosxom uses the file system for data storage allowing you to use
 the text-based tools that you use for other parts of your workflow for
 your blog.</p>
-<p>PyBlosxom has a plugin system allowing users to augment and extend
-PyBlosxom&#8217;s behavior to meet their specific needs.</p>
-<p>This chapter covers PyBlosxom&#8217;s architecture.</p>
+<p>Pyblosxom has a plugin system allowing users to augment and extend
+Pyblosxom&#8217;s behavior to meet their specific needs.</p>
+<p>This chapter covers Pyblosxom&#8217;s architecture.</p>
 <p>The code is fairly well documented and you should always consider the
 code to be the authority when the code and this manual are in
 disagreement.</p>
 </div>
 <div class="section" id="parts">
 <h2>Parts<a class="headerlink" href="#parts" title="Permalink to this headline">¶</a></h2>
-<p>PyBlosxom is composed of several parts:</p>
+<p>Pyblosxom is composed of several parts:</p>
 <ol class="arabic">
 <li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> - This is the CGI script that is executed by your
 web server, pulls in configuration variables from <tt class="docutils literal"><span class="pre">config.py</span></tt> and
-then instantiates PyBlosxom objects to handle the request.</p>
+then instantiates Pyblosxom objects to handle the request.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">PyBlosxomWSGIApp</span></tt> - This is the WSGI application for PyBlosxom.</p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">PyblosxomWSGIApp</span></tt> - This is the WSGI application for Pyblosxom.</p>
 </li>
 <li><p class="first"><tt class="docutils literal"><span class="pre">Pyblosxom</span></tt> package - This is the Python package that holds the
-PyBlosxom objects and utility functions that handle the request.</p>
+Pyblosxom objects and utility functions that handle the request.</p>
 <ol class="arabic">
 <li><p class="first">the <tt class="docutils literal"><span class="pre">entries</span></tt> package - Handles the abstraction allowing
-PyBlosxom to use entries other than those solely found on the
+Pyblosxom to use entries other than those solely found on the
 file system.</p>
 </li>
-<li><p class="first">the <tt class="docutils literal"><span class="pre">renderers</span></tt> package - PyBlosxom can handle different
+<li><p class="first">the <tt class="docutils literal"><span class="pre">renderers</span></tt> package - Pyblosxom can handle different
 renderers.  The renderer gets a list of entries to be rendered
 and can render them using whatever means it so desires: blosxom
 templates, htmltmpl templates, Cheetah templates, hard-coded RSS
 2.0 markup, ...</p>
-<p>PyBlosxom comes with two renderers: blosxom and debug.</p>
+<p>Pyblosxom comes with two renderers: blosxom and debug.</p>
 </li>
-<li><p class="first">the <tt class="docutils literal"><span class="pre">cache</span></tt> package - PyBlosxom allows for entry-level
+<li><p class="first">the <tt class="docutils literal"><span class="pre">cache</span></tt> package - Pyblosxom allows for entry-level
 caching.  This helps in cases where your entries are stored in a
 format that requires a lot of processing to convert to HTML.</p>
 </li>
 </ol>
 </li>
 </ol>
-<p>PyBlosxom&#8217;s behavior and output is then augmented by:</p>
+<p>Pyblosxom&#8217;s behavior and output is then augmented by:</p>
 <ol class="arabic simple">
-<li>plugins - Plugins allow you to augment PyBlosxom&#8217;s default
+<li>plugins - Plugins allow you to augment Pyblosxom&#8217;s default
 behavior.  These you can get from the plugin registry or write
 yourself.</li>
 <li>flavour templates - Flavour templates allow you to create the look
@@ -110,58 +110,58 @@ or write yourself.</li>
 </ol>
 </div>
 <div class="section" id="lifecycle-of-a-pyblosxom-request">
-<span id="lifecycle-of-the-blosxom-renderer"></span><h2>Lifecycle of a PyBlosxom request<a class="headerlink" href="#lifecycle-of-a-pyblosxom-request" title="Permalink to this headline">¶</a></h2>
-<p>This is the life cycle of a single PyBlosxom CGI request. It involves
+<span id="lifecycle-of-the-blosxom-renderer"></span><h2>Lifecycle of a Pyblosxom request<a class="headerlink" href="#lifecycle-of-a-pyblosxom-request" title="Permalink to this headline">¶</a></h2>
+<p>This is the life cycle of a single Pyblosxom CGI request. It involves
 the following &#8220;entities&#8221;:</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> - A script found in the <tt class="docutils literal"><span class="pre">web/</span></tt> directory.  This
-is the CGI script that handles PyBlosxom requests.</li>
+is the CGI script that handles Pyblosxom requests.</li>
 <li><tt class="docutils literal"><span class="pre">config.py</span></tt> - The configuration file that defines the behavior and
 properties of your blog.</li>
-<li><tt class="docutils literal"><span class="pre">PyBlosxom.pyblosxom</span></tt> - The pyblosxom module holds the default
-PyBlosxom behavior functions. It also defines the Request class and
-the PyBlosxom class.</li>
+<li><tt class="docutils literal"><span class="pre">Pyblosxom.pyblosxom</span></tt> - The pyblosxom module holds the default
+Pyblosxom behavior functions. It also defines the Request class and
+the Pyblosxom class.</li>
 <li><tt class="docutils literal"><span class="pre">Pyblosxom.pyblosxom.Request</span></tt> - The Request object holds the state
-of the PyBlosxom request at any given time throughout the lifecycle
+of the Pyblosxom request at any given time throughout the lifecycle
 of the request.  The Request object is passed to most callbacks in
 the args dict as <tt class="docutils literal"><span class="pre">request</span></tt>.</li>
-<li><tt class="docutils literal"><span class="pre">Pyblosxom.pyblosxom.PyBlosxom</span></tt> - The PyBlosxom object holds a
+<li><tt class="docutils literal"><span class="pre">Pyblosxom.pyblosxom.Pyblosxom</span></tt> - The Pyblosxom object holds a
 list of registered plugins, what callbacks they&#8217;re registered to,
 and the methods that handle the the actual request.</li>
 </ul>
-<p>The PyBlosxom request lifecycle starts with the web server executing
+<p>The Pyblosxom request lifecycle starts with the web server executing
 <tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt>.</p>
 <ol class="arabic">
 <li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> loads <tt class="docutils literal"><span class="pre">config.py</span></tt></p>
 </li>
 <li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> instantiates a Request object</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> instantiates a <tt class="docutils literal"><span class="pre">Pyblosxom.pyblosxom.PyBlosxom</span></tt>
+<li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> instantiates a <tt class="docutils literal"><span class="pre">Pyblosxom.pyblosxom.Pyblosxom</span></tt>
 object passing it the Request object</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> calls <tt class="docutils literal"><span class="pre">run()</span></tt> on the PyBlosxom object</p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">pyblosxom.cgi</span></tt> calls <tt class="docutils literal"><span class="pre">run()</span></tt> on the Pyblosxom object</p>
 <ol class="arabic">
-<li><p class="first">PyBlosxom instance, run method: calls <tt class="docutils literal"><span class="pre">initialize</span></tt></p>
+<li><p class="first">Pyblosxom instance, run method: calls <tt class="docutils literal"><span class="pre">initialize</span></tt></p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>PyBlosxom instance, <tt class="docutils literal"><span class="pre">initialize</span></tt> method: calls the entry
+<li>Pyblosxom instance, <tt class="docutils literal"><span class="pre">initialize</span></tt> method: calls the entry
 parser callback to get a map of all the entry types
-PyBlosxom can handle</li>
+Pyblosxom can handle</li>
 </ol>
 </div></blockquote>
 </li>
-<li><p class="first">PyBlosxom instance, <tt class="docutils literal"><span class="pre">run</span></tt> method: calls the start callback to
+<li><p class="first">Pyblosxom instance, <tt class="docutils literal"><span class="pre">run</span></tt> method: calls the start callback to
 allow plugins to do any initialization they need to do</p>
 </li>
-<li><p class="first">PyBlosxom instance, <tt class="docutils literal"><span class="pre">run</span></tt> method: calls the handle callback
+<li><p class="first">Pyblosxom instance, <tt class="docutils literal"><span class="pre">run</span></tt> method: calls the handle callback
 allowing plugins to handle the request</p>
 <p>If a plugin handles the request, the plugin should return a
-<tt class="docutils literal"><span class="pre">1</span></tt> signifying it has handled the request and PyBlosxom should
+<tt class="docutils literal"><span class="pre">1</span></tt> signifying it has handled the request and Pyblosxom should
 stop.  FINISHED.</p>
 <p>If no plugin handles the request, then we continue using the
 <tt class="docutils literal"><span class="pre">blosxom_handler</span></tt>.</p>
 </li>
-<li><p class="first">PyBlosxom instance, <tt class="docutils literal"><span class="pre">run</span></tt> method: calls the end callback to
+<li><p class="first">Pyblosxom instance, <tt class="docutils literal"><span class="pre">run</span></tt> method: calls the end callback to
 allow plugins to do any cleanup they need to do.</p>
 </li>
 </ol>
@@ -173,15 +173,15 @@ slightly different.</p>
 <div class="section" id="lifecycle-of-the-blosxom-handler">
 <h2>Lifecycle of the blosxom_handler<a class="headerlink" href="#lifecycle-of-the-blosxom-handler" title="Permalink to this headline">¶</a></h2>
 <p>This describes what the <tt class="docutils literal"><span class="pre">blosxom_handler</span></tt> does.  This is the default
-handler for PyBlosxom.  It&#8217;s called by the PyBlosxom instance in the
+handler for Pyblosxom.  It&#8217;s called by the Pyblosxom instance in the
 run method if none of the plugins have handled the request already.</p>
 <ol class="arabic">
 <li><p class="first">Calls the <tt class="docutils literal"><span class="pre">renderer</span></tt> callback to get a renderer instance.</p>
 <p>If none of the plugins return a <tt class="docutils literal"><span class="pre">Renderer</span></tt> instance, then
-PyBlosxom checks to see if the <tt class="docutils literal"><span class="pre">renderer</span></tt> property is set in
+Pyblosxom checks to see if the <tt class="docutils literal"><span class="pre">renderer</span></tt> property is set in
 <tt class="docutils literal"><span class="pre">config.py</span></tt>.</p>
-<p>If there <tt class="docutils literal"><span class="pre">renderer</span></tt> is specified, PyBlosxom instantiates that.</p>
-<p>If there <tt class="docutils literal"><span class="pre">renderer</span></tt> is not specified, PyBlosxom uses the
+<p>If there <tt class="docutils literal"><span class="pre">renderer</span></tt> is specified, Pyblosxom instantiates that.</p>
+<p>If there <tt class="docutils literal"><span class="pre">renderer</span></tt> is not specified, Pyblosxom uses the
 <tt class="docutils literal"><span class="pre">blosxom</span></tt> renderer in the <tt class="docutils literal"><span class="pre">renderer</span></tt> package.</p>
 </li>
 <li><p class="first">Calls the <tt class="docutils literal"><span class="pre">pathinfo</span></tt> callback which allows all plugins to help
@@ -226,20 +226,20 @@ template.</li>
 </div>
 <div class="section" id="about-callbacks">
 <h2>About callbacks<a class="headerlink" href="#about-callbacks" title="Permalink to this headline">¶</a></h2>
-<p>Callbacks allow plugins to override behavior in PyBlosxom or provide
+<p>Callbacks allow plugins to override behavior in Pyblosxom or provide
 additional behavior.  The callback mechanism actually encompasses a
 series of different functions.  Callbacks can act as handlers, as
 notifiers, and also as modifiers.</p>
 <div class="section" id="types-of-callbacks">
 <h3>Types of callbacks<a class="headerlink" href="#types-of-callbacks" title="Permalink to this headline">¶</a></h3>
-<p>In the case of handler callbacks, PyBlosxom will query each plugin
+<p>In the case of handler callbacks, Pyblosxom will query each plugin
 implementing the callback until one of the plugins returns that it has
 handled the callback.  At that point, execution of handling code
-stops.  If none of the plugins handle the callback, then PyBlosxom
+stops.  If none of the plugins handle the callback, then Pyblosxom
 will run its default behavior code.</p>
-<p>In the case of notifier callbacks, PyBlosxom will notify each plugin
+<p>In the case of notifier callbacks, Pyblosxom will notify each plugin
 implementing the callback regardless of return values.</p>
-<p>In the case of modifier callbacks, PyBlosxom will query each plugin
+<p>In the case of modifier callbacks, Pyblosxom will query each plugin
 implementing the callback passing in some input.  It takes the output
 from the callback function and passes that in as input to the next
 callback function.  In this way, each plugin has a chance to modify
@@ -247,17 +247,17 @@ and transform the data.</p>
 <p>There&#8217;s no reason you can&#8217;t implement a handler-type callback and use
 it for notification purposes&#8212;that&#8217;s fine.  You should know that in
 the case of handler callbacks and modifier callbacks, the return value
-that your plugin gives will affect PyBlosxom&#8217;s execution.</p>
+that your plugin gives will affect Pyblosxom&#8217;s execution.</p>
 </div>
 <div class="section" id="callbacks-that-have-blosxom-equivalents">
 <h3>Callbacks that have blosxom equivalents<a class="headerlink" href="#callbacks-that-have-blosxom-equivalents" title="Permalink to this headline">¶</a></h3>
-<p>There are a series of callbacks in PyBlosxom that have equivalents in
+<p>There are a series of callbacks in Pyblosxom that have equivalents in
 blosxom 2.0.  The names are sometimes different and in most cases the
-arguments the PyBlosxom versions take are different than the blosxom
-2.0 versions.  Even so, the PyBlosxom versions serve the same purpose
+arguments the Pyblosxom versions take are different than the blosxom
+2.0 versions.  Even so, the Pyblosxom versions serve the same purpose
 as the blosxom 2.0 versions.</p>
 <p>This isn&#8217;t very interesting unless you&#8217;re trying to implement the
-functionality of a blosxom 2.0 plugin in Python for PyBlosxom.</p>
+functionality of a blosxom 2.0 plugin in Python for Pyblosxom.</p>
 <p>The available blosxom renderer callbacks are:</p>
 <ul class="simple">
 <li>cb_head - corresponds to blosxom 2.0 head</li>
@@ -331,7 +331,7 @@ want&#8212;it doesn&#8217;t affect the callback chain.</p>
 <div class="section" id="cb-logrequest">
 <h3>cb_logrequest<a class="headerlink" href="#cb-logrequest" title="Permalink to this headline">¶</a></h3>
 <p>The logrequest callback is used to notify plugins of the current
-PyBlosxom request for the purposes of logging.</p>
+Pyblosxom request for the purposes of logging.</p>
 <p>Functions that implement this callback will get an args dict
 containing:</p>
 <dl class="docutils">
@@ -477,7 +477,7 @@ containing:</p>
 <p>Functions that implement this callback must return the input args dict
 whether or not they adjust anything in it.  The callback chain will
 stop as soon as a callback modifies mtime.  If no plugin handles the
-callback, PyBlosxom will fall back to calling <tt class="docutils literal"><span class="pre">os.stat()</span></tt>.</p>
+callback, Pyblosxom will fall back to calling <tt class="docutils literal"><span class="pre">os.stat()</span></tt>.</p>
 </div>
 <div class="section" id="cb-pathinfo">
 <h3>cb_pathinfo<a class="headerlink" href="#cb-pathinfo" title="Permalink to this headline">¶</a></h3>
@@ -626,9 +626,9 @@ like:</p>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p><tt class="docutils literal"><span class="pre">cb_start</span></tt> is different in PyBlosxom than in blosxom.</p>
+<p><tt class="docutils literal"><span class="pre">cb_start</span></tt> is different in Pyblosxom than in blosxom.</p>
 <p class="last">The <tt class="docutils literal"><span class="pre">cb_start</span></tt> callback is slightly different than in blosxom in
-that <tt class="docutils literal"><span class="pre">cb_start</span></tt> is called for every PyBlosxom request regardless
+that <tt class="docutils literal"><span class="pre">cb_start</span></tt> is called for every Pyblosxom request regardless
 of whether it&#8217;s handled by the default blosxom handler.  In
 general, it&#8217;s better to delay allocating resources until you
 absolutely know you are going to use them.</p>
@@ -661,8 +661,8 @@ containing:</p>
 <p>Functions that implement this callback don&#8217;t need to return anything.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p><tt class="docutils literal"><span class="pre">cb_end</span></tt> is different in PyBlosxom than in blosxom</p>
-<p class="last">The <tt class="docutils literal"><span class="pre">cb_end</span></tt> callback is called for every PyBlosxom request
+<p><tt class="docutils literal"><span class="pre">cb_end</span></tt> is different in Pyblosxom than in blosxom</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">cb_end</span></tt> callback is called for every Pyblosxom request
 regardless of whether it&#8217;s handled by the default blosxom handler
 or not.  This is slightly different than blosxom.</p>
 </div>
@@ -871,10 +871,10 @@ whether or not they adjust anything in it.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">PyBlosxom Architecture</a><ul>
+<li><a class="reference internal" href="#">Pyblosxom Architecture</a><ul>
 <li><a class="reference internal" href="#summary">Summary</a></li>
 <li><a class="reference internal" href="#parts">Parts</a></li>
-<li><a class="reference internal" href="#lifecycle-of-a-pyblosxom-request">Lifecycle of a PyBlosxom request</a></li>
+<li><a class="reference internal" href="#lifecycle-of-a-pyblosxom-request">Lifecycle of a Pyblosxom request</a></li>
 <li><a class="reference internal" href="#lifecycle-of-the-blosxom-handler">Lifecycle of the blosxom_handler</a></li>
 <li><a class="reference internal" href="#id1">Lifecycle of the blosxom renderer</a></li>
 <li><a class="reference internal" href="#about-callbacks">About callbacks</a><ul>
@@ -952,13 +952,13 @@ whether or not they adjust anything in it.</p>
         <li class="right" >
           <a href="hacking.html" title="Hacking on Pyblosxom"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2009-2011, Will Kahn-Greene.
-      Last updated on Nov 07, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+      Last updated on Dec 12, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

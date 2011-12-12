@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>readmore - Breaks blog entries into summary an... &mdash; Pyblosxom 1.5 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Pyblosxom 1.5 documentation" href="../index.html" />
+    <link rel="next" title="rst_parser - restructured text support for blog ..." href="rst_parser.html" />
+    <link rel="prev" title="pyfilenamemtime - Allows you to codify the mtime in t..." href="pyfilenamemtime.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rst_parser.html" title="rst_parser - restructured text support for blog ..."
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pyfilenamemtime.html" title="pyfilenamemtime - Allows you to codify the mtime in t..."
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="readmore-breaks-blog-entries-into-summary-an">
+<h1>readmore - Breaks blog entries into summary an...<a class="headerlink" href="#readmore-breaks-blog-entries-into-summary-an" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Allows you to break a long entry into a summary and the rest making it
+easier to show just the summary in indexes.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>This plugin comes with Pyblosxom.  To install, do the following:</p>
+<ol class="arabic">
+<li><p class="first">Add <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.readmore</span></tt> to the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list in
+your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you&#8217;re using the rst_parser plugin, make sure this plugin
+shows up in load_plugins list before the rst_parser plugin.</p>
+<p class="last">See the rst_parser section below.</p>
+</div>
+</li>
+<li><p class="first">Configure as documented below.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">readmore_breakpoint</span></tt></p>
+<blockquote>
+<div><p>(optional) string; defaults to &#8220;BREAK&#8221;</p>
+<p>This is the text that you&#8217;ll use in your blog entry that breaks the
+body into the summary part above and the rest of the blog entry
+below.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;readmore_breakpoint&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;BREAK&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">readmore_template</span></tt></p>
+<blockquote>
+<div><p>(optional) string; defaults to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="s">&#39;&lt;p class=&quot;readmore&quot;&gt;&lt;a href=&quot;</span><span class="si">%(url)s</span><span class="s">&quot;&gt;read more after the break...&lt;/a&gt;&lt;/p&gt;&#39;</span>
+</pre></div>
+</div>
+<p>When the entry is being shown in an index with other entries, then
+the <tt class="docutils literal"><span class="pre">readmore_breakpoint</span></tt> text is replaced with this text.  This
+text is done with HTML markup.</p>
+<p>Variables available:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">%(url)s</span></tt>       - the full path to the story</li>
+<li><tt class="docutils literal"><span class="pre">%(base_url)s</span></tt>  - base_url</li>
+<li><tt class="docutils literal"><span class="pre">%(flavour)s</span></tt>   - the flavour selected now</li>
+<li><tt class="docutils literal"><span class="pre">%(file_path)s</span></tt> - path to the story (without extension)</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This template is formatted using Python string formatting&#8212;not
+Pyblosxom template formatting!</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>For example, if the value of <tt class="docutils literal"><span class="pre">readmore_breakpoint</span></tt> is <tt class="docutils literal"><span class="pre">&quot;BREAK&quot;</span></tt>,
+then you could have a blog entry like this:</p>
+<div class="highlight-python"><pre>First post
+&lt;p&gt;
+  This is my first post.  In this post, I set out to explain why
+  it is that I'm blogging and what I hope to accomplish with this
+  blog.  See more below the break.
+&lt;/p&gt;
+BREAK
+&lt;p&gt;
+  Ha ha!  Made you look below the break!
+&lt;/p&gt;</pre>
+</div>
+</div>
+<div class="section" id="usage-with-rst-parser">
+<h2>Usage with rst_parser<a class="headerlink" href="#usage-with-rst-parser" title="Permalink to this headline">¶</a></h2>
+<p>Since the rst_parser parses the restructured text and turns it into
+HTML and this plugin operates on HTML in the story callback, we have
+to do a two-step replacement.</p>
+<p>Thus, instead of using BREAK or whatever you have set in
+<tt class="docutils literal"><span class="pre">readmore_breakpoint</span></tt> in your blog entry, you use the break
+directive:</p>
+<div class="highlight-python"><pre>First post
+
+This is my first post.  In this post, I set out to explain why
+it is that I'm blogging and what I hope to accomplish with this
+blog.
+
+.. break::
+
+Ha ha!  Made you look below the break!</pre>
+</div>
+</div>
+<div class="section" id="history">
+<h2>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
+<p>This is based on the original readmore plugin written by IWS years
+ago.  It&#8217;s since been reworked.</p>
+<p>Additionally, I folded in the rst_break plugin break directive from
+Menno Smits at <a class="reference external" href="http://freshfoo.com/wiki/CodeIndex">http://freshfoo.com/wiki/CodeIndex</a> .</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Plugin is distributed under license: MIT</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">readmore - Breaks blog entries into summary an...</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#usage-with-rst-parser">Usage with rst_parser</a></li>
+<li><a class="reference internal" href="#history">History</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pyfilenamemtime.html"
+                        title="previous chapter">pyfilenamemtime - Allows you to codify the mtime in t...</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="rst_parser.html"
+                        title="next chapter">rst_parser - restructured text support for blog ...</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/plugins/readmore.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rst_parser.html" title="rst_parser - restructured text support for blog ..."
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pyfilenamemtime.html" title="pyfilenamemtime - Allows you to codify the mtime in t..."
+             >previous</a> |</li>
+        <li><a href="../index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Dec 12, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

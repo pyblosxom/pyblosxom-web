@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Deploy PyBlosxom with Static Rendering &mdash; PyBlosxom 1.5 documentation</title>
+    <title>Deploy Pyblosxom with Static Rendering &mdash; Pyblosxom 1.5 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,9 +25,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyBlosxom 1.5 documentation" href="index.html" />
-    <link rel="next" title="Configuring PyBlosxom" href="config_variables.html" />
-    <link rel="prev" title="Deploying PyBlosxom with Apache and mod_wsgi" href="deploy_apache_mod_wsgi.html" /> 
+    <link rel="top" title="Pyblosxom 1.5 documentation" href="index.html" />
+    <link rel="next" title="Configuring Pyblosxom" href="config_variables.html" />
+    <link rel="prev" title="Deploying Pyblosxom with Apache and mod_wsgi" href="deploy_apache_mod_wsgi.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,12 +40,12 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="config_variables.html" title="Configuring PyBlosxom"
+          <a href="config_variables.html" title="Configuring Pyblosxom"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="deploy_apache_mod_wsgi.html" title="Deploying PyBlosxom with Apache and mod_wsgi"
+          <a href="deploy_apache_mod_wsgi.html" title="Deploying Pyblosxom with Apache and mod_wsgi"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,24 +55,24 @@
           <div class="body">
             
   <div class="section" id="deploy-pyblosxom-with-static-rendering">
-<span id="static-rendering"></span><h1>Deploy PyBlosxom with Static Rendering<a class="headerlink" href="#deploy-pyblosxom-with-static-rendering" title="Permalink to this headline">¶</a></h1>
+<span id="static-rendering"></span><h1>Deploy Pyblosxom with Static Rendering<a class="headerlink" href="#deploy-pyblosxom-with-static-rendering" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>Static rendering made its first appearance in PyBlosxom 1.0.  It fills
-the functionality gap for people who want to use PyBlosxom, but don&#8217;t
+<p>Static rendering made its first appearance in Pyblosxom 1.0.  It fills
+the functionality gap for people who want to use Pyblosxom, but don&#8217;t
 have a web server with CGI installed, don&#8217;t have CGI access, or can&#8217;t
-run PyBlosxom for one of a myriad of other reasons.  Static rendering
-allows these people to run PyBlosxom on their local machine, write
+run Pyblosxom for one of a myriad of other reasons.  Static rendering
+allows these people to run Pyblosxom on their local machine, write
 blog entries, render their entire site into HTML, and then use ftp or
 some other file copy method to move the pages up to their static
 website.</p>
-<p>PyBlosxom&#8217;s static rendering also allows for incremental building.  It
+<p>Pyblosxom&#8217;s static rendering also allows for incremental building.  It
 can scan your entries, figure out what&#8217;s changed, and render only the
 pages that need re-rendering.</p>
 </div>
 <div class="section" id="configuring-static-rendering">
 <h2>Configuring static rendering<a class="headerlink" href="#configuring-static-rendering" title="Permalink to this headline">¶</a></h2>
-<p>These are the instructions for configuring static rendering in PyBlosxom.</p>
+<p>These are the instructions for configuring static rendering in Pyblosxom.</p>
 <ol class="arabic">
 <li><p class="first">Uncomment <tt class="docutils literal"><span class="pre">static_dir</span></tt> in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
 <p>This is the directory we will save all the static output.  The value of
@@ -154,7 +154,7 @@ that contains your <tt class="docutils literal"><span class="pre">config.py</spa
 <tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt> (an environment variable) then you can run
 <tt class="docutils literal"><span class="pre">pyblosxom-cmd</span> <span class="pre">staticrender</span></tt> from any directory without giving the
 <tt class="docutils literal"><span class="pre">--config</span></tt> option.</p>
-<p>Lots of output will appear as PyBlosxom figures out all the urls that
+<p>Lots of output will appear as Pyblosxom figures out all the urls that
 need to be rendered and then renders them.</p>
 </div>
 <div class="section" id="incremental-rendering">
@@ -202,7 +202,7 @@ outdated files.</li>
 page, so don&#8217;t include those flavours in <tt class="docutils literal"><span class="pre">static_flavours</span></tt> and
 instead specify the urls by hand in <tt class="docutils literal"><span class="pre">static_urls</span></tt>.</li>
 <li>If your website requires more files than just the ones that are
-rendered by PyBlosxom (images, CSS, ...), then you need to copy
+rendered by Pyblosxom (images, CSS, ...), then you need to copy
 those files over separately&#8212;Pyblosxom won&#8217;t do it for you.</li>
 </ul>
 </div>
@@ -254,7 +254,7 @@ cp -ar <span class="k">${</span><span class="nv">BLOGDIR</span><span class="k">}
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Deploy PyBlosxom with Static Rendering</a><ul>
+<li><a class="reference internal" href="#">Deploy Pyblosxom with Static Rendering</a><ul>
 <li><a class="reference internal" href="#summary">Summary</a></li>
 <li><a class="reference internal" href="#configuring-static-rendering">Configuring static rendering</a></li>
 <li><a class="reference internal" href="#running-static-rendering">Running static rendering</a><ul>
@@ -271,10 +271,10 @@ cp -ar <span class="k">${</span><span class="nv">BLOGDIR</span><span class="k">}
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="deploy_apache_mod_wsgi.html"
-                        title="previous chapter">Deploying PyBlosxom with Apache and mod_wsgi</a></p>
+                        title="previous chapter">Deploying Pyblosxom with Apache and mod_wsgi</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="config_variables.html"
-                        title="next chapter">Configuring PyBlosxom</a></p>
+                        title="next chapter">Configuring Pyblosxom</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/deploy_staticrendering.txt"
@@ -307,18 +307,18 @@ cp -ar <span class="k">${</span><span class="nv">BLOGDIR</span><span class="k">}
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="config_variables.html" title="Configuring PyBlosxom"
+          <a href="config_variables.html" title="Configuring Pyblosxom"
              >next</a> |</li>
         <li class="right" >
-          <a href="deploy_apache_mod_wsgi.html" title="Deploying PyBlosxom with Apache and mod_wsgi"
+          <a href="deploy_apache_mod_wsgi.html" title="Deploying Pyblosxom with Apache and mod_wsgi"
              >previous</a> |</li>
-        <li><a href="index.html">PyBlosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2009-2011, Will Kahn-Greene.
-      Last updated on Nov 07, 2011.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+      Last updated on Dec 12, 2011.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>
