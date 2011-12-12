@@ -1,0 +1,13 @@
+Status December 12th, 2011
+#published 2011-12-12 13:38:00
+It's been a while since the last status update and a lot has happened
+since then:
+
+* renamed the project from PyBlosxom to Pyblosxom
+* folded core plugins into the Pyblosxom core
+* moved the pyblosxom repository from gitorious to github
+* added new plugins, bug fixes, more tests, fixed documentation, ...
+
+We're pretty close to a 1.5 final release.  This release has been a long time
+coming and it'll be good to get it out.  I'm hoping it'll happen in the next
+week.

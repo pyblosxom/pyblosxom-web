@@ -11,13 +11,13 @@ Documentation
   <a href="/static/development.html">development howto</a>
 </td>
 <td>
-  Covers how to contribute to the PyBlosxom project, code style guide,
+  Covers how to contribute to the Pyblosxom project, code style guide,
   list of contributors, workflow, policies, and various other things.
 </td>
 </tr>
 </table>
 
-<h2>Documentation for PyBlosxom 1.5</h2>
+<h2>Documentation for Pyblosxom 1.5</h2>
 <table>
 <tr>
   <th width="200px">document name</th>
@@ -25,7 +25,7 @@ Documentation
 </tr>
 <tr>
 <td valign="top">
-  <a href="/1.5/index.html">PyBlosxom 1.5 documentation</a>
+  <a href="/1.5/index.html">Pyblosxom 1.5 documentation</a>
 </td>
 <td>
   <p>

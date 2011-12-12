@@ -13,14 +13,14 @@ Development
 
 <a name="summary"><h2>Summary</h2></a>
 <p>
-  This page covers how to contribute to PyBlosxom development, what
+  This page covers how to contribute to Pyblosxom development, what
   our coding conventions (or should be), our mission, lists a
   non-comprehensive list of contributors, and then ends with a short
   blurb that will eventually be replaced with the processes we use to
   do things.
 </p>
 <p>
-  If you plan on contributing to PyBlosxom, please read this guide in
+  If you plan on contributing to Pyblosxom, please read this guide in
   its entirety.
 </p>
 <p>
@@ -55,7 +55,7 @@ Development
   different branch for each of them.  This greatly simplifies things
   when I accept patches, reject patches, make changes, etc in the
   master branch.  This way, when you fetch, your master branch isn't
-  wildly diverged from the PyBlosxom master branch which requires
+  wildly diverged from the Pyblosxom master branch which requires
   some tinkering to get aligned again.
 </p>
 
@@ -81,7 +81,7 @@ Development
 <ol>
 <li>clone the repository:<br/>
 <pre>
-$ git clone git://gitorious.org/pyblosxom/pyblosxom.git
+$ git clone git://github.com/willkg/pyblosxom.git
 </pre>
 <li>set the <tt>user.name</tt> and <tt>user.email</tt> config bits:<br/>
 <pre>
@@ -90,7 +90,6 @@ $ git config user.email "your@email.address"
 </pre>
 <li>create a bug/feature focused branch for the change you want to make
 <pre>
-$ git fetch --all
 $ git checkout -b BRANCHNAME origin/master
 </pre>
 <li>make the changes you want to make in that bug/feature focused branch
@@ -116,8 +115,8 @@ $ git format-patch -o patches origin/master
   a comment to the issue with the url of your repository, the branch
   the changes are in, and what you did, OR
 
-<li>push your changes to a clone on gitorious and request a merge
-  between PyBlosxom master and your bugfix branch
+<li>push your changes to a clone on GitHub and create a pull request
+  between Pyblosxom master and your bugfix branch
 </ol>
 
 <p>
@@ -145,7 +144,7 @@ $ git format-patch -o patches origin/master
 
 <a name="tests"><h2>Tests</h2></a>
 <p>
-  Tests go in the <tt>Pyblosxom/tests/</tt> directory.  From PyBlosxom
+  Tests go in the <tt>Pyblosxom/tests/</tt> directory.  From Pyblosxom
   1.4 on, write tests for new functionality.
 </p>
 <p>
@@ -155,7 +154,7 @@ $ git format-patch -o patches origin/master
 
 <a name="documentation"><h2>Documentation</h2></a>
 <p>
-  The PyBlosxom manual is in the <code>docs/</code> directory.
+  The Pyblosxom manual is in the <code>docs/</code> directory.
   Documentation is
   in <a href="http://docutils.sourceforge.net/rst.html">restructured
   text</a> format and built

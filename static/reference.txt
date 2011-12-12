@@ -2,7 +2,7 @@ References/Specifications
 #nocomments yes
 <p>
   This is a list of urls to references and specifications of things that
-  are used in PyBlosxom or are in other ways related to PyBlosxom.
+  are used in Pyblosxom or are in other ways related to Pyblosxom.
 </p>
 
 

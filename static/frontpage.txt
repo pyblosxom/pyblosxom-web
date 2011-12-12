@@ -1,20 +1,20 @@
-Welcome to PyBlosxom!
-<h2>What is PyBlosxom?</h2>
+Welcome to Pyblosxom!
+<h2>What is Pyblosxom?</h2>
 <p>
-  PyBlosxom is a lightweight file-based weblog system.  PyBlosxom
+  Pyblosxom is a lightweight file-based weblog system.  Pyblosxom
   focuses on three things: simplicity, extensibility, and community.
 </p>
 
 <ul>
-<li><b>simplicity</b> - PyBlosxom uses the file system for all its
+<li><b>simplicity</b> - Pyblosxom uses the file system for all its
   data storage.  Because of this you can use whatever existing
   editor, scripts and tools you want to create, update and
   manipulate entries and other blog data.
-<li><b>extensibility</b> - PyBlosxom has a plugin framework allowing
-  you to build plugins in Python to augment and change PyBlosxom's
+<li><b>extensibility</b> - Pyblosxom has a plugin framework allowing
+  you to build plugins in Python to augment and change Pyblosxom's
   default behavior.
-<li><b>community</b> - There are hundreds of PyBlosxom users out there
-  all of whom have different needs.  PyBlosxom is used on a variety
+<li><b>community</b> - There are hundreds of Pyblosxom users out there
+  all of whom have different needs.  Pyblosxom is used on a variety
   of operating systems in a variety of environments.  The pyblosxom
   users list shares their experiences, plugins, and expertise.  The
   pyblosxom devel list shares their ideas for changes, patches and
@@ -65,14 +65,14 @@ print '</ul>'
 </ul>
 
 <p>
-  PyBlosxom allows you to use your favorite editor, toolset and
+  Pyblosxom allows you to use your favorite editor, toolset and
   workflow to maintain your blog without forcing you to build it all
   from scratch.
 </p>
 
 <h2>Quickstart</h2>
 <p>
-  This is generally how you install and test out PyBlosxom.  There are
+  This is generally how you install and test out Pyblosxom.  There are
   other ways to install it and other ways to deploy your blog.  See
   the documentation for more details.
 </p>
@@ -90,16 +90,16 @@ print '</ul>'
 <h3>Source code</h3>
 <p>
   Source code is located
-  at <a href="http://gitorious.org/pyblosxom/">http://gitorious.org/pyblosxom/</a>.
+  at <a href="http://github.com/willkg/pyblosxom/">http://github.com/willkg/pyblosxom/</a>.
 </p>
 <p>
-  You can clone the PyBlosxom repository with:
+  You can clone the Pyblosxom repository with:
 </p>
 <pre>
- $ git clone https://git.gitorious.org/pyblosxom/pyblosxom.git
+ $ git clone git://github.com/willkg/pyblosxom.git
 </pre>
 <p>
-  PyBlosxom is written in Python.  PyBlosxom is distributed
+  Pyblosxom is written in Python.  Pyblosxom is distributed
   under <a href="http://www.opensource.org/licenses/mit-license.php">the
   MIT license</a>.
 </p>
@@ -123,7 +123,7 @@ print '</ul>'
 </p>
 <p>
   This mailing list is for users who are having problems installing or
-  configuring PyBlosxom.  It can also be used for questions, comments, bugs,
+  configuring Pyblosxom.  It can also be used for questions, comments, bugs,
   ideas, and things of that nature as well.
 </p>
 
@@ -136,7 +136,7 @@ print '</ul>'
 </p>
 <p>
   This mailing list is for developers who want to add/modify/delete
-  functionality in PyBlosxom.  Since it revolves around PyBlosxom development,
+  functionality in Pyblosxom.  Since it revolves around Pyblosxom development,
   it's also a good place to ask questions about how to build plugins and
   for advice on working around various plugin development issues.
 </p>

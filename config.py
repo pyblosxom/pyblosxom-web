@@ -34,7 +34,6 @@ py['datadir'] = os.path.join(blogdir, "entries")
 py['flavourdir'] = os.path.join(blogdir, "flavours")
 
 # Where should PyBlosxom log files be kept?
-# py['logdir'] = "/home/groups/p/py/pyblosxom/datadir/logs"
 py['log_file'] = os.path.join(blogdir, "logs")
 py['log_level'] = "debug"
 
@@ -75,7 +74,6 @@ py["list-users-output"] = '<a href="%(1)s">%(0)s</a> [ %(1)s ]<br />'
 # plugins.  You can list out as many directories you want, but they
 # should only contain the related plugins.
 # Example: py['plugin_dirs'] = ['/opt', '/usr/bin']
-# py['plugin_dirs'] = ['/home/groups/p/py/pyblosxom/datadir/plugins']
 py['plugin_dirs'] = [ os.path.join(blogdir, "plugins") ]
 
 # There are two ways for PyBlosxom to load plugins.  The first is the
@@ -88,20 +86,19 @@ py['plugin_dirs'] = [ os.path.join(blogdir, "plugins") ]
 # the end).
 # ex: py['load_plugins'] = ["pycalendar", "pyfortune", "pyarchives"]
 py['load_plugins'] = [
+    "Pyblosxom.plugins.pages",
+    "Pyblosxom.plugins.yeararchives",
+    "Pyblosxom.plugins.rst_parser",
     "pyinclude",
-    "pages",
     "registry", 
-    "wbgarchives",
     "pylist",
     "published_date",
-    "rst",
 ]
 
 py["pagesdir"] = os.path.join(blogdir, "static")
 py["pages_trigger"] = "static"
 py["pages_frontpage"] = True
 
-# py["registry_dir"] = "/home/groups/p/py/pyblosxom/datadir/registry"
 py["registry_dir"] = os.path.join(blogdir, "registry")
 py["registry_edit"] = 0
 

@@ -1,9 +1,9 @@
 #######################################################################
-# This file is part of PyBlosxom.
+# This file is part of Pyblosxom.
 #
 # Copyright (c) 2011 Will Kahn-Greene
 #
-# PyBlosxom is distributed under the MIT license.  See the file
+# Pyblosxom is distributed under the MIT license.  See the file
 # LICENSE for distribution details.
 #######################################################################
 
@@ -76,7 +76,7 @@ def build_registry_entry(filepath):
         "email": get_info(node, "__email__"),
         "infourl": get_info(node, "__url__"),
         # "download": get_info(node, "__download__"),
-        "download": "As of PyBlosxom 1.5 rc1, comes with PyBlosxom",
+        "download": "As of Pyblosxom 1.5 rc1, comes with Pyblosxom",
         "summary": get_info(node, "__description__"),
         "license": get_info(node, "__license__"),
         "registrytags": get_info(node, "__registrytags__"),
