@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Code Documentation &mdash; Pyblosxom 1.5 documentation</title>
+    <title>Code Documentation &mdash; Pyblosxom 1.5.2 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.5',
+        VERSION:     '1.5.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Pyblosxom 1.5 documentation" href="index.html" />
+    <link rel="top" title="Pyblosxom 1.5.2 documentation" href="index.html" />
     <link rel="next" title="Testing" href="dev_testing.html" />
     <link rel="prev" title="Writing Plugins" href="dev_writing_plugins.html" /> 
   </head>
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="dev_writing_plugins.html" title="Writing Plugins"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -61,28 +61,19 @@
 <p>This chapter covers important functions, methods and classes in Pyblosxom.
 When in doubt, read the code.</p>
 </div>
-<div class="section" id="pyblosxom-pyblosxom">
-<h2>Pyblosxom.pyblosxom<a class="headerlink" href="#pyblosxom-pyblosxom" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pyblosxom">
+<h2>Pyblosxom<a class="headerlink" href="#pyblosxom" title="Permalink to this headline">¶</a></h2>
 <dl class="data">
-<dt id="VERSION">
-<tt class="descname">VERSION</tt><a class="headerlink" href="#VERSION" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pyblosxom version.  For example <tt class="docutils literal"><span class="pre">&quot;1.5&quot;</span></tt>.</p>
+<dt id="__version__">
+<tt class="descname">__version__</tt><a class="headerlink" href="#__version__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pyblosxom version as a string.  Conforms to <a class="reference external" href="http://www.python.org/dev/peps/pep-0386/">PEP-386</a>.</p>
+<p>For example <tt class="docutils literal"><span class="pre">&quot;1.5&quot;</span></tt>.</p>
 </dd></dl>
 
-<dl class="data">
-<dt id="VERSION_DATA">
-<tt class="descname">VERSION_DATA</tt><a class="headerlink" href="#VERSION_DATA" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pyblosxom version with date.  For example <tt class="docutils literal"><span class="pre">&quot;1.5</span> <span class="pre">dev&quot;</span></tt>.</p>
-</dd></dl>
-
-<dl class="data">
-<dt id="VERSION_SPLIT">
-<tt class="descname">VERSION_SPLIT</tt><a class="headerlink" href="#VERSION_SPLIT" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pyblosxom version as a tuple&#8212;use this for version checking.
-For example <tt class="docutils literal"><span class="pre">(&quot;1&quot;,</span> <span class="pre">&quot;5&quot;)</span></tt>.</p>
-</dd></dl>
-
-<span class="target" id="module-Pyblosxom.pyblosxom"></span><p>This is the main module for Pyblosxom functionality.  Pyblosxom&#8217;s
+</div>
+<div class="section" id="module-Pyblosxom.pyblosxom">
+<span id="pyblosxom-pyblosxom"></span><h2>Pyblosxom.pyblosxom<a class="headerlink" href="#module-Pyblosxom.pyblosxom" title="Permalink to this headline">¶</a></h2>
+<p>This is the main module for Pyblosxom functionality.  Pyblosxom&#8217;s
 setup and default handlers are defined here.</p>
 <dl class="class">
 <dt id="Pyblosxom.pyblosxom.EnvDict">
@@ -1213,7 +1204,7 @@ filesystem.</p>
 
 <dl class="function">
 <dt id="Pyblosxom.tools.run_callback">
-<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0xa5029cc&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0xa502a04&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Pyblosxom.tools.</tt><tt class="descname">run_callback</tt><big>(</big><em>chain</em>, <em>input</em>, <em>mappingfunc=&lt;function &lt;lambda&gt; at 0xa190ae4&gt;</em>, <em>donefunc=&lt;function &lt;lambda&gt; at 0xa190b1c&gt;</em>, <em>defaultfunc=None</em><big>)</big><a class="headerlink" href="#Pyblosxom.tools.run_callback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes a callback chain on a given piece of data.  passed in is
 a dict of name/value pairs.  Consult the documentation for the
 specific callback chain you&#8217;re executing.</p>
@@ -1391,13 +1382,13 @@ implement the functionality required by the other rendering system.</p>
 debug module.</p>
 <dl class="class">
 <dt id="Pyblosxom.renderers.base.Renderer">
-<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">Renderer</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x4040e078&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.Renderer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">Renderer</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x4040f078&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.Renderer" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is a null renderer.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="Pyblosxom.renderers.base.RendererBase">
-<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">RendererBase</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x4040e078&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">Pyblosxom.renderers.base.</tt><tt class="descname">RendererBase</tt><big>(</big><em>request</em>, <em>stdoutput=&lt;open file '&lt;stdout&gt;'</em>, <em>mode 'w' at 0x4040f078&gt;</em><big>)</big><a class="headerlink" href="#Pyblosxom.renderers.base.RendererBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pyblosxom core handles the Input and Process of the system and
 passes the result of the process to the Renderers for output. All
 renderers are child classes of RendererBase. RenderBase will
@@ -1972,7 +1963,8 @@ if you pass in None, then we&#8217;ll use localtime.</li>
   <ul>
 <li><a class="reference internal" href="#">Code Documentation</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#pyblosxom-pyblosxom">Pyblosxom.pyblosxom</a></li>
+<li><a class="reference internal" href="#pyblosxom">Pyblosxom</a></li>
+<li><a class="reference internal" href="#module-Pyblosxom.pyblosxom">Pyblosxom.pyblosxom</a></li>
 <li><a class="reference internal" href="#module-Pyblosxom.tools">Pyblosxom.tools</a></li>
 <li><a class="reference internal" href="#module-Pyblosxom.renderers.base">Pyblosxom.renderers.base</a></li>
 <li><a class="reference internal" href="#module-Pyblosxom.entries.base">Pyblosxom.entries.base</a></li>
@@ -2023,12 +2015,12 @@ if you pass in None, then we&#8217;ll use localtime.</li>
         <li class="right" >
           <a href="dev_writing_plugins.html" title="Writing Plugins"
              >previous</a> |</li>
-        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2009-2011, Will Kahn-Greene.
-      Last updated on Dec 12, 2011.
+      Last updated on Jan 06, 2012.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>

@@ -1,7 +1,7 @@
 <h1>$title</h1>
 <div class="news">
 <p>
-  This is a list of PyBlosxom users.  It's not in any particular order
+  This is a list of Pyblosxom users.  It's not in any particular order
   that I know of.
 </p>
 <p>
@@ -9,7 +9,7 @@
 </p>
 <p>
   If you want to be added or removed from this list or if you notice
-  any dead links or links to blogs that no longer run PyBlosxom, email 
+  any dead links or links to blogs that no longer run Pyblosxom, email 
   <font color="#0000ff">willg at bluesock dot org</font>.
   I will try to process things as quickly as I can, but unfortunately this 
   may take a few days.

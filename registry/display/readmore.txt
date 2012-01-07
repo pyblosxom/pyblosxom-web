@@ -1,8 +1,0 @@
-readmore
-#author IWS (Maintained by Will Kahn-Greene)
-#infourl http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/readmore
-#download http://bluesock.org/~willg/cgi-bin/devtrac.cgi/wiki/readmore
-<p>
-  Break a story at a B R E A K (no spaces), display only the upper part and 
-  place a link to the whole story page.
-</p>

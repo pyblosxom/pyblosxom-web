@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hacking on Pyblosxom &mdash; Pyblosxom 1.5.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Pyblosxom 1.5.2 documentation" href="index.html" />
+    <link rel="next" title="Pyblosxom Architecture" href="dev_architecture.html" />
+    <link rel="prev" title="yeararchives - Builds year-based archives listing...." href="plugins/yeararchives.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dev_architecture.html" title="Pyblosxom Architecture"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="plugins/yeararchives.html" title="yeararchives - Builds year-based archives listing...."
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Pyblosxom 1.5.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="hacking-on-pyblosxom">
+<span id="hacking-chapter"></span><h1>Hacking on Pyblosxom<a class="headerlink" href="#hacking-on-pyblosxom" title="Permalink to this headline">¶</a></h1>
+<p>Installing Pyblosxom to hack on it is a little different since you:</p>
+<ol class="arabic simple">
+<li>want to be running Pyblosxom from a git clone</li>
+<li>want Pyblosxom installed such that you don&#8217;t have to keep running
+<tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt></li>
+<li>want Paste installed so you can test locally</li>
+</ol>
+<p>This document covers installing Pyblosxom into a virtual environment
+and deploying it using Paste.</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>This requires:</p>
+<ul class="simple">
+<li>Python 2.4 or higher</li>
+<li><a class="reference external" href="http://git-scm.com/">git</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/virtualenv">virtualenv</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/PasteScript">PasteScript</a>, the command-line frontend for the Python Paste web
+development utilities</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>To install:</p>
+<ol class="arabic">
+<li><p class="first">Create a virtual environment for Pyblosxom into a directory of your
+choosing as denoted by <tt class="docutils literal"><span class="pre">&lt;VIRTUAL-ENV-DIR&gt;</span></tt>:</p>
+<div class="highlight-python"><pre>virtualenv &lt;VIRTUAL-ENV-DIR&gt;</pre>
+</div>
+<p>This is the virtual environment that Pyblosxom will run in.  If you
+decide to delete Pyblosxom at some point, you can just remove this
+virtual environment directory.</p>
+</li>
+<li><p class="first">Activate the virtual environment:</p>
+<div class="highlight-python"><pre>source &lt;VIRTUAL-ENV-DIR&gt;/bin/activate</pre>
+</div>
+<p>Remember to activate the virtual environment <strong>every</strong> time you do
+something with Pyblosxom.</p>
+<p>Additionally, if you&#8217;re running Pyblosxom from CGI or a cron job,
+you want to use the <tt class="docutils literal"><span class="pre">python</span></tt> interpreter located in the <tt class="docutils literal"><span class="pre">bin</span></tt>
+directory of your virtual environment&#8211;not the system one.</p>
+</li>
+<li><p class="first">Using git, clone the Pyblosxom repository:</p>
+<div class="highlight-python"><pre>git clone git@github.com:willkg/pyblosxom.git</pre>
+</div>
+</li>
+<li><p class="first">Change directories into the <tt class="docutils literal"><span class="pre">pyblosxom</span></tt> directory and run:</p>
+<div class="highlight-python"><pre>python setup.py develop</pre>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="running-pyblosxom">
+<h2>Running Pyblosxom<a class="headerlink" href="#running-pyblosxom" title="Permalink to this headline">¶</a></h2>
+<p>When you want to run Pyblosxom from your git clone in your virtual
+environment, you will:</p>
+<ol class="arabic">
+<li><p class="first">Make sure the virtual environment is activated and if it isn&#8217;t do:</p>
+<div class="highlight-python"><pre>source &lt;VIRTUAL-ENV-DIR&gt;/bin/activate</pre>
+</div>
+</li>
+<li><p class="first">Change directories into where you have your blog and do:</p>
+<div class="highlight-python"><pre>paster serve blog.ini</pre>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="updating-pyblosxom">
+<h2>Updating Pyblosxom<a class="headerlink" href="#updating-pyblosxom" title="Permalink to this headline">¶</a></h2>
+<p>Because you installed Pyblosxom with <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></tt>, when
+you make changes to the Pyblosxom code, they&#8217;ll be available in the
+environment&#8212;you don&#8217;t need to re-run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Hacking on Pyblosxom</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#running-pyblosxom">Running Pyblosxom</a></li>
+<li><a class="reference internal" href="#updating-pyblosxom">Updating Pyblosxom</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="plugins/yeararchives.html"
+                        title="previous chapter">yeararchives - Builds year-based archives listing....</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dev_architecture.html"
+                        title="next chapter">Pyblosxom Architecture</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/dev_hacking.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dev_architecture.html" title="Pyblosxom Architecture"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="plugins/yeararchives.html" title="yeararchives - Builds year-based archives listing...."
+             >previous</a> |</li>
+        <li><a href="index.html">Pyblosxom 1.5.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Jan 06, 2012.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

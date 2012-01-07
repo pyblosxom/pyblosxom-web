@@ -6,9 +6,9 @@ qstring = h["QUERY_STRING"]
 
 if pinfo.startswith("/registry/flavours") or qstring.find("flavour-form") != -1:
     print """
-<h1>PyBlosxom Flavour Registry</h1>
+<h1>Pyblosxom Flavour Registry</h1>
 <p>
-  Welcome to the PyBlosxom flavour registry.
+  Welcome to the Pyblosxom flavour registry.
 </p>
 <p>
   [
@@ -21,9 +21,9 @@ if pinfo.startswith("/registry/flavours") or qstring.find("flavour-form") != -1:
 
 elif pinfo.startswith("/registry"):
     print """
-<h1>PyBlosxom Plugin Registry</h1>
+<h1>Pyblosxom Plugin Registry</h1>
 <p>
-  Welcome to the PyBlosxom registry.
+  Welcome to the Pyblosxom registry.
 </p>
 <p>
   [

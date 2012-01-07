@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Configuring Pyblosxom &mdash; Pyblosxom 1.5 documentation</title>
+    <title>Configuring Pyblosxom &mdash; Pyblosxom 1.5.2 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.5',
+        VERSION:     '1.5.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Pyblosxom 1.5 documentation" href="index.html" />
+    <link rel="top" title="Pyblosxom 1.5.2 documentation" href="index.html" />
     <link rel="next" title="Writing Entries" href="writing_entries.html" />
     <link rel="prev" title="Deploy Pyblosxom with Static Rendering" href="deploy_staticrendering.html" /> 
   </head>
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="deploy_staticrendering.html" title="Deploy Pyblosxom with Static Rendering"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -611,7 +611,9 @@ messages from the &#8220;comments&#8221; plugin, then you would set
 
 </div>
 <div class="section" id="plugin-configuration">
-<h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
+<p>There are two properties in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file that affect the
+behavior for loading plugins: <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> and <tt class="docutils literal"><span class="pre">load_plugins</span></tt>.</p>
 <dl class="data">
 <dt id="plugin_dirs">
 <tt class="descname">plugin_dirs</tt><a class="headerlink" href="#plugin_dirs" title="Permalink to this definition">¶</a></dt>
@@ -627,9 +629,31 @@ like this:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Plugin directories are not searched recursively for plugins.  If
+<p>Plugin directories are not searched recursively for plugins.  If
 you have a tree of plugin directories that have plugins in them,
 you&#8217;ll need to specify each directory in the tree.</p>
+<p>For example, if you have plugins in <tt class="docutils literal"><span class="pre">~/blog/my_plugins/</span></tt> and
+<tt class="docutils literal"><span class="pre">~/blog/phils_plugins/</span></tt>, then you need to specify both
+directories in <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;plugin_dirs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&quot;/home/joe/blog/my_plugins&quot;</span><span class="p">,</span>
+    <span class="s">&quot;/home/joe/blog/phils_plugins&quot;</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+<p>You can&#8217;t just specify <tt class="docutils literal"><span class="pre">~/blog/</span></tt> and expect Pyblosxom to find
+the plugins in the directory tree:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="c"># This won&#39;t work!</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;plugin_dirs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&quot;/home/joe/blog&quot;</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Core plugins are automatically found&#8212;you don&#8217;t have to specify
+anything in your <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> in order to use core plugins.</p>
 </div>
 </dd></dl>
 
@@ -803,12 +827,12 @@ need to set some additional configuration variables in your
         <li class="right" >
           <a href="deploy_staticrendering.html" title="Deploy Pyblosxom with Static Rendering"
              >previous</a> |</li>
-        <li><a href="index.html">Pyblosxom 1.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Pyblosxom 1.5.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2009-2011, Will Kahn-Greene.
-      Last updated on Dec 12, 2011.
+      Last updated on Jan 06, 2012.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>

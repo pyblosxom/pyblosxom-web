@@ -1,0 +1,162 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Release process &mdash; Pyblosxom 1.5.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.5.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Pyblosxom 1.5.2 documentation" href="index.html" />
+    <link rel="prev" title="Testing" href="dev_testing.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dev_testing.html" title="Testing"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Pyblosxom 1.5.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="release-process">
+<h1>Release process<a class="headerlink" href="#release-process" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic">
+<li><p class="first">Update the release process</p>
+</li>
+<li><p class="first">Update WHATSNEW</p>
+</li>
+<li><p class="first">Update the version number and date in:</p>
+<ul class="simple">
+<li>Pyblosxom/_version.py</li>
+<li>docs/conf.py</li>
+</ul>
+</li>
+<li><p class="first">Update AUTHORS:</p>
+<div class="highlight-python"><pre>git log --pretty=format:%an | sort -u</pre>
+</div>
+</li>
+<li><p class="first">Commit the changes</p>
+</li>
+<li><p class="first">Tag the commit:</p>
+<div class="highlight-python"><pre>git tag -a vx.y</pre>
+</div>
+<p>e.g. <tt class="docutils literal"><span class="pre">v1.5</span></tt></p>
+</li>
+<li><p class="first">Run:</p>
+<div class="highlight-python"><pre>./maketarball.sh TAG</pre>
+</div>
+</li>
+<li><p class="first">Push everything to <tt class="docutils literal"><span class="pre">pyblosxom</span></tt>.</p>
+<blockquote>
+<div><p>git push &#8211;tags origin master</p>
+</div></blockquote>
+</li>
+<li><p class="first">Build the docs:</p>
+<div class="highlight-python"><pre>cd docs/
+make html</pre>
+</div>
+</li>
+<li><p class="first">Write release blog entry</p>
+</li>
+<li><p class="first">Push docs, tarball and blog entry to website.</p>
+</li>
+<li><p class="first">Push website changes to pyblosxom-web repository.</p>
+</li>
+<li><p class="first">Update PYPI using the release tarball:</p>
+<div class="highlight-python"><pre>tar -xzvf pyblosxom-x.y.tar.gz
+cd pyblosxom-x.y
+python setup.py sdist upload</pre>
+</div>
+</li>
+<li><p class="first">Send email to pyblosxom-users and pyblosxom-devel.</p>
+</li>
+<li><p class="first">Update version numbers to next version + <tt class="docutils literal"><span class="pre">.dev</span></tt>.</p>
+</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dev_testing.html"
+                        title="previous chapter">Testing</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/dev_release.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dev_testing.html" title="Testing"
+             >previous</a> |</li>
+        <li><a href="index.html">Pyblosxom 1.5.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009-2011, Will Kahn-Greene.
+      Last updated on Jan 06, 2012.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

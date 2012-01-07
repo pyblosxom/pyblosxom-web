@@ -7,18 +7,18 @@ py = {}
 ###############
 # Start Below #
 ###############
-# If your PyBlosxom installation is in a funky place, uncomment
-# this next line and point it to your PyBlosxom installation
+# If your Pyblosxom installation is in a funky place, uncomment
+# this next line and point it to your Pyblosxom installation
 # directory.
 
 # What's this blog's title?
-py['blog_title'] = "PyBlosxom - main site"
+py['blog_title'] = "Pyblosxom - main site"
 
 # What's this blog's description (for outgoing RSS feed)?
-py['blog_description'] = "PyBlosxom project web-site"
+py['blog_description'] = "Pyblosxom project web-site"
 
 # What's this blog's author name and email?
-py['blog_author'] = "PyBlosxom Development Team"
+py['blog_author'] = "Pyblosxom Development Team"
 
 # blog email address
 py['blog_email'] = "pyblosxom-users@lists.sourceforge.net"
@@ -33,7 +33,7 @@ py['blog_encoding'] = "utf-8"
 py['datadir'] = os.path.join(blogdir, "entries")
 py['flavourdir'] = os.path.join(blogdir, "flavours")
 
-# Where should PyBlosxom log files be kept?
+# Where should Pyblosxom log files be kept?
 py['log_file'] = os.path.join(blogdir, "logs")
 py['log_level'] = "debug"
 
@@ -76,7 +76,7 @@ py["list-users-output"] = '<a href="%(1)s">%(0)s</a> [ %(1)s ]<br />'
 # Example: py['plugin_dirs'] = ['/opt', '/usr/bin']
 py['plugin_dirs'] = [ os.path.join(blogdir, "plugins") ]
 
-# There are two ways for PyBlosxom to load plugins.  The first is the
+# There are two ways for Pyblosxom to load plugins.  The first is the
 # default way which involves loading all the plugins in the lib/plugins
 # directory in alphanumeric order.  The second is by specifying a
 # "load_plugins" key here.  Doing so will cause us to load only the
@@ -109,7 +109,7 @@ py["reST_initial_header_level"] = 3
 
 # Doing static rendering?  Static rendering essentially "compiles" your
 # blog into a series of static html pages.  For more details, read:
-# http://wiki.subtlehints.net/moin/PyBlosxom_2fStaticRendering
+# http://wiki.subtlehints.net/moin/Pyblosxom_2fStaticRendering
 # 
 # What directory do you want your static html pages to go into?
 py["static_dir"] = os.path.join(blogdir, "compiled_site")

@@ -146,6 +146,11 @@ print '</ul>'
   Please file bugs and feature requests in our <a href="/bugs/">issue tracker</a>.
 </p>
 
+<h3>Send in patches</h3>
+<p>
+  Want to contribute? Check out our <a href="/1.5/dev_contributing.html">docs
+  on hacking and sending in patches</a>.
+</p>
 
 <h2>Interested in contributing?</h2>
 <p>
@@ -162,6 +167,7 @@ print '</ul>'
   If you're interested in contributing, but don't know where to start,
   click the "I want to help" button below and we'll contact you!
 </p>
+
 
 <div style="margin: 10px; padding-bottom: 10px;">
 <form method="POST" action="https://openhatch.org/+do/project.views.wanna_help_do" id="openhatch-want2help_form">

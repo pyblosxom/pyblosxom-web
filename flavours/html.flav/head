@@ -20,7 +20,7 @@
   <a href="/news/" class="menulink">news</a><br />
   <a href="/bugs/" class="menulink">bugtracker</a><br />
   <a href="/static/documentation.html" class="menulink">documentation</a><br />
-  <a href="/static/development.html" class="menulink">development</a><br />
+  <a href="/1.5/dev_contributing.html" class="menulink">patches</a><br />
 </p>
 
 <p><b>Community</b></p>
