@@ -33,10 +33,14 @@
   <a href="/#irc" class="menulink">irc</a><br />
 </p>
 
+<p><b>Install</b></p>
+<pre>
+pip install pyblosxom
+</pre>
+
 <p><b>Download</b></p>
 <p>
-  <a href="/download/pyblosxom-1.5rc3.tar.gz" class="menulink">pyblosxom-1.5rc3.tar.gz</a><br />
-  <a href="/download/" class="menulink">older versions</a><br />
+  <a href="/download/" class="menulink">download</a><br />
 </p>
 
 <p><b>News Archives</b></p>
