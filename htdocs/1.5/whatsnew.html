@@ -83,25 +83,54 @@ works again.</li>
 <ol class="arabic">
 <li><p class="first">Renamed the project from PyBlosxom to Pyblosxom (no more CamelCase).</p>
 </li>
-<li><p class="first">I moved all the plugins again.  This time, instead of being in
-<tt class="docutils literal"><span class="pre">plugins/</span></tt>, they&#8217;re now in <tt class="docutils literal"><span class="pre">Pyblosxom/plugins/</span></tt>.</p>
-<p>You no longer have to copy core plugins into your plugins
-directory.  Instead of copying core plugin files, refer to the
-plugins in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file using their full Python path in
-the Pyblosxom package.</p>
-<p>For example, the pycalendar plugin is now in
-<tt class="docutils literal"><span class="pre">Pyblosxom/plugins/pycalendar.py</span></tt> and thus its Pyblosxom
-package path is <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.pycalendar</span></tt>.  Your
-<tt class="docutils literal"><span class="pre">config.py</span></tt> file would look have this:</p>
+<li><p class="first">I moved all the plugins again in the git repository. This time, instead
+I moved them from <tt class="docutils literal"><span class="pre">plugins/</span></tt> to <tt class="docutils literal"><span class="pre">Pyblosxom/plugins/</span></tt> so that they&#8217;re
+in the <tt class="docutils literal"><span class="pre">Pyblosxom.plugins</span></tt> module.</p>
+<p>Because of this, you no longer have to copy core plugins into your plugins
+directory.  Instead of copying core plugin files, refer to the plugins
+in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file using their full Python path in the Pyblosxom
+package.</p>
+<p>For example, the pycalendar plugin is a core plugin that comes with
+Pyblosxom and is now located in <tt class="docutils literal"><span class="pre">Pyblosxom/plugins/pycalendar.py</span></tt> in
+git repository. Thus the module name is <tt class="docutils literal"><span class="pre">Pyblosxom.plugins.pycalendar</span></tt>.
+Your <tt class="docutils literal"><span class="pre">config.py</span></tt> file would look have this:</p>
 <div class="highlight-python"><pre>py["load_plugins"] = [
     ...
     "Pyblosxom.plugins.pycalendar",
     ...
     ]</pre>
 </div>
-<p>If you do this, then the next time you upgrade PyBlosxom, the
+<p>To switch from having core plugins in your <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> directories to
+using the ones that come with Pyblosxom, all you need to do is:</p>
+<ol class="arabic">
+<li><p class="first">change the entries for plugins that are core plugins that come with
+Pyblosxom that are listed in the <tt class="docutils literal"><span class="pre">load_plugins</span></tt> list in your
+<tt class="docutils literal"><span class="pre">config.py</span></tt> from something like this:</p>
+<div class="highlight-python"><pre>py["load_plugins"] = [
+    ...
+    "pycalendar",
+    ...
+    ]</pre>
+</div>
+<p>to something like this:</p>
+<div class="highlight-python"><pre>py["load_plugins"] = [
+    ...
+    "Pyblosxom.plugins.pycalendar",
+    ...
+    ]</pre>
+</div>
+</li>
+<li><p class="first">test to make sure your blog still works</p>
+</li>
+<li><p class="first">remove the plugin files for plugins you changed in <tt class="docutils literal"><span class="pre">load_plugins</span></tt>
+from your <tt class="docutils literal"><span class="pre">plugin_dirs</span></tt> directories</p>
+</li>
+</ol>
+<p>To get a list of all plugins that come with Pyblosxom, see Part 2
+in the Pyblosxom documentation.</p>
+<p>If you make these changes, then the next time you upgrade PyBlosxom, core
 plugins will be upgraded automatically.</p>
-<p>Further, documentation for plugins is at the top of the individual
+<p>Further, documentation for core plugins is at the top of the individual
 plugin files, but also in the documentation.  This includes a list
 of the plugins available in the core.</p>
 <p>You can see the plugin documentation at <a class="reference internal" href="index.html#part-two"><em>Part 2: Core plugin documentation</em></a>.</p>
@@ -566,8 +595,8 @@ behavior.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2009-2011, Will Kahn-Greene.
-      Last updated on Jan 06, 2012.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Last updated on Jun 09, 2012.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
