@@ -25,7 +25,7 @@
 
 <p><b>Community</b></p>
 <p>
-  <a href="/pyblosxom_users.html" class="menulink">pyblosxom users</a><br />
+  <!-- broken <a href="/pyblosxom_users.html" class="menulink">pyblosxom users</a><br /> -->
   <a href="/registry/flavours/" class="menulink">flavour registry</a><br />
   <a href="/registry/" class="menulink">plugin registry</a><br />   
   <a href="/#pyblosxomusers" class="menulink">pyblosxom-users list</a><br />
