@@ -1,5 +1,5 @@
 Pyblosxom 1.5.2 released!
-#pyblisxhed 2011-12-30 20:15:00
+#published 2011-12-30 20:15:00
 This fixes two issues:
 
 1. removed debug logging from pycategories

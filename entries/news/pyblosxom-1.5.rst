@@ -1,5 +1,5 @@
 Pyblosxom 1.5 final released
-#pyblisxhed 2011-12-28 20:24:00
+#published 2011-12-28 20:24:00
 
 Release!
 ========

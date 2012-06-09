@@ -1,5 +1,5 @@
 Pyblosxom 1.5.1 released!
-#pyblisxhed 2011-12-29 19:22:00
+#published 2011-12-29 19:22:00
 This fixes two issues:
 
 1. manifest was missing README.rst which hosed ``python setup.py install``
