@@ -36,4 +36,4 @@ Process
 Questions, et al
 ================
 
-Talk to Will.
+Ask on the mailing list
