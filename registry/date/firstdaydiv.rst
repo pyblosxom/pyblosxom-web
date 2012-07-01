@@ -1,7 +1,7 @@
 firstdaydiv
 #author Blake Winton
 #email bwinton@latte.ca
-#infourl http://pyblosxom.bluesock.org/
+#infourl http://pyblosxom.github.com/
 #download As of Pyblosxom 1.5 rc1, comes with Pyblosxom
 #summary Adds a token which tells us whether we're the first day being displayed or not.
 #license MIT

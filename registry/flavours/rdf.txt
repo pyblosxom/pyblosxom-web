@@ -1,6 +1,6 @@
 RDF
-#download http://pyblosxom.bluesock.org/flavours/rdf_flavour.tar.gz
-#image_thumbnail http://pyblosxom.bluesock.org/flavours/no-image.jpg
+#download http://pyblosxom.github.com/flavours/rdf_flavour.tar.gz
+#image_thumbnail http://pyblosxom.github.com/flavours/no-image.jpg
 #email ryan@barrett.name
 #author Ryan Barrett
 <p>

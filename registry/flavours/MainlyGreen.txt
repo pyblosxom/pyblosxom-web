@@ -1,6 +1,6 @@
 Mainly Green (version 2)
-#download http://pyblosxom.bluesock.org/flavours/mainlygreen002.tar.gz
-#image_thumbnail http://pyblosxom.bluesock.org/flavours/mainlygreen001.jpg
+#download http://pyblosxom.github.com/flavours/mainlygreen002.tar.gz
+#image_thumbnail http://pyblosxom.github.com/flavours/mainlygreen001.jpg
 #email andy47@halfcooked.com
 #author Andy Todd
 <p>

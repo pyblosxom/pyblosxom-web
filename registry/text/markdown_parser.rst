@@ -1,7 +1,7 @@
 markdown_parser
 #author Benjamin Mako Hill <mako@atdot.cc>, seanh <snhmnd@gmail.com>, Blake Winton <bwinton@latte.ca>
 #email 
-#infourl http://pyblosxom.bluesock.org/
+#infourl http://pyblosxom.github.com/
 #download As of Pyblosxom 1.5 rc1, comes with Pyblosxom
 #summary Markdown entry parser
 #license GPLv3 or later

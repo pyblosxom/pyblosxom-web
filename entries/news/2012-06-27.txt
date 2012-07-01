@@ -1,0 +1,15 @@
+Handover and update
+#published 2012-06-27 17:03:00
+<p>
+  After a significant number of years (since approx 2003) running PyBlosxom, willg has stepped down from managing the project and 
+  passed it over to me, Akai.<br>
+  will, thank you for your considerable effort in making PyBlosxom the program we know and love today.<br>
+  <br>
+  I'm available on the mailing lists and frequently on the IRC channel (as AkaiKitsune) for any question or issue I can help with.<br>
+  Part of the handoff is the move from the bluesock.org domain to github for both the site and the repositories.<br>
+  Update your bookmarks to http://pyblosxom.github.com/, that's our new home!
+</p>
+
+<p>
+  -Akai
+</p>

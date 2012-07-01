@@ -1,6 +1,6 @@
 Blue and blue
-#download http://pyblosxom.bluesock.org/flavours/wbg1.tar.gz
-#image_thumbnail http://pyblosxom.bluesock.org/flavours/wbg1.jpg
+#download http://pyblosxom.github.com/flavours/wbg1.tar.gz
+#image_thumbnail http://pyblosxom.github.com/flavours/wbg1.jpg
 #email willg@bluesock.org
 #author Will Kahn-Greene
 <p>

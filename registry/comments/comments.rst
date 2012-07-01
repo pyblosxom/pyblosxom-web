@@ -1,7 +1,7 @@
 comments
 #author Ted Leung, et al
 #email pyblosxom-devel at sourceforge dot net
-#infourl http://pyblosxom.bluesock.org/
+#infourl http://pyblosxom.github.com
 #download As of Pyblosxom 1.5 rc1, comes with Pyblosxom
 #summary Adds comments to a blog entry.
 #license MIT

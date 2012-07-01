@@ -1,7 +1,7 @@
 pyarchives
 #author Wari Wahab
 #email wari at wari dot per dot sg
-#infourl http://pyblosxom.bluesock.org/
+#infourl http://pyblosxom.github.com/
 #download As of Pyblosxom 1.5 rc1, comes with Pyblosxom
 #summary Builds month/year-based archives listing.
 #license MIT

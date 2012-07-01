@@ -1,7 +1,7 @@
 magicword
 #author Nathaniel Gray
 #email n8gray /at/ caltech /dot/ edu
-#infourl http://pyblosxom.bluesock.org/
+#infourl http://pyblosxom.github.com/
 #download As of Pyblosxom 1.5 rc1, comes with Pyblosxom
 #summary Magic word method for reducing comment spam
 #license MIT

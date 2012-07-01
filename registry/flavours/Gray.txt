@@ -1,6 +1,6 @@
 Gray
-#download http://pyblosxom.bluesock.org/flavours/pyblosxom-gray.tar.gz
-#image_thumbnail http://pyblosxom.bluesock.org/flavours/pyblosxom-gray.jpg
+#download http://pyblosxom.github.com/flavours/pyblosxom-gray.tar.gz
+#image_thumbnail http://pyblosxom.github.com/flavours/pyblosxom-gray.jpg
 #old_download http://www.mwolson.org/static/dist/themes/pyblosxom-gray.tar.gz
 #old_image_thumbnail http://www.mwolson.org/static/pyblosxom-gray.png
 #email mwolson@member.fsf.org

@@ -1,7 +1,7 @@
 pyfilenamemtime
 #author Tim Roberts
 #email 
-#infourl http://pyblosxom.bluesock.org/
+#infourl http://pyblosxom.github.com/
 #download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary Allows you to codify the mtime in the filename.
 #license MIT

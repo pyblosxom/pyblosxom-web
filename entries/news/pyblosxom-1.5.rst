@@ -22,7 +22,7 @@ Was Pyblosxom 1.5 worth it?  Definitely---it's a magnificent
 improvement over 1.4.3.  I highly recommend upgrading.
 
 For complete details of what's new in 1.5, read the `WHATSNEW section
-of the manual <http://pyblosxom.bluesock.org/1.5/whatsnew.html>`_.
+of the manual <http://pyblosxom.github.com/1.5/whatsnew.html>`_.
 Here are some highlights:
 
 1. We changed the name of the project to Pyblosxom.  Down with camel case.
@@ -63,4 +63,4 @@ How to get help
 
 If you have any problems, say hi on IRC or send an email to the
 pyblosxom-users mailing list.  Details are on `the website
-<http://pyblosxom.bluesock.org/>`_.
+<http://pyblosxom.github.com/>`_.

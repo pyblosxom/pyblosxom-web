@@ -1,6 +1,6 @@
 1024px
-#download http://pyblosxom.bluesock.org/flavours/1024pxflav.tar.gz
-#image_thumbnail http://pyblosxom.bluesock.org/flavours/1024pxflav.png
+#download http://pyblosxom.github.com/flavours/1024pxflav.tar.gz
+#image_thumbnail http://pyblosxom.github.com/flavours/1024pxflav.png
 #email zaylea@gmail.com
 #author Jennifer Ennis
 <p>

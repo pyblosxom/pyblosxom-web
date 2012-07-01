@@ -1,7 +1,7 @@
 akismetcomments
 #author Benjamin Mako Hill
 #email 
-#infourl http://pyblosxom.bluesock.org/
+#infourl http://pyblosxom.github.com
 #download As of Pyblosxom 1.5 rc1, comes with Pyblosxom
 #summary Rejects comments using akismet
 #license GPLv2

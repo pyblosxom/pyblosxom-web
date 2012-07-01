@@ -1,7 +1,7 @@
 no_old_comments
 #author Blake Winton
 #email bwinton+blog@latte.ca
-#infourl http://pyblosxom.bluesock.org/
+#infourl http://pyblosxom.github.com/
 #download As of Pyblosxom 1.5 rc1, comes with Pyblosxom
 #summary Prevent comments on entries older than a month.
 #license Public Domain

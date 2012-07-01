@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Deploying Pyblosxom with Apache and mod_wsgi &mdash; PyBlosxom 1.5.2 documentation</title>
+    <title>Deploying Pyblosxom with Lighttpd and fastcgi &mdash; PyBlosxom 1.5.2 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,8 +26,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="PyBlosxom 1.5.2 documentation" href="index.html" />
-    <link rel="next" title="Deploying Pyblosxom with Lighttpd and fastcgi" href="deploy_lighttpd_fastcgi.html" />
-    <link rel="prev" title="Deploying Pyblosxom with Paste" href="deploy_paste.html" /> 
+    <link rel="next" title="Deploy Pyblosxom with Static Rendering" href="deploy_staticrendering.html" />
+    <link rel="prev" title="Deploying Pyblosxom with Apache and mod_wsgi" href="deploy_apache_mod_wsgi.html" /> 
   </head>
   <body>
     <div class="related">
@@ -40,10 +40,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="deploy_lighttpd_fastcgi.html" title="Deploying Pyblosxom with Lighttpd and fastcgi"
+          <a href="deploy_staticrendering.html" title="Deploy Pyblosxom with Static Rendering"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="deploy_paste.html" title="Deploying Pyblosxom with Paste"
+          <a href="deploy_apache_mod_wsgi.html" title="Deploying Pyblosxom with Apache and mod_wsgi"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">PyBlosxom 1.5.2 documentation</a> &raquo;</li> 
       </ul>
@@ -54,27 +54,28 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="deploying-pyblosxom-with-apache-and-mod-wsgi">
-<span id="deploy-apache-mod-wsgi"></span><h1>Deploying Pyblosxom with Apache and mod_wsgi<a class="headerlink" href="#deploying-pyblosxom-with-apache-and-mod-wsgi" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="deploying-pyblosxom-with-lighttpd-and-fastcgi">
+<span id="deploy-lighttpd-mod-fastcgi"></span><h1>Deploying Pyblosxom with Lighttpd and fastcgi<a class="headerlink" href="#deploying-pyblosxom-with-lighttpd-and-fastcgi" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>This walks through install Pyblosxom as an WSGI application on an
-Apache web server with mod_wsgi installed.</p>
+<p>This walks through install Pyblosxom as a FastCGI application on
+a Lighttpd web server with mod_fcgi installed.</p>
 <p>If you find any issues, please let us know.</p>
 <p>If you can help with the documentation efforts, please let us know.</p>
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Apache</li>
-<li>mod_wsgi</li>
-<li>administrative priveliges to the server</li>
+<li>Lighttpd</li>
+<li>mod_fcgi</li>
+<li>python-flup</li>
+<li>administrative privileges to the server</li>
 </ul>
 </div>
 <div class="section" id="deployment">
 <h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Make sure mod_wsgi is installed correctly and working.</p>
+<li><p class="first">Make sure mod_fcgi is installed correctly and working.</p>
 </li>
 <li><p class="first">Create a blog&#8212;see the instructions for the blog directories,
 <tt class="docutils literal"><span class="pre">config.py</span></tt> setup and other bits of <strong>Setting up a blog</strong> in
@@ -100,7 +101,12 @@ Apache web server with mod_wsgi installed.</p>
 17
 18
 19
-20</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># This is the pyblosxom.wsgi script that powers the _______</span>
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="c"># This is the pyblosxom.wsgi script that powers the _______</span>
 <span class="c"># blog.</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -120,29 +126,63 @@ Apache web server with mod_wsgi installed.</p>
 
 <span class="kn">import</span> <span class="nn">Pyblosxom.pyblosxom</span>
 <span class="n">application</span> <span class="o">=</span> <span class="n">Pyblosxom</span><span class="o">.</span><span class="n">pyblosxom</span><span class="o">.</span><span class="n">PyblosxomWSGIApp</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">flup.server.fcgi</span> <span class="kn">import</span> <span class="n">WSGIServer</span>
+<span class="n">WSGIServer</span><span class="p">(</span><span class="n">application</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
-</li>
-<li><p class="first">In the Apache conf file, add:</p>
-<div class="highlight-python"><pre>WSGIScriptAlias /myblog /path/to/something.wsgi
-
-&lt;Directory /path/to&gt;
-    Order deny,allow
-    Allow from all
-&lt;/Directory&gt;</pre>
+<p>Don&#8217;t forget to make it executable by Lighttpd. I did it like this:</p>
+<div class="highlight-python"><pre>chown :www-data pyblosxom.wsgi
+chmod g+x pyblosxom.wsgi</pre>
 </div>
-<p>Change <tt class="docutils literal"><span class="pre">/myblog</span></tt> to the url path you want your blog to live at.</p>
-<p>Change <tt class="docutils literal"><span class="pre">/path/to/something.wsgi</span></tt> to be the absolute path to the
-.wsgi file set up in step 3.</p>
-<p>Change <tt class="docutils literal"><span class="pre">/path/to</span></tt> to the directory of the .wsgi file.</p>
+<p>This way you change group ownership to the group that lighty belongs
+to and give all group members execution permission.</p>
 </li>
-<li><p class="first">Restart the Apache web server.</p>
+<li><p class="first">Create /etc/lighttpd/conf-available/90-myblog.conf with this content:</p>
+<div class="highlight-python"><pre>server.modules += ( "mod_fastcgi" )
+
+$HTTP["host"] =~ "(^|\.*)yourhost\.com$" {
+
+#### fastcgi module
+## read fastcgi.txt for more info
+# this line may help with finding what's wrong, check out errorlog file
+fastcgi.debug=1
+fastcgi.server = (
+        "/myblog" =&gt; (
+        "main" =&gt; (
+        "host" =&gt; "127.0.0.1",
+        "port" =&gt; 3033,
+        "check-local" =&gt; "disable",
+        "max-procs" =&gt; 1,
+        "bin-path" =&gt; "/path/to/pyblosxom.wsgi"
+   )
+  )
+ )
+
+}</pre>
+</div>
+<p>You must change <tt class="docutils literal"><span class="pre">yourhost.com</span></tt> to match your domain.</p>
+<p>Fascgi.debug line is useful for finding out why your app doesn&#8217;t work.
+Error messages go to <tt class="docutils literal"><span class="pre">/var/log/lighttpd/errors.log</span></tt> unless configured
+otherwise. When it all works, set it to 0.</p>
+<p>Change <tt class="docutils literal"><span class="pre">/myblog</span></tt> to the url path you want your blog to live at.
+If you want it at root node (like <a class="reference external" href="http://yourhost.com/">http://yourhost.com/</a> ), set it to <tt class="docutils literal"><span class="pre">/</span></tt>.</p>
+<p>Select any not used port number.</p>
+<p>Checkout what <tt class="docutils literal"><span class="pre">check-local</span></tt> and <tt class="docutils literal"><span class="pre">max-procs</span></tt> mean in <a class="reference external" href="http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ConfigurationOptions#mod_fastcgi-fastcgi">Lighttpd docs</a>.</p>
+<p>Change <tt class="docutils literal"><span class="pre">/path/to/pyblosxom.wsgi</span></tt> to be the absolute path to the
+.wsgi file set up in step 3.</p>
+</li>
+<li><p class="first">Now you can enable and disable this part of configuration with
+<tt class="docutils literal"><span class="pre">lighttpd-enable-mod</span></tt> and <tt class="docutils literal"><span class="pre">lighttpd-disable-mod</span></tt>, so now do:</p>
+<div class="highlight-python"><pre>lighttpd-enable-mod myblog
+service lighttpd force-reload</pre>
+</div>
 </li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Any time you make changes to Pyblosxom (update, add plugins, change
-configuration), you&#8217;ll have to restart Apache.</p>
+configuration), you&#8217;ll have to force-reload configuration of Lighttpd.</p>
 </div>
 </div>
 </div>
@@ -155,7 +195,7 @@ configuration), you&#8217;ll have to restart Apache.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Deploying Pyblosxom with Apache and mod_wsgi</a><ul>
+<li><a class="reference internal" href="#">Deploying Pyblosxom with Lighttpd and fastcgi</a><ul>
 <li><a class="reference internal" href="#summary">Summary</a></li>
 <li><a class="reference internal" href="#dependencies">Dependencies</a></li>
 <li><a class="reference internal" href="#deployment">Deployment</a></li>
@@ -164,14 +204,14 @@ configuration), you&#8217;ll have to restart Apache.</p>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="deploy_paste.html"
-                        title="previous chapter">Deploying Pyblosxom with Paste</a></p>
+  <p class="topless"><a href="deploy_apache_mod_wsgi.html"
+                        title="previous chapter">Deploying Pyblosxom with Apache and mod_wsgi</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="deploy_lighttpd_fastcgi.html"
-                        title="next chapter">Deploying Pyblosxom with Lighttpd and fastcgi</a></p>
+  <p class="topless"><a href="deploy_staticrendering.html"
+                        title="next chapter">Deploy Pyblosxom with Static Rendering</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/deploy_apache_mod_wsgi.txt"
+    <li><a href="_sources/deploy_lighttpd_fastcgi.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -201,10 +241,10 @@ configuration), you&#8217;ll have to restart Apache.</p>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="deploy_lighttpd_fastcgi.html" title="Deploying Pyblosxom with Lighttpd and fastcgi"
+          <a href="deploy_staticrendering.html" title="Deploy Pyblosxom with Static Rendering"
              >next</a> |</li>
         <li class="right" >
-          <a href="deploy_paste.html" title="Deploying Pyblosxom with Paste"
+          <a href="deploy_apache_mod_wsgi.html" title="Deploying Pyblosxom with Apache and mod_wsgi"
              >previous</a> |</li>
         <li><a href="index.html">PyBlosxom 1.5.2 documentation</a> &raquo;</li> 
       </ul>

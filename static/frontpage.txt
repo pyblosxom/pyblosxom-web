@@ -90,13 +90,13 @@ print '</ul>'
 <h3>Source code</h3>
 <p>
   Source code is located
-  at <a href="http://github.com/willkg/pyblosxom/">http://github.com/willkg/pyblosxom/</a>.
+  at <a href="https://github.com/pyblosxom/pyblosxom">https://github.com/pyblosxom/pyblosxom</a>.
 </p>
 <p>
   You can clone the Pyblosxom repository with:
 </p>
 <pre>
- $ git clone git://github.com/willkg/pyblosxom.git
+ $ git clone https://github.com/pyblosxom/pyblosxom.git
 </pre>
 <p>
   Pyblosxom is written in Python.  Pyblosxom is distributed
@@ -143,7 +143,7 @@ print '</ul>'
 
 <h3>Bugs/Features</h3>
 <p>
-  Please file bugs and feature requests in our <a href="/bugs/">issue tracker</a>.
+  Please file bugs and feature requests in our <a href="https://github.com/pyblosxom/pyblosxom/issues">issue tracker</a>.
 </p>
 
 <h3>Send in patches</h3>
@@ -151,6 +151,7 @@ print '</ul>'
   Want to contribute? Check out our <a href="/1.5/dev_contributing.html">docs
   on hacking and sending in patches</a>.
 </p>
+
 
 <h2>Interested in contributing?</h2>
 <p>
@@ -165,62 +166,13 @@ print '</ul>'
 
 <p>
   If you're interested in contributing, but don't know where to start,
-  click the "I want to help" button below and we'll contact you!
+  join the <a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-devel">devel mailing list</a> and ask!
+</p>
+
+<p>
+Please note that our code is under the MIT licence and our documentation is under the 
+<a href="http://creativecommons.org/publicdomain/zero/1.0/">CC0 licence</a> and all contributing code will be licenced under those licences. 
+If that isn't OK with you, please say so before contributing.
 </p>
 
 
-<div style="margin: 10px; padding-bottom: 10px;">
-<form method="POST" action="https://openhatch.org/+do/project.views.wanna_help_do" id="openhatch-want2help_form">
-  <input type="hidden" name="from_offsite" value="True" />
-  <input type="hidden" value="61" name="project"/>
-  <input type="submit" value="I want to help" rel="tipsy-south" id="openhatch-wannahelp-button" original-title="Click to add yourself to the list of people who want to contribute. People of all levels are welcome!"/>
-</form>
-
-<style>
-  @import url('https://openhatch.org/static/css/tipsy.css?1269539648');
-</style>
-
-<style type="text/css">
-#openhatch-wannahelp-button:hover, #openhatch-wannahelp-button:focus {
-background-image:url('https://openhatch.org/static/images/wannahelp-button-bg-hover.png');
-color:#222222;
-text-decoration:none;
-}
-#openhatch-wannahelp-button {
--moz-background-clip:border;
--moz-background-inline-policy:continuous;
--moz-background-origin:padding;
-background:#C8E29D url('https://openhatch.org/static/images/wannahelp-button-bg.png') repeat-x scroll center top;
-border:3px solid #FFFFFF;
-cursor:pointer;
-font-family:Helvetica,sans-serif;
-font-size:13pt;
-font-weight:normal;
-text-align:center;
-text-shadow:0 1px 0 #FFFFFF;
-white-space:normal;
-}
-
-#openhatch-wannahelp-button {
--moz-border-radius-bottomleft:8px;
--moz-border-radius-bottomright:8px;
--moz-border-radius-topleft:8px;
--moz-border-radius-topright:8px;
-color:#444444;
-float:left;
-padding:10px 20px;
-display:block;
-padding:2px 8px;
-}
-
-#openhatch-wannahelp-button:focus {
-outline-color:-moz-use-text-color;
-outline-style:none;
-outline-width:medium;
-}
-</style>
-
-<script type="text/javascript" src="https://openhatch.org/static/js/jquery.js?1244261870"></script>
-<script type="text/javascript" src="https://openhatch.org/static/js/jquery.tipsy.js?1269539649"></script>
-<script type="text/javascript" src="https://openhatch.org/static/js/tipsy-onload.js"></script>
-</div>

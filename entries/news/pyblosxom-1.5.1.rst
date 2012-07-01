@@ -29,4 +29,4 @@ How to get help
 
 If you have any problems, say hi on IRC or send an email to the
 pyblosxom-users mailing list.  Details are on `the website
-<http://pyblosxom.bluesock.org/>`_.
+<http://pyblosxom.github.com/>`_.

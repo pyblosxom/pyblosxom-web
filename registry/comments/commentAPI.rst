@@ -1,7 +1,7 @@
 commentAPI
 #author Ted Leung
 #email 
-#infourl http://pyblosxom.bluesock.org/
+#infourl http://pyblosxom.github.com
 #download As of PyBlosxom 1.5 rc1, comes with PyBlosxom
 #summary CommentAPI provides support for Joe Gregario's CommentAPI.
 #license MIT
