@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Hacking on Pyblosxom &mdash; PyBlosxom 1.5.2 documentation</title>
+    <title>Hacking on PyBlosxom &mdash; PyBlosxom 1.5.2 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -55,15 +55,18 @@
           <div class="body">
             
   <div class="section" id="hacking-on-pyblosxom">
-<span id="hacking-chapter"></span><h1>Hacking on Pyblosxom<a class="headerlink" href="#hacking-on-pyblosxom" title="Permalink to this headline">¶</a></h1>
-<p>Installing Pyblosxom to hack on it is a little different since you:</p>
+<span id="hacking-chapter"></span><h1>Hacking on PyBlosxom<a class="headerlink" href="#hacking-on-pyblosxom" title="Permalink to this headline">¶</a></h1>
+<p>This will cover installing PyBlosxom from the git repositories in a
+way that won&#8217;t interfere with the packages or modules already installed on
+the system.</p>
+<p>Installing PyBlosxom to hack on it is a little different since you:</p>
 <ol class="arabic simple">
-<li>want to be running Pyblosxom from a git clone</li>
-<li>want Pyblosxom installed such that you don&#8217;t have to keep running
+<li>want to be running PyBlosxom from a git clone</li>
+<li>want PyBlosxom installed such that you don&#8217;t have to keep running
 <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt></li>
 <li>want Paste installed so you can test locally</li>
 </ol>
-<p>This document covers installing Pyblosxom into a virtual environment
+<p>As such, this document covers installing Pyblosxom into a virtual environment
 and deploying it using Paste.</p>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
@@ -98,7 +101,7 @@ you want to use the <tt class="docutils literal"><span class="pre">python</span>
 directory of your virtual environment&#8211;not the system one.</p>
 </li>
 <li><p class="first">Using git, clone the Pyblosxom repository:</p>
-<div class="highlight-python"><pre>git clone git@github.com:willkg/pyblosxom.git</pre>
+<div class="highlight-python"><pre>git clone https://github.com/pyblosxom/pyblosxom.git</pre>
 </div>
 </li>
 <li><p class="first">Change directories into the <tt class="docutils literal"><span class="pre">pyblosxom</span></tt> directory and run:</p>
@@ -121,12 +124,28 @@ environment, you will:</p>
 </div>
 </li>
 </ol>
+<p>Note: If you get an error message about &#8220;paster&#8221; not being currently
+installed, or about the system not finding PyBlosxom, it is likely
+that you have Paster and PyBlosxom installed in different places.
+To ensure Paster is installed in your virtualenv, make sure it
+is activated (see step 1) and then use pip to install paste.</p>
+<p>Note 2: Due to a bug in some linux distributions, it is recommended
+to install paste in the following three steps:</p>
+<div class="highlight-python"><pre>pip install paste
+pip install pastedeploy
+pip install pastescript</pre>
+</div>
 </div>
 <div class="section" id="updating-pyblosxom">
 <h2>Updating Pyblosxom<a class="headerlink" href="#updating-pyblosxom" title="Permalink to this headline">¶</a></h2>
 <p>Because you installed Pyblosxom with <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></tt>, when
 you make changes to the Pyblosxom code, they&#8217;ll be available in the
 environment&#8212;you don&#8217;t need to re-run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></tt>.</p>
+</div>
+<div class="section" id="where-to-go-from-here">
+<h2>Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Permalink to this headline">¶</a></h2>
+<p>Once set up, you can continue to the
+<a class="reference external" href="http://pyblosxom.github.com/1.5/install.html#creating-a-blog">Creating your blog</a>. chapter</p>
 </div>
 </div>
 
@@ -138,11 +157,12 @@ environment&#8212;you don&#8217;t need to re-run <tt class="docutils literal"><s
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Hacking on Pyblosxom</a><ul>
+<li><a class="reference internal" href="#">Hacking on PyBlosxom</a><ul>
 <li><a class="reference internal" href="#requirements">Requirements</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#running-pyblosxom">Running Pyblosxom</a></li>
 <li><a class="reference internal" href="#updating-pyblosxom">Updating Pyblosxom</a></li>
+<li><a class="reference internal" href="#where-to-go-from-here">Where to go from here</a></li>
 </ul>
 </li>
 </ul>
