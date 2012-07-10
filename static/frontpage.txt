@@ -1,25 +1,35 @@
-Welcome to Pyblosxom!
-<h2>What is Pyblosxom?</h2>
-<p>
-  Pyblosxom is a lightweight file-based weblog system.  Pyblosxom
-  focuses on three things: simplicity, extensibility, and community.
-</p>
+Welcome to PyBlosxom!
+<h2>What is PyBlosxom?</h2>
+
+<p><b>PyBlosxom is:</b></p>
 
 <ul>
-<li><b>simplicity</b> - Pyblosxom uses the file system for all its
-  data storage.  Because of this you can use whatever existing
-  editor, scripts and tools you want to create, update and
-  manipulate entries and other blog data.
-<li><b>extensibility</b> - Pyblosxom has a plugin framework allowing
-  you to build plugins in Python to augment and change Pyblosxom's
-  default behavior.
-<li><b>community</b> - There are hundreds of Pyblosxom users out there
-  all of whom have different needs.  Pyblosxom is used on a variety
-  of operating systems in a variety of environments.  The pyblosxom
-  users list shares their experiences, plugins, and expertise.  The
-  pyblosxom devel list shares their ideas for changes, patches and
-  plugins.
+<li><b>File-Based:</b> In PyBlosxom everything is a text file.
+Entries are files, configuration is a file, plugins are files, etc...
+This makes PyBlosxom easily extensible in whatever environment you
+choose to work in and instantly compatable with command line scripting.
+</li>
+
+<li><b>Extensible:</b> Pyblosxom has a plugin framework which allows you
+to customize and extend PyBlosxom in almost every way. </li>
+
+<li><b>Standards-compliant:</b> PyBlosxom supports RSS 2.0 and Atom syndication feeds.</li>
+
+<li><b>Customizeable:</b> PyBlosxom has a simple templating engine to make it easy to design
+your own themes with a minimum of development knowlage.</li>
+
+<li><b>Community-oriented:</b> We pride ourselves in being a nice, open and friendly community.
+PyBlosxom has hundreds of active users, each of them running PyBlosxom in different ways and
+on different operating systems. As a result, there is usually someone on the IRC channel or
+mailing lists who has encountered your problem before and who would be willing to lend a
+hand. If you don't get a satisfactory response, take that as motivation to figure it out
+and help add to our extensive documentation!</li>
 </ul>
+<p>
+  Pyblosxom allows you to use your favorite editor, toolset and
+  workflow to maintain your blog without forcing you to build it all
+  from scratch.
+</p>
 
 <h2>Latest News</h2>
 <%
@@ -50,25 +60,6 @@ for entry in entrylist:
 print '</ul>'
 %>
 
-<h2>Features</h2>
-<ul>
-<li><b>file-based</b> - entries are files, configuration is a file,
-  plugins are files, ...
-<li><b>run it many different ways</b> - as a static renderer that
-  compiles your blog to html, as a CGI script, as a WSGI applicatoin
-<li><b>easy to modify and extend behavior</b> - lots of plugins that
-  modify and extend behavior
-<li><b>works with blog standards</b> - RSS 2.0 and Atom syndication
-  feeds
-<li><b>lots of different ways to view your blog contents</b> -
-  category and date-based archives and feeds
-</ul>
-
-<p>
-  Pyblosxom allows you to use your favorite editor, toolset and
-  workflow to maintain your blog without forcing you to build it all
-  from scratch.
-</p>
 
 <h2>Quickstart</h2>
 <p>
@@ -93,29 +84,58 @@ print '</ul>'
   at <a href="https://github.com/pyblosxom/pyblosxom">https://github.com/pyblosxom/pyblosxom</a>.
 </p>
 <p>
-  You can clone the Pyblosxom repository with:
+  You can clone the PyBlosxom repository with:
 </p>
 <pre>
  $ git clone https://github.com/pyblosxom/pyblosxom.git
 </pre>
 <p>
-  Pyblosxom is written in Python.  Pyblosxom is distributed
+  PyBlosxom is written in Python.  PyBlosxom is distributed
   under <a href="http://www.opensource.org/licenses/mit-license.php">the
   MIT license</a>.
+</p>
+
+
+<h2>Join In!</h2>
+<p>
+  We are always happy to see new faces on the mailing lists or IRC channel. If you have any questions 
+  about PyBlosxom or you are interested in contributing by helping new users, adding to the documentation,
+  or contributing a patch or plugin, see how you can connect with us below.</p>
+
+<p>
+We could use help with the following things:
+</p>
+<ul>
+<li>hanging out with us -- pyblosxom is a social community
+<li>testing pyblosxom and plugins
+<li>fixing and updating documentation
+<li>writing new plugins; enhancing existing plugins; fixing bugs in plugins
+</ul>
+
+<p>
+  If you're interested in contributing, but don't know where to start,
+  join the <a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-devel">devel mailing list</a> and ask!
+</p>
+
+<p>
+Please note that our code is under the MIT licence and our documentation is under the 
+<a href="http://creativecommons.org/publicdomain/zero/1.0/">CC0 licence</a> and all contributing code will be licenced under those licences. 
+If that isn't OK with you, please say so before contributing.
 </p>
 
 <a name="irc"></a>
 <h3>IRC</h3>
 <p>
-  A bunch of us hang out on <tt>#pyblosxom</tt> on irc.freenode.net.  If you
-  have problems or need help, look for us here.
+  A bunch of us hang out on <tt>#pyblosxom</tt> on irc.freenode.net. 
+  <a href="http://webchat.freenode.net/?channels=pyblosxom&uio=d4">(webchat)</a>
+  If you want to socialize with other PyBlosxom users or have a question you 
+  think is too minor for the users list, look for us here.
 </p>
 
+<a name="pyblosxomusers"></a>
 <h3>Mailing lists</h3>
 
-<a name="pyblosxomusers"></a>
 <p><b>pyblosxom-users</b></p>
-
 <p>
   pyblosxom-users at lists dot sourceforge dot net
   (<a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-users">subscribe/unsubscribe</a>)
@@ -148,31 +168,7 @@ print '</ul>'
 
 <h3>Send in patches</h3>
 <p>
-  Want to contribute? Check out our <a href="/1.5/dev_contributing.html">docs
+  Want to share your changes? Check out our <a href="/1.5/dev_contributing.html">docs
   on hacking and sending in patches</a>.
 </p>
-
-
-<h2>Interested in contributing?</h2>
-<p>
-  We need your help!  We could use help with the following things:
-</p>
-<ul>
-<li>hanging out with us -- pyblosxom is a social community
-<li>testing pyblosxom and plugins
-<li>fixing and updating documentation
-<li>writing new plugins; enhancing existing plugins; fixing bugs in plugins
-</ul>
-
-<p>
-  If you're interested in contributing, but don't know where to start,
-  join the <a href="http://lists.sourceforge.net/lists/listinfo/pyblosxom-devel">devel mailing list</a> and ask!
-</p>
-
-<p>
-Please note that our code is under the MIT licence and our documentation is under the 
-<a href="http://creativecommons.org/publicdomain/zero/1.0/">CC0 licence</a> and all contributing code will be licenced under those licences. 
-If that isn't OK with you, please say so before contributing.
-</p>
-
 
