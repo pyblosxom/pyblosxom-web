@@ -4,6 +4,7 @@ import SimpleHTTPServer
 import BaseHTTPServer
 import os
 import os.path
+import sys
 
 def run(address="localhost", port=8000, dir="."):
     os.chdir(os.path.join(os.getcwd(), dir))
@@ -16,7 +17,11 @@ def run(address="localhost", port=8000, dir="."):
     httpd.serve_forever()
 
 if __name__ == "__main__":
+    if (len(sys.argv) == 2):
+        srvaddress=sys.argv[1]
+    else:
+        srvaddress="localhost"
     try:
-        run("localhost", 8000, "./compiled_site/")
+        run(srvaddress, 8000, "./compiled_site/")
     except KeyboardInterrupt, ki:
         print "Shutting down...."
