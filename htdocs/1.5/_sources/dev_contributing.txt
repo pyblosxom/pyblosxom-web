@@ -15,7 +15,7 @@ How to clone the project
 
 
 If you have a GitHub account [Recommended]
-----------------------------
+-------------------------------------------
 
 This is the ideal way to contribute because GitHub makes things simple
 and convenient .

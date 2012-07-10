@@ -8,10 +8,10 @@ Documentation
 </tr>
 <tr>
 <td>
-  <a href="/static/development.html">development howto</a>
+  <a href="/1.5/index.html#part-3-developer-documentation">Development Documentation</a>
 </td>
 <td>
-  Covers how to contribute to the Pyblosxom project, code style guide,
+  This document covers how to contribute to the PyBlosxom project, code style guide,
   list of contributors, workflow, policies, and various other things.
 </td>
 </tr>
@@ -29,7 +29,7 @@ Documentation
 </td>
 <td>
   <p>
-    User documentation and development documentation.
+    User and development documentation. This is the whole manual.
   </p>
 </td>
 </tr>
