@@ -25,15 +25,19 @@ Process
 2. Test the site by running ``testserver.py``, going to 
    ``http://localhost:8000/`` and running through the site.
 
-3. Use Unison or something like that to move the files from the
-   ``compiled_site`` directory to SourceForge.
+3. Move the files from the ``compiled_site`` directory to the pyblosxom.github.com repo where our 
+   site is hosted on Github Pages.
+  
+   If it isn't there, make sure to create an empty .nojekyll file in the root of the repo to prevent
+   GH pages form breaking the site. 
+   (See: https://help.github.com/articles/files-that-start-with-an-underscore-are-missing )
 
-   You might need someone with permissions to do this.  SourceForge
-   is a minor pain in the ass and it's possible that file permissions
-   are screwy.
 
-
-Questions, et al
+Questions
 ================
 
-Ask on the mailing list
+Ask on the mailing list 
+
+pyblosxom-devel at lists dot sourceforge dot net [subscribe/unsubscribe](http://lists.sourceforge.net/lists/listinfo/pyblosxom-devel)
+
+This mailing list is for developers who want to add/modify/delete functionality in Pyblosxom. Since it revolves around Pyblosxom development, it's also a good place to ask questions about how to build plugins and for advice on working around various plugin development issues. 
