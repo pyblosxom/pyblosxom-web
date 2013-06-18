@@ -1,0 +1,28 @@
+More updates
+#published 2013-06-18 17:03:00
+<p>
+It's been almost a full year since my last news update. Hi!</p>
+<p>It's been a pretty tumultuous year both for me and PyBlosxom. </p>
+
+<p>I've spent a lot of this time getting used to the codebase,
+which was frankly somewhat intimidating to someone new to the project,
+which I was when I first joined a year ago.</p>
+
+<p> On the Pyblosxom front,Although we haven't had a super-large amount of updates, 
+We did get some bugs squashed and began a new repo for external plugins,
+which I hope will eventually lead to plugins being more updated and accessable</p>
+
+<p>Markus Koschany (https://launchpad.net/~apoleon) has been working on 
+the Debian repo to finally get our package there updated for the next release. (Thank you!)</p>
+
+<p>We made the move over to GitHub will all our stuff and the documentation has been updated to reflect it</p>
+
+<p>I'm happy to note it looks like we got a few new installs and a few new faces appeared on IRC</p>
+
+<p>I hope this year brings a lot more to the table for PyBlosxom and my door is 
+always open for comments, criticism, suggestions or help :-)</p>
+
+<p>
+  -Akai
+</p>
+

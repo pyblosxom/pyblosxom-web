@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +13,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.5.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -93,6 +91,18 @@ all the flavours that should be rendered.</p>
 </pre></div>
 </div>
 </li>
+<li><p class="first">(optional) Uncomment <tt class="docutils literal"><span class="pre">static_index_flavours</span></tt> in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
+<p><tt class="docutils literal"><span class="pre">static_index_flavours</span></tt> is just like <tt class="docutils literal"><span class="pre">static_flavours</span></tt> except
+it&#8217;s the flavours of the index files: frontpage index, category
+indexes, date indexes, ...</p>
+<p>Defaults to <tt class="docutils literal"><span class="pre">[&quot;html&quot;]</span></tt> which only renders the html flavour.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;static_index_flavours&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;html&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If you want your index files to also be feeds, then you should add
+a feed flavour to the list.</p>
+</li>
 <li><p class="first">(optional) Uncomment <tt class="docutils literal"><span class="pre">static_monthnames</span></tt> in your <tt class="docutils literal"><span class="pre">config.py</span></tt> file.</p>
 <p>The value (either <tt class="docutils literal"><span class="pre">True</span></tt> or <tt class="docutils literal"><span class="pre">False</span></tt>) will determine if you want
 month names (such as <tt class="docutils literal"><span class="pre">April</span></tt>) in the static pages.</p>
@@ -125,6 +135,7 @@ base_url like this:</p>
 <p>Here&#8217;s an example of static rendering configuration:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">py</span><span class="p">[</span><span class="s">&quot;static_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/home/joe/public_html/static/&quot;</span>
 <span class="n">py</span><span class="p">[</span><span class="s">&quot;static_flavours&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;html&quot;</span><span class="p">]</span>
+<span class="n">py</span><span class="p">[</span><span class="s">&quot;static_index_flavours&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;html&quot;</span><span class="p">,</span> <span class="s">&quot;atom&quot;</span><span class="p">]</span>
 <span class="n">py</span><span class="p">[</span><span class="s">&quot;static_monthnames&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>    <span class="c"># I do not want month names</span>
 <span class="n">py</span><span class="p">[</span><span class="s">&quot;static_monthnumbers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>   <span class="c"># I do want month numbers</span>
 </pre></div>
@@ -317,8 +328,8 @@ cp -ar <span class="k">${</span><span class="nv">BLOGDIR</span><span class="k">}
     </div>
     <div class="footer">
         &copy; Copyright Creative Commons CC0 - http://creativecommons.org/publicdomain/zero/1.0/.
-      Last updated on Jul 10, 2012.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Last updated on Jun 18, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
 </html>
