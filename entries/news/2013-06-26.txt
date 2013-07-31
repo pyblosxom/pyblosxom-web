@@ -1,0 +1,11 @@
+Theme Repo
+#published 2013-06-26 4:25:00
+<p>
+We now have a shiny new repo for themes - I've uploaded an updated version of MainlyGreen
+to get started with, which has been updated for the latest PyBlosxom 
+and optimized for pagnate and the comments plugin</p>
+
+<p>
+  -Akai
+</p>
+

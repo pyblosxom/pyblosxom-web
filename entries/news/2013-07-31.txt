@@ -1,0 +1,9 @@
+New Version Released
+#published 2013-07-31 4:25:00
+<p>
+We Have officially bumped the version to 1.5.3 with all the latest goodies and fixes from the git repo. Check it out!</p>
+
+<p>
+  -Akai
+</p>
+
